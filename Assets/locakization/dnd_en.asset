@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: dnd_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: a8a9ab489a6d66b4f975ea13b15d9990, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 116769658056790016
+    m_Localized: Authors
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116772503854305280
+    m_Localized: Application Information
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116772632594272256
+    m_Localized: Character idea notebook
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773066566324224
+    m_Localized: Character #1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773106059890688
+    m_Localized: Character #2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773110489075712
+    m_Localized: Character #3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773114079399936
+    m_Localized: Character #4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773117669724160
+    m_Localized: Character #5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773121058721792
+    m_Localized: Main Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773124682600448
+    m_Localized: Wild form
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773132802772992
+    m_Localized: About the character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773141828915200
+    m_Localized: Magic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773148372029440
+    m_Localized: Book of spells
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773151555506176
+    m_Localized: Inventory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773154105643008
+    m_Localized: Reset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773159944114176
+    m_Localized: Reset HP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773162930458624
+    m_Localized: Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 116773165077942272
+    m_Localized: Calculator
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

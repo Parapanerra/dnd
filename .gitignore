@@ -1,0 +1,71 @@
+# Unity generated folders
+/Library/
+/Temp/
+/Obj/
+/obj/
+/Build/
+/Builds/
+/build/
+/Logs/
+/UserSettings/
+/MemoryCaptures/
+/Recordings/
+
+# Unity cache and generated files
+/.vs/
+/.utmp/
+/sysinfo.txt
+*.csproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Rider / Visual Studio / OS files
+.idea/
+.vscode/
+.vsconfig
+*.rsuser
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.DotSettings.user
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Unity build outputs
+*.apk
+*.aab
+*.unitypackage
+*.app
+*.exe
+*.xcodeproj
+*.xcworkspace
+
+# Android / Gradle generated output
+/.gradle/
+/gradleOut/
+/ExportedObj/
+
+# Addressables / AssetBundle build output
+/ServerData/
+/Assets/StreamingAssets/aa/
+
+# Crash / profiler / diagnostics
+*.stackdump
+*.traceevents
+*.log
+
+# Keep Unity metadata tracked.
+!Assets/**/*.meta
+!Packages/**/*.json
+!ProjectSettings/**/*.asset

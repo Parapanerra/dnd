@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/menu.unity
+    guid: 00fad4d220a028443bfe33df2d57491d
+  - enabled: 1
+    path: Assets/Scenes/personag/cartaPersonaj.unity
+    guid: 02528c485a922bf42bc33512f7809cba
+  - enabled: 1
+    path: Assets/Scenes/personag/petsesn.unity
+    guid: 5ed6e24fd26537f4cac2011b8bc1b8b5
+  - enabled: 1
+    path: Assets/Scenes/personag/Spels.unity
+    guid: 90a2dcb7dff924c4ca7f4f1be7e71541
+  - enabled: 1
+    path: Assets/Scenes/personag/inventory.unity
+    guid: 1697f2afc1b4d474f81adc2407ce6319
+  - enabled: 1
+    path: Assets/Scenes/personag/informForPerson.unity
+    guid: ce49ad843030a8d4c9ee1d1bd6284f58
+  - enabled: 1
+    path: Assets/Scenes/avtoru.unity
+    guid: 8a9b55cfe435e324fb62f30694972f78
+  - enabled: 1
+    path: Assets/Scenes/proApk.unity
+    guid: c6be5b42a444c1a4c9d195f4bda78887
+  - enabled: 1
+    path: Assets/Scenes/personag/spelBook.unity
+    guid: e00f5a8664ff4704995694bb27e52357
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 11cfdf716d4045645bb029536bdaf35e, type: 2}
+    com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: f7b112d3adf67834db692817d9517824, type: 2}
