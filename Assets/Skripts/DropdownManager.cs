@@ -60,8 +60,19 @@ public class DropdownManager : MonoBehaviour
             }
             else
             {
+                ClearToggles(config.tangles[i]);
                 config.tangles[i].SetActive(false);
             }
         }
+    }
+
+    private void ClearToggles(GameObject root)
+    {
+        if (root == null)
+            return;
+
+        foreach (Toggle toggle in root.GetComponentsInChildren<Toggle>(true))
+            if (toggle != null && toggle.isOn)
+                toggle.isOn = false;
     }
 }

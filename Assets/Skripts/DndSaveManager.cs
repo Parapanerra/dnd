@@ -662,6 +662,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
         }
 
         RefreshDropdownDrivenUi();
+        RefreshToggleDrivenPanels();
     }
 
     private void RefreshDropdownDrivenUi()
@@ -675,6 +676,14 @@ public class CharacterSceneAutoSave : MonoBehaviour
         foreach (DropdownVisibilityController controller in visibilityControllers)
             if (controller != null)
                 controller.RefreshVisibility();
+    }
+
+    private void RefreshToggleDrivenPanels()
+    {
+        PanelToggleManager[] panelToggleManagers = FindObjectsByType<PanelToggleManager>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (PanelToggleManager manager in panelToggleManagers)
+            if (manager != null)
+                manager.RefreshPanels();
     }
 
     public void SwitchSceneData(string newSceneName)
@@ -788,6 +797,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
         sceneData.ClearValues();
         SaveSceneData();
         RefreshDropdownDrivenUi();
+        RefreshToggleDrivenPanels();
     }
 
     private bool IsResetButton(Button button)

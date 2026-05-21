@@ -38,7 +38,10 @@ public class DropdownVisibilityController : MonoBehaviour
             foreach (var obj in objectsToToggle)
             {
                 if (obj != null)
+                {
+                    ClearToggles(obj);
                     obj.SetActive(false);
+                }
             }
         }
         else
@@ -55,9 +58,20 @@ public class DropdownVisibilityController : MonoBehaviour
                 }
                 else
                 {
+                    ClearToggles(objectsToToggle[i]);
                     objectsToToggle[i].SetActive(false);
                 }
             }
         }
+    }
+
+    private void ClearToggles(GameObject root)
+    {
+        if (root == null)
+            return;
+
+        foreach (Toggle toggle in root.GetComponentsInChildren<Toggle>(true))
+            if (toggle != null)
+                toggle.SetIsOnWithoutNotify(false);
     }
 }

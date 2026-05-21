@@ -6,32 +6,51 @@ public class PanelToggleManager : MonoBehaviour
     public GameObject[] panels;
     public Toggle[] toggles;
 
-    void Start()
+    private void Start()
     {
-        // Настраиваем обработчики событий для каждого переключателя (Toggle)
+        if (toggles == null)
+            return;
+
         for (int i = 0; i < toggles.Length; i++)
         {
-            int index = i; // Захватываем текущее значение i для использования внутри замыкания
-            toggles[i].onValueChanged.AddListener((value) => OnToggleChanged(index, value));
+            if (toggles[i] == null)
+                continue;
 
-            // Изначально отображаем или скрываем панель в зависимости от состояния переключателя
-            panels[index].SetActive(toggles[index].isOn);
+            int index = i;
+            toggles[i].onValueChanged.AddListener(value => OnToggleChanged(index, value));
+            RefreshPanel(index);
         }
     }
 
-    // Метод для обработки изменения состояния переключателя
-    void OnToggleChanged(int index, bool isOn)
+    public void RefreshPanels()
     {
-        // Переключаем состояние панели
+        if (toggles == null)
+            return;
+
+        for (int i = 0; i < toggles.Length; i++)
+            RefreshPanel(i);
+    }
+
+    private void OnToggleChanged(int index, bool isOn)
+    {
         TogglePanel(index, isOn);
     }
 
-    // Метод для скрытия или отображения панели
-    void TogglePanel(int index, bool value)
+    private void TogglePanel(int index, bool value)
     {
-        if (index >= 0 && index < panels.Length)
-        {
+        if (panels == null || index < 0 || index >= panels.Length)
+            return;
+
+        if (panels[index] != null)
             panels[index].SetActive(value);
-        }
+    }
+
+    private void RefreshPanel(int index)
+    {
+        if (panels == null || toggles == null || index < 0 || index >= panels.Length || index >= toggles.Length)
+            return;
+
+        if (panels[index] != null && toggles[index] != null)
+            panels[index].SetActive(toggles[index].isOn);
     }
 }

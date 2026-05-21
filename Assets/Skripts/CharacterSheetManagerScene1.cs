@@ -56,6 +56,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         }
 
         LoadCharacterDataToUI();
+        DeathSaveToggleSequence.ConfigureScene();
         RuntimeLocalization.EnsureExists().ApplyToScene();
 
         SubscribeToUIEvents();
@@ -183,6 +184,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         }
 
         RefreshDropdownDrivenUi();
+        RefreshToggleDrivenPanels();
     }
 
     private void RefreshDropdownDrivenUi()
@@ -196,6 +198,14 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         foreach (DropdownVisibilityController controller in visibilityControllers)
             if (controller != null)
                 controller.RefreshVisibility();
+    }
+
+    private void RefreshToggleDrivenPanels()
+    {
+        PanelToggleManager[] panelToggleManagers = FindObjectsByType<PanelToggleManager>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (PanelToggleManager manager in panelToggleManagers)
+            if (manager != null)
+                manager.RefreshPanels();
     }
 
     public void SwitchSceneData(string newSceneName)
@@ -533,6 +543,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         currentSceneData.ClearValues();
         SaveCharacterData();
         RefreshDropdownDrivenUi();
+        RefreshToggleDrivenPanels();
     }
 
     private bool IsResetButton(Button button)

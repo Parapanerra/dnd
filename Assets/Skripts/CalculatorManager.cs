@@ -7,16 +7,25 @@ using UnityEngine.UI;
 
 public class CalculatorManager : MonoBehaviour
 {
+    private const string PotionSaveKeyPrefix = "PotionCount_";
+
     public List<Button> buttons;
     public Text equationText;
     public Text resultText;
 
+    private readonly string[] potionNames = { "Звичайна", "Велика", "Чудова", "Найвища" };
+    private readonly string[] potionFormulas = { "2d4+2", "4d4+4", "8d4+8", "10d4+20" };
+    private readonly int[] potionCounts = new int[4];
     private string currentEquation = "";
     private string hpModeLabel = "";
     private Color hpTextColor = Color.white;
     private bool hasHpTextColor;
     private bool isOperatorClicked;
     private bool isLastInputDice;
+    private Dropdown potionDropdown;
+    private Button potionPlusButton;
+    private Button potionMinusButton;
+    private Button potionUseButton;
     private HpCalculatorMode hpMode = HpCalculatorMode.None;
 
     private enum HpCalculatorMode
@@ -32,6 +41,7 @@ public class CalculatorManager : MonoBehaviour
     {
         AssignButtonFunctions();
         AssignHpButtonFunctions();
+        AssignPotionControls();
     }
 
     private void AssignButtonFunctions()
@@ -68,7 +78,152 @@ public class CalculatorManager : MonoBehaviour
         }
     }
 
+    private void AssignPotionControls()
+    {
+        Transform[] transforms = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform item in transforms)
+        {
+            if (item == null)
+                continue;
+
+            string objectName = item.gameObject.name;
+            if (string.Equals(objectName, "potionDropdown", StringComparison.OrdinalIgnoreCase))
+                potionDropdown = item.GetComponent<Dropdown>();
+            else if (string.Equals(objectName, "potionPlus", StringComparison.OrdinalIgnoreCase))
+                potionPlusButton = item.GetComponent<Button>();
+            else if (string.Equals(objectName, "potionMinus", StringComparison.OrdinalIgnoreCase))
+                potionMinusButton = item.GetComponent<Button>();
+            else if (string.Equals(objectName, "potionUse", StringComparison.OrdinalIgnoreCase))
+                potionUseButton = item.GetComponent<Button>();
+        }
+
+        if (potionDropdown == null)
+            return;
+
+        LoadPotionCounts();
+        RefreshPotionDropdownOptions();
+
+        if (potionPlusButton != null)
+        {
+            potionPlusButton.onClick.RemoveAllListeners();
+            potionPlusButton.onClick.AddListener(() => ChangeSelectedPotionCount(1));
+        }
+
+        if (potionMinusButton != null)
+        {
+            potionMinusButton.onClick.RemoveAllListeners();
+            potionMinusButton.onClick.AddListener(() => ChangeSelectedPotionCount(-1));
+        }
+
+        if (potionUseButton != null)
+        {
+            potionUseButton.onClick.RemoveAllListeners();
+            potionUseButton.onClick.AddListener(UseSelectedPotion);
+        }
+    }
+
+    private void LoadPotionCounts()
+    {
+        CharacterSceneData sceneData = GetPotionSceneData(false);
+        for (int i = 0; i < potionCounts.Length; i++)
+            potionCounts[i] = Mathf.Max(0, sceneData != null ? sceneData.GetInt(PotionSaveKeyPrefix + i, 0) : 0);
+    }
+
+    private void SavePotionCounts()
+    {
+        CharacterSceneData sceneData = GetPotionSceneData(true);
+        if (sceneData == null || DndSaveManager.Instance == null)
+            return;
+
+        for (int i = 0; i < potionCounts.Length; i++)
+            sceneData.SetInt(PotionSaveKeyPrefix + i, Mathf.Max(0, potionCounts[i]));
+
+        DndSaveManager.Instance.SaveData();
+    }
+
+    private CharacterSceneData GetPotionSceneData(bool createIfMissing)
+    {
+        DndSaveManager saveManager = DndSaveManager.EnsureExists();
+        if (saveManager == null)
+            return null;
+
+        CharacterData character = saveManager.EnsureActiveCharacter();
+        return character != null ? character.GetSceneData(saveManager.GetActiveSceneDataName(), createIfMissing) : null;
+    }
+
+    private void ChangeSelectedPotionCount(int delta)
+    {
+        int index = GetSelectedPotionIndex();
+        potionCounts[index] = Mathf.Max(0, potionCounts[index] + delta);
+        SavePotionCounts();
+        RefreshPotionDropdownOptions();
+    }
+
+    private void UseSelectedPotion()
+    {
+        CaptureHpTextColorFromButton(potionUseButton);
+
+        int index = GetSelectedPotionIndex();
+        if (potionCounts[index] <= 0)
+        {
+            ShowHpResult("Немає зілля");
+            return;
+        }
+
+        HealthBar healthBar = FindActiveHealthBar();
+        HealthBar1 healthBar1 = healthBar == null ? FindActiveHealthBar1() : null;
+        if (healthBar == null && healthBar1 == null)
+        {
+            ShowHpResult("HP бар не знайдено");
+            return;
+        }
+
+        string rolledExpression = ProcessDiceNotation(potionFormulas[index]);
+        if (!TryEvaluateExpression(rolledExpression, out double rollResult))
+        {
+            ShowHpResult("Помилка зілля");
+            return;
+        }
+
+        int roll = Mathf.Max(0, Mathf.RoundToInt((float)rollResult));
+        int healed = healthBar != null ? healthBar.ApplyHeal(roll) : healthBar1.ApplyHeal(roll);
+        potionCounts[index]--;
+        SavePotionCounts();
+        RefreshPotionDropdownOptions();
+        ShowHpResult("Зцілено  " + healed + " HP (" + potionFormulas[index] + "=" + roll + ")");
+        ResetHpInputState();
+    }
+
+    private int GetSelectedPotionIndex()
+    {
+        if (potionDropdown == null)
+            return 0;
+
+        return Mathf.Clamp(potionDropdown.value, 0, potionCounts.Length - 1);
+    }
+
+    private void RefreshPotionDropdownOptions()
+    {
+        if (potionDropdown == null)
+            return;
+
+        int selectedIndex = GetSelectedPotionIndex();
+        potionDropdown.options.Clear();
+        for (int i = 0; i < potionNames.Length; i++)
+            potionDropdown.options.Add(new Dropdown.OptionData(potionNames[i] + " x" + potionCounts[i]));
+
+        potionDropdown.SetValueWithoutNotify(selectedIndex);
+        potionDropdown.RefreshShownValue();
+    }
+
     private void OnHpButtonClick(string buttonName, Button button)
+    {
+        CaptureHpTextColorFromButton(button);
+
+        OnButtonClick(buttonName);
+    }
+
+    private void CaptureHpTextColorFromButton(Button button)
     {
         Text buttonText = button != null ? button.GetComponentInChildren<Text>(true) : null;
         if (buttonText != null)
@@ -77,8 +232,6 @@ public class CalculatorManager : MonoBehaviour
             hasHpTextColor = true;
             ApplyHpTextColor();
         }
-
-        OnButtonClick(buttonName);
     }
 
     private void OnButtonClick(string rawLabel)
