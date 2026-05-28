@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using SimpleFileBrowser;
 using System.IO;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -37,6 +38,13 @@ public class MainMenuManager : MonoBehaviour
     [HideInInspector] public Button exportButton;
 
     private const float CharacterButtonHeight = 95f;
+    private Button exportOneCharacterButton;
+    private Button importOneCharacterButton;
+    private Button openSavePanelButton;
+    private Dropdown oneCharacterDropdown;
+    private TMP_Dropdown oneCharacterTmpDropdown;
+    private GameObject savePanel;
+    private bool oneCharacterDropdownHasSelection;
     private Button userCharacterButtonTemplate;
     private Transform userMenuRoot;
     private Transform userMenuContent;
@@ -53,6 +61,9 @@ public class MainMenuManager : MonoBehaviour
         RuntimeLocalization.EnsureExists();
         WireUserCreatedMenu();
         WireSaveFileButtons();
+        if (savePanel != null)
+            savePanel.SetActive(false);
+
         if (repairScrollViewAtRuntime)
             EnsureScrollViewIsVisible();
         if (applyDefaultCharacterListLayout)
@@ -86,6 +97,38 @@ public class MainMenuManager : MonoBehaviour
         {
             importButton.onClick.RemoveAllListeners();
             importButton.onClick.AddListener(ImportFile);
+        }
+
+        if (exportOneCharacterButton != null)
+        {
+            exportOneCharacterButton.onClick.RemoveAllListeners();
+            exportOneCharacterButton.onClick.AddListener(ExportSelectedCharacterFile);
+        }
+
+        if (importOneCharacterButton != null)
+        {
+            importOneCharacterButton.onClick.RemoveAllListeners();
+            importOneCharacterButton.onClick.AddListener(ImportCharacterFile);
+        }
+
+        if (oneCharacterDropdown != null)
+        {
+            oneCharacterDropdown.onValueChanged.RemoveAllListeners();
+            oneCharacterDropdown.onValueChanged.AddListener(OnOneCharacterDropdownChanged);
+            AddOneCharacterDropdownClickListener(oneCharacterDropdown.gameObject);
+        }
+
+        if (oneCharacterTmpDropdown != null)
+        {
+            oneCharacterTmpDropdown.onValueChanged.RemoveAllListeners();
+            oneCharacterTmpDropdown.onValueChanged.AddListener(OnOneCharacterDropdownChanged);
+            AddOneCharacterDropdownClickListener(oneCharacterTmpDropdown.gameObject);
+        }
+
+        if (openSavePanelButton != null && savePanel != null)
+        {
+            openSavePanelButton.onClick.RemoveAllListeners();
+            openSavePanelButton.onClick.AddListener(ToggleSavePanel);
         }
     }
 
@@ -440,6 +483,17 @@ public class MainMenuManager : MonoBehaviour
         Button uploadButton = FindButtonInScene("upload");
         if (uploadButton != null)
             importButton = uploadButton;
+
+        exportOneCharacterButton = FindButtonInScene("downLoadOne");
+        importOneCharacterButton = FindButtonInScene("upLoadOne");
+        oneCharacterDropdown = FindDropdownInScene("choisSeveFailPersonsj");
+        oneCharacterTmpDropdown = FindTmpDropdownInScene("choisSeveFailPersonsj");
+        openSavePanelButton = FindButtonInScene("openPanelSaveBatton");
+
+        Transform panelTransform = FindTransformInScene("openPanelSavePanel");
+        savePanel = panelTransform != null ? panelTransform.gameObject : null;
+
+        RefreshOneCharacterDropdown();
     }
 
     private void ExportFile()
@@ -511,16 +565,313 @@ public class MainMenuManager : MonoBehaviour
         );
     }
 
+    private void ExportSelectedCharacterFile()
+    {
+        CharacterData character = GetSelectedCharacterForExport();
+        if (character == null)
+            return;
+
+        CharacterData characterCopy = JsonUtility.FromJson<CharacterData>(JsonUtility.ToJson(character));
+        CharacterExportData exportData = new CharacterExportData { character = characterCopy };
+        string fileName = MakeSafeFileName(character.characterName, "DnDCharacter") + ".dndchar";
+
+        FileBrowser.SetDefaultFilter(".dndchar");
+        FileBrowser.ShowSaveDialog(
+            (paths) =>
+            {
+                if (paths.Length == 0 || string.IsNullOrEmpty(paths[0]))
+                    return;
+
+                string exportPath = EnsureExtension(paths[0], ".dndchar");
+                File.WriteAllText(exportPath, JsonUtility.ToJson(exportData, true));
+                Debug.Log("DnD character exported to: " + exportPath);
+            },
+            () => { },
+            FileBrowser.PickMode.Files,
+            false,
+            "",
+            "Зберегти персонажа",
+            fileName
+        );
+    }
+
+    private void ImportCharacterFile()
+    {
+        DndSaveManager saveManager = DndSaveManager.EnsureExists();
+
+        FileBrowser.SetFilters(true, new FileBrowser.Filter("DnD Character", ".dndchar", ".json"));
+        FileBrowser.ShowLoadDialog(
+            (paths) =>
+            {
+                if (paths.Length == 0 || string.IsNullOrEmpty(paths[0]))
+                    return;
+
+                try
+                {
+                    string importedJson = File.ReadAllText(paths[0]);
+                    CharacterExportData importedData = JsonUtility.FromJson<CharacterExportData>(importedJson);
+                    CharacterData importedCharacter = importedData != null ? importedData.character : null;
+
+                    if (importedCharacter == null)
+                        importedCharacter = JsonUtility.FromJson<CharacterData>(importedJson);
+
+                    if (importedCharacter == null)
+                        return;
+
+                    CharacterData characterCopy = JsonUtility.FromJson<CharacterData>(JsonUtility.ToJson(importedCharacter));
+                    characterCopy.id = System.Guid.NewGuid().ToString();
+                    characterCopy.characterName = MakeImportedCharacterName(saveManager, characterCopy.characterName);
+
+                    saveManager.saveData.characters.Add(characterCopy);
+                    saveManager.saveData.lastActiveCharacterId = characterCopy.id;
+                    saveManager.NormalizeSaveData();
+                    saveManager.SaveData();
+                    RefreshCharacterList();
+                    Debug.Log("DnD character imported from: " + paths[0]);
+                }
+                catch (System.Exception exception)
+                {
+                    Debug.LogError("Could not import DnD character file: " + exception.Message);
+                }
+            },
+            () => { },
+            FileBrowser.PickMode.Files,
+            false,
+            "",
+            "Виберіть файл персонажа",
+            "Вибрати"
+        );
+    }
+
     private string EnsureJsonExtension(string path)
     {
-        if (string.IsNullOrEmpty(path) || Path.GetExtension(path).ToLowerInvariant() == ".json")
+        return EnsureExtension(path, ".json");
+    }
+
+    private string EnsureExtension(string path, string extension)
+    {
+        if (string.IsNullOrEmpty(path))
             return path;
 
-        return path + ".json";
+        if (!extension.StartsWith("."))
+            extension = "." + extension;
+
+        return Path.GetExtension(path).Equals(extension, System.StringComparison.OrdinalIgnoreCase)
+            ? path
+            : path + extension;
+    }
+
+    private CharacterData GetSelectedCharacterForExport()
+    {
+        DndSaveManager saveManager = DndSaveManager.EnsureExists();
+        if (saveManager.saveData == null || saveManager.saveData.characters == null || saveManager.saveData.characters.Count == 0)
+            return null;
+
+        if (!oneCharacterDropdownHasSelection)
+            return null;
+
+        int index = oneCharacterDropdown != null
+            ? oneCharacterDropdown.value
+            : oneCharacterTmpDropdown != null ? oneCharacterTmpDropdown.value : 0;
+
+        index = Mathf.Clamp(index, 0, saveManager.saveData.characters.Count - 1);
+        return saveManager.saveData.characters[index];
+    }
+
+    private void RefreshOneCharacterDropdown()
+    {
+        DndSaveManager saveManager = DndSaveManager.EnsureExists();
+        List<string> options = new List<string>();
+        bool hasCharacters = saveManager.saveData != null &&
+                             saveManager.saveData.characters != null &&
+                             saveManager.saveData.characters.Count > 0;
+        oneCharacterDropdownHasSelection = false;
+
+        if (hasCharacters)
+        {
+            foreach (CharacterData character in saveManager.saveData.characters)
+                options.Add(string.IsNullOrWhiteSpace(character.characterName) ? "Новий персонаж" : character.characterName);
+        }
+        else
+        {
+            options.Add("Немає персонажів");
+        }
+
+        if (oneCharacterDropdown != null)
+        {
+            oneCharacterDropdown.ClearOptions();
+            oneCharacterDropdown.AddOptions(options);
+            oneCharacterDropdown.SetValueWithoutNotify(0);
+            oneCharacterDropdown.RefreshShownValue();
+            oneCharacterDropdown.interactable = hasCharacters;
+            if (hasCharacters)
+                ApplyOneCharacterDropdownPlaceholder();
+        }
+
+        if (oneCharacterTmpDropdown != null)
+        {
+            oneCharacterTmpDropdown.ClearOptions();
+            oneCharacterTmpDropdown.AddOptions(options);
+            oneCharacterTmpDropdown.SetValueWithoutNotify(0);
+            oneCharacterTmpDropdown.RefreshShownValue();
+            oneCharacterTmpDropdown.interactable = hasCharacters;
+            if (hasCharacters)
+                ApplyOneCharacterDropdownPlaceholder();
+        }
+
+        UpdateOneCharacterExportButtonState();
+    }
+
+    private void UpdateOneCharacterExportButtonState()
+    {
+        if (exportOneCharacterButton == null)
+            return;
+
+        bool hasSelection = oneCharacterDropdownHasSelection && (oneCharacterDropdown != null
+            ? oneCharacterDropdown.interactable
+            : oneCharacterTmpDropdown != null && oneCharacterTmpDropdown.interactable);
+
+        exportOneCharacterButton.interactable = hasSelection;
+    }
+
+    private void ToggleSavePanel()
+    {
+        if (savePanel == null)
+            return;
+
+        bool shouldShow = !savePanel.activeSelf;
+        savePanel.SetActive(shouldShow);
+
+        if (shouldShow)
+            StartCoroutine(RestoreOneCharacterDropdownCaptionNextFrame());
+    }
+
+    private IEnumerator RestoreOneCharacterDropdownCaptionNextFrame()
+    {
+        RestoreOneCharacterDropdownCaption();
+        yield return null;
+        RestoreOneCharacterDropdownCaption();
+    }
+
+    private void RestoreOneCharacterDropdownCaption()
+    {
+        if (!HasOneCharacterDropdownOptions())
+            return;
+
+        if (oneCharacterDropdownHasSelection)
+            ApplySelectedOneCharacterDropdownCaption();
+        else
+            ApplyOneCharacterDropdownPlaceholder();
+    }
+
+    private void OnOneCharacterDropdownChanged(int value)
+    {
+        oneCharacterDropdownHasSelection = HasOneCharacterDropdownOptions();
+        ApplySelectedOneCharacterDropdownCaption();
+        UpdateOneCharacterExportButtonState();
+    }
+
+    private void OnOneCharacterDropdownClicked()
+    {
+        if (!HasOneCharacterDropdownOptions())
+            return;
+
+        oneCharacterDropdownHasSelection = true;
+        ApplySelectedOneCharacterDropdownCaption();
+        UpdateOneCharacterExportButtonState();
+    }
+
+    private bool HasOneCharacterDropdownOptions()
+    {
+        DndSaveManager saveManager = DndSaveManager.EnsureExists();
+        return saveManager.saveData != null &&
+               saveManager.saveData.characters != null &&
+               saveManager.saveData.characters.Count > 0;
+    }
+
+    private void ApplyOneCharacterDropdownPlaceholder()
+    {
+        if (oneCharacterDropdown != null && oneCharacterDropdown.captionText != null)
+            oneCharacterDropdown.captionText.text = "Оберіть персонажа";
+
+        if (oneCharacterTmpDropdown != null && oneCharacterTmpDropdown.captionText != null)
+            oneCharacterTmpDropdown.captionText.text = "Оберіть персонажа";
+    }
+
+    private void ApplySelectedOneCharacterDropdownCaption()
+    {
+        CharacterData character = GetSelectedCharacterForExport();
+        if (character == null)
+            return;
+
+        string label = string.IsNullOrWhiteSpace(character.characterName) ? "Новий персонаж" : character.characterName;
+
+        if (oneCharacterDropdown != null && oneCharacterDropdown.captionText != null)
+            oneCharacterDropdown.captionText.text = label;
+
+        if (oneCharacterTmpDropdown != null && oneCharacterTmpDropdown.captionText != null)
+            oneCharacterTmpDropdown.captionText.text = label;
+    }
+
+    private void AddOneCharacterDropdownClickListener(GameObject dropdownObject)
+    {
+        if (dropdownObject == null)
+            return;
+
+        EventTrigger trigger = dropdownObject.GetComponent<EventTrigger>();
+        if (trigger == null)
+            trigger = dropdownObject.AddComponent<EventTrigger>();
+
+        EventTrigger.Entry clickEntry = new EventTrigger.Entry { eventID = EventTriggerType.PointerClick };
+        clickEntry.callback.AddListener(delegate { OnOneCharacterDropdownClicked(); });
+        trigger.triggers.Add(clickEntry);
+    }
+
+    private string MakeImportedCharacterName(DndSaveManager saveManager, string baseName)
+    {
+        baseName = string.IsNullOrWhiteSpace(baseName) ? "Імпортований персонаж" : baseName.Trim();
+        if (!CharacterNameExists(saveManager, baseName))
+            return baseName;
+
+        int index = 2;
+        string candidate;
+        do
+        {
+            candidate = baseName + " (" + index + ")";
+            index++;
+        }
+        while (CharacterNameExists(saveManager, candidate));
+
+        return candidate;
+    }
+
+    private bool CharacterNameExists(DndSaveManager saveManager, string name)
+    {
+        if (saveManager == null || saveManager.saveData == null || saveManager.saveData.characters == null)
+            return false;
+
+        foreach (CharacterData character in saveManager.saveData.characters)
+            if (character != null && string.Equals(character.characterName, name, System.StringComparison.OrdinalIgnoreCase))
+                return true;
+
+        return false;
+    }
+
+    private string MakeSafeFileName(string value, string fallback)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            value = fallback;
+
+        foreach (char invalidChar in Path.GetInvalidFileNameChars())
+            value = value.Replace(invalidChar, '_');
+
+        return string.IsNullOrWhiteSpace(value) ? fallback : value.Trim();
     }
 
     public void RefreshCharacterList()
     {
+        RefreshOneCharacterDropdown();
+
         if (RefreshUserCreatedMenu())
             return;
 
@@ -1059,6 +1410,21 @@ public class MainMenuManager : MonoBehaviour
             Button button = FindButtonInScene(objectName);
             if (button != null)
                 return button;
+        }
+
+        return null;
+    }
+
+    private Transform FindTransformInScene(string objectName)
+    {
+        Transform[] transforms = Resources.FindObjectsOfTypeAll<Transform>();
+        foreach (Transform transform in transforms)
+        {
+            if (!IsSceneObject(transform.gameObject))
+                continue;
+
+            if (NamesMatch(transform.gameObject.name, objectName))
+                return transform;
         }
 
         return null;

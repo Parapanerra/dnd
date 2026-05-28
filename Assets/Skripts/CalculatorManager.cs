@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CalculatorManager : MonoBehaviour
 {
@@ -39,30 +40,163 @@ public class CalculatorManager : MonoBehaviour
 
     private void Start()
     {
+        EnsureDisplayTexts();
         AssignButtonFunctions();
         AssignHpButtonFunctions();
         AssignPotionControls();
     }
 
+    private void EnsureDisplayTexts()
+    {
+        if (equationText != null && resultText != null)
+            return;
+
+        Transform searchRoot = FindCalculatorRoot();
+        List<Text> displayTexts = new List<Text>();
+        foreach (Text text in searchRoot.GetComponentsInChildren<Text>(true))
+        {
+            if (text == null || IsInsideInteractiveControl(text.transform) || IsStaticCalculatorLabel(text.text))
+                continue;
+
+            displayTexts.Add(text);
+        }
+
+        displayTexts.Sort(CompareDisplayTextCandidates);
+
+        if (equationText == null && displayTexts.Count > 0)
+            equationText = displayTexts[0];
+
+        if (resultText == null)
+            resultText = displayTexts.Count > 1 ? displayTexts[1] : equationText;
+    }
+
+    private int CompareDisplayTextCandidates(Text left, Text right)
+    {
+        bool leftEmpty = left == null || string.IsNullOrWhiteSpace(left.text);
+        bool rightEmpty = right == null || string.IsNullOrWhiteSpace(right.text);
+        if (leftEmpty != rightEmpty)
+            return leftEmpty ? -1 : 1;
+
+        return right.rectTransform.position.y.CompareTo(left.rectTransform.position.y);
+    }
+
     private void AssignButtonFunctions()
     {
+        EnsureCalculatorButtons();
+
         foreach (Button button in buttons)
         {
             if (button == null)
                 continue;
 
-            Text labelText = button.GetComponentInChildren<Text>();
-            if (labelText == null)
+            string label = GetButtonLabel(button);
+            if (string.IsNullOrEmpty(label))
                 continue;
 
-            string label = labelText.text.Trim();
+            button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => OnButtonClick(label));
         }
     }
 
+    private void EnsureCalculatorButtons()
+    {
+        if (buttons == null)
+            buttons = new List<Button>();
+
+        buttons.Clear();
+        Transform searchRoot = FindCalculatorRoot();
+        foreach (Button button in searchRoot.GetComponentsInChildren<Button>(true))
+        {
+            if (button == null || IsSpecialCalculatorButton(button))
+                continue;
+
+            string label = NormalizeLabel(GetButtonLabel(button));
+            if (IsNumberLabel(label) || IsOperator(label) || IsDiceLabel(label) || label == "C" || label == "CE" || label == "=")
+                buttons.Add(button);
+        }
+    }
+
+    private Transform FindCalculatorRoot()
+    {
+        Transform current = transform;
+        while (current != null)
+        {
+            if (string.Equals(current.name, "kalPanel", StringComparison.OrdinalIgnoreCase))
+                return current;
+
+            current = current.parent;
+        }
+
+        return transform.parent != null ? transform.parent : transform;
+    }
+
+    private string GetButtonLabel(Button button)
+    {
+        if (button == null)
+            return "";
+
+        Text labelText = button.GetComponentInChildren<Text>(true);
+        if (labelText != null)
+            return labelText.text.Trim();
+
+        TMP_Text tmpText = button.GetComponentInChildren<TMP_Text>(true);
+        return tmpText != null ? tmpText.text.Trim() : "";
+    }
+
+    private bool IsInsideInteractiveControl(Transform transform)
+    {
+        Transform current = transform;
+        while (current != null)
+        {
+            if (current.GetComponent<Button>() != null ||
+                current.GetComponent<Dropdown>() != null ||
+                current.GetComponent<TMP_Dropdown>() != null ||
+                current.GetComponent<InputField>() != null ||
+                current.GetComponent<TMP_InputField>() != null)
+            {
+                return true;
+            }
+
+            current = current.parent;
+        }
+
+        return false;
+    }
+
+    private bool IsStaticCalculatorLabel(string text)
+    {
+        string label = NormalizeLabel(text).ToLowerInvariant();
+        return string.IsNullOrEmpty(label) == false &&
+               (label.Contains("калькулятор") ||
+                label.Contains("calculator") ||
+                label.Contains("меню") ||
+                label.Contains("menu") ||
+                label.Contains("шкода") ||
+                label.Contains("урон") ||
+                label.Contains("damage") ||
+                label.Contains("зцілення") ||
+                label.Contains("heal") ||
+                label.Contains("маххп") ||
+                label.Contains("maxhp") ||
+                label.Contains("відпочинок") ||
+                label.Contains("rest") ||
+                label.Contains("випити") ||
+                label.Contains("зілля") ||
+                label.Contains("псевдожиття"));
+    }
+
+    private bool IsSpecialCalculatorButton(Button button)
+    {
+        string buttonName = NormalizeLabel(button.gameObject.name).ToLowerInvariant();
+        return IsHpButtonName(buttonName) ||
+               buttonName == "potionplus" ||
+               buttonName == "potionminus" ||
+               buttonName == "potionuse";
+    }
+
     private void AssignHpButtonFunctions()
     {
-        Transform searchRoot = transform.parent != null ? transform.parent : transform;
+        Transform searchRoot = FindCalculatorRoot();
         Button[] calculatorButtons = searchRoot.GetComponentsInChildren<Button>(true);
         foreach (Button button in calculatorButtons)
         {
@@ -154,6 +288,12 @@ public class CalculatorManager : MonoBehaviour
     private void ChangeSelectedPotionCount(int delta)
     {
         int index = GetSelectedPotionIndex();
+        if (index < 0)
+        {
+            ShowHpResult("Обери зілля");
+            return;
+        }
+
         potionCounts[index] = Mathf.Max(0, potionCounts[index] + delta);
         SavePotionCounts();
         RefreshPotionDropdownOptions();
@@ -164,6 +304,12 @@ public class CalculatorManager : MonoBehaviour
         CaptureHpTextColorFromButton(potionUseButton);
 
         int index = GetSelectedPotionIndex();
+        if (index < 0)
+        {
+            ShowHpResult("Обери зілля");
+            return;
+        }
+
         if (potionCounts[index] <= 0)
         {
             ShowHpResult("Немає зілля");
@@ -197,9 +343,12 @@ public class CalculatorManager : MonoBehaviour
     private int GetSelectedPotionIndex()
     {
         if (potionDropdown == null)
-            return 0;
+            return -1;
 
-        return Mathf.Clamp(potionDropdown.value, 0, potionCounts.Length - 1);
+        if (potionDropdown.value <= 0)
+            return -1;
+
+        return Mathf.Clamp(potionDropdown.value - 1, 0, potionCounts.Length - 1);
     }
 
     private void RefreshPotionDropdownOptions()
@@ -207,12 +356,13 @@ public class CalculatorManager : MonoBehaviour
         if (potionDropdown == null)
             return;
 
-        int selectedIndex = GetSelectedPotionIndex();
+        int selectedDropdownValue = Mathf.Clamp(potionDropdown.value, 0, potionCounts.Length);
         potionDropdown.options.Clear();
+        potionDropdown.options.Add(new Dropdown.OptionData("Обрати зілля"));
         for (int i = 0; i < potionNames.Length; i++)
             potionDropdown.options.Add(new Dropdown.OptionData(potionNames[i] + " x" + potionCounts[i]));
 
-        potionDropdown.SetValueWithoutNotify(selectedIndex);
+        potionDropdown.SetValueWithoutNotify(selectedDropdownValue);
         potionDropdown.RefreshShownValue();
     }
 
@@ -359,7 +509,7 @@ public class CalculatorManager : MonoBehaviour
 
     private void AddNumber(string label)
     {
-        if (!string.IsNullOrEmpty(resultText.text))
+        if (HasDisplayedResult())
             ResetCalculator();
 
         currentEquation += label;
@@ -397,7 +547,7 @@ public class CalculatorManager : MonoBehaviour
 
     private void AddDice(string label)
     {
-        if (!string.IsNullOrEmpty(resultText.text))
+        if (HasDisplayedResult())
             ResetCalculator();
 
         if (isLastInputDice)
@@ -421,7 +571,8 @@ public class CalculatorManager : MonoBehaviour
         expression = ProcessDiceNotation(expression);
         if (!TryEvaluateExpression(expression, out double result))
         {
-            resultText.text = "=0";
+            if (resultText != null)
+                resultText.text = "=0";
             return;
         }
 
@@ -432,7 +583,8 @@ public class CalculatorManager : MonoBehaviour
         }
 
         string formattedResult = FormatNumber(result);
-        resultText.text = "=" + formattedResult;
+        if (resultText != null)
+            resultText.text = "=" + formattedResult;
         currentEquation = formattedResult;
         isOperatorClicked = false;
         isLastInputDice = false;
@@ -455,9 +607,9 @@ public class CalculatorManager : MonoBehaviour
         if (hpMode == HpCalculatorMode.MaxHp)
         {
             if (healthBar != null)
-                healthBar.SetMaxHealth(value);
+                healthBar.SetMaxHealthAndFill(value);
             else
-                healthBar1.SetMaxHealth(value);
+                healthBar1.SetMaxHealthAndFill(value);
 
             ShowHpResult("Max HP =  " + value);
         }
@@ -543,6 +695,11 @@ public class CalculatorManager : MonoBehaviour
         isLastInputDice = false;
     }
 
+    private bool HasDisplayedResult()
+    {
+        return resultText != null && resultText != equationText && !string.IsNullOrEmpty(resultText.text);
+    }
+
     private void ResetCalculator()
     {
         currentEquation = "";
@@ -609,12 +766,20 @@ public class CalculatorManager : MonoBehaviour
     private HealthBar FindActiveHealthBar()
     {
         HealthBar[] bars = UnityEngine.Object.FindObjectsByType<HealthBar>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach (HealthBar bar in bars)
+            if (bar != null && bar.IsUsableForCalculator)
+                return bar;
+
         return bars.Length > 0 ? bars[0] : null;
     }
 
     private HealthBar1 FindActiveHealthBar1()
     {
         HealthBar1[] bars = UnityEngine.Object.FindObjectsByType<HealthBar1>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach (HealthBar1 bar in bars)
+            if (bar != null && bar.IsUsableForCalculator)
+                return bar;
+
         return bars.Length > 0 ? bars[0] : null;
     }
 

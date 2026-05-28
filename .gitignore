@@ -15,6 +15,7 @@
 /.vs/
 /.utmp/
 /sysinfo.txt
+/Assets/TextMesh Pro/Examples & Extras/
 *.csproj
 *.sln
 *.suo

@@ -6,42 +6,54 @@ public class PanelBatonsManager : MonoBehaviour
     public GameObject[] panels;
     public Button[] buttons;
 
-    void Start()
+    private void Start()
     {
-        // Настроим обработчики событий для каждой кнопки
-        for (int i = 0; i < buttons.Length; i++)
+        if (buttons != null)
         {
-            int index = i; // Захватываем текущее значение i для использования внутри замыкания
-            buttons[i].onClick.AddListener(() => OnButtonClicked(index));
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                if (buttons[i] == null)
+                    continue;
+
+                int index = i;
+                buttons[i].onClick.AddListener(() => OnButtonClicked(index));
+            }
         }
 
-        // Изначально все панели выключены
         InitializePanels();
     }
 
-    // Метод для обработки нажатия на кнопку
-    void OnButtonClicked(int index)
+    private void OnButtonClicked(int index)
     {
-        // Переключаем состояние панели
-        bool isPanelActive = !panels[index].activeSelf;
-        TogglePanel(index, isPanelActive);
+        if (!TryGetPanel(index, out GameObject panel))
+            return;
+
+        TogglePanel(index, !panel.activeSelf);
     }
 
-    // Метод для скрытия или отображения панели
-    void TogglePanel(int index, bool value)
+    private void TogglePanel(int index, bool value)
     {
-        if (index >= 0 && index < panels.Length)
-        {
-            panels[index].SetActive(value);
-        }
+        if (TryGetPanel(index, out GameObject panel))
+            panel.SetActive(value);
     }
 
-    // Метод для инициализации панелей (выключение всех панелей)
-    void InitializePanels()
+    private void InitializePanels()
     {
+        if (panels == null)
+            return;
+
         for (int i = 0; i < panels.Length; i++)
-        {
-            panels[i].SetActive(false);
-        }
+            if (panels[i] != null)
+                panels[i].SetActive(false);
+    }
+
+    private bool TryGetPanel(int index, out GameObject panel)
+    {
+        panel = null;
+        if (panels == null || index < 0 || index >= panels.Length)
+            return false;
+
+        panel = panels[index];
+        return panel != null;
     }
 }

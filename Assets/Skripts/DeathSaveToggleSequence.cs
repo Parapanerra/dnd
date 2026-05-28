@@ -7,6 +7,8 @@ using TMPro;
 
 public class DeathSaveToggleSequence : MonoBehaviour
 {
+    private static readonly int[] SpellCheckToggleOrder = { 2, 1, 0, 3, 4, 5, 6, 7 };
+
     [SerializeField] private Toggle[] orderedToggles = Array.Empty<Toggle>();
     [SerializeField] private bool clampToActiveToggles;
 
@@ -29,6 +31,15 @@ public class DeathSaveToggleSequence : MonoBehaviour
             if (NameMatches(transform.name, "vtoma"))
                 ConfigureGroup(transform, true, false);
 
+            if (NameMatches(transform.name, "spelChek"))
+                ConfigureSpellCheckGroups(transform);
+
+            if (NameMatches(transform.name, "artefactsNavuk"))
+                ConfigureArtifactSkillGroups(transform, 4);
+
+            if (NameMatches(transform.name, "artefactInfuz"))
+                ConfigureArtifactSkillGroups(transform, 7);
+
             if (NameMatches(transform.name, "resursClas"))
             {
                 ConfigureExactOrBaseChildGroup(transform, "Panel", true, false);
@@ -40,6 +51,20 @@ public class DeathSaveToggleSequence : MonoBehaviour
                 ConfigureExactOrBaseChildGroup(transform, "Panel (8)", true, false);
             }
         }
+    }
+
+    private static void ConfigureSpellCheckGroups(Transform container)
+    {
+        foreach (Transform child in container)
+            if (NameMatches(child.name, "uspih"))
+                ConfigureGroup(child, true, false, int.MaxValue, SpellCheckToggleOrder);
+    }
+
+    private static void ConfigureArtifactSkillGroups(Transform container, int maxToggleNumber)
+    {
+        foreach (Transform child in container.GetComponentsInChildren<Transform>(true))
+            if (child != container && (NameMatches(child.name, "tongle") || NameMatches(child.name, "tonggle")))
+                ConfigureGroup(child, true, false, maxToggleNumber, null, "Togglespaspaw");
     }
 
     private static void ConfigureGroup(Transform container, string groupName, bool ascending)
@@ -65,17 +90,17 @@ public class DeathSaveToggleSequence : MonoBehaviour
         }
     }
 
-    private static void ConfigureGroup(Transform groupRoot, bool ascending, bool clampToActive, int maxToggleNumber = int.MaxValue)
+    private static void ConfigureGroup(Transform groupRoot, bool ascending, bool clampToActive, int maxToggleNumber = int.MaxValue, int[] customOrder = null, string toggleBaseName = "Toggle")
     {
         List<Toggle> groupToggles = new List<Toggle>();
         foreach (Toggle toggle in groupRoot.GetComponentsInChildren<Toggle>(true))
-            if (IsSequenceToggle(toggle, groupRoot, maxToggleNumber))
+            if (IsSequenceToggle(toggle, groupRoot, maxToggleNumber, toggleBaseName))
                 groupToggles.Add(toggle);
 
         if (groupToggles.Count == 0)
             return;
 
-        groupToggles.Sort((left, right) => CompareTogglesBySequenceOrder(left, right, ascending));
+        groupToggles.Sort((left, right) => CompareTogglesBySequenceOrder(left, right, ascending, customOrder));
 
         DeathSaveToggleSequence sequence = groupRoot.GetComponent<DeathSaveToggleSequence>();
         if (sequence == null)
@@ -167,11 +192,27 @@ public class DeathSaveToggleSequence : MonoBehaviour
         return count;
     }
 
-    private static int CompareTogglesBySequenceOrder(Toggle left, Toggle right, bool ascending)
+    private static int CompareTogglesBySequenceOrder(Toggle left, Toggle right, bool ascending, int[] customOrder = null)
     {
         int leftIndex = GetToggleNumber(left != null ? left.name : "");
         int rightIndex = GetToggleNumber(right != null ? right.name : "");
+        if (customOrder != null && customOrder.Length > 0)
+        {
+            int leftOrder = GetCustomOrderIndex(leftIndex, customOrder);
+            int rightOrder = GetCustomOrderIndex(rightIndex, customOrder);
+            return leftOrder.CompareTo(rightOrder);
+        }
+
         return ascending ? leftIndex.CompareTo(rightIndex) : rightIndex.CompareTo(leftIndex);
+    }
+
+    private static int GetCustomOrderIndex(int toggleNumber, int[] customOrder)
+    {
+        for (int i = 0; i < customOrder.Length; i++)
+            if (customOrder[i] == toggleNumber)
+                return i;
+
+        return customOrder.Length + toggleNumber;
     }
 
     private static int GetToggleNumber(string name)
@@ -184,9 +225,9 @@ public class DeathSaveToggleSequence : MonoBehaviour
         return 0;
     }
 
-    private static bool IsSequenceToggle(Toggle toggle, Transform groupRoot, int maxToggleNumber)
+    private static bool IsSequenceToggle(Toggle toggle, Transform groupRoot, int maxToggleNumber, string toggleBaseName = "Toggle")
     {
-        if (toggle == null || !NameMatches(toggle.name, "Toggle"))
+        if (toggle == null || !NameMatches(toggle.name, toggleBaseName))
             return false;
 
         if (GetToggleNumber(toggle.name) > maxToggleNumber)

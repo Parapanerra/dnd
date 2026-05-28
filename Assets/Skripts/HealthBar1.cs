@@ -16,6 +16,8 @@ public class HealthBar1 : MonoBehaviour
     public Button resetButton;
     public int customIndex;
 
+    public bool IsUsableForCalculator => isActiveAndEnabled && (healthSlider == null || healthSlider.gameObject.activeInHierarchy);
+
     private int currentHealth = 0;
     private int maxHealth = 0;
     private int currentTemporaryHealth;
@@ -104,6 +106,14 @@ public class HealthBar1 : MonoBehaviour
     {
         maxHealth = Mathf.Max(0, value);
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        SaveHealth();
+        UpdateHealthUI();
+    }
+
+    public void SetMaxHealthAndFill(int value)
+    {
+        maxHealth = Mathf.Max(0, value);
+        currentHealth = maxHealth;
         SaveHealth();
         UpdateHealthUI();
     }
