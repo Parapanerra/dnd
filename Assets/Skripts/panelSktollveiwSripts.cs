@@ -18,6 +18,12 @@ public class panelSktollveiwSripts : MonoBehaviour
 
     void Start()
     {
+        if (HasNewInventoryCellLayout())
+        {
+            enabled = false;
+            return;
+        }
+
         DndSaveManager.EnsureExists();
         LoadInventoryState(); // Загрузка состояния при запуске
 
@@ -64,6 +70,16 @@ public class panelSktollveiwSripts : MonoBehaviour
         }
 
         DndSaveManager.Instance.SaveData();
+    }
+
+    private bool HasNewInventoryCellLayout()
+    {
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform transform in transforms)
+            if (transform != null && transform.name == "itemCategoryDropdown")
+                return true;
+
+        return false;
     }
 
     private void LoadInventoryState()

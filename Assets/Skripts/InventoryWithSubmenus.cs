@@ -20,6 +20,12 @@ public class InventoryWithSubmenus : MonoBehaviour
 
     void Start()
     {
+        if (HasNewInventoryCellLayout())
+        {
+            enabled = false;
+            return;
+        }
+
         DndSaveManager.EnsureExists();
 
         // Проверка уникальности индексов
@@ -55,6 +61,16 @@ public class InventoryWithSubmenus : MonoBehaviour
                 LoadInventoryState(); // Мгновенно обновляем UI после сброса
             });
         }
+    }
+
+    private bool HasNewInventoryCellLayout()
+    {
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform transform in transforms)
+            if (transform != null && transform.name == "itemCategoryDropdown")
+                return true;
+
+        return false;
     }
 
     private void ToggleSubmenu(InventoryConfig config)

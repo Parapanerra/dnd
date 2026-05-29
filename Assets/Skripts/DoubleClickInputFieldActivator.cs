@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,14 +10,13 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
     private InputField inputField;
     private TMP_InputField tmpInputField;
     private float lastClickTime = -1f;
-    private Coroutine singleClickCoroutine;
 
     public static void ConfigureSceneInputs()
     {
-        foreach (InputField input in FindObjectsOfType<InputField>(true))
+        foreach (InputField input in FindObjectsByType<InputField>(FindObjectsInactive.Include, FindObjectsSortMode.None))
             Configure(input);
 
-        foreach (TMP_InputField input in FindObjectsOfType<TMP_InputField>(true))
+        foreach (TMP_InputField input in FindObjectsByType<TMP_InputField>(FindObjectsInactive.Include, FindObjectsSortMode.None))
             Configure(input);
     }
 
@@ -33,7 +31,9 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
 
         activator.inputField = input;
         activator.tmpInputField = null;
-        input.DeactivateInputField();
+        input.onEndEdit.RemoveListener(activator.LockLegacyInput);
+        input.onEndEdit.AddListener(activator.LockLegacyInput);
+        activator.LockInput();
     }
 
     public static void Configure(TMP_InputField input)
@@ -47,7 +47,9 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
 
         activator.inputField = null;
         activator.tmpInputField = input;
-        input.DeactivateInputField();
+        input.onEndEdit.RemoveListener(activator.LockTmpInput);
+        input.onEndEdit.AddListener(activator.LockTmpInput);
+        activator.LockInput();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -58,43 +60,53 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
 
         if (isDoubleClick)
         {
-            if (singleClickCoroutine != null)
-                StopCoroutine(singleClickCoroutine);
-
             ActivateInput();
             return;
         }
 
-        if (singleClickCoroutine != null)
-            StopCoroutine(singleClickCoroutine);
-
-        singleClickCoroutine = StartCoroutine(DeactivateAfterSingleClick());
+        LockInput();
     }
 
-    private IEnumerator DeactivateAfterSingleClick()
+    private void LockInput()
     {
-        yield return null;
-
         if (inputField != null)
+        {
             inputField.DeactivateInputField();
+            inputField.enabled = false;
+        }
 
         if (tmpInputField != null)
+        {
             tmpInputField.DeactivateInputField();
+            tmpInputField.enabled = false;
+        }
 
-        if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject == gameObject)
-            EventSystem.current.SetSelectedGameObject(null);
+        // Do not call EventSystem.SetSelectedGameObject here: LockInput can run from
+        // InputField.onEndEdit while EventSystem is already changing selection.
+    }
+
+    private void LockLegacyInput(string value)
+    {
+        LockInput();
+    }
+
+    private void LockTmpInput(string value)
+    {
+        LockInput();
     }
 
     private void ActivateInput()
     {
         if (inputField != null)
         {
+            inputField.enabled = true;
             inputField.Select();
             inputField.ActivateInputField();
         }
 
         if (tmpInputField != null)
         {
+            tmpInputField.enabled = true;
             tmpInputField.Select();
             tmpInputField.ActivateInputField();
         }

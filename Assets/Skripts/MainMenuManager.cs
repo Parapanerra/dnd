@@ -507,18 +507,19 @@ public class MainMenuManager : MonoBehaviour
             {
                 if (paths.Length > 0 && !string.IsNullOrEmpty(paths[0]))
                 {
-                    string exportPath = EnsureJsonExtension(paths[0]);
+                    string exportPath = EnsureJsonExtensionForFileBrowserPath(paths[0]);
                     string json = JsonUtility.ToJson(saveManager.saveData, true);
-                    File.WriteAllText(exportPath, json);
+                    FileBrowserHelpers.WriteTextToFile(exportPath, json);
                     Debug.Log("DnD save file exported to: " + exportPath);
                 }
             },
             () => { },
             FileBrowser.PickMode.Files,
             false,
-            "",
+            GetDefaultFileBrowserPath(),
+            "AllCharacters.json",
             "Зберегти файл",
-            "DndCharactersData.json"
+            "Зберегти"
         );
     }
 
@@ -534,7 +535,7 @@ public class MainMenuManager : MonoBehaviour
 
                 try
                 {
-                    string importedJson = File.ReadAllText(paths[0]);
+                    string importedJson = FileBrowserHelpers.ReadTextFromFile(paths[0]);
                     AppSaveData importedData = JsonUtility.FromJson<AppSaveData>(importedJson);
                     if (importedData != null && importedData.characters != null)
                     {
@@ -559,7 +560,8 @@ public class MainMenuManager : MonoBehaviour
             () => { },
             FileBrowser.PickMode.Files,
             false,
-            "",
+            GetDefaultFileBrowserPath(),
+            null,
             "Виберіть файл JSON",
             "Вибрати"
         );
@@ -573,25 +575,26 @@ public class MainMenuManager : MonoBehaviour
 
         CharacterData characterCopy = JsonUtility.FromJson<CharacterData>(JsonUtility.ToJson(character));
         CharacterExportData exportData = new CharacterExportData { character = characterCopy };
-        string fileName = MakeSafeFileName(character.characterName, "DnDCharacter") + ".dndchar";
+        string fileName = MakeSafeFileName(character.characterName, "DnDCharacter") + ".json";
 
-        FileBrowser.SetDefaultFilter(".dndchar");
+        FileBrowser.SetDefaultFilter(".json");
         FileBrowser.ShowSaveDialog(
             (paths) =>
             {
                 if (paths.Length == 0 || string.IsNullOrEmpty(paths[0]))
                     return;
 
-                string exportPath = EnsureExtension(paths[0], ".dndchar");
-                File.WriteAllText(exportPath, JsonUtility.ToJson(exportData, true));
+                string exportPath = EnsureJsonExtensionForFileBrowserPath(paths[0]);
+                FileBrowserHelpers.WriteTextToFile(exportPath, JsonUtility.ToJson(exportData, true));
                 Debug.Log("DnD character exported to: " + exportPath);
             },
             () => { },
             FileBrowser.PickMode.Files,
             false,
-            "",
+            GetDefaultFileBrowserPath(),
+            fileName,
             "Зберегти персонажа",
-            fileName
+            "Зберегти"
         );
     }
 
@@ -599,7 +602,7 @@ public class MainMenuManager : MonoBehaviour
     {
         DndSaveManager saveManager = DndSaveManager.EnsureExists();
 
-        FileBrowser.SetFilters(true, new FileBrowser.Filter("DnD Character", ".dndchar", ".json"));
+        FileBrowser.SetFilters(true, new FileBrowser.Filter("DnD Character JSON", ".json", ".dndchar"));
         FileBrowser.ShowLoadDialog(
             (paths) =>
             {
@@ -608,7 +611,7 @@ public class MainMenuManager : MonoBehaviour
 
                 try
                 {
-                    string importedJson = File.ReadAllText(paths[0]);
+                    string importedJson = FileBrowserHelpers.ReadTextFromFile(paths[0]);
                     CharacterExportData importedData = JsonUtility.FromJson<CharacterExportData>(importedJson);
                     CharacterData importedCharacter = importedData != null ? importedData.character : null;
 
@@ -627,6 +630,7 @@ public class MainMenuManager : MonoBehaviour
                     saveManager.NormalizeSaveData();
                     saveManager.SaveData();
                     RefreshCharacterList();
+                    OpenImportedCharacter(characterCopy.id);
                     Debug.Log("DnD character imported from: " + paths[0]);
                 }
                 catch (System.Exception exception)
@@ -637,15 +641,44 @@ public class MainMenuManager : MonoBehaviour
             () => { },
             FileBrowser.PickMode.Files,
             false,
-            "",
+            GetDefaultFileBrowserPath(),
+            null,
             "Виберіть файл персонажа",
             "Вибрати"
         );
     }
 
+    private string GetDefaultFileBrowserPath()
+    {
+        string[] candidates =
+        {
+            "/storage/emulated/0/Download",
+            "/sdcard/Download",
+            Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile), "Downloads"),
+            System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments)
+        };
+
+        foreach (string candidate in candidates)
+            if (!string.IsNullOrEmpty(candidate) && Directory.Exists(candidate))
+                return candidate;
+
+        return null;
+    }
+
     private string EnsureJsonExtension(string path)
     {
         return EnsureExtension(path, ".json");
+    }
+
+    private string EnsureJsonExtensionForFileBrowserPath(string path)
+    {
+        if (string.IsNullOrEmpty(path))
+            return path;
+
+        if (!Path.IsPathRooted(path))
+            return path;
+
+        return EnsureJsonExtension(path);
     }
 
     private string EnsureExtension(string path, string extension)
@@ -1266,6 +1299,14 @@ public class MainMenuManager : MonoBehaviour
 
         if (openCharacterAfterCreate)
             OnCharacterSelected(newChar.id);
+    }
+
+    private void OpenImportedCharacter(string characterId)
+    {
+        if (string.IsNullOrWhiteSpace(characterId))
+            return;
+
+        OnCharacterSelected(characterId);
     }
 
     private void OnCharacterSelected(string characterId)

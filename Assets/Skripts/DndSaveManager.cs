@@ -542,6 +542,8 @@ public class CharacterSceneAutoSave : MonoBehaviour
 {
     private const string DropdownKeyPrefix = "Dropdown_";
     private const string TmpDropdownKeyPrefix = "TMPDropdown_";
+    private const string ToggleKeyPrefix = "Toggle_";
+    private const string RestResourceKeyPrefix = "RestResource_";
     private const string CharacterNameObjectName = "personajName";
 
     private List<InputField> inputFields = new List<InputField>();
@@ -567,6 +569,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
         sceneData = character.GetSceneData(sceneName);
         CacheSceneControls();
         DoubleClickInputFieldActivator.ConfigureSceneInputs();
+        EnsureCharacterPortraitManager();
         LoadSceneDataToUi();
         DeathSaveToggleSequence.ConfigureScene();
         RuntimeLocalization.EnsureExists().ApplyToScene();
@@ -599,7 +602,12 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
         sceneData.toggleData.Clear();
         foreach (Toggle toggle in toggles)
-            sceneData.toggleData.Add(toggle != null && toggle.isOn);
+        {
+            bool isOn = toggle != null && toggle.isOn;
+            sceneData.toggleData.Add(isOn);
+            if (toggle != null)
+                sceneData.SetInt(ToggleKeyPrefix + GetControlPath(toggle.transform), isOn ? 1 : 0);
+        }
 
         sceneData.sliderData.Clear();
         foreach (Slider slider in sliders)
@@ -619,6 +627,8 @@ public class CharacterSceneAutoSave : MonoBehaviour
             if (dropdown != null)
                 sceneData.SetInt(TmpDropdownKeyPrefix + GetControlPath(dropdown.transform), dropdown.value);
         }
+
+        SaveRestResourceMarkers();
 
         DndSaveManager.Instance.SaveData();
     }
@@ -765,7 +775,13 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
             for (int i = 0; i < toggles.Count; i++)
                 if (toggles[i] != null)
-                    toggles[i].SetIsOnWithoutNotify(i < sceneData.toggleData.Count && sceneData.toggleData[i]);
+                {
+                    string key = ToggleKeyPrefix + GetControlPath(toggles[i].transform);
+                    bool value = sceneData.HasInt(key)
+                        ? sceneData.GetInt(key) != 0
+                        : i < sceneData.toggleData.Count && sceneData.toggleData[i];
+                    toggles[i].SetIsOnWithoutNotify(value);
+                }
 
             for (int i = 0; i < sliders.Count; i++)
                 if (sliders[i] != null)
@@ -937,10 +953,20 @@ public class CharacterSceneAutoSave : MonoBehaviour
         DndSaveManager.Instance.ClearSceneDataFamilyForCharacter(characterId, sceneName);
         sceneData.ClearValues();
         ClearSharedCharacterInputs();
+        CharacterPortraitManager.ClearPortraitForActiveCharacter();
+        ResetInventoryCells();
         ResetSceneHealthBars();
         SaveSceneData();
         RefreshDropdownDrivenUi();
         RefreshToggleDrivenPanels();
+    }
+
+    private void ResetInventoryCells()
+    {
+        InventoryItemCell[] inventoryCells = FindObjectsByType<InventoryItemCell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (InventoryItemCell inventoryCell in inventoryCells)
+            if (inventoryCell != null)
+                inventoryCell.ResetToDefaults(false);
     }
 
     private void ResetSceneHealthBars()
@@ -954,6 +980,27 @@ public class CharacterSceneAutoSave : MonoBehaviour
         foreach (HealthBar1 healthBar in healthBarOnes)
             if (healthBar != null)
                 healthBar.ResetHealth();
+    }
+
+    private void EnsureCharacterPortraitManager()
+    {
+        if (!SceneHasObject("Buttonphotopersoj") && !SceneHasObject("photopersonaja"))
+            return;
+
+        if (FindFirstObjectByType<CharacterPortraitManager>() != null)
+            return;
+
+        gameObject.AddComponent<CharacterPortraitManager>();
+    }
+
+    private bool SceneHasObject(string objectName)
+    {
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform transform in transforms)
+            if (transform != null && GetBaseName(transform.name).Equals(objectName, StringComparison.OrdinalIgnoreCase))
+                return true;
+
+        return false;
     }
 
     private bool IsResetButton(Button button)
@@ -1004,6 +1051,49 @@ public class CharacterSceneAutoSave : MonoBehaviour
         string key = GetSharedCharacterInputKey(transform);
         if (!string.IsNullOrEmpty(key))
             character.SetSharedString(key, value);
+    }
+
+    private void SaveRestResourceMarkers()
+    {
+        if (sceneData == null)
+            return;
+
+        SaveMarkerParent("Rage");
+        SaveMarkerParent("WildShape");
+        SaveMarkerParent("ChannelDivinity");
+        SaveMarkerParent("KiPoints");
+        SaveMarkerParent("SorceryPoints");
+        SaveMarkerParent("BloodCurse");
+        SaveMarkerParent("DragonBreath");
+        SaveMarkerParent("Flight");
+        SaveNamedPanel("SpellSlots", "spelChek");
+        SaveNamedPanel("Exhaustion", "vtoma");
+        SaveNamedPanel("DeathSaves", "deadChekBox");
+        SaveNamedPanel("DeathSaves", "deadCheckBox");
+    }
+
+    private void SaveMarkerParent(string markerName)
+    {
+        Transform marker = FindTransformByBaseName(markerName);
+        if (marker != null && marker.parent != null)
+            sceneData.SetString(RestResourceKeyPrefix + markerName, GetControlPath(marker.parent));
+    }
+
+    private void SaveNamedPanel(string keyName, string objectName)
+    {
+        Transform panel = FindTransformByBaseName(objectName);
+        if (panel != null)
+            sceneData.SetString(RestResourceKeyPrefix + keyName, GetControlPath(panel));
+    }
+
+    private Transform FindTransformByBaseName(string objectName)
+    {
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform item in transforms)
+            if (item != null && GetBaseName(item.name).Equals(objectName, StringComparison.OrdinalIgnoreCase))
+                return item;
+
+        return null;
     }
 
     private void LoadSharedCharacterInputs()

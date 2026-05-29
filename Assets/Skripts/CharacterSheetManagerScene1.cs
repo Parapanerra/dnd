@@ -12,6 +12,8 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 {
     private const string DropdownKeyPrefix = "Dropdown_";
     private const string TmpDropdownKeyPrefix = "TMPDropdown_";
+    private const string ToggleKeyPrefix = "Toggle_";
+    private const string RestResourceKeyPrefix = "RestResource_";
     private const string CharacterNameObjectName = "personajName";
     private const string CharacterNameFieldPath = "playerInfo/inputPises/personajName";
     private const string LegacyCharacterNameFieldPath = "playerInfo/inputPises/mmpises1";
@@ -48,6 +50,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         currentSceneData = currentCharacter.GetSceneData(sceneName);
         CacheSceneControls();
         DoubleClickInputFieldActivator.ConfigureSceneInputs();
+        EnsureCharacterPortraitManager();
 
         if (currentCharacter == null)
         {
@@ -103,7 +106,12 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
         currentSceneData.toggleData.Clear();
         foreach (var toggle in toggles)
-            currentSceneData.toggleData.Add(toggle != null && toggle.isOn);
+        {
+            bool isOn = toggle != null && toggle.isOn;
+            currentSceneData.toggleData.Add(isOn);
+            if (toggle != null)
+                currentSceneData.SetInt(ToggleKeyPrefix + GetControlPath(toggle.transform), isOn ? 1 : 0);
+        }
 
         currentSceneData.sliderData.Clear();
         foreach (var slider in sliders)
@@ -123,6 +131,8 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
             if (dropdown != null)
                 currentSceneData.SetInt(TmpDropdownKeyPrefix + GetControlPath(dropdown.transform), dropdown.value);
         }
+
+        SaveRestResourceMarkers();
 
         DndSaveManager.Instance.SaveData();
     }
@@ -148,7 +158,13 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
             for (int i = 0; i < toggles.Count; i++)
                 if (toggles[i] != null)
-                    toggles[i].SetIsOnWithoutNotify(i < currentSceneData.toggleData.Count && currentSceneData.toggleData[i]);
+                {
+                    string key = ToggleKeyPrefix + GetControlPath(toggles[i].transform);
+                    bool value = currentSceneData.HasInt(key)
+                        ? currentSceneData.GetInt(key) != 0
+                        : i < currentSceneData.toggleData.Count && currentSceneData.toggleData[i];
+                    toggles[i].SetIsOnWithoutNotify(value);
+                }
 
             for (int i = 0; i < sliders.Count; i++)
                 if (sliders[i] != null)
@@ -446,6 +462,49 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
             currentCharacter.SetSharedString(key, value);
     }
 
+    private void SaveRestResourceMarkers()
+    {
+        if (currentSceneData == null)
+            return;
+
+        SaveMarkerParent("Rage");
+        SaveMarkerParent("WildShape");
+        SaveMarkerParent("ChannelDivinity");
+        SaveMarkerParent("KiPoints");
+        SaveMarkerParent("SorceryPoints");
+        SaveMarkerParent("BloodCurse");
+        SaveMarkerParent("DragonBreath");
+        SaveMarkerParent("Flight");
+        SaveNamedPanel("SpellSlots", "spelChek");
+        SaveNamedPanel("Exhaustion", "vtoma");
+        SaveNamedPanel("DeathSaves", "deadChekBox");
+        SaveNamedPanel("DeathSaves", "deadCheckBox");
+    }
+
+    private void SaveMarkerParent(string markerName)
+    {
+        Transform marker = FindTransformByBaseName(markerName);
+        if (marker != null && marker.parent != null)
+            currentSceneData.SetString(RestResourceKeyPrefix + markerName, GetControlPath(marker.parent));
+    }
+
+    private void SaveNamedPanel(string keyName, string objectName)
+    {
+        Transform panel = FindTransformByBaseName(objectName);
+        if (panel != null)
+            currentSceneData.SetString(RestResourceKeyPrefix + keyName, GetControlPath(panel));
+    }
+
+    private Transform FindTransformByBaseName(string objectName)
+    {
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform item in transforms)
+            if (item != null && GetBaseName(item.name).Equals(objectName, StringComparison.OrdinalIgnoreCase))
+                return item;
+
+        return null;
+    }
+
     private void LoadSharedCharacterInputs()
     {
         if (currentCharacter == null)
@@ -664,10 +723,20 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         DndSaveManager.Instance.ClearSceneDataFamilyForCharacter(characterId, sceneName);
         currentSceneData.ClearValues();
         ClearSharedCharacterInputs();
+        CharacterPortraitManager.ClearPortraitForActiveCharacter();
+        ResetInventoryCells();
         ResetSceneHealthBars();
         SaveCharacterData();
         RefreshDropdownDrivenUi();
         RefreshToggleDrivenPanels();
+    }
+
+    private void ResetInventoryCells()
+    {
+        InventoryItemCell[] inventoryCells = FindObjectsByType<InventoryItemCell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (InventoryItemCell inventoryCell in inventoryCells)
+            if (inventoryCell != null)
+                inventoryCell.ResetToDefaults(false);
     }
 
     private void ResetSceneHealthBars()
@@ -681,6 +750,27 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         foreach (HealthBar1 healthBar in healthBarOnes)
             if (healthBar != null)
                 healthBar.ResetHealth();
+    }
+
+    private void EnsureCharacterPortraitManager()
+    {
+        if (!SceneHasObject("Buttonphotopersoj") && !SceneHasObject("photopersonaja"))
+            return;
+
+        if (FindFirstObjectByType<CharacterPortraitManager>() != null)
+            return;
+
+        gameObject.AddComponent<CharacterPortraitManager>();
+    }
+
+    private bool SceneHasObject(string objectName)
+    {
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform transform in transforms)
+            if (transform != null && NameMatches(transform.name, objectName))
+                return true;
+
+        return false;
     }
 
     private bool IsResetButton(Button button)

@@ -9,6 +9,8 @@ using TMPro;
 public class CalculatorManager : MonoBehaviour
 {
     private const string PotionSaveKeyPrefix = "PotionCount_";
+    private const string ToggleKeyPrefix = "Toggle_";
+    private const string RestResourceKeyPrefix = "RestResource_";
 
     public List<Button> buttons;
     public Text equationText;
@@ -643,14 +645,20 @@ public class CalculatorManager : MonoBehaviour
     {
         HealthBar healthBar = FindActiveHealthBar();
         HealthBar1 healthBar1 = healthBar == null ? FindActiveHealthBar1() : null;
-        if (healthBar == null && healthBar1 == null)
-        {
-            ShowHpResult("HP бар не знайдено");
-            return;
-        }
 
-        int healed = healthBar != null ? healthBar.RestoreToMaxHealth() : healthBar1.RestoreToMaxHealth();
-        ShowHpResult("Зцілено  " + healed + " HP");
+        int healed = 0;
+        if (healthBar != null)
+            healed = healthBar.RestoreToMaxHealth();
+        else if (healthBar1 != null)
+            healed = healthBar1.RestoreToMaxHealth();
+
+        ApplyRestResources(true);
+        ClearSpellSlots();
+        ReduceExhaustionByOne();
+        ClearDeathSaves();
+        SaveSceneAfterRest();
+        ApplyGlobalRestToSaveData(true);
+        ShowHpResult(healthBar != null || healthBar1 != null ? "Зцілено  " + healed + " HP" : "Довгий відпочинок");
         ResetHpInputState();
     }
 
@@ -658,16 +666,22 @@ public class CalculatorManager : MonoBehaviour
     {
         HealthBar healthBar = FindActiveHealthBar();
         HealthBar1 healthBar1 = healthBar == null ? FindActiveHealthBar1() : null;
-        if (healthBar == null && healthBar1 == null)
-        {
-            ShowHpResult("HP бар не знайдено");
-            return;
-        }
 
         if (healthBar != null)
             healthBar.ClearTemporaryHealth();
-        else
+        else if (healthBar1 != null)
             healthBar1.ClearTemporaryHealth();
+
+        ApplyRestResources(false);
+        SaveSceneAfterRest();
+        ApplyGlobalRestToSaveData(false);
+
+        if (healthBar == null && healthBar1 == null)
+        {
+            ShowHpResult("Короткий відпочинок");
+            ResetHpInputState();
+            return;
+        }
 
         if (!TryGetHitDice(out int diceCount, out int diceSides))
         {
@@ -684,6 +698,312 @@ public class CalculatorManager : MonoBehaviour
         int healed = healthBar != null ? healthBar.ApplyHeal(roll) : healthBar1.ApplyHeal(roll);
         ShowHpResult("Зцілено  " + healed + " HP (" + diceToRoll + "d" + diceSides + "=" + roll + ")");
         ResetHpInputState();
+    }
+
+    private void ApplyRestResources(bool isLongRest)
+    {
+        Transform resourceRoot = FindSceneTransformByName("resursClas");
+        if (resourceRoot == null)
+            return;
+
+        ClearPanelsByMarkers(resourceRoot, "WildShape", "ChannelDivinity", "KiPoints", "DragonBreath");
+
+        Transform bloodPanel = FindPanelByMarker(resourceRoot, "BloodCurse");
+        if (bloodPanel == null)
+            bloodPanel = FindDirectChild(resourceRoot, "Panel (5)");
+
+        if (bloodPanel != null)
+        {
+            ClearPanelToggles(bloodPanel, 0, 7);
+            if (isLongRest)
+                ClearPanelToggles(bloodPanel, 8, 11);
+        }
+
+        if (isLongRest)
+            ClearPanelsByMarkers(resourceRoot, "Rage", "SorceryPoints", "Flight");
+    }
+
+    private void ClearPanelsByMarkers(Transform resourceRoot, params string[] markerNames)
+    {
+        HashSet<Transform> clearedPanels = new HashSet<Transform>();
+        foreach (string markerName in markerNames)
+        {
+            Transform panel = FindPanelByMarker(resourceRoot, markerName);
+            if (panel != null && clearedPanels.Add(panel))
+                ClearPanelToggles(panel);
+        }
+    }
+
+    private Transform FindPanelByMarker(Transform resourceRoot, string markerName)
+    {
+        if (resourceRoot == null)
+            return null;
+
+        foreach (Transform child in resourceRoot.GetComponentsInChildren<Transform>(true))
+            if (child != resourceRoot && NameMatches(child.name, markerName))
+                return child.parent;
+
+        return null;
+    }
+
+    private Transform FindDirectChild(Transform parent, string childName)
+    {
+        if (parent == null)
+            return null;
+
+        foreach (Transform child in parent)
+            if (child != null && child.name.Equals(childName, StringComparison.OrdinalIgnoreCase))
+                return child;
+
+        return null;
+    }
+
+    private void ReduceExhaustionByOne()
+    {
+        Transform exhaustionRoot = FindSceneTransformByName("vtoma");
+        if (exhaustionRoot == null)
+            return;
+
+        List<Toggle> toggles = GetPanelToggles(exhaustionRoot, 0, 5);
+        if (toggles.Count == 0)
+            return;
+
+        toggles.Sort((left, right) => GetToggleNumber(left.name).CompareTo(GetToggleNumber(right.name)));
+
+        int checkedCount = 0;
+        foreach (Toggle toggle in toggles)
+            if (toggle != null && toggle.isOn)
+                checkedCount++;
+
+        if (checkedCount <= 0)
+            return;
+
+        Toggle lastCheckedToggle = toggles[Mathf.Clamp(checkedCount - 1, 0, toggles.Count - 1)];
+        if (lastCheckedToggle != null)
+            lastCheckedToggle.isOn = false;
+    }
+
+    private void ClearDeathSaves()
+    {
+        Transform deathRoot = FindSceneTransformByName("deadChekBox");
+        if (deathRoot == null)
+            deathRoot = FindSceneTransformByName("deadCheckBox");
+
+        if (deathRoot == null)
+            return;
+
+        ClearPanelToggles(deathRoot);
+    }
+
+    private void ClearSpellSlots()
+    {
+        Transform spellSlotsRoot = FindSceneTransformByName("spelChek");
+        if (spellSlotsRoot == null)
+            return;
+
+        ClearPanelToggles(spellSlotsRoot);
+    }
+
+    private void ClearPanelToggles(Transform panel, int minToggleNumber = int.MinValue, int maxToggleNumber = int.MaxValue)
+    {
+        foreach (Toggle toggle in GetPanelToggles(panel, minToggleNumber, maxToggleNumber))
+            if (toggle != null)
+                toggle.isOn = false;
+    }
+
+    private List<Toggle> GetPanelToggles(Transform panel, int minToggleNumber, int maxToggleNumber)
+    {
+        List<Toggle> toggles = new List<Toggle>();
+        if (panel == null)
+            return toggles;
+
+        foreach (Toggle toggle in panel.GetComponentsInChildren<Toggle>(true))
+        {
+            if (toggle == null || !NameMatches(toggle.name, "Toggle"))
+                continue;
+
+            int toggleNumber = GetToggleNumber(toggle.name);
+            if (toggleNumber < minToggleNumber || toggleNumber > maxToggleNumber)
+                continue;
+
+            if (IsInsideDropdown(toggle.transform, panel))
+                continue;
+
+            toggles.Add(toggle);
+        }
+
+        return toggles;
+    }
+
+    private Transform FindSceneTransformByName(string objectName)
+    {
+        Transform[] transforms = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform item in transforms)
+            if (item != null && item.gameObject.scene.IsValid() && NameMatches(item.name, objectName))
+                return item;
+
+        return null;
+    }
+
+    private bool IsInsideDropdown(Transform transform, Transform stopAt)
+    {
+        Transform current = transform;
+        while (current != null && current != stopAt)
+        {
+            if (current.GetComponent<Dropdown>() != null || current.GetComponent<TMP_Dropdown>() != null)
+                return true;
+
+            current = current.parent;
+        }
+
+        return false;
+    }
+
+    private int GetToggleNumber(string name)
+    {
+        int open = name.LastIndexOf('(');
+        int close = name.LastIndexOf(')');
+        if (open >= 0 && close > open && int.TryParse(name.Substring(open + 1, close - open - 1), out int number))
+            return number;
+
+        return 0;
+    }
+
+    private bool NameMatches(string actualName, string expectedName)
+    {
+        return GetBaseName(actualName).Equals(expectedName, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private string GetBaseName(string name)
+    {
+        int suffixStart = name.LastIndexOf(" (", StringComparison.Ordinal);
+        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
+    }
+
+    private void SaveSceneAfterRest()
+    {
+        CharacterSheetManagerScene1 sheetManager = UnityEngine.Object.FindFirstObjectByType<CharacterSheetManagerScene1>();
+        if (sheetManager != null)
+        {
+            sheetManager.SaveCharacterData();
+            return;
+        }
+
+        CharacterSceneAutoSave autoSave = UnityEngine.Object.FindFirstObjectByType<CharacterSceneAutoSave>();
+        if (autoSave != null)
+            autoSave.SaveSceneData();
+    }
+
+    private void ApplyGlobalRestToSaveData(bool isLongRest)
+    {
+        DndSaveManager saveManager = DndSaveManager.EnsureExists();
+        CharacterData character = saveManager.EnsureActiveCharacter();
+        if (character == null || character.sceneStates == null)
+            return;
+
+        foreach (CharacterSceneData sceneData in character.sceneStates)
+        {
+            if (sceneData == null)
+                continue;
+
+            ClearSavedPanelsByMarkers(sceneData, "WildShape", "ChannelDivinity", "KiPoints", "DragonBreath");
+
+            string bloodPanelPath = GetRestPanelPath(sceneData, "BloodCurse");
+            ClearSavedPanelToggles(sceneData, bloodPanelPath, 0, 7);
+            if (isLongRest)
+                ClearSavedPanelToggles(sceneData, bloodPanelPath, 8, 11);
+
+            if (!isLongRest)
+                continue;
+
+            RestoreSavedHealthBars(sceneData);
+            ClearSavedPanelsByMarkers(sceneData, "Rage", "SorceryPoints", "Flight");
+            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "SpellSlots"));
+            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "DeathSaves"));
+            ReduceSavedExhaustionByOne(sceneData, GetRestPanelPath(sceneData, "Exhaustion"));
+        }
+
+        saveManager.SaveData();
+    }
+
+    private void RestoreSavedHealthBars(CharacterSceneData sceneData)
+    {
+        if (sceneData == null || sceneData.intData == null)
+            return;
+
+        foreach (IntSaveEntry entry in sceneData.intData)
+        {
+            if (entry == null || string.IsNullOrEmpty(entry.key) || !entry.key.StartsWith("HealthBar_", StringComparison.Ordinal))
+                continue;
+
+            if (!entry.key.EndsWith("_maxHealth", StringComparison.Ordinal))
+                continue;
+
+            string prefix = entry.key.Substring(0, entry.key.Length - "maxHealth".Length);
+            sceneData.SetInt(prefix + "currentHealth", Mathf.Max(0, entry.value));
+            sceneData.SetInt(prefix + "maxTemporaryHealth", 0);
+            sceneData.SetInt(prefix + "currentTemporaryHealth", 0);
+        }
+    }
+
+    private void ClearSavedPanelsByMarkers(CharacterSceneData sceneData, params string[] markerNames)
+    {
+        foreach (string markerName in markerNames)
+            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, markerName));
+    }
+
+    private string GetRestPanelPath(CharacterSceneData sceneData, string markerName)
+    {
+        return sceneData != null ? sceneData.GetString(RestResourceKeyPrefix + markerName, "") : "";
+    }
+
+    private void ClearSavedPanelToggles(CharacterSceneData sceneData, string panelPath, int minToggleNumber = int.MinValue, int maxToggleNumber = int.MaxValue)
+    {
+        if (sceneData == null || string.IsNullOrEmpty(panelPath) || sceneData.intData == null)
+            return;
+
+        string prefix = ToggleKeyPrefix + panelPath + "/";
+        foreach (IntSaveEntry entry in sceneData.intData)
+        {
+            if (entry == null || string.IsNullOrEmpty(entry.key) || !entry.key.StartsWith(prefix, StringComparison.Ordinal))
+                continue;
+
+            int toggleNumber = GetToggleNumber(entry.key);
+            if (toggleNumber < minToggleNumber || toggleNumber > maxToggleNumber)
+                continue;
+
+            entry.value = 0;
+        }
+    }
+
+    private void ReduceSavedExhaustionByOne(CharacterSceneData sceneData, string panelPath)
+    {
+        if (sceneData == null || string.IsNullOrEmpty(panelPath) || sceneData.intData == null)
+            return;
+
+        string prefix = ToggleKeyPrefix + panelPath + "/";
+        List<IntSaveEntry> entries = new List<IntSaveEntry>();
+        foreach (IntSaveEntry entry in sceneData.intData)
+        {
+            if (entry == null || string.IsNullOrEmpty(entry.key) || !entry.key.StartsWith(prefix, StringComparison.Ordinal))
+                continue;
+
+            int toggleNumber = GetToggleNumber(entry.key);
+            if (toggleNumber >= 0 && toggleNumber <= 5)
+                entries.Add(entry);
+        }
+
+        entries.Sort((left, right) => GetToggleNumber(left.key).CompareTo(GetToggleNumber(right.key)));
+
+        int checkedCount = 0;
+        foreach (IntSaveEntry entry in entries)
+            if (entry.value != 0)
+                checkedCount++;
+
+        if (checkedCount <= 0)
+            return;
+
+        entries[Mathf.Clamp(checkedCount - 1, 0, entries.Count - 1)].value = 0;
     }
 
     private void ResetHpInputState()
