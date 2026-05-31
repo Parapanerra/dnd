@@ -46,7 +46,7 @@ public partial class RuntimeLocalization : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         BuildTranslations();
-        CurrentLanguage = NormalizeLanguage(PlayerPrefs.GetInt(LanguagePrefsKey, (int)AppLanguage.Ukrainian));
+        CurrentLanguage = GetInitialLanguage();
         SyncUnityLocalizationPackage(CurrentLanguage);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -81,6 +81,23 @@ public partial class RuntimeLocalization : MonoBehaviour
             return AppLanguage.Ukrainian;
 
         return (AppLanguage)value;
+    }
+
+    private AppLanguage GetInitialLanguage()
+    {
+        if (PlayerPrefs.HasKey(LanguagePrefsKey))
+            return NormalizeLanguage(PlayerPrefs.GetInt(LanguagePrefsKey, (int)AppLanguage.Ukrainian));
+
+        switch (Application.systemLanguage)
+        {
+            case SystemLanguage.Ukrainian:
+                return AppLanguage.Ukrainian;
+            case SystemLanguage.Russian:
+            case SystemLanguage.Belarusian:
+                return AppLanguage.Russian;
+            default:
+                return AppLanguage.English;
+        }
     }
 
     private void SyncUnityLocalizationPackage(AppLanguage language)
@@ -134,6 +151,10 @@ public partial class RuntimeLocalization : MonoBehaviour
 
         if (CurrentLanguage == AppLanguage.Ukrainian)
             return source;
+
+        string dynamicTranslation = TranslateDynamicText(source);
+        if (!string.IsNullOrEmpty(dynamicTranslation))
+            return dynamicTranslation;
 
         string key = Normalize(source);
         if (!translations.TryGetValue(key, out Translation translation))
@@ -236,6 +257,9 @@ public partial class RuntimeLocalization : MonoBehaviour
 
             inventoryCell.RefreshLocalization();
         }
+
+        if (SceneManager.GetActiveScene().name.Contains("petsesn"))
+            WildShapeTitleUpdater.Apply();
     }
 
     private void ApplyDropdownOptions(Dropdown dropdown)
@@ -285,6 +309,7 @@ public partial class RuntimeLocalization : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        ApplyToScene();
         StartCoroutine(ApplyAfterSceneLoaded());
     }
 
@@ -424,6 +449,52 @@ public partial class RuntimeLocalization : MonoBehaviour
             value = value.Replace("  ", " ");
 
         return value.ToLowerInvariant();
+    }
+
+    private string TranslateDynamicText(string source)
+    {
+        string normalized = Normalize(source);
+
+        if (TryReadNumberAfterPrefix(normalized, "\u0444\u043e\u0440\u043c\u0430 ", out int formNumber) ||
+            TryReadNumberAfterPrefix(normalized, "form ", out formNumber))
+            return CurrentLanguage == AppLanguage.English ? "Form " + formNumber : "\u0424\u043e\u0440\u043c\u0430 " + formNumber;
+
+        if (TryReadNumberAfterPrefix(normalized, "\u0434\u0438\u043a\u0430 \u0444\u043e\u0440\u043c\u0430 \u2116", out int wildShapeNumber) ||
+            TryReadNumberAfterPrefix(normalized, "\u0434\u0438\u043a\u0430\u044f \u0444\u043e\u0440\u043c\u0430 \u2116", out wildShapeNumber))
+            return CurrentLanguage == AppLanguage.English
+                ? "Wild Shape #" + wildShapeNumber
+                : "\u0414\u0438\u043a\u0430\u044f \u0444\u043e\u0440\u043c\u0430 \u2116" + wildShapeNumber;
+
+        if (TryReadNumberAfterPrefix(normalized, "wild shape #", out wildShapeNumber))
+            return CurrentLanguage == AppLanguage.English
+                ? "Wild Shape #" + wildShapeNumber
+                : "\u0414\u0438\u043a\u0430\u044f \u0444\u043e\u0440\u043c\u0430 \u2116" + wildShapeNumber;
+
+        if (TryReadNumberAfterPrefix(normalized, "\u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u2116", out int pageNumber) ||
+            TryReadNumberAfterPrefix(normalized, "\u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430 \u2116", out pageNumber) ||
+            TryReadNumberAfterPrefix(normalized, "page #", out pageNumber))
+        {
+            if (CurrentLanguage == AppLanguage.English)
+                return "Page #" + pageNumber;
+
+            return "\u0421\u0442\u0440\u0430\u043d\u0438\u0446\u0430 \u2116" + pageNumber;
+        }
+
+        if (TryReadNumberAfterPrefix(normalized, "\u043a\u0440\u0443\u0433 ", out int spellCircleNumber))
+            return CurrentLanguage == AppLanguage.English
+                ? "Circle " + spellCircleNumber
+                : "\u041a\u0440\u0443\u0433 " + spellCircleNumber;
+
+        return "";
+    }
+
+    private bool TryReadNumberAfterPrefix(string value, string prefix, out int number)
+    {
+        number = 0;
+        if (string.IsNullOrEmpty(value) || !value.StartsWith(prefix))
+            return false;
+
+        return int.TryParse(value.Substring(prefix.Length).Trim(), out number) && number > 0;
     }
 
     private void Add(string ukrainian, string english, string russian)
@@ -613,6 +684,38 @@ public partial class RuntimeLocalization : MonoBehaviour
         Add("Нотатки № 3", "Notes #3", "Заметки №3");
         Add("Нотатки № 4", "Notes #4", "Заметки №4");
         Add("Нотатки  № 3", "Notes #3", "Заметки №3");
+        Add("\u0414\u0438\u043a\u0456 \u0444\u043e\u0440\u043c\u0438", "Wild Shapes", "\u0414\u0438\u043a\u0438\u0435 \u0444\u043e\u0440\u043c\u044b");
+        Add("\u0414\u0438\u043a\u0430 \u0444\u043e\u0440\u043c\u0430", "Wild Shape", "\u0414\u0438\u043a\u0430\u044f \u0444\u043e\u0440\u043c\u0430");
+        Add("\u0414\u0438\u043a\u0430 \u0444\u043e\u0440\u043c\u0430 \u2116", "Wild Shape #", "\u0414\u0438\u043a\u0430\u044f \u0444\u043e\u0440\u043c\u0430 \u2116");
+        Add("\u0424\u043e\u0440\u043c\u0430", "Form", "\u0424\u043e\u0440\u043c\u0430");
+        Add("\u0406\u043c'\u044f", "Name", "\u0418\u043c\u044f");
+        Add("\u041a\u041e", "AC", "\u041a\u0414");
+        Add("\u041a\u043b\u0430\u0441 \u043e\u0431\u043b\u0430\u0434\u0443\u043d\u043a\u0443", "Armor Class", "\u041a\u043b\u0430\u0441\u0441 \u0434\u043e\u0441\u043f\u0435\u0445\u0430");
+        Add("\u0414\u0456\u044f", "Action", "\u0414\u0435\u0439\u0441\u0442\u0432\u0438\u0435");
+        Add("\u0411\u043e\u043d\u0443\u0441\u043d\u0430 \u0434\u0456\u044f", "Bonus Action", "\u0411\u043e\u043d\u0443\u0441\u043d\u043e\u0435 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435");
+        Add("\u0420\u0435\u0430\u043a\u0446\u0456\u044f", "Reaction", "\u0420\u0435\u0430\u043a\u0446\u0438\u044f");
+        Add("\u0420\u0438\u0442\u0443\u0430\u043b", "Ritual", "\u0420\u0438\u0442\u0443\u0430\u043b");
+        Add("\u041c\u0438\u0442\u0442\u0454\u0432\u043e", "Instantaneous", "\u041c\u0433\u043d\u043e\u0432\u0435\u043d\u043d\u043e");
+        Add("1 \u0414\u0456\u044f", "1 Action", "1 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435");
+        Add("1 \u0425\u0456\u0434", "1 Turn", "1 \u0445\u043e\u0434");
+        Add("1 \u0420\u0430\u0443\u043d\u0434", "1 Round", "1 \u0440\u0430\u0443\u043d\u0434");
+        Add("1 \u0425\u0432\u0438\u043b\u0438\u043d\u0430", "1 Minute", "1 \u043c\u0438\u043d\u0443\u0442\u0430");
+        Add("10 \u0425\u0432\u0438\u043b\u0438\u043d", "10 Minutes", "10 \u043c\u0438\u043d\u0443\u0442");
+        Add("1 \u0413\u043e\u0434\u0438\u043d\u0430", "1 Hour", "1 \u0447\u0430\u0441");
+        Add("2 \u0413\u043e\u0434\u0438\u043d\u0438", "2 Hours", "2 \u0447\u0430\u0441\u0430");
+        Add("3 \u0413\u043e\u0434\u0438\u043d\u0438", "3 Hours", "3 \u0447\u0430\u0441\u0430");
+        Add("6 \u0413\u043e\u0434\u0438\u043d\u0438", "6 Hours", "6 \u0447\u0430\u0441\u043e\u0432");
+        Add("10 \u0413\u043e\u0434\u0438\u043d\u0438", "10 Hours", "10 \u0447\u0430\u0441\u043e\u0432");
+        Add("12 \u0413\u043e\u0434\u0438\u043d\u0438", "12 Hours", "12 \u0447\u0430\u0441\u043e\u0432");
+        Add("24 \u0413\u043e\u0434\u0438\u043d\u0438", "24 Hours", "24 \u0447\u0430\u0441\u0430");
+        Add("\u0414\u043e \u0432\u0456\u0434\u043f\u043e\u0447\u0438\u043d\u043a\u0443", "Until rest", "\u0414\u043e \u043e\u0442\u0434\u044b\u0445\u0430");
+        Add("\u041a\u043d\u0438\u0433\u0430 \u0437\u0430\u043a\u043b\u0438\u043d\u0430\u043d\u044c", "Spellbook", "\u041a\u043d\u0438\u0433\u0430 \u0437\u0430\u043a\u043b\u0438\u043d\u0430\u043d\u0438\u0439");
+        Add("\u041f\u0456\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430 \u0406\u043d\u0444\u0443\u0437\u0456\u0439", "Infusion Preparation", "\u041f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430 \u0438\u043d\u0444\u0443\u0437\u0438\u0439");
+        Add("\u0410\u0440\u0442\u0435\u0444\u0430\u043a\u0442\u0438 - \u041d\u0430\u0432\u0438\u0447\u043a\u0438", "Artifacts - Skills", "\u0410\u0440\u0442\u0435\u0444\u0430\u043a\u0442\u044b - \u041d\u0430\u0432\u044b\u043a\u0438");
+        Add("\u041d\u0430\u0432\u0438\u0447\u043a\u0438 - \u0406\u043d\u0444\u0443\u0437\u0456\u0457-\u0410\u0440\u0442\u0435\u0444\u0430\u043a\u0442\u0438", "Skills - Infusions - Artifacts", "\u041d\u0430\u0432\u044b\u043a\u0438 - \u0418\u043d\u0444\u0443\u0437\u0438\u0438 - \u0410\u0440\u0442\u0435\u0444\u0430\u043a\u0442\u044b");
+        Add("\u0422\u0430\u0441\u043c\u043d\u0438\u0447\u0456 \u0437\u0430\u043a\u043b\u0438\u043a\u0438", "Eldritch Invocations", "\u041c\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0432\u043e\u0437\u0437\u0432\u0430\u043d\u0438\u044f");
+        Add("\u0422\u0430\u0454\u043c\u043d\u0438\u0447\u0456 \u0437\u0430\u043a\u043b\u0438\u043a\u0438", "Eldritch Invocations", "\u041c\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0432\u043e\u0437\u0437\u0432\u0430\u043d\u0438\u044f");
+        Add("\u041c\u0456\u0441\u0442\u0438\u0447\u043d\u0438\u0439 \u0430\u0440\u043a\u0430\u043d\u0443\u043c", "Mystic Arcanum", "\u041c\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u0440\u043a\u0430\u043d\u0443\u043c");
         LoadTranslationsFromResource();
         BuildGeneratedTranslations();
     }

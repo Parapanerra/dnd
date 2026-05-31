@@ -158,8 +158,7 @@ public class SpellbookPageSwitcher : MonoBehaviour
 
     private void UpdatePageTitle(int pageIndex)
     {
-        const string pageTitlePrefix = "\u0421\u0442\u043E\u0440\u0456\u043D\u043A\u0430 \u2116";
-        string title = pageTitlePrefix + (pageIndex + 1);
+        string title = RuntimeLocalization.EnsureExists().Translate("\u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u2116" + (pageIndex + 1));
 
         Text[] texts = FindObjectsByType<Text>(FindObjectsInactive.Include);
         foreach (Text text in texts)

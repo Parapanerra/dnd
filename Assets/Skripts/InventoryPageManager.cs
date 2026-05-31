@@ -155,7 +155,7 @@ public class InventoryPageManager : MonoBehaviour
 
     private void UpdatePageTitle(int pageIndex)
     {
-        string title = RuntimeLocalization.EnsureExists().Translate("Сторінка №") + (pageIndex + 1);
+        string title = RuntimeLocalization.EnsureExists().Translate("\u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u2116" + (pageIndex + 1));
 
         Text[] texts = FindObjectsByType<Text>(FindObjectsInactive.Include);
         foreach (Text text in texts)
@@ -177,6 +177,8 @@ public class InventoryPageManager : MonoBehaviour
             return false;
 
         return text.IndexOf("\u0421\u0442\u043E\u0440\u0456\u043D\u043A\u0430", StringComparison.OrdinalIgnoreCase) >= 0 ||
+               text.IndexOf("Page #", StringComparison.OrdinalIgnoreCase) >= 0 ||
+               text.IndexOf("\u0421\u0442\u0440\u0430\u043d\u0438\u0446\u0430 \u2116", StringComparison.OrdinalIgnoreCase) >= 0 ||
                textTransform.name.StartsWith("pageTitle", StringComparison.OrdinalIgnoreCase);
     }
 
