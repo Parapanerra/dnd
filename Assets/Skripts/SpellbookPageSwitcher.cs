@@ -40,6 +40,7 @@ public class SpellbookPageSwitcher : MonoBehaviour
         KeepMainPagePanelActive();
         EnsurePersistentDropdowns();
         BindPageButtons();
+        BindNavigationButtons();
         SwitchToPage(0);
     }
 
@@ -68,6 +69,25 @@ public class SpellbookPageSwitcher : MonoBehaviour
         }
     }
 
+    private void BindNavigationButtons()
+    {
+        BindNavigationButton("dukaforma", "petsesn");
+        BindNavigationButton("inventar", "inventory");
+        BindNavigationButton("inventory", "inventory");
+        BindNavigationButton("ifopropersonaj", "informForPerson");
+    }
+
+    private void BindNavigationButton(string buttonName, string sceneName)
+    {
+        Button button = FindButtonByName(buttonName);
+        if (button == null)
+            return;
+
+        DisablePersistentOnClick(button);
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() => load_scenes.LoadSceneByName(sceneName));
+    }
+
     private void DisablePersistentOnClick(Button button)
     {
         if (button == null)
@@ -75,6 +95,16 @@ public class SpellbookPageSwitcher : MonoBehaviour
 
         for (int i = 0; i < button.onClick.GetPersistentEventCount(); i++)
             button.onClick.SetPersistentListenerState(i, UnityEventCallState.Off);
+    }
+
+    private Button FindButtonByName(string objectName)
+    {
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Button button in buttons)
+            if (button != null && NameMatches(button.gameObject.name, objectName))
+                return button;
+
+        return null;
     }
 
     private void SwitchToPage(int pageIndex)
@@ -163,6 +193,17 @@ public class SpellbookPageSwitcher : MonoBehaviour
         return string.Equals(page.name, "Page", StringComparison.Ordinal) &&
                string.Equals(image.name, "Image", StringComparison.Ordinal) &&
                transform.name.StartsWith("Text", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private bool NameMatches(string actualName, string expectedName)
+    {
+        return GetBaseName(actualName).Equals(expectedName, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private string GetBaseName(string name)
+    {
+        int suffixStart = name.LastIndexOf(" (", StringComparison.Ordinal);
+        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
     }
 
     private void KeepMainPagePanelActive()

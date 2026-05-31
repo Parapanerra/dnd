@@ -7,6 +7,11 @@ uk	 en	 ru
 Персонаж №3	Character #3	Персонаж №3
 Персонаж №4	Character #4	Персонаж №4
 Персонаж №5	Character #5	Персонаж №5
+Додати персонажа	Add character	Добавить персонажа
+Новий персонаж	New character	Новый персонаж
+Невідомий персонаж	Unknown character	Неизвестный персонаж
+Немає персонажів	No characters	Нет персонажей
+Оберіть персонажа	Choose character	Выберите персонажа
 Головне Меню	Main Menu	Главное меню
 Дика форма	Wild form	Дикая форма
 Про персонажа	About the character	О персонаже
@@ -17,6 +22,8 @@ uk	 en	 ru
 Ресет HP	Reset HP	Сброс HP
 Меню	Menu	Меню
 Калькулятор	Calculator	Калькулятор
+Файл одного персонажа	Single character file	Файл одного персонажа
+Файл всіх персонажів	All characters file	Файл всех персонажей
 Сила	Strength	Сила
 Тілобудова	Constitution	Телосложение
 Інтелект	Intelligence	Интеллект
@@ -56,11 +63,11 @@ uk	 en	 ru
 Прихована атака	Sneak Attack	Скрытая атака
 Дихання дракона	Dragon Breath	Дыхание дракона
 СП Кідок Магії	Spellcasting Rolls	Броски заклинаний
-мм	mm	мм
-см	cm	см
-ем	em	em
-зм	gp	зол. монеты
-пм	pp	пл. монеты
+мм	CP	мм
+см	SP	см
+ем	EP	эм
+зм	GP	зм
+пм	PP	пм
 м.Рівень	m.Level	м.Уровень
 м.Підклас	m.Subclass	м.Подкласс
 Мультиклас	Multiclass	Мультикласс
@@ -121,8 +128,15 @@ Max ХП	Max HP	Макс. ХП
 Сторінка №3	Page #3	Страница №3
 Сторінка №4	Page #4	Страница №4
 Сторінка №5	Page #5	Страница №5
+Сторінка №	Page #	Страница №
 Введіть назву...	Enter name...	Введите название...
 Введіть опис...	Enter description...	Введите описание...
+Сумки	Bags	Сумки
+Інше	Other	Другое
+Скарби	Treasure	Сокровища
+Своя картинка	Custom image	Своя картинка
+Оберіть свою картинку	Choose your image	Выберите свою картинку
+Обрати свою картинку	Choose your image	Выбрать свою картинку
 Зброя	Weapon	Оружие
 Прикраси	Accessories	Аксессуары
 Броня	Armor	Броня
@@ -211,6 +225,116 @@ Max ХП	Max HP	Макс. ХП
 Риси характеру	Personality Traits	Черты характера
 Ідеали	Ideals	Идеалы
 Уподобання	Preferences	Предпочтения
+Предісторія Персонажа	Character Backstory	Предыстория персонажа
+ПредІсторія Персонажа	Character Backstory	Предыстория персонажа
+Передісторія Персонажа	Character Backstory	Предыстория персонажа
+Особиста Ціль	Personal Goal	Личная цель
+Особисті Цілі	Personal Goals	Личные цели
+Завдання	Quest	Задание
+Завантажити фото персонажа	Upload character photo	Загрузить фото персонажа
+Завантажити фото\nперсонажа	Upload character\nphoto	Загрузить фото\nперсонажа
+Фото вашого персонажа	Your character photo	Фото вашего персонажа
+Оберіть свою картинку	Choose your image	Выберите свою картинку
+Обрати свою картинку	Choose your image	Выбрать свою картинку
+Випити	Drink	Выпить
+Оберіть зілля	Choose potion	Выберите зелье
+Зілля лікування	Potion of Healing	Зелье лечения
+Велике зілля лікування	Potion of Greater Healing	Большое зелье лечения
+Покращене зілля лікування	Potion of Superior Healing	Улучшенное зелье лечения
+Найвище зілля лікування	Potion of Supreme Healing	Высшее зелье лечения
+Довгий відпочинок	Long rest	Долгий отдых
+Довгій відпочинок	Long rest	Долгий отдых
+Короткій відпочинок	Short rest	Короткий отдых
+Короткий відпочинок	Short rest	Короткий отдых
+Псевдожиття	Temp HP	Врем. HP
+Шкода	Damage	Урон
+Зцілення	Healing	Исцеление
+Мах ХП	Max HP	Макс. ХП
+Макс ХП	Max HP	Макс. ХП
+Max ХП	Max HP	Макс. ХП
+Сила	Strength	Сила
+Спритність	Dexterity	Ловкость
+Тілобудова	Constitution	Телосложение
+Інтелект	Intelligence	Интеллект
+Мудрість	Wisdom	Мудрость
+Харизма	Charisma	Харизма
+Модифікатори	Modifiers	Модификаторы
+Усього	Total	Всего
+Значення	Value	Значение
+Мод	Mod	Мод
+Натхнення	Inspiration	Вдохновение
+Бонус Майстерності	Proficiency Bonus	Бонус мастерства
+Кидки Рятунку	Saving Throws	Спасброски
+Рятунок від смерті	Death Saves	Спасброски от смерти
+НАВИЧКИ	Skills	Навыки
+Уміння та Особлисовсті	Features & Traits	Умения и особенности
+Уміння та Особливості	Features & Traits	Умения и особенности
+Атаки та заклинання	Attacks & Spellcasting	Атаки и заклинания
+Спорядження	Equipment	Снаряжение
+Інші володіння та мови	Other Proficiencies & Languages	Прочие владения и языки
+Пасивна Мудрість	Passive Wisdom	Пассивная мудрость
+Виснаження	Exhaustion	Истощение
+Швидкість	Speed	Скорость
+Ініціатива	Initiative	Инициатива
+Клас	Class	Класс
+Підклас	Subclass	Подкласс
+Рівень	Level	Уровень
+м.Підклас	m.Subclass	м.Подкласс
+м.Рівень	m.Level	м.Уровень
+Раса	Race	Раса
+Підраса	Subrace	Подраса
+Мультиклас	Multiclass	Мультикласс
+Передісторія	Background	Предыстория
+Світогляд	Alignment	Мировоззрение
+Досвід	Experience	Опыт
+Кістка хіт	Hit Die	Кость хитов
+Мод Магії	Spellcasting Mod	Мод. магии
+СП Кідок Магії	Spell Save DC	Сл. спасброска магии
+Ресурси класа / раси	Class / Race Resources	Ресурсы класса / расы
+Ресурси класу / раси	Class / Race Resources	Ресурсы класса / расы
+Зілля	Potions	Зелья
+Акробатика (Спр)	Acrobatics (Dex)	Акробатика (Лов)
+Аналіз (Інт)	Investigation (Int)	Анализ (Инт)
+Аналіз поведінки (Мдр)	Insight (Wis)	Проницательность (Мдр)
+Артистичність (Хар)	Performance (Cha)	Выступление (Хар)
+Атлетика (Сил)	Athletics (Str)	Атлетика (Сил)
+Виживання (Мдр)	Survival (Wis)	Выживание (Мдр)
+Догляд тварин (Мдр)	Animal Handling (Wis)	Уход за животными (Мдр)
+Залякування (Хар)	Intimidation (Cha)	Запугивание (Хар)
+Історія (Інт)	History (Int)	История (Инт)
+Магія (Інт)	Arcana (Int)	Магия (Инт)
+Медицина (Мдр)	Medicine (Wis)	Медицина (Мдр)
+Обман (Хар)	Deception (Cha)	Обман (Хар)
+Переконливість (Хар)	Persuasion (Cha)	Убеждение (Хар)
+Природа (Інт)	Nature (Int)	Природа (Инт)
+Релігія (інт)	Religion (Int)	Религия (Инт)
+Скритність (Спр)	Stealth (Dex)	Скрытность (Лов)
+Спритність рук (Спр)	Sleight of Hand (Dex)	Ловкость рук (Лов)
+Уважність (Мдр)	Perception (Wis)	Внимательность (Мдр)
+Прихована атака	Sneak Attack	Скрытая атака
+Дихання дракона	Dragon Breath	Дыхание дракона
+Кістка Гематокрафта	Hemocraft Die	Кость гемокрафта
+Лють варвара	Barbarian Rage	Ярость варвара
+Божественний канал	Channel Divinity	Божественный канал
+Божествений канал	Channel Divinity	Божественный канал
+Очкі ци	Ki Points	Очки ци
+Очки ци	Ki Points	Очки ци
+Метамагія	Metamagic	Метамагия
+Мета магія	Metamagic	Метамагия
+Прокляття крові	Blood Curse	Проклятие крови
+Багряні обряди	Crimson Rites	Багряные обряды
+Політ	Flight	Полет
+Сховати все	Hide all	Скрыть все
+Дикі форми	Wild Shapes	Дикие формы
+Дика форма	Wild Shape	Дикая форма
+Інша навичка	Custom feature	Своя особенность
+Оберіть Картинку навички	Choose feature image	Выберите картинку навыка
+Оберіть картинку навички	Choose feature image	Выберите картинку навыка
+ММ	CP	ММ
+СМ	SP	СМ
+ЕМ	EP	ЭМ
+ЗМ	GP	ЗМ
+ПМ	PP	ПМ
 Слабкості	Weaknesses	Слабости
 Нотатки №2	Notes #2	Заметки №2
 Нотатки №3	Notes #3	Заметки №3

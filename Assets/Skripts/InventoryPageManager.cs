@@ -43,6 +43,7 @@ public class InventoryPageManager : MonoBehaviour
         DndSaveManager.EnsureExists();
         KeepMainPageActive();
         BindPageButtons();
+        BindNavigationButtons();
         SwitchToPage(0);
     }
 
@@ -64,6 +65,17 @@ public class InventoryPageManager : MonoBehaviour
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => SwitchToPage(pageIndex));
         }
+    }
+
+    private void BindNavigationButtons()
+    {
+        Button spellbookButton = FindButtonByName("spelbook", "spellbook");
+        if (spellbookButton == null)
+            return;
+
+        DisablePersistentOnClick(spellbookButton);
+        spellbookButton.onClick.RemoveAllListeners();
+        spellbookButton.onClick.AddListener(() => load_scenes.LoadSceneByName("spelBook"));
     }
 
     private void SwitchToPage(int pageIndex)
@@ -143,8 +155,7 @@ public class InventoryPageManager : MonoBehaviour
 
     private void UpdatePageTitle(int pageIndex)
     {
-        const string prefix = "\u0421\u0442\u043E\u0440\u0456\u043D\u043A\u0430 \u2116";
-        string title = prefix + (pageIndex + 1);
+        string title = RuntimeLocalization.EnsureExists().Translate("Сторінка №") + (pageIndex + 1);
 
         Text[] texts = FindObjectsByType<Text>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Text text in texts)
@@ -176,6 +187,22 @@ public class InventoryPageManager : MonoBehaviour
 
         for (int i = 0; i < button.onClick.GetPersistentEventCount(); i++)
             button.onClick.SetPersistentListenerState(i, UnityEventCallState.Off);
+    }
+
+    private Button FindButtonByName(params string[] objectNames)
+    {
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Button button in buttons)
+        {
+            if (button == null)
+                continue;
+
+            foreach (string objectName in objectNames)
+                if (NameMatches(button.gameObject.name, objectName))
+                    return button;
+        }
+
+        return null;
     }
 
     private int GetHierarchyOrder(Transform transform)

@@ -125,7 +125,14 @@ public partial class RuntimeLocalization : MonoBehaviour
 
     public string Translate(string source)
     {
-        if (string.IsNullOrEmpty(source) || CurrentLanguage == AppLanguage.Ukrainian)
+        if (string.IsNullOrEmpty(source))
+            return source;
+
+        string visibleKey = Normalize(source);
+        if (sourceByTranslatedText.TryGetValue(visibleKey, out string canonicalSource))
+            source = canonicalSource;
+
+        if (CurrentLanguage == AppLanguage.Ukrainian)
             return source;
 
         string key = Normalize(source);
@@ -197,6 +204,78 @@ public partial class RuntimeLocalization : MonoBehaviour
 
             localizedText.Apply();
         }
+
+        foreach (Dropdown dropdown in Resources.FindObjectsOfTypeAll<Dropdown>())
+        {
+            if (!IsSceneObject(dropdown != null ? dropdown.gameObject : null))
+                continue;
+
+            ApplyDropdownOptions(dropdown);
+        }
+
+        foreach (TMP_Dropdown dropdown in Resources.FindObjectsOfTypeAll<TMP_Dropdown>())
+        {
+            if (!IsSceneObject(dropdown != null ? dropdown.gameObject : null))
+                continue;
+
+            ApplyDropdownOptions(dropdown);
+        }
+
+        foreach (CalculatorManager calculator in Resources.FindObjectsOfTypeAll<CalculatorManager>())
+        {
+            if (!IsSceneObject(calculator != null ? calculator.gameObject : null))
+                continue;
+
+            calculator.RefreshLocalization();
+        }
+
+        foreach (InventoryItemCell inventoryCell in Resources.FindObjectsOfTypeAll<InventoryItemCell>())
+        {
+            if (!IsSceneObject(inventoryCell != null ? inventoryCell.gameObject : null))
+                continue;
+
+            inventoryCell.RefreshLocalization();
+        }
+    }
+
+    private void ApplyDropdownOptions(Dropdown dropdown)
+    {
+        if (dropdown == null || dropdown.options == null)
+            return;
+
+        bool changed = false;
+        for (int i = 0; i < dropdown.options.Count; i++)
+        {
+            string translated = Translate(dropdown.options[i].text);
+            if (translated == dropdown.options[i].text)
+                continue;
+
+            dropdown.options[i].text = translated;
+            changed = true;
+        }
+
+        if (changed)
+            dropdown.RefreshShownValue();
+    }
+
+    private void ApplyDropdownOptions(TMP_Dropdown dropdown)
+    {
+        if (dropdown == null || dropdown.options == null)
+            return;
+
+        bool changed = false;
+        for (int i = 0; i < dropdown.options.Count; i++)
+        {
+            string translated = Translate(dropdown.options[i].text);
+            if (translated == dropdown.options[i].text)
+                continue;
+
+            dropdown.options[i].text = translated;
+            changed = true;
+        }
+
+        if (changed)
+            dropdown.RefreshShownValue();
     }
 
     private bool IsSceneObject(GameObject gameObject)
@@ -344,16 +423,16 @@ public partial class RuntimeLocalization : MonoBehaviour
         while (value.Contains("  "))
             value = value.Replace("  ", " ");
 
-        return value;
+        return value.ToLowerInvariant();
     }
 
     private void Add(string ukrainian, string english, string russian)
     {
-        string source = Normalize(ukrainian);
-        translations[source] = new Translation(english, russian);
-        sourceByTranslatedText[Normalize(english)] = source;
-        sourceByTranslatedText[Normalize(russian)] = source;
-        sourceByTranslatedText[source] = source;
+        string sourceKey = Normalize(ukrainian);
+        translations[sourceKey] = new Translation(english, russian);
+        sourceByTranslatedText[Normalize(english)] = ukrainian;
+        sourceByTranslatedText[Normalize(russian)] = ukrainian;
+        sourceByTranslatedText[sourceKey] = ukrainian;
     }
 
     private void BuildTranslations()
@@ -362,11 +441,25 @@ public partial class RuntimeLocalization : MonoBehaviour
         Add("Ресет HP", "Reset HP", "Сброс HP");
         Add("Підтвердить", "Confirm", "Подтвердить");
         Add("Підтвердити", "Confirm", "Подтвердить");
+        Add("Сторінка №", "Page #", "Страница №");
+        Add("Сторінка №1", "Page #1", "Страница №1");
+        Add("Сторінка №2", "Page #2", "Страница №2");
+        Add("Сторінка №3", "Page #3", "Страница №3");
+        Add("Сторінка №4", "Page #4", "Страница №4");
+        Add("Сторінка №5", "Page #5", "Страница №5");
+        Add("Введіть опис...", "Enter description...", "Введите описание...");
         Add("Файл збережених\nперсонажів", "Saved\ncharacters file", "Файл сохраненных\nперсонажей");
         Add("Файл збережених даних", "Saved data file", "Файл сохраненных данных");
         Add("Файл збережених данних", "Saved data file", "Файл сохраненных данных");
+        Add("Файл одного персонажа", "Single character file", "Файл одного персонажа");
+        Add("Файл всіх персонажів", "All characters file", "Файл всех персонажей");
         Add("Додати нового персонажа", "Add new character", "Добавить нового персонажа");
         Add("Додать нового персонажа", "Add new character", "Добавить нового персонажа");
+        Add("Додати персонажа", "Add character", "Добавить персонажа");
+        Add("Новий персонаж", "New character", "Новый персонаж");
+        Add("Невідомий персонаж", "Unknown character", "Неизвестный персонаж");
+        Add("Немає персонажів", "No characters", "Нет персонажей");
+        Add("Оберіть персонажа", "Choose character", "Выберите персонажа");
         Add("Автори", "Authors", "Авторы");
         Add("Про додаток", "About the app", "О приложении");
         Add("Інформація про додаток", "Application information", "Информация о приложении");
@@ -397,12 +490,129 @@ public partial class RuntimeLocalization : MonoBehaviour
 
         Add("Зброя", "Weapons", "Оружие");
         Add("Броня", "Armor", "Броня");
+        Add("Сумки", "Bags", "Сумки");
         Add("Магія", "Magic", "Магия");
+        Add("Інше", "Other", "Другое");
+        Add("Скарби", "Treasure", "Сокровища");
+        Add("Своя картинка", "Custom image", "Своя картинка");
         Add("Набори", "Kits", "Наборы");
         Add("Різне", "Other", "Разное");
         Add("Прикраси", "Jewelry", "Украшения");
         Add("Введіть назву...", "Enter name...", "Введите название...");
         Add("Навички - Інфузії", "Skills - Infusions", "Навыки - Инфузии");
+        Add("Калькулятор", "Calculator", "Калькулятор");
+        Add("Предісторія Персонажа", "Character Backstory", "Предыстория персонажа");
+        Add("ПредІсторія Персонажа", "Character Backstory", "Предыстория персонажа");
+        Add("Передісторія Персонажа", "Character Backstory", "Предыстория персонажа");
+        Add("Завантажити фото персонажа", "Upload character photo", "Загрузить фото персонажа");
+        Add("Завантажити фото\nперсонажа", "Upload character\nphoto", "Загрузить фото\nперсонажа");
+        Add("Довгий відпочинок", "Long rest", "Долгий отдых");
+        Add("Довгій відпочинок", "Long rest", "Долгий отдых");
+        Add("Короткій відпочинок", "Short rest", "Короткий отдых");
+        Add("Короткий відпочинок", "Short rest", "Короткий отдых");
+        Add("Псевдожиття", "Temp HP", "Врем. HP");
+        Add("Шкода", "Damage", "Урон");
+        Add("Зцілення", "Healing", "Исцеление");
+        Add("Мах ХП", "Max HP", "Макс. ХП");
+        Add("Макс ХП", "Max HP", "Макс. ХП");
+        Add("Max ХП", "Max HP", "Макс. ХП");
+        Add("Випити", "Drink", "Выпить");
+        Add("Оберіть зілля", "Choose potion", "Выберите зелье");
+        Add("Сила", "Strength", "Сила");
+        Add("Спритність", "Dexterity", "Ловкость");
+        Add("Тілобудова", "Constitution", "Телосложение");
+        Add("Інтелект", "Intelligence", "Интеллект");
+        Add("Мудрість", "Wisdom", "Мудрость");
+        Add("Харизма", "Charisma", "Харизма");
+        Add("Модифікатори", "Modifiers", "Модификаторы");
+        Add("Усього", "Total", "Всего");
+        Add("Значення", "Value", "Значение");
+        Add("Мод", "Mod", "Мод");
+        Add("Натхнення", "Inspiration", "Вдохновение");
+        Add("Бонус Майстерності", "Proficiency Bonus", "Бонус мастерства");
+        Add("Кидки Рятунку", "Saving Throws", "Спасброски");
+        Add("Рятунок від смерті", "Death Saves", "Спасброски от смерти");
+        Add("НАВИЧКИ", "Skills", "Навыки");
+        Add("Уміння та Особлисовсті", "Features & Traits", "Умения и особенности");
+        Add("Уміння та Особливості", "Features & Traits", "Умения и особенности");
+        Add("Атаки та заклинання", "Attacks & Spellcasting", "Атаки и заклинания");
+        Add("Спорядження", "Equipment", "Снаряжение");
+        Add("Інші володіння та мови", "Other Proficiencies & Languages", "Прочие владения и языки");
+        Add("Пасивна Мудрість", "Passive Wisdom", "Пассивная мудрость");
+        Add("Виснаження", "Exhaustion", "Истощение");
+        Add("Швидкість", "Speed", "Скорость");
+        Add("Ініціатива", "Initiative", "Инициатива");
+        Add("Клас", "Class", "Класс");
+        Add("Підклас", "Subclass", "Подкласс");
+        Add("Рівень", "Level", "Уровень");
+        Add("м.Підклас", "m.Subclass", "м.Подкласс");
+        Add("м.Рівень", "m.Level", "м.Уровень");
+        Add("Раса", "Race", "Раса");
+        Add("Підраса", "Subrace", "Подраса");
+        Add("Мультиклас", "Multiclass", "Мультикласс");
+        Add("Передісторія", "Background", "Предыстория");
+        Add("Світогляд", "Alignment", "Мировоззрение");
+        Add("Досвід", "Experience", "Опыт");
+        Add("Кістка хіт", "Hit Die", "Кость хитов");
+        Add("Мод Магії", "Spellcasting Mod", "Мод. магии");
+        Add("СП Кідок Магії", "Spell Save DC", "Сл. спасброска магии");
+        Add("Ресурси класа / раси", "Class / Race Resources", "Ресурсы класса / расы");
+        Add("Ресурси класу / раси", "Class / Race Resources", "Ресурсы класса / расы");
+        Add("Зілля", "Potions", "Зелья");
+        Add("Акробатика (Спр)", "Acrobatics (Dex)", "Акробатика (Лов)");
+        Add("Аналіз (Інт)", "Investigation (Int)", "Анализ (Инт)");
+        Add("Аналіз поведінки (Мдр)", "Insight (Wis)", "Проницательность (Мдр)");
+        Add("Артистичність (Хар)", "Performance (Cha)", "Выступление (Хар)");
+        Add("Атлетика (Сил)", "Athletics (Str)", "Атлетика (Сил)");
+        Add("Виживання (Мдр)", "Survival (Wis)", "Выживание (Мдр)");
+        Add("Догляд тварин (Мдр)", "Animal Handling (Wis)", "Уход за животными (Мдр)");
+        Add("Залякування (Хар)", "Intimidation (Cha)", "Запугивание (Хар)");
+        Add("Історія (Інт)", "History (Int)", "История (Инт)");
+        Add("Магія (Інт)", "Arcana (Int)", "Магия (Инт)");
+        Add("Медицина (Мдр)", "Medicine (Wis)", "Медицина (Мдр)");
+        Add("Обман (Хар)", "Deception (Cha)", "Обман (Хар)");
+        Add("Переконливість (Хар)", "Persuasion (Cha)", "Убеждение (Хар)");
+        Add("Природа (Інт)", "Nature (Int)", "Природа (Инт)");
+        Add("Релігія (інт)", "Religion (Int)", "Религия (Инт)");
+        Add("Скритність (Спр)", "Stealth (Dex)", "Скрытность (Лов)");
+        Add("Спритність рук (Спр)", "Sleight of Hand (Dex)", "Ловкость рук (Лов)");
+        Add("Уважність (Мдр)", "Perception (Wis)", "Внимательность (Мдр)");
+        Add("Прихована атака", "Sneak Attack", "Скрытая атака");
+        Add("Дихання дракона", "Dragon Breath", "Дыхание дракона");
+        Add("Кістка Гематокрафта", "Hemocraft Die", "Кость гемокрафта");
+        Add("Лють варвара", "Barbarian Rage", "Ярость варвара");
+        Add("Божественний канал", "Channel Divinity", "Божественный канал");
+        Add("Божествений канал", "Channel Divinity", "Божественный канал");
+        Add("Очкі ци", "Ki Points", "Очки ци");
+        Add("Очки ци", "Ki Points", "Очки ци");
+        Add("Метамагія", "Metamagic", "Метамагия");
+        Add("Мета магія", "Metamagic", "Метамагия");
+        Add("Прокляття крові", "Blood Curse", "Проклятие крови");
+        Add("Багряні обряди", "Crimson Rites", "Багряные обряды");
+        Add("Політ", "Flight", "Полет");
+        Add("Сховати все", "Hide all", "Скрыть все");
+        Add("Дикі форми", "Wild Shapes", "Дикие формы");
+        Add("Дика форма", "Wild Shape", "Дикая форма");
+        Add("Інша навичка", "Custom feature", "Своя особенность");
+        Add("Оберіть Картинку навички", "Choose feature image", "Выберите картинку навыка");
+        Add("Оберіть картинку навички", "Choose feature image", "Выберите картинку навыка");
+        Add("Оберіть свою картинку", "Choose your image", "Выберите свою картинку");
+        Add("Обрати свою картинку", "Choose your image", "Выбрать свою картинку");
+        Add("мм", "CP", "мм");
+        Add("см", "SP", "см");
+        Add("ем", "EP", "эм");
+        Add("зм", "GP", "зм");
+        Add("пм", "PP", "пм");
+        Add("ММ", "CP", "ММ");
+        Add("СМ", "SP", "СМ");
+        Add("ЕМ", "EP", "ЭМ");
+        Add("ЗМ", "GP", "ЗМ");
+        Add("ПМ", "PP", "ПМ");
+        Add("Нотатки № 1", "Notes #1", "Заметки №1");
+        Add("Нотатки № 2", "Notes #2", "Заметки №2");
+        Add("Нотатки № 3", "Notes #3", "Заметки №3");
+        Add("Нотатки № 4", "Notes #4", "Заметки №4");
+        Add("Нотатки  № 3", "Notes #3", "Заметки №3");
         LoadTranslationsFromResource();
         BuildGeneratedTranslations();
     }

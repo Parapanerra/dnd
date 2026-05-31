@@ -41,6 +41,8 @@ public class MainMenuManager : MonoBehaviour
     private Button exportOneCharacterButton;
     private Button importOneCharacterButton;
     private Button openSavePanelButton;
+    private Dropdown languageDropdown;
+    private TMP_Dropdown languageTmpDropdown;
     private Dropdown oneCharacterDropdown;
     private TMP_Dropdown oneCharacterTmpDropdown;
     private GameObject savePanel;
@@ -53,6 +55,11 @@ public class MainMenuManager : MonoBehaviour
     private bool hasAddButtonWorldOffsetFromTemplate;
     private Coroutine addButtonPositionCoroutine;
     private float lastCharacterCreateTime = -10f;
+
+    private void OnEnable()
+    {
+        StartCoroutine(SyncLanguageDropdownNextFrame());
+    }
 
     private void Start()
     {
@@ -74,6 +81,7 @@ public class MainMenuManager : MonoBehaviour
 
         RefreshCharacterList();
         RuntimeLocalization.EnsureExists().ApplyToScene();
+        SyncLanguageDropdownValue();
 
         if (addCharacterButton != null)
         {
@@ -276,12 +284,13 @@ public class MainMenuManager : MonoBehaviour
 
     private void ConfigureLanguageDropdown(Dropdown dropdown)
     {
+        languageDropdown = dropdown;
         AddLocalizedIgnore(dropdown.gameObject);
         RepairDropdownTemplate(dropdown);
         dropdown.onValueChanged.RemoveAllListeners();
         dropdown.ClearOptions();
         dropdown.AddOptions(new List<string> { "UA", "EN", "RU" });
-        dropdown.value = GetCurrentLanguageIndex();
+        dropdown.SetValueWithoutNotify(GetCurrentLanguageIndex());
         dropdown.RefreshShownValue();
         dropdown.onValueChanged.AddListener(OnLanguageDropdownChanged);
     }
@@ -421,11 +430,12 @@ public class MainMenuManager : MonoBehaviour
 
     private void ConfigureLanguageDropdown(TMP_Dropdown dropdown)
     {
+        languageTmpDropdown = dropdown;
         AddLocalizedIgnore(dropdown.gameObject);
         dropdown.onValueChanged.RemoveAllListeners();
         dropdown.ClearOptions();
         dropdown.AddOptions(new List<string> { "UA", "EN", "RU" });
-        dropdown.value = GetCurrentLanguageIndex();
+        dropdown.SetValueWithoutNotify(GetCurrentLanguageIndex());
         dropdown.RefreshShownValue();
         dropdown.onValueChanged.AddListener(OnLanguageDropdownChanged);
     }
@@ -436,11 +446,43 @@ public class MainMenuManager : MonoBehaviour
         localization.SetLanguage((AppLanguage)Mathf.Clamp(value, 0, 2));
         RefreshCharacterList();
         localization.ApplyToScene();
+        SyncLanguageDropdownValue();
     }
 
     private int GetCurrentLanguageIndex()
     {
         return Mathf.Clamp((int)RuntimeLocalization.EnsureExists().CurrentLanguage, 0, 2);
+    }
+
+    private IEnumerator SyncLanguageDropdownNextFrame()
+    {
+        yield return null;
+        SyncLanguageDropdownValue();
+        yield return null;
+        SyncLanguageDropdownValue();
+    }
+
+    private void SyncLanguageDropdownValue()
+    {
+        int index = GetCurrentLanguageIndex();
+
+        if (languageDropdown == null)
+            languageDropdown = FindFirstDropdownInScene("localiza", "LanguageDropdown");
+
+        if (languageDropdown != null)
+        {
+            languageDropdown.SetValueWithoutNotify(index);
+            languageDropdown.RefreshShownValue();
+        }
+
+        if (languageTmpDropdown == null)
+            languageTmpDropdown = FindFirstTmpDropdownInScene("localiza", "LanguageDropdown");
+
+        if (languageTmpDropdown != null)
+        {
+            languageTmpDropdown.SetValueWithoutNotify(index);
+            languageTmpDropdown.RefreshShownValue();
+        }
     }
 
     private void AddLocalizedIgnore(GameObject target)
@@ -723,11 +765,11 @@ public class MainMenuManager : MonoBehaviour
         if (hasCharacters)
         {
             foreach (CharacterData character in saveManager.saveData.characters)
-                options.Add(string.IsNullOrWhiteSpace(character.characterName) ? "Новий персонаж" : character.characterName);
+                options.Add(GetMenuCharacterName(character));
         }
         else
         {
-            options.Add("Немає персонажів");
+            options.Add(LocalizeMenuText("Немає персонажів"));
         }
 
         if (oneCharacterDropdown != null)
@@ -825,10 +867,10 @@ public class MainMenuManager : MonoBehaviour
     private void ApplyOneCharacterDropdownPlaceholder()
     {
         if (oneCharacterDropdown != null && oneCharacterDropdown.captionText != null)
-            oneCharacterDropdown.captionText.text = "Оберіть персонажа";
+            oneCharacterDropdown.captionText.text = LocalizeMenuText("Оберіть персонажа");
 
         if (oneCharacterTmpDropdown != null && oneCharacterTmpDropdown.captionText != null)
-            oneCharacterTmpDropdown.captionText.text = "Оберіть персонажа";
+            oneCharacterTmpDropdown.captionText.text = LocalizeMenuText("Оберіть персонажа");
     }
 
     private void ApplySelectedOneCharacterDropdownCaption()
@@ -837,7 +879,7 @@ public class MainMenuManager : MonoBehaviour
         if (character == null)
             return;
 
-        string label = string.IsNullOrWhiteSpace(character.characterName) ? "Новий персонаж" : character.characterName;
+        string label = GetMenuCharacterName(character);
 
         if (oneCharacterDropdown != null && oneCharacterDropdown.captionText != null)
             oneCharacterDropdown.captionText.text = label;
@@ -876,6 +918,50 @@ public class MainMenuManager : MonoBehaviour
         while (CharacterNameExists(saveManager, candidate));
 
         return candidate;
+    }
+
+    private string GetMenuCharacterName(CharacterData character, string emptyFallback = "Новий персонаж")
+    {
+        string rawName = character != null ? character.characterName : "";
+        if (TryGetDefaultCharacterNumber(rawName, out int number))
+        {
+            string localizedBase = LocalizeMenuText("Новий персонаж");
+            return number > 0 ? localizedBase + " " + number : localizedBase;
+        }
+
+        if (string.IsNullOrWhiteSpace(rawName))
+            return LocalizeMenuText(emptyFallback);
+
+        return rawName;
+    }
+
+    private bool TryGetDefaultCharacterNumber(string name, out int number)
+    {
+        number = 0;
+        if (string.IsNullOrWhiteSpace(name))
+            return true;
+
+        string normalized = name.Trim();
+        string[] bases = { "Новий персонаж", "New character", "Новый персонаж" };
+        foreach (string baseName in bases)
+        {
+            if (string.Equals(normalized, baseName, System.StringComparison.OrdinalIgnoreCase))
+                return true;
+
+            if (!normalized.StartsWith(baseName + " ", System.StringComparison.OrdinalIgnoreCase))
+                continue;
+
+            string suffix = normalized.Substring(baseName.Length).Trim();
+            if (int.TryParse(suffix, out number))
+                return true;
+        }
+
+        return false;
+    }
+
+    private string LocalizeMenuText(string source)
+    {
+        return RuntimeLocalization.EnsureExists().Translate(source);
     }
 
     private bool CharacterNameExists(DndSaveManager saveManager, string name)
@@ -1101,7 +1187,7 @@ public class MainMenuManager : MonoBehaviour
             IgnoreLocalizationForDynamicText(nameText.gameObject);
 
         if (nameText != null)
-            nameText.text = string.IsNullOrEmpty(character.characterName) ? "Новий персонаж" : character.characterName;
+            nameText.text = GetMenuCharacterName(character);
 
         string characterId = character.id;
         BindButton(characterButton, () => OnCharacterSelected(characterId));
@@ -1410,7 +1496,7 @@ public class MainMenuManager : MonoBehaviour
             ? characterButton.GetComponentInChildren<Text>(true)
             : row.GetComponentInChildren<Text>(true);
         if (nameText != null)
-            nameText.text = string.IsNullOrEmpty(character.characterName) ? "Новий персонаж" : character.characterName;
+            nameText.text = GetMenuCharacterName(character);
 
         string characterId = character.id;
         BindButton(characterButton, () => OnCharacterSelected(characterId));
@@ -1775,7 +1861,7 @@ public class MainMenuManager : MonoBehaviour
         if (btnText == null)
             btnText = CreateButtonText(btnObj.transform, "CharacterName", TextAnchor.MiddleLeft);
 
-        btnText.text = string.IsNullOrEmpty(character.characterName) ? "Невідомий персонаж" : character.characterName;
+        btnText.text = GetMenuCharacterName(character, "Невідомий персонаж");
         if (applyDefaultCharacterButtonStyle)
         {
             btnText.color = Color.white;

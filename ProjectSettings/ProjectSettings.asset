@@ -736,8 +736,8 @@ PlayerSettings:
   scriptingDefineSymbols:
     Android: JSONSerializationFileSave;SENTIS_ANALYTICS_ENABLED;APP_UI_EDITOR_ONLY
     PS4: 
-    Standalone: 
-    WebGL: 
+    Standalone: SENTIS_ANALYTICS_ENABLED;APP_UI_EDITOR_ONLY
+    WebGL: SENTIS_ANALYTICS_ENABLED;APP_UI_EDITOR_ONLY
     Windows Store Apps: 
     XboxOne: 
     iPhone: 

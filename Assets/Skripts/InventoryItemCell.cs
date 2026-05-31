@@ -109,6 +109,11 @@ public class InventoryItemCell : MonoBehaviour
         ApplyData(data, saveAfterReset);
     }
 
+    public void RefreshLocalization()
+    {
+        EnsureCategoryOptions();
+    }
+
     private void FindControls()
     {
         itemNameInput = FindInput("itemNameInput");
@@ -206,6 +211,7 @@ public class InventoryItemCell : MonoBehaviour
     private void OnCategoryChanged(int value)
     {
         ApplyCategoryVisibility(value);
+        RefreshCategoryShownValue();
         Save();
     }
 
@@ -337,6 +343,7 @@ public class InventoryItemCell : MonoBehaviour
             SetDropdownValue(chegerDropdown, chegerTmpDropdown, data.chegerIndex);
             ApplyCustomImageBase64(data.customImageBase64);
             ApplyCategoryVisibility(data.category);
+            RefreshCategoryShownValue();
         }
         finally
         {
@@ -405,49 +412,46 @@ public class InventoryItemCell : MonoBehaviour
     {
         string[] labels =
         {
-            "Зброя",
-            "Броня",
-            "Сумки",
-            "Магія",
-            "Інше",
-            "Скарби",
-            "Своя картинка"
+            Localize("Зброя"),
+            Localize("Броня"),
+            Localize("Сумки"),
+            Localize("Магія"),
+            Localize("Інше"),
+            Localize("Скарби"),
+            Localize("Своя картинка")
         };
 
-        if (categoryDropdown != null && ShouldReplaceOptions(categoryDropdown.options.Count, GetOptionText(categoryDropdown, 0)))
+        if (categoryDropdown != null)
         {
+            int currentValue = categoryDropdown.value;
             categoryDropdown.ClearOptions();
             categoryDropdown.AddOptions(new List<string>(labels));
+            categoryDropdown.SetValueWithoutNotify(Mathf.Clamp(currentValue, 0, categoryDropdown.options.Count - 1));
             categoryDropdown.RefreshShownValue();
         }
 
-        if (categoryTmpDropdown != null && ShouldReplaceOptions(categoryTmpDropdown.options.Count, GetOptionText(categoryTmpDropdown, 0)))
+        if (categoryTmpDropdown != null)
         {
+            int currentValue = categoryTmpDropdown.value;
             categoryTmpDropdown.ClearOptions();
             categoryTmpDropdown.AddOptions(new List<string>(labels));
+            categoryTmpDropdown.SetValueWithoutNotify(Mathf.Clamp(currentValue, 0, categoryTmpDropdown.options.Count - 1));
             categoryTmpDropdown.RefreshShownValue();
         }
     }
 
-    private bool ShouldReplaceOptions(int optionCount, string firstOptionText)
+    private string Localize(string source)
     {
-        return optionCount < 7 || IsGeneratedOptionText(firstOptionText);
+        return RuntimeLocalization.EnsureExists().Translate(source);
     }
 
-    private string GetOptionText(Dropdown dropdown, int index)
+    private void RefreshCategoryShownValue()
     {
-        return dropdown != null && index >= 0 && index < dropdown.options.Count ? dropdown.options[index].text : "";
-    }
+        if (categoryDropdown != null)
+            categoryDropdown.RefreshShownValue();
 
-    private string GetOptionText(TMP_Dropdown dropdown, int index)
-    {
-        return dropdown != null && index >= 0 && index < dropdown.options.Count ? dropdown.options[index].text : "";
-    }
-
-    private bool IsGeneratedOptionText(string text)
-    {
-        return !string.IsNullOrWhiteSpace(text) &&
-               text.Trim().StartsWith("Option ", StringComparison.OrdinalIgnoreCase);
+        if (categoryTmpDropdown != null)
+            categoryTmpDropdown.RefreshShownValue();
     }
 
     private void ApplyCustomTexture(Texture2D texture)

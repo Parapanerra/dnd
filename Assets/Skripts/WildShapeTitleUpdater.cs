@@ -41,8 +41,10 @@ public class WildShapeTitleUpdater : MonoBehaviour
     {
         yield return null;
         Apply();
+        BindSpellbookButton();
         yield return new WaitForSecondsRealtime(0.2f);
         Apply();
+        BindSpellbookButton();
     }
 
     public static void Apply()
@@ -93,5 +95,37 @@ public class WildShapeTitleUpdater : MonoBehaviour
     private static bool IsSceneObject(GameObject gameObject)
     {
         return gameObject != null && gameObject.scene.IsValid() && gameObject.scene.isLoaded;
+    }
+
+    private static void BindSpellbookButton()
+    {
+        Button[] buttons = Resources.FindObjectsOfTypeAll<Button>();
+        foreach (Button button in buttons)
+        {
+            if (button == null || !IsSceneObject(button.gameObject) || !IsSpellbookButton(button.gameObject.name))
+                continue;
+
+            DisablePersistentOnClick(button);
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(() => load_scenes.LoadSceneByName("spelBook"));
+        }
+    }
+
+    private static bool IsSpellbookButton(string objectName)
+    {
+        string baseName = GetBaseName(objectName);
+        return baseName == "spelbook" || baseName == "spellbook";
+    }
+
+    private static void DisablePersistentOnClick(Button button)
+    {
+        for (int i = 0; i < button.onClick.GetPersistentEventCount(); i++)
+            button.onClick.SetPersistentListenerState(i, UnityEngine.Events.UnityEventCallState.Off);
+    }
+
+    private static string GetBaseName(string name)
+    {
+        int suffixStart = name.LastIndexOf(" (", System.StringComparison.Ordinal);
+        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
     }
 }

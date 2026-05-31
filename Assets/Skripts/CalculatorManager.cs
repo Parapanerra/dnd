@@ -16,7 +16,6 @@ public class CalculatorManager : MonoBehaviour
     public Text equationText;
     public Text resultText;
 
-    private readonly string[] potionNames = { "Звичайна", "Велика", "Чудова", "Найвища" };
     private readonly string[] potionFormulas = { "2d4+2", "4d4+4", "8d4+8", "10d4+20" };
     private readonly int[] potionCounts = new int[4];
     private string currentEquation = "";
@@ -42,10 +41,22 @@ public class CalculatorManager : MonoBehaviour
 
     private void Start()
     {
+        RuntimeLocalization.EnsureExists();
         EnsureDisplayTexts();
         AssignButtonFunctions();
         AssignHpButtonFunctions();
         AssignPotionControls();
+    }
+
+    public void RefreshLocalization()
+    {
+        if (hpMode != HpCalculatorMode.None)
+        {
+            hpModeLabel = GetHpModeLabel(hpMode);
+            RefreshEquationText();
+        }
+
+        RefreshPotionDropdownOptions();
     }
 
     private void EnsureDisplayTexts()
@@ -292,7 +303,7 @@ public class CalculatorManager : MonoBehaviour
         int index = GetSelectedPotionIndex();
         if (index < 0)
         {
-            ShowHpResult("Обери зілля");
+            ShowHpResult(GetCalculatorText("choosePotion"));
             return;
         }
 
@@ -308,13 +319,13 @@ public class CalculatorManager : MonoBehaviour
         int index = GetSelectedPotionIndex();
         if (index < 0)
         {
-            ShowHpResult("Обери зілля");
+            ShowHpResult(GetCalculatorText("choosePotion"));
             return;
         }
 
         if (potionCounts[index] <= 0)
         {
-            ShowHpResult("Немає зілля");
+            ShowHpResult(GetCalculatorText("noPotion"));
             return;
         }
 
@@ -322,14 +333,14 @@ public class CalculatorManager : MonoBehaviour
         HealthBar1 healthBar1 = healthBar == null ? FindActiveHealthBar1() : null;
         if (healthBar == null && healthBar1 == null)
         {
-            ShowHpResult("HP бар не знайдено");
+            ShowHpResult(GetCalculatorText("hpBarNotFound"));
             return;
         }
 
         string rolledExpression = ProcessDiceNotation(potionFormulas[index]);
         if (!TryEvaluateExpression(rolledExpression, out double rollResult))
         {
-            ShowHpResult("Помилка зілля");
+            ShowHpResult(GetCalculatorText("potionError"));
             return;
         }
 
@@ -338,7 +349,7 @@ public class CalculatorManager : MonoBehaviour
         potionCounts[index]--;
         SavePotionCounts();
         RefreshPotionDropdownOptions();
-        ShowHpResult("Зцілено  " + healed + " HP (" + potionFormulas[index] + "=" + roll + ")");
+        ShowHpResult(GetHealedText(healed) + " (" + potionFormulas[index] + "=" + roll + ")");
         ResetHpInputState();
     }
 
@@ -360,12 +371,122 @@ public class CalculatorManager : MonoBehaviour
 
         int selectedDropdownValue = Mathf.Clamp(potionDropdown.value, 0, potionCounts.Length);
         potionDropdown.options.Clear();
-        potionDropdown.options.Add(new Dropdown.OptionData("Обрати зілля"));
-        for (int i = 0; i < potionNames.Length; i++)
-            potionDropdown.options.Add(new Dropdown.OptionData(potionNames[i] + " x" + potionCounts[i]));
+        potionDropdown.options.Add(new Dropdown.OptionData(GetCalculatorText("choosePotion")));
+        for (int i = 0; i < potionCounts.Length; i++)
+            potionDropdown.options.Add(new Dropdown.OptionData(GetPotionName(i) + " x" + potionCounts[i]));
 
         potionDropdown.SetValueWithoutNotify(selectedDropdownValue);
         potionDropdown.RefreshShownValue();
+    }
+
+    private string GetPotionName(int index)
+    {
+        AppLanguage language = RuntimeLocalization.EnsureExists().CurrentLanguage;
+        if (language == AppLanguage.English)
+        {
+            switch (index)
+            {
+                case 0:
+                    return "Potion of Healing";
+                case 1:
+                    return "Potion of Greater Healing";
+                case 2:
+                    return "Potion of Superior Healing";
+                case 3:
+                    return "Potion of Supreme Healing";
+            }
+        }
+
+        if (language == AppLanguage.Russian)
+        {
+            switch (index)
+            {
+                case 0:
+                    return "Зелье лечения";
+                case 1:
+                    return "Большое зелье лечения";
+                case 2:
+                    return "Улучшенное зелье лечения";
+                case 3:
+                    return "Высшее зелье лечения";
+            }
+        }
+
+        switch (index)
+        {
+            case 0:
+                return "Зілля лікування";
+            case 1:
+                return "Велике зілля лікування";
+            case 2:
+                return "Покращене зілля лікування";
+            case 3:
+                return "Найвище зілля лікування";
+            default:
+                return "Зілля";
+        }
+    }
+
+    private string GetCalculatorText(string key)
+    {
+        AppLanguage language = RuntimeLocalization.EnsureExists().CurrentLanguage;
+        bool english = language == AppLanguage.English;
+        bool russian = language == AppLanguage.Russian;
+
+        switch (key)
+        {
+            case "choosePotion":
+                return english ? "Choose potion" : russian ? "Выберите зелье" : "Оберіть зілля";
+            case "noPotion":
+                return english ? "No potion" : russian ? "Нет зелья" : "Немає зілля";
+            case "potionError":
+                return english ? "Potion error" : russian ? "Ошибка зелья" : "Помилка зілля";
+            case "hpBarNotFound":
+                return english ? "HP bar not found" : russian ? "HP бар не найден" : "HP бар не знайдено";
+            case "tempHp":
+                return english ? "Temp HP" : russian ? "Врем. HP" : "Тимч. HP";
+            case "damageDone":
+                return english ? "Damage taken" : russian ? "Получено урона" : "Отримано урону";
+            case "healed":
+                return english ? "Healed" : russian ? "Исцелено" : "Зцілено";
+            case "longRest":
+                return english ? "Long rest" : russian ? "Долгий отдых" : "Довгий відпочинок";
+            case "shortRest":
+                return english ? "Short rest" : russian ? "Короткий отдых" : "Короткий відпочинок";
+            case "hitDiceNotFound":
+                return english ? "Hit dice not found" : russian ? "Кости хитов не найдены" : "Кістки хітів не знайдено";
+        }
+
+        return key;
+    }
+
+    private string GetHpModeLabel(HpCalculatorMode mode)
+    {
+        switch (mode)
+        {
+            case HpCalculatorMode.MaxHp:
+                return "Max HP:";
+            case HpCalculatorMode.TemporaryHp:
+                return GetCalculatorText("tempHp") + ":";
+            case HpCalculatorMode.Damage:
+                return RuntimeLocalization.EnsureExists().CurrentLanguage == AppLanguage.English ? "Damage:" :
+                    RuntimeLocalization.EnsureExists().CurrentLanguage == AppLanguage.Russian ? "Урон:" : "Урон:";
+            case HpCalculatorMode.Heal:
+                return RuntimeLocalization.EnsureExists().CurrentLanguage == AppLanguage.English ? "Healing:" :
+                    RuntimeLocalization.EnsureExists().CurrentLanguage == AppLanguage.Russian ? "Лечение:" : "Зцілення:";
+            default:
+                return "";
+        }
+    }
+
+    private string GetHealedText(int value)
+    {
+        return GetCalculatorText("healed") + "  " + value + " HP";
+    }
+
+    private string GetDamageText(int value)
+    {
+        return GetCalculatorText("damageDone") + "  " + value;
     }
 
     private void OnHpButtonClick(string buttonName, Button button)
@@ -447,25 +568,25 @@ public class CalculatorManager : MonoBehaviour
         string normalized = label.ToLowerInvariant();
         if (normalized == "maxhp")
         {
-            SetHpMode(HpCalculatorMode.MaxHp, "Max HP:");
+            SetHpMode(HpCalculatorMode.MaxHp);
             return true;
         }
 
         if (normalized == "folslive")
         {
-            SetHpMode(HpCalculatorMode.TemporaryHp, "Тимч. HP:");
+            SetHpMode(HpCalculatorMode.TemporaryHp);
             return true;
         }
 
         if (normalized == "damage")
         {
-            SetHpMode(HpCalculatorMode.Damage, "Урон:");
+            SetHpMode(HpCalculatorMode.Damage);
             return true;
         }
 
         if (normalized == "heal")
         {
-            SetHpMode(HpCalculatorMode.Heal, "Зцілення:");
+            SetHpMode(HpCalculatorMode.Heal);
             return true;
         }
 
@@ -495,15 +616,15 @@ public class CalculatorManager : MonoBehaviour
                normalized == "longrest";
     }
 
-    private void SetHpMode(HpCalculatorMode mode, string label)
+    private void SetHpMode(HpCalculatorMode mode)
     {
         hpMode = mode;
-        hpModeLabel = label;
+        hpModeLabel = GetHpModeLabel(mode);
         currentEquation = "";
         isOperatorClicked = false;
         isLastInputDice = false;
         if (equationText != null)
-            equationText.text = label;
+            equationText.text = hpModeLabel;
         if (resultText != null)
             resultText.text = "";
         ApplyHpTextColor();
@@ -599,7 +720,7 @@ public class CalculatorManager : MonoBehaviour
         HealthBar1 healthBar1 = healthBar == null ? FindActiveHealthBar1() : null;
         if (healthBar == null && healthBar1 == null)
         {
-            ShowHpResult("HP бар не знайдено");
+            ShowHpResult(GetCalculatorText("hpBarNotFound"));
             hpMode = HpCalculatorMode.None;
             currentEquation = "";
             return;
@@ -622,17 +743,17 @@ public class CalculatorManager : MonoBehaviour
             else
                 healthBar1.SetTemporaryHealth(value);
 
-            ShowHpResult("Тимч. HP =  " + value);
+            ShowHpResult(GetCalculatorText("tempHp") + " =  " + value);
         }
         else if (hpMode == HpCalculatorMode.Damage)
         {
             int applied = healthBar != null ? healthBar.ApplyDamage(value) : healthBar1.ApplyDamage(value);
-            ShowHpResult("Отримано  " + applied + " урону");
+            ShowHpResult(GetDamageText(applied));
         }
         else if (hpMode == HpCalculatorMode.Heal)
         {
             int applied = healthBar != null ? healthBar.ApplyHeal(value) : healthBar1.ApplyHeal(value);
-            ShowHpResult("Зцілено  " + applied + " HP");
+            ShowHpResult(GetHealedText(applied));
         }
 
         hpMode = HpCalculatorMode.None;
@@ -658,7 +779,7 @@ public class CalculatorManager : MonoBehaviour
         ClearDeathSaves();
         SaveSceneAfterRest();
         ApplyGlobalRestToSaveData(true);
-        ShowHpResult(healthBar != null || healthBar1 != null ? "Зцілено  " + healed + " HP" : "Довгий відпочинок");
+        ShowHpResult(healthBar != null || healthBar1 != null ? GetHealedText(healed) : GetCalculatorText("longRest"));
         ResetHpInputState();
     }
 
@@ -678,14 +799,14 @@ public class CalculatorManager : MonoBehaviour
 
         if (healthBar == null && healthBar1 == null)
         {
-            ShowHpResult("Короткий відпочинок");
+            ShowHpResult(GetCalculatorText("shortRest"));
             ResetHpInputState();
             return;
         }
 
         if (!TryGetHitDice(out int diceCount, out int diceSides))
         {
-            ShowHpResult("Кістки хітів не знайдено");
+            ShowHpResult(GetCalculatorText("hitDiceNotFound"));
             ResetHpInputState();
             return;
         }
@@ -696,7 +817,7 @@ public class CalculatorManager : MonoBehaviour
             roll += UnityEngine.Random.Range(1, diceSides + 1);
 
         int healed = healthBar != null ? healthBar.ApplyHeal(roll) : healthBar1.ApplyHeal(roll);
-        ShowHpResult("Зцілено  " + healed + " HP (" + diceToRoll + "d" + diceSides + "=" + roll + ")");
+        ShowHpResult(GetHealedText(healed) + " (" + diceToRoll + "d" + diceSides + "=" + roll + ")");
         ResetHpInputState();
     }
 

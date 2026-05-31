@@ -676,7 +676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 194.0159, y: 0.7709}
+  m_AnchoredPosition: {x: 222.8, y: 1.7}
   m_SizeDelta: {x: 21.4319, y: 21.542}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5072360805988271552
@@ -728,6 +728,7 @@ GameObject:
   - component: {fileID: 7341248132136009453}
   - component: {fileID: 8776726518501431999}
   - component: {fileID: 1574857833301868698}
+  - component: {fileID: 2624677417317146089}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -751,8 +752,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.7518, y: 0.41930008}
-  m_SizeDelta: {x: -43.8247, y: -15.9302}
+  m_AnchoredPosition: {x: 1.0206985, y: 0.15049934}
+  m_SizeDelta: {x: -39.5225, y: -15.3924}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8776726518501431999
 CanvasRenderer:
@@ -796,6 +797,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u0414\u043E\u0432\u0433\u0456\u0439 \u0432\u0456\u0434\u043F\u043E\u0447\u0438\u043D\u043E\u043A"
+--- !u!114 &2624677417317146089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893065750267223804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a179ec645311e874ba6d26be587cf8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManualLocalizedText
+  ukrainianText: "\u0414\u043E\u0432\u0433\u0456\u0439 \u0432\u0456\u0434\u043F\u043E\u0447\u0438\u043D\u043E\u043A"
+  englishText: 
+  russianText: 
+  useCurrentTextAsSource: 1
 --- !u!1 &899617828421353056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,6 +1505,7 @@ GameObject:
   - component: {fileID: 1179359468585288821}
   - component: {fileID: 4600336001872614191}
   - component: {fileID: 2901866904494837570}
+  - component: {fileID: 4752687604460890979}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -1556,6 +1574,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u0428\u043A\u043E\u0434\u0430"
+--- !u!114 &4752687604460890979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643904951383023653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a179ec645311e874ba6d26be587cf8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManualLocalizedText
+  ukrainianText: "\u0428\u043A\u043E\u0434\u0430"
+  englishText: 
+  russianText: 
+  useCurrentTextAsSource: 1
 --- !u!1 &1663532908413906194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,8 +1861,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -11.3634, y: -0.30870056}
-  m_SizeDelta: {x: -31.3396, y: -6.4449}
+  m_AnchoredPosition: {x: -10.723007, y: 0.0788002}
+  m_SizeDelta: {x: -27.571, y: -5.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4185983265822816260
 CanvasRenderer:
@@ -1910,8 +1944,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000019073, y: 39.9}
-  m_SizeDelta: {x: 228.3244, y: 44.9663}
+  m_AnchoredPosition: {x: 2.2577, y: 35.083378}
+  m_SizeDelta: {x: 239.4626, y: 54.5995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8592480221795950302
 CanvasRenderer:
@@ -2100,6 +2134,7 @@ GameObject:
   - component: {fileID: 4801400268503875191}
   - component: {fileID: 5451032204759405432}
   - component: {fileID: 2095994954914069853}
+  - component: {fileID: 4753799575823214042}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -2168,6 +2203,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u041C\u0430\u0445 \u0425\u041F"
+--- !u!114 &4753799575823214042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005401072235794781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a179ec645311e874ba6d26be587cf8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManualLocalizedText
+  ukrainianText: "\u041C\u0430\u0445 \u0425\u041F"
+  englishText: 
+  russianText: 
+  useCurrentTextAsSource: 1
 --- !u!1 &2263515753427090410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2723,8 +2774,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -12.8551, y: -0.15399933}
-  m_SizeDelta: {x: -36.9442, y: -8.1556}
+  m_AnchoredPosition: {x: -11.683, y: -0.15399933}
+  m_SizeDelta: {x: -30.9879, y: -8.1556}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7189109543478677704
 CanvasRenderer:
@@ -3179,8 +3230,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.095703125, y: -1.1643}
-  m_SizeDelta: {x: -2.8707, y: 37.729}
+  m_AnchoredPosition: {x: -0.000015258789, y: -1.0481}
+  m_SizeDelta: {x: -2.8707, y: 47.625}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3959685654296846015
 MonoBehaviour:
@@ -3663,7 +3714,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -17.7, y: 0.8}
+  m_AnchoredPosition: {x: -15.3, y: 0.000032544}
   m_SizeDelta: {x: 23.7541, y: 24.1873}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9012654331967081341
@@ -4178,7 +4229,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 0}
+  m_SizeDelta: {x: -0.000076294, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &9044511004238529544
 CanvasRenderer:
@@ -4507,7 +4558,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.00012207031}
-  m_SizeDelta: {x: 0, y: 40.0572}
+  m_SizeDelta: {x: 0, y: 49.7213}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &4500544054641741681
 GameObject:
@@ -5549,7 +5600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2811178719123829037
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5568,7 +5619,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 2}
-  m_SizeDelta: {x: 0, y: 191.8962}
+  m_SizeDelta: {x: 0, y: 250}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &4454845874696048680
 CanvasRenderer:
@@ -6332,6 +6383,7 @@ GameObject:
   - component: {fileID: 8881700683157801401}
   - component: {fileID: 8924301967062964584}
   - component: {fileID: 5597501197744354147}
+  - component: {fileID: 3721306339503220521}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -6355,8 +6407,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.404, y: 0.7127}
-  m_SizeDelta: {x: -41.3737, y: -15.9302}
+  m_AnchoredPosition: {x: 1.515, y: 0.7126999}
+  m_SizeDelta: {x: -39.3759, y: -15.9302}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8924301967062964584
 CanvasRenderer:
@@ -6400,6 +6452,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u041A\u043E\u0440\u043E\u0442\u043A\u0456\u0439 \u0432\u0456\u0434\u043F\u043E\u0447\u0438\u043D\u043E\u043A"
+--- !u!114 &3721306339503220521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6502551936967351613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a179ec645311e874ba6d26be587cf8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManualLocalizedText
+  ukrainianText: "\u041A\u043E\u0440\u043E\u0442\u043A\u0456\u0439 \u0432\u0456\u0434\u043F\u043E\u0447\u0438\u043D\u043E\u043A"
+  englishText: 
+  russianText: 
+  useCurrentTextAsSource: 1
 --- !u!1 &6512522971029038790
 GameObject:
   m_ObjectHideFlags: 0
@@ -6930,6 +6998,7 @@ GameObject:
   - component: {fileID: 4139687841736244229}
   - component: {fileID: 5852186356853900206}
   - component: {fileID: 2267586685943890157}
+  - component: {fileID: 2123800929972143394}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -6953,8 +7022,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.057800293, y: 0.14940071}
-  m_SizeDelta: {x: -5.3342, y: -6.076}
+  m_AnchoredPosition: {x: 0.057800293, y: -0.11389923}
+  m_SizeDelta: {x: -6.3876, y: -6.6027}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5852186356853900206
 CanvasRenderer:
@@ -6988,7 +7057,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 22
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
@@ -6998,6 +7067,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u0412\u0438\u043F\u0438\u0442\u0438"
+--- !u!114 &2123800929972143394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725957687110176298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a179ec645311e874ba6d26be587cf8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManualLocalizedText
+  ukrainianText: "\u0412\u0438\u043F\u0438\u0442\u0438"
+  englishText: 
+  russianText: 
+  useCurrentTextAsSource: 1
 --- !u!1 &6802463892705789887
 GameObject:
   m_ObjectHideFlags: 0
@@ -7130,6 +7215,7 @@ GameObject:
   - component: {fileID: 8442062644103639539}
   - component: {fileID: 1286969014829368707}
   - component: {fileID: 2419547654295577581}
+  - component: {fileID: 7168702180554571023}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -7198,6 +7284,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u041F\u0441\u0435\u0432\u0434\u043E\u0436\u0438\u0442\u0442\u044F"
+--- !u!114 &7168702180554571023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6951319267859804762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a179ec645311e874ba6d26be587cf8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManualLocalizedText
+  ukrainianText: "\u041F\u0441\u0435\u0432\u0434\u043E\u0436\u0438\u0442\u0442\u044F"
+  englishText: 
+  russianText: 
+  useCurrentTextAsSource: 1
 --- !u!1 &7132416498701646509
 GameObject:
   m_ObjectHideFlags: 0
@@ -7446,6 +7548,7 @@ GameObject:
   - component: {fileID: 3592960363628748557}
   - component: {fileID: 2847477095929694813}
   - component: {fileID: 6911643049757107324}
+  - component: {fileID: 740334502678026124}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -7514,6 +7617,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u0417\u0446\u0456\u043B\u0435\u043D\u043D\u044F"
+--- !u!114 &740334502678026124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497142178683358123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a179ec645311e874ba6d26be587cf8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManualLocalizedText
+  ukrainianText: "\u0417\u0446\u0456\u043B\u0435\u043D\u043D\u044F"
+  englishText: 
+  russianText: 
+  useCurrentTextAsSource: 1
 --- !u!1 &7678591426572176941
 GameObject:
   m_ObjectHideFlags: 0
@@ -7846,6 +7965,7 @@ GameObject:
   - component: {fileID: 4433261007050054518}
   - component: {fileID: 6551499644444758067}
   - component: {fileID: 1218854553282646018}
+  - component: {fileID: 6312622360563474931}
   m_Layer: 5
   m_Name: Text (Legacy) (1)
   m_TagString: Untagged
@@ -7869,8 +7989,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000081658, y: 2.3}
-  m_SizeDelta: {x: 145.86, y: 25.55}
+  m_AnchoredPosition: {x: -0, y: 0.3613}
+  m_SizeDelta: {x: 147.4928, y: 27.795}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6551499644444758067
 CanvasRenderer:
@@ -7914,6 +8034,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u041A\u0430\u043B\u044C\u043A\u0443\u043B\u044F\u0442\u043E\u0440"
+--- !u!114 &6312622360563474931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434633377267459854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a179ec645311e874ba6d26be587cf8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManualLocalizedText
+  ukrainianText: "\u041A\u0430\u043B\u044C\u043A\u0443\u043B\u044F\u0442\u043E\u0440"
+  englishText: 
+  russianText: 
+  useCurrentTextAsSource: 1
 --- !u!1 &8458848916410359674
 GameObject:
   m_ObjectHideFlags: 0

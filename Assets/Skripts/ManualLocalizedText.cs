@@ -42,12 +42,15 @@ public class ManualLocalizedText : MonoBehaviour
         if (string.IsNullOrWhiteSpace(ukrainianText))
             return;
 
+        RuntimeLocalization localization = RuntimeLocalization.EnsureExists();
+        ukrainianText = localization.GetSourceText(ukrainianText);
         string translated = GetTranslatedText();
+
         if (uiText != null)
             uiText.text = translated;
-        else if (tmpText != null)
+        if (tmpText != null)
             tmpText.text = translated;
-        else if (textMesh != null)
+        if (textMesh != null)
             textMesh.text = translated;
     }
 
