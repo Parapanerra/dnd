@@ -286,6 +286,10 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         tmpDropdowns = new List<TMP_Dropdown>(FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include));
         resetButtons = new List<Button>(FindObjectsByType<Button>(FindObjectsInactive.Include));
 
+        inputFields.RemoveAll(inputField => IsManagedByHealthBar(inputField != null ? inputField.transform : null));
+        tmpInputFields.RemoveAll(inputField => IsManagedByHealthBar(inputField != null ? inputField.transform : null));
+        sliders.RemoveAll(slider => IsManagedByHealthBar(slider != null ? slider.transform : null));
+
         inputFields.Sort((a, b) => string.Compare(GetControlPath(a.transform), GetControlPath(b.transform), StringComparison.Ordinal));
         tmpInputFields.Sort((a, b) => string.Compare(GetControlPath(a.transform), GetControlPath(b.transform), StringComparison.Ordinal));
         toggles.Sort((a, b) => string.Compare(GetControlPath(a.transform), GetControlPath(b.transform), StringComparison.Ordinal));
@@ -295,6 +299,13 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         resetButtons.RemoveAll(button => !IsResetButton(button));
 
         CacheCharacterNameField();
+    }
+
+    private bool IsManagedByHealthBar(Transform transform)
+    {
+        return transform != null &&
+               (transform.GetComponentInParent<HealthBar>(true) != null ||
+                transform.GetComponentInParent<HealthBar1>(true) != null);
     }
 
     private void CacheCharacterNameField()

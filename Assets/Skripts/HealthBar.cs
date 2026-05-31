@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,12 @@ public class HealthBar : MonoBehaviour
     private int damage;
     private int heal;
     private CharacterSceneData sceneData;
+    private Coroutine deferredUiRefresh;
+
+    private void OnEnable()
+    {
+        QueueDeferredUiRefresh();
+    }
 
     private void Start()
     {
@@ -196,6 +203,7 @@ public class HealthBar : MonoBehaviour
         maxTemporaryHealth = sceneData.GetInt(temporaryMaxKey, 0);
         currentTemporaryHealth = Mathf.Clamp(sceneData.GetInt(temporaryCurrentKey, maxTemporaryHealth), 0, maxTemporaryHealth);
         UpdateHealthUI();
+        QueueDeferredUiRefresh();
     }
 
     private void SaveSceneData()
@@ -244,6 +252,26 @@ public class HealthBar : MonoBehaviour
 
         if (healthText != null)
             healthText.text = $"{currentHealth} / {maxHealth}";
+    }
+
+    private void QueueDeferredUiRefresh()
+    {
+        if (!isActiveAndEnabled)
+            return;
+
+        if (deferredUiRefresh != null)
+            StopCoroutine(deferredUiRefresh);
+
+        deferredUiRefresh = StartCoroutine(RefreshUiAtEndOfFrame());
+    }
+
+    private IEnumerator RefreshUiAtEndOfFrame()
+    {
+        yield return null;
+        yield return new WaitForEndOfFrame();
+        Canvas.ForceUpdateCanvases();
+        UpdateHealthUI();
+        deferredUiRefresh = null;
     }
 
     private void UpdateSliderPercent(Slider slider, int current, int max)
