@@ -203,6 +203,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
         RefreshDropdownDrivenUi();
         RefreshToggleDrivenPanels();
+        RefreshHealthBars();
     }
 
     private void RefreshDropdownDrivenUi()
@@ -224,6 +225,19 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         foreach (PanelToggleManager manager in panelToggleManagers)
             if (manager != null)
                 manager.RefreshPanels();
+    }
+
+    private void RefreshHealthBars()
+    {
+        HealthBar[] healthBars = FindObjectsByType<HealthBar>(FindObjectsInactive.Include);
+        foreach (HealthBar healthBar in healthBars)
+            if (healthBar != null)
+                healthBar.RefreshHealthFromData();
+
+        HealthBar1[] healthBarOnes = FindObjectsByType<HealthBar1>(FindObjectsInactive.Include);
+        foreach (HealthBar1 healthBar in healthBarOnes)
+            if (healthBar != null)
+                healthBar.RefreshHealthFromData();
     }
 
     public void SwitchSceneData(string newSceneName)

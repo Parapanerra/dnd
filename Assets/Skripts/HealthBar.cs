@@ -45,8 +45,7 @@ public class HealthBar : MonoBehaviour
         if (confirmMaxHealthButton != null) confirmMaxHealthButton.onClick.AddListener(ConfirmMaxHealth);
         if (resetButton != null) resetButton.onClick.AddListener(ResetHealth);
 
-        LoadSceneData();
-        UpdateHealthUI();
+        RefreshHealthFromData();
     }
 
     private void UpdateMaxHealth(string value)
@@ -171,7 +170,7 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    private void LoadSceneData()
+    public void RefreshHealthFromData()
     {
         if (sceneData == null)
             sceneData = DndSaveManager.Instance.GetActiveSceneData();
@@ -196,6 +195,7 @@ public class HealthBar : MonoBehaviour
 
         maxTemporaryHealth = sceneData.GetInt(temporaryMaxKey, 0);
         currentTemporaryHealth = Mathf.Clamp(sceneData.GetInt(temporaryCurrentKey, maxTemporaryHealth), 0, maxTemporaryHealth);
+        UpdateHealthUI();
     }
 
     private void SaveSceneData()
