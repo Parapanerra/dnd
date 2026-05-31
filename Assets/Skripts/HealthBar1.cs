@@ -237,6 +237,7 @@ public class HealthBar1 : MonoBehaviour
             healthSlider.maxValue = Mathf.Max(maxHealth, 1);
             healthSlider.SetValueWithoutNotify(Mathf.Clamp(currentHealth, 0, maxHealth));
             SetSliderHandleVisible(healthSlider, currentHealth > 0 && maxHealth > 0);
+            SetSliderFillVisible(healthSlider, currentHealth > 0 && maxHealth > 0);
         }
 
         if (temporaryHealthSlider == null)
@@ -247,6 +248,7 @@ public class HealthBar1 : MonoBehaviour
             temporaryHealthSlider.maxValue = Mathf.Max(maxTemporaryHealth, 1);
             temporaryHealthSlider.SetValueWithoutNotify(Mathf.Clamp(currentTemporaryHealth, 0, maxTemporaryHealth));
             SetSliderHandleVisible(temporaryHealthSlider, currentTemporaryHealth > 0 && maxTemporaryHealth > 0);
+            SetSliderFillVisible(temporaryHealthSlider, currentTemporaryHealth > 0 && maxTemporaryHealth > 0);
         }
 
         if (temporaryHealthText == null)
@@ -267,6 +269,17 @@ public class HealthBar1 : MonoBehaviour
             return;
 
         Graphic[] graphics = slider.handleRect.GetComponentsInChildren<Graphic>(true);
+        foreach (Graphic graphic in graphics)
+            if (graphic != null)
+                graphic.enabled = visible;
+    }
+
+    private void SetSliderFillVisible(Slider slider, bool visible)
+    {
+        if (slider == null || slider.fillRect == null)
+            return;
+
+        Graphic[] graphics = slider.fillRect.GetComponentsInChildren<Graphic>(true);
         foreach (Graphic graphic in graphics)
             if (graphic != null)
                 graphic.enabled = visible;
