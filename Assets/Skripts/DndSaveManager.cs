@@ -415,10 +415,10 @@ public class DndSaveManager : MonoBehaviour
         if (!IsCharacterSheetScene(scene.name))
             return;
 
-        if (FindFirstObjectByType<CharacterSheetManagerScene1>() != null)
+        if (FindAnyObjectByType<CharacterSheetManagerScene1>() != null)
             return;
 
-        CharacterSceneAutoSave autoSave = FindFirstObjectByType<CharacterSceneAutoSave>();
+        CharacterSceneAutoSave autoSave = FindAnyObjectByType<CharacterSceneAutoSave>();
         if (autoSave == null)
         {
             GameObject autoSaveObject = new GameObject("CharacterSceneAutoSave");
@@ -635,13 +635,13 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     private void CacheSceneControls()
     {
-        inputFields = new List<InputField>(FindObjectsByType<InputField>(FindObjectsInactive.Include, FindObjectsSortMode.None));
-        tmpInputFields = new List<TMP_InputField>(FindObjectsByType<TMP_InputField>(FindObjectsInactive.Include, FindObjectsSortMode.None));
-        toggles = new List<Toggle>(FindObjectsByType<Toggle>(FindObjectsInactive.Include, FindObjectsSortMode.None));
-        sliders = new List<Slider>(FindObjectsByType<Slider>(FindObjectsInactive.Include, FindObjectsSortMode.None));
-        dropdowns = new List<Dropdown>(FindObjectsByType<Dropdown>(FindObjectsInactive.Include, FindObjectsSortMode.None));
-        tmpDropdowns = new List<TMP_Dropdown>(FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include, FindObjectsSortMode.None));
-        resetButtons = new List<Button>(FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None));
+        inputFields = new List<InputField>(FindObjectsByType<InputField>(FindObjectsInactive.Include));
+        tmpInputFields = new List<TMP_InputField>(FindObjectsByType<TMP_InputField>(FindObjectsInactive.Include));
+        toggles = new List<Toggle>(FindObjectsByType<Toggle>(FindObjectsInactive.Include));
+        sliders = new List<Slider>(FindObjectsByType<Slider>(FindObjectsInactive.Include));
+        dropdowns = new List<Dropdown>(FindObjectsByType<Dropdown>(FindObjectsInactive.Include));
+        tmpDropdowns = new List<TMP_Dropdown>(FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include));
+        resetButtons = new List<Button>(FindObjectsByType<Button>(FindObjectsInactive.Include));
 
         inputFields.RemoveAll(inputField => IsManagedByHealthBar(inputField != null ? inputField.transform : null));
         tmpInputFields.RemoveAll(inputField => IsManagedByHealthBar(inputField != null ? inputField.transform : null));
@@ -683,7 +683,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
         characterNameInputField = null;
         characterNameTmpInputField = null;
 
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform item in transforms)
         {
             if (!NameMatches(item.name, CharacterNameObjectName))
@@ -824,12 +824,12 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     private void RefreshDropdownDrivenUi()
     {
-        DropdownManager[] dropdownManagers = FindObjectsByType<DropdownManager>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        DropdownManager[] dropdownManagers = FindObjectsByType<DropdownManager>(FindObjectsInactive.Include);
         foreach (DropdownManager manager in dropdownManagers)
             if (manager != null)
                 manager.RefreshAll();
 
-        DropdownVisibilityController[] visibilityControllers = FindObjectsByType<DropdownVisibilityController>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        DropdownVisibilityController[] visibilityControllers = FindObjectsByType<DropdownVisibilityController>(FindObjectsInactive.Include);
         foreach (DropdownVisibilityController controller in visibilityControllers)
             if (controller != null)
                 controller.RefreshVisibility();
@@ -837,7 +837,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     private void RefreshToggleDrivenPanels()
     {
-        PanelToggleManager[] panelToggleManagers = FindObjectsByType<PanelToggleManager>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        PanelToggleManager[] panelToggleManagers = FindObjectsByType<PanelToggleManager>(FindObjectsInactive.Include);
         foreach (PanelToggleManager manager in panelToggleManagers)
             if (manager != null)
                 manager.RefreshPanels();
@@ -963,7 +963,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     private void ResetInventoryCells()
     {
-        InventoryItemCell[] inventoryCells = FindObjectsByType<InventoryItemCell>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        InventoryItemCell[] inventoryCells = FindObjectsByType<InventoryItemCell>(FindObjectsInactive.Include);
         foreach (InventoryItemCell inventoryCell in inventoryCells)
             if (inventoryCell != null)
                 inventoryCell.ResetToDefaults(false);
@@ -971,12 +971,12 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     private void ResetSceneHealthBars()
     {
-        HealthBar[] healthBars = FindObjectsByType<HealthBar>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        HealthBar[] healthBars = FindObjectsByType<HealthBar>(FindObjectsInactive.Include);
         foreach (HealthBar healthBar in healthBars)
             if (healthBar != null)
                 healthBar.ResetHealth();
 
-        HealthBar1[] healthBarOnes = FindObjectsByType<HealthBar1>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        HealthBar1[] healthBarOnes = FindObjectsByType<HealthBar1>(FindObjectsInactive.Include);
         foreach (HealthBar1 healthBar in healthBarOnes)
             if (healthBar != null)
                 healthBar.ResetHealth();
@@ -987,7 +987,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
         if (!SceneHasObject("Buttonphotopersoj") && !SceneHasObject("photopersonaja"))
             return;
 
-        if (FindFirstObjectByType<CharacterPortraitManager>() != null)
+        if (FindAnyObjectByType<CharacterPortraitManager>() != null)
             return;
 
         gameObject.AddComponent<CharacterPortraitManager>();
@@ -995,7 +995,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     private bool SceneHasObject(string objectName)
     {
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform transform in transforms)
             if (transform != null && GetBaseName(transform.name).Equals(objectName, StringComparison.OrdinalIgnoreCase))
                 return true;
@@ -1088,7 +1088,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     private Transform FindTransformByBaseName(string objectName)
     {
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform item in transforms)
             if (item != null && GetBaseName(item.name).Equals(objectName, StringComparison.OrdinalIgnoreCase))
                 return item;

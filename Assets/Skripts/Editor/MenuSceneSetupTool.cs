@@ -8,14 +8,11 @@ public static class MenuSceneSetupTool
 {
     private const string CharacterButtonTemplateName = "CharacterButtonTemplate";
     private const string CharacterButtonPrefabPath = "Assets/Prefab/kartaPerson (1).prefab";
-    private const string CleanMenuRootName = "CharacterMenuRoot";
-    private const string RowsContentName = "RowsContent";
-    private const string RowTemplateName = "CharacterRowTemplate";
 
     [MenuItem("Tools/DnD/Create Character Button Template")]
     public static void CreateCharacterButtonTemplate()
     {
-        MainMenuManager menuManager = Object.FindObjectOfType<MainMenuManager>();
+        MainMenuManager menuManager = Object.FindAnyObjectByType<MainMenuManager>();
         if (menuManager == null)
         {
             Debug.LogError("MainMenuManager not found in the open scene.");
@@ -28,7 +25,7 @@ public static class MenuSceneSetupTool
     [MenuItem("Tools/DnD/Create Clean Character Menu")]
     public static void CreateCleanCharacterMenu()
     {
-        MainMenuManager menuManager = Object.FindObjectOfType<MainMenuManager>();
+        MainMenuManager menuManager = Object.FindAnyObjectByType<MainMenuManager>();
         if (menuManager == null)
         {
             Debug.LogError("MainMenuManager not found in the open scene.");
@@ -39,54 +36,13 @@ public static class MenuSceneSetupTool
         EditorUtility.SetDirty(menuManager);
         EditorSceneManager.MarkSceneDirty(menuManager.gameObject.scene);
         Debug.Log("Created clean editable CharacterRowsScrollView.");
-        return;
-
-        Canvas canvas = Object.FindObjectOfType<Canvas>();
-        if (canvas == null)
-        {
-            Debug.LogError("Canvas not found in the open scene.");
-            return;
-        }
-
-        Transform existingRoot = canvas.transform.Find(CleanMenuRootName);
-        GameObject root = existingRoot != null
-            ? existingRoot.gameObject
-            : CreateUiObject(CleanMenuRootName, canvas.transform, new Vector2(0.5f, 0.5f), new Vector2(0f, -165f), new Vector2(560f, 650f));
-
-        Transform rowsContent = root.transform.Find(RowsContentName);
-        if (rowsContent == null)
-            rowsContent = CreateUiObject(RowsContentName, root.transform, new Vector2(0.5f, 1f), new Vector2(0f, -32f), new Vector2(560f, 500f)).transform;
-
-        Transform rowTemplate = rowsContent.Find(RowTemplateName);
-        if (rowTemplate == null)
-            rowTemplate = CreateCharacterRowTemplate(rowsContent).transform;
-
-        Button addButton = GetOrCreateButton(root.transform, "AddCharacterButton", new Vector2(0f, -292f), new Vector2(310f, 58f), "Додати персонажа");
-
-        menuManager.characterRowsContent = rowsContent;
-        menuManager.characterRowTemplate = rowTemplate.gameObject;
-        menuManager.addCharacterButton = addButton;
-        menuManager.characterSheetSceneName = "cartaPersonaj";
-        menuManager.inventorySceneName = "inventory";
-        menuManager.spellbookSceneName = "spelBook";
-        menuManager.openCharacterAfterCreate = false;
-        menuManager.repairScrollViewAtRuntime = false;
-        menuManager.applyDefaultCharacterListLayout = false;
-        menuManager.applyDefaultCharacterButtonStyle = false;
-        menuManager.characterRowSpacing = 12f;
-
-        EditorUtility.SetDirty(root);
-        EditorUtility.SetDirty(menuManager);
-        EditorSceneManager.MarkSceneDirty(menuManager.gameObject.scene);
-
-        Debug.Log("Created clean editable character menu. Edit CharacterMenuRoot/RowsContent/CharacterRowTemplate visuals in Edit Mode.");
     }
 
     [MenuItem("Tools/DnD/Repair Menu Character List")]
     public static void RepairMenuCharacterList()
     {
         Scene scene = EditorSceneManager.OpenScene("Assets/Scenes/menu.unity", OpenSceneMode.Single);
-        MainMenuManager menuManager = Object.FindObjectOfType<MainMenuManager>();
+        MainMenuManager menuManager = Object.FindAnyObjectByType<MainMenuManager>();
 
         if (menuManager == null)
         {
@@ -230,66 +186,6 @@ public static class MenuSceneSetupTool
         EditorSceneManager.MarkSceneDirty(menuManager.gameObject.scene);
 
         Debug.Log("Created CharacterButtonTemplate in Content. You can edit this object in Edit Mode.");
-    }
-
-    private static GameObject CreateCharacterRowTemplate(Transform parent)
-    {
-        GameObject row = CreateUiObject(RowTemplateName, parent, new Vector2(0.5f, 1f), new Vector2(0f, 0f), new Vector2(560f, 78f));
-
-        GetOrCreateButton(row.transform, "InventoryButton", new Vector2(-235f, 0f), new Vector2(66f, 66f), "I");
-        GetOrCreateButton(row.transform, "CharacterButton", new Vector2(-25f, 0f), new Vector2(330f, 66f), "Персонаж №1");
-        GetOrCreateButton(row.transform, "SpellsButton", new Vector2(185f, 0f), new Vector2(66f, 66f), "S");
-        GetOrCreateButton(row.transform, "DeleteButton", new Vector2(265f, 0f), new Vector2(66f, 66f), "X");
-
-        return row;
-    }
-
-    private static Button GetOrCreateButton(Transform parent, string name, Vector2 position, Vector2 size, string label)
-    {
-        Transform existing = parent.Find(name);
-        if (existing != null)
-        {
-            Button existingButton = existing.GetComponent<Button>();
-            if (existingButton != null)
-                return existingButton;
-        }
-
-        GameObject buttonObject = CreateUiObject(name, parent, new Vector2(0.5f, 0.5f), position, size);
-        Image image = buttonObject.AddComponent<Image>();
-        image.color = new Color(0.12f, 0.09f, 0.07f, 0.9f);
-        image.raycastTarget = true;
-
-        Button button = buttonObject.AddComponent<Button>();
-        button.targetGraphic = image;
-
-        GameObject textObject = CreateUiObject("Text", buttonObject.transform, new Vector2(0.5f, 0.5f), Vector2.zero, size);
-        Text text = textObject.AddComponent<Text>();
-        text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        text.text = label;
-        text.color = new Color(0.95f, 0.55f, 0.05f, 1f);
-        text.alignment = TextAnchor.MiddleCenter;
-        text.fontSize = 24;
-        text.resizeTextForBestFit = true;
-        text.resizeTextMinSize = 10;
-        text.resizeTextMaxSize = 28;
-        text.raycastTarget = false;
-
-        return button;
-    }
-
-    private static GameObject CreateUiObject(string name, Transform parent, Vector2 anchor, Vector2 position, Vector2 size)
-    {
-        GameObject gameObject = new GameObject(name, typeof(RectTransform), typeof(CanvasRenderer));
-        gameObject.transform.SetParent(parent, false);
-
-        RectTransform rect = gameObject.GetComponent<RectTransform>();
-        rect.anchorMin = anchor;
-        rect.anchorMax = anchor;
-        rect.pivot = new Vector2(0.5f, 0.5f);
-        rect.anchoredPosition = position;
-        rect.sizeDelta = size;
-
-        return gameObject;
     }
 
     private static void ConfigureContentLayoutForTemplateSize(Transform content)

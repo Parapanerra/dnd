@@ -13,10 +13,10 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
 
     public static void ConfigureSceneInputs()
     {
-        foreach (InputField input in FindObjectsByType<InputField>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        foreach (InputField input in FindObjectsByType<InputField>(FindObjectsInactive.Include))
             Configure(input);
 
-        foreach (TMP_InputField input in FindObjectsByType<TMP_InputField>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        foreach (TMP_InputField input in FindObjectsByType<TMP_InputField>(FindObjectsInactive.Include))
             Configure(input);
     }
 

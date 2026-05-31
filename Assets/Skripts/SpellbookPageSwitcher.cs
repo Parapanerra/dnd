@@ -28,7 +28,7 @@ public class SpellbookPageSwitcher : MonoBehaviour
         if (SceneManager.GetActiveScene().name != SceneName)
             return;
 
-        if (FindFirstObjectByType<SpellbookPageSwitcher>() != null)
+        if (FindAnyObjectByType<SpellbookPageSwitcher>() != null)
             return;
 
         GameObject switcherObject = new GameObject("SpellbookPageSwitcher");
@@ -46,7 +46,7 @@ public class SpellbookPageSwitcher : MonoBehaviour
 
     private void BindPageButtons()
     {
-        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include);
         List<Button> pageButtons = new List<Button>();
 
         foreach (Button button in buttons)
@@ -99,7 +99,7 @@ public class SpellbookPageSwitcher : MonoBehaviour
 
     private Button FindButtonByName(string objectName)
     {
-        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include);
         foreach (Button button in buttons)
             if (button != null && NameMatches(button.gameObject.name, objectName))
                 return button;
@@ -112,7 +112,7 @@ public class SpellbookPageSwitcher : MonoBehaviour
         KeepMainPagePanelActive();
         string sceneDataName = pageIndex <= 0 ? SceneName : SceneName + " " + pageIndex;
 
-        CharacterSheetManagerScene1 sheetManager = FindFirstObjectByType<CharacterSheetManagerScene1>();
+        CharacterSheetManagerScene1 sheetManager = FindAnyObjectByType<CharacterSheetManagerScene1>();
         if (sheetManager != null)
         {
             sheetManager.SwitchSceneData(sceneDataName);
@@ -121,7 +121,7 @@ public class SpellbookPageSwitcher : MonoBehaviour
             return;
         }
 
-        CharacterSceneAutoSave autoSave = FindFirstObjectByType<CharacterSceneAutoSave>();
+        CharacterSceneAutoSave autoSave = FindAnyObjectByType<CharacterSceneAutoSave>();
         if (autoSave != null)
         {
             autoSave.SwitchSceneData(sceneDataName);
@@ -137,12 +137,12 @@ public class SpellbookPageSwitcher : MonoBehaviour
 
     private void EnsurePersistentDropdowns()
     {
-        Dropdown[] dropdowns = FindObjectsByType<Dropdown>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Dropdown[] dropdowns = FindObjectsByType<Dropdown>(FindObjectsInactive.Include);
         foreach (Dropdown dropdown in dropdowns)
             if (dropdown != null && dropdown.GetComponent<PersistentDropdownValue>() == null)
                 dropdown.gameObject.AddComponent<PersistentDropdownValue>();
 
-        TMP_Dropdown[] tmpDropdowns = FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        TMP_Dropdown[] tmpDropdowns = FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include);
         foreach (TMP_Dropdown dropdown in tmpDropdowns)
             if (dropdown != null && dropdown.GetComponent<PersistentDropdownValue>() == null)
                 dropdown.gameObject.AddComponent<PersistentDropdownValue>();
@@ -150,7 +150,7 @@ public class SpellbookPageSwitcher : MonoBehaviour
 
     private void ReloadPersistentDropdowns()
     {
-        PersistentDropdownValue[] dropdowns = FindObjectsByType<PersistentDropdownValue>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        PersistentDropdownValue[] dropdowns = FindObjectsByType<PersistentDropdownValue>(FindObjectsInactive.Include);
         foreach (PersistentDropdownValue dropdown in dropdowns)
             if (dropdown != null)
                 dropdown.Reload();
@@ -161,17 +161,17 @@ public class SpellbookPageSwitcher : MonoBehaviour
         const string pageTitlePrefix = "\u0421\u0442\u043E\u0440\u0456\u043D\u043A\u0430 \u2116";
         string title = pageTitlePrefix + (pageIndex + 1);
 
-        Text[] texts = FindObjectsByType<Text>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Text[] texts = FindObjectsByType<Text>(FindObjectsInactive.Include);
         foreach (Text text in texts)
             if (IsPageTitle(text != null ? text.transform : null, text != null ? text.text : ""))
                 text.text = title;
 
-        TMP_Text[] tmpTexts = FindObjectsByType<TMP_Text>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        TMP_Text[] tmpTexts = FindObjectsByType<TMP_Text>(FindObjectsInactive.Include);
         foreach (TMP_Text text in tmpTexts)
             if (IsPageTitle(text != null ? text.transform : null, text != null ? text.text : ""))
                 text.text = title;
 
-        TextMesh[] textMeshes = FindObjectsByType<TextMesh>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        TextMesh[] textMeshes = FindObjectsByType<TextMesh>(FindObjectsInactive.Include);
         foreach (TextMesh text in textMeshes)
             if (IsPageTitle(text != null ? text.transform : null, text != null ? text.text : ""))
                 text.text = title;
@@ -208,7 +208,7 @@ public class SpellbookPageSwitcher : MonoBehaviour
 
     private void KeepMainPagePanelActive()
     {
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform transform in transforms)
             if (transform != null && string.Equals(transform.name, "Page", StringComparison.Ordinal))
                 transform.gameObject.SetActive(true);

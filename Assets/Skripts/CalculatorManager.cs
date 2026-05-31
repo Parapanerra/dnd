@@ -227,7 +227,7 @@ public class CalculatorManager : MonoBehaviour
 
     private void AssignPotionControls()
     {
-        Transform[] transforms = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Transform[] transforms = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform item in transforms)
         {
             if (item == null)
@@ -958,7 +958,7 @@ public class CalculatorManager : MonoBehaviour
 
     private Transform FindSceneTransformByName(string objectName)
     {
-        Transform[] transforms = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Transform[] transforms = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform item in transforms)
             if (item != null && item.gameObject.scene.IsValid() && NameMatches(item.name, objectName))
                 return item;
@@ -1003,14 +1003,14 @@ public class CalculatorManager : MonoBehaviour
 
     private void SaveSceneAfterRest()
     {
-        CharacterSheetManagerScene1 sheetManager = UnityEngine.Object.FindFirstObjectByType<CharacterSheetManagerScene1>();
+        CharacterSheetManagerScene1 sheetManager = UnityEngine.Object.FindAnyObjectByType<CharacterSheetManagerScene1>();
         if (sheetManager != null)
         {
             sheetManager.SaveCharacterData();
             return;
         }
 
-        CharacterSceneAutoSave autoSave = UnityEngine.Object.FindFirstObjectByType<CharacterSceneAutoSave>();
+        CharacterSceneAutoSave autoSave = UnityEngine.Object.FindAnyObjectByType<CharacterSceneAutoSave>();
         if (autoSave != null)
             autoSave.SaveSceneData();
     }
@@ -1206,7 +1206,7 @@ public class CalculatorManager : MonoBehaviour
 
     private HealthBar FindActiveHealthBar()
     {
-        HealthBar[] bars = UnityEngine.Object.FindObjectsByType<HealthBar>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        HealthBar[] bars = UnityEngine.Object.FindObjectsByType<HealthBar>(FindObjectsInactive.Exclude);
         foreach (HealthBar bar in bars)
             if (bar != null && bar.IsUsableForCalculator)
                 return bar;
@@ -1216,7 +1216,7 @@ public class CalculatorManager : MonoBehaviour
 
     private HealthBar1 FindActiveHealthBar1()
     {
-        HealthBar1[] bars = UnityEngine.Object.FindObjectsByType<HealthBar1>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        HealthBar1[] bars = UnityEngine.Object.FindObjectsByType<HealthBar1>(FindObjectsInactive.Exclude);
         foreach (HealthBar1 bar in bars)
             if (bar != null && bar.IsUsableForCalculator)
                 return bar;
@@ -1247,7 +1247,7 @@ public class CalculatorManager : MonoBehaviour
 
     private InputField FindInputFieldByName(params string[] objectNames)
     {
-        InputField[] fields = UnityEngine.Object.FindObjectsByType<InputField>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        InputField[] fields = UnityEngine.Object.FindObjectsByType<InputField>(FindObjectsInactive.Include);
         foreach (InputField field in fields)
         {
             if (field == null || !field.gameObject.activeInHierarchy)

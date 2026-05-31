@@ -74,7 +74,7 @@ public class panelSktollveiwSripts : MonoBehaviour
 
     private bool HasNewInventoryCellLayout()
     {
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform transform in transforms)
             if (transform != null && transform.name == "itemCategoryDropdown")
                 return true;

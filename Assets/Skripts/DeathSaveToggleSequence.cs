@@ -18,7 +18,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
 
     public static void ConfigureScene()
     {
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform transform in transforms)
         {
             if (IsDeathCheckContainer(transform.name))

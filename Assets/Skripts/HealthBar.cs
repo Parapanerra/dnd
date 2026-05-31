@@ -250,7 +250,7 @@ public class HealthBar : MonoBehaviour
 
     private Slider FindSliderByName(string objectName)
     {
-        Slider[] sliders = FindObjectsByType<Slider>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Slider[] sliders = FindObjectsByType<Slider>(FindObjectsInactive.Include);
         foreach (Slider slider in sliders)
         {
             if (slider != null && string.Equals(slider.gameObject.name, objectName, System.StringComparison.OrdinalIgnoreCase))
@@ -289,7 +289,7 @@ public class HealthBar : MonoBehaviour
 
     private Transform FindTransformByName(string objectName)
     {
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform candidate in transforms)
         {
             if (candidate != null && string.Equals(candidate.gameObject.name, objectName, System.StringComparison.OrdinalIgnoreCase))

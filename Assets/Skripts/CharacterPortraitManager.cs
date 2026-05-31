@@ -131,7 +131,7 @@ public class CharacterPortraitManager : MonoBehaviour
             saveManager.SaveData();
         }
 
-        CharacterPortraitManager manager = FindFirstObjectByType<CharacterPortraitManager>();
+        CharacterPortraitManager manager = FindAnyObjectByType<CharacterPortraitManager>();
         if (manager != null)
             manager.ClearPortraitImage();
     }
@@ -212,7 +212,7 @@ public class CharacterPortraitManager : MonoBehaviour
 
     private Button FindButtonByName(string objectName)
     {
-        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include);
         foreach (Button button in buttons)
             if (button != null && NameMatches(button.gameObject.name, objectName))
                 return button;
@@ -222,7 +222,7 @@ public class CharacterPortraitManager : MonoBehaviour
 
     private Image FindImageByName(string objectName)
     {
-        Image[] images = FindObjectsByType<Image>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Image[] images = FindObjectsByType<Image>(FindObjectsInactive.Include);
         foreach (Image image in images)
             if (image != null && NameMatches(image.gameObject.name, objectName))
                 return image;

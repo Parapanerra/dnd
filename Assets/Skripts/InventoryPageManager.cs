@@ -31,7 +31,7 @@ public class InventoryPageManager : MonoBehaviour
         if (!string.Equals(SceneManager.GetActiveScene().name, SceneName, StringComparison.Ordinal))
             return;
 
-        if (FindFirstObjectByType<InventoryPageManager>() != null)
+        if (FindAnyObjectByType<InventoryPageManager>() != null)
             return;
 
         GameObject managerObject = new GameObject("InventoryPageManager");
@@ -49,7 +49,7 @@ public class InventoryPageManager : MonoBehaviour
 
     private void BindPageButtons()
     {
-        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include);
         List<Button> pageButtons = new List<Button>();
 
         foreach (Button button in buttons)
@@ -125,7 +125,7 @@ public class InventoryPageManager : MonoBehaviour
 
     private void KeepMainPageActive()
     {
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform transform in transforms)
         {
             if (transform == null)
@@ -140,7 +140,7 @@ public class InventoryPageManager : MonoBehaviour
 
     private Transform FindMainPage()
     {
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform transform in transforms)
             if (transform != null && string.Equals(transform.name, "Page", StringComparison.Ordinal))
                 return transform;
@@ -157,12 +157,12 @@ public class InventoryPageManager : MonoBehaviour
     {
         string title = RuntimeLocalization.EnsureExists().Translate("Сторінка №") + (pageIndex + 1);
 
-        Text[] texts = FindObjectsByType<Text>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Text[] texts = FindObjectsByType<Text>(FindObjectsInactive.Include);
         foreach (Text text in texts)
             if (IsPageTitle(text != null ? text.transform : null, text != null ? text.text : ""))
                 text.text = title;
 
-        TMP_Text[] tmpTexts = FindObjectsByType<TMP_Text>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        TMP_Text[] tmpTexts = FindObjectsByType<TMP_Text>(FindObjectsInactive.Include);
         foreach (TMP_Text text in tmpTexts)
             if (IsPageTitle(text != null ? text.transform : null, text != null ? text.text : ""))
                 text.text = title;
@@ -191,7 +191,7 @@ public class InventoryPageManager : MonoBehaviour
 
     private Button FindButtonByName(params string[] objectNames)
     {
-        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include);
         foreach (Button button in buttons)
         {
             if (button == null)
