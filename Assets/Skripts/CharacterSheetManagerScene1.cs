@@ -382,7 +382,6 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
                 return true;
         }
 
-        Debug.LogWarning("Character name field was not found. Expected object named: " + CharacterNameObjectName);
         return false;
     }
 
