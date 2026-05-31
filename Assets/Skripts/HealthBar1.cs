@@ -271,7 +271,7 @@ public class HealthBar1 : MonoBehaviour
         slider.SetValueWithoutNotify(percent);
 
         SetSliderHandleVisible(slider, visible);
-        SetSliderFillVisible(slider, visible);
+        SetSliderFillVisible(slider, visible, percent);
     }
 
     private void SetSliderHandleVisible(Slider slider, bool visible)
@@ -285,15 +285,45 @@ public class HealthBar1 : MonoBehaviour
                 graphic.enabled = visible;
     }
 
-    private void SetSliderFillVisible(Slider slider, bool visible)
+    private void SetSliderFillVisible(Slider slider, bool visible, float percent)
     {
-        if (slider == null || slider.fillRect == null)
+        if (slider == null)
             return;
 
-        Graphic[] graphics = slider.fillRect.GetComponentsInChildren<Graphic>(true);
+        RectTransform fillRoot = slider.fillRect != null ? slider.fillRect : FindChildRect(slider.transform, "fild");
+        if (fillRoot == null)
+            return;
+
+        Graphic[] graphics = fillRoot.GetComponentsInChildren<Graphic>(true);
         foreach (Graphic graphic in graphics)
+        {
             if (graphic != null)
+            {
                 graphic.enabled = visible;
+
+                if (graphic is Image image)
+                {
+                    image.type = Image.Type.Filled;
+                    image.fillMethod = Image.FillMethod.Horizontal;
+                    image.fillOrigin = (int)Image.OriginHorizontal.Left;
+                    image.fillAmount = visible ? percent : 0f;
+                }
+            }
+        }
+    }
+
+    private RectTransform FindChildRect(Transform root, string childName)
+    {
+        if (root == null)
+            return null;
+
+        foreach (RectTransform rect in root.GetComponentsInChildren<RectTransform>(true))
+        {
+            if (rect != null && string.Equals(rect.gameObject.name, childName, System.StringComparison.OrdinalIgnoreCase))
+                return rect;
+        }
+
+        return null;
     }
 
     private Slider FindSliderByName(string objectName)
