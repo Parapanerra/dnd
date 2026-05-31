@@ -227,6 +227,7 @@ public class HealthBar : MonoBehaviour
         {
             healthSlider.maxValue = Mathf.Max(maxHealth, 1);
             healthSlider.SetValueWithoutNotify(Mathf.Clamp(currentHealth, 0, maxHealth));
+            SetSliderHandleVisible(healthSlider, currentHealth > 0 && maxHealth > 0);
         }
 
         if (temporaryHealthSlider == null)
@@ -236,6 +237,7 @@ public class HealthBar : MonoBehaviour
         {
             temporaryHealthSlider.maxValue = Mathf.Max(maxTemporaryHealth, 1);
             temporaryHealthSlider.SetValueWithoutNotify(Mathf.Clamp(currentTemporaryHealth, 0, maxTemporaryHealth));
+            SetSliderHandleVisible(temporaryHealthSlider, currentTemporaryHealth > 0 && maxTemporaryHealth > 0);
         }
 
         if (temporaryHealthText == null)
@@ -246,6 +248,17 @@ public class HealthBar : MonoBehaviour
 
         if (healthText != null)
             healthText.text = $"{currentHealth} / {maxHealth}";
+    }
+
+    private void SetSliderHandleVisible(Slider slider, bool visible)
+    {
+        if (slider == null || slider.handleRect == null)
+            return;
+
+        Graphic[] graphics = slider.handleRect.GetComponentsInChildren<Graphic>(true);
+        foreach (Graphic graphic in graphics)
+            if (graphic != null)
+                graphic.enabled = visible;
     }
 
     private Slider FindSliderByName(string objectName)
