@@ -282,13 +282,16 @@ public class HealthBar : MonoBehaviour
         bool visible = current > 0 && max > 0;
         float percent = visible ? Mathf.Clamp01((float)current / max) : 0f;
 
+        RectTransform fillRoot = GetSliderFillRoot(slider);
+
         slider.wholeNumbers = false;
         slider.minValue = 0f;
         slider.maxValue = 1f;
+        slider.fillRect = null;
         slider.SetValueWithoutNotify(percent);
 
         SetSliderHandleVisible(slider, visible);
-        SetSliderFillVisible(slider, visible, percent);
+        SetSliderFillVisible(fillRoot, visible, percent);
     }
 
     private void SetSliderHandleVisible(Slider slider, bool visible)
@@ -302,12 +305,8 @@ public class HealthBar : MonoBehaviour
                 graphic.enabled = visible;
     }
 
-    private void SetSliderFillVisible(Slider slider, bool visible, float percent)
+    private void SetSliderFillVisible(RectTransform fillRoot, bool visible, float percent)
     {
-        if (slider == null)
-            return;
-
-        RectTransform fillRoot = slider.fillRect != null ? slider.fillRect : FindChildRect(slider.transform, "fild");
         if (fillRoot == null)
             return;
 
@@ -327,6 +326,28 @@ public class HealthBar : MonoBehaviour
                 }
             }
         }
+    }
+
+    private RectTransform GetSliderFillRoot(Slider slider)
+    {
+        if (slider == null)
+            return null;
+
+        if (slider.fillRect != null)
+            return slider.fillRect;
+
+        RectTransform namedFill = FindChildRect(slider.transform, "fild");
+        if (namedFill != null)
+            return namedFill;
+
+        Image[] images = slider.GetComponentsInChildren<Image>(true);
+        foreach (Image image in images)
+        {
+            if (image != null && image.transform != slider.transform)
+                return image.rectTransform;
+        }
+
+        return null;
     }
 
     private RectTransform FindChildRect(Transform root, string childName)
