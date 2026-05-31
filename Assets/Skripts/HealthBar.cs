@@ -225,10 +225,7 @@ public class HealthBar : MonoBehaviour
 
         if (healthSlider != null)
         {
-            healthSlider.maxValue = Mathf.Max(maxHealth, 1);
-            healthSlider.SetValueWithoutNotify(Mathf.Clamp(currentHealth, 0, maxHealth));
-            SetSliderHandleVisible(healthSlider, currentHealth > 0 && maxHealth > 0);
-            SetSliderFillVisible(healthSlider, currentHealth > 0 && maxHealth > 0);
+            UpdateSliderPercent(healthSlider, currentHealth, maxHealth);
         }
 
         if (temporaryHealthSlider == null)
@@ -236,10 +233,7 @@ public class HealthBar : MonoBehaviour
 
         if (temporaryHealthSlider != null)
         {
-            temporaryHealthSlider.maxValue = Mathf.Max(maxTemporaryHealth, 1);
-            temporaryHealthSlider.SetValueWithoutNotify(Mathf.Clamp(currentTemporaryHealth, 0, maxTemporaryHealth));
-            SetSliderHandleVisible(temporaryHealthSlider, currentTemporaryHealth > 0 && maxTemporaryHealth > 0);
-            SetSliderFillVisible(temporaryHealthSlider, currentTemporaryHealth > 0 && maxTemporaryHealth > 0);
+            UpdateSliderPercent(temporaryHealthSlider, currentTemporaryHealth, maxTemporaryHealth);
         }
 
         if (temporaryHealthText == null)
@@ -250,6 +244,23 @@ public class HealthBar : MonoBehaviour
 
         if (healthText != null)
             healthText.text = $"{currentHealth} / {maxHealth}";
+    }
+
+    private void UpdateSliderPercent(Slider slider, int current, int max)
+    {
+        if (slider == null)
+            return;
+
+        bool visible = current > 0 && max > 0;
+        float percent = visible ? Mathf.Clamp01((float)current / max) : 0f;
+
+        slider.wholeNumbers = false;
+        slider.minValue = 0f;
+        slider.maxValue = 1f;
+        slider.SetValueWithoutNotify(percent);
+
+        SetSliderHandleVisible(slider, visible);
+        SetSliderFillVisible(slider, visible);
     }
 
     private void SetSliderHandleVisible(Slider slider, bool visible)
