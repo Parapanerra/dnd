@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandler
 {
-    private const float DoubleClickTime = 0.35f;
-
     private InputField inputField;
     private TMP_InputField tmpInputField;
     private float lastClickTime = -1f;
@@ -55,7 +53,7 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
     public void OnPointerClick(PointerEventData eventData)
     {
         float now = Time.unscaledTime;
-        bool isDoubleClick = now - lastClickTime <= DoubleClickTime;
+        bool isDoubleClick = now - lastClickTime <= AppConfig.Input.DoubleClickTimeSeconds;
         lastClickTime = now;
 
         if (isDoubleClick)

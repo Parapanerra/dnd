@@ -22,7 +22,6 @@ public partial class RuntimeLocalization : MonoBehaviour
 {
     public static RuntimeLocalization Instance { get; private set; }
 
-    private const string LanguagePrefsKey = "DndAppLanguage";
     private readonly Dictionary<string, Translation> translations = new Dictionary<string, Translation>();
     private readonly Dictionary<string, string> sourceByTranslatedText = new Dictionary<string, string>();
 
@@ -69,7 +68,7 @@ public partial class RuntimeLocalization : MonoBehaviour
     public void SetLanguage(AppLanguage language)
     {
         CurrentLanguage = NormalizeLanguage((int)language);
-        PlayerPrefs.SetInt(LanguagePrefsKey, (int)CurrentLanguage);
+        PlayerPrefs.SetInt(AppConfig.Localization.LanguagePrefsKey, (int)CurrentLanguage);
         PlayerPrefs.Save();
         SyncUnityLocalizationPackage(CurrentLanguage);
         ApplyToScene();
@@ -77,7 +76,8 @@ public partial class RuntimeLocalization : MonoBehaviour
 
     private AppLanguage NormalizeLanguage(int value)
     {
-        if (value < 0 || value > 2)
+        if (value < AppConfig.Localization.MinimumLanguageIndex ||
+            value > AppConfig.Localization.MaximumLanguageIndex)
             return AppLanguage.Ukrainian;
 
         return (AppLanguage)value;
@@ -85,8 +85,10 @@ public partial class RuntimeLocalization : MonoBehaviour
 
     private AppLanguage GetInitialLanguage()
     {
-        if (PlayerPrefs.HasKey(LanguagePrefsKey))
-            return NormalizeLanguage(PlayerPrefs.GetInt(LanguagePrefsKey, (int)AppLanguage.Ukrainian));
+        if (PlayerPrefs.HasKey(AppConfig.Localization.LanguagePrefsKey))
+            return NormalizeLanguage(PlayerPrefs.GetInt(
+                AppConfig.Localization.LanguagePrefsKey,
+                (int)AppLanguage.Ukrainian));
 
         switch (Application.systemLanguage)
         {
@@ -319,7 +321,7 @@ public partial class RuntimeLocalization : MonoBehaviour
         ApplyToScene();
         yield return null;
         ApplyToScene();
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(AppConfig.Localization.SceneRefreshDelaySeconds);
         ApplyToScene();
     }
 
@@ -736,7 +738,7 @@ public partial class RuntimeLocalization : MonoBehaviour
                 continue;
 
             string[] columns = line.Split('\t');
-            if (columns.Length < 3)
+            if (columns.Length < AppConfig.Localization.TranslationColumnCount)
                 continue;
 
             string ukrainian = DecodeResourceText(columns[0]);

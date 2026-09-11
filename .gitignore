@@ -66,7 +66,16 @@ desktop.ini
 *.traceevents
 *.log
 
+# Temporary and IDE files
+_codex_tmp/
+Assets/_Recovery/
+Assets/_Recovery.meta
+**/.vs/
+
 # Keep Unity metadata tracked.
 !Assets/**/*.meta
 !Packages/**/*.json
 !ProjectSettings/**/*.asset
+
+Assets/_Recovery/
+Assets/_Recovery.meta

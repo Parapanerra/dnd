@@ -7,10 +7,6 @@ public class CharacterPortraitManager : MonoBehaviour
     private const string PortraitDataKey = "CharacterPortraitJpgBase64";
     private const string PortraitImageName = "photopersonaja";
     private const string SelectButtonName = "Buttonphotopersoj";
-    private const int PortraitWidth = 300;
-    private const int PortraitHeight = 400;
-    private const int JpgQuality = 80;
-
     private Button selectPortraitButton;
     private Image portraitImage;
     private Sprite loadedSprite;
@@ -63,7 +59,11 @@ public class CharacterPortraitManager : MonoBehaviour
 
         try
         {
-            Texture2D texture = NativeGallery.LoadImageAtPath(path, 1024, false, false);
+            Texture2D texture = NativeGallery.LoadImageAtPath(
+                path,
+                AppConfig.Images.GalleryPreviewMaxSize,
+                false,
+                false);
             if (texture == null)
                 return;
 
@@ -91,7 +91,11 @@ public class CharacterPortraitManager : MonoBehaviour
         try
         {
             byte[] bytes = Convert.FromBase64String(base64);
-            Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+            Texture2D texture = new Texture2D(
+                AppConfig.Images.TextureBootstrapSize,
+                AppConfig.Images.TextureBootstrapSize,
+                TextureFormat.RGBA32,
+                false);
             if (texture.LoadImage(bytes))
                 ApplyTexture(texture);
             else
@@ -146,7 +150,7 @@ public class CharacterPortraitManager : MonoBehaviour
         if (character == null)
             return;
 
-        byte[] jpgBytes = texture.EncodeToJPG(JpgQuality);
+        byte[] jpgBytes = texture.EncodeToJPG(AppConfig.Images.PortraitJpgQuality);
         character.SetSharedString(PortraitDataKey, Convert.ToBase64String(jpgBytes));
         saveManager.SaveData();
     }
@@ -160,16 +164,18 @@ public class CharacterPortraitManager : MonoBehaviour
 
     private Texture2D ResizeToPortrait(Texture2D source)
     {
-        Texture2D result = new Texture2D(PortraitWidth, PortraitHeight, TextureFormat.RGB24, false);
-        Color[] pixels = new Color[PortraitWidth * PortraitHeight];
+        int portraitWidth = AppConfig.Images.PortraitWidth;
+        int portraitHeight = AppConfig.Images.PortraitHeight;
+        Texture2D result = new Texture2D(portraitWidth, portraitHeight, TextureFormat.RGB24, false);
+        Color[] pixels = new Color[portraitWidth * portraitHeight];
 
-        for (int y = 0; y < PortraitHeight; y++)
+        for (int y = 0; y < portraitHeight; y++)
         {
-            float sourceY = PortraitHeight == 1 ? 0f : (float)y / (PortraitHeight - 1);
-            for (int x = 0; x < PortraitWidth; x++)
+            float sourceY = portraitHeight == 1 ? 0f : (float)y / (portraitHeight - 1);
+            for (int x = 0; x < portraitWidth; x++)
             {
-                float sourceX = PortraitWidth == 1 ? 0f : (float)x / (PortraitWidth - 1);
-                pixels[y * PortraitWidth + x] = source.GetPixelBilinear(sourceX, sourceY);
+                float sourceX = portraitWidth == 1 ? 0f : (float)x / (portraitWidth - 1);
+                pixels[y * portraitWidth + x] = source.GetPixelBilinear(sourceX, sourceY);
             }
         }
 

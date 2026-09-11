@@ -7,8 +7,6 @@ using TMPro;
 
 public class DeathSaveToggleSequence : MonoBehaviour
 {
-    private static readonly int[] SpellCheckToggleOrder = { 2, 1, 0, 3, 4, 5, 6, 7 };
-
     [SerializeField] private Toggle[] orderedToggles = Array.Empty<Toggle>();
     [SerializeField] private bool clampToActiveToggles;
 
@@ -35,10 +33,14 @@ public class DeathSaveToggleSequence : MonoBehaviour
                 ConfigureSpellCheckGroups(transform);
 
             if (NameMatches(transform.name, "artefactsNavuk"))
-                ConfigureArtifactSkillGroups(transform, 4);
+                ConfigureArtifactSkillGroups(
+                    transform,
+                    AppConfig.ToggleSequences.ArtifactSkillMaximumToggle);
 
             if (NameMatches(transform.name, "artefactInfuz"))
-                ConfigureArtifactSkillGroups(transform, 7);
+                ConfigureArtifactSkillGroups(
+                    transform,
+                    AppConfig.ToggleSequences.ArtifactInfusionMaximumToggle);
 
             if (NameMatches(transform.name, "resursClas"))
             {
@@ -47,7 +49,12 @@ public class DeathSaveToggleSequence : MonoBehaviour
                 ConfigureExactOrBaseChildGroup(transform, "Panel (2)", true, false);
                 ConfigureExactOrBaseChildGroup(transform, "Panel (3)", true, false);
                 ConfigureExactOrBaseChildGroup(transform, "Panel (4)", true, false);
-                ConfigureExactOrBaseChildGroup(transform, "Panel (5)", true, false, 7);
+                ConfigureExactOrBaseChildGroup(
+                    transform,
+                    AppConfig.Calculator.BloodHunterPanelName,
+                    true,
+                    false,
+                    AppConfig.ToggleSequences.BloodHunterMaximumToggle);
                 ConfigureExactOrBaseChildGroup(transform, "Panel (8)", true, false);
             }
         }
@@ -57,7 +64,12 @@ public class DeathSaveToggleSequence : MonoBehaviour
     {
         foreach (Transform child in container)
             if (NameMatches(child.name, "uspih"))
-                ConfigureGroup(child, true, false, int.MaxValue, SpellCheckToggleOrder);
+                ConfigureGroup(
+                    child,
+                    true,
+                    false,
+                    int.MaxValue,
+                    AppConfig.ToggleSequences.SpellCheckToggleOrder);
     }
 
     private static void ConfigureArtifactSkillGroups(Transform container, int maxToggleNumber)

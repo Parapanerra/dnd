@@ -214,7 +214,7 @@ public class InventoryPageManager : MonoBehaviour
         while (transform != null)
         {
             order += transform.GetSiblingIndex() * multiplier;
-            multiplier *= 100;
+            multiplier *= AppConfig.Inventory.PageSortMultiplier;
             transform = transform.parent;
         }
 

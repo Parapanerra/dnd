@@ -58,19 +58,19 @@ public class load_scenes : MonoBehaviour
         sceneName = System.IO.Path.GetFileNameWithoutExtension(sceneName.Trim());
 
         if (Regex.IsMatch(sceneName, @"^cartaPersonaj( \d+)?$"))
-            return "cartaPersonaj";
+            return AppConfig.Scenes.CharacterSheet;
 
         if (Regex.IsMatch(sceneName, @"^informForPerson( \d+)?$"))
-            return "informForPerson";
+            return AppConfig.Scenes.CharacterInfo;
 
         if (Regex.IsMatch(sceneName, @"^inventory( \d+)?$"))
-            return "inventory";
+            return AppConfig.Scenes.Inventory;
 
         if (Regex.IsMatch(sceneName, @"^Spels( \d+)?$"))
-            return "Spels";
+            return AppConfig.Scenes.Spells;
 
         if (Regex.IsMatch(sceneName, @"^spelBook( \d+)?$"))
-            return "spelBook";
+            return AppConfig.Scenes.Spellbook;
 
         return sceneName;
     }
@@ -91,109 +91,17 @@ public class load_scenes : MonoBehaviour
 
     public static string GetVisualSceneName(string sceneName)
     {
-        if (Regex.IsMatch(sceneName, @"^petsesn( [1-7])?$"))
-            return "petsesn";
+        if (Regex.IsMatch(sceneName, @"^petsesn( [1-" + AppConfig.Scenes.WildShapePageCount + @"])?$"))
+            return AppConfig.Scenes.WildShape;
 
         return sceneName;
     }
 
     private string GetLegacySceneName(int buildIndex)
     {
-        switch (buildIndex)
-        {
-            case 0:
-                return "menu";
-            case 1:
-            case 10:
-            case 11:
-            case 12:
-            case 13:
-                return "cartaPersonaj";
-            case 2:
-            case 17:
-                return "petsesn";
-            case 3:
-            case 16:
-            case 23:
-            case 30:
-            case 37:
-                return "Spels";
-            case 4:
-            case 18:
-                return "petsesn 1";
-            case 5:
-            case 19:
-                return "petsesn 2";
-            case 6:
-            case 20:
-                return "petsesn 3";
-            case 7:
-            case 15:
-            case 22:
-            case 29:
-            case 36:
-                return "inventory";
-            case 8:
-            case 14:
-            case 21:
-            case 28:
-            case 35:
-                return "informForPerson";
-            case 9:
-                return "zapisnuk";
-            case 24:
-            case 31:
-            case 38:
-            case 49:
-            case 53:
-                return "petsesn 4";
-            case 25:
-            case 32:
-            case 39:
-            case 50:
-            case 54:
-                return "petsesn 5";
-            case 26:
-            case 33:
-            case 40:
-            case 51:
-            case 55:
-                return "petsesn 6";
-            case 27:
-            case 34:
-            case 41:
-            case 52:
-            case 56:
-                return "petsesn 7";
-            case 42:
-                return "avtoru";
-            case 43:
-                return "proApk";
-            case 44:
-            case 45:
-            case 46:
-            case 47:
-            case 48:
-                return "spelBook";
-            case 57:
-            case 61:
-            case 65:
-                return "petsesn 4";
-            case 58:
-            case 62:
-            case 66:
-                return "petsesn 5";
-            case 59:
-            case 63:
-            case 67:
-                return "petsesn 6";
-            case 60:
-            case 64:
-            case 68:
-                return "petsesn 7";
-            default:
-                return "";
-        }
+        return AppConfig.Scenes.TryGetLegacySceneName(buildIndex, out string sceneName)
+            ? sceneName
+            : "";
     }
 
     private string GetCanonicalPetSceneName(string scenePath, string sceneName)
@@ -207,15 +115,15 @@ public class load_scenes : MonoBehaviour
             return sceneName;
 
         if (!petMatch.Groups[1].Success)
-            return "petsesn";
+            return AppConfig.Scenes.WildShape;
 
-        int duplicateStart = 1 + duplicateGroup * 4;
+        int duplicateStart = 1 + duplicateGroup * AppConfig.Scenes.WildShapePagesPerCharacterGroup;
         if (!int.TryParse(petMatch.Groups[1].Value, out int duplicatePageNumber))
-            return "petsesn";
+            return AppConfig.Scenes.WildShape;
 
         int canonicalPageNumber = duplicatePageNumber - duplicateStart;
         if (canonicalPageNumber <= 0)
-            return "petsesn";
+            return AppConfig.Scenes.WildShape;
 
         return "petsesn " + canonicalPageNumber;
     }

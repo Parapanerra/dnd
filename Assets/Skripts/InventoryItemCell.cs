@@ -7,16 +7,13 @@ using UnityEngine.UI;
 
 public class InventoryItemCell : MonoBehaviour
 {
-    private const int CategoryWeapon = 0;
-    private const int CategoryArmor = 1;
-    private const int CategoryBags = 2;
-    private const int CategoryMagic = 3;
-    private const int CategoryOther = 4;
-    private const int CategoryCheger = 5;
-    private const int CategoryCustom = 6;
-    private const int CustomImageSize = 256;
-    private const int CustomImageJpgQuality = 75;
-
+    private const int CategoryWeapon = AppConfig.Inventory.WeaponCategory;
+    private const int CategoryArmor = AppConfig.Inventory.ArmorCategory;
+    private const int CategoryBags = AppConfig.Inventory.BagsCategory;
+    private const int CategoryMagic = AppConfig.Inventory.MagicCategory;
+    private const int CategoryOther = AppConfig.Inventory.OtherCategory;
+    private const int CategoryCheger = AppConfig.Inventory.ChegerCategory;
+    private const int CategoryCustom = AppConfig.Inventory.CustomCategory;
     private InputField itemNameInput;
     private TMP_InputField itemNameTmpInput;
     private InputField itemDescriptionInput;
@@ -230,7 +227,11 @@ public class InventoryItemCell : MonoBehaviour
 
                 try
                 {
-                    Texture2D source = NativeGallery.LoadImageAtPath(path, 1024, false, false);
+                    Texture2D source = NativeGallery.LoadImageAtPath(
+                        path,
+                        AppConfig.Images.GalleryPreviewMaxSize,
+                        false,
+                        false);
                     if (source == null)
                         return;
 
@@ -480,7 +481,11 @@ public class InventoryItemCell : MonoBehaviour
         try
         {
             byte[] bytes = Convert.FromBase64String(base64);
-            Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+            Texture2D texture = new Texture2D(
+                AppConfig.Images.TextureBootstrapSize,
+                AppConfig.Images.TextureBootstrapSize,
+                TextureFormat.RGBA32,
+                false);
             if (texture.LoadImage(bytes))
                 ApplyCustomTexture(texture);
             else
@@ -497,7 +502,7 @@ public class InventoryItemCell : MonoBehaviour
         if (customTexture == null)
             return "";
 
-        return Convert.ToBase64String(customTexture.EncodeToJPG(CustomImageJpgQuality));
+        return Convert.ToBase64String(customTexture.EncodeToJPG(AppConfig.Images.InventoryJpgQuality));
     }
 
     private void RestoreDefaultCustomImage()
@@ -528,16 +533,17 @@ public class InventoryItemCell : MonoBehaviour
 
     private Texture2D ResizeToSquare(Texture2D source)
     {
-        Texture2D result = new Texture2D(CustomImageSize, CustomImageSize, TextureFormat.RGB24, false);
-        Color[] pixels = new Color[CustomImageSize * CustomImageSize];
+        int imageSize = AppConfig.Images.InventoryImageSize;
+        Texture2D result = new Texture2D(imageSize, imageSize, TextureFormat.RGB24, false);
+        Color[] pixels = new Color[imageSize * imageSize];
 
-        for (int y = 0; y < CustomImageSize; y++)
+        for (int y = 0; y < imageSize; y++)
         {
-            float sourceY = CustomImageSize == 1 ? 0f : (float)y / (CustomImageSize - 1);
-            for (int x = 0; x < CustomImageSize; x++)
+            float sourceY = imageSize == 1 ? 0f : (float)y / (imageSize - 1);
+            for (int x = 0; x < imageSize; x++)
             {
-                float sourceX = CustomImageSize == 1 ? 0f : (float)x / (CustomImageSize - 1);
-                pixels[y * CustomImageSize + x] = source.GetPixelBilinear(sourceX, sourceY);
+                float sourceX = imageSize == 1 ? 0f : (float)x / (imageSize - 1);
+                pixels[y * imageSize + x] = source.GetPixelBilinear(sourceX, sourceY);
             }
         }
 

@@ -53,11 +53,11 @@ public static class MenuSceneSetupTool
         RectTransform scrollRectTransform = menuManager.transform as RectTransform;
         if (scrollRectTransform != null)
         {
-            scrollRectTransform.anchorMin = new Vector2(0.5f, 0.5f);
-            scrollRectTransform.anchorMax = new Vector2(0.5f, 0.5f);
-            scrollRectTransform.pivot = new Vector2(0.5f, 0.5f);
-            scrollRectTransform.anchoredPosition = new Vector2(0f, -120f);
-            scrollRectTransform.sizeDelta = new Vector2(620f, 980f);
+            scrollRectTransform.anchorMin = AppConfig.MainMenu.CenterAnchor;
+            scrollRectTransform.anchorMax = AppConfig.MainMenu.CenterAnchor;
+            scrollRectTransform.pivot = AppConfig.MainMenu.CenterAnchor;
+            scrollRectTransform.anchoredPosition = AppConfig.EditorLayout.MenuScrollPosition;
+            scrollRectTransform.sizeDelta = AppConfig.EditorLayout.MenuScrollSize;
         }
 
         VerticalLayoutGroup wrongLayout = menuManager.GetComponent<VerticalLayoutGroup>();
@@ -107,8 +107,12 @@ public static class MenuSceneSetupTool
             layout.childControlHeight = false;
             layout.childForceExpandWidth = false;
             layout.childForceExpandHeight = false;
-            layout.spacing = 12f;
-            layout.padding = new RectOffset(12, 12, 12, 12);
+            layout.spacing = AppConfig.MainMenu.DefaultLayoutPadding;
+            layout.padding = new RectOffset(
+                AppConfig.MainMenu.DefaultLayoutPadding,
+                AppConfig.MainMenu.DefaultLayoutPadding,
+                AppConfig.MainMenu.DefaultLayoutPadding,
+                AppConfig.MainMenu.DefaultLayoutPadding);
 
             ContentSizeFitter fitter = content.GetComponent<ContentSizeFitter>();
             if (fitter == null)

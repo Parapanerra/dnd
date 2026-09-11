@@ -5,8 +5,8 @@ using UnityEngine;
 public class zoomCam : MonoBehaviour
 {
     Vector3 touchStart;
-    public float zoomMin = 1;
-    public float zoomMax = 8;
+    public float zoomMin = AppConfig.Input.DefaultMinimumZoom;
+    public float zoomMax = AppConfig.Input.DefaultMaximumZoom;
     public Vector2 minBounds;
     public Vector2 maxBounds;
     public List<GameObject> scrollViews = new List<GameObject>(); // Список всех скролл вью в сцене
@@ -49,7 +49,7 @@ public class zoomCam : MonoBehaviour
 
             float difference = currentDistTouch - distTouch;
 
-            zoom(difference * 0.01f);
+            zoom(difference * AppConfig.Input.PinchZoomSensitivity);
         }
         // Обработка перемещения камеры при перетаскивании
         else if (Input.GetMouseButton(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved))

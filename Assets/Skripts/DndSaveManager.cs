@@ -192,7 +192,7 @@ public class DndSaveManager : MonoBehaviour
     public AppSaveData saveData;
     private string pendingSceneDataName;
     private string currentSceneDataName;
-    private float lastCreateCharacterTime = -10f;
+    private float lastCreateCharacterTime = -AppConfig.SaveData.CharacterCreateDebounceSeconds;
 
     private string FilePath => Path.Combine(Application.persistentDataPath, "DndCharactersData.json");
     private string BackupFilePath => FilePath + ".bak";
@@ -285,7 +285,8 @@ public class DndSaveManager : MonoBehaviour
 
     public CharacterData CreateNewCharacter()
     {
-        if (Time.unscaledTime - lastCreateCharacterTime < 0.5f)
+        if (Time.unscaledTime - lastCreateCharacterTime <
+            AppConfig.SaveData.CharacterCreateDebounceSeconds)
         {
             CharacterData activeCharacter = GetActiveCharacter();
             if (activeCharacter != null)

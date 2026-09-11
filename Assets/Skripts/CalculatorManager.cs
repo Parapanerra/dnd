@@ -16,8 +16,8 @@ public class CalculatorManager : MonoBehaviour
     public Text equationText;
     public Text resultText;
 
-    private readonly string[] potionFormulas = { "2d4+2", "4d4+4", "8d4+8", "10d4+20" };
-    private readonly int[] potionCounts = new int[4];
+    private readonly string[] potionFormulas = (string[])AppConfig.Calculator.PotionFormulas.Clone();
+    private readonly int[] potionCounts = new int[AppConfig.Calculator.PotionTypeCount];
     private string currentEquation = "";
     private string hpModeLabel = "";
     private Color hpTextColor = Color.white;
@@ -811,7 +811,7 @@ public class CalculatorManager : MonoBehaviour
             return;
         }
 
-        int diceToRoll = Mathf.CeilToInt(diceCount / 2f);
+        int diceToRoll = Mathf.CeilToInt(diceCount / AppConfig.Calculator.ShortRestDiceDivisor);
         int roll = 0;
         for (int i = 0; i < diceToRoll; i++)
             roll += UnityEngine.Random.Range(1, diceSides + 1);
@@ -831,13 +831,16 @@ public class CalculatorManager : MonoBehaviour
 
         Transform bloodPanel = FindPanelByMarker(resourceRoot, "BloodCurse");
         if (bloodPanel == null)
-            bloodPanel = FindDirectChild(resourceRoot, "Panel (5)");
+            bloodPanel = FindDirectChild(resourceRoot, AppConfig.Calculator.BloodHunterPanelName);
 
         if (bloodPanel != null)
         {
-            ClearPanelToggles(bloodPanel, 0, 7);
+            ClearPanelToggles(bloodPanel, 0, AppConfig.Calculator.BloodHunterPrimaryToggleLastIndex);
             if (isLongRest)
-                ClearPanelToggles(bloodPanel, 8, 11);
+                ClearPanelToggles(
+                    bloodPanel,
+                    AppConfig.Calculator.BloodHunterSecondaryToggleFirstIndex,
+                    AppConfig.Calculator.BloodHunterSecondaryToggleLastIndex);
         }
 
         if (isLongRest)
@@ -885,7 +888,10 @@ public class CalculatorManager : MonoBehaviour
         if (exhaustionRoot == null)
             return;
 
-        List<Toggle> toggles = GetPanelToggles(exhaustionRoot, 0, 5);
+        List<Toggle> toggles = GetPanelToggles(
+            exhaustionRoot,
+            0,
+            AppConfig.Calculator.ExhaustionToggleLastIndex);
         if (toggles.Count == 0)
             return;
 
@@ -1030,9 +1036,17 @@ public class CalculatorManager : MonoBehaviour
             ClearSavedPanelsByMarkers(sceneData, "WildShape", "ChannelDivinity", "KiPoints", "DragonBreath");
 
             string bloodPanelPath = GetRestPanelPath(sceneData, "BloodCurse");
-            ClearSavedPanelToggles(sceneData, bloodPanelPath, 0, 7);
+            ClearSavedPanelToggles(
+                sceneData,
+                bloodPanelPath,
+                0,
+                AppConfig.Calculator.BloodHunterPrimaryToggleLastIndex);
             if (isLongRest)
-                ClearSavedPanelToggles(sceneData, bloodPanelPath, 8, 11);
+                ClearSavedPanelToggles(
+                    sceneData,
+                    bloodPanelPath,
+                    AppConfig.Calculator.BloodHunterSecondaryToggleFirstIndex,
+                    AppConfig.Calculator.BloodHunterSecondaryToggleLastIndex);
 
             if (!isLongRest)
                 continue;
@@ -1110,7 +1124,8 @@ public class CalculatorManager : MonoBehaviour
                 continue;
 
             int toggleNumber = GetToggleNumber(entry.key);
-            if (toggleNumber >= 0 && toggleNumber <= 5)
+            if (toggleNumber >= 0 &&
+                toggleNumber <= AppConfig.Calculator.ExhaustionToggleLastIndex)
                 entries.Add(entry);
         }
 
@@ -1175,8 +1190,14 @@ public class CalculatorManager : MonoBehaviour
             if (!int.TryParse(match.Groups[2].Value, out int diceSides))
                 return "0";
 
-            diceCount = Mathf.Clamp(diceCount, 1, 100);
-            diceSides = Mathf.Clamp(diceSides, 1, 1000);
+            diceCount = Mathf.Clamp(
+                diceCount,
+                AppConfig.Calculator.MinimumDiceCount,
+                AppConfig.Calculator.MaximumDiceCount);
+            diceSides = Mathf.Clamp(
+                diceSides,
+                AppConfig.Calculator.MinimumDiceSides,
+                AppConfig.Calculator.MaximumDiceSides);
 
             int total = 0;
             for (int i = 0; i < diceCount; i++)
@@ -1240,8 +1261,11 @@ public class CalculatorManager : MonoBehaviour
         if (!int.TryParse(ExtractFirstNumber(diceValueField.text), out diceSides))
             return false;
 
-        diceCount = Mathf.Clamp(diceCount, 0, 100);
-        diceSides = Mathf.Clamp(diceSides, 1, 1000);
+        diceCount = Mathf.Clamp(diceCount, 0, AppConfig.Calculator.MaximumDiceCount);
+        diceSides = Mathf.Clamp(
+            diceSides,
+            AppConfig.Calculator.MinimumDiceSides,
+            AppConfig.Calculator.MaximumDiceSides);
         return diceCount > 0;
     }
 

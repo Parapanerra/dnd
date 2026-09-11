@@ -1,22 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class panelSktollveiwSripts : MonoBehaviour
 {
     [System.Serializable]
     public class InventoryConfig
     {
-        // public int index; // Индекс элемента в инвентаре - убираем эту переменную
-        public Button mainButton; // Кнопка в основном инвентаре
-        public GameObject submenuPanel; // Панель подменю (Scroll View)
-        // public List<Button> submenuButtons; // Кнопки в галерее подменю - убираем эту переменную
+        public Button mainButton;
+        public GameObject submenuPanel;
     }
 
     public List<InventoryConfig> inventoryConfigs;
-    public zoomCam cameraController; // Ссылка на скрипт управления камерой
+    public zoomCam cameraController;
 
-    void Start()
+    private void Start()
     {
         if (HasNewInventoryCellLayout())
         {
@@ -25,12 +23,13 @@ public class panelSktollveiwSripts : MonoBehaviour
         }
 
         DndSaveManager.EnsureExists();
-        LoadInventoryState(); // Загрузка состояния при запуске
+        LoadInventoryState();
 
-        foreach (var config in inventoryConfigs)
+        foreach (InventoryConfig config in inventoryConfigs)
         {
-            config.mainButton.onClick.AddListener(() => ToggleSubmenu(config));
-            cameraController.AddScrollView(config.submenuPanel); // Добавляем каждую панель в список скролл вью
+            InventoryConfig capturedConfig = config;
+            config.mainButton.onClick.AddListener(() => ToggleSubmenu(capturedConfig));
+            cameraController.AddScrollView(config.submenuPanel);
         }
 
         HideAllSubmenus();
@@ -41,42 +40,25 @@ public class panelSktollveiwSripts : MonoBehaviour
         if (config.submenuPanel.activeSelf)
         {
             config.submenuPanel.SetActive(false);
+            return;
         }
-        else
-        {
-            HideAllSubmenus();
-            config.submenuPanel.SetActive(true);
-            config.submenuPanel.transform.SetAsLastSibling(); // Устанавливаем подменю на верхний слой
-        }
+
+        HideAllSubmenus();
+        config.submenuPanel.SetActive(true);
+        config.submenuPanel.transform.SetAsLastSibling();
     }
 
     private void HideAllSubmenus()
     {
-        foreach (var config in inventoryConfigs)
-        {
+        foreach (InventoryConfig config in inventoryConfigs)
             config.submenuPanel.SetActive(false);
-        }
-    }
-
-    private void SaveInventoryState()
-    {
-        CharacterSceneData sceneData = DndSaveManager.Instance.GetActiveSceneData();
-
-        foreach (var config in inventoryConfigs)
-        {
-            string key = "SelectedImage_" + config.mainButton.name; // используем имя кнопки в качестве ключа
-            Debug.Log("Deleting key: " + key);
-            sceneData.DeleteString(key);
-        }
-
-        DndSaveManager.Instance.SaveData();
     }
 
     private bool HasNewInventoryCellLayout()
     {
         Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
-        foreach (Transform transform in transforms)
-            if (transform != null && transform.name == "itemCategoryDropdown")
+        foreach (Transform candidate in transforms)
+            if (candidate != null && candidate.name == "itemCategoryDropdown")
                 return true;
 
         return false;
@@ -86,30 +68,19 @@ public class panelSktollveiwSripts : MonoBehaviour
     {
         CharacterSceneData sceneData = DndSaveManager.Instance.GetActiveSceneData();
 
-        foreach (var config in inventoryConfigs)
+        foreach (InventoryConfig config in inventoryConfigs)
         {
-            string key = "SelectedImage_" + config.mainButton.name; // используем имя кнопки в качестве ключа
-            if (sceneData.HasString(key))
-            {
-                string spriteName = sceneData.GetString(key);
-                Debug.Log("Loading: " + key + " with sprite name: " + spriteName);
+            string key = "SelectedImage_" + config.mainButton.name;
+            if (!sceneData.HasString(key))
+                continue;
 
-                // Загрузка всех спрайтов из атласа
-                Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites");
-                Sprite loadedSprite = System.Array.Find(sprites, sprite => sprite.name == spriteName);
-                if (loadedSprite != null)
-                {
-                    config.mainButton.image.sprite = loadedSprite;
-                }
-                else
-                {
-                    Debug.LogWarning("Could not load sprite: " + spriteName);
-                }
-            }
+            string spriteName = sceneData.GetString(key);
+            Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites");
+            Sprite loadedSprite = System.Array.Find(sprites, sprite => sprite.name == spriteName);
+            if (loadedSprite != null)
+                config.mainButton.image.sprite = loadedSprite;
             else
-            {
-                Debug.Log("No saved sprite for key: " + key);
-            }
+                Debug.LogWarning("Could not load sprite: " + spriteName);
         }
     }
 }

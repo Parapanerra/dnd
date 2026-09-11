@@ -16,12 +16,12 @@ public class MainMenuManager : MonoBehaviour
     public Button createNewCharacterButton;
 
     [Header("Scenes")]
-    public string characterSheetSceneName = "cartaPersonaj";
-    public string inventorySceneName = "inventory";
-    public string spellbookSceneName = "spelBook";
+    public string characterSheetSceneName = AppConfig.Scenes.CharacterSheet;
+    public string inventorySceneName = AppConfig.Scenes.Inventory;
+    public string spellbookSceneName = AppConfig.Scenes.Spellbook;
 
     [Header("Layout")]
-    public float characterRowSpacing = 12f;
+    public float characterRowSpacing = AppConfig.MainMenu.CharacterRowSpacing;
 
     [HideInInspector] public Transform characterRowsContent;
     [HideInInspector] public GameObject characterRowTemplate;
@@ -32,12 +32,11 @@ public class MainMenuManager : MonoBehaviour
     [HideInInspector] public bool repairScrollViewAtRuntime;
     [HideInInspector] public bool applyDefaultCharacterListLayout;
     [HideInInspector] public bool applyDefaultCharacterButtonStyle;
-    [HideInInspector] public float characterButtonSpacing = 12f;
+    [HideInInspector] public float characterButtonSpacing = AppConfig.MainMenu.CharacterButtonSpacing;
 
     [HideInInspector] public Button importButton;
     [HideInInspector] public Button exportButton;
 
-    private const float CharacterButtonHeight = 95f;
     private Button exportOneCharacterButton;
     private Button importOneCharacterButton;
     private Button openSavePanelButton;
@@ -54,7 +53,22 @@ public class MainMenuManager : MonoBehaviour
     private Vector3 addButtonWorldOffsetFromTemplate;
     private bool hasAddButtonWorldOffsetFromTemplate;
     private Coroutine addButtonPositionCoroutine;
-    private float lastCharacterCreateTime = -10f;
+    private float lastCharacterCreateTime = -AppConfig.MainMenu.CharacterCreateDebounceSeconds;
+
+    // RU is temporarily hidden. Uncomment the Russian entries below to re-enable.
+    private static readonly AppLanguage[] SupportedDropdownLanguages = new AppLanguage[]
+    {
+        AppLanguage.Ukrainian,
+        AppLanguage.English
+        // AppLanguage.Russian
+    };
+
+    private static readonly List<string> SupportedDropdownLanguageLabels = new List<string>
+    {
+        "UA",
+        "EN"
+        // "RU"
+    };
 
     private void OnEnable()
     {
@@ -143,13 +157,13 @@ public class MainMenuManager : MonoBehaviour
     private void NormalizeSceneNames()
     {
         if (string.IsNullOrWhiteSpace(characterSheetSceneName) || characterSheetSceneName == "CharacterSheetScene")
-            characterSheetSceneName = "cartaPersonaj";
+            characterSheetSceneName = AppConfig.Scenes.CharacterSheet;
 
         if (string.IsNullOrWhiteSpace(inventorySceneName))
-            inventorySceneName = "inventory";
+            inventorySceneName = AppConfig.Scenes.Inventory;
 
         if (string.IsNullOrWhiteSpace(spellbookSceneName))
-            spellbookSceneName = "spelBook";
+            spellbookSceneName = AppConfig.Scenes.Spellbook;
     }
 
     public void EnsureEditableCharacterScrollView()
@@ -165,25 +179,45 @@ public class MainMenuManager : MonoBehaviour
             return;
         }
 
-        GameObject scrollView = CreateRuntimeUiObject("CharacterRowsScrollView", parent, new Vector2(0.5f, 0.5f), new Vector2(0f, -165f), new Vector2(560f, 520f));
+        GameObject scrollView = RuntimeUiFactory.CreateElement(RuntimeUiElementSpec.Create(
+            "CharacterRowsScrollView",
+            parent,
+            AppConfig.MainMenu.CenterAnchor,
+            AppConfig.MainMenu.CharacterScrollPosition,
+            AppConfig.MainMenu.CharacterScrollSize));
         Image scrollImage = scrollView.AddComponent<Image>();
-        scrollImage.color = new Color(1f, 1f, 1f, 0f);
+        scrollImage.color = AppConfig.MainMenu.Transparent;
         scrollImage.raycastTarget = false;
         ScrollRect scrollRect = scrollView.AddComponent<ScrollRect>();
         scrollRect.horizontal = false;
         scrollRect.vertical = true;
         scrollRect.movementType = ScrollRect.MovementType.Clamped;
 
-        GameObject viewport = CreateRuntimeUiObject("Viewport", scrollView.transform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(560f, 520f));
+        GameObject viewport = RuntimeUiFactory.CreateElement(RuntimeUiElementSpec.Create(
+            "Viewport",
+            scrollView.transform,
+            AppConfig.MainMenu.CenterAnchor,
+            Vector2.zero,
+            AppConfig.MainMenu.CharacterScrollSize));
         Image viewportImage = viewport.AddComponent<Image>();
-        viewportImage.color = new Color(1f, 1f, 1f, 0f);
+        viewportImage.color = AppConfig.MainMenu.Transparent;
         viewportImage.raycastTarget = false;
         Mask mask = viewport.AddComponent<Mask>();
         mask.showMaskGraphic = false;
 
-        GameObject content = CreateRuntimeUiObject("RowsContent", viewport.transform, new Vector2(0.5f, 1f), Vector2.zero, new Vector2(560f, 520f));
+        GameObject content = RuntimeUiFactory.CreateElement(RuntimeUiElementSpec.Create(
+            "RowsContent",
+            viewport.transform,
+            AppConfig.MainMenu.TopCenterAnchor,
+            Vector2.zero,
+            AppConfig.MainMenu.CharacterScrollSize));
         GameObject rowTemplate = CreateDefaultCharacterRowTemplate(content.transform);
-        GameObject addButtonObject = CreateDefaultButton("AddCharacterButton", scrollView.transform, new Vector2(0f, -292f), new Vector2(310f, 58f), "Додати персонажа");
+        GameObject addButtonObject = RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
+            "AddCharacterButton",
+            scrollView.transform,
+            AppConfig.MainMenu.AddButtonPosition,
+            AppConfig.MainMenu.AddButtonSize,
+            "Додати персонажа"));
 
         scrollRect.viewport = viewport.GetComponent<RectTransform>();
         scrollRect.content = content.GetComponent<RectTransform>();
@@ -216,55 +250,31 @@ public class MainMenuManager : MonoBehaviour
 
     private GameObject CreateDefaultCharacterRowTemplate(Transform parent)
     {
-        GameObject row = CreateRuntimeUiObject("CharacterRowTemplate", parent, new Vector2(0.5f, 1f), Vector2.zero, new Vector2(560f, 78f));
-        CreateDefaultButton("InventoryButton", row.transform, new Vector2(-235f, 0f), new Vector2(66f, 66f), "I");
-        CreateDefaultButton("CharacterButton", row.transform, new Vector2(-25f, 0f), new Vector2(330f, 66f), "Персонаж №1");
-        CreateDefaultButton("SpellsButton", row.transform, new Vector2(185f, 0f), new Vector2(66f, 66f), "S");
-        CreateDefaultButton("DeleteButton", row.transform, new Vector2(265f, 0f), new Vector2(66f, 66f), "X");
+        GameObject row = RuntimeUiFactory.CreateElement(RuntimeUiElementSpec.Create(
+            "CharacterRowTemplate",
+            parent,
+            AppConfig.MainMenu.TopCenterAnchor,
+            Vector2.zero,
+            AppConfig.MainMenu.CharacterRowSize));
+        RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
+            "InventoryButton", row.transform, AppConfig.MainMenu.InventoryButtonPosition, AppConfig.MainMenu.RowActionButtonSize, "I"));
+        RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
+            "CharacterButton", row.transform, AppConfig.MainMenu.CharacterButtonPosition, AppConfig.MainMenu.CharacterNameButtonSize, "Персонаж №1"));
+        RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
+            "SpellsButton", row.transform, AppConfig.MainMenu.SpellsButtonPosition, AppConfig.MainMenu.RowActionButtonSize, "S"));
+        RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
+            "DeleteButton", row.transform, AppConfig.MainMenu.DeleteRowButtonPosition, AppConfig.MainMenu.RowActionButtonSize, "X"));
         return row;
-    }
-
-    private GameObject CreateDefaultButton(string name, Transform parent, Vector2 position, Vector2 size, string label)
-    {
-        GameObject buttonObject = CreateRuntimeUiObject(name, parent, new Vector2(0.5f, 0.5f), position, size);
-        Image image = buttonObject.AddComponent<Image>();
-        image.color = new Color(0.12f, 0.09f, 0.07f, 0.9f);
-        Button button = buttonObject.AddComponent<Button>();
-        button.targetGraphic = image;
-
-        GameObject textObject = CreateRuntimeUiObject("Text", buttonObject.transform, new Vector2(0.5f, 0.5f), Vector2.zero, size);
-        Text text = textObject.AddComponent<Text>();
-        text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        text.text = label;
-        text.color = new Color(0.95f, 0.55f, 0.05f, 1f);
-        text.alignment = TextAnchor.MiddleCenter;
-        text.fontSize = 24;
-        text.resizeTextForBestFit = true;
-        text.resizeTextMinSize = 10;
-        text.resizeTextMaxSize = 28;
-        text.raycastTarget = false;
-
-        return buttonObject;
-    }
-
-    private GameObject CreateRuntimeUiObject(string name, Transform parent, Vector2 anchor, Vector2 position, Vector2 size)
-    {
-        GameObject gameObject = new GameObject(name, typeof(RectTransform), typeof(CanvasRenderer));
-        gameObject.transform.SetParent(parent, false);
-
-        RectTransform rect = gameObject.GetComponent<RectTransform>();
-        rect.anchorMin = anchor;
-        rect.anchorMax = anchor;
-        rect.pivot = new Vector2(0.5f, 0.5f);
-        rect.anchoredPosition = position;
-        rect.sizeDelta = size;
-
-        return gameObject;
     }
 
     private void EnsureLanguageDropdown()
     {
         RemoveOldLanguageButtons();
+
+        if (RuntimeLocalization.EnsureExists().CurrentLanguage == AppLanguage.Russian)
+        {
+            RuntimeLocalization.EnsureExists().SetLanguage(AppLanguage.Ukrainian);
+        }
 
         Dropdown dropdown = FindFirstDropdownInScene("localiza", "LanguageDropdown");
         TMP_Dropdown tmpDropdown = FindFirstTmpDropdownInScene("localiza", "LanguageDropdown");
@@ -289,7 +299,7 @@ public class MainMenuManager : MonoBehaviour
         RepairDropdownTemplate(dropdown);
         dropdown.onValueChanged.RemoveAllListeners();
         dropdown.ClearOptions();
-        dropdown.AddOptions(new List<string> { "UA", "EN", "RU" });
+        dropdown.AddOptions(SupportedDropdownLanguageLabels);
         dropdown.SetValueWithoutNotify(GetCurrentLanguageIndex());
         dropdown.RefreshShownValue();
         dropdown.onValueChanged.AddListener(OnLanguageDropdownChanged);
@@ -360,11 +370,11 @@ public class MainMenuManager : MonoBehaviour
         template.anchorMax = new Vector2(1f, 0f);
         template.pivot = new Vector2(0.5f, 1f);
         template.anchoredPosition = Vector2.zero;
-        template.sizeDelta = new Vector2(0f, 90f);
+        template.sizeDelta = new Vector2(0f, AppConfig.MainMenu.DropdownTemplateHeight);
         templateObject.SetActive(false);
 
         Image image = templateObject.GetComponent<Image>();
-        image.color = new Color(1f, 1f, 1f, 0f);
+        image.color = AppConfig.MainMenu.Transparent;
 
         return template;
     }
@@ -384,7 +394,7 @@ public class MainMenuManager : MonoBehaviour
         rect.anchorMin = new Vector2(0f, 1f);
         rect.anchorMax = new Vector2(1f, 1f);
         rect.pivot = new Vector2(0.5f, 1f);
-        rect.sizeDelta = new Vector2(0f, 28f);
+        rect.sizeDelta = new Vector2(0f, AppConfig.MainMenu.DropdownLabelHeight);
         return rect;
     }
 
@@ -396,10 +406,10 @@ public class MainMenuManager : MonoBehaviour
         itemRect.anchorMin = new Vector2(0f, 0.5f);
         itemRect.anchorMax = new Vector2(1f, 0.5f);
         itemRect.pivot = new Vector2(0.5f, 0.5f);
-        itemRect.sizeDelta = new Vector2(0f, 24f);
+        itemRect.sizeDelta = new Vector2(0f, AppConfig.MainMenu.DropdownItemHeight);
 
         Image itemImage = itemObject.GetComponent<Image>();
-        itemImage.color = new Color(1f, 1f, 1f, 0f);
+        itemImage.color = AppConfig.MainMenu.Transparent;
 
         Toggle toggle = itemObject.GetComponent<Toggle>();
         toggle.targetGraphic = itemImage;
@@ -415,8 +425,8 @@ public class MainMenuManager : MonoBehaviour
         textRect.SetParent(parent, false);
         textRect.anchorMin = Vector2.zero;
         textRect.anchorMax = Vector2.one;
-        textRect.offsetMin = new Vector2(8f, 1f);
-        textRect.offsetMax = new Vector2(-8f, -1f);
+        textRect.offsetMin = new Vector2(AppConfig.MainMenu.DropdownHorizontalTextPadding, 1f);
+        textRect.offsetMax = new Vector2(-AppConfig.MainMenu.DropdownHorizontalTextPadding, -1f);
 
         Text text = textObject.GetComponent<Text>();
         text.text = "Option";
@@ -434,7 +444,7 @@ public class MainMenuManager : MonoBehaviour
         AddLocalizedIgnore(dropdown.gameObject);
         dropdown.onValueChanged.RemoveAllListeners();
         dropdown.ClearOptions();
-        dropdown.AddOptions(new List<string> { "UA", "EN", "RU" });
+        dropdown.AddOptions(SupportedDropdownLanguageLabels);
         dropdown.SetValueWithoutNotify(GetCurrentLanguageIndex());
         dropdown.RefreshShownValue();
         dropdown.onValueChanged.AddListener(OnLanguageDropdownChanged);
@@ -442,8 +452,12 @@ public class MainMenuManager : MonoBehaviour
 
     private void OnLanguageDropdownChanged(int value)
     {
+        AppLanguage language = AppLanguage.Ukrainian;
+        if (value >= 0 && value < SupportedDropdownLanguages.Length)
+            language = SupportedDropdownLanguages[value];
+
         RuntimeLocalization localization = RuntimeLocalization.EnsureExists();
-        localization.SetLanguage((AppLanguage)Mathf.Clamp(value, 0, 2));
+        localization.SetLanguage(language);
         RefreshCharacterList();
         localization.ApplyToScene();
         SyncLanguageDropdownValue();
@@ -451,7 +465,14 @@ public class MainMenuManager : MonoBehaviour
 
     private int GetCurrentLanguageIndex()
     {
-        return Mathf.Clamp((int)RuntimeLocalization.EnsureExists().CurrentLanguage, 0, 2);
+        AppLanguage current = RuntimeLocalization.EnsureExists().CurrentLanguage;
+        for (int i = 0; i < SupportedDropdownLanguages.Length; i++)
+        {
+            if (SupportedDropdownLanguages[i] == current)
+                return i;
+        }
+
+        return 0;
     }
 
     private IEnumerator SyncLanguageDropdownNextFrame()
@@ -489,18 +510,6 @@ public class MainMenuManager : MonoBehaviour
     {
         if (target != null && target.GetComponent<LocalizedIgnore>() == null)
             target.AddComponent<LocalizedIgnore>();
-    }
-
-    private Transform GetUserMenuParent()
-    {
-        if (userMenuRoot != null && userMenuRoot.parent != null)
-            return userMenuRoot.parent;
-
-        Canvas canvas = GetComponentInParent<Canvas>();
-        if (canvas != null)
-            return canvas.transform;
-
-        return transform.parent != null ? transform.parent : transform;
     }
 
     private void RemoveOldLanguageButtons()
@@ -908,7 +917,7 @@ public class MainMenuManager : MonoBehaviour
         if (!CharacterNameExists(saveManager, baseName))
             return baseName;
 
-        int index = 2;
+        int index = AppConfig.MainMenu.ImportedNameFirstSuffix;
         string candidate;
         do
         {
@@ -1045,7 +1054,7 @@ public class MainMenuManager : MonoBehaviour
                 rectTransform.anchorMin = new Vector2(0f, 1f);
                 rectTransform.anchorMax = new Vector2(1f, 1f);
                 rectTransform.pivot = new Vector2(0.5f, 1f);
-                rectTransform.sizeDelta = new Vector2(0f, CharacterButtonHeight);
+                rectTransform.sizeDelta = new Vector2(0f, AppConfig.MainMenu.CharacterButtonHeight);
             }
 
             Button btn = btnObj.GetComponent<Button>();
@@ -1121,7 +1130,7 @@ public class MainMenuManager : MonoBehaviour
         menuScroll.movementType = ScrollRect.MovementType.Clamped;
         menuScroll.inertia = true;
         menuScroll.decelerationRate = 0.08f;
-        menuScroll.scrollSensitivity = 18f;
+        menuScroll.scrollSensitivity = AppConfig.MainMenu.MenuScrollSensitivity;
         menuScroll.horizontalNormalizedPosition = 0f;
 
         RectTransform contentRect = menuScroll.content;
@@ -1267,7 +1276,7 @@ public class MainMenuManager : MonoBehaviour
             cloneRect.localScale = templateRect.localScale;
             cloneRect.localRotation = templateRect.localRotation;
 
-            float height = Mathf.Max(1f, templateRect.rect.height);
+            float height = Mathf.Max(AppConfig.MainMenu.MinimumUsableRectSize, templateRect.rect.height);
             cloneRect.anchoredPosition = templateRect.anchoredPosition + new Vector2(0f, -index * (height + characterRowSpacing));
             lastUserMenuRowRect = cloneRect;
         }
@@ -1358,16 +1367,19 @@ public class MainMenuManager : MonoBehaviour
         if (contentRect == null || templateRect == null || rowCount <= 0)
             return;
 
-        float height = Mathf.Max(1f, templateRect.rect.height);
+        float height = Mathf.Max(AppConfig.MainMenu.MinimumUsableRectSize, templateRect.rect.height);
         float addHeight = 0f;
         float addBottom = 0f;
         if (addCharacterButton != null && addCharacterButton.transform.parent == userMenuContent && addCharacterButton.TryGetComponent(out RectTransform addRect))
         {
-            addHeight = Mathf.Max(1f, addRect.rect.height);
-            addBottom = Mathf.Abs(addRect.anchoredPosition.y) + addHeight + 24f;
+            addHeight = Mathf.Max(AppConfig.MainMenu.MinimumUsableRectSize, addRect.rect.height);
+            addBottom = Mathf.Abs(addRect.anchoredPosition.y) + addHeight +
+                AppConfig.MainMenu.ContentBottomPadding;
         }
 
-        float bottom = Mathf.Abs(templateRect.anchoredPosition.y) + rowCount * height + Mathf.Max(0, rowCount) * characterRowSpacing + addHeight + 24f;
+        float bottom = Mathf.Abs(templateRect.anchoredPosition.y) + rowCount * height +
+            Mathf.Max(0, rowCount) * characterRowSpacing + addHeight +
+            AppConfig.MainMenu.ContentBottomPadding;
         bottom = Mathf.Max(bottom, addBottom);
         if (contentRect.sizeDelta.y < bottom)
             contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, bottom);
@@ -1375,7 +1387,8 @@ public class MainMenuManager : MonoBehaviour
 
     private void OnCreateNewCharacterClicked()
     {
-        if (Time.unscaledTime - lastCharacterCreateTime < 0.5f)
+        if (Time.unscaledTime - lastCharacterCreateTime <
+            AppConfig.MainMenu.CharacterCreateDebounceSeconds)
             return;
 
         lastCharacterCreateTime = Time.unscaledTime;
@@ -1468,7 +1481,7 @@ public class MainMenuManager : MonoBehaviour
         rowRect.localRotation = templateRect.localRotation;
         rowRect.localScale = templateRect.localScale;
 
-        float height = Mathf.Max(1f, templateRect.rect.height);
+        float height = Mathf.Max(AppConfig.MainMenu.MinimumUsableRectSize, templateRect.rect.height);
         rowRect.anchoredPosition = templateRect.anchoredPosition + new Vector2(0f, -index * (height + characterRowSpacing));
     }
 
@@ -1478,9 +1491,11 @@ public class MainMenuManager : MonoBehaviour
         if (contentRect == null || templateRect == null || rowCount <= 0)
             return;
 
-        float height = Mathf.Max(1f, templateRect.rect.height);
+        float height = Mathf.Max(AppConfig.MainMenu.MinimumUsableRectSize, templateRect.rect.height);
         float topOffset = Mathf.Abs(templateRect.anchoredPosition.y);
-        float requiredHeight = topOffset + rowCount * height + Mathf.Max(0, rowCount - 1) * characterRowSpacing + 24f;
+        float requiredHeight = topOffset + rowCount * height +
+            Mathf.Max(0, rowCount - 1) * characterRowSpacing +
+            AppConfig.MainMenu.ContentBottomPadding;
         if (contentRect.sizeDelta.y < requiredHeight)
             contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, requiredHeight);
     }
@@ -1735,7 +1750,7 @@ public class MainMenuManager : MonoBehaviour
         cloneRect.localRotation = templateRect.localRotation;
         cloneRect.localScale = templateRect.localScale;
 
-        float height = Mathf.Max(1f, templateRect.rect.height);
+        float height = Mathf.Max(AppConfig.MainMenu.MinimumUsableRectSize, templateRect.rect.height);
         cloneRect.anchoredPosition = templateRect.anchoredPosition + new Vector2(0f, -index * (height + characterButtonSpacing));
     }
 
@@ -1745,9 +1760,11 @@ public class MainMenuManager : MonoBehaviour
         if (contentRect == null || templateRect == null || buttonCount <= 0)
             return;
 
-        float height = Mathf.Max(1f, templateRect.rect.height);
+        float height = Mathf.Max(AppConfig.MainMenu.MinimumUsableRectSize, templateRect.rect.height);
         float topOffset = Mathf.Abs(templateRect.anchoredPosition.y);
-        float requiredHeight = topOffset + buttonCount * height + Mathf.Max(0, buttonCount - 1) * characterButtonSpacing + 24f;
+        float requiredHeight = topOffset + buttonCount * height +
+            Mathf.Max(0, buttonCount - 1) * characterButtonSpacing +
+            AppConfig.MainMenu.ContentBottomPadding;
         if (contentRect.sizeDelta.y < requiredHeight)
             contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, requiredHeight);
     }
@@ -1774,8 +1791,12 @@ public class MainMenuManager : MonoBehaviour
         layoutGroup.childControlHeight = false;
         layoutGroup.childForceExpandWidth = false;
         layoutGroup.childForceExpandHeight = false;
-        layoutGroup.spacing = 12f;
-        layoutGroup.padding = new RectOffset(12, 12, 84, 12);
+        layoutGroup.spacing = AppConfig.MainMenu.DefaultLayoutPadding;
+        layoutGroup.padding = new RectOffset(
+            AppConfig.MainMenu.DefaultLayoutPadding,
+            AppConfig.MainMenu.DefaultLayoutPadding,
+            AppConfig.MainMenu.DefaultLayoutTopPadding,
+            AppConfig.MainMenu.DefaultLayoutPadding);
 
         ContentSizeFitter fitter = characterListContent.GetComponent<ContentSizeFitter>();
         if (fitter == null)
@@ -1807,10 +1828,10 @@ public class MainMenuManager : MonoBehaviour
             scrollRectTransform.pivot = new Vector2(0.5f, 0.5f);
 
             Vector2 size = scrollRectTransform.sizeDelta;
-            if (size.x < 320f)
-                size.x = 620f;
-            if (size.y < 320f)
-                size.y = 980f;
+            if (size.x < AppConfig.MainMenu.MinimumVisibleScrollSize)
+                size.x = AppConfig.MainMenu.DefaultVisibleScrollWidth;
+            if (size.y < AppConfig.MainMenu.MinimumVisibleScrollSize)
+                size.y = AppConfig.MainMenu.DefaultVisibleScrollHeight;
 
             scrollRectTransform.sizeDelta = size;
         }
@@ -1853,8 +1874,8 @@ public class MainMenuManager : MonoBehaviour
         if (applyDefaultCharacterButtonStyle)
         {
             image.color = isActive
-                ? new Color(0.28f, 0.22f, 0.12f, 0.98f)
-                : new Color(0.18f, 0.14f, 0.1f, 0.95f);
+                ? AppConfig.MainMenu.ActiveCharacterColor
+                : AppConfig.MainMenu.InactiveCharacterColor;
         }
 
         Text btnText = btnObj.GetComponentInChildren<Text>(true);
@@ -1865,10 +1886,10 @@ public class MainMenuManager : MonoBehaviour
         if (applyDefaultCharacterButtonStyle)
         {
             btnText.color = Color.white;
-            btnText.fontSize = 28;
+            btnText.fontSize = AppConfig.MainMenu.CharacterNameFontSize;
             btnText.resizeTextForBestFit = true;
-            btnText.resizeTextMinSize = 16;
-            btnText.resizeTextMaxSize = 28;
+            btnText.resizeTextMinSize = AppConfig.MainMenu.CharacterNameMinimumFontSize;
+            btnText.resizeTextMaxSize = AppConfig.MainMenu.CharacterNameFontSize;
         }
 
         EnsureDeleteButton(btnObj.transform);
@@ -1890,8 +1911,12 @@ public class MainMenuManager : MonoBehaviour
         RectTransform textRect = textObject.GetComponent<RectTransform>();
         textRect.anchorMin = new Vector2(0f, 0f);
         textRect.anchorMax = new Vector2(1f, 1f);
-        textRect.offsetMin = new Vector2(24f, 8f);
-        textRect.offsetMax = new Vector2(-90f, -8f);
+        textRect.offsetMin = new Vector2(
+            AppConfig.MainMenu.CharacterTextLeftPadding,
+            AppConfig.MainMenu.CharacterTextVerticalPadding);
+        textRect.offsetMax = new Vector2(
+            -AppConfig.MainMenu.CharacterTextRightPadding,
+            -AppConfig.MainMenu.CharacterTextVerticalPadding);
 
         Text text = textObject.GetComponent<Text>();
         text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
@@ -1915,11 +1940,11 @@ public class MainMenuManager : MonoBehaviour
         deleteRect.anchorMin = new Vector2(1f, 0.5f);
         deleteRect.anchorMax = new Vector2(1f, 0.5f);
         deleteRect.pivot = new Vector2(0.5f, 0.5f);
-        deleteRect.anchoredPosition = new Vector2(-45f, 0f);
-        deleteRect.sizeDelta = new Vector2(58f, 58f);
+        deleteRect.anchoredPosition = AppConfig.MainMenu.DeleteButtonPosition;
+        deleteRect.sizeDelta = AppConfig.MainMenu.DeleteButtonSize;
 
         Image deleteImage = deleteObject.GetComponent<Image>();
-        deleteImage.color = new Color(0.55f, 0.12f, 0.1f, 0.95f);
+        deleteImage.color = AppConfig.MainMenu.DeleteButtonColor;
 
         Text deleteText = CreateButtonText(deleteObject.transform, "Text", TextAnchor.MiddleCenter);
         RectTransform textRect = deleteText.GetComponent<RectTransform>();
@@ -1927,6 +1952,6 @@ public class MainMenuManager : MonoBehaviour
         textRect.offsetMax = Vector2.zero;
         deleteText.text = "X";
         deleteText.color = Color.white;
-        deleteText.fontSize = 28;
+        deleteText.fontSize = AppConfig.MainMenu.DeleteButtonFontSize;
     }
 }
