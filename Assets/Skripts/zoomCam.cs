@@ -85,13 +85,23 @@ public class zoomCam : MonoBehaviour
         float cameraHalfWidth = Camera.main.orthographicSize * Camera.main.aspect;
         float cameraHalfHeight = Camera.main.orthographicSize;
 
+        float boundsWidth = maxBounds.x - minBounds.x;
+        float boundsHeight = maxBounds.y - minBounds.y;
+        float boundsCenterX = (minBounds.x + maxBounds.x) * 0.5f;
+        float boundsCenterY = (minBounds.y + maxBounds.y) * 0.5f;
+
         float minX = minBounds.x + cameraHalfWidth;
         float maxX = maxBounds.x - cameraHalfWidth;
         float minY = minBounds.y + cameraHalfHeight;
         float maxY = maxBounds.y - cameraHalfHeight;
 
-        float clampedX = Mathf.Clamp(targetPosition.x, minX, maxX);
-        float clampedY = Mathf.Clamp(targetPosition.y, minY, maxY);
+        float clampedX = cameraHalfWidth * 2f >= boundsWidth
+            ? boundsCenterX
+            : Mathf.Clamp(targetPosition.x, minX, maxX);
+
+        float clampedY = cameraHalfHeight * 2f >= boundsHeight
+            ? boundsCenterY
+            : Mathf.Clamp(targetPosition.y, minY, maxY);
 
         return new Vector3(clampedX, clampedY, targetPosition.z);
     }
