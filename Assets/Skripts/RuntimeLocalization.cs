@@ -269,7 +269,6 @@ public partial class RuntimeLocalization : MonoBehaviour
         if (dropdown == null || dropdown.options == null)
             return;
 
-        bool changed = false;
         for (int i = 0; i < dropdown.options.Count; i++)
         {
             string translated = Translate(dropdown.options[i].text);
@@ -277,11 +276,9 @@ public partial class RuntimeLocalization : MonoBehaviour
                 continue;
 
             dropdown.options[i].text = translated;
-            changed = true;
         }
 
-        if (changed)
-            dropdown.RefreshShownValue();
+        dropdown.RefreshShownValue();
     }
 
     private void ApplyDropdownOptions(TMP_Dropdown dropdown)
@@ -289,7 +286,6 @@ public partial class RuntimeLocalization : MonoBehaviour
         if (dropdown == null || dropdown.options == null)
             return;
 
-        bool changed = false;
         for (int i = 0; i < dropdown.options.Count; i++)
         {
             string translated = Translate(dropdown.options[i].text);
@@ -297,11 +293,9 @@ public partial class RuntimeLocalization : MonoBehaviour
                 continue;
 
             dropdown.options[i].text = translated;
-            changed = true;
         }
 
-        if (changed)
-            dropdown.RefreshShownValue();
+        dropdown.RefreshShownValue();
     }
 
     private bool IsSceneObject(GameObject gameObject)
@@ -333,6 +327,9 @@ public partial class RuntimeLocalization : MonoBehaviour
         if (text.GetComponentInParent<LocalizedIgnore>(true) != null)
             return true;
 
+        if (text.GetComponentInParent<Dropdown>(true) != null)
+            return true;
+
         if (IsEditableInputText(text) && !HasTranslationForVisibleText(text.text))
             return true;
 
@@ -359,6 +356,9 @@ public partial class RuntimeLocalization : MonoBehaviour
             return true;
 
         if (text.GetComponentInParent<LocalizedIgnore>(true) != null)
+            return true;
+
+        if (text.GetComponentInParent<TMP_Dropdown>(true) != null)
             return true;
 
         if (IsEditableInputText(text) && !HasTranslationForVisibleText(text.text))

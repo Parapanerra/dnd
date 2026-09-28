@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
+[DefaultExecutionOrder(100)]
 public class SpellbookPageSwitcher : MonoBehaviour
 {
     private const string SceneName = "spelBook";
@@ -38,7 +39,6 @@ public class SpellbookPageSwitcher : MonoBehaviour
     private void Start()
     {
         KeepMainPagePanelActive();
-        EnsurePersistentDropdowns();
         BindPageButtons();
         BindNavigationButtons();
         SwitchToPage(0);
@@ -117,7 +117,6 @@ public class SpellbookPageSwitcher : MonoBehaviour
         {
             sheetManager.SwitchSceneData(sceneDataName);
             UpdatePageTitle(pageIndex);
-            ReloadPersistentDropdowns();
             return;
         }
 
@@ -126,34 +125,11 @@ public class SpellbookPageSwitcher : MonoBehaviour
         {
             autoSave.SwitchSceneData(sceneDataName);
             UpdatePageTitle(pageIndex);
-            ReloadPersistentDropdowns();
             return;
         }
 
         DndSaveManager.EnsureExists().SetActiveSceneDataName(sceneDataName);
         UpdatePageTitle(pageIndex);
-        ReloadPersistentDropdowns();
-    }
-
-    private void EnsurePersistentDropdowns()
-    {
-        Dropdown[] dropdowns = FindObjectsByType<Dropdown>(FindObjectsInactive.Include);
-        foreach (Dropdown dropdown in dropdowns)
-            if (dropdown != null && dropdown.GetComponent<PersistentDropdownValue>() == null)
-                dropdown.gameObject.AddComponent<PersistentDropdownValue>();
-
-        TMP_Dropdown[] tmpDropdowns = FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include);
-        foreach (TMP_Dropdown dropdown in tmpDropdowns)
-            if (dropdown != null && dropdown.GetComponent<PersistentDropdownValue>() == null)
-                dropdown.gameObject.AddComponent<PersistentDropdownValue>();
-    }
-
-    private void ReloadPersistentDropdowns()
-    {
-        PersistentDropdownValue[] dropdowns = FindObjectsByType<PersistentDropdownValue>(FindObjectsInactive.Include);
-        foreach (PersistentDropdownValue dropdown in dropdowns)
-            if (dropdown != null)
-                dropdown.Reload();
     }
 
     private void UpdatePageTitle(int pageIndex)
