@@ -11,10 +11,18 @@ public class zoomCam : MonoBehaviour
     public Vector2 maxBounds;
     public List<GameObject> scrollViews = new List<GameObject>(); // Список всех скролл вью в сцене
 
+    private const int BackgroundSortingOrder = -2;
+    private const float BackgroundOverscan = 1.05f;
+    private readonly Dictionary<SpriteRenderer, Vector2> adaptiveBackgrounds =
+        new Dictionary<SpriteRenderer, Vector2>();
+
     void Start()
     {
+        FindAdaptiveBackgrounds();
+
         // Убедиться, что камера находится внутри границ при запуске
         Camera.main.transform.position = ClampCamera(Camera.main.transform.position);
+        FitAdaptiveBackgrounds();
     }
 
     void Update()
@@ -73,6 +81,11 @@ public class zoomCam : MonoBehaviour
         zoom(Input.GetAxis("Mouse ScrollWheel"));
     }
 
+    void LateUpdate()
+    {
+        FitAdaptiveBackgrounds();
+    }
+
     void zoom(float increment)
     {
         float newSize = Mathf.Clamp(Camera.main.orthographicSize - increment, zoomMin, zoomMax);
@@ -104,6 +117,53 @@ public class zoomCam : MonoBehaviour
             : Mathf.Clamp(targetPosition.y, minY, maxY);
 
         return new Vector3(clampedX, clampedY, targetPosition.z);
+    }
+
+    void FindAdaptiveBackgrounds()
+    {
+        adaptiveBackgrounds.Clear();
+
+        SpriteRenderer[] renderers = FindObjectsByType<SpriteRenderer>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None);
+        foreach (SpriteRenderer spriteRenderer in renderers)
+        {
+            if (spriteRenderer.sortingOrder != BackgroundSortingOrder)
+                continue;
+
+            Vector2 originalSize = spriteRenderer.size;
+            spriteRenderer.drawMode = SpriteDrawMode.Tiled;
+            spriteRenderer.tileMode = SpriteTileMode.Continuous;
+            adaptiveBackgrounds.Add(spriteRenderer, originalSize);
+        }
+    }
+
+    void FitAdaptiveBackgrounds()
+    {
+        Camera targetCamera = Camera.main;
+        if (targetCamera == null || !targetCamera.orthographic)
+            return;
+
+        foreach (KeyValuePair<SpriteRenderer, Vector2> background in adaptiveBackgrounds)
+        {
+            SpriteRenderer spriteRenderer = background.Key;
+            if (spriteRenderer == null)
+                continue;
+
+            float worldScaleX = Mathf.Abs(spriteRenderer.transform.lossyScale.x);
+            if (worldScaleX <= Mathf.Epsilon)
+                continue;
+
+            float cameraHalfWidth = targetCamera.orthographicSize * targetCamera.aspect * BackgroundOverscan;
+            float distanceFromCameraCenter = Mathf.Abs(
+                targetCamera.transform.position.x - spriteRenderer.bounds.center.x);
+            float requiredWorldWidth = (cameraHalfWidth + distanceFromCameraCenter) * 2f;
+
+            Vector2 newSize = spriteRenderer.size;
+            newSize.x = Mathf.Max(background.Value.x, requiredWorldWidth / worldScaleX);
+            newSize.y = background.Value.y;
+            spriteRenderer.size = newSize;
+        }
     }
 
     void OnDrawGizmos()
