@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -5,6 +6,8 @@ using UnityEngine.UI;
 
 public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandler
 {
+    private static readonly List<DoubleClickInputFieldActivator> configuredInputs = new List<DoubleClickInputFieldActivator>();
+
     private InputField inputField;
     private TMP_InputField tmpInputField;
     private float lastClickTime = -1f;
@@ -29,6 +32,7 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
 
         activator.inputField = input;
         activator.tmpInputField = null;
+        Register(activator);
         input.onEndEdit.RemoveListener(activator.LockLegacyInput);
         input.onEndEdit.AddListener(activator.LockLegacyInput);
         activator.LockInput();
@@ -45,6 +49,7 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
 
         activator.inputField = null;
         activator.tmpInputField = input;
+        Register(activator);
         input.onEndEdit.RemoveListener(activator.LockTmpInput);
         input.onEndEdit.AddListener(activator.LockTmpInput);
         activator.LockInput();
@@ -63,6 +68,34 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
         }
 
         LockInput();
+    }
+
+    public static IReadOnlyList<DoubleClickInputFieldActivator> GetConfiguredInputs()
+    {
+        configuredInputs.RemoveAll(activator => activator == null);
+        return configuredInputs;
+    }
+
+    public bool TryGetInput(out Selectable selectable, out RectTransform rectTransform)
+    {
+        if (inputField != null)
+            selectable = inputField;
+        else
+            selectable = tmpInputField;
+
+        rectTransform = selectable != null ? selectable.transform as RectTransform : null;
+        return selectable != null && rectTransform != null;
+    }
+
+    private static void Register(DoubleClickInputFieldActivator activator)
+    {
+        if (!configuredInputs.Contains(activator))
+            configuredInputs.Add(activator);
+    }
+
+    private void OnDestroy()
+    {
+        configuredInputs.Remove(this);
     }
 
     private void LockInput()
@@ -93,7 +126,7 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
         LockInput();
     }
 
-    private void ActivateInput()
+    public void ActivateInput()
     {
         if (inputField != null)
         {
