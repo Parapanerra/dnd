@@ -510,6 +510,18 @@ public partial class RuntimeLocalization : MonoBehaviour
 
     private void BuildTranslations()
     {
+        // Calculator Easter eggs. Sources also identify the currently displayed message
+        // so changing language never advances the 67 counter or repeats Reset.
+        Add("Раз, два, три, прийом! Ця штука працює?", "One, two, three, testing! Is this thing working?", "Раз, два, три, прием! Эта штука работает?");
+        Add("О, так!!!", "Hell Yeah!!!", "О, да!!!");
+        Add("Нааайс", "Niiice", "Нааайс");
+        Add("Це як у 1984", "This is like 1984", "Ето как в 1984");
+        Add("Але я не читав", "But I haven't read it", "Но я не читал");
+        Add("Якщо ти ще раз це введеш, я тобі видалю персонажа.", "If you enter that again, I'll delete your character.", "Если ты еще раз это введешь, я тебе удалю персонажа.");
+        Add("Я взагалі-то серйозно.", "I'm actually serious.", "Я вообще-то серьезно.");
+        Add("Я попереджував.", "I warned you.", "Я предупреждал.");
+        Add("Спочатку обери персонажа.", "Choose a character first.", "Сначала выбери персонажа.");
+        Add("Не вдалося знайти Reset для цього листа.", "Couldn't find Reset for this sheet.", "Не удалось найти Reset для этого листа.");
         Add("Ресет", "Reset", "Сброс");
         Add("Ресет HP", "Reset HP", "Сброс HP");
         Add("Підтвердить", "Confirm", "Подтвердить");

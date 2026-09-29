@@ -11,6 +11,7 @@ public class CalculatorManager : MonoBehaviour
     private const string PotionSaveKeyPrefix = "PotionCount_";
     private const string ToggleKeyPrefix = "Toggle_";
     private const string RestResourceKeyPrefix = "RestResource_";
+    private const string EasterEgg67CountKey = "Calculator.EasterEgg67.Count";
 
     public List<Button> buttons;
     public Text equationText;
@@ -20,6 +21,8 @@ public class CalculatorManager : MonoBehaviour
     private readonly int[] potionCounts = new int[AppConfig.Calculator.PotionTypeCount];
     private string currentEquation = "";
     private bool showingEasterEgg;
+    private string easterEggTopSource = "";
+    private string easterEggMessageSource = "";
     private bool resultBestFitBeforeEasterEgg;
     private int resultMinSizeBeforeEasterEgg;
     private int resultMaxSizeBeforeEasterEgg;
@@ -62,6 +65,8 @@ public class CalculatorManager : MonoBehaviour
 
         RefreshPotionDropdownOptions();
         RefreshEquationText();
+        if (showingEasterEgg)
+            RefreshEasterEggText();
     }
 
     public void RefreshExhaustionDisplay()
@@ -741,26 +746,29 @@ public class CalculatorManager : MonoBehaviour
         string message;
         switch (currentEquation)
         {
+            case "67":
+                message = AdvanceResetEasterEgg();
+                break;
             case "4221":
-                message = "Раз, два, три, прием! Эта штука работает?";
+                message = "Раз, два, три, прийом! Ця штука працює?";
                 break;
             case "666":
-                message = "Hell Yeah!!!";
+                message = "О, так!!!";
                 break;
             case "69":
                 message = "Нааайс";
                 break;
             case "1984":
-                topLine = "Ето как в 1984";
-                message = "Но я не читал";
+                topLine = "Це як у 1984";
+                message = "Але я не читав";
                 break;
             default:
                 return false;
         }
 
         ResetCalculator();
-        if (equationText != null)
-            equationText.text = topLine;
+        easterEggTopSource = topLine;
+        easterEggMessageSource = message;
         if (resultText != null)
         {
             showingEasterEgg = true;
@@ -770,10 +778,53 @@ public class CalculatorManager : MonoBehaviour
             resultText.resizeTextForBestFit = true;
             resultText.resizeTextMinSize = 10;
             resultText.resizeTextMaxSize = Mathf.Max(10, resultText.fontSize);
+        }
+        RefreshEasterEggText();
+        return true;
+    }
+
+    private void RefreshEasterEggText()
+    {
+        RuntimeLocalization localization = RuntimeLocalization.EnsureExists();
+        string topLine = localization.Translate(easterEggTopSource);
+        string message = localization.Translate(easterEggMessageSource);
+        if (equationText != null)
+            equationText.text = topLine;
+        if (resultText != null)
             resultText.text = resultText == equationText && topLine.Length > 0
                 ? topLine + "\n" + message : message;
+    }
+
+    private string AdvanceResetEasterEgg()
+    {
+        DndSaveManager saveManager = DndSaveManager.Instance;
+        CharacterData character = saveManager != null ? saveManager.GetActiveCharacter() : null;
+        if (character == null)
+            return "Спочатку обери персонажа.";
+
+        int.TryParse(character.GetSharedString(EasterEgg67CountKey, "0"), out int count);
+        count = Mathf.Clamp(count, 0, 2) + 1;
+        if (count == 3)
+        {
+            // Call exactly the same handler as the scene's Reset button.
+            CharacterSheetManagerScene1 sheet = UnityEngine.Object.FindAnyObjectByType<CharacterSheetManagerScene1>();
+            CharacterSceneAutoSave autoSave = UnityEngine.Object.FindAnyObjectByType<CharacterSceneAutoSave>();
+            if (sheet != null)
+                sheet.ResetSceneData();
+            else if (autoSave != null)
+                autoSave.ResetSceneData();
+            else
+                return "Не вдалося знайти Reset для цього листа.";
         }
-        return true;
+
+        character.SetSharedString(EasterEgg67CountKey, (count == 3 ? 0 : count).ToString(CultureInfo.InvariantCulture));
+        saveManager.SaveData();
+        switch (count)
+        {
+            case 1: return "Якщо ти ще раз це введеш, я тобі видалю персонажа.";
+            case 2: return "Я взагалі-то серйозно.";
+            default: return "Я попереджував.";
+        }
     }
 
     private void ApplyHpMode(int value)
@@ -1229,6 +1280,8 @@ public class CalculatorManager : MonoBehaviour
             resultText.resizeTextMaxSize = resultMaxSizeBeforeEasterEgg;
         }
         showingEasterEgg = false;
+        easterEggTopSource = "";
+        easterEggMessageSource = "";
         currentEquation = "";
         hpModeLabel = "";
         if (equationText != null)

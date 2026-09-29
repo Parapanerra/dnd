@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(-10000)]
 public class InputFieldTabNavigation : MonoBehaviour
 {
     private sealed class InputTarget
@@ -24,6 +26,11 @@ public class InputFieldTabNavigation : MonoBehaviour
     private static InputFieldTabNavigation instance;
     private readonly List<InputTarget> orderedTargets = new List<InputTarget>();
     private readonly List<InputRow> rows = new List<InputRow>();
+    private bool tabPressedThisFrame;
+    private InputField protectedLegacyInput;
+    private TMP_InputField protectedTmpInput;
+    private bool previousLegacyReadOnly;
+    private bool previousTmpReadOnly;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void Install()
@@ -55,12 +62,59 @@ public class InputFieldTabNavigation : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         if (!Input.GetKeyDown(KeyCode.Tab))
             return;
 
+        tabPressedThisFrame = true;
+        ProtectSelectedInputFromTabCharacter();
+    }
+
+    private void LateUpdate()
+    {
+        if (!tabPressedThisFrame)
+            return;
+
+        RestoreSelectedInputEditing();
         MoveToNextInput();
+        tabPressedThisFrame = false;
+    }
+
+    private void ProtectSelectedInputFromTabCharacter()
+    {
+        GameObject selected = EventSystem.current != null
+            ? EventSystem.current.currentSelectedGameObject
+            : null;
+
+        if (selected == null)
+            return;
+
+        protectedLegacyInput = selected.GetComponent<InputField>();
+        if (protectedLegacyInput != null)
+        {
+            previousLegacyReadOnly = protectedLegacyInput.readOnly;
+            protectedLegacyInput.readOnly = true;
+        }
+
+        protectedTmpInput = selected.GetComponent<TMP_InputField>();
+        if (protectedTmpInput != null)
+        {
+            previousTmpReadOnly = protectedTmpInput.readOnly;
+            protectedTmpInput.readOnly = true;
+        }
+    }
+
+    private void RestoreSelectedInputEditing()
+    {
+        if (protectedLegacyInput != null)
+            protectedLegacyInput.readOnly = previousLegacyReadOnly;
+
+        if (protectedTmpInput != null)
+            protectedTmpInput.readOnly = previousTmpReadOnly;
+
+        protectedLegacyInput = null;
+        protectedTmpInput = null;
     }
 
     private void MoveToNextInput()
