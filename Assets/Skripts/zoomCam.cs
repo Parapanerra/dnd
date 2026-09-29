@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class zoomCam : MonoBehaviour
 {
@@ -15,9 +16,14 @@ public class zoomCam : MonoBehaviour
     private const float BackgroundOverscan = 1.05f;
     private readonly Dictionary<SpriteRenderer, Vector2> adaptiveBackgrounds =
         new Dictionary<SpriteRenderer, Vector2>();
+    private bool isStaticMenuCamera;
 
     void Start()
     {
+        isStaticMenuCamera = SceneManager.GetActiveScene().name == "menu";
+        if (isStaticMenuCamera)
+            return;
+
         FindAdaptiveBackgrounds();
 
         // Убедиться, что камера находится внутри границ при запуске
@@ -27,6 +33,9 @@ public class zoomCam : MonoBehaviour
 
     void Update()
     {
+        if (isStaticMenuCamera)
+            return;
+
         // Если хотя бы один скролл вью активен, не обрабатываем ввод для камеры
         if (IsAnyScrollViewOpen()) return;
 
@@ -83,6 +92,9 @@ public class zoomCam : MonoBehaviour
 
     void LateUpdate()
     {
+        if (isStaticMenuCamera)
+            return;
+
         FitAdaptiveBackgrounds();
     }
 
