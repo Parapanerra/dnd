@@ -7334,7 +7334,6 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuViewportFitter
   minimumWideAspect: 0.75
-  wideScreenOffset: -200
 --- !u!114 &5776406453385021456
 MonoBehaviour:
   m_ObjectHideFlags: 0
