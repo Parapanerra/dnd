@@ -187,6 +187,9 @@ public class DeathSaveToggleSequence : MonoBehaviour
         {
             isApplying = false;
         }
+
+        if (NameMatches(name, "vtoma"))
+            ExhaustionEffects.Apply(count);
     }
 
     private int GetAllowedSequenceCount()

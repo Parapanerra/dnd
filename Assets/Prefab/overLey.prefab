@@ -4572,6 +4572,7 @@ GameObject:
   - component: {fileID: 4763740155533326875}
   - component: {fileID: 5212980163475566493}
   - component: {fileID: 8251314237654348285}
+  - component: {fileID: 909000000000000001}
   m_Layer: 5
   m_Name: overLey
   m_TagString: Untagged
@@ -4668,6 +4669,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &909000000000000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500544054641741681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7318ac5fa94653935460de17d8d061, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::OverlayBoundsFitter
 --- !u!1 &4805095162793354269
 GameObject:
   m_ObjectHideFlags: 0

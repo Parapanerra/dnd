@@ -19,6 +19,10 @@ public class CalculatorManager : MonoBehaviour
     private readonly string[] potionFormulas = (string[])AppConfig.Calculator.PotionFormulas.Clone();
     private readonly int[] potionCounts = new int[AppConfig.Calculator.PotionTypeCount];
     private string currentEquation = "";
+    private bool showingEasterEgg;
+    private bool resultBestFitBeforeEasterEgg;
+    private int resultMinSizeBeforeEasterEgg;
+    private int resultMaxSizeBeforeEasterEgg;
     private string hpModeLabel = "";
     private Color hpTextColor = Color.white;
     private bool hasHpTextColor;
@@ -57,6 +61,12 @@ public class CalculatorManager : MonoBehaviour
         }
 
         RefreshPotionDropdownOptions();
+        RefreshEquationText();
+    }
+
+    public void RefreshExhaustionDisplay()
+    {
+        RefreshEquationText();
     }
 
     private void EnsureDisplayTexts()
@@ -618,6 +628,8 @@ public class CalculatorManager : MonoBehaviour
 
     private void SetHpMode(HpCalculatorMode mode)
     {
+        if (showingEasterEgg)
+            ResetCalculator();
         hpMode = mode;
         hpModeLabel = GetHpModeLabel(mode);
         currentEquation = "";
@@ -687,10 +699,15 @@ public class CalculatorManager : MonoBehaviour
         if (string.IsNullOrWhiteSpace(currentEquation))
             return;
 
+        if (TryShowEasterEgg())
+            return;
+
         string expression = TrimTrailingOperators(currentEquation);
         if (string.IsNullOrWhiteSpace(expression))
             return;
 
+        int exhaustionPenalty = hpMode == HpCalculatorMode.None && ExhaustionEffects.IsD20Roll(expression)
+            ? 2 * ExhaustionEffects.Level : 0;
         expression = ProcessDiceNotation(expression);
         if (!TryEvaluateExpression(expression, out double result))
         {
@@ -705,13 +722,58 @@ public class CalculatorManager : MonoBehaviour
             return;
         }
 
+        result -= exhaustionPenalty;
         string formattedResult = FormatNumber(result);
         if (resultText != null)
-            resultText.text = "=" + formattedResult;
+            resultText.text = "=" + formattedResult + (exhaustionPenalty > 0 ? " (" + ExhaustionEffects.PenaltyLabel(exhaustionPenalty).Trim() + ")" : "");
         currentEquation = formattedResult;
         isOperatorClicked = false;
         isLastInputDice = false;
         RefreshEquationText();
+    }
+
+    private bool TryShowEasterEgg()
+    {
+        if (hpMode != HpCalculatorMode.None)
+            return false;
+
+        string topLine = "";
+        string message;
+        switch (currentEquation)
+        {
+            case "4221":
+                message = "Раз, два, три, прием! Эта штука работает?";
+                break;
+            case "666":
+                message = "Hell Yeah!!!";
+                break;
+            case "69":
+                message = "Нааайс";
+                break;
+            case "1984":
+                topLine = "Ето как в 1984";
+                message = "Но я не читал";
+                break;
+            default:
+                return false;
+        }
+
+        ResetCalculator();
+        if (equationText != null)
+            equationText.text = topLine;
+        if (resultText != null)
+        {
+            showingEasterEgg = true;
+            resultBestFitBeforeEasterEgg = resultText.resizeTextForBestFit;
+            resultMinSizeBeforeEasterEgg = resultText.resizeTextMinSize;
+            resultMaxSizeBeforeEasterEgg = resultText.resizeTextMaxSize;
+            resultText.resizeTextForBestFit = true;
+            resultText.resizeTextMinSize = 10;
+            resultText.resizeTextMaxSize = Mathf.Max(10, resultText.fontSize);
+            resultText.text = resultText == equationText && topLine.Length > 0
+                ? topLine + "\n" + message : message;
+        }
+        return true;
     }
 
     private void ApplyHpMode(int value)
@@ -1055,7 +1117,9 @@ public class CalculatorManager : MonoBehaviour
             ClearSavedPanelsByMarkers(sceneData, "Rage", "SorceryPoints", "Flight");
             ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "SpellSlots"));
             ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "DeathSaves"));
-            ReduceSavedExhaustionByOne(sceneData, GetRestPanelPath(sceneData, "Exhaustion"));
+            // The current scene's toggles were already reduced and saved above.
+            if (sceneData != saveManager.GetActiveSceneData())
+                ReduceSavedExhaustionByOne(sceneData, GetRestPanelPath(sceneData, "Exhaustion"));
         }
 
         saveManager.SaveData();
@@ -1158,6 +1222,13 @@ public class CalculatorManager : MonoBehaviour
 
     private void ResetCalculator()
     {
+        if (showingEasterEgg && resultText != null)
+        {
+            resultText.resizeTextForBestFit = resultBestFitBeforeEasterEgg;
+            resultText.resizeTextMinSize = resultMinSizeBeforeEasterEgg;
+            resultText.resizeTextMaxSize = resultMaxSizeBeforeEasterEgg;
+        }
+        showingEasterEgg = false;
         currentEquation = "";
         hpModeLabel = "";
         if (equationText != null)
@@ -1377,10 +1448,12 @@ public class CalculatorManager : MonoBehaviour
 
     private void RefreshEquationText()
     {
-        if (equationText == null)
+        if (equationText == null || showingEasterEgg)
             return;
 
         equationText.text = hpMode != HpCalculatorMode.None ? hpModeLabel + currentEquation : currentEquation;
+        if (hpMode == HpCalculatorMode.None && ExhaustionEffects.IsD20Roll(currentEquation) && ExhaustionEffects.Level > 0)
+            equationText.text += ExhaustionEffects.PenaltyLabel(2 * ExhaustionEffects.Level);
     }
 
     private string FormatNumber(double value)

@@ -148,6 +148,15 @@ public class HealthBar1 : MonoBehaviour
         return currentHealth - before;
     }
 
+    public void SetHealthToZero()
+    {
+        RefreshHealthFromData();
+        currentHealth = 0;
+        ClearTemporaryHealth(false);
+        SaveHealth();
+        UpdateHealthUI();
+    }
+
     public int RestoreToMaxHealth()
     {
         int before = currentHealth;
