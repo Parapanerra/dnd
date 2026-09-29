@@ -318,7 +318,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7795065310293821728, guid: c536a29d36be88e4381312ff010bad36, type: 3}
   m_PrefabInstance: {fileID: 8663134989051308569}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8663134989051308574}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7795065310293821728, guid: c536a29d36be88e4381312ff010bad36, type: 3}
   m_PrefabInstance: {fileID: 1220040219598877641}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1220040219598877646}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
@@ -784,7 +784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2434985894925077886, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -51.900085
+      value: -51.900024
       objectReference: {fileID: 0}
     - target: {fileID: 2434985894925077886, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -836,7 +836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4548137160840384423, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -49.700012
+      value: -49.700073
       objectReference: {fileID: 0}
     - target: {fileID: 4548137160840384423, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1725,7 +1725,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7795065310293821728, guid: c536a29d36be88e4381312ff010bad36, type: 3}
   m_PrefabInstance: {fileID: 2902793021898547955}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2902793021898547959}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
@@ -1851,7 +1851,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7795065310293821728, guid: c536a29d36be88e4381312ff010bad36, type: 3}
   m_PrefabInstance: {fileID: 7127421948377450065}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7127421948377450069}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
@@ -2127,7 +2127,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7795065310293821728, guid: c536a29d36be88e4381312ff010bad36, type: 3}
   m_PrefabInstance: {fileID: 7799771680985008430}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7799771680985008435}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
@@ -3361,6 +3361,7 @@ GameObject:
   - component: {fileID: 3327150174654761463}
   - component: {fileID: 8900607496241633503}
   - component: {fileID: 1061772787721259254}
+  - component: {fileID: 8900607496241633504}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -3524,6 +3525,7 @@ GameObject:
   - component: {fileID: 7483700052102324837}
   - component: {fileID: 1108270949911857331}
   - component: {fileID: 2392835462558946619}
+  - component: {fileID: 7483700052102324838}
   m_Layer: 5
   m_Name: InputFieldspaspaw (8)
   m_TagString: Untagged
@@ -3899,6 +3901,7 @@ GameObject:
   - component: {fileID: 4378329701440015715}
   - component: {fileID: 6528710381843744119}
   - component: {fileID: 5041962400437823937}
+  - component: {fileID: 6528710381843744120}
   m_Layer: 5
   m_Name: InputFieldspaspaw (1)
   m_TagString: Untagged
@@ -5543,6 +5546,7 @@ GameObject:
   - component: {fileID: 8075527697370280398}
   - component: {fileID: 228319724998137255}
   - component: {fileID: 7366263122234710430}
+  - component: {fileID: 8075527697370280399}
   m_Layer: 5
   m_Name: InputField (Legacy) (1)
   m_TagString: Untagged
@@ -6277,6 +6281,7 @@ GameObject:
   - component: {fileID: 7262747230008003669}
   - component: {fileID: 7744465899791000470}
   - component: {fileID: 205189533409955583}
+  - component: {fileID: 7744465899791000471}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -7528,6 +7533,7 @@ GameObject:
   - component: {fileID: 4677619314538930901}
   - component: {fileID: 6452686294446081780}
   - component: {fileID: 3158909052325385648}
+  - component: {fileID: 6452686294446081781}
   m_Layer: 5
   m_Name: alldaise
   m_TagString: Untagged
@@ -8812,6 +8818,7 @@ GameObject:
   - component: {fileID: 6778783580650382494}
   - component: {fileID: 8968014916977391159}
   - component: {fileID: 3288532836465020560}
+  - component: {fileID: 8968014916977391160}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -10666,6 +10673,7 @@ GameObject:
   - component: {fileID: 9151283379424624068}
   - component: {fileID: 2213272463633452001}
   - component: {fileID: 5393809918804995991}
+  - component: {fileID: 9151283379424624069}
   m_Layer: 5
   m_Name: InputFieldspaspaw (11)
   m_TagString: Untagged
@@ -10793,6 +10801,7 @@ GameObject:
   - component: {fileID: 3863110368203460960}
   - component: {fileID: 2395638184814423645}
   - component: {fileID: 6410887758612340355}
+  - component: {fileID: 6410887758612340356}
   m_Layer: 5
   m_Name: InputField (Legacy) (3)
   m_TagString: Untagged
@@ -17046,6 +17055,7 @@ GameObject:
   - component: {fileID: 3247581292138648665}
   - component: {fileID: 2049851179413145376}
   - component: {fileID: 6780008534379323022}
+  - component: {fileID: 8237019705247534174}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -17784,6 +17794,9 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 1702349145839912012}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5422642067535370969, guid: c536a29d36be88e4381312ff010bad36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1220040219598877647}
     - targetCorrespondingSourceObject: {fileID: 8565936308676136907, guid: c536a29d36be88e4381312ff010bad36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1220040219598877645}
@@ -17819,6 +17832,24 @@ MonoBehaviour:
   englishText: 
   russianText: 
   useCurrentTextAsSource: 1
+--- !u!1 &1220040219598877646 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5422642067535370969, guid: c536a29d36be88e4381312ff010bad36, type: 3}
+  m_PrefabInstance: {fileID: 1220040219598877641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1220040219598877647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220040219598877646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 82
 --- !u!1 &1222263429808145592
 GameObject:
   m_ObjectHideFlags: 0
@@ -17974,6 +18005,7 @@ GameObject:
   - component: {fileID: 3555484083707686423}
   - component: {fileID: 6412363215114702298}
   - component: {fileID: 4304056582076477440}
+  - component: {fileID: 7075680052287797398}
   m_Layer: 5
   m_Name: mudrost
   m_TagString: Untagged
@@ -18183,6 +18215,7 @@ GameObject:
   - component: {fileID: 1475063170021672552}
   - component: {fileID: 7153274477984970321}
   - component: {fileID: 2839644613357146598}
+  - component: {fileID: 7627053999814146666}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -18634,6 +18667,7 @@ GameObject:
   - component: {fileID: 281003533001019238}
   - component: {fileID: 2073862758076449587}
   - component: {fileID: 6953046684555322966}
+  - component: {fileID: 6953046684555322967}
   m_Layer: 5
   m_Name: InputField (Legacy) (2)
   m_TagString: Untagged
@@ -19216,6 +19250,7 @@ GameObject:
   - component: {fileID: 4478829073354729734}
   - component: {fileID: 5872492999710273905}
   - component: {fileID: 8741880507511742186}
+  - component: {fileID: 8741880507511742187}
   m_Layer: 5
   m_Name: mmpises (10)
   m_TagString: Untagged
@@ -30456,6 +30491,7 @@ GameObject:
   - component: {fileID: 7733456337508204452}
   - component: {fileID: 2161000208922862083}
   - component: {fileID: 7527975479417446394}
+  - component: {fileID: 7733456337508204453}
   m_Layer: 5
   m_Name: InputFieldspaspaw (11)
   m_TagString: Untagged
@@ -31093,6 +31129,7 @@ GameObject:
   - component: {fileID: 3874728816896068110}
   - component: {fileID: 7372456827749355121}
   - component: {fileID: 1831925712692186749}
+  - component: {fileID: 9155409750479304093}
   m_Layer: 5
   m_Name: mmpises (11)
   m_TagString: Untagged
@@ -32178,6 +32215,7 @@ GameObject:
   - component: {fileID: 3101581358346694621}
   - component: {fileID: 7502537403731965193}
   - component: {fileID: 5584184403118259723}
+  - component: {fileID: 7502537403731965194}
   m_Layer: 5
   m_Name: personajName
   m_TagString: Untagged
@@ -33453,6 +33491,7 @@ GameObject:
   - component: {fileID: 3604956885863010193}
   - component: {fileID: 1453600290668086177}
   - component: {fileID: 4761773389171266721}
+  - component: {fileID: 4761773389171266722}
   m_Layer: 5
   m_Name: InputFieldspaspaw (9)
   m_TagString: Untagged
@@ -33731,6 +33770,7 @@ GameObject:
   - component: {fileID: 6811858410903127938}
   - component: {fileID: 2899022753671043888}
   - component: {fileID: 3445882168500568162}
+  - component: {fileID: 6811858410903127939}
   m_Layer: 5
   m_Name: mmpises
   m_TagString: Untagged
@@ -34286,6 +34326,7 @@ GameObject:
   - component: {fileID: 176312550298176630}
   - component: {fileID: 1552117655211276379}
   - component: {fileID: 2322897868195290398}
+  - component: {fileID: 7029144299942615767}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -34420,6 +34461,7 @@ GameObject:
   - component: {fileID: 5250967120487191696}
   - component: {fileID: 5674447600288611546}
   - component: {fileID: 1685011963533704258}
+  - component: {fileID: 5674447600288611547}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -34752,6 +34794,7 @@ GameObject:
   - component: {fileID: 2194901366661889402}
   - component: {fileID: 8130503881911462321}
   - component: {fileID: 4604795712971134072}
+  - component: {fileID: 8130503881911462322}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -36300,6 +36343,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5422642067535370969, guid: c536a29d36be88e4381312ff010bad36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2902793021898547960}
     - targetCorrespondingSourceObject: {fileID: 8565936308676136907, guid: c536a29d36be88e4381312ff010bad36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2902793021898547958}
@@ -36330,6 +36376,24 @@ MonoBehaviour:
   englishText: 
   russianText: 
   useCurrentTextAsSource: 1
+--- !u!1 &2902793021898547959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5422642067535370969, guid: c536a29d36be88e4381312ff010bad36, type: 3}
+  m_PrefabInstance: {fileID: 2902793021898547955}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2902793021898547960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2902793021898547959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 69
 --- !u!114 &2902990921924079529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36504,6 +36568,7 @@ GameObject:
   - component: {fileID: 1658123802380334534}
   - component: {fileID: 3263069300129663226}
   - component: {fileID: 1194489759011309280}
+  - component: {fileID: 7810006476822632131}
   m_Layer: 5
   m_Name: inputYminaOsodb
   m_TagString: Untagged
@@ -37929,6 +37994,7 @@ GameObject:
   - component: {fileID: 4085411428666207863}
   - component: {fileID: 8360318160117522379}
   - component: {fileID: 8415671363935477090}
+  - component: {fileID: 8415671363935477091}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -38139,6 +38205,7 @@ GameObject:
   - component: {fileID: 4518083352535926699}
   - component: {fileID: 72189264592647757}
   - component: {fileID: 6101079541168746427}
+  - component: {fileID: 6641159384108268361}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -39007,6 +39074,7 @@ GameObject:
   - component: {fileID: 560590857726039785}
   - component: {fileID: 3012167703445380565}
   - component: {fileID: 1581942179261741648}
+  - component: {fileID: 6911217827750891206}
   m_Layer: 5
   m_Name: InputField (Legacy) (3)
   m_TagString: Untagged
@@ -39844,6 +39912,7 @@ GameObject:
   - component: {fileID: 5499986714259850208}
   - component: {fileID: 8839281655582450843}
   - component: {fileID: 2064683619283779833}
+  - component: {fileID: 8839281655582450844}
   m_Layer: 5
   m_Name: intelect
   m_TagString: Untagged
@@ -40935,6 +41004,7 @@ GameObject:
   - component: {fileID: 7238449537845318042}
   - component: {fileID: 4539120971355122035}
   - component: {fileID: 2789834949438443273}
+  - component: {fileID: 7238449537845318043}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -43204,6 +43274,7 @@ GameObject:
   - component: {fileID: 7318905935456664579}
   - component: {fileID: 4934521930018085790}
   - component: {fileID: 8975508556491694162}
+  - component: {fileID: 8975508556491694163}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -43755,6 +43826,7 @@ GameObject:
   - component: {fileID: 8224605683378356697}
   - component: {fileID: 294740227852228496}
   - component: {fileID: 1769652292245687997}
+  - component: {fileID: 8224605683378356698}
   m_Layer: 5
   m_Name: InputFieldspaspaw (10)
   m_TagString: Untagged
@@ -44281,6 +44353,7 @@ GameObject:
   - component: {fileID: 4667742749206055060}
   - component: {fileID: 3732080080169492500}
   - component: {fileID: 4894022924713760884}
+  - component: {fileID: 7344343321517580662}
   m_Layer: 5
   m_Name: InputFieldspaspaw (10)
   m_TagString: Untagged
@@ -44387,6 +44460,7 @@ GameObject:
   - component: {fileID: 5863692921355435698}
   - component: {fileID: 3200664637161342861}
   - component: {fileID: 5119369494231076493}
+  - component: {fileID: 6376139403446052488}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -45853,6 +45927,7 @@ GameObject:
   - component: {fileID: 951496065193585169}
   - component: {fileID: 6751868381459474260}
   - component: {fileID: 3500928542337765898}
+  - component: {fileID: 7548004313393697787}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -49585,6 +49660,7 @@ GameObject:
   - component: {fileID: 3745802202048670215}
   - component: {fileID: 4539433849666812618}
   - component: {fileID: 7419051014214833923}
+  - component: {fileID: 8592694292936442003}
   m_Layer: 5
   m_Name: InputField (Legacy) (5)
   m_TagString: Untagged
@@ -50038,6 +50114,7 @@ GameObject:
   - component: {fileID: 1254776526150823141}
   - component: {fileID: 4250509721080469951}
   - component: {fileID: 7581190175337411477}
+  - component: {fileID: 7581190175337411478}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -52008,6 +52085,7 @@ GameObject:
   - component: {fileID: 6073139149188027188}
   - component: {fileID: 3899800710411408240}
   - component: {fileID: 1440925195599425842}
+  - component: {fileID: 6073139149188027189}
   m_Layer: 5
   m_Name: mmpises (7)
   m_TagString: Untagged
@@ -53032,6 +53110,7 @@ GameObject:
   - component: {fileID: 8580004815749571475}
   - component: {fileID: 5173983981475929538}
   - component: {fileID: 5602684227605432080}
+  - component: {fileID: 8580004815749571476}
   m_Layer: 5
   m_Name: mmpises (1)
   m_TagString: Untagged
@@ -54558,6 +54637,7 @@ GameObject:
   - component: {fileID: 6917100861970264833}
   - component: {fileID: 7056823142071107378}
   - component: {fileID: 8997734416459926712}
+  - component: {fileID: 8997734416459926713}
   m_Layer: 5
   m_Name: Pawer
   m_TagString: Untagged
@@ -54704,6 +54784,7 @@ GameObject:
   - component: {fileID: 6893694669027207671}
   - component: {fileID: 1787622852657416794}
   - component: {fileID: 6990584772747456904}
+  - component: {fileID: 6990584772747456905}
   m_Layer: 5
   m_Name: InputFieldspaspaw (2)
   m_TagString: Untagged
@@ -55539,6 +55620,7 @@ GameObject:
   - component: {fileID: 4410290117565989675}
   - component: {fileID: 6624721327097751885}
   - component: {fileID: 176529346959729569}
+  - component: {fileID: 6624721327097751886}
   m_Layer: 5
   m_Name: InputFieldspaspaw (1)
   m_TagString: Untagged
@@ -56326,6 +56408,7 @@ GameObject:
   - component: {fileID: 152277627436857223}
   - component: {fileID: 292526278412120856}
   - component: {fileID: 6053956432973212250}
+  - component: {fileID: 6053956432973212251}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -56817,6 +56900,7 @@ GameObject:
   - component: {fileID: 780669889981305059}
   - component: {fileID: 3816374514013232584}
   - component: {fileID: 2715191920465022186}
+  - component: {fileID: 6490538809481734958}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -57571,6 +57655,7 @@ GameObject:
   - component: {fileID: 3652693575547513424}
   - component: {fileID: 7951947513835380597}
   - component: {fileID: 5063367047180970796}
+  - component: {fileID: 8145784532017051826}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -58657,6 +58742,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &4761773389171266722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2671848279228020799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 91
 --- !u!114 &4762913684754584303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59771,6 +59869,7 @@ GameObject:
   - component: {fileID: 4613760833857875067}
   - component: {fileID: 9203829284310168706}
   - component: {fileID: 2530755875094093181}
+  - component: {fileID: 9203829284310168707}
   m_Layer: 5
   m_Name: harizma
   m_TagString: Untagged
@@ -59923,6 +60022,7 @@ GameObject:
   - component: {fileID: 9044388217651819448}
   - component: {fileID: 7415044119259670687}
   - component: {fileID: 6795237216366118434}
+  - component: {fileID: 9044388217651819449}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -60449,6 +60549,7 @@ GameObject:
   - component: {fileID: 1282404588454607537}
   - component: {fileID: 215791762511343086}
   - component: {fileID: 383615893192723240}
+  - component: {fileID: 4900924511594157471}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -60456,6 +60557,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4900924511594157471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4900924511594157470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 25
 --- !u!224 &4907525074021216624
 RectTransform:
   m_ObjectHideFlags: 0
@@ -61024,6 +61138,7 @@ GameObject:
   - component: {fileID: 1073336398153487054}
   - component: {fileID: 5424628359874711130}
   - component: {fileID: 4118478001473847101}
+  - component: {fileID: 5424628359874711131}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -61292,6 +61407,7 @@ GameObject:
   - component: {fileID: 3056151782979525513}
   - component: {fileID: 6049232630096393976}
   - component: {fileID: 479403348248456414}
+  - component: {fileID: 6049232630096393977}
   m_Layer: 5
   m_Name: InputFieldspaspaw (12)
   m_TagString: Untagged
@@ -62106,6 +62222,7 @@ GameObject:
   - component: {fileID: 3765120643450308874}
   - component: {fileID: 1645404574287420567}
   - component: {fileID: 3194937027058616523}
+  - component: {fileID: 5035893752543928363}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -62113,6 +62230,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5035893752543928363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5035893752543928362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 59
 --- !u!1 &5038037603465655021
 GameObject:
   m_ObjectHideFlags: 0
@@ -65540,6 +65670,7 @@ GameObject:
   - component: {fileID: 3355601359723066830}
   - component: {fileID: 8326609104492496082}
   - component: {fileID: 7217475594242425408}
+  - component: {fileID: 8326609104492496083}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -65730,6 +65861,7 @@ GameObject:
   - component: {fileID: 4937364699937588489}
   - component: {fileID: 2721636098144140399}
   - component: {fileID: 7551586680954219472}
+  - component: {fileID: 7551586680954219473}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -66856,6 +66988,7 @@ GameObject:
   - component: {fileID: 5816541511912675320}
   - component: {fileID: 3720403852311553015}
   - component: {fileID: 222953507891501018}
+  - component: {fileID: 5816541511912675321}
   m_Layer: 5
   m_Name: InputField (Legacy) (1)
   m_TagString: Untagged
@@ -67011,6 +67144,7 @@ GameObject:
   - component: {fileID: 6762432037622066290}
   - component: {fileID: 2268698465089044397}
   - component: {fileID: 8756947520909091967}
+  - component: {fileID: 8756947520909091968}
   m_Layer: 5
   m_Name: InputFieldspaspaw (2)
   m_TagString: Untagged
@@ -67669,6 +67803,7 @@ GameObject:
   - component: {fileID: 6703282633001293685}
   - component: {fileID: 6955654257043821083}
   - component: {fileID: 6455162843033122561}
+  - component: {fileID: 7764329834030559285}
   m_Layer: 5
   m_Name: InputFieldspaspaw (13)
   m_TagString: Untagged
@@ -68043,6 +68178,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &5424628359874711131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947496377676792065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 29
 --- !u!222 &5425951236539444451
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -69346,6 +69494,7 @@ GameObject:
   - component: {fileID: 6271867118640514210}
   - component: {fileID: 36260638061559338}
   - component: {fileID: 3882219860717354736}
+  - component: {fileID: 6271867118640514211}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -69976,6 +70125,7 @@ GameObject:
   - component: {fileID: 6826802244814027565}
   - component: {fileID: 4924668422133305394}
   - component: {fileID: 3712268543521874114}
+  - component: {fileID: 6826802244814027566}
   m_Layer: 5
   m_Name: InputField (Legacy) (4)
   m_TagString: Untagged
@@ -70029,6 +70179,7 @@ GameObject:
   - component: {fileID: 5807903845212372240}
   - component: {fileID: 7430674990807197666}
   - component: {fileID: 8919132520784261582}
+  - component: {fileID: 8919132520784261583}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -70377,6 +70528,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 7
+--- !u!114 &5674447600288611547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759896031209740570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 35
 --- !u!224 &5675037513333575165
 RectTransform:
   m_ObjectHideFlags: 0
@@ -72267,6 +72431,7 @@ GameObject:
   - component: {fileID: 35778054026407306}
   - component: {fileID: 5122450064105599135}
   - component: {fileID: 8887591318074185460}
+  - component: {fileID: 8887591318074185461}
   m_Layer: 5
   m_Name: mmpises (8)
   m_TagString: Untagged
@@ -72353,6 +72518,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5321104637769259850}
   m_CullTransparentMesh: 1
+--- !u!114 &5816541511912675321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5321104637769259850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 76
 --- !u!114 &5819934105262899115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73902,6 +74080,7 @@ GameObject:
   - component: {fileID: 4848709380749458389}
   - component: {fileID: 3197177263031501781}
   - component: {fileID: 1481441391389255377}
+  - component: {fileID: 5967418551561738469}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -73909,6 +74088,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5967418551561738469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5967418551561738468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 17
 --- !u!114 &5968150657917347298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73973,6 +74165,7 @@ GameObject:
   - component: {fileID: 2892509784295200427}
   - component: {fileID: 1315219938342845357}
   - component: {fileID: 4714306661308022840}
+  - component: {fileID: 5971784833323923723}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -73980,6 +74173,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5971784833323923723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971784833323923722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 74
 --- !u!212 &5984248486248557572
 SpriteRenderer:
   serializedVersion: 2
@@ -74759,6 +74965,7 @@ GameObject:
   - component: {fileID: 2182151783901732855}
   - component: {fileID: 7978533862968923149}
   - component: {fileID: 7018452954350034404}
+  - component: {fileID: 7978533862968923150}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -74778,6 +74985,7 @@ GameObject:
   - component: {fileID: 2675281503517975159}
   - component: {fileID: 3581803689052489129}
   - component: {fileID: 9044631622167330953}
+  - component: {fileID: 9044631622167330954}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -74848,6 +75056,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &6049232630096393977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976954405514355780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 101
 --- !u!1 &6051362254342568091
 GameObject:
   m_ObjectHideFlags: 0
@@ -74933,6 +75154,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &6053956432973212251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585607708466601743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 21
 --- !u!114 &6055765042825433161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75013,6 +75247,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4223905330336676131}
   m_CullTransparentMesh: 1
+--- !u!114 &6073139149188027189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223905330336676131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 12
 --- !u!114 &6075038507330213585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77365,6 +77612,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5567988199088605518}
   m_CullTransparentMesh: 1
+--- !u!114 &6271867118640514211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5567988199088605518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 24
 --- !u!1 &6274530069689838686
 GameObject:
   m_ObjectHideFlags: 0
@@ -77882,6 +78142,7 @@ GameObject:
   - component: {fileID: 7733499917597123791}
   - component: {fileID: 4081167215827017446}
   - component: {fileID: 4976039020990383692}
+  - component: {fileID: 7733499917597123792}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -77940,6 +78201,7 @@ GameObject:
   - component: {fileID: 2231139941301896772}
   - component: {fileID: 2234485566303883837}
   - component: {fileID: 642629457476258807}
+  - component: {fileID: 6339786750886586955}
   m_Layer: 5
   m_Name: mmpises (6)
   m_TagString: Untagged
@@ -77947,6 +78209,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6339786750886586955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339786750886586954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 11
 --- !u!222 &6341715009818478055
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -78204,6 +78479,7 @@ GameObject:
   - component: {fileID: 2433695477006942261}
   - component: {fileID: 7226550531855526477}
   - component: {fileID: 3100862123072150217}
+  - component: {fileID: 7226550531855526478}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -78367,6 +78643,7 @@ GameObject:
   - component: {fileID: 2394527042723312024}
   - component: {fileID: 9117407806532281615}
   - component: {fileID: 8379740881534894609}
+  - component: {fileID: 9117407806532281616}
   m_Layer: 5
   m_Name: const
   m_TagString: Untagged
@@ -78423,6 +78700,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.4075, y: -0.8271}
   m_SizeDelta: {x: 213.5511, y: 362.3858}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6376139403446052488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3564226446801476167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 37
 --- !u!1 &6378872241045564103
 GameObject:
   m_ObjectHideFlags: 0
@@ -78885,6 +79175,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &6410887758612340356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691607236968700622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 78
 --- !u!114 &6412363215114702298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79213,6 +79516,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 7
+--- !u!114 &6452686294446081781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428014620159543027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 14
 --- !u!224 &6453776874555938802
 RectTransform:
   m_ObjectHideFlags: 0
@@ -79680,6 +79996,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.5887, y: 0.2611}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.49999925, y: 0.5000003}
+--- !u!114 &6490538809481734958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4624331878708448339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 22
 --- !u!224 &6491838381577603437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -80005,6 +80334,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &6528710381843744120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121466612410645675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 56
 --- !u!1 &6529813719514262756
 GameObject:
   m_ObjectHideFlags: 0
@@ -80035,6 +80377,7 @@ GameObject:
   - component: {fileID: 5427289504374521755}
   - component: {fileID: 8129931967162131411}
   - component: {fileID: 16637207824733206}
+  - component: {fileID: 8602986540674408293}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -80296,6 +80639,7 @@ GameObject:
   - component: {fileID: 293920151904490482}
   - component: {fileID: 2872554672902489486}
   - component: {fileID: 5225616975596168652}
+  - component: {fileID: 8101415580137003107}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -81135,6 +81479,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &6624721327097751886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517633141675030282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 57
 --- !u!224 &6629511625998243637
 RectTransform:
   m_ObjectHideFlags: 0
@@ -81311,6 +81668,19 @@ RectTransform:
   m_AnchoredPosition: {x: 55, y: -251.46631}
   m_SizeDelta: {x: 71.55, y: 55.5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6641159384108268361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3072284679399989557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 86
 --- !u!4 &6645059296216637988
 Transform:
   m_ObjectHideFlags: 0
@@ -81436,6 +81806,7 @@ GameObject:
   - component: {fileID: 4137220607450866599}
   - component: {fileID: 8816336204854205872}
   - component: {fileID: 6097837895773371763}
+  - component: {fileID: 8816336204854205873}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -82654,6 +83025,7 @@ GameObject:
   - component: {fileID: 4073162786604588294}
   - component: {fileID: 2508110726595108039}
   - component: {fileID: 6594433406547927739}
+  - component: {fileID: 7845273528984820465}
   m_Layer: 5
   m_Name: InputField (Legacy) (1)
   m_TagString: Untagged
@@ -83032,6 +83404,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2698496357215070582}
   m_CullTransparentMesh: 1
+--- !u!114 &6811858410903127939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2698496357215070582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 75
 --- !u!1 &6813209264956018102
 GameObject:
   m_ObjectHideFlags: 0
@@ -83243,6 +83628,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5618464166530274231}
   m_CullTransparentMesh: 1
+--- !u!114 &6826802244814027566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5618464166530274231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 42
 --- !u!222 &6830143739220089637
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -84313,6 +84711,19 @@ RectTransform:
   m_AnchoredPosition: {x: 97.52, y: -90.93}
   m_SizeDelta: {x: 55.29, y: 59.494}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6911217827750891206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138227114650549102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 94
 --- !u!114 &6913524213504437462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84386,6 +84797,7 @@ GameObject:
   - component: {fileID: 4099311428425883068}
   - component: {fileID: 4439734467453676384}
   - component: {fileID: 1237261479071355000}
+  - component: {fileID: 6919807062181774678}
   m_Layer: 5
   m_Name: InputFieldspaspaw (1)
   m_TagString: Untagged
@@ -84393,6 +84805,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6919807062181774678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919807062181774677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 55
 --- !u!222 &6922442753061432060
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -84786,6 +85211,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &6953046684555322967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291348616117079289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 33
 --- !u!1 &6953338890230381124
 GameObject:
   m_ObjectHideFlags: 0
@@ -85096,6 +85534,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &6990584772747456905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436778748711548126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 62
 --- !u!222 &6994073147362007444
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -85647,6 +86098,7 @@ GameObject:
   - component: {fileID: 7524107449200433129}
   - component: {fileID: 3002246450926213672}
   - component: {fileID: 3257810145410147487}
+  - component: {fileID: 7524107449200433130}
   m_Layer: 5
   m_Name: InputField (Legacy) (3)
   m_TagString: Untagged
@@ -85713,6 +86165,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.29488, y: -0.61772}
   m_SizeDelta: {x: 259.0459, y: 416.79037}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7029144299942615767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2734495200648767028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 83
 --- !u!114 &7031657937866560907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86239,6 +86704,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.603, y: 0.043}
   m_SizeDelta: {x: 104.7431, y: 110.8816}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7075680052287797398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233914483906742838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 43
 --- !u!224 &7076778069575230436
 RectTransform:
   m_ObjectHideFlags: 0
@@ -86892,6 +87370,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5422642067535370969, guid: c536a29d36be88e4381312ff010bad36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7127421948377450070}
     - targetCorrespondingSourceObject: {fileID: 8565936308676136907, guid: c536a29d36be88e4381312ff010bad36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7127421948377450068}
@@ -86922,6 +87403,24 @@ MonoBehaviour:
   englishText: 
   russianText: 
   useCurrentTextAsSource: 1
+--- !u!1 &7127421948377450069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5422642067535370969, guid: c536a29d36be88e4381312ff010bad36, type: 3}
+  m_PrefabInstance: {fileID: 7127421948377450065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7127421948377450070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7127421948377450069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 46
 --- !u!114 &7127439376676811057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87931,6 +88430,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &7226550531855526478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6364256755620162293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 49
 --- !u!114 &7230812591419817089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87991,6 +88503,7 @@ GameObject:
   - component: {fileID: 6522740215422959035}
   - component: {fileID: 8385909187350402939}
   - component: {fileID: 5085275037946953830}
+  - component: {fileID: 8385909187350402940}
   m_Layer: 5
   m_Name: InputFieldspaspaw (11)
   m_TagString: Untagged
@@ -88079,6 +88592,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3283986748598079012}
   m_CullTransparentMesh: 1
+--- !u!114 &7238449537845318043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3283986748598079012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 89
 --- !u!212 &7241448852690348692
 SpriteRenderer:
   serializedVersion: 2
@@ -88586,6 +89112,7 @@ GameObject:
   - component: {fileID: 6791837693357908703}
   - component: {fileID: 1840560396348540947}
   - component: {fileID: 1191690442643152942}
+  - component: {fileID: 7279352592880561418}
   m_Layer: 5
   m_Name: mmpises (5)
   m_TagString: Untagged
@@ -88593,6 +89120,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7279352592880561418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7279352592880561417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 6
 --- !u!1 &7279956292244464603
 GameObject:
   m_ObjectHideFlags: 0
@@ -89256,6 +89796,19 @@ RectTransform:
   m_AnchoredPosition: {x: 3.91, y: 178.5}
   m_SizeDelta: {x: 170.07, y: 29.44}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7344343321517580662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3555160494502442977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 84
 --- !u!1 &7345352234063518500
 GameObject:
   m_ObjectHideFlags: 0
@@ -89888,6 +90441,7 @@ GameObject:
   - component: {fileID: 8252544271812150037}
   - component: {fileID: 7681838715308464259}
   - component: {fileID: 4889584300849236568}
+  - component: {fileID: 8252544271812150038}
   m_Layer: 5
   m_Name: InputFieldspaspaw (10)
   m_TagString: Untagged
@@ -90819,6 +91373,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78744443069277754}
   m_CullTransparentMesh: 1
+--- !u!114 &7483700052102324838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78744443069277754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 88
 --- !u!212 &7485215897034454985
 SpriteRenderer:
   serializedVersion: 2
@@ -90969,6 +91536,7 @@ GameObject:
   - component: {fileID: 7823407795381919}
   - component: {fileID: 7878663599076273364}
   - component: {fileID: 4043494658582292715}
+  - component: {fileID: 7878663599076273365}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -91194,6 +91762,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 5
+--- !u!114 &7502537403731965194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2555009633353861752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 1
 --- !u!1 &7502803638063322258
 GameObject:
   m_ObjectHideFlags: 0
@@ -91585,6 +92166,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7024656456890115913}
   m_CullTransparentMesh: 1
+--- !u!114 &7524107449200433130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7024656456890115913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 95
 --- !u!114 &7525466364005876813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91847,6 +92441,19 @@ RectTransform:
   m_AnchoredPosition: {x: -1.639885, y: -3.789032}
   m_SizeDelta: {x: 44, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7548004313393697787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3712422805585400145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 67
 --- !u!114 &7551586680954219472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91915,6 +92522,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &7551586680954219473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5232431437628452649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 39
 --- !u!222 &7552083761841565186
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -92127,6 +92747,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &7581190175337411478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4034919041102562295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 30
 --- !u!222 &7583249292105928168
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -92605,6 +93238,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.09706843, y: -0.33768678}
   m_SizeDelta: {x: 39.05, y: 31.68}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7627053999814146666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242491844628980814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 31
 --- !u!1 &7630121500803183230
 GameObject:
   m_ObjectHideFlags: 0
@@ -93525,6 +94171,7 @@ GameObject:
   - component: {fileID: 8759554171952432195}
   - component: {fileID: 6353817768347909905}
   - component: {fileID: 5775303927726802647}
+  - component: {fileID: 8759554171952432196}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -93636,6 +94283,7 @@ GameObject:
   - component: {fileID: 3237291501978689016}
   - component: {fileID: 6479755394458486262}
   - component: {fileID: 8273688833780699657}
+  - component: {fileID: 8273688833780699658}
   m_Layer: 5
   m_Name: InputFieldspaspaw (2)
   m_TagString: Untagged
@@ -93786,6 +94434,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2376215815831260453}
   m_CullTransparentMesh: 1
+--- !u!114 &7733456337508204453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2376215815831260453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 92
 --- !u!222 &7733499917597123791
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -93794,6 +94455,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6327696933493071855}
   m_CullTransparentMesh: 1
+--- !u!114 &7733499917597123792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6327696933493071855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 85
 --- !u!222 &7736995263808621958
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -93972,6 +94646,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &7744465899791000471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326824066390124867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 53
 --- !u!224 &7746974937140916774
 RectTransform:
   m_ObjectHideFlags: 0
@@ -94243,6 +94930,19 @@ RectTransform:
   m_AnchoredPosition: {x: -165.59995, y: -205.1}
   m_SizeDelta: {x: 141.98, y: 26.86}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7764329834030559285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5402983829301792638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 99
 --- !u!224 &7764954387336074737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -94786,6 +95486,9 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 2198030048606165678}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5422642067535370969, guid: c536a29d36be88e4381312ff010bad36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7799771680985008436}
     - targetCorrespondingSourceObject: {fileID: 8565936308676136907, guid: c536a29d36be88e4381312ff010bad36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7799771680985008434}
@@ -94821,6 +95524,24 @@ MonoBehaviour:
   englishText: 
   russianText: 
   useCurrentTextAsSource: 1
+--- !u!1 &7799771680985008435 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5422642067535370969, guid: c536a29d36be88e4381312ff010bad36, type: 3}
+  m_PrefabInstance: {fileID: 7799771680985008430}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7799771680985008436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7799771680985008435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 80
 --- !u!1 &7802731498356764795
 GameObject:
   m_ObjectHideFlags: 0
@@ -94850,6 +95571,7 @@ GameObject:
   - component: {fileID: 7363106796150978278}
   - component: {fileID: 8622155967019153976}
   - component: {fileID: 7181814637906584279}
+  - component: {fileID: 8622155967019153977}
   m_Layer: 5
   m_Name: InputField (Legacy) (3)
   m_TagString: Untagged
@@ -94930,6 +95652,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.22361, y: -0.45247}
   m_SizeDelta: {x: 288.16827, y: 337.96545}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7810006476822632131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915587955483149898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 36
 --- !u!224 &7814363898183715075
 RectTransform:
   m_ObjectHideFlags: 0
@@ -95055,6 +95790,7 @@ GameObject:
   - component: {fileID: 7877915989237001391}
   - component: {fileID: 5024296884940827252}
   - component: {fileID: 6032434355393730822}
+  - component: {fileID: 7877915989237001392}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -95356,6 +96092,7 @@ GameObject:
   - component: {fileID: 6385156034531256348}
   - component: {fileID: 488510297032440079}
   - component: {fileID: 6894850956840220373}
+  - component: {fileID: 7836381950327985562}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -95363,6 +96100,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7836381950327985562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836381950327985561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 65
 --- !u!224 &7843770571701953831
 RectTransform:
   m_ObjectHideFlags: 0
@@ -95423,6 +96173,19 @@ RectTransform:
   m_AnchoredPosition: {x: 98.32, y: 28.588}
   m_SizeDelta: {x: 56.47, y: 56.695}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7845273528984820465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782550608433789914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 96
 --- !u!224 &7847302126303408056
 RectTransform:
   m_ObjectHideFlags: 0
@@ -95703,6 +96466,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7819802584184893744}
   m_CullTransparentMesh: 1
+--- !u!114 &7877915989237001392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819802584184893744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 60
 --- !u!114 &7878663599076273364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95733,6 +96509,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &7878663599076273365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7494942422960816323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 54
 --- !u!222 &7880081672724676826
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -96977,6 +97766,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &7978533862968923150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6040805608987518321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 48
 --- !u!222 &7978746847214302051
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -97065,6 +97867,7 @@ GameObject:
   - component: {fileID: 2780264222132493449}
   - component: {fileID: 3511645907687286242}
   - component: {fileID: 8384851720718114303}
+  - component: {fileID: 8384851720718114304}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -97558,6 +98361,7 @@ GameObject:
   - component: {fileID: 2951353500017894127}
   - component: {fileID: 2175852611166978955}
   - component: {fileID: 8646014582778792416}
+  - component: {fileID: 8646014582778792417}
   m_Layer: 5
   m_Name: mmpises (3)
   m_TagString: Untagged
@@ -97901,6 +98705,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241592688995799428}
   m_CullTransparentMesh: 1
+--- !u!114 &8075527697370280399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241592688995799428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 34
 --- !u!114 &8077057017580941464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97957,6 +98774,7 @@ GameObject:
   - component: {fileID: 6367061068175444486}
   - component: {fileID: 2340435504863317739}
   - component: {fileID: 4326950860277149826}
+  - component: {fileID: 8078970710318875794}
   m_Layer: 5
   m_Name: daicevalueperson
   m_TagString: Untagged
@@ -97964,6 +98782,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8078970710318875794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8078970710318875793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 13
 --- !u!222 &8078991176802460243
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -98313,6 +99144,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.5573, y: 0.106}
   m_SizeDelta: {x: 94.7775, y: 108.6673}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8101415580137003107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6551334989630403784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 16
 --- !u!1 &8102256192515785462
 GameObject:
   m_ObjectHideFlags: 0
@@ -98752,6 +99596,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 4
+--- !u!114 &8130503881911462322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2791071143580115936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 87
 --- !u!1 &8134322799399155074
 GameObject:
   m_ObjectHideFlags: 0
@@ -98908,6 +99765,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.5944, y: 0.2166}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8145784532017051826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4682226148290920203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 45
 --- !u!222 &8148892192399075850
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -99337,6 +100207,7 @@ GameObject:
   - component: {fileID: 3878092055018513977}
   - component: {fileID: 6228853550940195716}
   - component: {fileID: 5182568093339417420}
+  - component: {fileID: 8170883879681994287}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -99344,6 +100215,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8170883879681994287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8170883879681994286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 102
 --- !u!224 &8171266181381577345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -99649,6 +100533,7 @@ GameObject:
   - component: {fileID: 186746343086144566}
   - component: {fileID: 818063661856362430}
   - component: {fileID: 5236981445712575505}
+  - component: {fileID: 8208130484771670038}
   m_Layer: 5
   m_Name: Dex
   m_TagString: Untagged
@@ -99656,6 +100541,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8208130484771670038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8208130484771670037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 20
 --- !u!224 &8209944062054607292
 RectTransform:
   m_ObjectHideFlags: 0
@@ -99776,6 +100674,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3511526984007755808}
   m_CullTransparentMesh: 1
+--- !u!114 &8224605683378356698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3511526984007755808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 100
 --- !u!1 &8225278653519488301
 GameObject:
   m_ObjectHideFlags: 0
@@ -99890,6 +100801,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.4075, y: -0.8271}
   m_SizeDelta: {x: 213.5511, y: 362.3858}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8237019705247534174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188917723754947093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 66
 --- !u!1 &8241208527139146632
 GameObject:
   m_ObjectHideFlags: 0
@@ -100045,6 +100969,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7400945123828101408}
   m_CullTransparentMesh: 1
+--- !u!114 &8252544271812150038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7400945123828101408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 90
 --- !u!1 &8252596484625498575
 GameObject:
   m_ObjectHideFlags: 0
@@ -100057,6 +100994,7 @@ GameObject:
   - component: {fileID: 7731265452550687094}
   - component: {fileID: 7970804338140755631}
   - component: {fileID: 4614964995503321766}
+  - component: {fileID: 8252596484625498576}
   m_Layer: 5
   m_Name: mmpises (2)
   m_TagString: Untagged
@@ -100064,6 +101002,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8252596484625498576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8252596484625498575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 2
 --- !u!1 &8253565539753285590
 GameObject:
   m_ObjectHideFlags: 0
@@ -100076,6 +101027,7 @@ GameObject:
   - component: {fileID: 239227511550894498}
   - component: {fileID: 3758934799372449672}
   - component: {fileID: 5139166547452449752}
+  - component: {fileID: 8253565539753285591}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -100083,6 +101035,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8253565539753285591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8253565539753285590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 26
 --- !u!224 &8256550065142998491
 RectTransform:
   m_ObjectHideFlags: 0
@@ -100197,6 +101162,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &8273688833780699658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7716003557816076371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 64
 --- !u!222 &8281706101584889384
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -100559,6 +101537,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &8326609104492496083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220250892249909125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 27
 --- !u!4 &8327112590062905955
 Transform:
   m_ObjectHideFlags: 0
@@ -101018,6 +102009,7 @@ GameObject:
   - component: {fileID: 3296205678164748296}
   - component: {fileID: 6181779709082845875}
   - component: {fileID: 5227203511977895113}
+  - component: {fileID: 8367031108810418956}
   m_Layer: 5
   m_Name: InputField (Legacy) (4)
   m_TagString: Untagged
@@ -101025,6 +102017,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8367031108810418956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8367031108810418955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 79
 --- !u!1 &8370486689227397572
 GameObject:
   m_ObjectHideFlags: 0
@@ -101357,6 +102362,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &8384851720718114304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7984340740385860892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 50
 --- !u!114 &8385909187350402939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101387,6 +102405,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &8385909187350402940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233596607755134442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 93
 --- !u!114 &8388677319974530359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101948,6 +102979,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &8415671363935477091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3049445843947718365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 73
 --- !u!224 &8415677118040342923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -102642,6 +103686,7 @@ GameObject:
   - component: {fileID: 7661343091285087401}
   - component: {fileID: 4176254647948270932}
   - component: {fileID: 4747686738569940024}
+  - component: {fileID: 8469332881316082269}
   m_Layer: 5
   m_Name: InputField (Legacy) (2)
   m_TagString: Untagged
@@ -102649,6 +103694,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8469332881316082269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8469332881316082268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 97
 --- !u!222 &8470155260010768818
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -103402,6 +104460,7 @@ GameObject:
   - component: {fileID: 8620526056856761764}
   - component: {fileID: 2535969763137678326}
   - component: {fileID: 6349504084934496062}
+  - component: {fileID: 9175467499832086225}
   m_Layer: 5
   m_Name: mmpises (4)
   m_TagString: Untagged
@@ -103765,6 +104824,7 @@ GameObject:
   - component: {fileID: 6934483284320659259}
   - component: {fileID: 5095292150745666824}
   - component: {fileID: 1176684159159131922}
+  - component: {fileID: 8560906184467270881}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -103772,6 +104832,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8560906184467270881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8560906184467270880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 40
 --- !u!114 &8562826576121232446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104017,6 +105090,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4306689378271490694}
   m_CullTransparentMesh: 1
+--- !u!114 &8580004815749571476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4306689378271490694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 3
 --- !u!222 &8587181272114395788
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -104132,6 +105218,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0.12899996, y: -0.668}
   m_SizeDelta: {x: 40.2656, y: 29.1229}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8592694292936442003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989902670956054304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 41
 --- !u!1 &8598202003864511354
 GameObject:
   m_ObjectHideFlags: 0
@@ -104260,6 +105359,19 @@ RectTransform:
   m_AnchoredPosition: {x: -1.6403961, y: -4.3364735}
   m_SizeDelta: {x: 44, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8602986540674408293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6530651076308247296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 72
 --- !u!114 &8603879520690693131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104568,6 +105680,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 7
+--- !u!114 &8622155967019153977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7804075383336514073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 32
 --- !u!114 &8628338612658939415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104954,6 +106079,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &8646014582778792417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031067232345855702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 4
 --- !u!224 &8647725459572132522
 RectTransform:
   m_ObjectHideFlags: 0
@@ -105318,6 +106456,9 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 7902200085095255834}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5422642067535370969, guid: c536a29d36be88e4381312ff010bad36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8663134989051308575}
     - targetCorrespondingSourceObject: {fileID: 8565936308676136907, guid: c536a29d36be88e4381312ff010bad36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8663134989051308573}
@@ -105353,6 +106494,24 @@ MonoBehaviour:
   englishText: 
   russianText: 
   useCurrentTextAsSource: 1
+--- !u!1 &8663134989051308574 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5422642067535370969, guid: c536a29d36be88e4381312ff010bad36, type: 3}
+  m_PrefabInstance: {fileID: 8663134989051308569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8663134989051308575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8663134989051308574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 81
 --- !u!1 &8663827877431553349
 GameObject:
   m_ObjectHideFlags: 0
@@ -105522,6 +106681,7 @@ GameObject:
   - component: {fileID: 1331845110267483640}
   - component: {fileID: 4186474200425965559}
   - component: {fileID: 8638453181266490601}
+  - component: {fileID: 8674004764770237313}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -105529,6 +106689,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8674004764770237313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8674004764770237312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 28
 --- !u!224 &8674030072757632364
 RectTransform:
   m_ObjectHideFlags: 0
@@ -106221,6 +107394,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &8741880507511742187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338035175449495619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 7
 --- !u!224 &8744101759706135244
 RectTransform:
   m_ObjectHideFlags: 0
@@ -106377,6 +107563,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &8756947520909091968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5328799365698605742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 63
 --- !u!224 &8757222465709111386
 RectTransform:
   m_ObjectHideFlags: 0
@@ -106440,6 +107639,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7700433277311761335}
   m_CullTransparentMesh: 1
+--- !u!114 &8759554171952432196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7700433277311761335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 71
 --- !u!224 &8760379450532787718
 RectTransform:
   m_ObjectHideFlags: 0
@@ -106769,6 +107981,7 @@ GameObject:
   - component: {fileID: 8569799150935610418}
   - component: {fileID: 9070260714039954977}
   - component: {fileID: 3389040326465137329}
+  - component: {fileID: 9070260714039954978}
   m_Layer: 5
   m_Name: InputField (Legacy) (2)
   m_TagString: Untagged
@@ -107214,6 +108427,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8816336204854205873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6652365631314748488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 47
 --- !u!212 &8819807229587158356
 SpriteRenderer:
   serializedVersion: 2
@@ -107353,6 +108579,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8839281655582450844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3205992999736354223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 38
 --- !u!1 &8840594671047875070
 GameObject:
   m_ObjectHideFlags: 0
@@ -107881,6 +109120,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &8887591318074185461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5804372584189008249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 10
 --- !u!1 &8888276248877118624
 GameObject:
   m_ObjectHideFlags: 0
@@ -108084,6 +109336,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8900607496241633504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54766283562561487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 23
 --- !u!1 &8905368460793228081
 GameObject:
   m_ObjectHideFlags: 0
@@ -108362,6 +109627,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &8919132520784261583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629203220965735702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 52
 --- !u!224 &8919570547981068273
 RectTransform:
   m_ObjectHideFlags: 0
@@ -108877,6 +110155,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &8968014916977391160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511148343412582707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 51
 --- !u!222 &8973518084314446536
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -108995,6 +110286,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &8975508556491694163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460364815802248890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 68
 --- !u!224 &8976408480879777270
 RectTransform:
   m_ObjectHideFlags: 0
@@ -109389,6 +110693,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &8997734416459926713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4423542272934196297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 19
 --- !u!1 &8999662491407694023
 GameObject:
   m_ObjectHideFlags: 0
@@ -109824,6 +111141,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4868904356857756607}
   m_CullTransparentMesh: 1
+--- !u!114 &9044388217651819449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4868904356857756607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 70
 --- !u!114 &9044631622167330953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109892,6 +111222,19 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &9044631622167330954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6044431972476148222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 61
 --- !u!222 &9047281309898853952
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -109932,6 +111275,7 @@ GameObject:
   - component: {fileID: 1989334959504622134}
   - component: {fileID: 4993436907771224863}
   - component: {fileID: 1056162673428406484}
+  - component: {fileID: 9055614688481133870}
   m_Layer: 5
   m_Name: InputFieldspaspaw (7)
   m_TagString: Untagged
@@ -109939,6 +111283,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9055614688481133870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9055614688481133869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 58
 --- !u!1 &9059570305944239734
 GameObject:
   m_ObjectHideFlags: 0
@@ -110128,6 +111485,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 5
+--- !u!114 &9070260714039954978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776222678877610695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 77
 --- !u!114 &9070494015358608647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110560,6 +111930,7 @@ GameObject:
   - component: {fileID: 2470595805302046483}
   - component: {fileID: 8476323693879053904}
   - component: {fileID: 2302285816771952468}
+  - component: {fileID: 9103983470366595559}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -110567,6 +111938,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9103983470366595559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9103983470366595558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 15
 --- !u!224 &9106564936814107434
 RectTransform:
   m_ObjectHideFlags: 0
@@ -110687,6 +112071,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9117407806532281616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6371341345360145796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 18
 --- !u!114 &9119023851405672457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111111,6 +112508,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682594061504104482}
   m_CullTransparentMesh: 1
+--- !u!114 &9151283379424624069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682594061504104482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 98
 --- !u!212 &9152715398222833084
 SpriteRenderer:
   serializedVersion: 2
@@ -111243,6 +112653,19 @@ RectTransform:
   m_AnchoredPosition: {x: 43.0801, y: -14.6528}
   m_SizeDelta: {x: 145.6675, y: 50.3259}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9155409750479304093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2436868262390281473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 8
 --- !u!114 &9156018086834939739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111354,6 +112777,7 @@ GameObject:
   - component: {fileID: 2137872521799900164}
   - component: {fileID: 532012347313674711}
   - component: {fileID: 319107124018232278}
+  - component: {fileID: 9161998507391190723}
   m_Layer: 5
   m_Name: mmpises (9)
   m_TagString: Untagged
@@ -111361,6 +112785,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9161998507391190723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9161998507391190722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 9
 --- !u!224 &9162430690269481381
 RectTransform:
   m_ObjectHideFlags: 0
@@ -111542,6 +112979,19 @@ RectTransform:
   m_AnchoredPosition: {x: 1.2175, y: -0.273}
   m_SizeDelta: {x: 156.9453, y: 49.7377}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9175467499832086225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8523600977093153354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 5
 --- !u!1 &9176562111181590176
 GameObject:
   m_ObjectHideFlags: 0
@@ -111908,6 +113358,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9203829284310168707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861192177326342871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa6e54297114907a972e4a52dc5b49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputFieldTabOrder
+  tabOrder: 44
 --- !u!1 &9207056068567817634
 GameObject:
   m_ObjectHideFlags: 0

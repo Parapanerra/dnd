@@ -14,6 +14,9 @@ public class InputFieldTabNavigation : MonoBehaviour
         public DoubleClickInputFieldActivator Activator;
         public Vector2 ScreenPosition;
         public float Height;
+        public bool HasManualOrder;
+        public int ManualOrder;
+        public int AutomaticOrder;
     }
 
     private sealed class InputRow
@@ -38,7 +41,7 @@ public class InputFieldTabNavigation : MonoBehaviour
         if (instance != null)
             return;
 
-        InputFieldTabNavigation existing = FindFirstObjectByType<InputFieldTabNavigation>();
+        InputFieldTabNavigation existing = FindAnyObjectByType<InputFieldTabNavigation>();
         if (existing != null)
         {
             instance = existing;
@@ -184,6 +187,35 @@ public class InputFieldTabNavigation : MonoBehaviour
             row.Targets.Sort((left, right) => left.ScreenPosition.x.CompareTo(right.ScreenPosition.x));
             orderedTargets.AddRange(row.Targets);
         }
+
+        ApplyManualOrderIfConfigured();
+    }
+
+    private void ApplyManualOrderIfConfigured()
+    {
+        bool hasManualOrderComponents = false;
+
+        for (int i = 0; i < orderedTargets.Count; i++)
+        {
+            InputTarget target = orderedTargets[i];
+            target.AutomaticOrder = i;
+            if (target.HasManualOrder)
+                hasManualOrderComponents = true;
+        }
+
+        // Until a scene is configured, preserve the existing automatic order.
+        if (!hasManualOrderComponents)
+            return;
+
+        // Once Tab Order components are present, only positive values participate.
+        orderedTargets.RemoveAll(target => !target.HasManualOrder || target.ManualOrder <= 0);
+        orderedTargets.Sort((left, right) =>
+        {
+            int orderComparison = left.ManualOrder.CompareTo(right.ManualOrder);
+            return orderComparison != 0
+                ? orderComparison
+                : left.AutomaticOrder.CompareTo(right.AutomaticOrder);
+        });
     }
 
     private void AddTarget(DoubleClickInputFieldActivator activator, Selectable selectable, RectTransform rectTransform)
@@ -205,6 +237,7 @@ public class InputFieldTabNavigation : MonoBehaviour
         float height = Mathf.Abs(
             RectTransformUtility.WorldToScreenPoint(camera, corners[1]).y -
             RectTransformUtility.WorldToScreenPoint(camera, corners[0]).y);
+        InputFieldTabOrder tabOrder = selectable.GetComponent<InputFieldTabOrder>();
 
         orderedTargets.Add(new InputTarget
         {
@@ -212,7 +245,9 @@ public class InputFieldTabNavigation : MonoBehaviour
             Selectable = selectable,
             Activator = activator,
             ScreenPosition = screenPosition,
-            Height = Mathf.Max(1f, height)
+            Height = Mathf.Max(1f, height),
+            HasManualOrder = tabOrder != null,
+            ManualOrder = tabOrder != null ? tabOrder.Order : 0
         });
     }
 
