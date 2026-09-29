@@ -4681,6 +4681,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7318ac5fa94653935460de17d8d061, type: 3}
   m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::OverlayBoundsFitter
+  bottomPaddingPixels: 0
+  wideScreenVerticalOffsetPixels: 0
+  minimumWideAspect: 0.75
 --- !u!1 &4805095162793354269
 GameObject:
   m_ObjectHideFlags: 0
