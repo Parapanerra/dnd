@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "character": {
+    "id": "fixture-character",
+    "characterName": "Тестовий герой",
+    "maxHealth": 24,
+    "currentHealth": 17,
+    "inputData": ["legacy-root"],
+    "toggleData": [true],
+    "sliderData": [0.5],
+    "dropdownData": [2],
+    "sceneStates": [],
+    "sharedStringData": []
+  }
+}

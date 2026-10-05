@@ -1,0 +1,25 @@
+{
+  "lastActiveCharacterId": "",
+  "characters": [
+    {
+      "id": "",
+      "characterName": "123",
+      "inputData": null,
+      "toggleData": null,
+      "sliderData": null,
+      "dropdownData": null,
+      "sceneStates": [
+        {
+          "sceneName": "inventory",
+          "inputData": null,
+          "toggleData": null,
+          "sliderData": null,
+          "dropdownData": null,
+          "stringData": null,
+          "intData": null
+        }
+      ],
+      "sharedStringData": null
+    }
+  ]
+}

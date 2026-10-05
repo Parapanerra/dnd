@@ -7,184 +7,6 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 
-[System.Serializable]
-public class CharacterData
-{
-    public string id;
-    public string characterName = "Новий персонаж";
-    public int maxHealth;
-    public int currentHealth;
-
-    // Legacy fields kept so old saves do not break. New data is stored per scene in sceneStates.
-    public List<string> inputData = new List<string>();
-    public List<bool> toggleData = new List<bool>();
-    public List<float> sliderData = new List<float>();
-    public List<int> dropdownData = new List<int>();
-    public List<CharacterSceneData> sceneStates = new List<CharacterSceneData>();
-    public List<StringSaveEntry> sharedStringData = new List<StringSaveEntry>();
-
-    public CharacterData(string newId)
-    {
-        id = newId;
-    }
-
-    public CharacterSceneData GetSceneData(string sceneName, bool createIfMissing = true)
-    {
-        CharacterSceneData state = sceneStates.Find(s => s.sceneName == sceneName);
-        if (state == null && createIfMissing)
-        {
-            state = new CharacterSceneData(sceneName);
-            sceneStates.Add(state);
-        }
-
-        return state;
-    }
-
-    public string GetSharedString(string key, string defaultValue = "")
-    {
-        if (sharedStringData == null)
-            sharedStringData = new List<StringSaveEntry>();
-
-        StringSaveEntry entry = sharedStringData.Find(item => item.key == key);
-        return entry != null ? entry.value : defaultValue;
-    }
-
-    public bool HasSharedString(string key)
-    {
-        if (sharedStringData == null)
-            sharedStringData = new List<StringSaveEntry>();
-
-        return sharedStringData.Exists(item => item.key == key);
-    }
-
-    public void SetSharedString(string key, string value)
-    {
-        if (sharedStringData == null)
-            sharedStringData = new List<StringSaveEntry>();
-
-        StringSaveEntry entry = sharedStringData.Find(item => item.key == key);
-        if (entry == null)
-        {
-            entry = new StringSaveEntry { key = key };
-            sharedStringData.Add(entry);
-        }
-
-        entry.value = value;
-    }
-
-    public void DeleteSharedString(string key)
-    {
-        if (sharedStringData != null)
-            sharedStringData.RemoveAll(item => item.key == key);
-    }
-}
-
-[System.Serializable]
-public class CharacterSceneData
-{
-    public string sceneName;
-    public List<string> inputData = new List<string>();
-    public List<bool> toggleData = new List<bool>();
-    public List<float> sliderData = new List<float>();
-    public List<int> dropdownData = new List<int>();
-    public List<StringSaveEntry> stringData = new List<StringSaveEntry>();
-    public List<IntSaveEntry> intData = new List<IntSaveEntry>();
-
-    public CharacterSceneData(string newSceneName)
-    {
-        sceneName = newSceneName;
-    }
-
-    public string GetString(string key, string defaultValue = "")
-    {
-        StringSaveEntry entry = stringData.Find(item => item.key == key);
-        return entry != null ? entry.value : defaultValue;
-    }
-
-    public void SetString(string key, string value)
-    {
-        StringSaveEntry entry = stringData.Find(item => item.key == key);
-        if (entry == null)
-        {
-            entry = new StringSaveEntry { key = key };
-            stringData.Add(entry);
-        }
-
-        entry.value = value;
-    }
-
-    public void DeleteString(string key)
-    {
-        stringData.RemoveAll(item => item.key == key);
-    }
-
-    public bool HasString(string key)
-    {
-        return stringData.Exists(item => item.key == key);
-    }
-
-    public int GetInt(string key, int defaultValue = 0)
-    {
-        IntSaveEntry entry = intData.Find(item => item.key == key);
-        return entry != null ? entry.value : defaultValue;
-    }
-
-    public bool HasInt(string key)
-    {
-        return intData.Exists(item => item.key == key);
-    }
-
-    public void SetInt(string key, int value)
-    {
-        IntSaveEntry entry = intData.Find(item => item.key == key);
-        if (entry == null)
-        {
-            entry = new IntSaveEntry { key = key };
-            intData.Add(entry);
-        }
-
-        entry.value = value;
-    }
-
-    public void ClearValues()
-    {
-        inputData.Clear();
-        toggleData.Clear();
-        sliderData.Clear();
-        dropdownData.Clear();
-        stringData.Clear();
-        intData.Clear();
-    }
-}
-
-[System.Serializable]
-public class StringSaveEntry
-{
-    public string key;
-    public string value;
-}
-
-[System.Serializable]
-public class IntSaveEntry
-{
-    public string key;
-    public int value;
-}
-
-[System.Serializable]
-public class AppSaveData
-{
-    public string lastActiveCharacterId;
-    public List<CharacterData> characters = new List<CharacterData>();
-}
-
-[System.Serializable]
-public class CharacterExportData
-{
-    public int version = 1;
-    public CharacterData character;
-}
-
 public class DndSaveManager : MonoBehaviour
 {
     public static DndSaveManager Instance { get; private set; }
@@ -230,29 +52,15 @@ public class DndSaveManager : MonoBehaviour
 
     public void LoadData()
     {
-        try
-        {
-            if (File.Exists(FilePath))
-            {
-                string json = File.ReadAllText(FilePath);
-                saveData = JsonUtility.FromJson<AppSaveData>(json);
-            }
-        }
-        catch (Exception exception)
-        {
-            Debug.LogError("Could not load DnD save file: " + exception.Message);
-            TryLoadBackup();
-        }
+        LegacyJsonLoadResult result = LegacyJsonSaveRepository.Load(FilePath, BackupFilePath);
+        if (result.Source != LegacyJsonSaveSource.None)
+            saveData = result.Data;
 
-        if (saveData == null)
-        {
-            saveData = new AppSaveData();
-        }
+        if (result.PrimaryError != null)
+            Debug.LogError("Could not load DnD save file: " + result.PrimaryError.Message);
 
-        if (saveData.characters == null)
-        {
-            saveData.characters = new List<CharacterData>();
-        }
+        if (result.BackupError != null)
+            Debug.LogError("Could not load DnD backup save file: " + result.BackupError.Message);
 
         NormalizeSaveData();
     }
@@ -263,19 +71,7 @@ public class DndSaveManager : MonoBehaviour
 
         try
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(FilePath));
-
-            string json = JsonUtility.ToJson(saveData, true);
-            string tempFilePath = FilePath + ".tmp";
-            File.WriteAllText(tempFilePath, json);
-
-            if (File.Exists(FilePath))
-            {
-                File.Copy(FilePath, BackupFilePath, true);
-                File.Delete(FilePath);
-            }
-
-            File.Move(tempFilePath, FilePath);
+            LegacyJsonSaveRepository.Save(FilePath, BackupFilePath, saveData);
         }
         catch (Exception exception)
         {
@@ -456,86 +252,9 @@ public class DndSaveManager : MonoBehaviour
         return SceneManager.GetActiveScene().name;
     }
 
-    private void TryLoadBackup()
-    {
-        try
-        {
-            if (!File.Exists(BackupFilePath))
-                return;
-
-            string json = File.ReadAllText(BackupFilePath);
-            saveData = JsonUtility.FromJson<AppSaveData>(json);
-        }
-        catch (Exception exception)
-        {
-            Debug.LogError("Could not load DnD backup save file: " + exception.Message);
-        }
-    }
-
     public void NormalizeSaveData()
     {
-        if (saveData == null)
-        {
-            saveData = new AppSaveData();
-        }
-
-        if (saveData.characters == null)
-        {
-            saveData.characters = new List<CharacterData>();
-        }
-
-        foreach (CharacterData character in saveData.characters)
-        {
-            if (string.IsNullOrEmpty(character.id))
-                character.id = Guid.NewGuid().ToString();
-
-            if (string.IsNullOrWhiteSpace(character.characterName) || IsNumericName(character.characterName))
-                character.characterName = "Новий персонаж";
-
-            if (character.inputData == null)
-                character.inputData = new List<string>();
-
-            if (character.sharedStringData == null)
-                character.sharedStringData = new List<StringSaveEntry>();
-
-            if (character.toggleData == null)
-                character.toggleData = new List<bool>();
-
-            if (character.sliderData == null)
-                character.sliderData = new List<float>();
-
-            if (character.dropdownData == null)
-                character.dropdownData = new List<int>();
-
-            if (character.sceneStates == null)
-                character.sceneStates = new List<CharacterSceneData>();
-
-            foreach (CharacterSceneData sceneData in character.sceneStates)
-            {
-                if (sceneData.inputData == null)
-                    sceneData.inputData = new List<string>();
-
-                if (sceneData.toggleData == null)
-                    sceneData.toggleData = new List<bool>();
-
-                if (sceneData.sliderData == null)
-                    sceneData.sliderData = new List<float>();
-
-                if (sceneData.dropdownData == null)
-                    sceneData.dropdownData = new List<int>();
-
-                if (sceneData.stringData == null)
-                    sceneData.stringData = new List<StringSaveEntry>();
-
-                if (sceneData.intData == null)
-                    sceneData.intData = new List<IntSaveEntry>();
-            }
-        }
-    }
-
-    private bool IsNumericName(string value)
-    {
-        return float.TryParse(value, out _);
+        saveData = SaveDataNormalizer.Normalize(saveData);
     }
 }
 

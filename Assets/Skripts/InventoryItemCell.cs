@@ -46,21 +46,6 @@ public class InventoryItemCell : MonoBehaviour
     private string cellKey;
     private bool isLoading;
 
-    [Serializable]
-    public class InventoryItemExportData
-    {
-        public string itemName;
-        public string itemDescription;
-        public int category;
-        public int weaponIndex;
-        public int armorIndex;
-        public int bagsIndex;
-        public int magicIndex;
-        public int otherIndex;
-        public int chegerIndex;
-        public string customImageBase64;
-    }
-
     public void Initialize(int pageIndex, int cellIndex)
     {
         cellKey = "Inventory_Page_" + pageIndex + "_Cell_" + cellIndex;

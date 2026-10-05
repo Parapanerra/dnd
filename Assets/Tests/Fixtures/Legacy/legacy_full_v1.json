@@ -1,0 +1,36 @@
+{
+  "lastActiveCharacterId": "fixture-character",
+  "characters": [
+    {
+      "id": "fixture-character",
+      "characterName": "Тестовий герой",
+      "maxHealth": 24,
+      "currentHealth": 17,
+      "inputData": ["legacy-root"],
+      "toggleData": [true],
+      "sliderData": [0.5],
+      "dropdownData": [2],
+      "sceneStates": [
+        {
+          "sceneName": "cartaPersonaj",
+          "inputData": ["14", "Клерик"],
+          "toggleData": [true, false],
+          "sliderData": [0.75],
+          "dropdownData": [1],
+          "stringData": [{"key": "CharacterName", "value": "Тестовий герой"}],
+          "intData": [{"key": "Level", "value": 3}]
+        },
+        {
+          "sceneName": "inventory",
+          "inputData": [],
+          "toggleData": [],
+          "sliderData": [],
+          "dropdownData": [],
+          "stringData": [{"key": "Inventory_Page_0_Cell_0_Name", "value": "Зілля"}],
+          "intData": [{"key": "Inventory_Page_0_Cell_0_Category", "value": 4}]
+        }
+      ],
+      "sharedStringData": [{"key": "PortraitBase64", "value": ""}]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "totalRows": 1039,
+  "scenes": [
+    {"sceneName": "cartaPersonaj", "inputData": 102, "toggleData": 147, "sliderData": 0, "dropdownData": 16},
+    {"sceneName": "petsesn", "inputData": 45, "toggleData": 10, "sliderData": 0, "dropdownData": 1},
+    {"sceneName": "Spels", "inputData": 92, "toggleData": 280, "sliderData": 0, "dropdownData": 28},
+    {"sceneName": "inventory", "inputData": 18, "toggleData": 64, "sliderData": 0, "dropdownData": 64},
+    {"sceneName": "informForPerson", "inputData": 25, "toggleData": 9, "sliderData": 0, "dropdownData": 1},
+    {"sceneName": "spelBook", "inputData": 30, "toggleData": 61, "sliderData": 0, "dropdownData": 46}
+  ]
+}

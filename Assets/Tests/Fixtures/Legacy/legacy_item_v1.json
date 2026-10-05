@@ -1,0 +1,12 @@
+{
+  "itemName": "Тестовий артефакт",
+  "itemDescription": "Санітизований golden-файл",
+  "category": 3,
+  "weaponIndex": 1,
+  "armorIndex": 2,
+  "bagsIndex": 3,
+  "magicIndex": 4,
+  "otherIndex": 5,
+  "chegerIndex": 6,
+  "customImageBase64": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
+}
