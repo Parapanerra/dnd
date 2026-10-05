@@ -30,16 +30,15 @@ Detailed per-type counts and scene GUIDs are recorded in `LegacyFieldMap_v1_REPO
 
 ## Required before A0 can be completed
 
-One real full collection export has now been inspected. Its character data remains outside Git. The structural result is recorded in `LegacySave_AllCharacters_VALIDATION.md`; five populated scenes match the frozen positional map exactly, while `informForPerson` is empty.
+One real Android full collection export has now been inspected. Its character data remains outside Git. The structural result is recorded in `LegacySave_AllCharacters_VALIDATION.md`; five populated scenes match the frozen positional map exactly, while `informForPerson` is empty.
 
 The following legacy artifacts or confirmations are still required:
 
 1. A Windows `DndCharactersData.json` containing several characters.
-2. Confirmation of whether the inspected `AllCharacters.json` was exported on Windows or copied from Android.
-3. A single-character export made on Windows.
-4. An item export containing an image made on Windows.
-5. Equivalent representative files made on Android.
-6. A character with populated fields on every character-sheet page, especially `informForPerson`.
+2. A full collection export made on Windows.
+3. Single-character exports made on Windows and Android.
+4. Item exports containing an image made on Windows and Android.
+5. A character with populated fields on every character-sheet page, especially `informForPerson`.
 
 After these files are supplied, copy sanitized test fixtures into the test-data location created during A1. Preserve the original files outside the project as recovery copies. Then record the legacy save size and save duration on Windows and Android and run the core smoke checklist.
 

@@ -9,7 +9,7 @@ The original character data remains outside the repository and was not committed
 - Legacy type: full `AppSaveData` collection export
 - Characters: `1`
 - `lastActiveCharacterId` refers to an existing character: yes
-- Source platform: not confirmed
+- Source platform: Android (confirmed by the user)
 
 ## Positional data compared with LegacyFieldMap_v1
 
