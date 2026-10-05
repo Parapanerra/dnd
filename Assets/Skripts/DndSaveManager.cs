@@ -348,6 +348,13 @@ public class CharacterSceneAutoSave : MonoBehaviour
                 sceneData.SetInt(TmpDropdownKeyPrefix + GetControlPath(dropdown.transform), dropdown.value);
         }
 
+        StableFieldStorage.Save(sceneData, inputFields);
+        StableFieldStorage.Save(sceneData, tmpInputFields);
+        StableFieldStorage.Save(sceneData, toggles);
+        StableFieldStorage.Save(sceneData, sliders);
+        StableFieldStorage.Save(sceneData, dropdowns);
+        StableFieldStorage.Save(sceneData, tmpDropdowns);
+
         SaveRestResourceMarkers();
 
         DndSaveManager.Instance.SaveData();
@@ -487,11 +494,11 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
             for (int i = 0; i < inputFields.Count; i++, dataIndex++)
                 if (inputFields[i] != null)
-                    inputFields[i].SetTextWithoutNotify(dataIndex < sceneData.inputData.Count ? sceneData.inputData[dataIndex] : "");
+                    inputFields[i].SetTextWithoutNotify(StableFieldStorage.ReadText(sceneData, inputFields[i], dataIndex < sceneData.inputData.Count ? sceneData.inputData[dataIndex] : ""));
 
             for (int i = 0; i < tmpInputFields.Count; i++, dataIndex++)
                 if (tmpInputFields[i] != null)
-                    tmpInputFields[i].SetTextWithoutNotify(dataIndex < sceneData.inputData.Count ? sceneData.inputData[dataIndex] : "");
+                    tmpInputFields[i].SetTextWithoutNotify(StableFieldStorage.ReadText(sceneData, tmpInputFields[i], dataIndex < sceneData.inputData.Count ? sceneData.inputData[dataIndex] : ""));
 
             for (int i = 0; i < toggles.Count; i++)
                 if (toggles[i] != null)
@@ -500,12 +507,12 @@ public class CharacterSceneAutoSave : MonoBehaviour
                     bool value = sceneData.HasInt(key)
                         ? sceneData.GetInt(key) != 0
                         : i < sceneData.toggleData.Count && sceneData.toggleData[i];
-                    toggles[i].SetIsOnWithoutNotify(value);
+                    toggles[i].SetIsOnWithoutNotify(StableFieldStorage.ReadInt(sceneData, toggles[i], value ? 1 : 0) != 0);
                 }
 
             for (int i = 0; i < sliders.Count; i++)
                 if (sliders[i] != null)
-                    sliders[i].SetValueWithoutNotify(i < sceneData.sliderData.Count ? sceneData.sliderData[i] : 0f);
+                    sliders[i].SetValueWithoutNotify(StableFieldStorage.ReadFloat(sceneData, sliders[i], i < sceneData.sliderData.Count ? sceneData.sliderData[i] : 0f));
 
             for (int i = 0; i < dropdowns.Count; i++)
                 if (dropdowns[i] != null)
@@ -514,7 +521,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
                     int value = sceneData.HasInt(key)
                         ? sceneData.GetInt(key)
                         : i < sceneData.dropdownData.Count ? sceneData.dropdownData[i] : 0;
-                    dropdowns[i].SetValueWithoutNotify(value);
+                    dropdowns[i].SetValueWithoutNotify(StableFieldStorage.ReadInt(sceneData, dropdowns[i], value));
                     dropdowns[i].RefreshShownValue();
                 }
 
@@ -526,7 +533,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
                     int value = sceneData.HasInt(key)
                         ? sceneData.GetInt(key)
                         : i + tmpDropdownOffset < sceneData.dropdownData.Count ? sceneData.dropdownData[i + tmpDropdownOffset] : 0;
-                    tmpDropdowns[i].SetValueWithoutNotify(value);
+                    tmpDropdowns[i].SetValueWithoutNotify(StableFieldStorage.ReadInt(sceneData, tmpDropdowns[i], value));
                     tmpDropdowns[i].RefreshShownValue();
                 }
 

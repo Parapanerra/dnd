@@ -1,0 +1,5 @@
+{
+  "name": "TaruckShip.StableFields",
+  "references": ["TaruckShip.Domain", "UnityEngine.UI", "Unity.TextMeshPro"],
+  "autoReferenced": true
+}

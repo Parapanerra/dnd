@@ -83,6 +83,9 @@ public class CharacterSceneData
     public List<int> dropdownData = new List<int>();
     public List<StringSaveEntry> stringData = new List<StringSaveEntry>();
     public List<IntSaveEntry> intData = new List<IntSaveEntry>();
+    public List<FloatSaveEntry> floatData = new List<FloatSaveEntry>();
+    // Version of the stable-field reader used; presence of each key tracks partial migration.
+    public int stableFieldVersion;
 
     public CharacterSceneData(string newSceneName)
     {
@@ -148,6 +151,8 @@ public class CharacterSceneData
         dropdownData.Clear();
         stringData.Clear();
         intData.Clear();
+        floatData?.Clear();
+        stableFieldVersion = 0;
     }
 }
 
@@ -163,6 +168,13 @@ public class IntSaveEntry
 {
     public string key;
     public int value;
+}
+
+[Serializable]
+public class FloatSaveEntry
+{
+    public string key;
+    public float value;
 }
 
 [Serializable]

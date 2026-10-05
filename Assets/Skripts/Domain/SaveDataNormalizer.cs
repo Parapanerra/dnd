@@ -46,6 +46,8 @@ public static class SaveDataNormalizer
                     sceneData.stringData = new List<StringSaveEntry>();
                 if (sceneData.intData == null)
                     sceneData.intData = new List<IntSaveEntry>();
+                if (sceneData.floatData == null)
+                    sceneData.floatData = new List<FloatSaveEntry>();
             }
         }
 

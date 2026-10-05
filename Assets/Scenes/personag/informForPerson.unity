@@ -837,6 +837,7 @@ GameObject:
   - component: {fileID: 130072795}
   - component: {fileID: 130072794}
   - component: {fileID: 130072796}
+  - component: {fileID: 130072797}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -971,6 +972,23 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &130072797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130072792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw.433ca166a8d1
+  control: {fileID: 130072796}
+  legacyCollection: inputData
+  legacyIndex: 7
+  legacyKey: 
 --- !u!1 &141565943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1929,6 +1947,7 @@ GameObject:
   - component: {fileID: 250965660}
   - component: {fileID: 250965659}
   - component: {fileID: 250965658}
+  - component: {fileID: 250965661}
   m_Layer: 5
   m_Name: InputFieldspaspaw (7)
   m_TagString: Untagged
@@ -2063,6 +2082,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250965656}
   m_CullTransparentMesh: 1
+--- !u!114 &250965661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250965656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw-7.724bccddd228
+  control: {fileID: 250965658}
+  legacyCollection: inputData
+  legacyIndex: 15
+  legacyKey: 
 --- !u!1 &253374722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,6 +2434,7 @@ GameObject:
   - component: {fileID: 279499747}
   - component: {fileID: 279499746}
   - component: {fileID: 279499745}
+  - component: {fileID: 279499748}
   m_Layer: 5
   m_Name: mmpises (6)
   m_TagString: Untagged
@@ -2532,6 +2569,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279499743}
   m_CullTransparentMesh: 1
+--- !u!114 &279499748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279499743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.mmpises-6.cba621802c05
+  control: {fileID: 279499745}
+  legacyCollection: inputData
+  legacyIndex: 6
+  legacyKey: 
 --- !u!1 &288493963
 GameObject:
   m_ObjectHideFlags: 0
@@ -3786,6 +3840,7 @@ GameObject:
   - component: {fileID: 395059431}
   - component: {fileID: 395059430}
   - component: {fileID: 395059429}
+  - component: {fileID: 395059432}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -3920,6 +3975,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395059427}
   m_CullTransparentMesh: 1
+--- !u!114 &395059432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395059427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw.5573b6ca29ae
+  control: {fileID: 395059429}
+  legacyCollection: inputData
+  legacyIndex: 18
+  legacyKey: 
 --- !u!1001 &397880703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4150,13 +4222,85 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4381309171059182151, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1556803946}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1886280768646428267, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 397880710}
+    - targetCorrespondingSourceObject: {fileID: 3100586162349883470, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 397880709}
   m_SourcePrefab: {fileID: 100100000, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
 --- !u!224 &397880704 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4381309171059182151, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
   m_PrefabInstance: {fileID: 397880703}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &397880705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3100586162349883470, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+  m_PrefabInstance: {fileID: 397880703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &397880706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3959685654296846015, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+  m_PrefabInstance: {fileID: 397880703}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397880705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Toggle
+--- !u!1 &397880707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1886280768646428267, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+  m_PrefabInstance: {fileID: 397880703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &397880708 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4553244066045912844, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+  m_PrefabInstance: {fileID: 397880703}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397880707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b652f32a2cc243917e4028fa0f046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Dropdown
+--- !u!114 &397880709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397880705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.toggle.item.15e4d85e7d51
+  control: {fileID: 397880706}
+  legacyCollection: toggleData
+  legacyIndex: 8
+  legacyKey: Toggle_0003_overLey/0002_kalPanel/0002_Panelhealp/0003_potionDropdown/0002_Template/0000_Viewport/0000_Content/0000_Item
+--- !u!114 &397880710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397880707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.dropdown.potiondropdown.b2a7e354472f
+  control: {fileID: 397880708}
+  legacyCollection: dropdownData
+  legacyIndex: 0
+  legacyKey: Dropdown_0003_overLey/0002_kalPanel/0002_Panelhealp/0003_potionDropdown
 --- !u!1 &410064179
 GameObject:
   m_ObjectHideFlags: 0
@@ -4413,6 +4557,7 @@ GameObject:
   - component: {fileID: 458113241}
   - component: {fileID: 458113240}
   - component: {fileID: 458113239}
+  - component: {fileID: 458113242}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -4547,6 +4692,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458113237}
   m_CullTransparentMesh: 1
+--- !u!114 &458113242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458113237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw.7d805c3a05fc
+  control: {fileID: 458113239}
+  legacyCollection: inputData
+  legacyIndex: 8
+  legacyKey: 
 --- !u!1 &464605716
 GameObject:
   m_ObjectHideFlags: 0
@@ -4724,6 +4886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 494786094}
   - component: {fileID: 494786095}
+  - component: {fileID: 494786096}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -4799,6 +4962,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &494786096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494786093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.toggle.toggle-4.933c0c5e5385
+  control: {fileID: 494786095}
+  legacyCollection: toggleData
+  legacyIndex: 4
+  legacyKey: Toggle_0001_Canvas/0009_Toggle (4)
 --- !u!1 &547491471
 GameObject:
   m_ObjectHideFlags: 0
@@ -5683,6 +5863,7 @@ GameObject:
   - component: {fileID: 679799724}
   - component: {fileID: 679799723}
   - component: {fileID: 679799722}
+  - component: {fileID: 679799725}
   m_Layer: 5
   m_Name: InputFieldspaspaw (6)
   m_TagString: Untagged
@@ -5817,6 +5998,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679799720}
   m_CullTransparentMesh: 1
+--- !u!114 &679799725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679799720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw-6.4196fcaad274
+  control: {fileID: 679799722}
+  legacyCollection: inputData
+  legacyIndex: 14
+  legacyKey: 
 --- !u!1 &693193597
 GameObject:
   m_ObjectHideFlags: 0
@@ -5925,6 +6123,7 @@ GameObject:
   - component: {fileID: 705376203}
   - component: {fileID: 705376202}
   - component: {fileID: 705376200}
+  - component: {fileID: 705376204}
   m_Layer: 5
   m_Name: InputFieldspaspaw (3)
   m_TagString: Untagged
@@ -6059,6 +6258,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705376199}
   m_CullTransparentMesh: 1
+--- !u!114 &705376204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705376199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw-3.1c1d7f6b91e3
+  control: {fileID: 705376200}
+  legacyCollection: inputData
+  legacyIndex: 23
+  legacyKey: 
 --- !u!1001 &716261041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6545,6 +6761,7 @@ GameObject:
   - component: {fileID: 791772617}
   - component: {fileID: 791772616}
   - component: {fileID: 791772618}
+  - component: {fileID: 791772619}
   m_Layer: 5
   m_Name: InputFieldspaspaw (2)
   m_TagString: Untagged
@@ -6679,6 +6896,23 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &791772619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791772614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw-2.e975e15f8cf5
+  control: {fileID: 791772618}
+  legacyCollection: inputData
+  legacyIndex: 22
+  legacyKey: 
 --- !u!1 &815371581
 GameObject:
   m_ObjectHideFlags: 0
@@ -7095,6 +7329,7 @@ GameObject:
   - component: {fileID: 864262648}
   - component: {fileID: 864262647}
   - component: {fileID: 864262646}
+  - component: {fileID: 864262649}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -7229,6 +7464,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864262644}
   m_CullTransparentMesh: 1
+--- !u!114 &864262649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864262644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw.cf6cdc167216
+  control: {fileID: 864262646}
+  legacyCollection: inputData
+  legacyIndex: 24
+  legacyKey: 
 --- !u!1001 &868289570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7760,6 +8012,7 @@ GameObject:
   - component: {fileID: 931254232}
   - component: {fileID: 931254231}
   - component: {fileID: 931254233}
+  - component: {fileID: 931254234}
   m_Layer: 5
   m_Name: InputFieldspaspaw (1)
   m_TagString: Untagged
@@ -7894,6 +8147,23 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &931254234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931254229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw-1.e8116072858c
+  control: {fileID: 931254233}
+  legacyCollection: inputData
+  legacyIndex: 21
+  legacyKey: 
 --- !u!1 &938524511
 GameObject:
   m_ObjectHideFlags: 0
@@ -7982,6 +8252,7 @@ GameObject:
   - component: {fileID: 948356464}
   - component: {fileID: 948356463}
   - component: {fileID: 948356462}
+  - component: {fileID: 948356465}
   m_Layer: 5
   m_Name: mmpises (3)
   m_TagString: Untagged
@@ -8116,6 +8387,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948356460}
   m_CullTransparentMesh: 1
+--- !u!114 &948356465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948356460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.mmpises-3.5e687ed3b669
+  control: {fileID: 948356462}
+  legacyCollection: inputData
+  legacyIndex: 3
+  legacyKey: 
 --- !u!1 &955549507
 GameObject:
   m_ObjectHideFlags: 0
@@ -8128,6 +8416,7 @@ GameObject:
   - component: {fileID: 955549511}
   - component: {fileID: 955549510}
   - component: {fileID: 955549509}
+  - component: {fileID: 955549512}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -8262,6 +8551,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955549507}
   m_CullTransparentMesh: 1
+--- !u!114 &955549512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955549507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw.80da369c9245
+  control: {fileID: 955549509}
+  legacyCollection: inputData
+  legacyIndex: 19
+  legacyKey: 
 --- !u!1 &988319049
 GameObject:
   m_ObjectHideFlags: 0
@@ -8906,6 +9212,7 @@ GameObject:
   - component: {fileID: 1034615394}
   - component: {fileID: 1034615393}
   - component: {fileID: 1034615392}
+  - component: {fileID: 1034615395}
   m_Layer: 5
   m_Name: InputFieldspaspaw (2)
   m_TagString: Untagged
@@ -9040,6 +9347,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034615390}
   m_CullTransparentMesh: 1
+--- !u!114 &1034615395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034615390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw-2.28248e210e95
+  control: {fileID: 1034615392}
+  legacyCollection: inputData
+  legacyIndex: 10
+  legacyKey: 
 --- !u!1 &1049018041
 GameObject:
   m_ObjectHideFlags: 0
@@ -9143,6 +9467,7 @@ GameObject:
   - component: {fileID: 1056636436}
   - component: {fileID: 1056636435}
   - component: {fileID: 1056636434}
+  - component: {fileID: 1056636437}
   m_Layer: 5
   m_Name: InputFieldspaspaw (3)
   m_TagString: Untagged
@@ -9277,6 +9602,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056636432}
   m_CullTransparentMesh: 1
+--- !u!114 &1056636437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056636432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw-3.a5d811559744
+  control: {fileID: 1056636434}
+  legacyCollection: inputData
+  legacyIndex: 11
+  legacyKey: 
 --- !u!1 &1057968489
 GameObject:
   m_ObjectHideFlags: 0
@@ -9682,6 +10024,7 @@ GameObject:
   - component: {fileID: 1113714353}
   - component: {fileID: 1113714352}
   - component: {fileID: 1113714351}
+  - component: {fileID: 1113714354}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -9816,6 +10159,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113714349}
   m_CullTransparentMesh: 1
+--- !u!114 &1113714354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113714349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw.6d506ebcd6ec
+  control: {fileID: 1113714351}
+  legacyCollection: inputData
+  legacyIndex: 20
+  legacyKey: 
 --- !u!1 &1144253430
 GameObject:
   m_ObjectHideFlags: 0
@@ -10680,6 +11040,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1279591895}
   - component: {fileID: 1279591896}
+  - component: {fileID: 1279591897}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -10755,6 +11116,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1279591897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279591894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.toggle.toggle-1.fbf04c2b999c
+  control: {fileID: 1279591896}
+  legacyCollection: toggleData
+  legacyIndex: 1
+  legacyKey: Toggle_0001_Canvas/0006_Toggle (1)
 --- !u!1 &1284932099
 GameObject:
   m_ObjectHideFlags: 0
@@ -10765,6 +11143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284932100}
   - component: {fileID: 1284932101}
+  - component: {fileID: 1284932102}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -10840,6 +11219,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1284932102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284932099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.toggle.toggle-2.865e58867166
+  control: {fileID: 1284932101}
+  legacyCollection: toggleData
+  legacyIndex: 2
+  legacyKey: Toggle_0001_Canvas/0007_Toggle (2)
 --- !u!1001 &1299721103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11232,6 +11628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1343637565}
   - component: {fileID: 1343637566}
+  - component: {fileID: 1343637567}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -11307,6 +11704,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1343637567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343637564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.toggle.toggle-3.4f851048e0b1
+  control: {fileID: 1343637566}
+  legacyCollection: toggleData
+  legacyIndex: 3
+  legacyKey: Toggle_0001_Canvas/0008_Toggle (3)
 --- !u!1 &1350861617
 GameObject:
   m_ObjectHideFlags: 0
@@ -11971,6 +12385,7 @@ GameObject:
   - component: {fileID: 1427468718}
   - component: {fileID: 1427468717}
   - component: {fileID: 1427468716}
+  - component: {fileID: 1427468719}
   m_Layer: 5
   m_Name: mmpises (2)
   m_TagString: Untagged
@@ -12105,6 +12520,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427468714}
   m_CullTransparentMesh: 1
+--- !u!114 &1427468719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427468714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.mmpises-2.b1f22d266007
+  control: {fileID: 1427468716}
+  legacyCollection: inputData
+  legacyIndex: 2
+  legacyKey: 
 --- !u!1 &1444818469
 GameObject:
   m_ObjectHideFlags: 0
@@ -12183,6 +12615,7 @@ GameObject:
   - component: {fileID: 1479138879}
   - component: {fileID: 1479138878}
   - component: {fileID: 1479138877}
+  - component: {fileID: 1479138880}
   m_Layer: 5
   m_Name: mmpises (5)
   m_TagString: Untagged
@@ -12317,6 +12750,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479138875}
   m_CullTransparentMesh: 1
+--- !u!114 &1479138880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479138875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.mmpises-5.9fb6cb478bf6
+  control: {fileID: 1479138877}
+  legacyCollection: inputData
+  legacyIndex: 5
+  legacyKey: 
 --- !u!1 &1488464813
 GameObject:
   m_ObjectHideFlags: 0
@@ -13272,6 +13722,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1650434777}
   - component: {fileID: 1650434778}
+  - component: {fileID: 1650434779}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -13347,6 +13798,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1650434779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650434776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.toggle.toggle-5.ff6c6bf30373
+  control: {fileID: 1650434778}
+  legacyCollection: toggleData
+  legacyIndex: 5
+  legacyKey: Toggle_0001_Canvas/0010_Toggle (5)
 --- !u!1 &1652964689
 GameObject:
   m_ObjectHideFlags: 0
@@ -13534,6 +14002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1694908852}
   - component: {fileID: 1694908853}
+  - component: {fileID: 1694908854}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -13609,6 +14078,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1694908854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694908851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.toggle.toggle-7.fdc6951b9dbc
+  control: {fileID: 1694908853}
+  legacyCollection: toggleData
+  legacyIndex: 7
+  legacyKey: Toggle_0001_Canvas/0012_Toggle (7)
 --- !u!1 &1697794549
 GameObject:
   m_ObjectHideFlags: 0
@@ -14070,6 +14556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1736461708}
   - component: {fileID: 1736461709}
+  - component: {fileID: 1736461710}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -14145,6 +14632,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1736461710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736461707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.toggle.toggle-6.1e94d8d4df1b
+  control: {fileID: 1736461709}
+  legacyCollection: toggleData
+  legacyIndex: 6
+  legacyKey: Toggle_0001_Canvas/0011_Toggle (6)
 --- !u!1 &1742201292
 GameObject:
   m_ObjectHideFlags: 0
@@ -14322,6 +14826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1831710906}
   - component: {fileID: 1831710907}
+  - component: {fileID: 1831710908}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -14397,6 +14902,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1831710908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831710905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.toggle.toggle.b30698404a11
+  control: {fileID: 1831710907}
+  legacyCollection: toggleData
+  legacyIndex: 0
+  legacyKey: Toggle_0001_Canvas/0005_Toggle
 --- !u!1 &1845201072
 GameObject:
   m_ObjectHideFlags: 0
@@ -15074,6 +15596,7 @@ GameObject:
   - component: {fileID: 1928482126}
   - component: {fileID: 1928482125}
   - component: {fileID: 1928482124}
+  - component: {fileID: 1928482127}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -15208,6 +15731,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928482122}
   m_CullTransparentMesh: 1
+--- !u!114 &1928482127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928482122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw.9038745965ab
+  control: {fileID: 1928482124}
+  legacyCollection: inputData
+  legacyIndex: 17
+  legacyKey: 
 --- !u!1 &1946568576
 GameObject:
   m_ObjectHideFlags: 0
@@ -15300,6 +15840,7 @@ GameObject:
   - component: {fileID: 1948834236}
   - component: {fileID: 1948834235}
   - component: {fileID: 1948834234}
+  - component: {fileID: 1948834237}
   m_Layer: 5
   m_Name: InputFieldspaspaw (4)
   m_TagString: Untagged
@@ -15434,6 +15975,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948834232}
   m_CullTransparentMesh: 1
+--- !u!114 &1948834237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948834232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw-4.cb8f3a241ded
+  control: {fileID: 1948834234}
+  legacyCollection: inputData
+  legacyIndex: 12
+  legacyKey: 
 --- !u!1 &1949481657
 GameObject:
   m_ObjectHideFlags: 0
@@ -15811,6 +16369,7 @@ GameObject:
   - component: {fileID: 1994730657}
   - component: {fileID: 1994730656}
   - component: {fileID: 1994730655}
+  - component: {fileID: 1994730658}
   m_Layer: 5
   m_Name: InputFieldspaspaw (5)
   m_TagString: Untagged
@@ -15945,6 +16504,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994730653}
   m_CullTransparentMesh: 1
+--- !u!114 &1994730658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994730653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw-5.0bd845c31745
+  control: {fileID: 1994730655}
+  legacyCollection: inputData
+  legacyIndex: 13
+  legacyKey: 
 --- !u!1 &2001215085
 GameObject:
   m_ObjectHideFlags: 0
@@ -15957,6 +16533,7 @@ GameObject:
   - component: {fileID: 2001215089}
   - component: {fileID: 2001215088}
   - component: {fileID: 2001215087}
+  - component: {fileID: 2001215090}
   m_Layer: 5
   m_Name: mmpises (4)
   m_TagString: Untagged
@@ -16091,6 +16668,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001215085}
   m_CullTransparentMesh: 1
+--- !u!114 &2001215090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001215085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.mmpises-4.219ac836f5b6
+  control: {fileID: 2001215087}
+  legacyCollection: inputData
+  legacyIndex: 4
+  legacyKey: 
 --- !u!1 &2009915394
 GameObject:
   m_ObjectHideFlags: 0
@@ -16520,6 +17114,7 @@ GameObject:
   - component: {fileID: 2087435680}
   - component: {fileID: 2087435679}
   - component: {fileID: 2087435678}
+  - component: {fileID: 2087435681}
   m_Layer: 5
   m_Name: InputFieldspaspaw (1)
   m_TagString: Untagged
@@ -16654,6 +17249,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087435676}
   m_CullTransparentMesh: 1
+--- !u!114 &2087435681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087435676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw-1.1d8ad7ebe0ac
+  control: {fileID: 2087435678}
+  legacyCollection: inputData
+  legacyIndex: 9
+  legacyKey: 
 --- !u!1 &2094293666
 GameObject:
   m_ObjectHideFlags: 0
@@ -16666,6 +17278,7 @@ GameObject:
   - component: {fileID: 2094293669}
   - component: {fileID: 2094293668}
   - component: {fileID: 2094293670}
+  - component: {fileID: 2094293671}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -16800,6 +17413,23 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &2094293671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094293666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.inputfieldspaspaw.58b5e24f2f14
+  control: {fileID: 2094293670}
+  legacyCollection: inputData
+  legacyIndex: 16
+  legacyKey: 
 --- !u!1 &2105575925
 GameObject:
   m_ObjectHideFlags: 0
@@ -18977,6 +19607,7 @@ GameObject:
   - component: {fileID: 4494559242161462845}
   - component: {fileID: 829690676234007215}
   - component: {fileID: 7910391332322168034}
+  - component: {fileID: 7910391332322168035}
   m_Layer: 5
   m_Name: mmpises (1)
   m_TagString: Untagged
@@ -19281,6 +19912,7 @@ GameObject:
   - component: {fileID: 2577976403274975680}
   - component: {fileID: 8465733139195825643}
   - component: {fileID: 6494118882003079021}
+  - component: {fileID: 8465733139195825644}
   m_Layer: 5
   m_Name: personajName
   m_TagString: Untagged
@@ -19964,6 +20596,23 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &7910391332322168035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132218670718332888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.mmpises-1.98746931efef
+  control: {fileID: 7910391332322168034}
+  legacyCollection: inputData
+  legacyIndex: 1
+  legacyKey: 
 --- !u!4 &7970293798824244085
 Transform:
   m_ObjectHideFlags: 0
@@ -20147,6 +20796,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 5
+--- !u!114 &8465733139195825644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609066911763433278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.informforperson.inputfield.personajname.257e5985f31f
+  control: {fileID: 6494118882003079021}
+  legacyCollection: inputData
+  legacyIndex: 0
+  legacyKey: 
 --- !u!114 &8914703419095081822
 MonoBehaviour:
   m_ObjectHideFlags: 0

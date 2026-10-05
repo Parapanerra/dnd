@@ -132,6 +132,13 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
                 currentSceneData.SetInt(TmpDropdownKeyPrefix + GetControlPath(dropdown.transform), dropdown.value);
         }
 
+        StableFieldStorage.Save(currentSceneData, inputFields);
+        StableFieldStorage.Save(currentSceneData, tmpInputFields);
+        StableFieldStorage.Save(currentSceneData, toggles);
+        StableFieldStorage.Save(currentSceneData, sliders);
+        StableFieldStorage.Save(currentSceneData, dropdowns);
+        StableFieldStorage.Save(currentSceneData, tmpDropdowns);
+
         SaveRestResourceMarkers();
 
         DndSaveManager.Instance.SaveData();
@@ -150,11 +157,11 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
             for (int i = 0; i < inputFields.Count; i++, dataIndex++)
                 if (inputFields[i] != null)
-                    inputFields[i].SetTextWithoutNotify(dataIndex < currentSceneData.inputData.Count ? currentSceneData.inputData[dataIndex] : "");
+                    inputFields[i].SetTextWithoutNotify(StableFieldStorage.ReadText(currentSceneData, inputFields[i], dataIndex < currentSceneData.inputData.Count ? currentSceneData.inputData[dataIndex] : ""));
 
             for (int i = 0; i < tmpInputFields.Count; i++, dataIndex++)
                 if (tmpInputFields[i] != null)
-                    tmpInputFields[i].SetTextWithoutNotify(dataIndex < currentSceneData.inputData.Count ? currentSceneData.inputData[dataIndex] : "");
+                    tmpInputFields[i].SetTextWithoutNotify(StableFieldStorage.ReadText(currentSceneData, tmpInputFields[i], dataIndex < currentSceneData.inputData.Count ? currentSceneData.inputData[dataIndex] : ""));
 
             for (int i = 0; i < toggles.Count; i++)
                 if (toggles[i] != null)
@@ -163,12 +170,12 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
                     bool value = currentSceneData.HasInt(key)
                         ? currentSceneData.GetInt(key) != 0
                         : i < currentSceneData.toggleData.Count && currentSceneData.toggleData[i];
-                    toggles[i].SetIsOnWithoutNotify(value);
+                    toggles[i].SetIsOnWithoutNotify(StableFieldStorage.ReadInt(currentSceneData, toggles[i], value ? 1 : 0) != 0);
                 }
 
             for (int i = 0; i < sliders.Count; i++)
                 if (sliders[i] != null)
-                    sliders[i].SetValueWithoutNotify(i < currentSceneData.sliderData.Count ? currentSceneData.sliderData[i] : 0f);
+                    sliders[i].SetValueWithoutNotify(StableFieldStorage.ReadFloat(currentSceneData, sliders[i], i < currentSceneData.sliderData.Count ? currentSceneData.sliderData[i] : 0f));
 
             for (int i = 0; i < dropdowns.Count; i++)
                 if (dropdowns[i] != null)
@@ -177,7 +184,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
                     int value = currentSceneData.HasInt(key)
                         ? currentSceneData.GetInt(key)
                         : i < currentSceneData.dropdownData.Count ? currentSceneData.dropdownData[i] : 0;
-                    dropdowns[i].SetValueWithoutNotify(value);
+                    dropdowns[i].SetValueWithoutNotify(StableFieldStorage.ReadInt(currentSceneData, dropdowns[i], value));
                     dropdowns[i].RefreshShownValue();
                 }
 
@@ -189,7 +196,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
                     int value = currentSceneData.HasInt(key)
                         ? currentSceneData.GetInt(key)
                         : i + tmpDropdownOffset < currentSceneData.dropdownData.Count ? currentSceneData.dropdownData[i + tmpDropdownOffset] : 0;
-                    tmpDropdowns[i].SetValueWithoutNotify(value);
+                    tmpDropdowns[i].SetValueWithoutNotify(StableFieldStorage.ReadInt(currentSceneData, tmpDropdowns[i], value));
                     tmpDropdowns[i].RefreshShownValue();
                 }
 

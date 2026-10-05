@@ -5817,6 +5817,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1466420128}
   - component: {fileID: 1466420129}
+  - component: {fileID: 1466420130}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -5894,6 +5895,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1466420130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466420127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.toggle.item.a1ae4739465b
+  control: {fileID: 1466420129}
+  legacyCollection: toggleData
+  legacyIndex: 9
+  legacyKey: Toggle_0003_DFormOverLey/0002_kalPanel/0002_Panelhealp/0003_potionDropdown/0002_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1468187959
 GameObject:
   m_ObjectHideFlags: 0
@@ -6506,6 +6524,7 @@ GameObject:
   - component: {fileID: 1547465042}
   - component: {fileID: 1547465041}
   - component: {fileID: 1547465040}
+  - component: {fileID: 1547465043}
   m_Layer: 5
   m_Name: potionDropdown
   m_TagString: Untagged
@@ -6632,6 +6651,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547465038}
   m_CullTransparentMesh: 1
+--- !u!114 &1547465043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547465038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.dropdown.potiondropdown.89e8267239c7
+  control: {fileID: 1547465040}
+  legacyCollection: dropdownData
+  legacyIndex: 0
+  legacyKey: Dropdown_0003_DFormOverLey/0002_kalPanel/0002_Panelhealp/0003_potionDropdown
 --- !u!1 &1552770149
 GameObject:
   m_ObjectHideFlags: 0
@@ -9071,6 +9107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5136824429207554797}
   - component: {fileID: 2057385936806578790}
+  - component: {fileID: 5136824429207554798}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -9768,6 +9805,7 @@ GameObject:
   - component: {fileID: 7027266502071057404}
   - component: {fileID: 7177802456235224024}
   - component: {fileID: 5983244354399439756}
+  - component: {fileID: 7177802456235224025}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -9953,6 +9991,7 @@ GameObject:
   - component: {fileID: 3385831889270569618}
   - component: {fileID: 8414337172427472131}
   - component: {fileID: 8399212351747821643}
+  - component: {fileID: 8414337172427472132}
   m_Layer: 5
   m_Name: InputFieldspaspaw (2)
   m_TagString: Untagged
@@ -10024,6 +10063,7 @@ GameObject:
   - component: {fileID: 132467885013396064}
   - component: {fileID: 3336020510372674239}
   - component: {fileID: 7081860531660742627}
+  - component: {fileID: 7081860531660742628}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -10455,6 +10495,7 @@ GameObject:
   - component: {fileID: 6013345878041804651}
   - component: {fileID: 4809715580423495718}
   - component: {fileID: 6061272535617940174}
+  - component: {fileID: 6061272535617940175}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -10627,6 +10668,7 @@ GameObject:
   - component: {fileID: 9041312902732979966}
   - component: {fileID: 6063513373553307418}
   - component: {fileID: 6798716052699221601}
+  - component: {fileID: 9041312902732979967}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -11176,6 +11218,7 @@ GameObject:
   - component: {fileID: 6135989161133984639}
   - component: {fileID: 4198512344732924090}
   - component: {fileID: 656702585603491178}
+  - component: {fileID: 6749033127105015639}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -11195,6 +11238,7 @@ GameObject:
   - component: {fileID: 2486211596056761609}
   - component: {fileID: 3474933926104738019}
   - component: {fileID: 8383398304038237833}
+  - component: {fileID: 8383398304038237834}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -12132,6 +12176,7 @@ GameObject:
   - component: {fileID: 8408742328063075063}
   - component: {fileID: 5502282406702392773}
   - component: {fileID: 5765490465560833893}
+  - component: {fileID: 8408742328063075064}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -14571,6 +14616,7 @@ GameObject:
   - component: {fileID: 5537304508410562101}
   - component: {fileID: 3325698224968781705}
   - component: {fileID: 2732087720843695592}
+  - component: {fileID: 5537304508410562102}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -15056,6 +15102,7 @@ GameObject:
   - component: {fileID: 6095683997946066361}
   - component: {fileID: 8308270619766675811}
   - component: {fileID: 7147821413258565782}
+  - component: {fileID: 8308270619766675812}
   m_Layer: 5
   m_Name: InputFieldspaspaw (7)
   m_TagString: Untagged
@@ -15339,6 +15386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 57541476372813926}
   - component: {fileID: 8269834006478455117}
+  - component: {fileID: 8269834006478455118}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -15456,6 +15504,7 @@ GameObject:
   - component: {fileID: 4361119805340267925}
   - component: {fileID: 2105010365590758352}
   - component: {fileID: 4043232797180233797}
+  - component: {fileID: 8379159614484614052}
   m_Layer: 5
   m_Name: InputFieldspaspaw (2)
   m_TagString: Untagged
@@ -15736,6 +15785,7 @@ GameObject:
   - component: {fileID: 5629778318153819655}
   - component: {fileID: 6238532270901591973}
   - component: {fileID: 2639064314500766216}
+  - component: {fileID: 6238532270901591974}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -16556,6 +16606,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5422642067535370969, guid: c536a29d36be88e4381312ff010bad36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3024366231910490830}
     - targetCorrespondingSourceObject: {fileID: 8565936308676136907, guid: c536a29d36be88e4381312ff010bad36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3024366231910490827}
@@ -16586,6 +16639,39 @@ MonoBehaviour:
   englishText: 
   russianText: 
   useCurrentTextAsSource: 1
+--- !u!1 &3024366231910490828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5422642067535370969, guid: c536a29d36be88e4381312ff010bad36, type: 3}
+  m_PrefabInstance: {fileID: 3024366231910490824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3024366231910490829 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7795065310293821728, guid: c536a29d36be88e4381312ff010bad36, type: 3}
+  m_PrefabInstance: {fileID: 3024366231910490824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024366231910490828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3024366231910490830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024366231910490828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.83a2d2f71994
+  control: {fileID: 3024366231910490829}
+  legacyCollection: inputData
+  legacyIndex: 0
+  legacyKey: 
 --- !u!222 &3047562925924258670
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17334,6 +17420,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 243468620485907370, guid: 04c7f4477eb851d4299e9f013609677d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3334724949094982524}
     - targetCorrespondingSourceObject: {fileID: 4522089982391633592, guid: 04c7f4477eb851d4299e9f013609677d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3334724949094982521}
@@ -17364,6 +17453,39 @@ MonoBehaviour:
   englishText: 
   russianText: 
   useCurrentTextAsSource: 1
+--- !u!1 &3334724949094982522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 243468620485907370, guid: 04c7f4477eb851d4299e9f013609677d, type: 3}
+  m_PrefabInstance: {fileID: 3334724949094982518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3334724949094982523 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2597525615527968851, guid: 04c7f4477eb851d4299e9f013609677d, type: 3}
+  m_PrefabInstance: {fileID: 3334724949094982518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334724949094982522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3334724949094982524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3334724949094982522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.f895d6043266
+  control: {fileID: 3334724949094982523}
+  legacyCollection: inputData
+  legacyIndex: 44
+  legacyKey: 
 --- !u!114 &3336020510372674239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17483,6 +17605,7 @@ GameObject:
   - component: {fileID: 378718401340930498}
   - component: {fileID: 6867102444346700965}
   - component: {fileID: 5935853323563330626}
+  - component: {fileID: 6867102444346700966}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -17621,6 +17744,7 @@ GameObject:
   - component: {fileID: 1618157675616082228}
   - component: {fileID: 1817289683339267043}
   - component: {fileID: 7394178904940795735}
+  - component: {fileID: 7540681353561822090}
   m_Layer: 5
   m_Name: InputFieldspaspaw (7)
   m_TagString: Untagged
@@ -17657,6 +17781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8287598333319596367}
   - component: {fileID: 2407510759193264121}
+  - component: {fileID: 8287598333319596368}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -18619,6 +18744,7 @@ GameObject:
   - component: {fileID: 5089147805109969365}
   - component: {fileID: 7495560300657036654}
   - component: {fileID: 7381718851996092157}
+  - component: {fileID: 7495560300657036655}
   m_Layer: 5
   m_Name: InputFieldspaspaw (2)
   m_TagString: Untagged
@@ -18739,6 +18865,7 @@ GameObject:
   - component: {fileID: 2892309476017949257}
   - component: {fileID: 6417762711343281002}
   - component: {fileID: 2978904972542741035}
+  - component: {fileID: 6417762711343281003}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -18776,6 +18903,7 @@ GameObject:
   - component: {fileID: 1941160331328344556}
   - component: {fileID: 6131703801139661968}
   - component: {fileID: 6114386409064238925}
+  - component: {fileID: 8635409699793764685}
   m_Layer: 5
   m_Name: InputFieldspaspaw (1)
   m_TagString: Untagged
@@ -18959,6 +19087,7 @@ GameObject:
   m_Component:
   - component: {fileID: 965628556165067114}
   - component: {fileID: 913413631526012950}
+  - component: {fileID: 4062694031253426249}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -18966,6 +19095,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4062694031253426249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4062694031253426248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.toggle.toggle.c661f86388a0
+  control: {fileID: 913413631526012950}
+  legacyCollection: toggleData
+  legacyIndex: 3
+  legacyKey: Toggle_0001_Dformkart/0002_deadChekBox/0003_uspih/0000_Toggle
 --- !u!114 &4075838748031494157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20061,6 +20207,7 @@ GameObject:
   - component: {fileID: 2991079005452186919}
   - component: {fileID: 8918878593609779234}
   - component: {fileID: 6855284023655800369}
+  - component: {fileID: 8918878593609779235}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -20473,6 +20620,7 @@ GameObject:
   - component: {fileID: 3365181402204711069}
   - component: {fileID: 891592517805918007}
   - component: {fileID: 432088051042246185}
+  - component: {fileID: 4667855303946100588}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -20480,6 +20628,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4667855303946100588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4667855303946100587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.63fa585161b9
+  control: {fileID: 432088051042246185}
+  legacyCollection: inputData
+  legacyIndex: 17
+  legacyKey: 
 --- !u!222 &4679314481198423533
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22142,6 +22307,7 @@ GameObject:
   - component: {fileID: 3208263451588265514}
   - component: {fileID: 8599043842766520567}
   - component: {fileID: 6893072460636249960}
+  - component: {fileID: 8599043842766520568}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -22167,6 +22333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5388215013544167251}
   - component: {fileID: 8112216809597203326}
+  - component: {fileID: 8112216809597203327}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -22344,6 +22511,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0.625, y: 0.44293213}
   m_SizeDelta: {x: 177.76, y: 35.36}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5136824429207554798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201152869533501974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.toggle.toggle-2.335dabbcdfe2
+  control: {fileID: 2057385936806578790}
+  legacyCollection: toggleData
+  legacyIndex: 5
+  legacyKey: Toggle_0001_Dformkart/0002_deadChekBox/0003_uspih/0002_Toggle (2)
 --- !u!1 &5158404436405303779
 GameObject:
   m_ObjectHideFlags: 0
@@ -22855,6 +23039,7 @@ GameObject:
   - component: {fileID: 1615412757425089035}
   - component: {fileID: 3165766724078958349}
   - component: {fileID: 3740798182676077156}
+  - component: {fileID: 5413020934314619039}
   m_Layer: 5
   m_Name: InputFieldspaspaw (1)
   m_TagString: Untagged
@@ -22862,6 +23047,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5413020934314619039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413020934314619038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-1.142dfd57b823
+  control: {fileID: 3740798182676077156}
+  legacyCollection: inputData
+  legacyIndex: 35
+  legacyKey: 
 --- !u!224 &5415757808446790893
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23208,6 +23410,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2184671350956634624}
   m_CullTransparentMesh: 1
+--- !u!114 &5537304508410562102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2184671350956634624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.aa0f819e8c50
+  control: {fileID: 2732087720843695592}
+  legacyCollection: inputData
+  legacyIndex: 12
+  legacyKey: 
 --- !u!1 &5574960565396971201
 GameObject:
   m_ObjectHideFlags: 0
@@ -24065,6 +24284,7 @@ GameObject:
   - component: {fileID: 1186168227190001762}
   - component: {fileID: 77595092533530877}
   - component: {fileID: 973225383189164230}
+  - component: {fileID: 5884736391345817676}
   m_Layer: 5
   m_Name: InputFieldspaspaw (1)
   m_TagString: Untagged
@@ -24072,6 +24292,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5884736391345817676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5884736391345817675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-1.1ccca26cd8d3
+  control: {fileID: 973225383189164230}
+  legacyCollection: inputData
+  legacyIndex: 25
+  legacyKey: 
 --- !u!1 &5905075876783387247
 GameObject:
   m_ObjectHideFlags: 0
@@ -24084,6 +24321,7 @@ GameObject:
   - component: {fileID: 5427203378755689656}
   - component: {fileID: 4902003091188146352}
   - component: {fileID: 5812967157625144165}
+  - component: {fileID: 5905075876783387248}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -24091,6 +24329,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5905075876783387248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5905075876783387247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.62582f349b36
+  control: {fileID: 5812967157625144165}
+  legacyCollection: inputData
+  legacyIndex: 5
+  legacyKey: 
 --- !u!114 &5907071307497555564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24977,6 +25232,23 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &6061272535617940175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760867671635973535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.0033c71d647a
+  control: {fileID: 6061272535617940174}
+  legacyCollection: inputData
+  legacyIndex: 3
+  legacyKey: 
 --- !u!114 &6063513373553307418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25422,6 +25694,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &6238532270901591974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2732976344662982585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw.5d5ecdce783a
+  control: {fileID: 2639064314500766216}
+  legacyCollection: inputData
+  legacyIndex: 34
+  legacyKey: 
 --- !u!114 &6244688221593751809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25811,6 +26100,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 3
+--- !u!114 &6417762711343281003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963725249201979955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.e46b93d1e396
+  control: {fileID: 2978904972542741035}
+  legacyCollection: inputData
+  legacyIndex: 11
+  legacyKey: 
 --- !u!114 &6420393211585205432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25890,6 +26196,7 @@ GameObject:
   - component: {fileID: 3328118417679999809}
   - component: {fileID: 1093212258320216775}
   - component: {fileID: 7679821330664484407}
+  - component: {fileID: 7679821330664484408}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -26093,6 +26400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1312861593223833958}
   - component: {fileID: 4075838748031494157}
+  - component: {fileID: 6506522708905238280}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -26100,6 +26408,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6506522708905238280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6506522708905238279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.toggle.toggle.3ba06cef60e1
+  control: {fileID: 4075838748031494157}
+  legacyCollection: toggleData
+  legacyIndex: 0
+  legacyKey: Toggle_0001_Dformkart/0002_deadChekBox/0002_proval/0000_Toggle
 --- !u!1 &6529455514854593241
 GameObject:
   m_ObjectHideFlags: 0
@@ -26112,6 +26437,7 @@ GameObject:
   - component: {fileID: 5373848998303073120}
   - component: {fileID: 992678385622073866}
   - component: {fileID: 6627014456248460948}
+  - component: {fileID: 6627014456248460949}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -26490,6 +26816,23 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &6627014456248460949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6529455514854593241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw.85ecc0c636d7
+  control: {fileID: 6627014456248460948}
+  legacyCollection: inputData
+  legacyIndex: 37
+  legacyKey: 
 --- !u!1 &6647618771382077054
 GameObject:
   m_ObjectHideFlags: 0
@@ -26632,6 +26975,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0.38, y: 0.34671444}
   m_SizeDelta: {x: 289.32, y: 338.19}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6749033127105015639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059708122666194821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw.ebee778eb900
+  control: {fileID: 656702585603491178}
+  legacyCollection: inputData
+  legacyIndex: 41
+  legacyKey: 
 --- !u!1 &6755318533213824600
 GameObject:
   m_ObjectHideFlags: 0
@@ -26644,6 +27004,7 @@ GameObject:
   - component: {fileID: 8709923586743870207}
   - component: {fileID: 7747868406761514896}
   - component: {fileID: 7652229620708815528}
+  - component: {fileID: 8709923586743870208}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -26663,6 +27024,7 @@ GameObject:
   - component: {fileID: 1926752167297226027}
   - component: {fileID: 7954992666071761298}
   - component: {fileID: 4372543037715318474}
+  - component: {fileID: 8143677214921751661}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -26811,6 +27173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4327964732855827612}
   - component: {fileID: 7315489945419873006}
+  - component: {fileID: 7315489945419873007}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -26878,6 +27241,7 @@ GameObject:
   - component: {fileID: 633849188604094984}
   - component: {fileID: 3618179166497498773}
   - component: {fileID: 2035197843667573826}
+  - component: {fileID: 9171338931368992804}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -27026,6 +27390,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6867102444346700966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3383093246880574934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.a46d98b222a7
+  control: {fileID: 5935853323563330626}
+  legacyCollection: inputData
+  legacyIndex: 15
+  legacyKey: 
 --- !u!1 &6879047511507614331
 GameObject:
   m_ObjectHideFlags: 0
@@ -27038,6 +27419,7 @@ GameObject:
   - component: {fileID: 2992378470326018164}
   - component: {fileID: 6488649664439949613}
   - component: {fileID: 4183437196664647874}
+  - component: {fileID: 6879047511507614332}
   m_Layer: 5
   m_Name: InputFieldspaspaw (1)
   m_TagString: Untagged
@@ -27045,6 +27427,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6879047511507614332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6879047511507614331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-1.522bd86450cf
+  control: {fileID: 4183437196664647874}
+  legacyCollection: inputData
+  legacyIndex: 22
+  legacyKey: 
 --- !u!114 &6883476156236163393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27505,6 +27904,23 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &7081860531660742628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548180503705503844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw.e9a8d94af903
+  control: {fileID: 7081860531660742627}
+  legacyCollection: inputData
+  legacyIndex: 24
+  legacyKey: 
 --- !u!114 &7085293880111615097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27659,6 +28075,7 @@ GameObject:
   - component: {fileID: 7125183743632989965}
   - component: {fileID: 6244688221593751809}
   - component: {fileID: 1818874042735160147}
+  - component: {fileID: 7128442445146466437}
   m_Layer: 5
   m_Name: mmpises2
   m_TagString: Untagged
@@ -27666,6 +28083,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7128442445146466437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128442445146466436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.mmpises2.3c2a0df6356a
+  control: {fileID: 1818874042735160147}
+  legacyCollection: inputData
+  legacyIndex: 1
+  legacyKey: 
 --- !u!114 &7147821413258565782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27806,6 +28240,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7177802456235224025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473859204227074784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.ea17045b7a57
+  control: {fileID: 5983244354399439756}
+  legacyCollection: inputData
+  legacyIndex: 8
+  legacyKey: 
 --- !u!4 &7186587014808563847
 Transform:
   m_ObjectHideFlags: 0
@@ -28052,6 +28503,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &7315489945419873007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806862784961401263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.toggle.toggle.4682d185706f
+  control: {fileID: 7315489945419873006}
+  legacyCollection: toggleData
+  legacyIndex: 7
+  legacyKey: Toggle_0001_Dformkart/0003_petoForma/0011_zamitki (2)/0001_Toggle
 --- !u!4 &7334053949296410165
 Transform:
   m_ObjectHideFlags: 0
@@ -28533,6 +29001,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &7495560300657036655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867996847175751774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-2.ec4a9ff4cf24
+  control: {fileID: 7381718851996092157}
+  legacyCollection: inputData
+  legacyIndex: 26
+  legacyKey: 
 --- !u!222 &7508096058851855638
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28553,6 +29038,7 @@ GameObject:
   - component: {fileID: 5274052774200852209}
   - component: {fileID: 1440142175166254411}
   - component: {fileID: 2540812490939794256}
+  - component: {fileID: 7518864230215785518}
   m_Layer: 5
   m_Name: InputFieldspaspaw (1)
   m_TagString: Untagged
@@ -28560,6 +29046,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7518864230215785518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7518864230215785517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-1.26bf84207d2a
+  control: {fileID: 2540812490939794256}
+  legacyCollection: inputData
+  legacyIndex: 28
+  legacyKey: 
 --- !u!224 &7532447735320057101
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28620,6 +29123,23 @@ RectTransform:
   m_AnchoredPosition: {x: -0.2985, y: -0.5342}
   m_SizeDelta: {x: 258.2538, y: 156.1188}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7540681353561822090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3412652767402952186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-7.991af0791172
+  control: {fileID: 7394178904940795735}
+  legacyCollection: inputData
+  legacyIndex: 40
+  legacyKey: 
 --- !u!224 &7551714477123870661
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28735,6 +29255,7 @@ GameObject:
   - component: {fileID: 5920508274454166684}
   - component: {fileID: 6420393211585205432}
   - component: {fileID: 1288937100333362250}
+  - component: {fileID: 7622753391039061325}
   m_Layer: 5
   m_Name: InputFieldspaspaw
   m_TagString: Untagged
@@ -28742,6 +29263,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7622753391039061325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622753391039061324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw.4fad0e13955c
+  control: {fileID: 1288937100333362250}
+  legacyCollection: inputData
+  legacyIndex: 31
+  legacyKey: 
 --- !u!1 &7638398225112720668
 GameObject:
   m_ObjectHideFlags: 0
@@ -29001,6 +29539,23 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &7679821330664484408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6441193600430020187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw.c3aa01750b04
+  control: {fileID: 7679821330664484407}
+  legacyCollection: inputData
+  legacyIndex: 2
+  legacyKey: 
 --- !u!1 &7689889117433865969
 GameObject:
   m_ObjectHideFlags: 0
@@ -29013,6 +29568,7 @@ GameObject:
   - component: {fileID: 3098852999951873373}
   - component: {fileID: 5671264332162889920}
   - component: {fileID: 1406924886485429514}
+  - component: {fileID: 7689889117433865970}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -29020,6 +29576,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7689889117433865970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7689889117433865969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.2079d38001cf
+  control: {fileID: 1406924886485429514}
+  legacyCollection: inputData
+  legacyIndex: 14
+  legacyKey: 
 --- !u!1 &7694704144859021084
 GameObject:
   m_ObjectHideFlags: 0
@@ -29085,6 +29658,7 @@ GameObject:
   - component: {fileID: 5263649448306430407}
   - component: {fileID: 6126632789519284992}
   - component: {fileID: 269302621783993367}
+  - component: {fileID: 7978287845492050885}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -29284,6 +29858,7 @@ GameObject:
   - component: {fileID: 1142963629192128345}
   - component: {fileID: 5948197210880607638}
   - component: {fileID: 2320376145433929471}
+  - component: {fileID: 8126054201677381052}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -29418,6 +29993,7 @@ GameObject:
   - component: {fileID: 5633355533281928924}
   - component: {fileID: 6248945377365718920}
   - component: {fileID: 493453792394366941}
+  - component: {fileID: 7889959676174135906}
   m_Layer: 5
   m_Name: InputFieldspaspaw (2)
   m_TagString: Untagged
@@ -29425,6 +30001,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7889959676174135906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7889959676174135905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-2.3e0ea3934461
+  control: {fileID: 493453792394366941}
+  legacyCollection: inputData
+  legacyIndex: 39
+  legacyKey: 
 --- !u!1 &7892872045042184525
 GameObject:
   m_ObjectHideFlags: 0
@@ -29435,6 +30028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5942327793517379969}
   - component: {fileID: 3004501494235286290}
+  - component: {fileID: 7892872045042184526}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -29442,6 +30036,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7892872045042184526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7892872045042184525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.toggle.toggle-2.919c31d5be4f
+  control: {fileID: 3004501494235286290}
+  legacyCollection: toggleData
+  legacyIndex: 2
+  legacyKey: Toggle_0001_Dformkart/0002_deadChekBox/0002_proval/0002_Toggle (2)
 --- !u!222 &7895192815263888464
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29597,6 +30208,23 @@ RectTransform:
   m_AnchoredPosition: {x: -0.558, y: 0.31799972}
   m_SizeDelta: {x: 47.0182, y: 46.6617}
   m_Pivot: {x: 0.5000005, y: 0.5}
+--- !u!114 &7978287845492050885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728566068199310092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.4912025c1bd1
+  control: {fileID: 269302621783993367}
+  legacyCollection: inputData
+  legacyIndex: 10
+  legacyKey: 
 --- !u!114 &7981927841858734231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29819,6 +30447,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &8112216809597203327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5052562784407751179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.toggle.toggle-1.c28469824674
+  control: {fileID: 8112216809597203326}
+  legacyCollection: toggleData
+  legacyIndex: 4
+  legacyKey: Toggle_0001_Dformkart/0002_deadChekBox/0003_uspih/0001_Toggle (1)
 --- !u!222 &8123100918259327220
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29848,6 +30493,23 @@ RectTransform:
   m_AnchoredPosition: {x: -0.56865, y: 0.218}
   m_SizeDelta: {x: 46.64011, y: 46.28652}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8126054201677381052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7851886849952718011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.2bc884a81fe3
+  control: {fileID: 2320376145433929471}
+  legacyCollection: inputData
+  legacyIndex: 20
+  legacyKey: 
 --- !u!224 &8127665293925189860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29879,6 +30541,7 @@ GameObject:
   - component: {fileID: 7476505104514716492}
   - component: {fileID: 313074953911371887}
   - component: {fileID: 1490249389280697926}
+  - component: {fileID: 8138351683129701998}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -29886,6 +30549,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8138351683129701998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138351683129701997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.e6b3eb1a04a0
+  control: {fileID: 1490249389280697926}
+  legacyCollection: inputData
+  legacyIndex: 18
+  legacyKey: 
 --- !u!224 &8143677214921751660
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29907,6 +30587,23 @@ RectTransform:
   m_AnchoredPosition: {x: -0.5469, y: 0.11}
   m_SizeDelta: {x: 97.6887, y: 100.7968}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8143677214921751661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756122977840853701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.91c732b37196
+  control: {fileID: 4372543037715318474}
+  legacyCollection: inputData
+  legacyIndex: 7
+  legacyKey: 
 --- !u!222 &8149600394163699159
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30147,6 +30844,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &8269834006478455118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2542899621342786448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.toggle.toggle.a7a5d404bf5a
+  control: {fileID: 8269834006478455117}
+  legacyCollection: toggleData
+  legacyIndex: 8
+  legacyKey: Toggle_0001_Dformkart/0003_petoForma/0012_zamitki (3)/0001_Toggle
 --- !u!224 &8287598333319596367
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30167,6 +30881,23 @@ RectTransform:
   m_AnchoredPosition: {x: 1.12, y: 0.3133}
   m_SizeDelta: {x: 233.7639, y: 81.8946}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8287598333319596368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3447485833909830950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.toggle.toggle-1.584a1332ff6a
+  control: {fileID: 2407510759193264121}
+  legacyCollection: toggleData
+  legacyIndex: 1
+  legacyKey: Toggle_0001_Dformkart/0002_deadChekBox/0002_proval/0001_Toggle (1)
 --- !u!1 &8301306507719960141
 GameObject:
   m_ObjectHideFlags: 0
@@ -30179,6 +30910,7 @@ GameObject:
   - component: {fileID: 8386266979792722989}
   - component: {fileID: 1998792048527643690}
   - component: {fileID: 3399119520694131981}
+  - component: {fileID: 8386266979792722990}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -30234,6 +30966,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &8308270619766675812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2439632368005677965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-7.d435ab89c66d
+  control: {fileID: 7147821413258565782}
+  legacyCollection: inputData
+  legacyIndex: 30
+  legacyKey: 
 --- !u!1 &8311899241629061866
 GameObject:
   m_ObjectHideFlags: 0
@@ -30440,6 +31189,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0.26400006, y: 0.42599982}
   m_SizeDelta: {x: 91.8758, y: 32.4256}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8379159614484614052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586937393178360095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-2.05f0bd8a618a
+  control: {fileID: 4043232797180233797}
+  legacyCollection: inputData
+  legacyIndex: 36
+  legacyKey: 
 --- !u!224 &8381569676549757746
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30471,6 +31237,7 @@ GameObject:
   - component: {fileID: 3188043576705396520}
   - component: {fileID: 5401255755990144710}
   - component: {fileID: 1326631552118504276}
+  - component: {fileID: 8382337079793457006}
   m_Layer: 5
   m_Name: InputFieldspaspaw (2)
   m_TagString: Untagged
@@ -30478,6 +31245,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8382337079793457006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8382337079793457005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-2.c95b1e094877
+  control: {fileID: 1326631552118504276}
+  legacyCollection: inputData
+  legacyIndex: 29
+  legacyKey: 
 --- !u!114 &8383398304038237833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30546,6 +31330,23 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!114 &8383398304038237834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077731609174416475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw.1b8a4d738b5c
+  control: {fileID: 8383398304038237833}
+  legacyCollection: inputData
+  legacyIndex: 27
+  legacyKey: 
 --- !u!114 &8384851753701601908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30588,6 +31389,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8301306507719960141}
   m_CullTransparentMesh: 1
+--- !u!114 &8386266979792722990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301306507719960141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.91b4e56fcd00
+  control: {fileID: 3399119520694131981}
+  legacyCollection: inputData
+  legacyIndex: 16
+  legacyKey: 
 --- !u!114 &8399212351747821643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30664,6 +31482,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399741711976800963}
   m_CullTransparentMesh: 1
+--- !u!114 &8408742328063075064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399741711976800963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw.bef0c8de7e9c
+  control: {fileID: 5765490465560833893}
+  legacyCollection: inputData
+  legacyIndex: 42
+  legacyKey: 
 --- !u!114 &8414337172427472131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30694,6 +31529,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &8414337172427472132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521383676958758521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-2.6039f7296d65
+  control: {fileID: 8399212351747821643}
+  legacyCollection: inputData
+  legacyIndex: 33
+  legacyKey: 
 --- !u!222 &8414467462338871974
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30930,6 +31782,7 @@ GameObject:
   - component: {fileID: 7289655600217966644}
   - component: {fileID: 88403773926472254}
   - component: {fileID: 6605214854257952320}
+  - component: {fileID: 8518140800991237088}
   m_Layer: 5
   m_Name: InputFieldspaspaw (1)
   m_TagString: Untagged
@@ -30937,6 +31790,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8518140800991237088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518140800991237087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-1.aede1b18923b
+  control: {fileID: 6605214854257952320}
+  legacyCollection: inputData
+  legacyIndex: 38
+  legacyKey: 
 --- !u!1 &8525822170280951357
 GameObject:
   m_ObjectHideFlags: 0
@@ -30949,6 +31819,7 @@ GameObject:
   - component: {fileID: 4094849301284584207}
   - component: {fileID: 7974144982132830571}
   - component: {fileID: 1903113316136639291}
+  - component: {fileID: 8525822170280951358}
   m_Layer: 5
   m_Name: InputFieldspaspaw (2)
   m_TagString: Untagged
@@ -30956,6 +31827,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8525822170280951358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8525822170280951357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-2.70a911721b1a
+  control: {fileID: 1903113316136639291}
+  legacyCollection: inputData
+  legacyIndex: 23
+  legacyKey: 
 --- !u!114 &8551221366294124599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31135,6 +32023,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 3
+--- !u!114 &8599043842766520568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022374588870934742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.848e9f1bd12c
+  control: {fileID: 6893072460636249960}
+  legacyCollection: inputData
+  legacyIndex: 9
+  legacyKey: 
 --- !u!4 &8613126387265887352
 Transform:
   m_ObjectHideFlags: 0
@@ -31208,6 +32113,23 @@ RectTransform:
   m_AnchoredPosition: {x: -0.5796, y: 0.42465258}
   m_SizeDelta: {x: 116.4741, y: 32.7255}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8635409699793764685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3983735381833570060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw-1.0d4c2eaeeeea
+  control: {fileID: 6114386409064238925}
+  legacyCollection: inputData
+  legacyIndex: 32
+  legacyKey: 
 --- !u!1 &8638596458699135945
 GameObject:
   m_ObjectHideFlags: 0
@@ -31315,6 +32237,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6755318533213824600}
   m_CullTransparentMesh: 1
+--- !u!114 &8709923586743870208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6755318533213824600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw.582e53a436b7
+  control: {fileID: 7652229620708815528}
+  legacyCollection: inputData
+  legacyIndex: 21
+  legacyKey: 
 --- !u!1 &8722030081006054484
 GameObject:
   m_ObjectHideFlags: 0
@@ -31547,6 +32486,7 @@ GameObject:
   - component: {fileID: 7426254449744473113}
   - component: {fileID: 8743768589732605125}
   - component: {fileID: 5984190790465850125}
+  - component: {fileID: 8889479974130800150}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -31554,6 +32494,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8889479974130800150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8889479974130800149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.f9ef2b616380
+  control: {fileID: 5984190790465850125}
+  legacyCollection: inputData
+  legacyIndex: 4
+  legacyKey: 
 --- !u!224 &8910008197997489348
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31649,6 +32606,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8918878593609779235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4468456582384328339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.55f2ffee95fc
+  control: {fileID: 6855284023655800369}
+  legacyCollection: inputData
+  legacyIndex: 13
+  legacyKey: 
 --- !u!224 &8921843663269206333
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31886,6 +32860,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823721136997581859}
   m_CullTransparentMesh: 1
+--- !u!114 &9041312902732979967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823721136997581859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.55dc2a68c6b3
+  control: {fileID: 6798716052699221601}
+  legacyCollection: inputData
+  legacyIndex: 6
+  legacyKey: 
 --- !u!1 &9044455310858297605
 GameObject:
   m_ObjectHideFlags: 0
@@ -31931,6 +32922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5225486335409785913}
   - component: {fileID: 718609380047199848}
+  - component: {fileID: 9060658728499366060}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -31938,6 +32930,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9060658728499366060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9060658728499366059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.toggle.toggle.3908434a1863
+  control: {fileID: 718609380047199848}
+  legacyCollection: toggleData
+  legacyIndex: 6
+  legacyKey: Toggle_0001_Dformkart/0003_petoForma/0010_zamitki (1)/0001_Toggle
 --- !u!212 &9065334141360965625
 SpriteRenderer:
   serializedVersion: 2
@@ -32112,6 +33121,7 @@ GameObject:
   - component: {fileID: 8414467462338871974}
   - component: {fileID: 5091956215706387333}
   - component: {fileID: 1726733518904729494}
+  - component: {fileID: 9106872692255061202}
   m_Layer: 5
   m_Name: InputField (Legacy)
   m_TagString: Untagged
@@ -32119,6 +33129,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9106872692255061202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9106872692255061201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfield-legacy.0a7e3a846756
+  control: {fileID: 1726733518904729494}
+  legacyCollection: inputData
+  legacyIndex: 19
+  legacyKey: 
 --- !u!224 &9111719505431558087
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32237,6 +33264,23 @@ RectTransform:
   m_AnchoredPosition: {x: -0.14, y: 0.34671444}
   m_SizeDelta: {x: 381.68, y: 338.19}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9171338931368992804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6846675928287575279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.petsesn.inputfield.inputfieldspaspaw.abd327192411
+  control: {fileID: 2035197843667573826}
+  legacyCollection: inputData
+  legacyIndex: 43
+  legacyKey: 
 --- !u!222 &9171838846383701192
 CanvasRenderer:
   m_ObjectHideFlags: 0

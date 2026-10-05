@@ -617,6 +617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 13423642}
   - component: {fileID: 13423643}
+  - component: {fileID: 13423644}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -695,6 +696,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &13423644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13423641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.4515599124ab
+  control: {fileID: 13423643}
+  legacyCollection: toggleData
+  legacyIndex: 60
+  legacyKey: Toggle_0000_inventory/0002_Page/0009_Cels (8)/0009_Dropdown magic/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &14413709
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,6 +940,7 @@ GameObject:
   - component: {fileID: 15522420}
   - component: {fileID: 15522419}
   - component: {fileID: 15522418}
+  - component: {fileID: 15522421}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -1056,6 +1075,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15522416}
   m_CullTransparentMesh: 1
+--- !u!114 &15522421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15522416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemnameinput.01d8829f2a0d
+  control: {fileID: 15522418}
+  legacyCollection: inputData
+  legacyIndex: 10
+  legacyKey: 
 --- !u!1 &16166083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,6 +1774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 43657279}
   - component: {fileID: 43657280}
+  - component: {fileID: 43657281}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -1816,6 +1853,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &43657281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43657278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.ca8c8f526a32
+  control: {fileID: 43657280}
+  legacyCollection: toggleData
+  legacyIndex: 30
+  legacyKey: Toggle_0000_inventory/0002_Page/0005_Cels (4)/0007_Dropdown cheger/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &52851191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,6 +2036,7 @@ GameObject:
   - component: {fileID: 58907639}
   - component: {fileID: 58907638}
   - component: {fileID: 58907637}
+  - component: {fileID: 58907640}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -2143,6 +2198,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58907635}
   m_CullTransparentMesh: 1
+--- !u!114 &58907640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58907635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-bags.58b02111ae67
+  control: {fileID: 58907637}
+  legacyCollection: dropdownData
+  legacyIndex: 32
+  legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0009_Dropdown bags
 --- !u!1 &59617209
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,6 +2426,7 @@ GameObject:
   - component: {fileID: 62320424}
   - component: {fileID: 62320423}
   - component: {fileID: 62320422}
+  - component: {fileID: 62320425}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -2488,6 +2561,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 62320420}
   m_CullTransparentMesh: 1
+--- !u!114 &62320425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62320420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.itemcategorydropdown.548c2a40c8f1
+  control: {fileID: 62320422}
+  legacyCollection: dropdownData
+  legacyIndex: 21
+  legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0001_itemCategoryDropdown
 --- !u!1001 &64038202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3320,6 +3410,7 @@ GameObject:
   - component: {fileID: 91230914}
   - component: {fileID: 91230913}
   - component: {fileID: 91230912}
+  - component: {fileID: 91230915}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -3481,6 +3572,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91230910}
   m_CullTransparentMesh: 1
+--- !u!114 &91230915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91230910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-bags.700dec5af89b
+  control: {fileID: 91230912}
+  legacyCollection: dropdownData
+  legacyIndex: 11
+  legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0009_Dropdown bags
 --- !u!1 &92407182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4035,6 +4143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 110662486}
   - component: {fileID: 110662487}
+  - component: {fileID: 110662488}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -4113,6 +4222,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &110662488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110662485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.5f4c532dc074
+  control: {fileID: 110662487}
+  legacyCollection: toggleData
+  legacyIndex: 33
+  legacyKey: Toggle_0000_inventory/0002_Page/0005_Cels (4)/0010_Dropdown magic/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &112168803
 GameObject:
   m_ObjectHideFlags: 0
@@ -4282,6 +4408,7 @@ GameObject:
   - component: {fileID: 114334243}
   - component: {fileID: 114334242}
   - component: {fileID: 114334241}
+  - component: {fileID: 114334244}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -4443,6 +4570,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114334239}
   m_CullTransparentMesh: 1
+--- !u!114 &114334244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114334239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-magic.284b8b2f86b3
+  control: {fileID: 114334241}
+  legacyCollection: dropdownData
+  legacyIndex: 54
+  legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0010_Dropdown magic
 --- !u!1 &118519536
 GameObject:
   m_ObjectHideFlags: 0
@@ -4851,6 +4995,7 @@ GameObject:
   m_Component:
   - component: {fileID: 132524461}
   - component: {fileID: 132524462}
+  - component: {fileID: 132524463}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -4928,6 +5073,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &132524463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132524460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.cde07a12dc9f
+  control: {fileID: 132524462}
+  legacyCollection: toggleData
+  legacyIndex: 21
+  legacyKey: Toggle_0000_inventory/0002_Page/0004_Cels (3)/0001_itemCategoryDropdown/0002_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &135499947
 GameObject:
   m_ObjectHideFlags: 0
@@ -6044,6 +6206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 175135076}
   - component: {fileID: 175135077}
+  - component: {fileID: 175135078}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -6122,6 +6285,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &175135078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175135075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.76677f52a68d
+  control: {fileID: 175135077}
+  legacyCollection: toggleData
+  legacyIndex: 11
+  legacyKey: Toggle_0000_inventory/0002_Page/0002_Cels (1)/0009_Dropdown bags/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &176344653
 GameObject:
   m_ObjectHideFlags: 0
@@ -6329,6 +6509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 177449652}
   - component: {fileID: 177449653}
+  - component: {fileID: 177449654}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -6406,6 +6587,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &177449654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177449651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.b9c128dfd022
+  control: {fileID: 177449653}
+  legacyCollection: toggleData
+  legacyIndex: 42
+  legacyKey: Toggle_0000_inventory/0002_Page/0007_Cels (6)/0001_itemCategoryDropdown/0002_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &179032002
 GameObject:
   m_ObjectHideFlags: 0
@@ -6513,6 +6711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 179518333}
   - component: {fileID: 179518334}
+  - component: {fileID: 179518335}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -6591,6 +6790,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &179518335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179518332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.f9a6fed4f175
+  control: {fileID: 179518334}
+  legacyCollection: toggleData
+  legacyIndex: 55
+  legacyKey: Toggle_0000_inventory/0002_Page/0008_Cels (7)/0011_Dropdown other/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &186223479
 GameObject:
   m_ObjectHideFlags: 0
@@ -6755,6 +6971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 189944393}
   - component: {fileID: 189944394}
+  - component: {fileID: 189944395}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -6833,6 +7050,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &189944395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189944392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.9ca45d139a4d
+  control: {fileID: 189944394}
+  legacyCollection: toggleData
+  legacyIndex: 41
+  legacyKey: Toggle_0000_inventory/0002_Page/0006_Cels (5)/0011_Dropdown other/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &191816931
 GameObject:
   m_ObjectHideFlags: 0
@@ -6843,6 +7077,7 @@ GameObject:
   m_Component:
   - component: {fileID: 191816932}
   - component: {fileID: 191816933}
+  - component: {fileID: 191816934}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -6921,6 +7156,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &191816934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191816931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.2f4cff562849
+  control: {fileID: 191816933}
+  legacyCollection: toggleData
+  legacyIndex: 19
+  legacyKey: Toggle_0000_inventory/0002_Page/0003_Cels (2)/0010_Dropdown magic/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &192607643
 GameObject:
   m_ObjectHideFlags: 0
@@ -7081,6 +7333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 195692849}
   - component: {fileID: 195692850}
+  - component: {fileID: 195692851}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -7159,6 +7412,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &195692851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195692848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.e67359fb8948
+  control: {fileID: 195692850}
+  legacyCollection: toggleData
+  legacyIndex: 47
+  legacyKey: Toggle_0000_inventory/0002_Page/0007_Cels (6)/0010_Dropdown magic/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &196660168
 GameObject:
   m_ObjectHideFlags: 0
@@ -7171,6 +7441,7 @@ GameObject:
   - component: {fileID: 196660172}
   - component: {fileID: 196660171}
   - component: {fileID: 196660170}
+  - component: {fileID: 196660173}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -7332,6 +7603,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196660168}
   m_CullTransparentMesh: 1
+--- !u!114 &196660173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196660168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-magic.1fb8887f59c2
+  control: {fileID: 196660170}
+  legacyCollection: dropdownData
+  legacyIndex: 60
+  legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0009_Dropdown magic
 --- !u!1 &198198263
 GameObject:
   m_ObjectHideFlags: 0
@@ -7722,6 +8010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 209275962}
   - component: {fileID: 209275963}
+  - component: {fileID: 209275964}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -7800,6 +8089,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &209275964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209275961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.de93b01d5e08
+  control: {fileID: 209275963}
+  legacyCollection: toggleData
+  legacyIndex: 17
+  legacyKey: Toggle_0000_inventory/0002_Page/0003_Cels (2)/0008_Dropdown armor/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &211588903
 GameObject:
   m_ObjectHideFlags: 0
@@ -8071,6 +8377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 215144210}
   - component: {fileID: 215144211}
+  - component: {fileID: 215144212}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -8149,6 +8456,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &215144212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215144209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.6beea4768263
+  control: {fileID: 215144211}
+  legacyCollection: toggleData
+  legacyIndex: 16
+  legacyKey: Toggle_0000_inventory/0002_Page/0003_Cels (2)/0007_Dropdown cheger/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &215236888
 GameObject:
   m_ObjectHideFlags: 0
@@ -8469,6 +8793,7 @@ GameObject:
   - component: {fileID: 223808887}
   - component: {fileID: 223808886}
   - component: {fileID: 223808885}
+  - component: {fileID: 223808888}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -8630,6 +8955,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223808883}
   m_CullTransparentMesh: 1
+--- !u!114 &223808888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223808883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-cheger.cb9426355fe8
+  control: {fileID: 223808885}
+  legacyCollection: dropdownData
+  legacyIndex: 51
+  legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0007_Dropdown cheger
 --- !u!1 &224351496
 GameObject:
   m_ObjectHideFlags: 0
@@ -8945,6 +9287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 228216579}
   - component: {fileID: 228216580}
+  - component: {fileID: 228216581}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -9023,6 +9366,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &228216581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228216578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.0fefecbb71cd
+  control: {fileID: 228216580}
+  legacyCollection: toggleData
+  legacyIndex: 52
+  legacyKey: Toggle_0000_inventory/0002_Page/0008_Cels (7)/0008_Dropdown armor/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &229987189
 GameObject:
   m_ObjectHideFlags: 0
@@ -9176,6 +9536,7 @@ GameObject:
   - component: {fileID: 234306164}
   - component: {fileID: 234306163}
   - component: {fileID: 234306162}
+  - component: {fileID: 234306165}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -9337,6 +9698,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234306160}
   m_CullTransparentMesh: 1
+--- !u!114 &234306165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234306160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-cheger.4693fa7ac49b
+  control: {fileID: 234306162}
+  legacyCollection: dropdownData
+  legacyIndex: 37
+  legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0007_Dropdown cheger
 --- !u!1 &235480089
 GameObject:
   m_ObjectHideFlags: 0
@@ -9994,6 +10372,7 @@ GameObject:
   - component: {fileID: 264761758}
   - component: {fileID: 264761757}
   - component: {fileID: 264761756}
+  - component: {fileID: 264761759}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -10155,6 +10534,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264761754}
   m_CullTransparentMesh: 1
+--- !u!114 &264761759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264761754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-armor.bbb578e1d539
+  control: {fileID: 264761756}
+  legacyCollection: dropdownData
+  legacyIndex: 45
+  legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0008_Dropdown armor
 --- !u!1 &266527353
 GameObject:
   m_ObjectHideFlags: 0
@@ -10167,6 +10563,7 @@ GameObject:
   - component: {fileID: 266527357}
   - component: {fileID: 266527356}
   - component: {fileID: 266527355}
+  - component: {fileID: 266527358}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -10301,6 +10698,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266527353}
   m_CullTransparentMesh: 1
+--- !u!114 &266527358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266527353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemnameinput.dfbecffca791
+  control: {fileID: 266527355}
+  legacyCollection: inputData
+  legacyIndex: 8
+  legacyKey: 
 --- !u!1 &266946758
 GameObject:
   m_ObjectHideFlags: 0
@@ -10613,6 +11027,7 @@ GameObject:
   - component: {fileID: 274210665}
   - component: {fileID: 274210664}
   - component: {fileID: 274210663}
+  - component: {fileID: 274210666}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -10774,6 +11189,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274210661}
   m_CullTransparentMesh: 1
+--- !u!114 &274210666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274210661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-weapon.02303901d6cf
+  control: {fileID: 274210663}
+  legacyCollection: dropdownData
+  legacyIndex: 8
+  legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0006_Dropdown weapon
 --- !u!1 &274666155
 GameObject:
   m_ObjectHideFlags: 0
@@ -11949,6 +12381,7 @@ GameObject:
   - component: {fileID: 306829568}
   - component: {fileID: 306829567}
   - component: {fileID: 306829566}
+  - component: {fileID: 306829569}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -12110,6 +12543,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306829564}
   m_CullTransparentMesh: 1
+--- !u!114 &306829569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306829564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-other.4fbe2e2835a7
+  control: {fileID: 306829566}
+  legacyCollection: dropdownData
+  legacyIndex: 61
+  legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0010_Dropdown other
 --- !u!1 &314520444
 GameObject:
   m_ObjectHideFlags: 0
@@ -12122,6 +12572,7 @@ GameObject:
   - component: {fileID: 314520448}
   - component: {fileID: 314520447}
   - component: {fileID: 314520446}
+  - component: {fileID: 314520449}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -12283,6 +12734,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314520444}
   m_CullTransparentMesh: 1
+--- !u!114 &314520449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314520444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-armor.790c69682e59
+  control: {fileID: 314520446}
+  legacyCollection: dropdownData
+  legacyIndex: 31
+  legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0008_Dropdown armor
 --- !u!1 &314844098
 GameObject:
   m_ObjectHideFlags: 0
@@ -15174,6 +15642,7 @@ GameObject:
   - component: {fileID: 400303636}
   - component: {fileID: 400303635}
   - component: {fileID: 400303634}
+  - component: {fileID: 400303637}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -15308,6 +15777,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400303632}
   m_CullTransparentMesh: 1
+--- !u!114 &400303637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400303632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemdescriptioninput.dedae9adee59
+  control: {fileID: 400303634}
+  legacyCollection: inputData
+  legacyIndex: 5
+  legacyKey: 
 --- !u!1 &404693040
 GameObject:
   m_ObjectHideFlags: 0
@@ -15813,6 +16299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 420370676}
   - component: {fileID: 420370677}
+  - component: {fileID: 420370678}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -15891,6 +16378,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &420370678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420370675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.2b2c98a51059
+  control: {fileID: 420370677}
+  legacyCollection: toggleData
+  legacyIndex: 9
+  legacyKey: Toggle_0000_inventory/0002_Page/0002_Cels (1)/0007_Dropdown cheger/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &428124859
 GameObject:
   m_ObjectHideFlags: 0
@@ -16799,6 +17303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 451845966}
   - component: {fileID: 451845967}
+  - component: {fileID: 451845968}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -16877,6 +17382,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &451845968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451845965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.b5834c0c4812
+  control: {fileID: 451845967}
+  legacyCollection: toggleData
+  legacyIndex: 27
+  legacyKey: Toggle_0000_inventory/0002_Page/0004_Cels (3)/0011_Dropdown other/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &459806081
 GameObject:
   m_ObjectHideFlags: 0
@@ -18284,6 +18806,7 @@ GameObject:
   - component: {fileID: 505546539}
   - component: {fileID: 505546538}
   - component: {fileID: 505546537}
+  - component: {fileID: 505546540}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -18445,6 +18968,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505546535}
   m_CullTransparentMesh: 1
+--- !u!114 &505546540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505546535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-bags.1eaca53dc66c
+  control: {fileID: 505546537}
+  legacyCollection: dropdownData
+  legacyIndex: 53
+  legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0009_Dropdown bags
 --- !u!1 &507045364
 GameObject:
   m_ObjectHideFlags: 0
@@ -20684,6 +21224,7 @@ GameObject:
   - component: {fileID: 549080364}
   - component: {fileID: 549080363}
   - component: {fileID: 549080362}
+  - component: {fileID: 549080365}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -20845,6 +21386,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549080360}
   m_CullTransparentMesh: 1
+--- !u!114 &549080365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549080360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-bags.8faae3cb8d94
+  control: {fileID: 549080362}
+  legacyCollection: dropdownData
+  legacyIndex: 46
+  legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0009_Dropdown bags
 --- !u!1 &550933689
 GameObject:
   m_ObjectHideFlags: 0
@@ -20945,6 +21503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 561064814}
   - component: {fileID: 561064815}
+  - component: {fileID: 561064816}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -21023,6 +21582,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &561064816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561064813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.55c69885b114
+  control: {fileID: 561064815}
+  legacyCollection: toggleData
+  legacyIndex: 59
+  legacyKey: Toggle_0000_inventory/0002_Page/0009_Cels (8)/0008_Dropdown bags/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &561594867
 GameObject:
   m_ObjectHideFlags: 0
@@ -21810,6 +22386,7 @@ GameObject:
   - component: {fileID: 588115681}
   - component: {fileID: 588115680}
   - component: {fileID: 588115679}
+  - component: {fileID: 588115682}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -21944,6 +22521,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588115677}
   m_CullTransparentMesh: 1
+--- !u!114 &588115682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588115677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemdescriptioninput.00e817e2e43f
+  control: {fileID: 588115679}
+  legacyCollection: inputData
+  legacyIndex: 11
+  legacyKey: 
 --- !u!1 &592412461
 GameObject:
   m_ObjectHideFlags: 0
@@ -21954,6 +22548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 592412462}
   - component: {fileID: 592412463}
+  - component: {fileID: 592412464}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -22032,6 +22627,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &592412464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592412461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.322d681fcc98
+  control: {fileID: 592412463}
+  legacyCollection: toggleData
+  legacyIndex: 56
+  legacyKey: Toggle_0000_inventory/0002_Page/0009_Cels (8)/0005_Dropdown weapon/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &595440776
 GameObject:
   m_ObjectHideFlags: 0
@@ -22042,6 +22654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 595440777}
   - component: {fileID: 595440778}
+  - component: {fileID: 595440779}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -22119,6 +22732,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &595440779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595440776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.7789dff84b8f
+  control: {fileID: 595440778}
+  legacyCollection: toggleData
+  legacyIndex: 35
+  legacyKey: Toggle_0000_inventory/0002_Page/0006_Cels (5)/0001_itemCategoryDropdown/0002_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &597275742
 GameObject:
   m_ObjectHideFlags: 0
@@ -22285,6 +22915,7 @@ GameObject:
   - component: {fileID: 597912973}
   - component: {fileID: 597912972}
   - component: {fileID: 597912971}
+  - component: {fileID: 597912974}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -22419,6 +23050,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597912969}
   m_CullTransparentMesh: 1
+--- !u!114 &597912974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597912969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.itemcategorydropdown.06f784e38203
+  control: {fileID: 597912971}
+  legacyCollection: dropdownData
+  legacyIndex: 42
+  legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0001_itemCategoryDropdown
 --- !u!1 &598078156
 GameObject:
   m_ObjectHideFlags: 0
@@ -23347,6 +23995,7 @@ GameObject:
   m_Component:
   - component: {fileID: 623111115}
   - component: {fileID: 623111116}
+  - component: {fileID: 623111117}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -23425,6 +24074,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &623111117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623111114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.642f724ad74b
+  control: {fileID: 623111116}
+  legacyCollection: toggleData
+  legacyIndex: 44
+  legacyKey: Toggle_0000_inventory/0002_Page/0007_Cels (6)/0007_Dropdown cheger/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &623650502
 GameObject:
   m_ObjectHideFlags: 0
@@ -23900,6 +24566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 634965543}
   - component: {fileID: 634965544}
+  - component: {fileID: 634965545}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -23978,6 +24645,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &634965545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634965542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.3bf0531102c3
+  control: {fileID: 634965544}
+  legacyCollection: toggleData
+  legacyIndex: 26
+  legacyKey: Toggle_0000_inventory/0002_Page/0004_Cels (3)/0010_Dropdown magic/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &637245524
 GameObject:
   m_ObjectHideFlags: 0
@@ -24456,6 +25140,7 @@ GameObject:
   - component: {fileID: 653526311}
   - component: {fileID: 653526310}
   - component: {fileID: 653526309}
+  - component: {fileID: 653526312}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -24590,6 +25275,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653526307}
   m_CullTransparentMesh: 1
+--- !u!114 &653526312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653526307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.itemcategorydropdown.208bdc928e19
+  control: {fileID: 653526309}
+  legacyCollection: dropdownData
+  legacyIndex: 49
+  legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0001_itemCategoryDropdown
 --- !u!1 &655561910
 GameObject:
   m_ObjectHideFlags: 0
@@ -25199,6 +25901,7 @@ GameObject:
   - component: {fileID: 663505911}
   - component: {fileID: 663505910}
   - component: {fileID: 663505909}
+  - component: {fileID: 663505912}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -25360,6 +26063,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663505907}
   m_CullTransparentMesh: 1
+--- !u!114 &663505912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663505907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-other.a8838c4da8ac
+  control: {fileID: 663505909}
+  legacyCollection: dropdownData
+  legacyIndex: 27
+  legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0011_Dropdown other
 --- !u!1 &665384236
 GameObject:
   m_ObjectHideFlags: 0
@@ -25601,6 +26321,7 @@ GameObject:
   - component: {fileID: 677099125}
   - component: {fileID: 677099124}
   - component: {fileID: 677099123}
+  - component: {fileID: 677099126}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -25735,6 +26456,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677099121}
   m_CullTransparentMesh: 1
+--- !u!114 &677099126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677099121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.itemcategorydropdown.493f7a552a37
+  control: {fileID: 677099123}
+  legacyCollection: dropdownData
+  legacyIndex: 14
+  legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0001_itemCategoryDropdown
 --- !u!1 &677419863
 GameObject:
   m_ObjectHideFlags: 0
@@ -25933,6 +26671,7 @@ GameObject:
   - component: {fileID: 680977323}
   - component: {fileID: 680977322}
   - component: {fileID: 680977321}
+  - component: {fileID: 680977324}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -26067,6 +26806,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680977319}
   m_CullTransparentMesh: 1
+--- !u!114 &680977324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680977319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemnameinput.304ca8feb070
+  control: {fileID: 680977321}
+  legacyCollection: inputData
+  legacyIndex: 12
+  legacyKey: 
 --- !u!1 &681160116
 GameObject:
   m_ObjectHideFlags: 0
@@ -26154,6 +26910,7 @@ GameObject:
   - component: {fileID: 682828007}
   - component: {fileID: 682828006}
   - component: {fileID: 682828005}
+  - component: {fileID: 682828008}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -26288,6 +27045,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682828003}
   m_CullTransparentMesh: 1
+--- !u!114 &682828008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682828003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.itemcategorydropdown.7745dc43c0b2
+  control: {fileID: 682828005}
+  legacyCollection: dropdownData
+  legacyIndex: 28
+  legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0001_itemCategoryDropdown
 --- !u!1 &685767470
 GameObject:
   m_ObjectHideFlags: 0
@@ -26983,6 +27757,7 @@ GameObject:
   - component: {fileID: 719945780}
   - component: {fileID: 719945779}
   - component: {fileID: 719945778}
+  - component: {fileID: 719945781}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -27117,6 +27892,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719945776}
   m_CullTransparentMesh: 1
+--- !u!114 &719945781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719945776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemnameinput.954e9ade79d1
+  control: {fileID: 719945778}
+  legacyCollection: inputData
+  legacyIndex: 6
+  legacyKey: 
 --- !u!1 &722489253
 GameObject:
   m_ObjectHideFlags: 0
@@ -28430,6 +29222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 758838115}
   - component: {fileID: 758838116}
+  - component: {fileID: 758838117}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -28508,6 +29301,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &758838117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758838114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.3c1912bb738f
+  control: {fileID: 758838116}
+  legacyCollection: toggleData
+  legacyIndex: 20
+  legacyKey: Toggle_0000_inventory/0002_Page/0003_Cels (2)/0011_Dropdown other/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &759658138
 GameObject:
   m_ObjectHideFlags: 0
@@ -28672,6 +29482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 770668448}
   - component: {fileID: 770668449}
+  - component: {fileID: 770668450}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -28750,6 +29561,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &770668450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770668447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.cc15797be1e0
+  control: {fileID: 770668449}
+  legacyCollection: toggleData
+  legacyIndex: 43
+  legacyKey: Toggle_0000_inventory/0002_Page/0007_Cels (6)/0006_Dropdown weapon/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &774424978
 GameObject:
   m_ObjectHideFlags: 0
@@ -29711,6 +30539,7 @@ GameObject:
   - component: {fileID: 812564852}
   - component: {fileID: 812564851}
   - component: {fileID: 812564850}
+  - component: {fileID: 812564853}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -29845,6 +30674,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812564848}
   m_CullTransparentMesh: 1
+--- !u!114 &812564853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812564848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemnameinput.97703140c0a9
+  control: {fileID: 812564850}
+  legacyCollection: inputData
+  legacyIndex: 2
+  legacyKey: 
 --- !u!1 &812798531
 GameObject:
   m_ObjectHideFlags: 0
@@ -29945,6 +30791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 813360941}
   - component: {fileID: 813360942}
+  - component: {fileID: 813360943}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -30023,6 +30870,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &813360943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813360940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.cb4f16642a70
+  control: {fileID: 813360942}
+  legacyCollection: toggleData
+  legacyIndex: 45
+  legacyKey: Toggle_0000_inventory/0002_Page/0007_Cels (6)/0008_Dropdown armor/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &816858173
 GameObject:
   m_ObjectHideFlags: 0
@@ -30035,6 +30899,7 @@ GameObject:
   - component: {fileID: 816858177}
   - component: {fileID: 816858176}
   - component: {fileID: 816858175}
+  - component: {fileID: 816858178}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -30196,6 +31061,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816858173}
   m_CullTransparentMesh: 1
+--- !u!114 &816858178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816858173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-cheger.a8c91eeb1b9e
+  control: {fileID: 816858175}
+  legacyCollection: dropdownData
+  legacyIndex: 57
+  legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0006_Dropdown cheger
 --- !u!1 &817341469
 GameObject:
   m_ObjectHideFlags: 0
@@ -30281,6 +31163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 818006433}
   - component: {fileID: 818006434}
+  - component: {fileID: 818006435}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -30359,6 +31242,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &818006435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818006432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.d9cc19b4ab46
+  control: {fileID: 818006434}
+  legacyCollection: toggleData
+  legacyIndex: 10
+  legacyKey: Toggle_0000_inventory/0002_Page/0002_Cels (1)/0008_Dropdown armor/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &819235729
 GameObject:
   m_ObjectHideFlags: 0
@@ -30525,6 +31425,7 @@ GameObject:
   - component: {fileID: 822187777}
   - component: {fileID: 822187776}
   - component: {fileID: 822187775}
+  - component: {fileID: 822187778}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -30686,6 +31587,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822187773}
   m_CullTransparentMesh: 1
+--- !u!114 &822187778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822187773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-bags.fb77656f6e86
+  control: {fileID: 822187775}
+  legacyCollection: dropdownData
+  legacyIndex: 59
+  legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0008_Dropdown bags
 --- !u!1 &823946233
 GameObject:
   m_ObjectHideFlags: 0
@@ -31162,6 +32080,7 @@ GameObject:
   m_Component:
   - component: {fileID: 838411174}
   - component: {fileID: 838411175}
+  - component: {fileID: 838411176}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -31240,6 +32159,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &838411176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838411173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.216d783895a3
+  control: {fileID: 838411175}
+  legacyCollection: toggleData
+  legacyIndex: 31
+  legacyKey: Toggle_0000_inventory/0002_Page/0005_Cels (4)/0008_Dropdown armor/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &842322031
 GameObject:
   m_ObjectHideFlags: 0
@@ -31250,6 +32186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 842322032}
   - component: {fileID: 842322033}
+  - component: {fileID: 842322034}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -31328,6 +32265,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &842322034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842322031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.a456042ceb36
+  control: {fileID: 842322033}
+  legacyCollection: toggleData
+  legacyIndex: 18
+  legacyKey: Toggle_0000_inventory/0002_Page/0003_Cels (2)/0009_Dropdown bags/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &844776449
 GameObject:
   m_ObjectHideFlags: 0
@@ -31431,6 +32385,7 @@ GameObject:
   - component: {fileID: 845435834}
   - component: {fileID: 845435833}
   - component: {fileID: 845435832}
+  - component: {fileID: 845435835}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -31592,6 +32547,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845435830}
   m_CullTransparentMesh: 1
+--- !u!114 &845435835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845435830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-armor.7ae4befdba1c
+  control: {fileID: 845435832}
+  legacyCollection: dropdownData
+  legacyIndex: 38
+  legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0008_Dropdown armor
 --- !u!1 &845451234
 GameObject:
   m_ObjectHideFlags: 0
@@ -32137,6 +33109,7 @@ GameObject:
   - component: {fileID: 861499095}
   - component: {fileID: 861499094}
   - component: {fileID: 861499093}
+  - component: {fileID: 861499096}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -32298,6 +33271,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861499091}
   m_CullTransparentMesh: 1
+--- !u!114 &861499096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861499091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-cheger.59385c890b6d
+  control: {fileID: 861499093}
+  legacyCollection: dropdownData
+  legacyIndex: 30
+  legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0007_Dropdown cheger
 --- !u!1 &863750221
 GameObject:
   m_ObjectHideFlags: 0
@@ -32601,6 +33591,7 @@ GameObject:
   - component: {fileID: 871956250}
   - component: {fileID: 871956249}
   - component: {fileID: 871956248}
+  - component: {fileID: 871956251}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -32762,6 +33753,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871956246}
   m_CullTransparentMesh: 1
+--- !u!114 &871956251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871956246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-cheger.bbc300e824c1
+  control: {fileID: 871956248}
+  legacyCollection: dropdownData
+  legacyIndex: 23
+  legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0007_Dropdown cheger
 --- !u!1 &875826348
 GameObject:
   m_ObjectHideFlags: 0
@@ -34009,6 +35017,7 @@ GameObject:
   - component: {fileID: 910544675}
   - component: {fileID: 910544674}
   - component: {fileID: 910544673}
+  - component: {fileID: 910544676}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -34170,6 +35179,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910544671}
   m_CullTransparentMesh: 1
+--- !u!114 &910544676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910544671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-cheger.993d69e4acc1
+  control: {fileID: 910544673}
+  legacyCollection: dropdownData
+  legacyIndex: 44
+  legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0007_Dropdown cheger
 --- !u!1 &913792623
 GameObject:
   m_ObjectHideFlags: 0
@@ -34422,6 +35448,7 @@ GameObject:
   - component: {fileID: 916397308}
   - component: {fileID: 916397307}
   - component: {fileID: 916397306}
+  - component: {fileID: 916397309}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -34556,6 +35583,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916397304}
   m_CullTransparentMesh: 1
+--- !u!114 &916397309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916397304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.itemcategorydropdown.9c265c15a691
+  control: {fileID: 916397306}
+  legacyCollection: dropdownData
+  legacyIndex: 6
+  legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0011_itemCategoryDropdown
 --- !u!1 &918288508
 GameObject:
   m_ObjectHideFlags: 0
@@ -34568,6 +35612,7 @@ GameObject:
   - component: {fileID: 918288512}
   - component: {fileID: 918288511}
   - component: {fileID: 918288510}
+  - component: {fileID: 918288513}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -34729,6 +35774,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918288508}
   m_CullTransparentMesh: 1
+--- !u!114 &918288513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918288508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-weapon.5dfb626aac0c
+  control: {fileID: 918288510}
+  legacyCollection: dropdownData
+  legacyIndex: 50
+  legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0006_Dropdown weapon
 --- !u!1 &919659918
 GameObject:
   m_ObjectHideFlags: 0
@@ -35484,6 +36546,7 @@ GameObject:
   - component: {fileID: 945993153}
   - component: {fileID: 945993152}
   - component: {fileID: 945993151}
+  - component: {fileID: 945993154}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -35645,6 +36708,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945993149}
   m_CullTransparentMesh: 1
+--- !u!114 &945993154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945993149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-magic.baac31848666
+  control: {fileID: 945993151}
+  legacyCollection: dropdownData
+  legacyIndex: 26
+  legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0010_Dropdown magic
 --- !u!1 &946586715
 GameObject:
   m_ObjectHideFlags: 0
@@ -35657,6 +36737,7 @@ GameObject:
   - component: {fileID: 946586719}
   - component: {fileID: 946586718}
   - component: {fileID: 946586717}
+  - component: {fileID: 946586720}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -35818,6 +36899,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946586715}
   m_CullTransparentMesh: 1
+--- !u!114 &946586720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946586715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-armor.8572db84a760
+  control: {fileID: 946586717}
+  legacyCollection: dropdownData
+  legacyIndex: 24
+  legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0008_Dropdown armor
 --- !u!1 &953287267
 GameObject:
   m_ObjectHideFlags: 0
@@ -36207,6 +37305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 975863818}
   - component: {fileID: 975863819}
+  - component: {fileID: 975863820}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -36285,6 +37384,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &975863820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975863817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.f55e634ba59d
+  control: {fileID: 975863819}
+  legacyCollection: toggleData
+  legacyIndex: 15
+  legacyKey: Toggle_0000_inventory/0002_Page/0003_Cels (2)/0006_Dropdown weapon/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &977710089
 GameObject:
   m_ObjectHideFlags: 0
@@ -36295,6 +37411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 977710090}
   - component: {fileID: 977710091}
+  - component: {fileID: 977710092}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -36372,6 +37489,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &977710092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977710089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.60c70d2d2d99
+  control: {fileID: 977710091}
+  legacyCollection: toggleData
+  legacyIndex: 7
+  legacyKey: Toggle_0000_inventory/0002_Page/0002_Cels (1)/0001_itemCategoryDropdown/0002_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &981025123
 GameObject:
   m_ObjectHideFlags: 0
@@ -36950,6 +38084,7 @@ GameObject:
   - component: {fileID: 991672966}
   - component: {fileID: 991672965}
   - component: {fileID: 991672964}
+  - component: {fileID: 991672967}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -37111,6 +38246,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991672962}
   m_CullTransparentMesh: 1
+--- !u!114 &991672967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991672962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-other.01ac7651e2ea
+  control: {fileID: 991672964}
+  legacyCollection: dropdownData
+  legacyIndex: 41
+  legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0011_Dropdown other
 --- !u!1 &998686184
 GameObject:
   m_ObjectHideFlags: 0
@@ -37232,6 +38384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1007703603}
   - component: {fileID: 1007703604}
+  - component: {fileID: 1007703605}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -37310,6 +38463,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1007703605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007703602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.a7662aafbd09
+  control: {fileID: 1007703604}
+  legacyCollection: toggleData
+  legacyIndex: 54
+  legacyKey: Toggle_0000_inventory/0002_Page/0008_Cels (7)/0010_Dropdown magic/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1008860465
 GameObject:
   m_ObjectHideFlags: 0
@@ -37814,6 +38984,7 @@ GameObject:
   - component: {fileID: 1021275763}
   - component: {fileID: 1021275762}
   - component: {fileID: 1021275761}
+  - component: {fileID: 1021275764}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -37948,6 +39119,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021275759}
   m_CullTransparentMesh: 1
+--- !u!114 &1021275764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021275759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemdescriptioninput.35b3c518365b
+  control: {fileID: 1021275761}
+  legacyCollection: inputData
+  legacyIndex: 7
+  legacyKey: 
 --- !u!1 &1022841140
 GameObject:
   m_ObjectHideFlags: 0
@@ -38035,6 +39223,7 @@ GameObject:
   - component: {fileID: 1023786705}
   - component: {fileID: 1023786704}
   - component: {fileID: 1023786703}
+  - component: {fileID: 1023786706}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -38196,6 +39385,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023786701}
   m_CullTransparentMesh: 1
+--- !u!114 &1023786706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023786701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-other.5f841b1db46a
+  control: {fileID: 1023786703}
+  legacyCollection: dropdownData
+  legacyIndex: 55
+  legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0011_Dropdown other
 --- !u!1 &1028567818
 GameObject:
   m_ObjectHideFlags: 0
@@ -38298,6 +39504,7 @@ GameObject:
   - component: {fileID: 1031200973}
   - component: {fileID: 1031200972}
   - component: {fileID: 1031200971}
+  - component: {fileID: 1031200974}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -38459,6 +39666,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031200969}
   m_CullTransparentMesh: 1
+--- !u!114 &1031200974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031200969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-weapon.8ac6c192c2c9
+  control: {fileID: 1031200971}
+  legacyCollection: dropdownData
+  legacyIndex: 29
+  legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0006_Dropdown weapon
 --- !u!1 &1031465189
 GameObject:
   m_ObjectHideFlags: 0
@@ -39270,6 +40494,7 @@ GameObject:
   - component: {fileID: 1060587843}
   - component: {fileID: 1060587842}
   - component: {fileID: 1060587841}
+  - component: {fileID: 1060587844}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -39431,6 +40656,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060587839}
   m_CullTransparentMesh: 1
+--- !u!114 &1060587844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060587839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-bags.57cf81c6da22
+  control: {fileID: 1060587841}
+  legacyCollection: dropdownData
+  legacyIndex: 18
+  legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0009_Dropdown bags
 --- !u!1 &1062929683
 GameObject:
   m_ObjectHideFlags: 0
@@ -39443,6 +40685,7 @@ GameObject:
   - component: {fileID: 1062929687}
   - component: {fileID: 1062929686}
   - component: {fileID: 1062929685}
+  - component: {fileID: 1062929688}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -39604,6 +40847,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062929683}
   m_CullTransparentMesh: 1
+--- !u!114 &1062929688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062929683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-weapon.b37603fd6e95
+  control: {fileID: 1062929685}
+  legacyCollection: dropdownData
+  legacyIndex: 22
+  legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0006_Dropdown weapon
 --- !u!1 &1065096913
 GameObject:
   m_ObjectHideFlags: 0
@@ -39614,6 +40874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1065096914}
   - component: {fileID: 1065096915}
+  - component: {fileID: 1065096916}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -39692,6 +40953,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1065096916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065096913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.251a08f5086f
+  control: {fileID: 1065096915}
+  legacyCollection: toggleData
+  legacyIndex: 24
+  legacyKey: Toggle_0000_inventory/0002_Page/0004_Cels (3)/0008_Dropdown armor/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1072822505
 GameObject:
   m_ObjectHideFlags: 0
@@ -40620,6 +41898,7 @@ GameObject:
   - component: {fileID: 1090098017}
   - component: {fileID: 1090098016}
   - component: {fileID: 1090098015}
+  - component: {fileID: 1090098018}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -40781,6 +42060,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090098013}
   m_CullTransparentMesh: 1
+--- !u!114 &1090098018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090098013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-magic.de3fee3e2e22
+  control: {fileID: 1090098015}
+  legacyCollection: dropdownData
+  legacyIndex: 19
+  legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0010_Dropdown magic
 --- !u!1 &1096413278
 GameObject:
   m_ObjectHideFlags: 0
@@ -40868,6 +42164,7 @@ GameObject:
   - component: {fileID: 1097822476}
   - component: {fileID: 1097822475}
   - component: {fileID: 1097822474}
+  - component: {fileID: 1097822477}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -41029,6 +42326,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097822472}
   m_CullTransparentMesh: 1
+--- !u!114 &1097822477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097822472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-bags.7bb193a143e0
+  control: {fileID: 1097822474}
+  legacyCollection: dropdownData
+  legacyIndex: 39
+  legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0009_Dropdown bags
 --- !u!1 &1104481328
 GameObject:
   m_ObjectHideFlags: 0
@@ -41523,6 +42837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1125635110}
   - component: {fileID: 1125635111}
+  - component: {fileID: 1125635112}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -41601,6 +42916,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1125635112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125635109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.a63bd0a9b662
+  control: {fileID: 1125635111}
+  legacyCollection: toggleData
+  legacyIndex: 50
+  legacyKey: Toggle_0000_inventory/0002_Page/0008_Cels (7)/0006_Dropdown weapon/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1126713827
 GameObject:
   m_ObjectHideFlags: 0
@@ -41722,6 +43054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1140514188}
   - component: {fileID: 1140514189}
+  - component: {fileID: 1140514190}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -41799,6 +43132,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1140514190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140514187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.c490447eb90d
+  control: {fileID: 1140514189}
+  legacyCollection: toggleData
+  legacyIndex: 14
+  legacyKey: Toggle_0000_inventory/0002_Page/0003_Cels (2)/0001_itemCategoryDropdown/0002_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1140816022
 GameObject:
   m_ObjectHideFlags: 0
@@ -42087,6 +43437,7 @@ GameObject:
   - component: {fileID: 1154242352}
   - component: {fileID: 1154242351}
   - component: {fileID: 1154242350}
+  - component: {fileID: 1154242353}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -42248,6 +43599,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154242348}
   m_CullTransparentMesh: 1
+--- !u!114 &1154242353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154242348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-armor.aab5192dff68
+  control: {fileID: 1154242350}
+  legacyCollection: dropdownData
+  legacyIndex: 17
+  legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0008_Dropdown armor
 --- !u!1 &1155660745
 GameObject:
   m_ObjectHideFlags: 0
@@ -42479,6 +43847,7 @@ GameObject:
   - component: {fileID: 1173296365}
   - component: {fileID: 1173296364}
   - component: {fileID: 1173296363}
+  - component: {fileID: 1173296366}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -42613,6 +43982,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173296361}
   m_CullTransparentMesh: 1
+--- !u!114 &1173296366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173296361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemnameinput.007dd15ceaf0
+  control: {fileID: 1173296363}
+  legacyCollection: inputData
+  legacyIndex: 16
+  legacyKey: 
 --- !u!1 &1175298413
 GameObject:
   m_ObjectHideFlags: 0
@@ -43227,6 +44613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1198691566}
   - component: {fileID: 1198691567}
+  - component: {fileID: 1198691568}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -43305,6 +44692,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1198691568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198691565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.62c9ed24c034
+  control: {fileID: 1198691567}
+  legacyCollection: toggleData
+  legacyIndex: 48
+  legacyKey: Toggle_0000_inventory/0002_Page/0007_Cels (6)/0011_Dropdown other/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1206842169
 GameObject:
   m_ObjectHideFlags: 0
@@ -43851,6 +45255,7 @@ GameObject:
   - component: {fileID: 1229928819}
   - component: {fileID: 1229928818}
   - component: {fileID: 1229928817}
+  - component: {fileID: 1229928820}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -43985,6 +45390,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229928815}
   m_CullTransparentMesh: 1
+--- !u!114 &1229928820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229928815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.itemcategorydropdown.124c976a61f5
+  control: {fileID: 1229928817}
+  legacyCollection: dropdownData
+  legacyIndex: 7
+  legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0001_itemCategoryDropdown
 --- !u!1 &1230330232
 GameObject:
   m_ObjectHideFlags: 0
@@ -44179,6 +45601,7 @@ GameObject:
   - component: {fileID: 1233557546}
   - component: {fileID: 1233557545}
   - component: {fileID: 1233557544}
+  - component: {fileID: 1233557547}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -44340,6 +45763,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1233557542}
   m_CullTransparentMesh: 1
+--- !u!114 &1233557547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233557542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-armor.dd9452b12acc
+  control: {fileID: 1233557544}
+  legacyCollection: dropdownData
+  legacyIndex: 10
+  legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0008_Dropdown armor
 --- !u!1 &1236396826
 GameObject:
   m_ObjectHideFlags: 0
@@ -44945,6 +46385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1245229153}
   - component: {fileID: 1245229154}
+  - component: {fileID: 1245229155}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -45023,6 +46464,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1245229155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245229152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.bf6bbe8f8846
+  control: {fileID: 1245229154}
+  legacyCollection: toggleData
+  legacyIndex: 58
+  legacyKey: Toggle_0000_inventory/0002_Page/0009_Cels (8)/0007_Dropdown armor/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1258246585
 GameObject:
   m_ObjectHideFlags: 0
@@ -45313,6 +46771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1265997298}
   - component: {fileID: 1265997299}
+  - component: {fileID: 1265997300}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -45391,6 +46850,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1265997300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265997297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.932268871ad5
+  control: {fileID: 1265997299}
+  legacyCollection: toggleData
+  legacyIndex: 37
+  legacyKey: Toggle_0000_inventory/0002_Page/0006_Cels (5)/0007_Dropdown cheger/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1269695541
 GameObject:
   m_ObjectHideFlags: 0
@@ -45632,6 +47108,7 @@ GameObject:
   - component: {fileID: 1273635128}
   - component: {fileID: 1273635127}
   - component: {fileID: 1273635126}
+  - component: {fileID: 1273635129}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -45793,6 +47270,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273635124}
   m_CullTransparentMesh: 1
+--- !u!114 &1273635129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273635124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-magic.d0e01c002936
+  control: {fileID: 1273635126}
+  legacyCollection: dropdownData
+  legacyIndex: 33
+  legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0010_Dropdown magic
 --- !u!1 &1273839169
 GameObject:
   m_ObjectHideFlags: 0
@@ -45805,6 +47299,7 @@ GameObject:
   - component: {fileID: 1273839173}
   - component: {fileID: 1273839172}
   - component: {fileID: 1273839171}
+  - component: {fileID: 1273839174}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -45939,6 +47434,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273839169}
   m_CullTransparentMesh: 1
+--- !u!114 &1273839174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273839169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemdescriptioninput.7d0fde8ac3c5
+  control: {fileID: 1273839171}
+  legacyCollection: inputData
+  legacyIndex: 13
+  legacyKey: 
 --- !u!1 &1275722123
 GameObject:
   m_ObjectHideFlags: 0
@@ -46109,6 +47621,7 @@ GameObject:
   - component: {fileID: 1281027205}
   - component: {fileID: 1281027204}
   - component: {fileID: 1281027203}
+  - component: {fileID: 1281027206}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -46243,6 +47756,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281027201}
   m_CullTransparentMesh: 1
+--- !u!114 &1281027206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281027201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.itemcategorydropdown.6c3e9c283428
+  control: {fileID: 1281027203}
+  legacyCollection: dropdownData
+  legacyIndex: 35
+  legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0001_itemCategoryDropdown
 --- !u!1 &1281079222
 GameObject:
   m_ObjectHideFlags: 0
@@ -46981,6 +48511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1309969740}
   - component: {fileID: 1309969741}
+  - component: {fileID: 1309969742}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -47059,6 +48590,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1309969742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309969739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.5ca561127023
+  control: {fileID: 1309969741}
+  legacyCollection: toggleData
+  legacyIndex: 29
+  legacyKey: Toggle_0000_inventory/0002_Page/0005_Cels (4)/0006_Dropdown weapon/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1327455453
 GameObject:
   m_ObjectHideFlags: 0
@@ -47782,6 +49330,7 @@ GameObject:
   - component: {fileID: 1343756395}
   - component: {fileID: 1343756394}
   - component: {fileID: 1343756393}
+  - component: {fileID: 1343756396}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -47916,6 +49465,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343756391}
   m_CullTransparentMesh: 1
+--- !u!114 &1343756396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343756391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemdescriptioninput.ab78aeac31ee
+  control: {fileID: 1343756393}
+  legacyCollection: inputData
+  legacyIndex: 3
+  legacyKey: 
 --- !u!1 &1344049459
 GameObject:
   m_ObjectHideFlags: 0
@@ -51911,6 +53477,7 @@ GameObject:
   - component: {fileID: 1459748237}
   - component: {fileID: 1459748236}
   - component: {fileID: 1459748235}
+  - component: {fileID: 1459748238}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -52045,6 +53612,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459748233}
   m_CullTransparentMesh: 1
+--- !u!114 &1459748238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459748233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemnameinput.43f99378fe4c
+  control: {fileID: 1459748235}
+  legacyCollection: inputData
+  legacyIndex: 14
+  legacyKey: 
 --- !u!1 &1469196883
 GameObject:
   m_ObjectHideFlags: 0
@@ -52147,6 +53731,7 @@ GameObject:
   - component: {fileID: 1471129576}
   - component: {fileID: 1471129575}
   - component: {fileID: 1471129574}
+  - component: {fileID: 1471129577}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -52308,6 +53893,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471129572}
   m_CullTransparentMesh: 1
+--- !u!114 &1471129577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471129572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-weapon.2992b0b31e6d
+  control: {fileID: 1471129574}
+  legacyCollection: dropdownData
+  legacyIndex: 56
+  legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0005_Dropdown weapon
 --- !u!1 &1473914790
 GameObject:
   m_ObjectHideFlags: 0
@@ -52425,6 +54027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1479970833}
   - component: {fileID: 1479970834}
+  - component: {fileID: 1479970835}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -52502,6 +54105,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1479970835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479970832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.1758d06eec7e
+  control: {fileID: 1479970834}
+  legacyCollection: toggleData
+  legacyIndex: 28
+  legacyKey: Toggle_0000_inventory/0002_Page/0005_Cels (4)/0001_itemCategoryDropdown/0002_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1481742156
 GameObject:
   m_ObjectHideFlags: 0
@@ -52514,6 +54134,7 @@ GameObject:
   - component: {fileID: 1481742160}
   - component: {fileID: 1481742159}
   - component: {fileID: 1481742158}
+  - component: {fileID: 1481742161}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -52675,6 +54296,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481742156}
   m_CullTransparentMesh: 1
+--- !u!114 &1481742161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481742156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-other.daa19ba65e7b
+  control: {fileID: 1481742158}
+  legacyCollection: dropdownData
+  legacyIndex: 48
+  legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0011_Dropdown other
 --- !u!1 &1484131624
 GameObject:
   m_ObjectHideFlags: 0
@@ -52916,6 +54554,7 @@ GameObject:
   - component: {fileID: 1484861515}
   - component: {fileID: 1484861514}
   - component: {fileID: 1484861513}
+  - component: {fileID: 1484861516}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -53050,6 +54689,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484861511}
   m_CullTransparentMesh: 1
+--- !u!114 &1484861516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484861511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemdescriptioninput.11acca831a71
+  control: {fileID: 1484861513}
+  legacyCollection: inputData
+  legacyIndex: 9
+  legacyKey: 
 --- !u!1 &1486339696
 GameObject:
   m_ObjectHideFlags: 0
@@ -53218,6 +54874,7 @@ GameObject:
   - component: {fileID: 1490062392}
   - component: {fileID: 1490062391}
   - component: {fileID: 1490062390}
+  - component: {fileID: 1490062393}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -53379,6 +55036,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490062388}
   m_CullTransparentMesh: 1
+--- !u!114 &1490062393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490062388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-armor.1b227aa19e4f
+  control: {fileID: 1490062390}
+  legacyCollection: dropdownData
+  legacyIndex: 52
+  legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0008_Dropdown armor
 --- !u!1 &1491883630
 GameObject:
   m_ObjectHideFlags: 0
@@ -53554,6 +55228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1492905544}
   - component: {fileID: 1492905545}
+  - component: {fileID: 1492905546}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -53632,6 +55307,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1492905546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492905543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.a3dac9ce3017
+  control: {fileID: 1492905545}
+  legacyCollection: toggleData
+  legacyIndex: 61
+  legacyKey: Toggle_0000_inventory/0002_Page/0009_Cels (8)/0010_Dropdown other/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1494579187
 GameObject:
   m_ObjectHideFlags: 0
@@ -54407,6 +56099,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1531079303}
   - component: {fileID: 1531079304}
+  - component: {fileID: 1531079305}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -54485,6 +56178,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1531079305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531079302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.8d100122f6a8
+  control: {fileID: 1531079304}
+  legacyCollection: toggleData
+  legacyIndex: 39
+  legacyKey: Toggle_0000_inventory/0002_Page/0006_Cels (5)/0009_Dropdown bags/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1532706160
 GameObject:
   m_ObjectHideFlags: 0
@@ -55066,6 +56776,7 @@ GameObject:
   - component: {fileID: 1545420395}
   - component: {fileID: 1545420394}
   - component: {fileID: 1545420393}
+  - component: {fileID: 1545420396}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -55227,6 +56938,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545420391}
   m_CullTransparentMesh: 1
+--- !u!114 &1545420396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545420391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-cheger.8dd37e2a5474
+  control: {fileID: 1545420393}
+  legacyCollection: dropdownData
+  legacyIndex: 16
+  legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0007_Dropdown cheger
 --- !u!1 &1553308319
 GameObject:
   m_ObjectHideFlags: 0
@@ -55434,6 +57162,7 @@ GameObject:
   - component: {fileID: 1554252418}
   - component: {fileID: 1554252417}
   - component: {fileID: 1554252416}
+  - component: {fileID: 1554252419}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -55595,6 +57324,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554252414}
   m_CullTransparentMesh: 1
+--- !u!114 &1554252419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554252414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-other.0f5efe5c1530
+  control: {fileID: 1554252416}
+  legacyCollection: dropdownData
+  legacyIndex: 34
+  legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0011_Dropdown other
 --- !u!1 &1556010981
 GameObject:
   m_ObjectHideFlags: 0
@@ -56077,6 +57823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1572875076}
   - component: {fileID: 1572875077}
+  - component: {fileID: 1572875078}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -56155,6 +57902,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1572875078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572875075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.523f0ffd0c0a
+  control: {fileID: 1572875077}
+  legacyCollection: toggleData
+  legacyIndex: 46
+  legacyKey: Toggle_0000_inventory/0002_Page/0007_Cels (6)/0009_Dropdown bags/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1574493458
 GameObject:
   m_ObjectHideFlags: 0
@@ -56242,6 +58006,7 @@ GameObject:
   - component: {fileID: 1575581136}
   - component: {fileID: 1575581135}
   - component: {fileID: 1575581134}
+  - component: {fileID: 1575581137}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -56403,6 +58168,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575581132}
   m_CullTransparentMesh: 1
+--- !u!114 &1575581137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575581132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-weapon.00ef36a088d3
+  control: {fileID: 1575581134}
+  legacyCollection: dropdownData
+  legacyIndex: 15
+  legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0006_Dropdown weapon
 --- !u!1 &1580267722
 GameObject:
   m_ObjectHideFlags: 0
@@ -56510,6 +58292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1581505643}
   - component: {fileID: 1581505644}
+  - component: {fileID: 1581505645}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -56588,6 +58371,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1581505645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581505642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.852687120d64
+  control: {fileID: 1581505644}
+  legacyCollection: toggleData
+  legacyIndex: 36
+  legacyKey: Toggle_0000_inventory/0002_Page/0006_Cels (5)/0006_Dropdown weapon/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1581988313
 GameObject:
   m_ObjectHideFlags: 0
@@ -56813,6 +58613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1587886330}
   - component: {fileID: 1587886331}
+  - component: {fileID: 1587886332}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -56891,6 +58692,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1587886332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587886329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.afddcc95bb71
+  control: {fileID: 1587886331}
+  legacyCollection: toggleData
+  legacyIndex: 38
+  legacyKey: Toggle_0000_inventory/0002_Page/0006_Cels (5)/0008_Dropdown armor/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1592135562
 GameObject:
   m_ObjectHideFlags: 0
@@ -59474,6 +61292,7 @@ GameObject:
   - component: {fileID: 1661019350}
   - component: {fileID: 1661019349}
   - component: {fileID: 1661019348}
+  - component: {fileID: 1661019351}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -59608,6 +61427,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661019346}
   m_CullTransparentMesh: 1
+--- !u!114 &1661019351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661019346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemnameinput.6c29933234d8
+  control: {fileID: 1661019348}
+  legacyCollection: inputData
+  legacyIndex: 4
+  legacyKey: 
 --- !u!1 &1665467985
 GameObject:
   m_ObjectHideFlags: 0
@@ -60454,6 +62290,7 @@ GameObject:
   - component: {fileID: 1694479805}
   - component: {fileID: 1694479804}
   - component: {fileID: 1694479803}
+  - component: {fileID: 1694479806}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -60615,6 +62452,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694479801}
   m_CullTransparentMesh: 1
+--- !u!114 &1694479806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694479801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-other.07dc80932c50
+  control: {fileID: 1694479803}
+  legacyCollection: dropdownData
+  legacyIndex: 13
+  legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0011_Dropdown other
 --- !u!1 &1697775091
 GameObject:
   m_ObjectHideFlags: 0
@@ -60627,6 +62481,7 @@ GameObject:
   - component: {fileID: 1697775095}
   - component: {fileID: 1697775094}
   - component: {fileID: 1697775093}
+  - component: {fileID: 1697775096}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -60788,6 +62643,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697775091}
   m_CullTransparentMesh: 1
+--- !u!114 &1697775096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697775091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-weapon.afc3820c5db0
+  control: {fileID: 1697775093}
+  legacyCollection: dropdownData
+  legacyIndex: 36
+  legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0006_Dropdown weapon
 --- !u!1 &1698057104
 GameObject:
   m_ObjectHideFlags: 0
@@ -60947,6 +62819,7 @@ GameObject:
   - component: {fileID: 1704455143}
   - component: {fileID: 1704455142}
   - component: {fileID: 1704455141}
+  - component: {fileID: 1704455144}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -61081,6 +62954,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704455139}
   m_CullTransparentMesh: 1
+--- !u!114 &1704455144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704455139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemdescriptioninput.433edfc709d7
+  control: {fileID: 1704455141}
+  legacyCollection: inputData
+  legacyIndex: 17
+  legacyKey: 
 --- !u!1 &1705537591
 GameObject:
   m_ObjectHideFlags: 0
@@ -61564,6 +63454,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1717165360}
   - component: {fileID: 1717165361}
+  - component: {fileID: 1717165362}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -61642,6 +63533,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1717165362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717165359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.00eea0afd98a
+  control: {fileID: 1717165361}
+  legacyCollection: toggleData
+  legacyIndex: 51
+  legacyKey: Toggle_0000_inventory/0002_Page/0008_Cels (7)/0007_Dropdown cheger/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1720180437
 GameObject:
   m_ObjectHideFlags: 0
@@ -62092,6 +64000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1734710385}
   - component: {fileID: 1734710386}
+  - component: {fileID: 1734710387}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -62169,6 +64078,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1734710387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734710384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.6b0687c7c2ac
+  control: {fileID: 1734710386}
+  legacyCollection: toggleData
+  legacyIndex: 62
+  legacyKey: Toggle_0000_inventory/0002_Page/0009_Cels (8)/0011_itemCategoryDropdown/0002_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1738414229
 GameObject:
   m_ObjectHideFlags: 0
@@ -62698,6 +64624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1750933502}
   - component: {fileID: 1750933503}
+  - component: {fileID: 1750933504}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -62776,6 +64703,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1750933504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750933501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.99e85358b094
+  control: {fileID: 1750933503}
+  legacyCollection: toggleData
+  legacyIndex: 25
+  legacyKey: Toggle_0000_inventory/0002_Page/0004_Cels (3)/0009_Dropdown bags/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1754507299
 GameObject:
   m_ObjectHideFlags: 0
@@ -63460,6 +65404,7 @@ GameObject:
   - component: {fileID: 1775957512}
   - component: {fileID: 1775957511}
   - component: {fileID: 1775957510}
+  - component: {fileID: 1775957513}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -63621,6 +65566,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775957508}
   m_CullTransparentMesh: 1
+--- !u!114 &1775957513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775957508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-bags.7385bcc2cb75
+  control: {fileID: 1775957510}
+  legacyCollection: dropdownData
+  legacyIndex: 25
+  legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0009_Dropdown bags
 --- !u!1 &1778736611
 GameObject:
   m_ObjectHideFlags: 0
@@ -64442,6 +66404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1794480348}
   - component: {fileID: 1794480349}
+  - component: {fileID: 1794480350}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -64519,6 +66482,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1794480350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794480347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.575504b84a4f
+  control: {fileID: 1794480349}
+  legacyCollection: toggleData
+  legacyIndex: 49
+  legacyKey: Toggle_0000_inventory/0002_Page/0008_Cels (7)/0001_itemCategoryDropdown/0002_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1797890422
 GameObject:
   m_ObjectHideFlags: 0
@@ -64531,6 +66511,7 @@ GameObject:
   - component: {fileID: 1797890426}
   - component: {fileID: 1797890425}
   - component: {fileID: 1797890424}
+  - component: {fileID: 1797890427}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -64665,6 +66646,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797890422}
   m_CullTransparentMesh: 1
+--- !u!114 &1797890427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797890422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemdescriptioninput.9cec6b61212c
+  control: {fileID: 1797890424}
+  legacyCollection: inputData
+  legacyIndex: 15
+  legacyKey: 
 --- !u!1 &1812501392
 GameObject:
   m_ObjectHideFlags: 0
@@ -65138,6 +67136,7 @@ GameObject:
   - component: {fileID: 1827385031}
   - component: {fileID: 1827385030}
   - component: {fileID: 1827385029}
+  - component: {fileID: 1827385032}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -65299,6 +67298,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827385027}
   m_CullTransparentMesh: 1
+--- !u!114 &1827385032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827385027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-magic.b6cc641dcabf
+  control: {fileID: 1827385029}
+  legacyCollection: dropdownData
+  legacyIndex: 40
+  legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0010_Dropdown magic
 --- !u!1 &1830144093
 GameObject:
   m_ObjectHideFlags: 0
@@ -66059,6 +68075,7 @@ GameObject:
   - component: {fileID: 1859846995}
   - component: {fileID: 1859846994}
   - component: {fileID: 1859846993}
+  - component: {fileID: 1859846996}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -66220,6 +68237,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859846991}
   m_CullTransparentMesh: 1
+--- !u!114 &1859846996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859846991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-other.df87058a4c60
+  control: {fileID: 1859846993}
+  legacyCollection: dropdownData
+  legacyIndex: 20
+  legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0011_Dropdown other
 --- !u!1 &1866043697
 GameObject:
   m_ObjectHideFlags: 0
@@ -66461,6 +68495,7 @@ GameObject:
   - component: {fileID: 1869823630}
   - component: {fileID: 1869823629}
   - component: {fileID: 1869823628}
+  - component: {fileID: 1869823631}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -66622,6 +68657,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869823626}
   m_CullTransparentMesh: 1
+--- !u!114 &1869823631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869823626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-magic.51cc3de0c58d
+  control: {fileID: 1869823628}
+  legacyCollection: dropdownData
+  legacyIndex: 12
+  legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0010_Dropdown magic
 --- !u!1 &1873340747
 GameObject:
   m_ObjectHideFlags: 0
@@ -67015,6 +69067,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1885922840}
   - component: {fileID: 1885922841}
+  - component: {fileID: 1885922842}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -67093,6 +69146,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1885922842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885922839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.996de64e18bf
+  control: {fileID: 1885922841}
+  legacyCollection: toggleData
+  legacyIndex: 13
+  legacyKey: Toggle_0000_inventory/0002_Page/0002_Cels (1)/0011_Dropdown other/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1886565593
 GameObject:
   m_ObjectHideFlags: 0
@@ -67728,6 +69798,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1911531880}
   - component: {fileID: 1911531881}
+  - component: {fileID: 1911531882}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -67805,6 +69876,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1911531882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911531879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.da5eae711b5d
+  control: {fileID: 1911531881}
+  legacyCollection: toggleData
+  legacyIndex: 6
+  legacyKey: Toggle_0000_inventory/0002_Page/0001_Cels/0011_itemCategoryDropdown/0002_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1916460072
 GameObject:
   m_ObjectHideFlags: 0
@@ -68165,6 +70253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1924343656}
   - component: {fileID: 1924343657}
+  - component: {fileID: 1924343658}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -68243,6 +70332,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1924343658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924343655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.2cff86a0a716
+  control: {fileID: 1924343657}
+  legacyCollection: toggleData
+  legacyIndex: 8
+  legacyKey: Toggle_0000_inventory/0002_Page/0002_Cels (1)/0006_Dropdown weapon/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1931270608
 GameObject:
   m_ObjectHideFlags: 0
@@ -68935,6 +71041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1944421210}
   - component: {fileID: 1944421211}
+  - component: {fileID: 1944421212}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -69013,6 +71120,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1944421212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944421209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.051ba6d292a9
+  control: {fileID: 1944421211}
+  legacyCollection: toggleData
+  legacyIndex: 32
+  legacyKey: Toggle_0000_inventory/0002_Page/0005_Cels (4)/0009_Dropdown bags/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1946833603
 GameObject:
   m_ObjectHideFlags: 0
@@ -69025,6 +71149,7 @@ GameObject:
   - component: {fileID: 1946833607}
   - component: {fileID: 1946833606}
   - component: {fileID: 1946833605}
+  - component: {fileID: 1946833608}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -69186,6 +71311,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946833603}
   m_CullTransparentMesh: 1
+--- !u!114 &1946833608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946833603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-cheger.cb13fb08b698
+  control: {fileID: 1946833605}
+  legacyCollection: dropdownData
+  legacyIndex: 9
+  legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0007_Dropdown cheger
 --- !u!1 &1951716307
 GameObject:
   m_ObjectHideFlags: 0
@@ -69954,6 +72096,7 @@ GameObject:
   - component: {fileID: 1964767216}
   - component: {fileID: 1964767215}
   - component: {fileID: 1964767214}
+  - component: {fileID: 1964767217}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -70115,6 +72258,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1964767212}
   m_CullTransparentMesh: 1
+--- !u!114 &1964767217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964767212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-weapon.04283018fd05
+  control: {fileID: 1964767214}
+  legacyCollection: dropdownData
+  legacyIndex: 43
+  legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0006_Dropdown weapon
 --- !u!1 &1964970418
 GameObject:
   m_ObjectHideFlags: 0
@@ -70964,6 +73124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1997131197}
   - component: {fileID: 1997131198}
+  - component: {fileID: 1997131199}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -71042,6 +73203,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1997131199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997131196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.3fb39bc9eb71
+  control: {fileID: 1997131198}
+  legacyCollection: toggleData
+  legacyIndex: 23
+  legacyKey: Toggle_0000_inventory/0002_Page/0004_Cels (3)/0007_Dropdown cheger/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &1999345999
 GameObject:
   m_ObjectHideFlags: 0
@@ -71052,6 +73230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999346000}
   - component: {fileID: 1999346001}
+  - component: {fileID: 1999346002}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -71130,6 +73309,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1999346002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999345999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.61fd5fbd2701
+  control: {fileID: 1999346001}
+  legacyCollection: toggleData
+  legacyIndex: 57
+  legacyKey: Toggle_0000_inventory/0002_Page/0009_Cels (8)/0006_Dropdown cheger/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &2002184219
 GameObject:
   m_ObjectHideFlags: 0
@@ -71203,6 +73399,7 @@ GameObject:
   - component: {fileID: 2003811554}
   - component: {fileID: 2003811553}
   - component: {fileID: 2003811552}
+  - component: {fileID: 2003811555}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -71364,6 +73561,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003811550}
   m_CullTransparentMesh: 1
+--- !u!114 &2003811555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003811550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-armor.f5485c5ffcef
+  control: {fileID: 2003811552}
+  legacyCollection: dropdownData
+  legacyIndex: 58
+  legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0007_Dropdown armor
 --- !u!1 &2005388671
 GameObject:
   m_ObjectHideFlags: 0
@@ -71412,6 +73626,7 @@ GameObject:
   - component: {fileID: 2007091223}
   - component: {fileID: 2007091222}
   - component: {fileID: 2007091221}
+  - component: {fileID: 2007091224}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -71546,6 +73761,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007091219}
   m_CullTransparentMesh: 1
+--- !u!114 &2007091224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007091219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.itemcategorydropdown.980276e2ca70
+  control: {fileID: 2007091221}
+  legacyCollection: dropdownData
+  legacyIndex: 62
+  legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0011_itemCategoryDropdown
 --- !u!1 &2010264434
 GameObject:
   m_ObjectHideFlags: 0
@@ -71978,6 +74210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2031353565}
   - component: {fileID: 2031353566}
+  - component: {fileID: 2031353567}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -72056,6 +74289,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &2031353567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031353564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.2f28c9bd5808
+  control: {fileID: 2031353566}
+  legacyCollection: toggleData
+  legacyIndex: 22
+  legacyKey: Toggle_0000_inventory/0002_Page/0004_Cels (3)/0006_Dropdown weapon/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &2031646332
 GameObject:
   m_ObjectHideFlags: 0
@@ -72066,6 +74316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2031646333}
   - component: {fileID: 2031646334}
+  - component: {fileID: 2031646335}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -72144,6 +74395,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &2031646335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031646332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.8a0f0c9b70b0
+  control: {fileID: 2031646334}
+  legacyCollection: toggleData
+  legacyIndex: 40
+  legacyKey: Toggle_0000_inventory/0002_Page/0006_Cels (5)/0010_Dropdown magic/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &2033571631
 GameObject:
   m_ObjectHideFlags: 0
@@ -74059,6 +76327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2095218634}
   - component: {fileID: 2095218635}
+  - component: {fileID: 2095218636}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -74137,6 +76406,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &2095218636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095218633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.7219ac9049de
+  control: {fileID: 2095218635}
+  legacyCollection: toggleData
+  legacyIndex: 34
+  legacyKey: Toggle_0000_inventory/0002_Page/0005_Cels (4)/0011_Dropdown other/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &2095548386
 GameObject:
   m_ObjectHideFlags: 0
@@ -74363,6 +76649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2103370813}
   - component: {fileID: 2103370814}
+  - component: {fileID: 2103370815}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -74441,6 +76728,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &2103370815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103370812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.5c4c743c1ae4
+  control: {fileID: 2103370814}
+  legacyCollection: toggleData
+  legacyIndex: 12
+  legacyKey: Toggle_0000_inventory/0002_Page/0002_Cels (1)/0010_Dropdown magic/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &2106015283
 GameObject:
   m_ObjectHideFlags: 0
@@ -74766,6 +77070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2125074001}
   - component: {fileID: 2125074002}
+  - component: {fileID: 2125074003}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -74844,6 +77149,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &2125074003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125074000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.398b91020cc0
+  control: {fileID: 2125074002}
+  legacyCollection: toggleData
+  legacyIndex: 53
+  legacyKey: Toggle_0000_inventory/0002_Page/0008_Cels (7)/0009_Dropdown bags/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &2128059659
 GameObject:
   m_ObjectHideFlags: 0
@@ -75283,6 +77605,7 @@ GameObject:
   - component: {fileID: 2137358547}
   - component: {fileID: 2137358546}
   - component: {fileID: 2137358545}
+  - component: {fileID: 2137358548}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -75444,6 +77767,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137358543}
   m_CullTransparentMesh: 1
+--- !u!114 &2137358548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137358543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-magic.0184ea3dc976
+  control: {fileID: 2137358545}
+  legacyCollection: dropdownData
+  legacyIndex: 47
+  legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0010_Dropdown magic
 --- !u!1 &2137703891
 GameObject:
   m_ObjectHideFlags: 0
@@ -76551,6 +78891,7 @@ GameObject:
   - component: {fileID: 7697183523922205880}
   - component: {fileID: 8854983089228429636}
   - component: {fileID: 1116641008904874318}
+  - component: {fileID: 8854983089228429637}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -76822,6 +79163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1758781692360474982}
   - component: {fileID: 2442941442811081378}
+  - component: {fileID: 2442941442811081379}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -77837,6 +80179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2250420027870923164}
   - component: {fileID: 3192799641084602336}
+  - component: {fileID: 3192799641084602337}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -77975,6 +80318,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &2442941442811081379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207681776396088335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.7742958e9add
+  control: {fileID: 2442941442811081378}
+  legacyCollection: toggleData
+  legacyIndex: 1
+  legacyKey: Toggle_0000_inventory/0002_Page/0001_Cels/0006_Dropdown cheger/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!224 &2451272404711425744
 RectTransform:
   m_ObjectHideFlags: 0
@@ -78894,6 +81254,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &3192799641084602337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292053900127306656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.7da95577dd06
+  control: {fileID: 3192799641084602336}
+  legacyCollection: toggleData
+  legacyIndex: 5
+  legacyKey: Toggle_0000_inventory/0002_Page/0001_Cels/0010_Dropdown other/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!114 &3206230195001770667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79483,8 +81860,80 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4381309171059182151, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 326596580}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1886280768646428267, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3529938275672817537}
+    - targetCorrespondingSourceObject: {fileID: 3100586162349883470, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3529938275672817536}
   m_SourcePrefab: {fileID: 100100000, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+--- !u!1 &3529938275672817532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3100586162349883470, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+  m_PrefabInstance: {fileID: 3529938275672817531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3529938275672817533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3959685654296846015, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+  m_PrefabInstance: {fileID: 3529938275672817531}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3529938275672817532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Toggle
+--- !u!1 &3529938275672817534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1886280768646428267, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+  m_PrefabInstance: {fileID: 3529938275672817531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3529938275672817535 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4553244066045912844, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+  m_PrefabInstance: {fileID: 3529938275672817531}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3529938275672817534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b652f32a2cc243917e4028fa0f046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Dropdown
+--- !u!114 &3529938275672817536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3529938275672817532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.631d5b76fc3f
+  control: {fileID: 3529938275672817533}
+  legacyCollection: toggleData
+  legacyIndex: 63
+  legacyKey: Toggle_0002_overLey/0002_kalPanel/0002_Panelhealp/0003_potionDropdown/0002_Template/0000_Viewport/0000_Content/0000_Item
+--- !u!114 &3529938275672817537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3529938275672817534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.potiondropdown.692e7c80b9cb
+  control: {fileID: 3529938275672817535}
+  legacyCollection: dropdownData
+  legacyIndex: 63
+  legacyKey: Dropdown_0002_overLey/0002_kalPanel/0002_Panelhealp/0003_potionDropdown
 --- !u!114 &3546119886464372541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79773,6 +82222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4707521153366310063}
   - component: {fileID: 1605366513550335398}
+  - component: {fileID: 4707521153366310064}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -80333,6 +82783,7 @@ GameObject:
   - component: {fileID: 3871384826610346722}
   - component: {fileID: 6887842617150618236}
   - component: {fileID: 6181430402597096067}
+  - component: {fileID: 7916743296501417408}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -80400,6 +82851,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4707521153366310064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853797154571426722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.cac06a330d93
+  control: {fileID: 1605366513550335398}
+  legacyCollection: toggleData
+  legacyIndex: 0
+  legacyKey: Toggle_0000_inventory/0002_Page/0001_Cels/0005_Dropdown weapon/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!222 &4716156784130591858
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -80622,6 +83090,7 @@ GameObject:
   - component: {fileID: 3834491034822426560}
   - component: {fileID: 1990164694521766551}
   - component: {fileID: 1250449486014032363}
+  - component: {fileID: 5500634141484243331}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -81076,6 +83545,23 @@ RectTransform:
   m_AnchoredPosition: {x: -0.099823, y: 128.99129}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5500634141484243331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4886544178279574154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-weapon.689b9bf41bd5
+  control: {fileID: 1250449486014032363}
+  legacyCollection: dropdownData
+  legacyIndex: 0
+  legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0005_Dropdown weapon
 --- !u!1 &5554723750962409802
 GameObject:
   m_ObjectHideFlags: 0
@@ -81086,6 +83572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1633101154477132783}
   - component: {fileID: 5976172347757584369}
+  - component: {fileID: 5976172347757584370}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -81135,6 +83622,7 @@ GameObject:
   - component: {fileID: 6387304309119837308}
   - component: {fileID: 2491226458403906518}
   - component: {fileID: 7576943155146023530}
+  - component: {fileID: 8530177842117430347}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -81221,6 +83709,7 @@ GameObject:
   - component: {fileID: 617027244929131789}
   - component: {fileID: 6086793128864520105}
   - component: {fileID: 3240749483892816946}
+  - component: {fileID: 6514735578903603447}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -81575,6 +84064,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &5976172347757584370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5554723750962409802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.3929cadfeeb6
+  control: {fileID: 5976172347757584369}
+  legacyCollection: toggleData
+  legacyIndex: 3
+  legacyKey: Toggle_0000_inventory/0002_Page/0001_Cels/0008_Dropdown bags/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &5977753434916217158
 GameObject:
   m_ObjectHideFlags: 0
@@ -81605,6 +84111,7 @@ GameObject:
   - component: {fileID: 8913920093298730571}
   - component: {fileID: 7609315029969433575}
   - component: {fileID: 3546119886464372541}
+  - component: {fileID: 8913920093298730572}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -84886,6 +87393,23 @@ RectTransform:
   m_AnchoredPosition: {x: -0.19968033, y: 129.14111}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6514735578903603447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5674937148954073830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-other.373eb5f83a9f
+  control: {fileID: 3240749483892816946}
+  legacyCollection: dropdownData
+  legacyIndex: 5
+  legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0010_Dropdown other
 --- !u!224 &6517836795293031162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -85004,6 +87528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984109506077865828}
   - component: {fileID: 3206230195001770667}
+  - component: {fileID: 6630097796703199573}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -85011,6 +87536,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6630097796703199573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6630097796703199572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.f73963371877
+  control: {fileID: 3206230195001770667}
+  legacyCollection: toggleData
+  legacyIndex: 2
+  legacyKey: Toggle_0000_inventory/0002_Page/0001_Cels/0007_Dropdown armor/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!1 &6663652350683717949
 GameObject:
   m_ObjectHideFlags: 0
@@ -85678,6 +88220,7 @@ GameObject:
   - component: {fileID: 1253675853684575860}
   - component: {fileID: 3175512228137135081}
   - component: {fileID: 7140917053484117137}
+  - component: {fileID: 7165470176574917012}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -85685,6 +88228,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7165470176574917012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165470176574917011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-magic.bea312e6db51
+  control: {fileID: 7140917053484117137}
+  legacyCollection: dropdownData
+  legacyIndex: 4
+  legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0009_Dropdown magic
 --- !u!222 &7180483830321721288
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -85849,6 +88409,7 @@ GameObject:
   - component: {fileID: 3411576950069122014}
   - component: {fileID: 4783967868601109660}
   - component: {fileID: 2516816259472391228}
+  - component: {fileID: 7334135704426129275}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -85856,6 +88417,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7334135704426129275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7334135704426129274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-armor.d725e3f74db0
+  control: {fileID: 2516816259472391228}
+  legacyCollection: dropdownData
+  legacyIndex: 2
+  legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0007_Dropdown armor
 --- !u!1 &7335364052261831492
 GameObject:
   m_ObjectHideFlags: 0
@@ -86518,6 +89096,23 @@ RectTransform:
   m_AnchoredPosition: {x: 4.992298, y: 259.98972}
   m_SizeDelta: {x: 210, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7916743296501417408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4575946429839051184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemnameinput.abd44acdd2d2
+  control: {fileID: 6181430402597096067}
+  legacyCollection: inputData
+  legacyIndex: 0
+  legacyKey: 
 --- !u!1 &7926916519824775046
 GameObject:
   m_ObjectHideFlags: 0
@@ -87059,6 +89654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5999433974222294384}
   - component: {fileID: 8242084766188787716}
+  - component: {fileID: 8490373289912784298}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -87066,6 +89662,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8490373289912784298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8490373289912784297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.toggle.item.ddb9b3782884
+  control: {fileID: 8242084766188787716}
+  legacyCollection: toggleData
+  legacyIndex: 4
+  legacyKey: Toggle_0000_inventory/0002_Page/0001_Cels/0009_Dropdown magic/0003_Template/0000_Viewport/0000_Content/0000_Item
 --- !u!114 &8519187231213764487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87119,6 +89732,23 @@ RectTransform:
   m_AnchoredPosition: {x: -0.11240387, y: 128.95369}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8530177842117430347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582076603597861727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-cheger.bca9238288b1
+  control: {fileID: 7576943155146023530}
+  legacyCollection: dropdownData
+  legacyIndex: 1
+  legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0006_Dropdown cheger
 --- !u!1 &8544076479543877073
 GameObject:
   m_ObjectHideFlags: 0
@@ -87433,6 +90063,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &8854983089228429637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063287750982577863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.dropdown.dropdown-bags.8b69ccfddb65
+  control: {fileID: 1116641008904874318}
+  legacyCollection: dropdownData
+  legacyIndex: 3
+  legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0008_Dropdown bags
 --- !u!1 &8862372250101299142
 GameObject:
   m_ObjectHideFlags: 0
@@ -87480,6 +90127,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5978810376171680703}
   m_CullTransparentMesh: 1
+--- !u!114 &8913920093298730572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5978810376171680703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c9ff8efca5b842966d4a7df6c1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::PersistentFieldId
+  id: dnd.inventory.inputfield.itemdescriptioninput.fdbe13727842
+  control: {fileID: 3546119886464372541}
+  legacyCollection: inputData
+  legacyIndex: 1
+  legacyKey: 
 --- !u!114 &8974985767818466203
 MonoBehaviour:
   m_ObjectHideFlags: 0

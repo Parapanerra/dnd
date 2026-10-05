@@ -1,0 +1,5 @@
+{
+  "name": "TaruckShip.StableFields.Editor",
+  "references": ["TaruckShip.StableFields", "TaruckShip.Domain", "UnityEngine.UI", "Unity.TextMeshPro"],
+  "includePlatforms": ["Editor"]
+}

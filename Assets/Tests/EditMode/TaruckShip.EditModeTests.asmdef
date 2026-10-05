@@ -3,7 +3,11 @@
   "rootNamespace": "",
   "references": [
     "TaruckShip.Domain",
-    "TaruckShip.Persistence"
+    "TaruckShip.Persistence",
+    "TaruckShip.StableFields",
+    "TaruckShip.StableFields.Editor",
+    "UnityEngine.UI",
+    "Unity.TextMeshPro"
   ],
   "includePlatforms": [
     "Editor"
