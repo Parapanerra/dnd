@@ -45,3 +45,15 @@ Total uniquely matched mapped keys: `717` of `717`. The nine extra keys belong t
 - If legacy keyed aliases are used, normalize or explicitly map the root sibling segment and require an unambiguous match.
 - Preserve unknown scene states such as `menu` and `avtoru` until a migration policy explicitly removes them.
 - This export is not the fully populated golden fixture because `informForPerson` is empty.
+
+## Embedded Android item image
+
+The Android `inventory` state contains a real image in `Inventory_Page_0_Cell_0_CustomImage`:
+
+- Base64 characters: `41136`
+- Decoded bytes: `30850`
+- Detected format: JPEG
+- Dimensions: `256 × 256`
+- JPEG signature: `FFD8FFE000104A46`
+
+This image can be used to build a sanitized item-image golden fixture during A1 without requesting another Android export.
