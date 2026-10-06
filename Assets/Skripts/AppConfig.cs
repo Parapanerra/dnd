@@ -124,6 +124,7 @@ public static class AppConfig
     public static class SaveData
     {
         public const float CharacterCreateDebounceSeconds = 0.5f;
+        public const float AutoSaveDebounceSeconds = 0.8f;
     }
 
     public static class ToggleSequences

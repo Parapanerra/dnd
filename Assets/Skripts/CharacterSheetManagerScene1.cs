@@ -10,9 +10,6 @@ using System;
 
 public class CharacterSheetManagerScene1 : MonoBehaviour
 {
-    private const string DropdownKeyPrefix = "Dropdown_";
-    private const string TmpDropdownKeyPrefix = "TMPDropdown_";
-    private const string ToggleKeyPrefix = "Toggle_";
     private const string RestResourceKeyPrefix = "RestResource_";
     private const string CharacterNameObjectName = "personajName";
     private const string CharacterNameFieldPath = "playerInfo/inputPises/personajName";
@@ -37,6 +34,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
     private InputField characterNameInputField;
     private TMP_InputField characterNameTmpInputField;
     private bool isLoadingSceneData;
+    private readonly SceneSaveController sceneFields = new SceneSaveController();
     private List<TMP_Dropdown> tmpDropdowns = new List<TMP_Dropdown>();
     private List<Button> resetButtons = new List<Button>();
 
@@ -81,9 +79,15 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
     #region ЗБЕРЕЖЕННЯ / ЗАВАНТАЖЕННЯ (ООП)
 
+    private void SaveIdentityAndSharedInputs()
+    {
+        SaveCharacterNameIfPossible();
+        SaveSharedCharacterInputs();
+    }
+
     public void SaveCharacterData()
     {
-        if (isLoadingSceneData)
+        if (isLoadingSceneData || DndSaveManager.Instance == null)
             return;
 
         if (DndSaveManager.Instance != null)
@@ -94,54 +98,11 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
         if (currentCharacter == null || currentSceneData == null) return;
 
-        currentSceneData.inputData.Clear();
-        foreach (var input in inputFields)
-            currentSceneData.inputData.Add(input != null ? input.text : "");
-
-        foreach (var input in tmpInputFields)
-            currentSceneData.inputData.Add(input != null ? input.text : "");
-
-        SaveCharacterNameIfPossible();
-        SaveSharedCharacterInputs();
-
-        currentSceneData.toggleData.Clear();
-        foreach (var toggle in toggles)
-        {
-            bool isOn = toggle != null && toggle.isOn;
-            currentSceneData.toggleData.Add(isOn);
-            if (toggle != null)
-                currentSceneData.SetInt(ToggleKeyPrefix + GetControlPath(toggle.transform), isOn ? 1 : 0);
-        }
-
-        currentSceneData.sliderData.Clear();
-        foreach (var slider in sliders)
-            currentSceneData.sliderData.Add(slider != null ? slider.value : 0f);
-
-        currentSceneData.dropdownData.Clear();
-        foreach (var dropdown in dropdowns)
-        {
-            currentSceneData.dropdownData.Add(dropdown != null ? dropdown.value : 0);
-            if (dropdown != null)
-                currentSceneData.SetInt(DropdownKeyPrefix + GetControlPath(dropdown.transform), dropdown.value);
-        }
-
-        foreach (var dropdown in tmpDropdowns)
-        {
-            currentSceneData.dropdownData.Add(dropdown != null ? dropdown.value : 0);
-            if (dropdown != null)
-                currentSceneData.SetInt(TmpDropdownKeyPrefix + GetControlPath(dropdown.transform), dropdown.value);
-        }
-
-        StableFieldStorage.Save(currentSceneData, inputFields);
-        StableFieldStorage.Save(currentSceneData, tmpInputFields);
-        StableFieldStorage.Save(currentSceneData, toggles);
-        StableFieldStorage.Save(currentSceneData, sliders);
-        StableFieldStorage.Save(currentSceneData, dropdowns);
-        StableFieldStorage.Save(currentSceneData, tmpDropdowns);
+        sceneFields.Save(currentSceneData, SaveIdentityAndSharedInputs);
 
         SaveRestResourceMarkers();
 
-        DndSaveManager.Instance.SaveData();
+        DndSaveManager.Instance.RequestSaveData();
     }
 
     private void LoadCharacterDataToUI()
@@ -153,52 +114,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         isLoadingSceneData = true;
         try
         {
-            int dataIndex = 0;
-
-            for (int i = 0; i < inputFields.Count; i++, dataIndex++)
-                if (inputFields[i] != null)
-                    inputFields[i].SetTextWithoutNotify(StableFieldStorage.ReadText(currentSceneData, inputFields[i], dataIndex < currentSceneData.inputData.Count ? currentSceneData.inputData[dataIndex] : ""));
-
-            for (int i = 0; i < tmpInputFields.Count; i++, dataIndex++)
-                if (tmpInputFields[i] != null)
-                    tmpInputFields[i].SetTextWithoutNotify(StableFieldStorage.ReadText(currentSceneData, tmpInputFields[i], dataIndex < currentSceneData.inputData.Count ? currentSceneData.inputData[dataIndex] : ""));
-
-            for (int i = 0; i < toggles.Count; i++)
-                if (toggles[i] != null)
-                {
-                    string key = ToggleKeyPrefix + GetControlPath(toggles[i].transform);
-                    bool value = currentSceneData.HasInt(key)
-                        ? currentSceneData.GetInt(key) != 0
-                        : i < currentSceneData.toggleData.Count && currentSceneData.toggleData[i];
-                    toggles[i].SetIsOnWithoutNotify(StableFieldStorage.ReadInt(currentSceneData, toggles[i], value ? 1 : 0) != 0);
-                }
-
-            for (int i = 0; i < sliders.Count; i++)
-                if (sliders[i] != null)
-                    sliders[i].SetValueWithoutNotify(StableFieldStorage.ReadFloat(currentSceneData, sliders[i], i < currentSceneData.sliderData.Count ? currentSceneData.sliderData[i] : 0f));
-
-            for (int i = 0; i < dropdowns.Count; i++)
-                if (dropdowns[i] != null)
-                {
-                    string key = DropdownKeyPrefix + GetControlPath(dropdowns[i].transform);
-                    int value = currentSceneData.HasInt(key)
-                        ? currentSceneData.GetInt(key)
-                        : i < currentSceneData.dropdownData.Count ? currentSceneData.dropdownData[i] : 0;
-                    dropdowns[i].SetValueWithoutNotify(StableFieldStorage.ReadInt(currentSceneData, dropdowns[i], value));
-                    dropdowns[i].RefreshShownValue();
-                }
-
-            int tmpDropdownOffset = dropdowns.Count;
-            for (int i = 0; i < tmpDropdowns.Count; i++)
-                if (tmpDropdowns[i] != null)
-                {
-                    string key = TmpDropdownKeyPrefix + GetControlPath(tmpDropdowns[i].transform);
-                    int value = currentSceneData.HasInt(key)
-                        ? currentSceneData.GetInt(key)
-                        : i + tmpDropdownOffset < currentSceneData.dropdownData.Count ? currentSceneData.dropdownData[i + tmpDropdownOffset] : 0;
-                    tmpDropdowns[i].SetValueWithoutNotify(StableFieldStorage.ReadInt(currentSceneData, tmpDropdowns[i], value));
-                    tmpDropdowns[i].RefreshShownValue();
-                }
+            sceneFields.Load(currentSceneData);
 
             LoadCharacterNameToUi();
             LoadSharedCharacterInputs();
@@ -253,6 +169,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
             return;
 
         SaveCharacterData();
+        DndSaveManager.Instance.FlushPendingSave();
 
         currentCharacter = DndSaveManager.Instance.GetCharacter(characterId);
         if (currentCharacter == null)
@@ -285,24 +202,14 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
     private void CacheSceneControls()
     {
-        inputFields = new List<InputField>(FindObjectsByType<InputField>(FindObjectsInactive.Include));
-        tmpInputFields = new List<TMP_InputField>(FindObjectsByType<TMP_InputField>(FindObjectsInactive.Include));
-        toggles = new List<Toggle>(FindObjectsByType<Toggle>(FindObjectsInactive.Include));
-        sliders = new List<Slider>(FindObjectsByType<Slider>(FindObjectsInactive.Include));
-        dropdowns = new List<Dropdown>(FindObjectsByType<Dropdown>(FindObjectsInactive.Include));
-        tmpDropdowns = new List<TMP_Dropdown>(FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include));
-        resetButtons = new List<Button>(FindObjectsByType<Button>(FindObjectsInactive.Include));
-
-        inputFields.RemoveAll(inputField => IsManagedByHealthBar(inputField != null ? inputField.transform : null));
-        tmpInputFields.RemoveAll(inputField => IsManagedByHealthBar(inputField != null ? inputField.transform : null));
-        sliders.RemoveAll(slider => IsManagedByHealthBar(slider != null ? slider.transform : null));
-
-        inputFields.Sort((a, b) => string.Compare(GetControlPath(a.transform), GetControlPath(b.transform), StringComparison.Ordinal));
-        tmpInputFields.Sort((a, b) => string.Compare(GetControlPath(a.transform), GetControlPath(b.transform), StringComparison.Ordinal));
-        toggles.Sort((a, b) => string.Compare(GetControlPath(a.transform), GetControlPath(b.transform), StringComparison.Ordinal));
-        sliders.Sort((a, b) => string.Compare(GetControlPath(a.transform), GetControlPath(b.transform), StringComparison.Ordinal));
-        dropdowns.Sort((a, b) => string.Compare(GetControlPath(a.transform), GetControlPath(b.transform), StringComparison.Ordinal));
-        tmpDropdowns.Sort((a, b) => string.Compare(GetControlPath(a.transform), GetControlPath(b.transform), StringComparison.Ordinal));
+        sceneFields.Collect(IsManagedByHealthBar, excludeDropdownTemplates: false);
+        inputFields = sceneFields.InputFields;
+        tmpInputFields = sceneFields.TmpInputFields;
+        toggles = sceneFields.Toggles;
+        sliders = sceneFields.Sliders;
+        dropdowns = sceneFields.Dropdowns;
+        tmpDropdowns = sceneFields.TmpDropdowns;
+        resetButtons = sceneFields.ResetButtons;
         resetButtons.RemoveAll(button => !IsResetButton(button));
 
         CacheCharacterNameField();
@@ -655,35 +562,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
     private void SubscribeToUIEvents()
     {
-        foreach (var input in inputFields)
-            if (input != null)
-            {
-                input.onEndEdit.AddListener(delegate { SaveCharacterData(); });
-                input.onValueChanged.AddListener(delegate { SaveCharacterData(); });
-            }
-
-        foreach (var input in tmpInputFields)
-            if (input != null)
-            {
-                input.onEndEdit.AddListener(delegate { SaveCharacterData(); });
-                input.onValueChanged.AddListener(delegate { SaveCharacterData(); });
-            }
-
-        foreach (var toggle in toggles)
-            if (toggle != null)
-                toggle.onValueChanged.AddListener(delegate { SaveCharacterData(); });
-
-        foreach (var slider in sliders)
-            if (slider != null)
-                slider.onValueChanged.AddListener(delegate { SaveCharacterData(); });
-
-        foreach (var dropdown in dropdowns)
-            if (dropdown != null)
-                dropdown.onValueChanged.AddListener(delegate { SaveCharacterData(); });
-
-        foreach (var dropdown in tmpDropdowns)
-            if (dropdown != null)
-                dropdown.onValueChanged.AddListener(delegate { SaveCharacterData(); });
+        sceneFields.Subscribe(SaveCharacterData, () => DndSaveManager.Instance?.FlushPendingSave());
 
         SubscribeToCharacterNameField();
     }
@@ -716,35 +595,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         isLoadingSceneData = true;
         try
         {
-            foreach (InputField input in inputFields)
-                if (input != null)
-                    input.SetTextWithoutNotify("");
-
-            foreach (TMP_InputField input in tmpInputFields)
-                if (input != null)
-                    input.SetTextWithoutNotify("");
-
-            foreach (Toggle toggle in toggles)
-                if (toggle != null)
-                    toggle.SetIsOnWithoutNotify(false);
-
-            foreach (Slider slider in sliders)
-                if (slider != null)
-                    slider.SetValueWithoutNotify(0f);
-
-            foreach (Dropdown dropdown in dropdowns)
-                if (dropdown != null)
-                {
-                    dropdown.SetValueWithoutNotify(0);
-                    dropdown.RefreshShownValue();
-                }
-
-            foreach (TMP_Dropdown dropdown in tmpDropdowns)
-                if (dropdown != null)
-                {
-                    dropdown.SetValueWithoutNotify(0);
-                    dropdown.RefreshShownValue();
-                }
+            sceneFields.Reset();
         }
         finally
         {
@@ -824,16 +675,16 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
     private void SubscribeToCharacterNameField()
     {
-        if (characterNameInputField != null)
+        if (characterNameInputField != null && !inputFields.Contains(characterNameInputField))
         {
-            characterNameInputField.onEndEdit.AddListener(delegate { SaveCharacterData(); });
             characterNameInputField.onValueChanged.AddListener(delegate { SaveCharacterData(); });
+            characterNameInputField.onEndEdit.AddListener(delegate { DndSaveManager.Instance?.FlushPendingSave(); });
         }
 
-        if (characterNameTmpInputField != null)
+        if (characterNameTmpInputField != null && !tmpInputFields.Contains(characterNameTmpInputField))
         {
-            characterNameTmpInputField.onEndEdit.AddListener(delegate { SaveCharacterData(); });
             characterNameTmpInputField.onValueChanged.AddListener(delegate { SaveCharacterData(); });
+            characterNameTmpInputField.onEndEdit.AddListener(delegate { DndSaveManager.Instance?.FlushPendingSave(); });
         }
     }
 
@@ -842,8 +693,21 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
     private void OnApplicationPause(bool paused)
     {
         if (paused)
+        {
             SaveCharacterData();
+            DndSaveManager.Instance?.FlushPendingSave();
+        }
     }
 
-    private void OnApplicationQuit() => SaveCharacterData();
+    private void OnDisable()
+    {
+        SaveCharacterData();
+        DndSaveManager.Instance?.FlushPendingSave();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveCharacterData();
+        DndSaveManager.Instance?.FlushPendingSave();
+    }
 }

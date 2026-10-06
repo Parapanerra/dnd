@@ -156,7 +156,7 @@ public class StatManager : MonoBehaviour
     private void SaveDndData()
     {
         if (DndSaveManager.Instance != null)
-            DndSaveManager.Instance.SaveData();
+            DndSaveManager.Instance.RequestSaveData();
     }
 
     private string FormatValueWithSign(float value)

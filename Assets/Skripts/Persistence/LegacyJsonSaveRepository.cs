@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using UnityEngine;
 
 public enum LegacyJsonSaveSource
 {
@@ -66,30 +65,24 @@ public static class LegacyJsonSaveRepository
             }
         }
 
-        return new LegacyJsonLoadResult(null, LegacyJsonSaveSource.None, primaryError, backupError);
-    }
-
-    public static void Save(string primaryPath, string backupPath, AppSaveData data)
-    {
-        string directory = Path.GetDirectoryName(primaryPath);
-        if (!string.IsNullOrEmpty(directory))
-            Directory.CreateDirectory(directory);
-
-        string json = JsonUtility.ToJson(data, true);
-        string tempPath = primaryPath + ".tmp";
-        File.WriteAllText(tempPath, json);
-
-        if (File.Exists(primaryPath))
+        else if (File.Exists(backupPath))
         {
-            File.Copy(primaryPath, backupPath, true);
-            File.Delete(primaryPath);
+            try
+            {
+                AppSaveData backupData = Deserialize(File.ReadAllText(backupPath));
+                return new LegacyJsonLoadResult(backupData, LegacyJsonSaveSource.Backup, null, null);
+            }
+            catch (Exception backupException)
+            {
+                backupError = backupException;
+            }
         }
 
-        File.Move(tempPath, primaryPath);
+        return new LegacyJsonLoadResult(null, LegacyJsonSaveSource.None, primaryError, backupError);
     }
 
     public static AppSaveData Deserialize(string json)
     {
-        return JsonUtility.FromJson<AppSaveData>(json);
+        return LegacyJsonImporter.FullSave(json);
     }
 }

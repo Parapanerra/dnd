@@ -152,6 +152,10 @@ public class MainMenuManager : MonoBehaviour
             openSavePanelButton.onClick.RemoveAllListeners();
             openSavePanelButton.onClick.AddListener(ToggleSavePanel);
         }
+
+        string storageError = DndSaveManager.Instance != null ? DndSaveManager.Instance.SaveError : null;
+        if (!string.IsNullOrEmpty(storageError))
+            TaruckImportReviewDialog.Show("Стан сховища", storageError, "Закрити", () => { });
     }
 
     private void NormalizeSceneNames()
@@ -552,25 +556,32 @@ public class MainMenuManager : MonoBehaviour
         DndSaveManager saveManager = DndSaveManager.EnsureExists();
         saveManager.SaveData();
 
-        FileBrowser.SetDefaultFilter(".json");
+        FileBrowser.SetFilters(false, new FileBrowser.Filter("Taruck", ".tall"));
         FileBrowser.ShowSaveDialog(
             (paths) =>
             {
                 if (paths.Length > 0 && !string.IsNullOrEmpty(paths[0]))
                 {
-                    string exportPath = EnsureJsonExtensionForFileBrowserPath(paths[0]);
-                    string json = JsonUtility.ToJson(saveManager.saveData, true);
-                    FileBrowserHelpers.WriteTextToFile(exportPath, json);
-                    Debug.Log("DnD save file exported to: " + exportPath);
+                    try
+                    {
+                        string exportPath = EnsureExtensionForFileBrowserPath(paths[0], ".tall");
+                        byte[] bytes = TaruckBinaryCodec.EncodeFullSave(saveManager.saveData, Application.version);
+                        FileBrowserHelpers.WriteBytesToFile(exportPath, bytes);
+                        TaruckImportReviewDialog.Show("Експорт", "Колекцію персонажів збережено.", "Закрити", () => { });
+                    }
+                    catch (System.Exception exception)
+                    {
+                        TaruckImportReviewDialog.Show("Помилка експорту", exception.Message, "Закрити", () => { });
+                    }
                 }
             },
             () => { },
             FileBrowser.PickMode.Files,
             false,
             GetDefaultFileBrowserPath(),
-            "AllCharacters.json",
-            "Зберегти файл",
-            "Зберегти"
+            "AllCharacters.tall",
+            TaruckImportReviewDialog.Text("Зберегти файл", "Save file"),
+            TaruckImportReviewDialog.Text("Зберегти", "Save")
         );
     }
 
@@ -578,34 +589,39 @@ public class MainMenuManager : MonoBehaviour
     {
         DndSaveManager saveManager = DndSaveManager.EnsureExists();
 
-        FileBrowser.SetFilters(true, new FileBrowser.Filter("JSON Files", ".json"));
+        FileBrowser.SetFilters(true, new FileBrowser.Filter(
+            TaruckImportReviewDialog.Text("Taruck або старий JSON", "Taruck or legacy JSON"),
+            ".tall", ".taruck-save", ".json"));
         FileBrowser.ShowLoadDialog(
             (paths) =>
             {
                 if (paths.Length == 0 || string.IsNullOrEmpty(paths[0])) return;
 
+                byte[] bytes = null;
                 try
                 {
-                    string importedJson = FileBrowserHelpers.ReadTextFromFile(paths[0]);
-                    AppSaveData importedData = JsonUtility.FromJson<AppSaveData>(importedJson);
-                    if (importedData != null && importedData.characters != null)
-                    {
-                        saveManager.saveData = importedData;
-                        saveManager.NormalizeSaveData();
-                        if (importedData.characters.Count > 0 &&
-                            saveManager.GetCharacter(importedData.lastActiveCharacterId) == null)
-                        {
-                            importedData.lastActiveCharacterId = importedData.characters[0].id;
-                        }
-
-                        saveManager.SaveData();
-                        RefreshCharacterList();
-                        Debug.Log("DnD save file imported from: " + paths[0]);
-                    }
+                    bytes = TaruckTransferFileReader.Read(paths[0]);
+                    bool binary = HasTaruckMagic(bytes);
+                    AppSaveData importedData = binary
+                        ? TaruckBinaryCodec.DecodeFullSave(bytes)
+                        : LegacyJsonImporter.FullSave(LegacyJsonImporter.DecodeFile(bytes));
+                    string preview = (binary ? "Taruck v1" : TaruckImportReviewDialog.Text("Старий JSON", "Legacy JSON")) +
+                        TaruckImportReviewDialog.Text("\nПерсонажів: ", "\nCharacters: ") + importedData.characters.Count;
+                    for (int i = 0; i < Mathf.Min(importedData.characters.Count, 50); i++)
+                        preview += "\n• " + importedData.characters[i].characterName;
+                    if (importedData.characters.Count > 50)
+                        preview += TaruckImportReviewDialog.Text("\n… ще ", "\n… and ") + (importedData.characters.Count - 50);
+                    TaruckImportReviewDialog.Show("Перевірка імпорту", preview +
+                        TaruckImportReviewDialog.Text("\n\nЗамінити всю колекцію чи додати персонажів?",
+                            "\n\nReplace the whole collection or add these characters?"),
+                        "Замінити все", () => ApplyCollectionImport(saveManager, importedData, false),
+                        "Додати", () => ApplyCollectionImport(saveManager, importedData, true));
                 }
                 catch (System.Exception exception)
                 {
-                    Debug.LogError("Could not import DnD save file: " + exception.Message);
+                    TaruckImportReviewDialog.Show("Помилка імпорту",
+                        TaruckImportReviewDialog.ImportError(exception, bytes, TaruckFileType.FullSaveExport),
+                        "Закрити", () => { });
                 }
             },
             () => { },
@@ -613,8 +629,8 @@ public class MainMenuManager : MonoBehaviour
             false,
             GetDefaultFileBrowserPath(),
             null,
-            "Виберіть файл JSON",
-            "Вибрати"
+            TaruckImportReviewDialog.Text("Виберіть файл Taruck або JSON", "Select Taruck or JSON file"),
+            TaruckImportReviewDialog.Text("Вибрати", "Select")
         );
     }
 
@@ -624,37 +640,10 @@ public class MainMenuManager : MonoBehaviour
         if (character == null)
             return;
 
-        CharacterData characterCopy = JsonUtility.FromJson<CharacterData>(JsonUtility.ToJson(character));
-        CharacterExportData exportData = new CharacterExportData { character = characterCopy };
-        string fileName = MakeSafeFileName(character.characterName, "DnDCharacter") + ".json";
+        string fileName = MakeSafeFileName(character.characterName, "DnDCharacter") + ".tchar";
 
-        FileBrowser.SetDefaultFilter(".json");
+        FileBrowser.SetFilters(false, new FileBrowser.Filter("Taruck", ".tchar"));
         FileBrowser.ShowSaveDialog(
-            (paths) =>
-            {
-                if (paths.Length == 0 || string.IsNullOrEmpty(paths[0]))
-                    return;
-
-                string exportPath = EnsureJsonExtensionForFileBrowserPath(paths[0]);
-                FileBrowserHelpers.WriteTextToFile(exportPath, JsonUtility.ToJson(exportData, true));
-                Debug.Log("DnD character exported to: " + exportPath);
-            },
-            () => { },
-            FileBrowser.PickMode.Files,
-            false,
-            GetDefaultFileBrowserPath(),
-            fileName,
-            "Зберегти персонажа",
-            "Зберегти"
-        );
-    }
-
-    private void ImportCharacterFile()
-    {
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
-
-        FileBrowser.SetFilters(true, new FileBrowser.Filter("DnD Character JSON", ".json", ".dndchar"));
-        FileBrowser.ShowLoadDialog(
             (paths) =>
             {
                 if (paths.Length == 0 || string.IsNullOrEmpty(paths[0]))
@@ -662,31 +651,56 @@ public class MainMenuManager : MonoBehaviour
 
                 try
                 {
-                    string importedJson = FileBrowserHelpers.ReadTextFromFile(paths[0]);
-                    CharacterExportData importedData = JsonUtility.FromJson<CharacterExportData>(importedJson);
-                    CharacterData importedCharacter = importedData != null ? importedData.character : null;
-
-                    if (importedCharacter == null)
-                        importedCharacter = JsonUtility.FromJson<CharacterData>(importedJson);
-
-                    if (importedCharacter == null)
-                        return;
-
-                    CharacterData characterCopy = JsonUtility.FromJson<CharacterData>(JsonUtility.ToJson(importedCharacter));
-                    characterCopy.id = System.Guid.NewGuid().ToString();
-                    characterCopy.characterName = MakeImportedCharacterName(saveManager, characterCopy.characterName);
-
-                    saveManager.saveData.characters.Add(characterCopy);
-                    saveManager.saveData.lastActiveCharacterId = characterCopy.id;
-                    saveManager.NormalizeSaveData();
-                    saveManager.SaveData();
-                    RefreshCharacterList();
-                    OpenImportedCharacter(characterCopy.id);
-                    Debug.Log("DnD character imported from: " + paths[0]);
+                    string exportPath = EnsureExtensionForFileBrowserPath(paths[0], ".tchar");
+                    FileBrowserHelpers.WriteBytesToFile(exportPath,
+                        TaruckBinaryCodec.EncodeCharacterExport(character, Application.version));
+                    TaruckImportReviewDialog.Show("Експорт", "Персонажа збережено.", "Закрити", () => { });
                 }
                 catch (System.Exception exception)
                 {
-                    Debug.LogError("Could not import DnD character file: " + exception.Message);
+                    TaruckImportReviewDialog.Show("Помилка експорту", exception.Message, "Закрити", () => { });
+                }
+            },
+            () => { },
+            FileBrowser.PickMode.Files,
+            false,
+            GetDefaultFileBrowserPath(),
+            fileName,
+            TaruckImportReviewDialog.Text("Зберегти персонажа", "Save character"),
+            TaruckImportReviewDialog.Text("Зберегти", "Save")
+        );
+    }
+
+    private void ImportCharacterFile()
+    {
+        DndSaveManager saveManager = DndSaveManager.EnsureExists();
+
+        FileBrowser.SetFilters(true, new FileBrowser.Filter(
+            TaruckImportReviewDialog.Text("Taruck або старий JSON", "Taruck or legacy JSON"),
+            ".tchar", ".taruck-character", ".json", ".dndchar"));
+        FileBrowser.ShowLoadDialog(
+            (paths) =>
+            {
+                if (paths.Length == 0 || string.IsNullOrEmpty(paths[0]))
+                    return;
+
+                byte[] bytes = null;
+                try
+                {
+                    bytes = TaruckTransferFileReader.Read(paths[0]);
+                    CharacterData importedCharacter = HasTaruckMagic(bytes)
+                        ? TaruckBinaryCodec.DecodeCharacterExport(bytes)
+                        : LegacyJsonImporter.Character(LegacyJsonImporter.DecodeFile(bytes));
+                    TaruckImportReviewDialog.Show("Перевірка персонажа",
+                        TaruckImportReviewDialog.Text("Імпортувати персонажа «", "Import character “") +
+                            importedCharacter.characterName + TaruckImportReviewDialog.Text("»?", "”?"),
+                        "Додати", () => ApplyCharacterImport(saveManager, importedCharacter));
+                }
+                catch (System.Exception exception)
+                {
+                    TaruckImportReviewDialog.Show("Помилка імпорту",
+                        TaruckImportReviewDialog.ImportError(exception, bytes, TaruckFileType.CharacterExport),
+                        "Закрити", () => { });
                 }
             },
             () => { },
@@ -694,8 +708,8 @@ public class MainMenuManager : MonoBehaviour
             false,
             GetDefaultFileBrowserPath(),
             null,
-            "Виберіть файл персонажа",
-            "Вибрати"
+            TaruckImportReviewDialog.Text("Виберіть файл персонажа", "Select character file"),
+            TaruckImportReviewDialog.Text("Вибрати", "Select")
         );
     }
 
@@ -716,20 +730,53 @@ public class MainMenuManager : MonoBehaviour
         return null;
     }
 
-    private string EnsureJsonExtension(string path)
+    private static bool HasTaruckMagic(byte[] bytes)
     {
-        return EnsureExtension(path, ".json");
+        byte[] magic = System.Text.Encoding.ASCII.GetBytes("TARUCKPK");
+        if (bytes == null || bytes.Length < magic.Length) return false;
+        for (int i = 0; i < magic.Length; i++)
+            if (bytes[i] != magic[i]) return false;
+        return true;
     }
 
-    private string EnsureJsonExtensionForFileBrowserPath(string path)
+    private void ApplyCollectionImport(DndSaveManager manager, AppSaveData imported, bool merge)
     {
-        if (string.IsNullOrEmpty(path))
-            return path;
+        if (!manager.TryImportCollection(imported, merge, out string error))
+        {
+            TaruckImportReviewDialog.Show("Помилка імпорту", error, "Закрити", () => { });
+            return;
+        }
+        RefreshCharacterList();
+        TaruckImportReviewDialog.Show("Імпорт завершено",
+            TaruckImportReviewDialog.Text("Персонажів у колекції: ", "Characters in collection: ") + manager.saveData.characters.Count,
+            "Закрити", () => { });
+    }
 
-        if (!Path.IsPathRooted(path))
-            return path;
+    private void ApplyCharacterImport(DndSaveManager manager, CharacterData imported)
+    {
+        try
+        {
+            CharacterData copy = TaruckBinaryCodec.DecodeCharacterExport(
+                TaruckBinaryCodec.EncodeCharacterExport(imported, Application.version));
+            copy.id = System.Guid.NewGuid().ToString();
+            copy.characterName = MakeImportedCharacterName(manager, copy.characterName);
+            var collection = new AppSaveData { lastActiveCharacterId = copy.id };
+            collection.characters.Add(copy);
+            if (!manager.TryImportCollection(collection, true, out string error))
+                throw new System.IO.IOException(error);
+            RefreshCharacterList();
+            OpenImportedCharacter(copy.id);
+        }
+        catch (System.Exception exception)
+        {
+            TaruckImportReviewDialog.Show("Помилка імпорту", exception.Message, "Закрити", () => { });
+        }
+    }
 
-        return EnsureJsonExtension(path);
+    private string EnsureExtensionForFileBrowserPath(string path, string extension)
+    {
+        if (string.IsNullOrEmpty(path) || !Path.IsPathRooted(path)) return path;
+        return EnsureExtension(path, extension);
     }
 
     private string EnsureExtension(string path, string extension)
@@ -740,9 +787,15 @@ public class MainMenuManager : MonoBehaviour
         if (!extension.StartsWith("."))
             extension = "." + extension;
 
-        return Path.GetExtension(path).Equals(extension, System.StringComparison.OrdinalIgnoreCase)
-            ? path
-            : path + extension;
+        if (path.EndsWith(extension, System.StringComparison.OrdinalIgnoreCase))
+            return path;
+
+        string[] oldExtensions = { ".taruck-save", ".taruck-character", ".taruck-item" };
+        foreach (string oldExtension in oldExtensions)
+            if (path.EndsWith(oldExtension, System.StringComparison.OrdinalIgnoreCase))
+                return path.Substring(0, path.Length - oldExtension.Length) + extension;
+
+        return path + extension;
     }
 
     private CharacterData GetSelectedCharacterForExport()

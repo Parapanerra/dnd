@@ -236,7 +236,7 @@ public class HealthBar1 : MonoBehaviour
         sceneData.SetInt(GetSaveKey("currentHealth"), currentHealth);
         sceneData.SetInt(GetSaveKey("maxTemporaryHealth"), maxTemporaryHealth);
         sceneData.SetInt(GetSaveKey("currentTemporaryHealth"), currentTemporaryHealth);
-        DndSaveManager.Instance.SaveData();
+        DndSaveManager.Instance.RequestSaveData();
     }
 
     private string GetSaveKey(string fieldName)

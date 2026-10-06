@@ -61,7 +61,7 @@ public class InventoryItemCell : MonoBehaviour
 
         CharacterSceneData sceneData = DndSaveManager.Instance.GetActiveSceneData();
         SaveToSceneData(sceneData, ReadCurrentData());
-        DndSaveManager.Instance.SaveData();
+        DndSaveManager.Instance.RequestSaveData();
     }
 
     public void Load()
@@ -238,17 +238,33 @@ public class InventoryItemCell : MonoBehaviour
     private void ExportItem()
     {
         InventoryItemExportData data = ReadCurrentData();
-        string fileName = MakeSafeFileName(string.IsNullOrWhiteSpace(data.itemName) ? "DnDItem" : data.itemName) + ".json";
+        if (string.IsNullOrWhiteSpace(data.itemName))
+        {
+            TaruckImportReviewDialog.Show("Експорт",
+                TaruckImportReviewDialog.Text("Спочатку введіть назву предмета, щоб зберегти його у файл.",
+                    "Enter an item name before saving it to a file."), "Закрити", () => { });
+            return;
+        }
+        string fileName = MakeSafeFileName(data.itemName) + ".titem";
 
-        FileBrowser.SetDefaultFilter(".json");
+        FileBrowser.SetFilters(false, new FileBrowser.Filter("Taruck", ".titem"));
         FileBrowser.ShowSaveDialog(
             paths =>
             {
                 if (paths == null || paths.Length == 0 || string.IsNullOrEmpty(paths[0]))
                     return;
 
-                string exportPath = EnsureJsonExtension(paths[0]);
-                FileBrowserHelpers.WriteTextToFile(exportPath, JsonUtility.ToJson(data, true));
+                try
+                {
+                    string exportPath = EnsureItemExtension(paths[0]);
+                    FileBrowserHelpers.WriteBytesToFile(exportPath,
+                        TaruckBinaryCodec.EncodeItemExport(data, Application.version));
+                    TaruckImportReviewDialog.Show("Експорт", "Предмет збережено.", "Закрити", () => { });
+                }
+                catch (Exception exception)
+                {
+                    TaruckImportReviewDialog.Show("Помилка експорту", exception.Message, "Закрити", () => { });
+                }
             },
             () => { },
             FileBrowser.PickMode.Files,
@@ -262,25 +278,39 @@ public class InventoryItemCell : MonoBehaviour
 
     private void ImportItem()
     {
-        FileBrowser.SetFilters(true, new FileBrowser.Filter("DnD Item JSON", ".json"));
+        FileBrowser.SetFilters(true, new FileBrowser.Filter(
+            TaruckImportReviewDialog.Text("Taruck або старий JSON", "Taruck or legacy JSON"),
+            ".titem", ".taruck-item", ".json"));
         FileBrowser.ShowLoadDialog(
             paths =>
             {
                 if (paths == null || paths.Length == 0 || string.IsNullOrEmpty(paths[0]))
                     return;
 
+                byte[] bytes = null;
                 try
                 {
-                    string json = FileBrowserHelpers.ReadTextFromFile(paths[0]);
-                    InventoryItemExportData data = JsonUtility.FromJson<InventoryItemExportData>(json);
-                    if (data == null)
-                        return;
-
-                    ApplyData(data, true);
+                    bytes = TaruckTransferFileReader.Read(paths[0]);
+                    bool binary = bytes.Length >= 8 && System.Text.Encoding.ASCII.GetString(bytes, 0, 8) == "TARUCKPK";
+                    InventoryItemExportData data = binary
+                        ? TaruckBinaryCodec.DecodeItemExport(bytes)
+                        : LegacyJsonImporter.Item(LegacyJsonImporter.DecodeFile(bytes));
+                    InventoryItemExportData previous = ReadCurrentData();
+                    string current = string.IsNullOrWhiteSpace(previous.itemName)
+                        ? TaruckImportReviewDialog.Text("порожню комірку", "empty cell")
+                        : "«" + previous.itemName + "»";
+                    string preview = TaruckImportReviewDialog.Text("Предмет: «", "Item: “") + data.itemName +
+                        TaruckImportReviewDialog.Text("»\nКатегорія: ", "”\nCategory: ") + data.category +
+                        TaruckImportReviewDialog.Text("\nОпис: ", "\nDescription: ") + data.itemDescription +
+                        TaruckImportReviewDialog.Text("\n\nЗамінити ", "\n\nReplace ") + current + "?";
+                    TaruckImportReviewDialog.Show("Перевірка предмета", preview, "Замінити",
+                        () => ApplyImportedItem(data, previous));
                 }
                 catch (Exception exception)
                 {
-                    Debug.LogError("Could not import inventory item: " + exception.Message);
+                    TaruckImportReviewDialog.Show("Помилка імпорту",
+                        TaruckImportReviewDialog.ImportError(exception, bytes, TaruckFileType.ItemExport),
+                        "Закрити", () => { });
                 }
             },
             () => { },
@@ -675,9 +705,35 @@ public class InventoryItemCell : MonoBehaviour
         return null;
     }
 
-    private string EnsureJsonExtension(string path)
+    private void ApplyImportedItem(InventoryItemExportData imported, InventoryItemExportData previous)
     {
-        return path.EndsWith(".json", StringComparison.OrdinalIgnoreCase) ? path : path + ".json";
+        try
+        {
+            ApplyData(imported, true);
+            // An import is an explicit operation: verify its disk write before reporting success.
+            DndSaveManager.Instance?.FlushPendingSave();
+            if (DndSaveManager.Instance != null && !string.IsNullOrEmpty(DndSaveManager.Instance.SaveError))
+            {
+                ApplyData(previous, false);
+                SaveToSceneData(DndSaveManager.Instance.GetActiveSceneData(), previous);
+                throw new System.IO.IOException(DndSaveManager.Instance.SaveError);
+            }
+            TaruckImportReviewDialog.Show("Імпорт завершено", "Предмет завантажено.", "Закрити", () => { });
+        }
+        catch (Exception exception)
+        {
+            ApplyData(previous, false);
+            TaruckImportReviewDialog.Show("Помилка імпорту", exception.Message, "Закрити", () => { });
+        }
+    }
+
+    private string EnsureItemExtension(string path)
+    {
+        if (!System.IO.Path.IsPathRooted(path)) return path;
+        if (path.EndsWith(".titem", StringComparison.OrdinalIgnoreCase)) return path;
+        if (path.EndsWith(".taruck-item", StringComparison.OrdinalIgnoreCase))
+            return path.Substring(0, path.Length - ".taruck-item".Length) + ".titem";
+        return path + ".titem";
     }
 
     private string MakeSafeFileName(string value)

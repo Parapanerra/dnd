@@ -59,6 +59,16 @@ public class LegacySaveFormatTests
     }
 
     [Test]
+    public void MissingPrimary_LoadsLegacyBackup()
+    {
+        string primaryPath = Path.Combine(tempDirectory, "DndCharactersData.json");
+        File.Copy(FixturePath("legacy_full_v1.json"), primaryPath + ".bak");
+        LegacyJsonLoadResult result = LegacyJsonSaveRepository.Load(primaryPath, primaryPath + ".bak");
+        Assert.That(result.Source, Is.EqualTo(LegacyJsonSaveSource.Backup));
+        Assert.That(result.Data.characters[0].id, Is.EqualTo("fixture-character"));
+    }
+
+    [Test]
     public void CorruptedPrimaryAndBackup_ReturnErrorsWithoutData()
     {
         string primaryPath = Path.Combine(tempDirectory, "DndCharactersData.json");
@@ -75,15 +85,15 @@ public class LegacySaveFormatTests
     }
 
     [Test]
-    public void SaveTwice_WritesNewPrimaryAndKeepsPreviousPrimaryAsBackup()
+    public void LegacyPrimaryAndBackup_AreReadWithoutWritingJson()
     {
         string primaryPath = Path.Combine(tempDirectory, "DndCharactersData.json");
         string backupPath = primaryPath + ".bak";
         AppSaveData first = BuildSave("first", "Перший");
         AppSaveData second = BuildSave("second", "Другий");
 
-        LegacyJsonSaveRepository.Save(primaryPath, backupPath, first);
-        LegacyJsonSaveRepository.Save(primaryPath, backupPath, second);
+        File.WriteAllText(backupPath, JsonUtility.ToJson(first));
+        File.WriteAllText(primaryPath, JsonUtility.ToJson(second));
 
         LegacyJsonLoadResult current = LegacyJsonSaveRepository.Load(primaryPath, backupPath);
         AppSaveData backup = LegacyJsonSaveRepository.Deserialize(File.ReadAllText(backupPath));

@@ -50,6 +50,6 @@ public class PrefabSwitcher : MonoBehaviour
     private void SaveCurrentIndex()
     {
         DndSaveManager.Instance.GetActiveSceneData().SetInt(GetSaveKey(), currentIndex);
-        DndSaveManager.Instance.SaveData();
+        DndSaveManager.Instance.RequestSaveData();
     }
 }

@@ -76,7 +76,7 @@ public static class ExhaustionEffects
         }
         foreach (CalculatorManager calculator in UnityEngine.Object.FindObjectsByType<CalculatorManager>(FindObjectsInactive.Include))
             calculator.RefreshExhaustionDisplay();
-        DndSaveManager.Instance.SaveData();
+        DndSaveManager.Instance.RequestSaveData();
     }
 
     private static void OnSpeedEdited(string value)
