@@ -9,7 +9,6 @@ using TMPro;
 public class CalculatorManager : MonoBehaviour
 {
     private const string PotionSaveKeyPrefix = "PotionCount_";
-    private const string RestResourceKeyPrefix = "RestResource_";
     private const string EasterEgg67CountKey = "Calculator.EasterEgg67.Count";
 
     public List<Button> buttons;
@@ -344,22 +343,21 @@ public class CalculatorManager : MonoBehaviour
         }
 
         HealthBar healthBar = FindActiveHealthBar();
-        HealthBar1 healthBar1 = healthBar == null ? FindActiveHealthBar1() : null;
-        if (healthBar == null && healthBar1 == null)
+        if (healthBar == null)
         {
             ShowHpResult(GetCalculatorText("hpBarNotFound"));
             return;
         }
 
-        string rolledExpression = ProcessDiceNotation(potionFormulas[index]);
-        if (!TryEvaluateExpression(rolledExpression, out double rollResult))
+        string rolledExpression = DiceExpressionEvaluator.RollDice(potionFormulas[index]);
+        if (!DiceExpressionEvaluator.TryEvaluate(rolledExpression, out double rollResult))
         {
             ShowHpResult(GetCalculatorText("potionError"));
             return;
         }
 
         int roll = Mathf.Max(0, Mathf.RoundToInt((float)rollResult));
-        int healed = healthBar != null ? healthBar.ApplyHeal(roll) : healthBar1.ApplyHeal(roll);
+        int healed = healthBar.ApplyHeal(roll);
         potionCounts[index]--;
         SavePotionCounts();
         RefreshPotionDropdownOptions();
@@ -712,8 +710,8 @@ public class CalculatorManager : MonoBehaviour
 
         int exhaustionPenalty = hpMode == HpCalculatorMode.None && ExhaustionEffects.IsD20Roll(expression)
             ? 2 * ExhaustionEffects.Level : 0;
-        expression = ProcessDiceNotation(expression);
-        if (!TryEvaluateExpression(expression, out double result))
+        expression = DiceExpressionEvaluator.RollDice(expression);
+        if (!DiceExpressionEvaluator.TryEvaluate(expression, out double result))
         {
             if (resultText != null)
                 resultText.text = "=0";
@@ -829,8 +827,7 @@ public class CalculatorManager : MonoBehaviour
     private void ApplyHpMode(int value)
     {
         HealthBar healthBar = FindActiveHealthBar();
-        HealthBar1 healthBar1 = healthBar == null ? FindActiveHealthBar1() : null;
-        if (healthBar == null && healthBar1 == null)
+        if (healthBar == null)
         {
             ShowHpResult(GetCalculatorText("hpBarNotFound"));
             hpMode = HpCalculatorMode.None;
@@ -841,30 +838,24 @@ public class CalculatorManager : MonoBehaviour
         value = Mathf.Max(0, value);
         if (hpMode == HpCalculatorMode.MaxHp)
         {
-            if (healthBar != null)
-                healthBar.SetMaxHealthAndFill(value);
-            else
-                healthBar1.SetMaxHealthAndFill(value);
+            healthBar.SetMaxHealthAndFill(value);
 
             ShowHpResult("Max HP =  " + value);
         }
         else if (hpMode == HpCalculatorMode.TemporaryHp)
         {
-            if (healthBar != null)
-                healthBar.SetTemporaryHealth(value);
-            else
-                healthBar1.SetTemporaryHealth(value);
+            healthBar.SetTemporaryHealth(value);
 
             ShowHpResult(GetCalculatorText("tempHp") + " =  " + value);
         }
         else if (hpMode == HpCalculatorMode.Damage)
         {
-            int applied = healthBar != null ? healthBar.ApplyDamage(value) : healthBar1.ApplyDamage(value);
+            int applied = healthBar.ApplyDamage(value);
             ShowHpResult(GetDamageText(applied));
         }
         else if (hpMode == HpCalculatorMode.Heal)
         {
-            int applied = healthBar != null ? healthBar.ApplyHeal(value) : healthBar1.ApplyHeal(value);
+            int applied = healthBar.ApplyHeal(value);
             ShowHpResult(GetHealedText(applied));
         }
 
@@ -877,39 +868,26 @@ public class CalculatorManager : MonoBehaviour
     private void ApplyLongRest()
     {
         HealthBar healthBar = FindActiveHealthBar();
-        HealthBar1 healthBar1 = healthBar == null ? FindActiveHealthBar1() : null;
 
         int healed = 0;
         if (healthBar != null)
             healed = healthBar.RestoreToMaxHealth();
-        else if (healthBar1 != null)
-            healed = healthBar1.RestoreToMaxHealth();
 
-        ApplyRestResources(true);
-        ClearSpellSlots();
-        ReduceExhaustionByOne();
-        ClearDeathSaves();
-        SaveSceneAfterRest();
-        ApplyGlobalRestToSaveData(true);
-        ShowHpResult(healthBar != null || healthBar1 != null ? GetHealedText(healed) : GetCalculatorText("longRest"));
+        CharacterRestService.Apply(true);
+        ShowHpResult(healthBar != null ? GetHealedText(healed) : GetCalculatorText("longRest"));
         ResetHpInputState();
     }
 
     private void ApplyShortRest()
     {
         HealthBar healthBar = FindActiveHealthBar();
-        HealthBar1 healthBar1 = healthBar == null ? FindActiveHealthBar1() : null;
 
         if (healthBar != null)
             healthBar.ClearTemporaryHealth();
-        else if (healthBar1 != null)
-            healthBar1.ClearTemporaryHealth();
 
-        ApplyRestResources(false);
-        SaveSceneAfterRest();
-        ApplyGlobalRestToSaveData(false);
+        CharacterRestService.Apply(false);
 
-        if (healthBar == null && healthBar1 == null)
+        if (healthBar == null)
         {
             ShowHpResult(GetCalculatorText("shortRest"));
             ResetHpInputState();
@@ -928,302 +906,9 @@ public class CalculatorManager : MonoBehaviour
         for (int i = 0; i < diceToRoll; i++)
             roll += UnityEngine.Random.Range(1, diceSides + 1);
 
-        int healed = healthBar != null ? healthBar.ApplyHeal(roll) : healthBar1.ApplyHeal(roll);
+        int healed = healthBar.ApplyHeal(roll);
         ShowHpResult(GetHealedText(healed) + " (" + diceToRoll + "d" + diceSides + "=" + roll + ")");
         ResetHpInputState();
-    }
-
-    private void ApplyRestResources(bool isLongRest)
-    {
-        Transform resourceRoot = SceneRoleLookup.FindPanel(SceneRole.ClassResources, "resursClas");
-        if (resourceRoot == null)
-            return;
-
-        ClearPanelsByMarkers(resourceRoot, "WildShape", "ChannelDivinity", "KiPoints", "DragonBreath");
-
-        Transform bloodPanel = FindPanelByMarker(resourceRoot, "BloodCurse");
-        if (bloodPanel == null)
-            bloodPanel = FindDirectChild(resourceRoot, AppConfig.Calculator.BloodHunterPanelName);
-
-        if (bloodPanel != null)
-        {
-            ClearPanelToggles(bloodPanel, 0, AppConfig.Calculator.BloodHunterPrimaryToggleLastIndex);
-            if (isLongRest)
-                ClearPanelToggles(
-                    bloodPanel,
-                    AppConfig.Calculator.BloodHunterSecondaryToggleFirstIndex,
-                    AppConfig.Calculator.BloodHunterSecondaryToggleLastIndex);
-        }
-
-        if (isLongRest)
-            ClearPanelsByMarkers(resourceRoot, "Rage", "SorceryPoints", "Flight");
-    }
-
-    private void ClearPanelsByMarkers(Transform resourceRoot, params string[] markerNames)
-    {
-        HashSet<Transform> clearedPanels = new HashSet<Transform>();
-        foreach (string markerName in markerNames)
-        {
-            Transform panel = FindPanelByMarker(resourceRoot, markerName);
-            if (panel != null && clearedPanels.Add(panel))
-                ClearPanelToggles(panel);
-        }
-    }
-
-    private Transform FindPanelByMarker(Transform resourceRoot, string markerName)
-    {
-        if (Enum.TryParse(markerName, out SceneRole role))
-        {
-            SceneRoleMarker roleMarker = SceneRoleLookup.Find(role);
-            if (roleMarker != null)
-                return roleMarker.Panel;
-        }
-
-        if (resourceRoot == null)
-            return null;
-
-        foreach (Transform child in resourceRoot.GetComponentsInChildren<Transform>(true))
-            if (child != resourceRoot && NameMatches(child.name, markerName))
-                return child.parent;
-
-        return null;
-    }
-
-    private Transform FindDirectChild(Transform parent, string childName)
-    {
-        if (parent == null)
-            return null;
-
-        foreach (Transform child in parent)
-            if (child != null && child.name.Equals(childName, StringComparison.OrdinalIgnoreCase))
-                return child;
-
-        return null;
-    }
-
-    private void ReduceExhaustionByOne()
-    {
-        Transform exhaustionRoot = SceneRoleLookup.FindPanel(SceneRole.Exhaustion, "vtoma");
-        if (exhaustionRoot == null)
-            return;
-
-        List<Toggle> toggles = GetPanelToggles(
-            exhaustionRoot,
-            0,
-            AppConfig.Calculator.ExhaustionToggleLastIndex);
-        if (toggles.Count == 0)
-            return;
-
-        toggles.Sort((left, right) => GetToggleNumber(left.name).CompareTo(GetToggleNumber(right.name)));
-
-        int checkedCount = 0;
-        foreach (Toggle toggle in toggles)
-            if (toggle != null && toggle.isOn)
-                checkedCount++;
-
-        if (checkedCount <= 0)
-            return;
-
-        Toggle lastCheckedToggle = toggles[Mathf.Clamp(checkedCount - 1, 0, toggles.Count - 1)];
-        if (lastCheckedToggle != null)
-            lastCheckedToggle.isOn = false;
-    }
-
-    private void ClearDeathSaves()
-    {
-        Transform deathRoot = SceneRoleLookup.FindPanel(SceneRole.DeathSaves, "deadChekBox");
-        if (deathRoot == null)
-            deathRoot = SceneRoleLookup.FindPanel(SceneRole.DeathSaves, "deadCheckBox");
-
-        if (deathRoot == null)
-            return;
-
-        ClearPanelToggles(deathRoot);
-    }
-
-    private void ClearSpellSlots()
-    {
-        Transform spellSlotsRoot = SceneRoleLookup.FindPanel(SceneRole.SpellSlots, "spelChek");
-        if (spellSlotsRoot == null)
-            return;
-
-        ClearPanelToggles(spellSlotsRoot);
-    }
-
-    private void ClearPanelToggles(Transform panel, int minToggleNumber = int.MinValue, int maxToggleNumber = int.MaxValue)
-    {
-        foreach (Toggle toggle in GetPanelToggles(panel, minToggleNumber, maxToggleNumber))
-            if (toggle != null)
-                toggle.isOn = false;
-    }
-
-    private List<Toggle> GetPanelToggles(Transform panel, int minToggleNumber, int maxToggleNumber)
-    {
-        List<Toggle> toggles = new List<Toggle>();
-        if (panel == null)
-            return toggles;
-
-        foreach (Toggle toggle in panel.GetComponentsInChildren<Toggle>(true))
-        {
-            if (toggle == null || !NameMatches(toggle.name, "Toggle"))
-                continue;
-
-            int toggleNumber = GetToggleNumber(toggle.name);
-            if (toggleNumber < minToggleNumber || toggleNumber > maxToggleNumber)
-                continue;
-
-            if (IsInsideDropdown(toggle.transform, panel))
-                continue;
-
-            toggles.Add(toggle);
-        }
-
-        return toggles;
-    }
-
-    private Transform FindSceneTransformByName(string objectName)
-    {
-        Transform[] transforms = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include);
-        foreach (Transform item in transforms)
-            if (item != null && item.gameObject.scene.IsValid() && NameMatches(item.name, objectName))
-                return item;
-
-        return null;
-    }
-
-    private bool IsInsideDropdown(Transform transform, Transform stopAt)
-    {
-        Transform current = transform;
-        while (current != null && current != stopAt)
-        {
-            if (current.GetComponent<Dropdown>() != null || current.GetComponent<TMP_Dropdown>() != null)
-                return true;
-
-            current = current.parent;
-        }
-
-        return false;
-    }
-
-    private int GetToggleNumber(string name)
-    {
-        int open = name.LastIndexOf('(');
-        int close = name.LastIndexOf(')');
-        if (open >= 0 && close > open && int.TryParse(name.Substring(open + 1, close - open - 1), out int number))
-            return number;
-
-        return 0;
-    }
-
-    private bool NameMatches(string actualName, string expectedName)
-    {
-        return GetBaseName(actualName).Equals(expectedName, StringComparison.OrdinalIgnoreCase);
-    }
-
-    private string GetBaseName(string name)
-    {
-        int suffixStart = name.LastIndexOf(" (", StringComparison.Ordinal);
-        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
-    }
-
-    private void SaveSceneAfterRest()
-    {
-        CharacterSheetManagerScene1 sheetManager = UnityEngine.Object.FindAnyObjectByType<CharacterSheetManagerScene1>();
-        if (sheetManager != null)
-        {
-            sheetManager.SaveCharacterData();
-            return;
-        }
-
-        CharacterSceneAutoSave autoSave = UnityEngine.Object.FindAnyObjectByType<CharacterSceneAutoSave>();
-        if (autoSave != null)
-            autoSave.SaveSceneData();
-    }
-
-    private void ApplyGlobalRestToSaveData(bool isLongRest)
-    {
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
-        CharacterData character = saveManager.EnsureActiveCharacter();
-        if (character == null || character.sceneStates == null)
-            return;
-
-        foreach (CharacterSceneData sceneData in character.sceneStates)
-        {
-            if (sceneData == null)
-                continue;
-
-            ClearSavedPanelsByMarkers(sceneData, "WildShape", "ChannelDivinity", "KiPoints", "DragonBreath");
-
-            string bloodPanelPath = GetRestPanelPath(sceneData, "BloodCurse");
-            ClearSavedPanelToggles(
-                sceneData,
-                bloodPanelPath,
-                "BloodCurse",
-                0,
-                AppConfig.Calculator.BloodHunterPrimaryToggleLastIndex);
-            if (isLongRest)
-                ClearSavedPanelToggles(
-                    sceneData,
-                    bloodPanelPath,
-                    "BloodCurse",
-                    AppConfig.Calculator.BloodHunterSecondaryToggleFirstIndex,
-                    AppConfig.Calculator.BloodHunterSecondaryToggleLastIndex);
-
-            if (!isLongRest)
-                continue;
-
-            RestoreSavedHealthBars(sceneData);
-            ClearSavedPanelsByMarkers(sceneData, "Rage", "SorceryPoints", "Flight");
-            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "SpellSlots"), "SpellSlots");
-            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "DeathSaves"), "DeathSaves");
-            // The current scene's toggles were already reduced and saved above.
-            if (sceneData != saveManager.GetActiveSceneData())
-                ReduceSavedExhaustionByOne(sceneData, GetRestPanelPath(sceneData, "Exhaustion"));
-        }
-
-        saveManager.SaveData();
-    }
-
-    private void RestoreSavedHealthBars(CharacterSceneData sceneData)
-    {
-        if (sceneData == null || sceneData.intData == null)
-            return;
-
-        foreach (IntSaveEntry entry in sceneData.intData)
-        {
-            if (entry == null || string.IsNullOrEmpty(entry.key) || !entry.key.StartsWith("HealthBar_", StringComparison.Ordinal))
-                continue;
-
-            if (!entry.key.EndsWith("_maxHealth", StringComparison.Ordinal))
-                continue;
-
-            string prefix = entry.key.Substring(0, entry.key.Length - "maxHealth".Length);
-            sceneData.SetInt(prefix + "currentHealth", Mathf.Max(0, entry.value));
-            sceneData.SetInt(prefix + "maxTemporaryHealth", 0);
-            sceneData.SetInt(prefix + "currentTemporaryHealth", 0);
-        }
-    }
-
-    private void ClearSavedPanelsByMarkers(CharacterSceneData sceneData, params string[] markerNames)
-    {
-        foreach (string markerName in markerNames)
-            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, markerName), markerName);
-    }
-
-    private string GetRestPanelPath(CharacterSceneData sceneData, string markerName)
-    {
-        return sceneData != null ? sceneData.GetString(RestResourceKeyPrefix + markerName, "") : "";
-    }
-
-    private void ClearSavedPanelToggles(CharacterSceneData sceneData, string panelPath, string role, int minToggleNumber = int.MinValue, int maxToggleNumber = int.MaxValue)
-    {
-        RestSavedToggleUpdater.Clear(sceneData, role, panelPath, minToggleNumber, maxToggleNumber);
-    }
-
-    private void ReduceSavedExhaustionByOne(CharacterSceneData sceneData, string panelPath)
-    {
-        RestSavedToggleUpdater.ReduceExhaustionByOne(
-            sceneData, panelPath, AppConfig.Calculator.ExhaustionToggleLastIndex);
     }
 
     private void ResetHpInputState()
@@ -1272,66 +957,10 @@ public class CalculatorManager : MonoBehaviour
         RefreshEquationText();
     }
 
-    private string ProcessDiceNotation(string equation)
-    {
-        return Regex.Replace(equation, @"(\d*)[dD](\d+)", match =>
-        {
-            int diceCount = 1;
-            if (!string.IsNullOrEmpty(match.Groups[1].Value))
-                int.TryParse(match.Groups[1].Value, out diceCount);
-
-            if (!int.TryParse(match.Groups[2].Value, out int diceSides))
-                return "0";
-
-            diceCount = Mathf.Clamp(
-                diceCount,
-                AppConfig.Calculator.MinimumDiceCount,
-                AppConfig.Calculator.MaximumDiceCount);
-            diceSides = Mathf.Clamp(
-                diceSides,
-                AppConfig.Calculator.MinimumDiceSides,
-                AppConfig.Calculator.MaximumDiceSides);
-
-            int total = 0;
-            for (int i = 0; i < diceCount; i++)
-                total += UnityEngine.Random.Range(1, diceSides + 1);
-
-            return total.ToString(CultureInfo.InvariantCulture);
-        });
-    }
-
-    private bool TryEvaluateExpression(string expression, out double result)
-    {
-        result = 0;
-        expression = expression.Replace(" ", "");
-
-        try
-        {
-            ExpressionParser parser = new ExpressionParser(expression);
-            result = parser.ParseExpression();
-            return parser.IsAtEnd && !double.IsNaN(result) && !double.IsInfinity(result);
-        }
-        catch
-        {
-            result = 0;
-            return false;
-        }
-    }
-
     private HealthBar FindActiveHealthBar()
     {
         HealthBar[] bars = UnityEngine.Object.FindObjectsByType<HealthBar>(FindObjectsInactive.Exclude);
         foreach (HealthBar bar in bars)
-            if (bar != null && bar.IsUsableForCalculator)
-                return bar;
-
-        return bars.Length > 0 ? bars[0] : null;
-    }
-
-    private HealthBar1 FindActiveHealthBar1()
-    {
-        HealthBar1[] bars = UnityEngine.Object.FindObjectsByType<HealthBar1>(FindObjectsInactive.Exclude);
-        foreach (HealthBar1 bar in bars)
             if (bar != null && bar.IsUsableForCalculator)
                 return bar;
 
@@ -1486,101 +1115,4 @@ public class CalculatorManager : MonoBehaviour
         return value.ToString("0.###", CultureInfo.InvariantCulture);
     }
 
-    private class ExpressionParser
-    {
-        private readonly string expression;
-        private int index;
-
-        public bool IsAtEnd
-        {
-            get
-            {
-                SkipWhitespace();
-                return index >= expression.Length;
-            }
-        }
-
-        public ExpressionParser(string expression)
-        {
-            this.expression = expression;
-        }
-
-        public double ParseExpression()
-        {
-            double value = ParseTerm();
-
-            while (true)
-            {
-                SkipWhitespace();
-                if (Match('+'))
-                    value += ParseTerm();
-                else if (Match('-'))
-                    value -= ParseTerm();
-                else
-                    return value;
-            }
-        }
-
-        private double ParseTerm()
-        {
-            double value = ParseFactor();
-
-            while (true)
-            {
-                SkipWhitespace();
-                if (Match('*'))
-                    value *= ParseFactor();
-                else if (Match('/'))
-                    value /= ParseFactor();
-                else
-                    return value;
-            }
-        }
-
-        private double ParseFactor()
-        {
-            SkipWhitespace();
-
-            if (Match('+'))
-                return ParseFactor();
-
-            if (Match('-'))
-                return -ParseFactor();
-
-            return ParseNumber();
-        }
-
-        private double ParseNumber()
-        {
-            SkipWhitespace();
-            int start = index;
-
-            while (index < expression.Length &&
-                   (char.IsDigit(expression[index]) || expression[index] == '.'))
-            {
-                index++;
-            }
-
-            if (start == index)
-                throw new FormatException("Expected number.");
-
-            string number = expression.Substring(start, index - start);
-            return double.Parse(number, CultureInfo.InvariantCulture);
-        }
-
-        private bool Match(char symbol)
-        {
-            if (index >= expression.Length || expression[index] != symbol)
-                return false;
-
-            index++;
-            return true;
-        }
-
-        private void SkipWhitespace()
-        {
-            while (index < expression.Length && char.IsWhiteSpace(expression[index]))
-                index++;
-        }
-    }
 }

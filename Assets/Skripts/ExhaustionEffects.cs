@@ -78,8 +78,6 @@ public static class ExhaustionEffects
         {
             foreach (HealthBar bar in UnityEngine.Object.FindObjectsByType<HealthBar>(FindObjectsInactive.Include))
                 if (bar.IsUsableForCalculator) bar.SetHealthToZero();
-            foreach (HealthBar1 bar in UnityEngine.Object.FindObjectsByType<HealthBar1>(FindObjectsInactive.Include))
-                if (bar.IsUsableForCalculator) bar.SetHealthToZero();
         }
         foreach (CalculatorManager calculator in UnityEngine.Object.FindObjectsByType<CalculatorManager>(FindObjectsInactive.Include))
             calculator.RefreshExhaustionDisplay();

@@ -28,12 +28,12 @@ public class HealthBar : MonoBehaviour
     private CharacterSceneData sceneData;
     private Coroutine deferredUiRefresh;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         QueueDeferredUiRefresh();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         DndSaveManager.EnsureExists();
         DndSaveManager.Instance.EnsureActiveCharacter();
@@ -188,6 +188,9 @@ public class HealthBar : MonoBehaviour
 
     public void RefreshHealthFromData()
     {
+        if (DndSaveManager.Instance == null)
+            return;
+
         if (sceneData == null)
             sceneData = DndSaveManager.Instance.GetActiveSceneData();
 
@@ -217,6 +220,9 @@ public class HealthBar : MonoBehaviour
 
     private void SaveSceneData()
     {
+        if (DndSaveManager.Instance == null)
+            return;
+
         if (sceneData == null)
             sceneData = DndSaveManager.Instance.GetActiveSceneData();
 

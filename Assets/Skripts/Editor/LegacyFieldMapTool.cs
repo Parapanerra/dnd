@@ -261,9 +261,7 @@ public static class LegacyFieldMapTool
 
     private static bool IsManagedByHealthBar(Transform transform)
     {
-        return transform != null &&
-               (transform.GetComponentInParent<HealthBar>(true) != null ||
-                transform.GetComponentInParent<HealthBar1>(true) != null);
+        return transform != null && transform.GetComponentInParent<HealthBar>(true) != null;
     }
 
     private static bool IsDropdownTemplatePart(Transform transform)

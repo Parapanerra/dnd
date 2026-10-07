@@ -84,9 +84,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     private bool IsManagedByHealthBar(Transform transform)
     {
-        return transform != null &&
-               (transform.GetComponentInParent<HealthBar>(true) != null ||
-                transform.GetComponentInParent<HealthBar1>(true) != null);
+        return transform != null && transform.GetComponentInParent<HealthBar>(true) != null;
     }
 
     private void CacheCharacterNameField()
@@ -217,10 +215,6 @@ public class CharacterSceneAutoSave : MonoBehaviour
             if (healthBar != null)
                 healthBar.RefreshHealthFromData();
 
-        HealthBar1[] healthBarOnes = FindObjectsByType<HealthBar1>(FindObjectsInactive.Include);
-        foreach (HealthBar1 healthBar in healthBarOnes)
-            if (healthBar != null)
-                healthBar.RefreshHealthFromData();
     }
 
     public void SwitchSceneData(string newSceneName)
@@ -301,10 +295,6 @@ public class CharacterSceneAutoSave : MonoBehaviour
             if (healthBar != null)
                 healthBar.ResetHealth();
 
-        HealthBar1[] healthBarOnes = FindObjectsByType<HealthBar1>(FindObjectsInactive.Include);
-        foreach (HealthBar1 healthBar in healthBarOnes)
-            if (healthBar != null)
-                healthBar.ResetHealth();
     }
 
     private void EnsureCharacterPortraitManager()

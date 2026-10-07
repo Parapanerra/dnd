@@ -57,7 +57,6 @@ public class InventoryWithSubmenus : MonoBehaviour
         {
             resetButton.onClick.AddListener(() => {
                 ResetInventory();
-                SaveInventoryState();
                 LoadInventoryState(); // Мгновенно обновляем UI после сброса
             });
         }
@@ -162,6 +161,7 @@ public class InventoryWithSubmenus : MonoBehaviour
     private void LoadInventoryState()
     {
         CharacterSceneData sceneData = DndSaveManager.Instance.GetActiveSceneData();
+        Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites");
 
         foreach (var config in inventoryConfigs)
         {
@@ -171,8 +171,6 @@ public class InventoryWithSubmenus : MonoBehaviour
                 string spriteName = sceneData.GetString(key);
                 Debug.Log("Loading: " + key + " with sprite name: " + spriteName);
 
-                // Загрузка всех спрайтов из атласа
-                Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites");
                 Sprite loadedSprite = System.Array.Find(sprites, sprite => sprite.name == spriteName);
                 if (loadedSprite != null)
                 {

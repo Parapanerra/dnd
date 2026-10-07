@@ -1,0 +1,307 @@
+using System;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public static class CharacterRestService
+{
+    private const string RestResourceKeyPrefix = "RestResource_";
+
+    public static void Apply(bool isLongRest)
+    {
+        ApplyRestResources(isLongRest);
+        if (isLongRest)
+        {
+            ClearSpellSlots();
+            ReduceExhaustionByOne();
+            ClearDeathSaves();
+        }
+        SaveSceneAfterRest();
+        ApplyGlobalRestToSaveData(isLongRest);
+    }
+
+    private static void ApplyRestResources(bool isLongRest)
+    {
+        Transform resourceRoot = SceneRoleLookup.FindPanel(SceneRole.ClassResources, "resursClas");
+        if (resourceRoot == null)
+            return;
+
+        ClearPanelsByMarkers(resourceRoot, "WildShape", "ChannelDivinity", "KiPoints", "DragonBreath");
+
+        Transform bloodPanel = FindPanelByMarker(resourceRoot, "BloodCurse");
+        if (bloodPanel == null)
+            bloodPanel = FindDirectChild(resourceRoot, AppConfig.Calculator.BloodHunterPanelName);
+
+        if (bloodPanel != null)
+        {
+            ClearPanelToggles(bloodPanel, 0, AppConfig.Calculator.BloodHunterPrimaryToggleLastIndex);
+            if (isLongRest)
+                ClearPanelToggles(
+                    bloodPanel,
+                    AppConfig.Calculator.BloodHunterSecondaryToggleFirstIndex,
+                    AppConfig.Calculator.BloodHunterSecondaryToggleLastIndex);
+        }
+
+        if (isLongRest)
+            ClearPanelsByMarkers(resourceRoot, "Rage", "SorceryPoints", "Flight");
+    }
+
+    private static void ClearPanelsByMarkers(Transform resourceRoot, params string[] markerNames)
+    {
+        HashSet<Transform> clearedPanels = new HashSet<Transform>();
+        foreach (string markerName in markerNames)
+        {
+            Transform panel = FindPanelByMarker(resourceRoot, markerName);
+            if (panel != null && clearedPanels.Add(panel))
+                ClearPanelToggles(panel);
+        }
+    }
+
+    private static Transform FindPanelByMarker(Transform resourceRoot, string markerName)
+    {
+        if (Enum.TryParse(markerName, out SceneRole role))
+        {
+            SceneRoleMarker roleMarker = SceneRoleLookup.Find(role);
+            if (roleMarker != null)
+                return roleMarker.Panel;
+        }
+
+        if (resourceRoot == null)
+            return null;
+
+        foreach (Transform child in resourceRoot.GetComponentsInChildren<Transform>(true))
+            if (child != resourceRoot && NameMatches(child.name, markerName))
+                return child.parent;
+
+        return null;
+    }
+
+    private static Transform FindDirectChild(Transform parent, string childName)
+    {
+        if (parent == null)
+            return null;
+
+        foreach (Transform child in parent)
+            if (child != null && child.name.Equals(childName, StringComparison.OrdinalIgnoreCase))
+                return child;
+
+        return null;
+    }
+
+    private static void ReduceExhaustionByOne()
+    {
+        Transform exhaustionRoot = SceneRoleLookup.FindPanel(SceneRole.Exhaustion, "vtoma");
+        if (exhaustionRoot == null)
+            return;
+
+        List<Toggle> toggles = GetPanelToggles(
+            exhaustionRoot,
+            0,
+            AppConfig.Calculator.ExhaustionToggleLastIndex);
+        if (toggles.Count == 0)
+            return;
+
+        toggles.Sort((left, right) => GetToggleNumber(left.name).CompareTo(GetToggleNumber(right.name)));
+
+        int checkedCount = 0;
+        foreach (Toggle toggle in toggles)
+            if (toggle != null && toggle.isOn)
+                checkedCount++;
+
+        if (checkedCount <= 0)
+            return;
+
+        Toggle lastCheckedToggle = toggles[Mathf.Clamp(checkedCount - 1, 0, toggles.Count - 1)];
+        if (lastCheckedToggle != null)
+            lastCheckedToggle.isOn = false;
+    }
+
+    private static void ClearDeathSaves()
+    {
+        Transform deathRoot = SceneRoleLookup.FindPanel(SceneRole.DeathSaves, "deadChekBox");
+        if (deathRoot == null)
+            deathRoot = SceneRoleLookup.FindPanel(SceneRole.DeathSaves, "deadCheckBox");
+
+        if (deathRoot == null)
+            return;
+
+        ClearPanelToggles(deathRoot);
+    }
+
+    private static void ClearSpellSlots()
+    {
+        Transform spellSlotsRoot = SceneRoleLookup.FindPanel(SceneRole.SpellSlots, "spelChek");
+        if (spellSlotsRoot == null)
+            return;
+
+        ClearPanelToggles(spellSlotsRoot);
+    }
+
+    private static void ClearPanelToggles(Transform panel, int minToggleNumber = int.MinValue, int maxToggleNumber = int.MaxValue)
+    {
+        foreach (Toggle toggle in GetPanelToggles(panel, minToggleNumber, maxToggleNumber))
+            if (toggle != null)
+                toggle.isOn = false;
+    }
+
+    private static List<Toggle> GetPanelToggles(Transform panel, int minToggleNumber, int maxToggleNumber)
+    {
+        List<Toggle> toggles = new List<Toggle>();
+        if (panel == null)
+            return toggles;
+
+        foreach (Toggle toggle in panel.GetComponentsInChildren<Toggle>(true))
+        {
+            if (toggle == null || !NameMatches(toggle.name, "Toggle"))
+                continue;
+
+            int toggleNumber = GetToggleNumber(toggle.name);
+            if (toggleNumber < minToggleNumber || toggleNumber > maxToggleNumber)
+                continue;
+
+            if (IsInsideDropdown(toggle.transform, panel))
+                continue;
+
+            toggles.Add(toggle);
+        }
+
+        return toggles;
+    }
+
+    private static bool IsInsideDropdown(Transform transform, Transform stopAt)
+    {
+        Transform current = transform;
+        while (current != null && current != stopAt)
+        {
+            if (current.GetComponent<Dropdown>() != null || current.GetComponent<TMP_Dropdown>() != null)
+                return true;
+
+            current = current.parent;
+        }
+
+        return false;
+    }
+
+    private static int GetToggleNumber(string name)
+    {
+        int open = name.LastIndexOf('(');
+        int close = name.LastIndexOf(')');
+        if (open >= 0 && close > open && int.TryParse(name.Substring(open + 1, close - open - 1), out int number))
+            return number;
+
+        return 0;
+    }
+
+    private static bool NameMatches(string actualName, string expectedName)
+    {
+        return GetBaseName(actualName).Equals(expectedName, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static string GetBaseName(string name)
+    {
+        int suffixStart = name.LastIndexOf(" (", StringComparison.Ordinal);
+        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
+    }
+
+    private static void SaveSceneAfterRest()
+    {
+        CharacterSheetManagerScene1 sheetManager = UnityEngine.Object.FindAnyObjectByType<CharacterSheetManagerScene1>();
+        if (sheetManager != null)
+        {
+            sheetManager.SaveCharacterData();
+            return;
+        }
+
+        CharacterSceneAutoSave autoSave = UnityEngine.Object.FindAnyObjectByType<CharacterSceneAutoSave>();
+        if (autoSave != null)
+            autoSave.SaveSceneData();
+    }
+
+    private static void ApplyGlobalRestToSaveData(bool isLongRest)
+    {
+        DndSaveManager saveManager = DndSaveManager.EnsureExists();
+        CharacterData character = saveManager.EnsureActiveCharacter();
+        if (character == null || character.sceneStates == null)
+            return;
+
+        foreach (CharacterSceneData sceneData in character.sceneStates)
+        {
+            if (sceneData == null)
+                continue;
+
+            ClearSavedPanelsByMarkers(sceneData, "WildShape", "ChannelDivinity", "KiPoints", "DragonBreath");
+
+            string bloodPanelPath = GetRestPanelPath(sceneData, "BloodCurse");
+            ClearSavedPanelToggles(
+                sceneData,
+                bloodPanelPath,
+                "BloodCurse",
+                0,
+                AppConfig.Calculator.BloodHunterPrimaryToggleLastIndex);
+            if (isLongRest)
+                ClearSavedPanelToggles(
+                    sceneData,
+                    bloodPanelPath,
+                    "BloodCurse",
+                    AppConfig.Calculator.BloodHunterSecondaryToggleFirstIndex,
+                    AppConfig.Calculator.BloodHunterSecondaryToggleLastIndex);
+
+            if (!isLongRest)
+                continue;
+
+            RestoreSavedHealthBars(sceneData);
+            ClearSavedPanelsByMarkers(sceneData, "Rage", "SorceryPoints", "Flight");
+            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "SpellSlots"), "SpellSlots");
+            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "DeathSaves"), "DeathSaves");
+            // The current scene's toggles were already reduced and saved above.
+            if (sceneData != saveManager.GetActiveSceneData())
+                ReduceSavedExhaustionByOne(sceneData, GetRestPanelPath(sceneData, "Exhaustion"));
+        }
+
+        saveManager.SaveData();
+    }
+
+    private static void RestoreSavedHealthBars(CharacterSceneData sceneData)
+    {
+        if (sceneData == null || sceneData.intData == null)
+            return;
+
+        foreach (IntSaveEntry entry in sceneData.intData)
+        {
+            if (entry == null || string.IsNullOrEmpty(entry.key) || !entry.key.StartsWith("HealthBar_", StringComparison.Ordinal))
+                continue;
+
+            if (!entry.key.EndsWith("_maxHealth", StringComparison.Ordinal))
+                continue;
+
+            string prefix = entry.key.Substring(0, entry.key.Length - "maxHealth".Length);
+            sceneData.SetInt(prefix + "currentHealth", Mathf.Max(0, entry.value));
+            sceneData.SetInt(prefix + "maxTemporaryHealth", 0);
+            sceneData.SetInt(prefix + "currentTemporaryHealth", 0);
+        }
+    }
+
+    private static void ClearSavedPanelsByMarkers(CharacterSceneData sceneData, params string[] markerNames)
+    {
+        foreach (string markerName in markerNames)
+            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, markerName), markerName);
+    }
+
+    private static string GetRestPanelPath(CharacterSceneData sceneData, string markerName)
+    {
+        return sceneData != null ? sceneData.GetString(RestResourceKeyPrefix + markerName, "") : "";
+    }
+
+    private static void ClearSavedPanelToggles(CharacterSceneData sceneData, string panelPath, string role, int minToggleNumber = int.MinValue, int maxToggleNumber = int.MaxValue)
+    {
+        RestSavedToggleUpdater.Clear(sceneData, role, panelPath, minToggleNumber, maxToggleNumber);
+    }
+
+    private static void ReduceSavedExhaustionByOne(CharacterSceneData sceneData, string panelPath)
+    {
+        RestSavedToggleUpdater.ReduceExhaustionByOne(
+            sceneData, panelPath, AppConfig.Calculator.ExhaustionToggleLastIndex);
+    }
+
+}
