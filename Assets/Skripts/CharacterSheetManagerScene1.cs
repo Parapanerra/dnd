@@ -40,6 +40,9 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
     private void Start()
     {
+        if (!SceneManager.GetActiveScene().name.StartsWith(AppConfig.Scenes.CharacterSheet, StringComparison.Ordinal))
+            return;
+
         DndSaveManager saveManager = DndSaveManager.EnsureExists();
 
         currentCharacter = saveManager.EnsureActiveCharacter();
@@ -402,45 +405,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
     private void SaveRestResourceMarkers()
     {
-        if (currentSceneData == null)
-            return;
-
-        SaveMarkerParent("Rage");
-        SaveMarkerParent("WildShape");
-        SaveMarkerParent("ChannelDivinity");
-        SaveMarkerParent("KiPoints");
-        SaveMarkerParent("SorceryPoints");
-        SaveMarkerParent("BloodCurse");
-        SaveMarkerParent("DragonBreath");
-        SaveMarkerParent("Flight");
-        SaveNamedPanel("SpellSlots", "spelChek");
-        SaveNamedPanel("Exhaustion", "vtoma");
-        SaveNamedPanel("DeathSaves", "deadChekBox");
-        SaveNamedPanel("DeathSaves", "deadCheckBox");
-    }
-
-    private void SaveMarkerParent(string markerName)
-    {
-        Transform marker = FindTransformByBaseName(markerName);
-        if (marker != null && marker.parent != null)
-            currentSceneData.SetString(RestResourceKeyPrefix + markerName, GetControlPath(marker.parent));
-    }
-
-    private void SaveNamedPanel(string keyName, string objectName)
-    {
-        Transform panel = FindTransformByBaseName(objectName);
-        if (panel != null)
-            currentSceneData.SetString(RestResourceKeyPrefix + keyName, GetControlPath(panel));
-    }
-
-    private Transform FindTransformByBaseName(string objectName)
-    {
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
-        foreach (Transform item in transforms)
-            if (item != null && GetBaseName(item.name).Equals(objectName, StringComparison.OrdinalIgnoreCase))
-                return item;
-
-        return null;
+        SceneRoleLookup.SaveRestResourcePaths(currentSceneData);
     }
 
     private void LoadSharedCharacterInputs()
@@ -659,6 +624,10 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
     {
         if (button == null)
             return false;
+
+        SceneRoleMarker marker = button.GetComponent<SceneRoleMarker>();
+        if (marker != null)
+            return marker.role == SceneRole.ResetScene;
 
         string name = button.gameObject.name.ToLowerInvariant();
         return name.Contains("resetseve") ||

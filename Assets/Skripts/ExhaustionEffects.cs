@@ -12,15 +12,13 @@ public static class ExhaustionEffects
     {
         get
         {
+            SceneRoleMarker exhaustionMarker = SceneRoleLookup.Find(SceneRole.Exhaustion);
+            if (exhaustionMarker != null)
+                return CountExhaustionToggles(exhaustionMarker.Panel);
+
             foreach (Transform item in UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include))
                 if (item.name == "vtoma")
-                {
-                    int count = 0;
-                    foreach (Toggle toggle in item.GetComponentsInChildren<Toggle>(true))
-                        if (toggle.name.StartsWith("Toggle", StringComparison.Ordinal) && toggle.isOn)
-                            count++;
-                    return Mathf.Clamp(count, 0, 6);
-                }
+                    return CountExhaustionToggles(item);
 
             CharacterData character = DndSaveManager.Instance?.GetActiveCharacter();
             if (character != null)
@@ -36,6 +34,15 @@ public static class ExhaustionEffects
                 }
             return 0;
         }
+    }
+
+    private static int CountExhaustionToggles(Transform panel)
+    {
+        int count = 0;
+        foreach (Toggle toggle in panel.GetComponentsInChildren<Toggle>(true))
+            if (toggle.name.StartsWith("Toggle", StringComparison.Ordinal) && toggle.isOn)
+                count++;
+        return Mathf.Clamp(count, 0, 6);
     }
 
     public static bool IsD20Roll(string expression)

@@ -246,7 +246,7 @@ public class HealthBar : MonoBehaviour
         }
 
         if (temporaryHealthSlider == null)
-            temporaryHealthSlider = FindSliderByName("folslive");
+            temporaryHealthSlider = FindTemporaryHealthSlider();
 
         if (temporaryHealthSlider != null)
         {
@@ -397,6 +397,15 @@ public class HealthBar : MonoBehaviour
         }
 
         return null;
+    }
+
+    private Slider FindTemporaryHealthSlider()
+    {
+        SceneRoleMarker marker = SceneRoleLookup.Find(SceneRole.TemporaryHealth);
+        if (marker != null)
+            return marker.GetComponent<Slider>() ?? marker.GetComponentInChildren<Slider>(true);
+
+        return FindSliderByName("folslive");
     }
 
     private Text FindTemporaryHealthText()

@@ -333,6 +333,10 @@ public class CharacterSceneAutoSave : MonoBehaviour
         if (button == null)
             return false;
 
+        SceneRoleMarker marker = button.GetComponent<SceneRoleMarker>();
+        if (marker != null)
+            return marker.role == SceneRole.ResetScene;
+
         string name = button.gameObject.name.ToLowerInvariant();
         return name.Contains("resetseve") ||
                name.Contains("reset save") ||
@@ -380,45 +384,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     private void SaveRestResourceMarkers()
     {
-        if (sceneData == null)
-            return;
-
-        SaveMarkerParent("Rage");
-        SaveMarkerParent("WildShape");
-        SaveMarkerParent("ChannelDivinity");
-        SaveMarkerParent("KiPoints");
-        SaveMarkerParent("SorceryPoints");
-        SaveMarkerParent("BloodCurse");
-        SaveMarkerParent("DragonBreath");
-        SaveMarkerParent("Flight");
-        SaveNamedPanel("SpellSlots", "spelChek");
-        SaveNamedPanel("Exhaustion", "vtoma");
-        SaveNamedPanel("DeathSaves", "deadChekBox");
-        SaveNamedPanel("DeathSaves", "deadCheckBox");
-    }
-
-    private void SaveMarkerParent(string markerName)
-    {
-        Transform marker = FindTransformByBaseName(markerName);
-        if (marker != null && marker.parent != null)
-            sceneData.SetString(RestResourceKeyPrefix + markerName, GetControlPath(marker.parent));
-    }
-
-    private void SaveNamedPanel(string keyName, string objectName)
-    {
-        Transform panel = FindTransformByBaseName(objectName);
-        if (panel != null)
-            sceneData.SetString(RestResourceKeyPrefix + keyName, GetControlPath(panel));
-    }
-
-    private Transform FindTransformByBaseName(string objectName)
-    {
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
-        foreach (Transform item in transforms)
-            if (item != null && GetBaseName(item.name).Equals(objectName, StringComparison.OrdinalIgnoreCase))
-                return item;
-
-        return null;
+        SceneRoleLookup.SaveRestResourcePaths(sceneData);
     }
 
     private void LoadSharedCharacterInputs()

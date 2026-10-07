@@ -9,7 +9,6 @@ using TMPro;
 public class CalculatorManager : MonoBehaviour
 {
     private const string PotionSaveKeyPrefix = "PotionCount_";
-    private const string ToggleKeyPrefix = "Toggle_";
     private const string RestResourceKeyPrefix = "RestResource_";
     private const string EasterEgg67CountKey = "Calculator.EasterEgg67.Count";
 
@@ -936,7 +935,7 @@ public class CalculatorManager : MonoBehaviour
 
     private void ApplyRestResources(bool isLongRest)
     {
-        Transform resourceRoot = FindSceneTransformByName("resursClas");
+        Transform resourceRoot = SceneRoleLookup.FindPanel(SceneRole.ClassResources, "resursClas");
         if (resourceRoot == null)
             return;
 
@@ -973,6 +972,13 @@ public class CalculatorManager : MonoBehaviour
 
     private Transform FindPanelByMarker(Transform resourceRoot, string markerName)
     {
+        if (Enum.TryParse(markerName, out SceneRole role))
+        {
+            SceneRoleMarker roleMarker = SceneRoleLookup.Find(role);
+            if (roleMarker != null)
+                return roleMarker.Panel;
+        }
+
         if (resourceRoot == null)
             return null;
 
@@ -997,7 +1003,7 @@ public class CalculatorManager : MonoBehaviour
 
     private void ReduceExhaustionByOne()
     {
-        Transform exhaustionRoot = FindSceneTransformByName("vtoma");
+        Transform exhaustionRoot = SceneRoleLookup.FindPanel(SceneRole.Exhaustion, "vtoma");
         if (exhaustionRoot == null)
             return;
 
@@ -1025,9 +1031,9 @@ public class CalculatorManager : MonoBehaviour
 
     private void ClearDeathSaves()
     {
-        Transform deathRoot = FindSceneTransformByName("deadChekBox");
+        Transform deathRoot = SceneRoleLookup.FindPanel(SceneRole.DeathSaves, "deadChekBox");
         if (deathRoot == null)
-            deathRoot = FindSceneTransformByName("deadCheckBox");
+            deathRoot = SceneRoleLookup.FindPanel(SceneRole.DeathSaves, "deadCheckBox");
 
         if (deathRoot == null)
             return;
@@ -1037,7 +1043,7 @@ public class CalculatorManager : MonoBehaviour
 
     private void ClearSpellSlots()
     {
-        Transform spellSlotsRoot = FindSceneTransformByName("spelChek");
+        Transform spellSlotsRoot = SceneRoleLookup.FindPanel(SceneRole.SpellSlots, "spelChek");
         if (spellSlotsRoot == null)
             return;
 
@@ -1152,12 +1158,14 @@ public class CalculatorManager : MonoBehaviour
             ClearSavedPanelToggles(
                 sceneData,
                 bloodPanelPath,
+                "BloodCurse",
                 0,
                 AppConfig.Calculator.BloodHunterPrimaryToggleLastIndex);
             if (isLongRest)
                 ClearSavedPanelToggles(
                     sceneData,
                     bloodPanelPath,
+                    "BloodCurse",
                     AppConfig.Calculator.BloodHunterSecondaryToggleFirstIndex,
                     AppConfig.Calculator.BloodHunterSecondaryToggleLastIndex);
 
@@ -1166,8 +1174,8 @@ public class CalculatorManager : MonoBehaviour
 
             RestoreSavedHealthBars(sceneData);
             ClearSavedPanelsByMarkers(sceneData, "Rage", "SorceryPoints", "Flight");
-            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "SpellSlots"));
-            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "DeathSaves"));
+            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "SpellSlots"), "SpellSlots");
+            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "DeathSaves"), "DeathSaves");
             // The current scene's toggles were already reduced and saved above.
             if (sceneData != saveManager.GetActiveSceneData())
                 ReduceSavedExhaustionByOne(sceneData, GetRestPanelPath(sceneData, "Exhaustion"));
@@ -1199,7 +1207,7 @@ public class CalculatorManager : MonoBehaviour
     private void ClearSavedPanelsByMarkers(CharacterSceneData sceneData, params string[] markerNames)
     {
         foreach (string markerName in markerNames)
-            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, markerName));
+            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, markerName), markerName);
     }
 
     private string GetRestPanelPath(CharacterSceneData sceneData, string markerName)
@@ -1207,54 +1215,15 @@ public class CalculatorManager : MonoBehaviour
         return sceneData != null ? sceneData.GetString(RestResourceKeyPrefix + markerName, "") : "";
     }
 
-    private void ClearSavedPanelToggles(CharacterSceneData sceneData, string panelPath, int minToggleNumber = int.MinValue, int maxToggleNumber = int.MaxValue)
+    private void ClearSavedPanelToggles(CharacterSceneData sceneData, string panelPath, string role, int minToggleNumber = int.MinValue, int maxToggleNumber = int.MaxValue)
     {
-        if (sceneData == null || string.IsNullOrEmpty(panelPath) || sceneData.intData == null)
-            return;
-
-        string prefix = ToggleKeyPrefix + panelPath + "/";
-        foreach (IntSaveEntry entry in sceneData.intData)
-        {
-            if (entry == null || string.IsNullOrEmpty(entry.key) || !entry.key.StartsWith(prefix, StringComparison.Ordinal))
-                continue;
-
-            int toggleNumber = GetToggleNumber(entry.key);
-            if (toggleNumber < minToggleNumber || toggleNumber > maxToggleNumber)
-                continue;
-
-            entry.value = 0;
-        }
+        RestSavedToggleUpdater.Clear(sceneData, role, panelPath, minToggleNumber, maxToggleNumber);
     }
 
     private void ReduceSavedExhaustionByOne(CharacterSceneData sceneData, string panelPath)
     {
-        if (sceneData == null || string.IsNullOrEmpty(panelPath) || sceneData.intData == null)
-            return;
-
-        string prefix = ToggleKeyPrefix + panelPath + "/";
-        List<IntSaveEntry> entries = new List<IntSaveEntry>();
-        foreach (IntSaveEntry entry in sceneData.intData)
-        {
-            if (entry == null || string.IsNullOrEmpty(entry.key) || !entry.key.StartsWith(prefix, StringComparison.Ordinal))
-                continue;
-
-            int toggleNumber = GetToggleNumber(entry.key);
-            if (toggleNumber >= 0 &&
-                toggleNumber <= AppConfig.Calculator.ExhaustionToggleLastIndex)
-                entries.Add(entry);
-        }
-
-        entries.Sort((left, right) => GetToggleNumber(left.key).CompareTo(GetToggleNumber(right.key)));
-
-        int checkedCount = 0;
-        foreach (IntSaveEntry entry in entries)
-            if (entry.value != 0)
-                checkedCount++;
-
-        if (checkedCount <= 0)
-            return;
-
-        entries[Mathf.Clamp(checkedCount - 1, 0, entries.Count - 1)].value = 0;
+        RestSavedToggleUpdater.ReduceExhaustionByOne(
+            sceneData, panelPath, AppConfig.Calculator.ExhaustionToggleLastIndex);
     }
 
     private void ResetHpInputState()

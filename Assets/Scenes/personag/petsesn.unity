@@ -21726,6 +21726,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2231191928279417278, guid: 797ba16944120114ca6a581d9e9f471c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1690956320}
+    - targetCorrespondingSourceObject: {fileID: 7043224815060841201, guid: 797ba16944120114ca6a581d9e9f471c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4802684799962398125}
   m_SourcePrefab: {fileID: 100100000, guid: 797ba16944120114ca6a581d9e9f471c, type: 3}
 --- !u!224 &4802684799962398122 stripped
 RectTransform:
@@ -21737,6 +21740,25 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 244619186337295590, guid: 797ba16944120114ca6a581d9e9f471c, type: 3}
   m_PrefabInstance: {fileID: 4802684799962398121}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4802684799962398124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7043224815060841201, guid: 797ba16944120114ca6a581d9e9f471c, type: 3}
+  m_PrefabInstance: {fileID: 4802684799962398121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4802684799962398125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4802684799962398124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c74559a4c15431995fa407aaef5a0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneRoleMarker
+  role: 13
+  useParentAsPanel: 0
 --- !u!114 &4809715580423495718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26891,6 +26913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5115729053216642491}
+  - component: {fileID: 6683079830723981697}
   m_Layer: 0
   m_Name: deadChekBox
   m_TagString: Untagged
@@ -26898,6 +26921,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6683079830723981697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683079830723981696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c74559a4c15431995fa407aaef5a0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneRoleMarker
+  role: 10
+  useParentAsPanel: 0
 --- !u!1 &6739701857452425664
 GameObject:
   m_ObjectHideFlags: 0
