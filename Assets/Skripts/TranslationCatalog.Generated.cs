@@ -1,4 +1,4 @@
-public partial class RuntimeLocalization
+public partial class TranslationCatalog
 {
     partial void BuildGeneratedTranslations()
     {

@@ -9,8 +9,7 @@ public class DndSaveManager : MonoBehaviour
     public static DndSaveManager Instance { get; private set; }
 
     public AppSaveData saveData;
-    private string pendingSceneDataName;
-    private string currentSceneDataName;
+    private readonly CharacterSceneContext sceneContext = new CharacterSceneContext();
     private float lastCreateCharacterTime = -AppConfig.SaveData.CharacterCreateDebounceSeconds;
 
     private string FilePath => Path.Combine(Application.persistentDataPath, "DndCharactersData.taruck-data");
@@ -140,24 +139,8 @@ public class DndSaveManager : MonoBehaviour
 
         try
         {
-            TaruckDataValidator.Validate(imported);
-            // Clone before assigning anything to the running session.
-            AppSaveData candidate = TaruckBinaryCodec.DecodeFullSave(
-                TaruckBinaryCodec.EncodeFullSave(merge ? saveData : imported, Application.version));
-            if (merge)
-            {
-                foreach (CharacterData source in imported.characters)
-                {
-                    CharacterData copy = TaruckBinaryCodec.DecodeCharacterExport(
-                        TaruckBinaryCodec.EncodeCharacterExport(source, Application.version));
-                    if (candidate.characters.Exists(item => item.id == copy.id))
-                        copy.id = Guid.NewGuid().ToString();
-                    candidate.characters.Add(copy);
-                }
-                if (string.IsNullOrEmpty(candidate.lastActiveCharacterId) && candidate.characters.Count > 0)
-                    candidate.lastActiveCharacterId = candidate.characters[0].id;
-            }
-            TaruckDataValidator.Validate(candidate);
+            AppSaveData candidate = CharacterCollectionImportService.Prepare(
+                saveData, imported, merge, Application.version);
             if (File.Exists(FilePath))
                 File.Copy(FilePath, FilePath + ".preimport.bak", true);
             TaruckLocalRepository.Save(FilePath, candidate, Application.version);
@@ -187,20 +170,14 @@ public class DndSaveManager : MonoBehaviour
 
         lastCreateCharacterTime = Time.unscaledTime;
 
-        string newId = Guid.NewGuid().ToString();
-        CharacterData newChar = new CharacterData(newId);
-        newChar.characterName = "Новий персонаж " + (saveData.characters.Count + 1);
-        newChar.maxHealth = 0;
-        newChar.currentHealth = 0;
-        saveData.characters.Add(newChar);
-        saveData.lastActiveCharacterId = newId;
+        CharacterData newChar = CharacterCollectionService.Create(saveData);
         SaveData();
         return newChar;
     }
 
     public CharacterData GetCharacter(string id)
     {
-        return saveData.characters.Find(c => c.id == id);
+        return CharacterCollectionService.Find(saveData, id);
     }
 
     public bool SetActiveCharacter(string id)
@@ -212,7 +189,7 @@ public class DndSaveManager : MonoBehaviour
             return false;
         }
 
-        saveData.lastActiveCharacterId = id;
+        CharacterCollectionService.Select(saveData, id);
         SaveData();
         Debug.Log("Active DnD character: " + character.characterName + " (" + id + ")");
         return true;
@@ -220,15 +197,8 @@ public class DndSaveManager : MonoBehaviour
     
     public void DeleteCharacter(string id)
     {
-        var charToDelete = GetCharacter(id);
-        if (charToDelete != null)
+        if (CharacterCollectionService.Delete(saveData, id))
         {
-            saveData.characters.Remove(charToDelete);
-            if (saveData.lastActiveCharacterId == id)
-            {
-                saveData.lastActiveCharacterId = saveData.characters.Count > 0 ? saveData.characters[0].id : "";
-            }
-
             SaveData();
         }
     }
@@ -302,50 +272,22 @@ public class DndSaveManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        currentSceneDataName = !string.IsNullOrWhiteSpace(pendingSceneDataName) ? pendingSceneDataName : scene.name;
-        pendingSceneDataName = "";
-
-        if (!IsCharacterSheetScene(scene.name))
-            return;
-
-        if (FindAnyObjectByType<CharacterSheetManagerScene1>() != null)
-            return;
-
-        CharacterSceneAutoSave autoSave = FindAnyObjectByType<CharacterSceneAutoSave>();
-        if (autoSave == null)
-        {
-            GameObject autoSaveObject = new GameObject("CharacterSceneAutoSave");
-            autoSaveObject.AddComponent<CharacterSceneAutoSave>();
-        }
-    }
-
-    private bool IsCharacterSheetScene(string sceneName)
-    {
-        return sceneName.Contains("cartaPersonaj") ||
-               sceneName.Contains("inventory") ||
-               sceneName.Contains("informForPerson") ||
-               sceneName.Contains("Spels") ||
-               sceneName.Contains("spelBook") ||
-               sceneName.Contains("petsesn");
+        sceneContext.OnSceneLoaded(scene);
     }
 
     public void SetPendingSceneDataName(string sceneName)
     {
-        pendingSceneDataName = sceneName;
+        sceneContext.SetPendingSceneDataName(sceneName);
     }
 
     public void SetActiveSceneDataName(string sceneName)
     {
-        if (!string.IsNullOrWhiteSpace(sceneName))
-            currentSceneDataName = sceneName;
+        sceneContext.SetActiveSceneDataName(sceneName);
     }
 
     public string GetActiveSceneDataName()
     {
-        if (!string.IsNullOrWhiteSpace(currentSceneDataName))
-            return currentSceneDataName;
-
-        return SceneManager.GetActiveScene().name;
+        return sceneContext.GetActiveSceneDataName();
     }
 
     public void NormalizeSaveData()

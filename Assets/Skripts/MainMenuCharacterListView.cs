@@ -21,12 +21,113 @@ public class MainMenuCharacterListView : MonoBehaviour
         owner = manager;
     }
 
+    public void EnsureEditableCharacterScrollView()
+    {
+        if (owner == null)
+            return;
+
+        Transform parent = owner.transform.parent != null ? owner.transform.parent : owner.transform;
+        Transform existingScrollView = parent.Find("CharacterRowsScrollView");
+        if (existingScrollView != null)
+        {
+            WireEditableCharacterScrollView(existingScrollView);
+            return;
+        }
+
+        GameObject scrollView = RuntimeUiFactory.CreateElement(RuntimeUiElementSpec.Create(
+            "CharacterRowsScrollView",
+            parent,
+            AppConfig.MainMenu.CenterAnchor,
+            AppConfig.MainMenu.CharacterScrollPosition,
+            AppConfig.MainMenu.CharacterScrollSize));
+        Image scrollImage = scrollView.AddComponent<Image>();
+        scrollImage.color = AppConfig.MainMenu.Transparent;
+        scrollImage.raycastTarget = false;
+        ScrollRect scrollRect = scrollView.AddComponent<ScrollRect>();
+        scrollRect.horizontal = false;
+        scrollRect.vertical = true;
+        scrollRect.movementType = ScrollRect.MovementType.Clamped;
+
+        GameObject viewport = RuntimeUiFactory.CreateElement(RuntimeUiElementSpec.Create(
+            "Viewport",
+            scrollView.transform,
+            AppConfig.MainMenu.CenterAnchor,
+            Vector2.zero,
+            AppConfig.MainMenu.CharacterScrollSize));
+        Image viewportImage = viewport.AddComponent<Image>();
+        viewportImage.color = AppConfig.MainMenu.Transparent;
+        viewportImage.raycastTarget = false;
+        Mask mask = viewport.AddComponent<Mask>();
+        mask.showMaskGraphic = false;
+
+        GameObject content = RuntimeUiFactory.CreateElement(RuntimeUiElementSpec.Create(
+            "RowsContent",
+            viewport.transform,
+            AppConfig.MainMenu.TopCenterAnchor,
+            Vector2.zero,
+            AppConfig.MainMenu.CharacterScrollSize));
+        GameObject rowTemplate = CreateDefaultCharacterRowTemplate(content.transform);
+        GameObject addButtonObject = RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
+            "AddCharacterButton",
+            scrollView.transform,
+            AppConfig.MainMenu.AddButtonPosition,
+            AppConfig.MainMenu.AddButtonSize,
+            "Додати персонажа"));
+
+        scrollRect.viewport = viewport.GetComponent<RectTransform>();
+        scrollRect.content = content.GetComponent<RectTransform>();
+
+        owner.characterRowsContent = content.transform;
+        owner.characterRowTemplate = rowTemplate;
+        owner.addCharacterButton = addButtonObject.GetComponent<Button>();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorUtility.SetDirty(owner);
+        UnityEditor.EditorUtility.SetDirty(scrollView);
+        UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(owner.gameObject.scene);
+#endif
+    }
+
+    private void WireEditableCharacterScrollView(Transform scrollView)
+    {
+        Transform viewport = scrollView.Find("Viewport");
+        Transform content = viewport != null ? viewport.Find("RowsContent") : scrollView.Find("RowsContent");
+        Transform rowTemplate = content != null ? content.Find("CharacterRowTemplate") : null;
+        Transform addButton = scrollView.Find("AddCharacterButton");
+
+        if (content != null)
+            owner.characterRowsContent = content;
+        if (rowTemplate != null)
+            owner.characterRowTemplate = rowTemplate.gameObject;
+        if (addButton != null)
+            owner.addCharacterButton = addButton.GetComponent<Button>();
+    }
+
+    private GameObject CreateDefaultCharacterRowTemplate(Transform parent)
+    {
+        GameObject row = RuntimeUiFactory.CreateElement(RuntimeUiElementSpec.Create(
+            "CharacterRowTemplate",
+            parent,
+            AppConfig.MainMenu.TopCenterAnchor,
+            Vector2.zero,
+            AppConfig.MainMenu.CharacterRowSize));
+        RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
+            "InventoryButton", row.transform, AppConfig.MainMenu.InventoryButtonPosition, AppConfig.MainMenu.RowActionButtonSize, "I"));
+        RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
+            "CharacterButton", row.transform, AppConfig.MainMenu.CharacterButtonPosition, AppConfig.MainMenu.CharacterNameButtonSize, "Персонаж №1"));
+        RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
+            "SpellsButton", row.transform, AppConfig.MainMenu.SpellsButtonPosition, AppConfig.MainMenu.RowActionButtonSize, "S"));
+        RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
+            "DeleteButton", row.transform, AppConfig.MainMenu.DeleteRowButtonPosition, AppConfig.MainMenu.RowActionButtonSize, "X"));
+        return row;
+    }
+
     public void Wire()
     {
-        ScrollRect menuScroll = owner.FindScrollRectInScene("menukart");
+        ScrollRect menuScroll = MainMenuSceneLookup.FindScrollRectInScene("menukart");
         if (menuScroll == null || menuScroll.content == null)
         {
-            Button addButton = owner.FindButtonInScene("newpersonajbaton");
+            Button addButton = MainMenuSceneLookup.FindButtonInScene("newpersonajbaton");
             if (addButton != null)
                 owner.addCharacterButton = addButton;
 
@@ -38,16 +139,16 @@ public class MainMenuCharacterListView : MonoBehaviour
         userMenuRoot = menuScroll.transform;
         userMenuContent = menuScroll.content;
 
-        userCharacterButtonTemplate = owner.FindButtonUnder(userMenuContent, "kartaPerson (1)");
+        userCharacterButtonTemplate = MainMenuSceneLookup.FindButtonUnder(userMenuContent, "kartaPerson (1)");
         if (userCharacterButtonTemplate == null)
-            userCharacterButtonTemplate = owner.FindFirstDirectButtonInContent(userMenuContent);
+            userCharacterButtonTemplate = MainMenuSceneLookup.FindFirstDirectButtonInContent(userMenuContent);
 
-        Button contentAddButton = owner.FindButtonUnder(userMenuContent, "newpersonajbaton");
+        Button contentAddButton = MainMenuSceneLookup.FindButtonUnder(userMenuContent, "newpersonajbaton");
         if (contentAddButton != null)
             owner.addCharacterButton = contentAddButton;
         else
         {
-            Button addButton = owner.FindButtonInScene("newpersonajbaton");
+            Button addButton = MainMenuSceneLookup.FindButtonInScene("newpersonajbaton");
             if (addButton != null)
                 owner.addCharacterButton = addButton;
         }
@@ -122,22 +223,22 @@ public class MainMenuCharacterListView : MonoBehaviour
         if (characterButton == null)
             return;
 
-        Button inventoryButton = owner.FindButtonUnder(characterButton.transform, "spellbook");
-        Button spellsButton = owner.FindFirstButtonUnder(characterButton.transform, "invetory", "inventory");
-        Button deleteButton = owner.FindButtonUnder(characterButton.transform, "DeleteButton");
+        Button inventoryButton = MainMenuSceneLookup.FindButtonUnder(characterButton.transform, "spellbook");
+        Button spellsButton = MainMenuSceneLookup.FindFirstButtonUnder(characterButton.transform, "invetory", "inventory");
+        Button deleteButton = MainMenuSceneLookup.FindButtonUnder(characterButton.transform, "DeleteButton");
 
         Text nameText = FindCharacterNameText(characterButton);
         if (nameText != null)
             IgnoreLocalizationForDynamicText(nameText.gameObject);
 
         if (nameText != null)
-            nameText.text = owner.GetMenuCharacterName(character);
+            nameText.text = MainMenuCharacterLabels.GetDisplayName(character);
 
         string characterId = character.id;
-        owner.BindButton(characterButton, () => owner.OnCharacterSelected(characterId));
-        owner.BindButton(inventoryButton, () => owner.OnInventorySelected(characterId));
-        owner.BindButton(spellsButton, () => owner.OnSpellbookSelected(characterId));
-        owner.BindButton(deleteButton, () =>
+        MainMenuSceneLookup.BindButton(characterButton, () => owner.OnCharacterSelected(characterId));
+        MainMenuSceneLookup.BindButton(inventoryButton, () => owner.OnInventorySelected(characterId));
+        MainMenuSceneLookup.BindButton(spellsButton, () => owner.OnSpellbookSelected(characterId));
+        MainMenuSceneLookup.BindButton(deleteButton, () =>
         {
             DndSaveManager.Instance.DeleteCharacter(characterId);
             owner.RefreshCharacterList();
@@ -239,7 +340,7 @@ public class MainMenuCharacterListView : MonoBehaviour
     {
         Button[] buttons = cloneRoot.GetComponentsInChildren<Button>(true);
         foreach (Button button in buttons)
-            if (button != null && owner.NamesMatch(button.gameObject.name, "newpersonajbaton"))
+            if (button != null && MainMenuSceneLookup.Matches(button.gameObject.name, "newpersonajbaton"))
                 Destroy(button.gameObject);
     }
 
@@ -490,13 +591,13 @@ public class MainMenuCharacterListView : MonoBehaviour
             ? characterButton.GetComponentInChildren<Text>(true)
             : row.GetComponentInChildren<Text>(true);
         if (nameText != null)
-            nameText.text = owner.GetMenuCharacterName(character);
+            nameText.text = MainMenuCharacterLabels.GetDisplayName(character);
 
         string characterId = character.id;
-        owner.BindButton(characterButton, () => owner.OnCharacterSelected(characterId));
-        owner.BindButton(inventoryButton, () => owner.OnInventorySelected(characterId));
-        owner.BindButton(spellsButton, () => owner.OnSpellbookSelected(characterId));
-        owner.BindButton(deleteButton, () =>
+        MainMenuSceneLookup.BindButton(characterButton, () => owner.OnCharacterSelected(characterId));
+        MainMenuSceneLookup.BindButton(inventoryButton, () => owner.OnInventorySelected(characterId));
+        MainMenuSceneLookup.BindButton(spellsButton, () => owner.OnSpellbookSelected(characterId));
+        MainMenuSceneLookup.BindButton(deleteButton, () =>
         {
             DndSaveManager.Instance.DeleteCharacter(characterId);
             owner.RefreshCharacterList();
@@ -685,7 +786,7 @@ public class MainMenuCharacterListView : MonoBehaviour
         if (btnText == null)
             btnText = CreateButtonText(btnObj.transform, "CharacterName", TextAnchor.MiddleLeft);
 
-        btnText.text = owner.GetMenuCharacterName(character, "Невідомий персонаж");
+        btnText.text = MainMenuCharacterLabels.GetDisplayName(character, "Невідомий персонаж");
         if (owner.applyDefaultCharacterButtonStyle)
         {
             btnText.color = Color.white;

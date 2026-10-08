@@ -27,23 +27,23 @@ public class DeathSaveToggleSequence : MonoBehaviour
             }
 
             SceneRoleMarker roleMarker = transform.GetComponent<SceneRoleMarker>();
-            if (roleMarker != null ? roleMarker.role == SceneRole.Exhaustion : NameMatches(transform.name, "vtoma"))
+            if (roleMarker != null ? roleMarker.role == SceneRole.Exhaustion : SceneObjectName.Matches(transform.name, "vtoma"))
                 ConfigureGroup(transform, true, false);
 
-            if (roleMarker != null ? roleMarker.role == SceneRole.SpellSlots : NameMatches(transform.name, "spelChek"))
+            if (roleMarker != null ? roleMarker.role == SceneRole.SpellSlots : SceneObjectName.Matches(transform.name, "spelChek"))
                 ConfigureSpellCheckGroups(transform);
 
-            if (NameMatches(transform.name, "artefactsNavuk"))
+            if (SceneObjectName.Matches(transform.name, "artefactsNavuk"))
                 ConfigureArtifactSkillGroups(
                     transform,
                     AppConfig.ToggleSequences.ArtifactSkillMaximumToggle);
 
-            if (NameMatches(transform.name, "artefactInfuz"))
+            if (SceneObjectName.Matches(transform.name, "artefactInfuz"))
                 ConfigureArtifactSkillGroups(
                     transform,
                     AppConfig.ToggleSequences.ArtifactInfusionMaximumToggle);
 
-            if (NameMatches(transform.name, "resursClas"))
+            if (SceneObjectName.Matches(transform.name, "resursClas"))
             {
                 ConfigureExactOrBaseChildGroup(transform, "Panel", true, false);
                 ConfigureExactOrBaseChildGroup(transform, "Panel (1)", true, false);
@@ -64,7 +64,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
     private static void ConfigureSpellCheckGroups(Transform container)
     {
         foreach (Transform child in container)
-            if (NameMatches(child.name, "uspih"))
+            if (SceneObjectName.Matches(child.name, "uspih"))
                 ConfigureGroup(
                     child,
                     true,
@@ -76,7 +76,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
     private static void ConfigureArtifactSkillGroups(Transform container, int maxToggleNumber)
     {
         foreach (Transform child in container.GetComponentsInChildren<Transform>(true))
-            if (child != container && (NameMatches(child.name, "tongle") || NameMatches(child.name, "tonggle")))
+            if (child != container && (SceneObjectName.Matches(child.name, "tongle") || SceneObjectName.Matches(child.name, "tonggle")))
                 ConfigureGroup(child, true, false, maxToggleNumber, null, "Togglespaspaw");
     }
 
@@ -84,7 +84,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
     {
         foreach (Transform child in container)
         {
-            if (!NameMatches(child.name, groupName))
+            if (!SceneObjectName.Matches(child.name, groupName))
                 continue;
 
             ConfigureGroup(child, ascending, false);
@@ -190,7 +190,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
         }
 
         SceneRoleMarker marker = GetComponent<SceneRoleMarker>();
-        if (marker != null ? marker.role == SceneRole.Exhaustion : NameMatches(name, "vtoma"))
+        if (marker != null ? marker.role == SceneRole.Exhaustion : SceneObjectName.Matches(name, "vtoma"))
             ExhaustionEffects.Apply(count);
     }
 
@@ -244,7 +244,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
 
     private static bool IsSequenceToggle(Toggle toggle, Transform groupRoot, int maxToggleNumber, string toggleBaseName = "Toggle")
     {
-        if (toggle == null || !NameMatches(toggle.name, toggleBaseName))
+        if (toggle == null || !SceneObjectName.Matches(toggle.name, toggleBaseName))
             return false;
 
         if (GetToggleNumber(toggle.name) > maxToggleNumber)
@@ -264,17 +264,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
 
     private static bool IsDeathCheckContainer(string name)
     {
-        return NameMatches(name, "deadChekBox") || NameMatches(name, "deadCheckBox");
+        return SceneObjectName.Matches(name, "deadChekBox") || SceneObjectName.Matches(name, "deadCheckBox");
     }
 
-    private static bool NameMatches(string actualName, string expectedName)
-    {
-        return GetBaseName(actualName).Equals(expectedName, StringComparison.OrdinalIgnoreCase);
-    }
-
-    private static string GetBaseName(string name)
-    {
-        int suffixStart = name.LastIndexOf(" (", StringComparison.Ordinal);
-        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
-    }
 }

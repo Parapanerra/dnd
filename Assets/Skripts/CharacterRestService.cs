@@ -1,12 +1,113 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public struct CharacterRestResult
+{
+    public bool HasHealthBar;
+    public bool HasHitDice;
+    public int Healed;
+    public int DiceRolled;
+    public int DiceSides;
+    public int Roll;
+}
+
 public static class CharacterRestService
 {
     private const string RestResourceKeyPrefix = "RestResource_";
+
+    public static CharacterRestResult ApplyLongRest(HealthBar healthBar)
+    {
+        CharacterRestResult result = new CharacterRestResult { HasHealthBar = healthBar != null };
+        if (healthBar != null)
+            result.Healed = healthBar.RestoreToMaxHealth();
+
+        Apply(true);
+        return result;
+    }
+
+    public static CharacterRestResult ApplyShortRest(HealthBar healthBar)
+    {
+        CharacterRestResult result = new CharacterRestResult { HasHealthBar = healthBar != null };
+        if (healthBar != null)
+            healthBar.ClearTemporaryHealth();
+
+        Apply(false);
+        if (healthBar == null || !TryGetHitDice(out int diceCount, out int diceSides))
+            return result;
+
+        result.HasHitDice = true;
+        result.DiceSides = diceSides;
+        result.DiceRolled = Mathf.CeilToInt(diceCount / AppConfig.Calculator.ShortRestDiceDivisor);
+        for (int i = 0; i < result.DiceRolled; i++)
+            result.Roll += UnityEngine.Random.Range(1, diceSides + 1);
+
+        result.Healed = healthBar.ApplyHeal(result.Roll);
+        return result;
+    }
+
+    private static bool TryGetHitDice(out int diceCount, out int diceSides)
+    {
+        diceCount = 0;
+        diceSides = 0;
+
+        InputField allDiceField = FindInputFieldByName("alldise", "alldaise");
+        InputField diceValueField = FindInputFieldByName("daicevalueperson");
+        if (allDiceField == null || diceValueField == null ||
+            !int.TryParse(ExtractFirstNumber(allDiceField.text), out diceCount) ||
+            !int.TryParse(ExtractFirstNumber(diceValueField.text), out diceSides))
+            return false;
+
+        diceCount = Mathf.Clamp(diceCount, 0, AppConfig.Calculator.MaximumDiceCount);
+        diceSides = Mathf.Clamp(diceSides, AppConfig.Calculator.MinimumDiceSides,
+            AppConfig.Calculator.MaximumDiceSides);
+        return diceCount > 0;
+    }
+
+    private static InputField FindInputFieldByName(params string[] objectNames)
+    {
+        InputField[] fields = UnityEngine.Object.FindObjectsByType<InputField>(FindObjectsInactive.Include);
+        foreach (InputField field in fields)
+        {
+            if (field == null || !field.gameObject.activeInHierarchy)
+                continue;
+            foreach (string objectName in objectNames)
+                if (string.Equals(field.gameObject.name, objectName, StringComparison.OrdinalIgnoreCase))
+                    return field;
+        }
+
+        foreach (InputField field in fields)
+        {
+            if (field == null)
+                continue;
+            foreach (string objectName in objectNames)
+                if (string.Equals(field.gameObject.name, objectName, StringComparison.OrdinalIgnoreCase))
+                    return field;
+        }
+
+        foreach (InputField field in fields)
+        {
+            if (field == null)
+                continue;
+            foreach (string objectName in objectNames)
+                if (field.gameObject.name.IndexOf(objectName, StringComparison.OrdinalIgnoreCase) >= 0)
+                    return field;
+        }
+
+        return null;
+    }
+
+    private static string ExtractFirstNumber(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return "";
+
+        Match match = Regex.Match(value, @"\d+");
+        return match.Success ? match.Value : "";
+    }
 
     public static void Apply(bool isLongRest)
     {
@@ -71,7 +172,7 @@ public static class CharacterRestService
             return null;
 
         foreach (Transform child in resourceRoot.GetComponentsInChildren<Transform>(true))
-            if (child != resourceRoot && NameMatches(child.name, markerName))
+            if (child != resourceRoot && SceneObjectName.Matches(child.name, markerName))
                 return child.parent;
 
         return null;
@@ -153,7 +254,7 @@ public static class CharacterRestService
 
         foreach (Toggle toggle in panel.GetComponentsInChildren<Toggle>(true))
         {
-            if (toggle == null || !NameMatches(toggle.name, "Toggle"))
+            if (toggle == null || !SceneObjectName.Matches(toggle.name, "Toggle"))
                 continue;
 
             int toggleNumber = GetToggleNumber(toggle.name);
@@ -191,17 +292,6 @@ public static class CharacterRestService
             return number;
 
         return 0;
-    }
-
-    private static bool NameMatches(string actualName, string expectedName)
-    {
-        return GetBaseName(actualName).Equals(expectedName, StringComparison.OrdinalIgnoreCase);
-    }
-
-    private static string GetBaseName(string name)
-    {
-        int suffixStart = name.LastIndexOf(" (", StringComparison.Ordinal);
-        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
     }
 
     private static void SaveSceneAfterRest()

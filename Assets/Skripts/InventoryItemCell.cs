@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using SimpleFileBrowser;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,15 +34,12 @@ public class InventoryItemCell : MonoBehaviour
     private Button exportButton;
     private Button importButton;
     private Button clearButton;
-    private Image customImage;
     private GameObject customImagePanel;
-    private Sprite customSprite;
-    private Texture2D customTexture;
-    private Sprite defaultCustomSprite;
-    private Color defaultCustomColor = Color.white;
-    private bool defaultCustomPreserveAspect;
+    private InventoryItemImageController imageController;
     private string cellKey;
     private bool isLoading;
+    private InventoryItemTransferPanel transferPanel;
+    internal string CellKey => cellKey;
 
     public void Initialize(int pageIndex, int cellIndex)
     {
@@ -60,7 +55,7 @@ public class InventoryItemCell : MonoBehaviour
             return;
 
         CharacterSceneData sceneData = DndSaveManager.Instance.GetActiveSceneData();
-        SaveToSceneData(sceneData, ReadCurrentData());
+        InventoryItemSerializer.WriteScene(sceneData, cellKey, ReadCurrentData());
         DndSaveManager.Instance.RequestSaveData();
     }
 
@@ -70,7 +65,7 @@ public class InventoryItemCell : MonoBehaviour
             return;
 
         CharacterSceneData sceneData = DndSaveManager.Instance.GetActiveSceneData(false);
-        InventoryItemExportData data = ReadFromSceneData(sceneData);
+        InventoryItemExportData data = InventoryItemSerializer.ReadScene(sceneData, cellKey);
         ApplyData(data, false);
     }
 
@@ -122,18 +117,18 @@ public class InventoryItemCell : MonoBehaviour
         exportButton = FindButton("exportItemButton");
         importButton = FindButton("importItemButton");
         clearButton = FindButton("clearItemButton");
-        customImage = FindImage("customItemImage");
+        if (transferPanel == null)
+            transferPanel = new InventoryItemTransferPanel();
+        transferPanel.Initialize(this, exportButton, importButton);
+        Image image = FindImage("customItemImage");
         customImagePanel = FindChildGameObject("PanelForphoto");
+        if (customImagePanel == null && image != null)
+            customImagePanel = image.gameObject;
 
-        if (customImagePanel == null && customImage != null)
-            customImagePanel = customImage.gameObject;
-
-        if (customImage != null)
-        {
-            defaultCustomSprite = customImage.sprite;
-            defaultCustomColor = customImage.color;
-            defaultCustomPreserveAspect = customImage.preserveAspect;
-        }
+        imageController = GetComponent<InventoryItemImageController>();
+        if (imageController == null)
+            imageController = gameObject.AddComponent<InventoryItemImageController>();
+        imageController.Initialize(image);
 
         EnsureCategoryOptions();
     }
@@ -166,17 +161,7 @@ public class InventoryItemCell : MonoBehaviour
             customImageButton.onClick.AddListener(SelectCustomImage);
         }
 
-        if (exportButton != null)
-        {
-            exportButton.onClick.RemoveListener(ExportItem);
-            exportButton.onClick.AddListener(ExportItem);
-        }
-
-        if (importButton != null)
-        {
-            importButton.onClick.RemoveListener(ImportItem);
-            importButton.onClick.AddListener(ImportItem);
-        }
+        transferPanel.BindButtons();
 
         if (clearButton != null)
         {
@@ -204,126 +189,11 @@ public class InventoryItemCell : MonoBehaviour
 
     private void SelectCustomImage()
     {
-        NativeGallery.GetImageFromGallery(
-            path =>
-            {
-                if (string.IsNullOrEmpty(path))
-                    return;
-
-                try
-                {
-                    Texture2D source = NativeGallery.LoadImageAtPath(
-                        path,
-                        AppConfig.Images.GalleryPreviewMaxSize,
-                        false,
-                        false);
-                    if (source == null)
-                        return;
-
-                    Texture2D resized = ResizeToSquare(source);
-                    Destroy(source);
-                    ApplyCustomTexture(resized);
-                    Save();
-                }
-                catch (Exception exception)
-                {
-                    Debug.LogError("Could not load inventory item image: " + exception.Message);
-                }
-            },
-            "Select item image",
-            "image/*"
-        );
+        if (imageController != null)
+            imageController.SelectFromGallery(Save);
     }
 
-    private void ExportItem()
-    {
-        InventoryItemExportData data = ReadCurrentData();
-        if (string.IsNullOrWhiteSpace(data.itemName))
-        {
-            TaruckImportReviewDialog.Show("Експорт",
-                TaruckImportReviewDialog.Text("Спочатку введіть назву предмета, щоб зберегти його у файл.",
-                    "Enter an item name before saving it to a file."), "Закрити", () => { });
-            return;
-        }
-        string fileName = MakeSafeFileName(data.itemName) + ".titem";
-
-        FileBrowser.SetFilters(false, new FileBrowser.Filter("Taruck", ".titem"));
-        FileBrowser.ShowSaveDialog(
-            paths =>
-            {
-                if (paths == null || paths.Length == 0 || string.IsNullOrEmpty(paths[0]))
-                    return;
-
-                try
-                {
-                    string exportPath = EnsureItemExtension(paths[0]);
-                    FileBrowserHelpers.WriteBytesToFile(exportPath,
-                        TaruckBinaryCodec.EncodeItemExport(data, Application.version));
-                    TaruckImportReviewDialog.Show("Експорт", "Предмет збережено.", "Закрити", () => { });
-                }
-                catch (Exception exception)
-                {
-                    TaruckImportReviewDialog.Show("Помилка експорту", exception.Message, "Закрити", () => { });
-                }
-            },
-            () => { },
-            FileBrowser.PickMode.Files,
-            false,
-            GetDefaultFileBrowserPath(),
-            fileName,
-            "Save item",
-            "Save"
-        );
-    }
-
-    private void ImportItem()
-    {
-        FileBrowser.SetFilters(true, new FileBrowser.Filter(
-            TaruckImportReviewDialog.Text("Taruck або старий JSON", "Taruck or legacy JSON"),
-            ".titem", ".taruck-item", ".json"));
-        FileBrowser.ShowLoadDialog(
-            paths =>
-            {
-                if (paths == null || paths.Length == 0 || string.IsNullOrEmpty(paths[0]))
-                    return;
-
-                byte[] bytes = null;
-                try
-                {
-                    bytes = TaruckTransferFileReader.Read(paths[0]);
-                    bool binary = bytes.Length >= 8 && System.Text.Encoding.ASCII.GetString(bytes, 0, 8) == "TARUCKPK";
-                    InventoryItemExportData data = binary
-                        ? TaruckBinaryCodec.DecodeItemExport(bytes)
-                        : LegacyJsonImporter.Item(LegacyJsonImporter.DecodeFile(bytes));
-                    InventoryItemExportData previous = ReadCurrentData();
-                    string current = string.IsNullOrWhiteSpace(previous.itemName)
-                        ? TaruckImportReviewDialog.Text("порожню комірку", "empty cell")
-                        : "«" + previous.itemName + "»";
-                    string preview = TaruckImportReviewDialog.Text("Предмет: «", "Item: “") + data.itemName +
-                        TaruckImportReviewDialog.Text("»\nКатегорія: ", "”\nCategory: ") + data.category +
-                        TaruckImportReviewDialog.Text("\nОпис: ", "\nDescription: ") + data.itemDescription +
-                        TaruckImportReviewDialog.Text("\n\nЗамінити ", "\n\nReplace ") + current + "?";
-                    TaruckImportReviewDialog.Show("Перевірка предмета", preview, "Замінити",
-                        () => ApplyImportedItem(data, previous));
-                }
-                catch (Exception exception)
-                {
-                    TaruckImportReviewDialog.Show("Помилка імпорту",
-                        TaruckImportReviewDialog.ImportError(exception, bytes, TaruckFileType.ItemExport),
-                        "Закрити", () => { });
-                }
-            },
-            () => { },
-            FileBrowser.PickMode.Files,
-            false,
-            GetDefaultFileBrowserPath(),
-            null,
-            "Select item",
-            "Select"
-        );
-    }
-
-    private InventoryItemExportData ReadCurrentData()
+    internal InventoryItemExportData ReadCurrentData()
     {
         return new InventoryItemExportData
         {
@@ -336,11 +206,11 @@ public class InventoryItemCell : MonoBehaviour
             magicIndex = GetDropdownValue(magicDropdown, magicTmpDropdown),
             otherIndex = GetDropdownValue(otherDropdown, otherTmpDropdown),
             chegerIndex = GetDropdownValue(chegerDropdown, chegerTmpDropdown),
-            customImageBase64 = GetCurrentCustomImageBase64()
+            customImageBase64 = imageController != null ? imageController.GetBase64() : ""
         };
     }
 
-    private void ApplyData(InventoryItemExportData data, bool saveAfterApply)
+    internal void ApplyData(InventoryItemExportData data, bool saveAfterApply)
     {
         if (data == null)
             data = new InventoryItemExportData();
@@ -357,7 +227,8 @@ public class InventoryItemCell : MonoBehaviour
             SetDropdownValue(magicDropdown, magicTmpDropdown, data.magicIndex);
             SetDropdownValue(otherDropdown, otherTmpDropdown, data.otherIndex);
             SetDropdownValue(chegerDropdown, chegerTmpDropdown, data.chegerIndex);
-            ApplyCustomImageBase64(data.customImageBase64);
+            if (imageController != null)
+                imageController.ApplyBase64(data.customImageBase64);
             ApplyCategoryVisibility(data.category);
             RefreshCategoryShownValue();
         }
@@ -368,47 +239,6 @@ public class InventoryItemCell : MonoBehaviour
 
         if (saveAfterApply)
             Save();
-    }
-
-    private void SaveToSceneData(CharacterSceneData sceneData, InventoryItemExportData data)
-    {
-        if (sceneData == null || data == null)
-            return;
-
-        sceneData.SetString(cellKey + "_Name", data.itemName ?? "");
-        sceneData.SetString(cellKey + "_Description", data.itemDescription ?? "");
-        sceneData.SetInt(cellKey + "_Category", data.category);
-        sceneData.SetInt(cellKey + "_Weapon", data.weaponIndex);
-        sceneData.SetInt(cellKey + "_Armor", data.armorIndex);
-        sceneData.SetInt(cellKey + "_Bags", data.bagsIndex);
-        sceneData.SetInt(cellKey + "_Magic", data.magicIndex);
-        sceneData.SetInt(cellKey + "_Other", data.otherIndex);
-        sceneData.SetInt(cellKey + "_Cheger", data.chegerIndex);
-
-        if (string.IsNullOrWhiteSpace(data.customImageBase64))
-            sceneData.DeleteString(cellKey + "_CustomImage");
-        else
-            sceneData.SetString(cellKey + "_CustomImage", data.customImageBase64);
-    }
-
-    private InventoryItemExportData ReadFromSceneData(CharacterSceneData sceneData)
-    {
-        if (sceneData == null)
-            return new InventoryItemExportData();
-
-        return new InventoryItemExportData
-        {
-            itemName = sceneData.GetString(cellKey + "_Name", ""),
-            itemDescription = sceneData.GetString(cellKey + "_Description", ""),
-            category = sceneData.GetInt(cellKey + "_Category", 0),
-            weaponIndex = sceneData.GetInt(cellKey + "_Weapon", 0),
-            armorIndex = sceneData.GetInt(cellKey + "_Armor", 0),
-            bagsIndex = sceneData.GetInt(cellKey + "_Bags", 0),
-            magicIndex = sceneData.GetInt(cellKey + "_Magic", 0),
-            otherIndex = sceneData.GetInt(cellKey + "_Other", 0),
-            chegerIndex = sceneData.GetInt(cellKey + "_Cheger", 0),
-            customImageBase64 = sceneData.GetString(cellKey + "_CustomImage", "")
-        };
     }
 
     private void ApplyCategoryVisibility(int category)
@@ -468,103 +298,6 @@ public class InventoryItemCell : MonoBehaviour
 
         if (categoryTmpDropdown != null)
             categoryTmpDropdown.RefreshShownValue();
-    }
-
-    private void ApplyCustomTexture(Texture2D texture)
-    {
-        if (customImage == null || texture == null)
-            return;
-
-        ClearRuntimeCustomImage();
-        customTexture = texture;
-        customSprite = Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-        customImage.sprite = customSprite;
-        customImage.color = Color.white;
-        customImage.type = Image.Type.Simple;
-        customImage.preserveAspect = false;
-        customImage.SetAllDirty();
-    }
-
-    private void ApplyCustomImageBase64(string base64)
-    {
-        if (string.IsNullOrWhiteSpace(base64))
-        {
-            RestoreDefaultCustomImage();
-            return;
-        }
-
-        try
-        {
-            byte[] bytes = Convert.FromBase64String(base64);
-            Texture2D texture = new Texture2D(
-                AppConfig.Images.TextureBootstrapSize,
-                AppConfig.Images.TextureBootstrapSize,
-                TextureFormat.RGBA32,
-                false);
-            if (texture.LoadImage(bytes))
-                ApplyCustomTexture(texture);
-            else
-                Destroy(texture);
-        }
-        catch
-        {
-            RestoreDefaultCustomImage();
-        }
-    }
-
-    private string GetCurrentCustomImageBase64()
-    {
-        if (customTexture == null)
-            return "";
-
-        return Convert.ToBase64String(customTexture.EncodeToJPG(AppConfig.Images.InventoryJpgQuality));
-    }
-
-    private void RestoreDefaultCustomImage()
-    {
-        if (customImage == null)
-            return;
-
-        ClearRuntimeCustomImage();
-        customImage.sprite = defaultCustomSprite;
-        customImage.color = defaultCustomColor;
-        customImage.preserveAspect = defaultCustomPreserveAspect;
-    }
-
-    private void ClearRuntimeCustomImage()
-    {
-        if (customSprite != null)
-        {
-            Destroy(customSprite);
-            customSprite = null;
-        }
-
-        if (customTexture != null)
-        {
-            Destroy(customTexture);
-            customTexture = null;
-        }
-    }
-
-    private Texture2D ResizeToSquare(Texture2D source)
-    {
-        int imageSize = AppConfig.Images.InventoryImageSize;
-        Texture2D result = new Texture2D(imageSize, imageSize, TextureFormat.RGB24, false);
-        Color[] pixels = new Color[imageSize * imageSize];
-
-        for (int y = 0; y < imageSize; y++)
-        {
-            float sourceY = imageSize == 1 ? 0f : (float)y / (imageSize - 1);
-            for (int x = 0; x < imageSize; x++)
-            {
-                float sourceX = imageSize == 1 ? 0f : (float)x / (imageSize - 1);
-                pixels[y * imageSize + x] = source.GetPixelBilinear(sourceX, sourceY);
-            }
-        }
-
-        result.SetPixels(pixels);
-        result.Apply(false, false);
-        return result;
     }
 
     private void SetDropdownVisible(Dropdown dropdown, TMP_Dropdown tmpDropdown, bool visible)
@@ -699,79 +432,10 @@ public class InventoryItemCell : MonoBehaviour
     {
         Transform[] children = GetComponentsInChildren<Transform>(true);
         foreach (Transform child in children)
-            if (child != null && NameMatches(child.name, objectName))
+            if (child != null && SceneObjectName.Matches(child.name, objectName))
                 return child;
 
         return null;
     }
 
-    private void ApplyImportedItem(InventoryItemExportData imported, InventoryItemExportData previous)
-    {
-        try
-        {
-            ApplyData(imported, true);
-            // An import is an explicit operation: verify its disk write before reporting success.
-            DndSaveManager.Instance?.FlushPendingSave();
-            if (DndSaveManager.Instance != null && !string.IsNullOrEmpty(DndSaveManager.Instance.SaveError))
-            {
-                ApplyData(previous, false);
-                SaveToSceneData(DndSaveManager.Instance.GetActiveSceneData(), previous);
-                throw new System.IO.IOException(DndSaveManager.Instance.SaveError);
-            }
-            TaruckImportReviewDialog.Show("Імпорт завершено", "Предмет завантажено.", "Закрити", () => { });
-        }
-        catch (Exception exception)
-        {
-            ApplyData(previous, false);
-            TaruckImportReviewDialog.Show("Помилка імпорту", exception.Message, "Закрити", () => { });
-        }
-    }
-
-    private string EnsureItemExtension(string path)
-    {
-        if (!System.IO.Path.IsPathRooted(path)) return path;
-        if (path.EndsWith(".titem", StringComparison.OrdinalIgnoreCase)) return path;
-        if (path.EndsWith(".taruck-item", StringComparison.OrdinalIgnoreCase))
-            return path.Substring(0, path.Length - ".taruck-item".Length) + ".titem";
-        return path + ".titem";
-    }
-
-    private string MakeSafeFileName(string value)
-    {
-        if (string.IsNullOrWhiteSpace(value))
-            return "DnDItem";
-
-        foreach (char invalidChar in System.IO.Path.GetInvalidFileNameChars())
-            value = value.Replace(invalidChar, '_');
-
-        return value.Trim();
-    }
-
-    private string GetDefaultFileBrowserPath()
-    {
-        string[] candidates =
-        {
-            "/storage/emulated/0/Download",
-            "/sdcard/Download",
-            System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads"),
-            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-        };
-
-        foreach (string candidate in candidates)
-            if (!string.IsNullOrEmpty(candidate) && System.IO.Directory.Exists(candidate))
-                return candidate;
-
-        return null;
-    }
-
-    private bool NameMatches(string actualName, string expectedName)
-    {
-        return GetBaseName(actualName).Equals(expectedName, StringComparison.OrdinalIgnoreCase);
-    }
-
-    private string GetBaseName(string name)
-    {
-        int suffixStart = name.LastIndexOf(" (", StringComparison.Ordinal);
-        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
-    }
 }

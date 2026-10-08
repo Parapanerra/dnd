@@ -8,41 +8,16 @@ using TMPro;
 
 public class CalculatorManager : MonoBehaviour
 {
-    private const string PotionSaveKeyPrefix = "PotionCount_";
-    private const string EasterEgg67CountKey = "Calculator.EasterEgg67.Count";
-
     public List<Button> buttons;
     public Text equationText;
     public Text resultText;
 
-    private readonly string[] potionFormulas = (string[])AppConfig.Calculator.PotionFormulas.Clone();
-    private readonly int[] potionCounts = new int[AppConfig.Calculator.PotionTypeCount];
     private string currentEquation = "";
-    private bool showingEasterEgg;
-    private string easterEggTopSource = "";
-    private string easterEggMessageSource = "";
-    private bool resultBestFitBeforeEasterEgg;
-    private int resultMinSizeBeforeEasterEgg;
-    private int resultMaxSizeBeforeEasterEgg;
-    private string hpModeLabel = "";
-    private Color hpTextColor = Color.white;
-    private bool hasHpTextColor;
+    private readonly CalculatorEasterEgg easterEgg = new CalculatorEasterEgg();
+    private readonly CalculatorHealthController healthController = new CalculatorHealthController();
     private bool isOperatorClicked;
     private bool isLastInputDice;
-    private Dropdown potionDropdown;
-    private Button potionPlusButton;
-    private Button potionMinusButton;
-    private Button potionUseButton;
-    private HpCalculatorMode hpMode = HpCalculatorMode.None;
-
-    private enum HpCalculatorMode
-    {
-        None,
-        MaxHp,
-        TemporaryHp,
-        Damage,
-        Heal
-    }
+    private CalculatorPotionController potionController;
 
     private void Start()
     {
@@ -50,21 +25,23 @@ public class CalculatorManager : MonoBehaviour
         EnsureDisplayTexts();
         AssignButtonFunctions();
         AssignHpButtonFunctions();
-        AssignPotionControls();
+        potionController = GetComponent<CalculatorPotionController>();
+        if (potionController == null)
+            potionController = gameObject.AddComponent<CalculatorPotionController>();
+        potionController.Initialize(this);
+        potionController.Wire();
     }
 
     public void RefreshLocalization()
     {
-        if (hpMode != HpCalculatorMode.None)
-        {
-            hpModeLabel = GetHpModeLabel(hpMode);
-            RefreshEquationText();
-        }
+        if (healthController.IsActive)
+            healthController.RefreshLabel(GetCalculatorText, RuntimeLocalization.EnsureExists().CurrentLanguage);
 
-        RefreshPotionDropdownOptions();
+        if (potionController != null)
+            potionController.RefreshPotionDropdownOptions();
         RefreshEquationText();
-        if (showingEasterEgg)
-            RefreshEasterEggText();
+        if (easterEgg.IsShowing)
+            easterEgg.Refresh();
     }
 
     public void RefreshExhaustionDisplay()
@@ -214,7 +191,7 @@ public class CalculatorManager : MonoBehaviour
     private bool IsSpecialCalculatorButton(Button button)
     {
         string buttonName = NormalizeLabel(button.gameObject.name).ToLowerInvariant();
-        return IsHpButtonName(buttonName) ||
+        return CalculatorHealthController.IsButtonName(buttonName) ||
                buttonName == "potionplus" ||
                buttonName == "potionminus" ||
                buttonName == "potionuse";
@@ -230,7 +207,7 @@ public class CalculatorManager : MonoBehaviour
                 continue;
 
             string buttonName = NormalizeLabel(button.gameObject.name);
-            if (!IsHpButtonName(buttonName))
+            if (!CalculatorHealthController.IsButtonName(buttonName))
                 continue;
 
             button.onClick.RemoveAllListeners();
@@ -238,208 +215,7 @@ public class CalculatorManager : MonoBehaviour
         }
     }
 
-    private void AssignPotionControls()
-    {
-        Transform[] transforms = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include);
-        foreach (Transform item in transforms)
-        {
-            if (item == null)
-                continue;
-
-            string objectName = item.gameObject.name;
-            if (string.Equals(objectName, "potionDropdown", StringComparison.OrdinalIgnoreCase))
-                potionDropdown = item.GetComponent<Dropdown>();
-            else if (string.Equals(objectName, "potionPlus", StringComparison.OrdinalIgnoreCase))
-                potionPlusButton = item.GetComponent<Button>();
-            else if (string.Equals(objectName, "potionMinus", StringComparison.OrdinalIgnoreCase))
-                potionMinusButton = item.GetComponent<Button>();
-            else if (string.Equals(objectName, "potionUse", StringComparison.OrdinalIgnoreCase))
-                potionUseButton = item.GetComponent<Button>();
-        }
-
-        if (potionDropdown == null)
-            return;
-
-        LoadPotionCounts();
-        RefreshPotionDropdownOptions();
-
-        if (potionPlusButton != null)
-        {
-            potionPlusButton.onClick.RemoveAllListeners();
-            potionPlusButton.onClick.AddListener(() => ChangeSelectedPotionCount(1));
-        }
-
-        if (potionMinusButton != null)
-        {
-            potionMinusButton.onClick.RemoveAllListeners();
-            potionMinusButton.onClick.AddListener(() => ChangeSelectedPotionCount(-1));
-        }
-
-        if (potionUseButton != null)
-        {
-            potionUseButton.onClick.RemoveAllListeners();
-            potionUseButton.onClick.AddListener(UseSelectedPotion);
-        }
-    }
-
-    private void LoadPotionCounts()
-    {
-        CharacterSceneData sceneData = GetPotionSceneData(false);
-        for (int i = 0; i < potionCounts.Length; i++)
-            potionCounts[i] = Mathf.Max(0, sceneData != null ? sceneData.GetInt(PotionSaveKeyPrefix + i, 0) : 0);
-    }
-
-    private void SavePotionCounts()
-    {
-        CharacterSceneData sceneData = GetPotionSceneData(true);
-        if (sceneData == null || DndSaveManager.Instance == null)
-            return;
-
-        for (int i = 0; i < potionCounts.Length; i++)
-            sceneData.SetInt(PotionSaveKeyPrefix + i, Mathf.Max(0, potionCounts[i]));
-
-        DndSaveManager.Instance.SaveData();
-    }
-
-    private CharacterSceneData GetPotionSceneData(bool createIfMissing)
-    {
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
-        if (saveManager == null)
-            return null;
-
-        CharacterData character = saveManager.EnsureActiveCharacter();
-        return character != null ? character.GetSceneData(saveManager.GetActiveSceneDataName(), createIfMissing) : null;
-    }
-
-    private void ChangeSelectedPotionCount(int delta)
-    {
-        int index = GetSelectedPotionIndex();
-        if (index < 0)
-        {
-            ShowHpResult(GetCalculatorText("choosePotion"));
-            return;
-        }
-
-        potionCounts[index] = Mathf.Max(0, potionCounts[index] + delta);
-        SavePotionCounts();
-        RefreshPotionDropdownOptions();
-    }
-
-    private void UseSelectedPotion()
-    {
-        CaptureHpTextColorFromButton(potionUseButton);
-
-        int index = GetSelectedPotionIndex();
-        if (index < 0)
-        {
-            ShowHpResult(GetCalculatorText("choosePotion"));
-            return;
-        }
-
-        if (potionCounts[index] <= 0)
-        {
-            ShowHpResult(GetCalculatorText("noPotion"));
-            return;
-        }
-
-        HealthBar healthBar = FindActiveHealthBar();
-        if (healthBar == null)
-        {
-            ShowHpResult(GetCalculatorText("hpBarNotFound"));
-            return;
-        }
-
-        string rolledExpression = DiceExpressionEvaluator.RollDice(potionFormulas[index]);
-        if (!DiceExpressionEvaluator.TryEvaluate(rolledExpression, out double rollResult))
-        {
-            ShowHpResult(GetCalculatorText("potionError"));
-            return;
-        }
-
-        int roll = Mathf.Max(0, Mathf.RoundToInt((float)rollResult));
-        int healed = healthBar.ApplyHeal(roll);
-        potionCounts[index]--;
-        SavePotionCounts();
-        RefreshPotionDropdownOptions();
-        ShowHpResult(GetHealedText(healed) + " (" + potionFormulas[index] + "=" + roll + ")");
-        ResetHpInputState();
-    }
-
-    private int GetSelectedPotionIndex()
-    {
-        if (potionDropdown == null)
-            return -1;
-
-        if (potionDropdown.value <= 0)
-            return -1;
-
-        return Mathf.Clamp(potionDropdown.value - 1, 0, potionCounts.Length - 1);
-    }
-
-    private void RefreshPotionDropdownOptions()
-    {
-        if (potionDropdown == null)
-            return;
-
-        int selectedDropdownValue = Mathf.Clamp(potionDropdown.value, 0, potionCounts.Length);
-        potionDropdown.options.Clear();
-        potionDropdown.options.Add(new Dropdown.OptionData(GetCalculatorText("choosePotion")));
-        for (int i = 0; i < potionCounts.Length; i++)
-            potionDropdown.options.Add(new Dropdown.OptionData(GetPotionName(i) + " x" + potionCounts[i]));
-
-        potionDropdown.SetValueWithoutNotify(selectedDropdownValue);
-        potionDropdown.RefreshShownValue();
-    }
-
-    private string GetPotionName(int index)
-    {
-        AppLanguage language = RuntimeLocalization.EnsureExists().CurrentLanguage;
-        if (language == AppLanguage.English)
-        {
-            switch (index)
-            {
-                case 0:
-                    return "Potion of Healing";
-                case 1:
-                    return "Potion of Greater Healing";
-                case 2:
-                    return "Potion of Superior Healing";
-                case 3:
-                    return "Potion of Supreme Healing";
-            }
-        }
-
-        if (language == AppLanguage.Russian)
-        {
-            switch (index)
-            {
-                case 0:
-                    return "Зелье лечения";
-                case 1:
-                    return "Большое зелье лечения";
-                case 2:
-                    return "Улучшенное зелье лечения";
-                case 3:
-                    return "Высшее зелье лечения";
-            }
-        }
-
-        switch (index)
-        {
-            case 0:
-                return "Зілля лікування";
-            case 1:
-                return "Велике зілля лікування";
-            case 2:
-                return "Покращене зілля лікування";
-            case 3:
-                return "Найвище зілля лікування";
-            default:
-                return "Зілля";
-        }
-    }
-
-    private string GetCalculatorText(string key)
+    internal string GetCalculatorText(string key)
     {
         AppLanguage language = RuntimeLocalization.EnsureExists().CurrentLanguage;
         bool english = language == AppLanguage.English;
@@ -472,33 +248,9 @@ public class CalculatorManager : MonoBehaviour
         return key;
     }
 
-    private string GetHpModeLabel(HpCalculatorMode mode)
+    internal string GetHealedText(int value)
     {
-        switch (mode)
-        {
-            case HpCalculatorMode.MaxHp:
-                return "Max HP:";
-            case HpCalculatorMode.TemporaryHp:
-                return GetCalculatorText("tempHp") + ":";
-            case HpCalculatorMode.Damage:
-                return RuntimeLocalization.EnsureExists().CurrentLanguage == AppLanguage.English ? "Damage:" :
-                    RuntimeLocalization.EnsureExists().CurrentLanguage == AppLanguage.Russian ? "Урон:" : "Урон:";
-            case HpCalculatorMode.Heal:
-                return RuntimeLocalization.EnsureExists().CurrentLanguage == AppLanguage.English ? "Healing:" :
-                    RuntimeLocalization.EnsureExists().CurrentLanguage == AppLanguage.Russian ? "Лечение:" : "Зцілення:";
-            default:
-                return "";
-        }
-    }
-
-    private string GetHealedText(int value)
-    {
-        return GetCalculatorText("healed") + "  " + value + " HP";
-    }
-
-    private string GetDamageText(int value)
-    {
-        return GetCalculatorText("damageDone") + "  " + value;
+        return CalculatorHealthController.FormatHealed(value, GetCalculatorText);
     }
 
     private void OnHpButtonClick(string buttonName, Button button)
@@ -508,15 +260,10 @@ public class CalculatorManager : MonoBehaviour
         OnButtonClick(buttonName);
     }
 
-    private void CaptureHpTextColorFromButton(Button button)
+    internal void CaptureHpTextColorFromButton(Button button)
     {
-        Text buttonText = button != null ? button.GetComponentInChildren<Text>(true) : null;
-        if (buttonText != null)
-        {
-            hpTextColor = buttonText.color;
-            hasHpTextColor = true;
-            ApplyHpTextColor();
-        }
+        healthController.CaptureTextColor(button);
+        healthController.ApplyTextColor(equationText, resultText);
     }
 
     private void OnButtonClick(string rawLabel)
@@ -578,70 +325,35 @@ public class CalculatorManager : MonoBehaviour
     private bool HandleHpModeButton(string label)
     {
         string normalized = label.ToLowerInvariant();
-        if (normalized == "maxhp")
-        {
-            SetHpMode(HpCalculatorMode.MaxHp);
-            return true;
-        }
-
-        if (normalized == "folslive")
-        {
-            SetHpMode(HpCalculatorMode.TemporaryHp);
-            return true;
-        }
-
-        if (normalized == "damage")
-        {
-            SetHpMode(HpCalculatorMode.Damage);
-            return true;
-        }
-
-        if (normalized == "heal")
-        {
-            SetHpMode(HpCalculatorMode.Heal);
-            return true;
-        }
-
         if (normalized == "shortrest")
         {
-            ApplyShortRest();
+            ShowHpResult(healthController.ApplyShortRest(FindActiveHealthBar(), GetCalculatorText));
+            ResetHpInputState();
             return true;
         }
 
         if (normalized == "longrest")
         {
-            ApplyLongRest();
+            ShowHpResult(healthController.ApplyLongRest(FindActiveHealthBar(), GetCalculatorText));
+            ResetHpInputState();
             return true;
         }
 
-        return false;
-    }
-
-    private bool IsHpButtonName(string label)
-    {
-        string normalized = label.ToLowerInvariant();
-        return normalized == "maxhp" ||
-               normalized == "damage" ||
-               normalized == "heal" ||
-               normalized == "folslive" ||
-               normalized == "shortrest" ||
-               normalized == "longrest";
-    }
-
-    private void SetHpMode(HpCalculatorMode mode)
-    {
-        if (showingEasterEgg)
+        if (!CalculatorHealthController.IsButtonName(normalized))
+            return false;
+        if (easterEgg.IsShowing)
             ResetCalculator();
-        hpMode = mode;
-        hpModeLabel = GetHpModeLabel(mode);
+        healthController.TrySelectMode(normalized, GetCalculatorText,
+            RuntimeLocalization.EnsureExists().CurrentLanguage);
         currentEquation = "";
         isOperatorClicked = false;
         isLastInputDice = false;
         if (equationText != null)
-            equationText.text = hpModeLabel;
+            equationText.text = healthController.ModeLabel;
         if (resultText != null)
             resultText.text = "";
-        ApplyHpTextColor();
+        healthController.ApplyTextColor(equationText, resultText);
+        return true;
     }
 
     private void AddNumber(string label)
@@ -701,14 +413,14 @@ public class CalculatorManager : MonoBehaviour
         if (string.IsNullOrWhiteSpace(currentEquation))
             return;
 
-        if (TryShowEasterEgg())
+        if (!healthController.IsActive && easterEgg.TryShow(currentEquation, equationText, resultText, ResetCalculator))
             return;
 
         string expression = TrimTrailingOperators(currentEquation);
         if (string.IsNullOrWhiteSpace(expression))
             return;
 
-        int exhaustionPenalty = hpMode == HpCalculatorMode.None && ExhaustionEffects.IsD20Roll(expression)
+        int exhaustionPenalty = !healthController.IsActive && ExhaustionEffects.IsD20Roll(expression)
             ? 2 * ExhaustionEffects.Level : 0;
         expression = DiceExpressionEvaluator.RollDice(expression);
         if (!DiceExpressionEvaluator.TryEvaluate(expression, out double result))
@@ -718,7 +430,7 @@ public class CalculatorManager : MonoBehaviour
             return;
         }
 
-        if (hpMode != HpCalculatorMode.None)
+        if (healthController.IsActive)
         {
             ApplyHpMode(Mathf.RoundToInt((float)result));
             return;
@@ -734,187 +446,17 @@ public class CalculatorManager : MonoBehaviour
         RefreshEquationText();
     }
 
-    private bool TryShowEasterEgg()
-    {
-        if (hpMode != HpCalculatorMode.None)
-            return false;
-
-        string topLine = "";
-        string message;
-        switch (currentEquation)
-        {
-            case "67":
-                message = AdvanceResetEasterEgg();
-                break;
-            case "4221":
-                message = "Раз, два, три, прийом! Ця штука працює?";
-                break;
-            case "666":
-                message = "О, так!!!";
-                break;
-            case "69":
-                message = "Нааайс";
-                break;
-            case "1984":
-                topLine = "Це як у 1984";
-                message = "Але я не читав";
-                break;
-            default:
-                return false;
-        }
-
-        ResetCalculator();
-        easterEggTopSource = topLine;
-        easterEggMessageSource = message;
-        if (resultText != null)
-        {
-            showingEasterEgg = true;
-            resultBestFitBeforeEasterEgg = resultText.resizeTextForBestFit;
-            resultMinSizeBeforeEasterEgg = resultText.resizeTextMinSize;
-            resultMaxSizeBeforeEasterEgg = resultText.resizeTextMaxSize;
-            resultText.resizeTextForBestFit = true;
-            resultText.resizeTextMinSize = 10;
-            resultText.resizeTextMaxSize = Mathf.Max(10, resultText.fontSize);
-        }
-        RefreshEasterEggText();
-        return true;
-    }
-
-    private void RefreshEasterEggText()
-    {
-        RuntimeLocalization localization = RuntimeLocalization.EnsureExists();
-        string topLine = localization.Translate(easterEggTopSource);
-        string message = localization.Translate(easterEggMessageSource);
-        if (equationText != null)
-            equationText.text = topLine;
-        if (resultText != null)
-            resultText.text = resultText == equationText && topLine.Length > 0
-                ? topLine + "\n" + message : message;
-    }
-
-    private string AdvanceResetEasterEgg()
-    {
-        DndSaveManager saveManager = DndSaveManager.Instance;
-        CharacterData character = saveManager != null ? saveManager.GetActiveCharacter() : null;
-        if (character == null)
-            return "Спочатку обери персонажа.";
-
-        int.TryParse(character.GetSharedString(EasterEgg67CountKey, "0"), out int count);
-        count = Mathf.Clamp(count, 0, 2) + 1;
-        if (count == 3)
-        {
-            // Call exactly the same handler as the scene's Reset button.
-            CharacterSheetManagerScene1 sheet = UnityEngine.Object.FindAnyObjectByType<CharacterSheetManagerScene1>();
-            CharacterSceneAutoSave autoSave = UnityEngine.Object.FindAnyObjectByType<CharacterSceneAutoSave>();
-            if (sheet != null)
-                sheet.ResetSceneData();
-            else if (autoSave != null)
-                autoSave.ResetSceneData();
-            else
-                return "Не вдалося знайти Reset для цього листа.";
-        }
-
-        character.SetSharedString(EasterEgg67CountKey, (count == 3 ? 0 : count).ToString(CultureInfo.InvariantCulture));
-        saveManager.SaveData();
-        switch (count)
-        {
-            case 1: return "Якщо ти ще раз це введеш, я тобі видалю персонажа.";
-            case 2: return "Я взагалі-то серйозно.";
-            default: return "Я попереджував.";
-        }
-    }
-
     private void ApplyHpMode(int value)
     {
-        HealthBar healthBar = FindActiveHealthBar();
-        if (healthBar == null)
-        {
-            ShowHpResult(GetCalculatorText("hpBarNotFound"));
-            hpMode = HpCalculatorMode.None;
-            currentEquation = "";
-            return;
-        }
-
-        value = Mathf.Max(0, value);
-        if (hpMode == HpCalculatorMode.MaxHp)
-        {
-            healthBar.SetMaxHealthAndFill(value);
-
-            ShowHpResult("Max HP =  " + value);
-        }
-        else if (hpMode == HpCalculatorMode.TemporaryHp)
-        {
-            healthBar.SetTemporaryHealth(value);
-
-            ShowHpResult(GetCalculatorText("tempHp") + " =  " + value);
-        }
-        else if (hpMode == HpCalculatorMode.Damage)
-        {
-            int applied = healthBar.ApplyDamage(value);
-            ShowHpResult(GetDamageText(applied));
-        }
-        else if (hpMode == HpCalculatorMode.Heal)
-        {
-            int applied = healthBar.ApplyHeal(value);
-            ShowHpResult(GetHealedText(applied));
-        }
-
-        hpMode = HpCalculatorMode.None;
+        ShowHpResult(healthController.Apply(value, FindActiveHealthBar(), GetCalculatorText));
         currentEquation = "";
         isOperatorClicked = false;
         isLastInputDice = false;
     }
 
-    private void ApplyLongRest()
+    internal void ResetHpInputState()
     {
-        HealthBar healthBar = FindActiveHealthBar();
-
-        int healed = 0;
-        if (healthBar != null)
-            healed = healthBar.RestoreToMaxHealth();
-
-        CharacterRestService.Apply(true);
-        ShowHpResult(healthBar != null ? GetHealedText(healed) : GetCalculatorText("longRest"));
-        ResetHpInputState();
-    }
-
-    private void ApplyShortRest()
-    {
-        HealthBar healthBar = FindActiveHealthBar();
-
-        if (healthBar != null)
-            healthBar.ClearTemporaryHealth();
-
-        CharacterRestService.Apply(false);
-
-        if (healthBar == null)
-        {
-            ShowHpResult(GetCalculatorText("shortRest"));
-            ResetHpInputState();
-            return;
-        }
-
-        if (!TryGetHitDice(out int diceCount, out int diceSides))
-        {
-            ShowHpResult(GetCalculatorText("hitDiceNotFound"));
-            ResetHpInputState();
-            return;
-        }
-
-        int diceToRoll = Mathf.CeilToInt(diceCount / AppConfig.Calculator.ShortRestDiceDivisor);
-        int roll = 0;
-        for (int i = 0; i < diceToRoll; i++)
-            roll += UnityEngine.Random.Range(1, diceSides + 1);
-
-        int healed = healthBar.ApplyHeal(roll);
-        ShowHpResult(GetHealedText(healed) + " (" + diceToRoll + "d" + diceSides + "=" + roll + ")");
-        ResetHpInputState();
-    }
-
-    private void ResetHpInputState()
-    {
-        hpMode = HpCalculatorMode.None;
-        hpModeLabel = "";
+        healthController.Reset();
         currentEquation = "";
         isOperatorClicked = false;
         isLastInputDice = false;
@@ -927,24 +469,15 @@ public class CalculatorManager : MonoBehaviour
 
     private void ResetCalculator()
     {
-        if (showingEasterEgg && resultText != null)
-        {
-            resultText.resizeTextForBestFit = resultBestFitBeforeEasterEgg;
-            resultText.resizeTextMinSize = resultMinSizeBeforeEasterEgg;
-            resultText.resizeTextMaxSize = resultMaxSizeBeforeEasterEgg;
-        }
-        showingEasterEgg = false;
-        easterEggTopSource = "";
-        easterEggMessageSource = "";
+        easterEgg.ResetDisplay();
         currentEquation = "";
-        hpModeLabel = "";
+        healthController.Reset();
         if (equationText != null)
             equationText.text = "";
         if (resultText != null)
             resultText.text = "";
         isOperatorClicked = false;
         isLastInputDice = false;
-        hpMode = HpCalculatorMode.None;
     }
 
     private void ClearEntry()
@@ -957,110 +490,18 @@ public class CalculatorManager : MonoBehaviour
         RefreshEquationText();
     }
 
-    private HealthBar FindActiveHealthBar()
+    internal HealthBar FindActiveHealthBar()
     {
-        HealthBar[] bars = UnityEngine.Object.FindObjectsByType<HealthBar>(FindObjectsInactive.Exclude);
-        foreach (HealthBar bar in bars)
-            if (bar != null && bar.IsUsableForCalculator)
-                return bar;
-
-        return bars.Length > 0 ? bars[0] : null;
+        return CalculatorHealthController.FindActiveHealthBar();
     }
 
-    private bool TryGetHitDice(out int diceCount, out int diceSides)
-    {
-        diceCount = 0;
-        diceSides = 0;
-
-        InputField allDiceField = FindInputFieldByName("alldise", "alldaise");
-        InputField diceValueField = FindInputFieldByName("daicevalueperson");
-        if (allDiceField == null || diceValueField == null)
-            return false;
-
-        if (!int.TryParse(ExtractFirstNumber(allDiceField.text), out diceCount))
-            return false;
-
-        if (!int.TryParse(ExtractFirstNumber(diceValueField.text), out diceSides))
-            return false;
-
-        diceCount = Mathf.Clamp(diceCount, 0, AppConfig.Calculator.MaximumDiceCount);
-        diceSides = Mathf.Clamp(
-            diceSides,
-            AppConfig.Calculator.MinimumDiceSides,
-            AppConfig.Calculator.MaximumDiceSides);
-        return diceCount > 0;
-    }
-
-    private InputField FindInputFieldByName(params string[] objectNames)
-    {
-        InputField[] fields = UnityEngine.Object.FindObjectsByType<InputField>(FindObjectsInactive.Include);
-        foreach (InputField field in fields)
-        {
-            if (field == null || !field.gameObject.activeInHierarchy)
-                continue;
-
-            foreach (string objectName in objectNames)
-            {
-                if (string.Equals(field.gameObject.name, objectName, StringComparison.OrdinalIgnoreCase))
-                    return field;
-            }
-        }
-
-        foreach (InputField field in fields)
-        {
-            if (field == null)
-                continue;
-
-            foreach (string objectName in objectNames)
-            {
-                if (string.Equals(field.gameObject.name, objectName, StringComparison.OrdinalIgnoreCase))
-                    return field;
-            }
-        }
-
-        foreach (InputField field in fields)
-        {
-            if (field == null)
-                continue;
-
-            foreach (string objectName in objectNames)
-            {
-                if (field.gameObject.name.IndexOf(objectName, StringComparison.OrdinalIgnoreCase) >= 0)
-                    return field;
-            }
-        }
-
-        return null;
-    }
-
-    private void ApplyHpTextColor()
-    {
-        if (!hasHpTextColor)
-            return;
-
-        if (equationText != null)
-            equationText.color = hpTextColor;
-
-        if (resultText != null)
-            resultText.color = hpTextColor;
-    }
-
-    private void ShowHpResult(string message)
+    internal void ShowHpResult(string message)
     {
         if (equationText != null)
             equationText.text = "";
         if (resultText != null)
             resultText.text = message;
-        ApplyHpTextColor();
-    }
-
-    private string ExtractFirstNumber(string value)
-    {
-        if (string.IsNullOrWhiteSpace(value))
-            return "";
-
-        Match match = Regex.Match(value, @"\d+");
-        return match.Success ? match.Value : "";
+        healthController.ApplyTextColor(equationText, resultText);
     }
 
     private bool IsNumberLabel(string label)
@@ -1099,11 +540,11 @@ public class CalculatorManager : MonoBehaviour
 
     private void RefreshEquationText()
     {
-        if (equationText == null || showingEasterEgg)
+        if (equationText == null || easterEgg.IsShowing)
             return;
 
-        equationText.text = hpMode != HpCalculatorMode.None ? hpModeLabel + currentEquation : currentEquation;
-        if (hpMode == HpCalculatorMode.None && ExhaustionEffects.IsD20Roll(currentEquation) && ExhaustionEffects.Level > 0)
+        equationText.text = healthController.IsActive ? healthController.ModeLabel + currentEquation : currentEquation;
+        if (!healthController.IsActive && ExhaustionEffects.IsD20Roll(currentEquation) && ExhaustionEffects.Level > 0)
             equationText.text += ExhaustionEffects.PenaltyLabel(2 * ExhaustionEffects.Level);
     }
 

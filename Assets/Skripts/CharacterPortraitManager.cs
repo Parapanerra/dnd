@@ -220,7 +220,7 @@ public class CharacterPortraitManager : MonoBehaviour
     {
         Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include);
         foreach (Button button in buttons)
-            if (button != null && NameMatches(button.gameObject.name, objectName))
+            if (button != null && SceneObjectName.Matches(button.gameObject.name, objectName))
                 return button;
 
         return null;
@@ -230,20 +230,10 @@ public class CharacterPortraitManager : MonoBehaviour
     {
         Image[] images = FindObjectsByType<Image>(FindObjectsInactive.Include);
         foreach (Image image in images)
-            if (image != null && NameMatches(image.gameObject.name, objectName))
+            if (image != null && SceneObjectName.Matches(image.gameObject.name, objectName))
                 return image;
 
         return null;
     }
 
-    private bool NameMatches(string actualName, string expectedName)
-    {
-        return GetBaseName(actualName).Equals(expectedName, StringComparison.OrdinalIgnoreCase);
-    }
-
-    private string GetBaseName(string name)
-    {
-        int suffixStart = name.LastIndexOf(" (", StringComparison.Ordinal);
-        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
-    }
 }

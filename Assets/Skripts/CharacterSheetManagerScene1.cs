@@ -380,21 +380,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
     private void SaveSharedCharacterInputs()
     {
-        if (currentCharacter == null)
-            return;
-
-        foreach (InputField input in inputFields)
-            SaveSharedCharacterInput(input != null ? input.transform : null, input != null ? input.text : "");
-
-        foreach (TMP_InputField input in tmpInputFields)
-            SaveSharedCharacterInput(input != null ? input.transform : null, input != null ? input.text : "");
-    }
-
-    private void SaveSharedCharacterInput(Transform transform, string value)
-    {
-        string key = GetSharedCharacterInputKey(transform);
-        if (!string.IsNullOrEmpty(key))
-            currentCharacter.SetSharedString(key, value);
+        SharedCharacterInputService.Save(currentCharacter, inputFields, tmpInputFields);
     }
 
     private void SaveRestResourceMarkers()
@@ -404,89 +390,12 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
     private void LoadSharedCharacterInputs()
     {
-        if (currentCharacter == null)
-            return;
-
-        foreach (InputField input in inputFields)
-            LoadSharedCharacterInput(input);
-
-        foreach (TMP_InputField input in tmpInputFields)
-            LoadSharedCharacterInput(input);
-    }
-
-    private void LoadSharedCharacterInput(InputField input)
-    {
-        string key = GetSharedCharacterInputKey(input != null ? input.transform : null);
-        if (string.IsNullOrEmpty(key))
-            return;
-
-        if (!currentCharacter.HasSharedString(key))
-        {
-            currentCharacter.SetSharedString(key, input != null ? input.text : "");
-            return;
-        }
-
-        input.SetTextWithoutNotify(currentCharacter.GetSharedString(key, ""));
-    }
-
-    private void LoadSharedCharacterInput(TMP_InputField input)
-    {
-        string key = GetSharedCharacterInputKey(input != null ? input.transform : null);
-        if (string.IsNullOrEmpty(key))
-            return;
-
-        if (!currentCharacter.HasSharedString(key))
-        {
-            currentCharacter.SetSharedString(key, input != null ? input.text : "");
-            return;
-        }
-
-        input.SetTextWithoutNotify(currentCharacter.GetSharedString(key, ""));
+        SharedCharacterInputService.Load(currentCharacter, inputFields, tmpInputFields);
     }
 
     private void ClearSharedCharacterInputs()
     {
-        if (currentCharacter == null)
-            return;
-
-        if (!SceneContainsSharedCharacterInput())
-            return;
-
-        currentCharacter.DeleteSharedString("SharedInput_magMod");
-        currentCharacter.DeleteSharedString("SharedInput_slogSpas");
-    }
-
-    private bool SceneContainsSharedCharacterInput()
-    {
-        foreach (InputField input in inputFields)
-            if (!string.IsNullOrEmpty(GetSharedCharacterInputKey(input != null ? input.transform : null)))
-                return true;
-
-        foreach (TMP_InputField input in tmpInputFields)
-            if (!string.IsNullOrEmpty(GetSharedCharacterInputKey(input != null ? input.transform : null)))
-                return true;
-
-        return false;
-    }
-
-    private string GetSharedCharacterInputKey(Transform transform)
-    {
-        string containerName = GetMatchingAncestorName(transform, "magMod", "slogSpas");
-        return string.IsNullOrEmpty(containerName) ? "" : "SharedInput_" + containerName;
-    }
-
-    private string GetMatchingAncestorName(Transform transform, params string[] names)
-    {
-        while (transform != null)
-        {
-            foreach (string name in names)
-                if (NameMatches(transform.name, name))
-                    return name;
-
-            transform = transform.parent;
-        }
-
-        return "";
+        SharedCharacterInputService.Clear(currentCharacter, inputFields, tmpInputFields);
     }
 
     private string GetPlainControlPath(Transform transform)
@@ -499,20 +408,6 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         }
 
         return path;
-    }
-
-    private bool NameMatches(string actualName, string expectedName)
-    {
-        return GetBaseName(actualName).Equals(expectedName, StringComparison.OrdinalIgnoreCase);
-    }
-
-    private string GetBaseName(string name)
-    {
-        if (string.IsNullOrEmpty(name))
-            return "";
-
-        int suffixStart = name.LastIndexOf(" (", StringComparison.Ordinal);
-        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
     }
 
     #endregion
@@ -604,7 +499,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
     {
         Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform transform in transforms)
-            if (transform != null && NameMatches(transform.name, objectName))
+            if (transform != null && SceneObjectName.Matches(transform.name, objectName))
                 return true;
 
         return false;

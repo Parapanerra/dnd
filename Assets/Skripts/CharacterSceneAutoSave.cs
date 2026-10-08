@@ -95,7 +95,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
         Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform item in transforms)
         {
-            if (!NameMatches(item.name, CharacterNameObjectName))
+            if (!SceneObjectName.Matches(item.name, CharacterNameObjectName))
                 continue;
 
             characterNameInputField = item.GetComponent<InputField>();
@@ -312,7 +312,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
     {
         Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform transform in transforms)
-            if (transform != null && GetBaseName(transform.name).Equals(objectName, StringComparison.OrdinalIgnoreCase))
+            if (transform != null && SceneObjectName.BaseName(transform.name).Equals(objectName, StringComparison.OrdinalIgnoreCase))
                 return true;
 
         return false;
@@ -355,21 +355,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
     private void SaveSharedCharacterInputs()
     {
         CharacterData character = DndSaveManager.Instance != null ? DndSaveManager.Instance.GetCharacter(characterId) : null;
-        if (character == null)
-            return;
-
-        foreach (InputField input in inputFields)
-            SaveSharedCharacterInput(character, input != null ? input.transform : null, input != null ? input.text : "");
-
-        foreach (TMP_InputField input in tmpInputFields)
-            SaveSharedCharacterInput(character, input != null ? input.transform : null, input != null ? input.text : "");
-    }
-
-    private void SaveSharedCharacterInput(CharacterData character, Transform transform, string value)
-    {
-        string key = GetSharedCharacterInputKey(transform);
-        if (!string.IsNullOrEmpty(key))
-            character.SetSharedString(key, value);
+        SharedCharacterInputService.Save(character, inputFields, tmpInputFields);
     }
 
     private void SaveRestResourceMarkers()
@@ -380,101 +366,13 @@ public class CharacterSceneAutoSave : MonoBehaviour
     private void LoadSharedCharacterInputs()
     {
         CharacterData character = DndSaveManager.Instance != null ? DndSaveManager.Instance.GetCharacter(characterId) : null;
-        if (character == null)
-            return;
-
-        foreach (InputField input in inputFields)
-            LoadSharedCharacterInput(character, input);
-
-        foreach (TMP_InputField input in tmpInputFields)
-            LoadSharedCharacterInput(character, input);
-    }
-
-    private void LoadSharedCharacterInput(CharacterData character, InputField input)
-    {
-        string key = GetSharedCharacterInputKey(input != null ? input.transform : null);
-        if (string.IsNullOrEmpty(key))
-            return;
-
-        if (!character.HasSharedString(key))
-        {
-            character.SetSharedString(key, input != null ? input.text : "");
-            return;
-        }
-
-        input.SetTextWithoutNotify(character.GetSharedString(key, ""));
-    }
-
-    private void LoadSharedCharacterInput(CharacterData character, TMP_InputField input)
-    {
-        string key = GetSharedCharacterInputKey(input != null ? input.transform : null);
-        if (string.IsNullOrEmpty(key))
-            return;
-
-        if (!character.HasSharedString(key))
-        {
-            character.SetSharedString(key, input != null ? input.text : "");
-            return;
-        }
-
-        input.SetTextWithoutNotify(character.GetSharedString(key, ""));
+        SharedCharacterInputService.Load(character, inputFields, tmpInputFields);
     }
 
     private void ClearSharedCharacterInputs()
     {
         CharacterData character = DndSaveManager.Instance != null ? DndSaveManager.Instance.GetCharacter(characterId) : null;
-        if (character == null || !SceneContainsSharedCharacterInput())
-            return;
-
-        character.DeleteSharedString("SharedInput_magMod");
-        character.DeleteSharedString("SharedInput_slogSpas");
-    }
-
-    private bool SceneContainsSharedCharacterInput()
-    {
-        foreach (InputField input in inputFields)
-            if (!string.IsNullOrEmpty(GetSharedCharacterInputKey(input != null ? input.transform : null)))
-                return true;
-
-        foreach (TMP_InputField input in tmpInputFields)
-            if (!string.IsNullOrEmpty(GetSharedCharacterInputKey(input != null ? input.transform : null)))
-                return true;
-
-        return false;
-    }
-
-    private string GetSharedCharacterInputKey(Transform transform)
-    {
-        string containerName = GetMatchingAncestorName(transform, "magMod", "slogSpas");
-        return string.IsNullOrEmpty(containerName) ? "" : "SharedInput_" + containerName;
-    }
-
-    private string GetMatchingAncestorName(Transform transform, params string[] names)
-    {
-        while (transform != null)
-        {
-            foreach (string name in names)
-                if (NameMatches(transform.name, name))
-                    return name;
-
-            transform = transform.parent;
-        }
-
-        return "";
-    }
-
-    private bool NameMatches(string actualName, string expectedName)
-    {
-        return GetBaseName(actualName).Equals(expectedName, StringComparison.OrdinalIgnoreCase);
-    }
-
-    private string GetBaseName(string name)
-    {
-        if (string.IsNullOrEmpty(name))
-            return "";
-
-        int suffixStart = name.LastIndexOf(" (", StringComparison.Ordinal);
-        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
+        SharedCharacterInputService.Clear(character, inputFields, tmpInputFields);
     }
 
     private void OnApplicationPause(bool paused)
