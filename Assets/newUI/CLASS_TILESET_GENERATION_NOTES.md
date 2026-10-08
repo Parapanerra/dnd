@@ -190,4 +190,4 @@ Ranger theme that worked:
 - amber secondary accents
 - bow, quiver, compass, paw, leaf, trap, campfire, map, backpack
 
-Keep the surfaces cleaner than Blood Hunter. Ranger should read as dark forest utility, not noisy horror.
+Keep the surfaces clean. Ranger should read as dark forest utility, not noisy horror.
