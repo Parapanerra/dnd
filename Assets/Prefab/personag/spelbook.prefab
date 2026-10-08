@@ -4643,7 +4643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &409795670433490421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18084,7 +18084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5773235788115518870
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19397,7 +19397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &563811700573510897
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24775,7 +24775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6074274244551909417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28122,7 +28122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2168489119359897934
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33078,7 +33078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3036600816993363502
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33438,7 +33438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7108654345552749692
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37545,7 +37545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3179110915625392663
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42169,7 +42169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4367854628459492391
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42379,7 +42379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2640100135358211447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -47547,7 +47547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1897880822577893747
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49160,7 +49160,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3421834499395824220
 RectTransform:
   m_ObjectHideFlags: 0
@@ -60768,7 +60768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8452506529977804990
 RectTransform:
   m_ObjectHideFlags: 0
@@ -75515,7 +75515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2494290422262528207
 RectTransform:
   m_ObjectHideFlags: 0
@@ -89818,7 +89818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &98128260476115328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -93753,7 +93753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1974721902700336637
 RectTransform:
   m_ObjectHideFlags: 0
@@ -106740,7 +106740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8579679833360830431
 RectTransform:
   m_ObjectHideFlags: 0
@@ -123944,7 +123944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5029473702294966500
 RectTransform:
   m_ObjectHideFlags: 0
@@ -134942,7 +134942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &141976266767043369
 RectTransform:
   m_ObjectHideFlags: 0
@@ -144036,7 +144036,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4780239952109126225
 RectTransform:
   m_ObjectHideFlags: 0
@@ -158041,7 +158041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7512673441060722769
 RectTransform:
   m_ObjectHideFlags: 0
@@ -165079,7 +165079,6 @@ RectTransform:
   - {fileID: 9076301029434574089}
   - {fileID: 6637366320606188063}
   - {fileID: 838100614482428473}
-  - {fileID: 3687922393653689695}
   - {fileID: 865428048708073973}
   - {fileID: 1782578905147004690}
   m_Father: {fileID: 0}
@@ -183171,7 +183170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3405191710263484439
 RectTransform:
   m_ObjectHideFlags: 0
@@ -187336,7 +187335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6363261250163481008
 RectTransform:
   m_ObjectHideFlags: 0
@@ -193805,7 +193804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2976631291141661500
 RectTransform:
   m_ObjectHideFlags: 0
@@ -210597,7 +210596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9122169617867399513
 RectTransform:
   m_ObjectHideFlags: 0
@@ -211796,7 +211795,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2108006088683093505
 RectTransform:
   m_ObjectHideFlags: 0
@@ -217135,7 +217134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7641204173987286413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -230186,7 +230185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6707572381918784721
 RectTransform:
   m_ObjectHideFlags: 0
@@ -238256,7 +238255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6020216661155229023
 RectTransform:
   m_ObjectHideFlags: 0
@@ -256472,7 +256471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6304009555625216301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -265588,232 +265587,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &8970344396427478511
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3687922393653689695}
-  - component: {fileID: 4360566880290124987}
-  m_Layer: 0
-  m_Name: 'ButtonAndInputManager '
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3687922393653689695
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8970344396427478511}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 144.7932, y: -505.11346, z: -21012.428}
-  m_LocalScale: {x: 233.99936, y: 233.99936, z: 233.99936}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8093923864987665386}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4360566880290124987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8970344396427478511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bdaa872b5f1aee49989065062a61fc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttons:
-  - {fileID: 5655560053154488860}
-  - {fileID: 635531573633352134}
-  - {fileID: 8320552744103853576}
-  - {fileID: 3322020086181416345}
-  - {fileID: 9022396180204839956}
-  - {fileID: 2618207357772998808}
-  - {fileID: 2671731087589889592}
-  - {fileID: 6925996117560144504}
-  - {fileID: 7666881640621071936}
-  - {fileID: 293149421432495421}
-  - {fileID: 4095410868493212922}
-  - {fileID: 3854934184182804672}
-  - {fileID: 8104447715151559321}
-  - {fileID: 5659528406786969623}
-  - {fileID: 6454841876072139577}
-  - {fileID: 3878536247665504756}
-  - {fileID: 8359445257364119836}
-  - {fileID: 2543624937356177773}
-  - {fileID: 4741085013240345992}
-  - {fileID: 59973422713477081}
-  - {fileID: 3047916450253436117}
-  - {fileID: 3317176073454520222}
-  - {fileID: 1607766022891962333}
-  - {fileID: 172611638481258302}
-  - {fileID: 2269533459962166858}
-  - {fileID: 4832513245556954742}
-  - {fileID: 4448917000057428136}
-  - {fileID: 8761721899544147237}
-  - {fileID: 7717392305442419657}
-  - {fileID: 7892697152992448538}
-  inputFields:
-  - {fileID: 6540735421229923655}
-  - {fileID: 6579027182043974220}
-  - {fileID: 8832067119539182326}
-  - {fileID: 4117642532816995269}
-  - {fileID: 5834156538226727105}
-  - {fileID: 605409910846311669}
-  - {fileID: 3478107549710945522}
-  - {fileID: 8736312522234728359}
-  - {fileID: 1928925753980435345}
-  - {fileID: 4882119002163182318}
-  - {fileID: 8469133754515782290}
-  - {fileID: 8712933544854950608}
-  - {fileID: 4981482646786136110}
-  - {fileID: 358793456453506033}
-  - {fileID: 2015773661848384575}
-  - {fileID: 8303521481343461143}
-  - {fileID: 2474927789789032847}
-  - {fileID: 5546931021744374382}
-  - {fileID: 2713415538573812771}
-  - {fileID: 6954358921645794661}
-  - {fileID: 1184258807914412414}
-  - {fileID: 4256049011375934534}
-  - {fileID: 135809678093822529}
-  - {fileID: 8860115988539551644}
-  - {fileID: 3922970597408871931}
-  - {fileID: 1499338939381931049}
-  - {fileID: 32305991558859773}
-  - {fileID: 7084842552175358252}
-  - {fileID: 4496709401234535724}
-  - {fileID: 660077960575323809}
-  - {fileID: 1154237249472596361}
-  - {fileID: 5901380039801822968}
-  - {fileID: 8727871071955202367}
-  - {fileID: 8390780929742053863}
-  - {fileID: 5309911195494396985}
-  - {fileID: 190385194241241091}
-  - {fileID: 4623734448439173633}
-  - {fileID: 7042027490409150743}
-  - {fileID: 1719620649225820525}
-  - {fileID: 1566355875068265036}
-  - {fileID: 5116317755860271660}
-  - {fileID: 3580981265095957026}
-  - {fileID: 2090543077539980270}
-  - {fileID: 200339335598888879}
-  - {fileID: 215048896159558821}
-  - {fileID: 1728345556114159269}
-  - {fileID: 7667237390933461964}
-  - {fileID: 1086850108014793546}
-  - {fileID: 1829701699475807260}
-  - {fileID: 8288773850843760361}
-  - {fileID: 5426872471031545563}
-  - {fileID: 2185647071344683676}
-  - {fileID: 5816379516523925357}
-  - {fileID: 3775565414464343646}
-  - {fileID: 1164659171815211325}
-  - {fileID: 6352669291261472830}
-  - {fileID: 3666667365832958568}
-  - {fileID: 1153416880353982966}
-  - {fileID: 1177774679762903614}
-  - {fileID: 7925289737447593868}
-  - {fileID: 8260536793165202567}
-  - {fileID: 535860114597790512}
-  - {fileID: 455048547752103078}
-  - {fileID: 2221950655246543798}
-  - {fileID: 3744013377242652560}
-  - {fileID: 1713383150375049258}
-  - {fileID: 191827222495650215}
-  - {fileID: 1748691187801979104}
-  - {fileID: 5698084487709167461}
-  - {fileID: 4246594797354658060}
-  - {fileID: 6630630181465568453}
-  - {fileID: 4412401659584533405}
-  - {fileID: 5512497554159499467}
-  - {fileID: 4829101191194029161}
-  - {fileID: 3427914901416383008}
-  - {fileID: 2295589046213889117}
-  - {fileID: 3583889750452133561}
-  - {fileID: 1938427958182734176}
-  - {fileID: 4968343841092812417}
-  - {fileID: 7409570033271440654}
-  - {fileID: 3849637475145757396}
-  - {fileID: 838324469976773674}
-  - {fileID: 3075020824373246898}
-  - {fileID: 655085861647382405}
-  - {fileID: 5936912442128866836}
-  - {fileID: 9088299376518776083}
-  - {fileID: 8878326242718254224}
-  - {fileID: 499578511099777952}
-  - {fileID: 8710802238767080459}
-  - {fileID: 5686423359400431110}
-  - {fileID: 1940929583993070852}
-  - {fileID: 4452125629321262844}
-  - {fileID: 7342475901698033747}
-  - {fileID: 3877676596033993003}
-  - {fileID: 1379285139325299232}
-  - {fileID: 7572651267347897115}
-  - {fileID: 962451872753590742}
-  - {fileID: 4958459345079444045}
-  - {fileID: 113315909268603194}
-  - {fileID: 3835551289885947711}
-  - {fileID: 5061184905597344987}
-  - {fileID: 3922415376204465280}
-  - {fileID: 7430912956447979528}
-  - {fileID: 3696424774726973094}
-  - {fileID: 294180560976306313}
-  - {fileID: 8964355402167468540}
-  - {fileID: 5526907059975063048}
-  - {fileID: 445849987053601845}
-  - {fileID: 5542950729847324371}
-  - {fileID: 5927200282440110899}
-  - {fileID: 9115970442374586364}
-  - {fileID: 6040275369280600402}
-  - {fileID: 5993368248611527884}
-  - {fileID: 486256613603390342}
-  - {fileID: 2308083429810963581}
-  - {fileID: 4486072247924908043}
-  - {fileID: 5273340845382036365}
-  - {fileID: 5434668298846714220}
-  - {fileID: 2033734102416279861}
-  - {fileID: 8342054037633038491}
-  - {fileID: 4969521872540003468}
-  - {fileID: 6245985906937841718}
-  - {fileID: 3199933994394988378}
-  - {fileID: 2195331907395940510}
-  - {fileID: 3702211281478684706}
-  - {fileID: 6280066501760293310}
-  - {fileID: 3491250365419967589}
-  - {fileID: 5618458809317711750}
-  - {fileID: 1436283721632382560}
-  - {fileID: 6120407724037615278}
-  - {fileID: 7321106503521145599}
-  - {fileID: 6285078222962474677}
-  - {fileID: 5938438955343178979}
-  - {fileID: 9052632088501303123}
-  - {fileID: 9046495044020745407}
-  - {fileID: 857343819053899816}
-  - {fileID: 258739824103809870}
-  - {fileID: 8823213498579004087}
-  - {fileID: 2944880027837301081}
-  - {fileID: 7905480585168663185}
-  - {fileID: 4646378798533314348}
-  - {fileID: 7315575806849295369}
-  - {fileID: 4030872662720271742}
-  - {fileID: 3382078823994291849}
-  - {fileID: 295854798265832599}
-  - {fileID: 3131040966944168502}
-  - {fileID: 4295907437874652306}
-  - {fileID: 4895566372297032833}
-  - {fileID: 6562890933647928664}
-  - {fileID: 6112290205528759504}
 --- !u!1 &8979773322070534841
 GameObject:
   m_ObjectHideFlags: 0
