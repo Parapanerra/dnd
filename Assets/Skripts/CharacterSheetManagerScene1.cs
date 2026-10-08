@@ -2,19 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-using UnityEngine.Events;
-using SimpleFileBrowser;
-using System.IO;
 using TMPro;
 using System;
 
 public class CharacterSheetManagerScene1 : MonoBehaviour
 {
-    private const string RestResourceKeyPrefix = "RestResource_";
-    private const string CharacterNameObjectName = "personajName";
-    private const string CharacterNameFieldPath = "playerInfo/inputPises/personajName";
-    private const string LegacyCharacterNameFieldPath = "playerInfo/inputPises/mmpises1";
-
     [Header("UI References")]
     public List<InputField> inputFields;
     public List<Toggle> toggles;
@@ -31,8 +23,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
     private List<TMP_InputField> tmpInputFields = new List<TMP_InputField>();
     private string characterId;
     private string sceneName;
-    private InputField characterNameInputField;
-    private TMP_InputField characterNameTmpInputField;
+    private readonly CharacterNameFieldService characterNameField = new CharacterNameFieldService();
     private bool isLoadingSceneData;
     private readonly SceneSaveController sceneFields = new SceneSaveController();
     private List<TMP_Dropdown> tmpDropdowns = new List<TMP_Dropdown>();
@@ -51,7 +42,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         currentSceneData = currentCharacter.GetSceneData(sceneName);
         CacheSceneControls();
         DoubleClickInputFieldActivator.ConfigureSceneInputs();
-        EnsureCharacterPortraitManager();
+        CharacterSceneUiService.EnsurePortraitManager(gameObject);
 
         if (currentCharacter == null)
         {
@@ -82,44 +73,38 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
     #region ЗБЕРЕЖЕННЯ / ЗАВАНТАЖЕННЯ (ООП)
 
-    private void SaveIdentityAndSharedInputs()
+    private void SaveIdentityAndSharedInputs(CharacterData character)
     {
-        SaveCharacterNameIfPossible();
-        SaveSharedCharacterInputs();
+        characterNameField.Save(character);
+        SharedCharacterInputService.Save(character, inputFields, tmpInputFields);
     }
 
     public void SaveCharacterData()
     {
-        if (isLoadingSceneData || DndSaveManager.Instance == null)
+        if (isLoadingSceneData)
             return;
 
-        if (DndSaveManager.Instance != null)
-        {
-            currentCharacter = DndSaveManager.Instance.GetCharacter(characterId);
-            currentSceneData = DndSaveManager.Instance.GetSceneDataForCharacter(characterId, sceneName);
-        }
+        CharacterSceneData saved = CharacterSceneSaveService.Save(
+            DndSaveManager.Instance, characterId, sceneName, sceneFields, SaveIdentityAndSharedInputs);
+        if (saved == null)
+            return;
 
-        if (currentCharacter == null || currentSceneData == null) return;
-
-        sceneFields.Save(currentSceneData, SaveIdentityAndSharedInputs);
-
-        SaveRestResourceMarkers();
-
-        DndSaveManager.Instance.RequestSaveData();
+        currentCharacter = DndSaveManager.Instance.GetCharacter(characterId);
+        currentSceneData = saved;
     }
 
     private void LoadCharacterDataToUI()
     {
         if (currentCharacter == null || currentSceneData == null) return;
 
-        MigrateLegacySceneDataIfNeeded();
+        CharacterSceneMigrationService.CopyLegacyFieldsIfEmpty(currentCharacter, currentSceneData);
 
         isLoadingSceneData = true;
         try
         {
             sceneFields.Load(currentSceneData);
 
-            LoadCharacterNameToUi();
+            characterNameField.Load(currentCharacter);
             LoadSharedCharacterInputs();
         }
         finally
@@ -127,39 +112,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
             isLoadingSceneData = false;
         }
 
-        RefreshDropdownDrivenUi();
-        RefreshToggleDrivenPanels();
-        RefreshHealthBars();
-    }
-
-    private void RefreshDropdownDrivenUi()
-    {
-        DropdownManager[] dropdownManagers = FindObjectsByType<DropdownManager>(FindObjectsInactive.Include);
-        foreach (DropdownManager manager in dropdownManagers)
-            if (manager != null)
-                manager.RefreshAll();
-
-        DropdownVisibilityController[] visibilityControllers = FindObjectsByType<DropdownVisibilityController>(FindObjectsInactive.Include);
-        foreach (DropdownVisibilityController controller in visibilityControllers)
-            if (controller != null)
-                controller.RefreshVisibility();
-    }
-
-    private void RefreshToggleDrivenPanels()
-    {
-        PanelToggleManager[] panelToggleManagers = FindObjectsByType<PanelToggleManager>(FindObjectsInactive.Include);
-        foreach (PanelToggleManager manager in panelToggleManagers)
-            if (manager != null)
-                manager.RefreshPanels();
-    }
-
-    private void RefreshHealthBars()
-    {
-        HealthBar[] healthBars = FindObjectsByType<HealthBar>(FindObjectsInactive.Include);
-        foreach (HealthBar healthBar in healthBars)
-            if (healthBar != null)
-                healthBar.RefreshHealthFromData();
-
+        CharacterSceneUiService.RefreshAfterLoad();
     }
 
     public void SwitchSceneData(string newSceneName)
@@ -183,22 +136,6 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         RuntimeLocalization.EnsureExists().ApplyToScene();
     }
 
-    private void MigrateLegacySceneDataIfNeeded()
-    {
-        if (currentSceneData.inputData.Count > 0 ||
-            currentSceneData.toggleData.Count > 0 ||
-            currentSceneData.sliderData.Count > 0 ||
-            currentSceneData.dropdownData.Count > 0)
-        {
-            return;
-        }
-
-        currentSceneData.inputData.AddRange(currentCharacter.inputData);
-        currentSceneData.toggleData.AddRange(currentCharacter.toggleData);
-        currentSceneData.sliderData.AddRange(currentCharacter.sliderData);
-        currentSceneData.dropdownData.AddRange(currentCharacter.dropdownData);
-    }
-
     private void CacheSceneControls()
     {
         sceneFields.Collect(IsManagedByHealthBar, excludeDropdownTemplates: false);
@@ -209,9 +146,9 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         dropdowns = sceneFields.Dropdowns;
         tmpDropdowns = sceneFields.TmpDropdowns;
         resetButtons = sceneFields.ResetButtons;
-        resetButtons.RemoveAll(button => !IsResetButton(button));
+        resetButtons.RemoveAll(button => !CharacterSceneUiService.IsResetButton(button));
 
-        CacheCharacterNameField();
+        characterNameField.Cache(inputFields, tmpInputFields, true);
     }
 
     private bool IsManagedByHealthBar(Transform transform)
@@ -219,174 +156,6 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         return transform != null && transform.GetComponentInParent<HealthBar>(true) != null;
     }
 
-    private void CacheCharacterNameField()
-    {
-        characterNameInputField = null;
-        characterNameTmpInputField = null;
-
-        if (TryCacheCharacterNameFieldByObjectName())
-            return;
-
-        InputField exactInput = null;
-        TMP_InputField exactTmpInput = null;
-
-        foreach (InputField input in inputFields)
-        {
-            if (input == null)
-                continue;
-
-            if (IsExactCharacterNameField(input.transform))
-            {
-                exactInput = input;
-                break;
-            }
-
-            if (characterNameInputField == null && IsCharacterNameField(input.transform))
-            {
-                characterNameInputField = input;
-            }
-        }
-
-        if (exactInput != null)
-        {
-            characterNameInputField = exactInput;
-            return;
-        }
-
-        foreach (TMP_InputField input in tmpInputFields)
-        {
-            if (input == null)
-                continue;
-
-            if (IsExactCharacterNameField(input.transform))
-            {
-                exactTmpInput = input;
-                break;
-            }
-
-            if (characterNameTmpInputField == null && IsCharacterNameField(input.transform))
-            {
-                characterNameTmpInputField = input;
-            }
-        }
-
-        if (exactTmpInput != null)
-        {
-            characterNameInputField = null;
-            characterNameTmpInputField = exactTmpInput;
-        }
-    }
-
-    private bool TryCacheCharacterNameFieldByObjectName()
-    {
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
-        foreach (Transform transform in transforms)
-        {
-            if (transform.name != CharacterNameObjectName)
-                continue;
-
-            characterNameInputField = transform.GetComponent<InputField>();
-            if (characterNameInputField == null)
-                characterNameInputField = transform.GetComponentInChildren<InputField>(true);
-            if (characterNameInputField == null && transform.parent != null)
-                characterNameInputField = transform.parent.GetComponent<InputField>();
-
-            if (characterNameInputField != null)
-                return true;
-
-            characterNameTmpInputField = transform.GetComponent<TMP_InputField>();
-            if (characterNameTmpInputField == null)
-                characterNameTmpInputField = transform.GetComponentInChildren<TMP_InputField>(true);
-            if (characterNameTmpInputField == null && transform.parent != null)
-                characterNameTmpInputField = transform.parent.GetComponent<TMP_InputField>();
-
-            if (characterNameTmpInputField != null)
-                return true;
-        }
-
-        return false;
-    }
-
-    private bool IsExactCharacterNameField(Transform transform)
-    {
-        string path = GetPlainControlPath(transform);
-        return path.EndsWith(CharacterNameFieldPath, StringComparison.Ordinal) ||
-               path.EndsWith(LegacyCharacterNameFieldPath, StringComparison.Ordinal);
-    }
-
-    private bool IsCharacterNameField(Transform transform)
-    {
-        string path = GetPlainControlPath(transform);
-        return path.Contains(CharacterNameFieldPath) ||
-               path.Contains(LegacyCharacterNameFieldPath);
-    }
-
-    private void LoadCharacterNameToUi()
-    {
-        if (characterNameInputField == null && characterNameTmpInputField == null)
-            return;
-
-        string savedName = CleanCharacterName(currentCharacter.characterName);
-        if (string.IsNullOrEmpty(savedName))
-            return;
-
-        if (characterNameInputField != null)
-            characterNameInputField.SetTextWithoutNotify(savedName);
-        else if (characterNameTmpInputField != null)
-            characterNameTmpInputField.SetTextWithoutNotify(savedName);
-    }
-
-    private void SaveCharacterNameIfPossible()
-    {
-        if (characterNameInputField == null && characterNameTmpInputField == null)
-            return;
-
-        string newName = null;
-        if (characterNameInputField != null)
-            newName = characterNameInputField.text;
-        else if (characterNameTmpInputField != null)
-            newName = characterNameTmpInputField.text;
-
-        newName = CleanCharacterName(newName);
-        if (!string.IsNullOrEmpty(newName))
-        {
-            currentCharacter.characterName = newName;
-        }
-    }
-
-    private string CleanCharacterName(string value)
-    {
-        if (string.IsNullOrWhiteSpace(value))
-            return "";
-
-        value = value.Trim();
-        if (float.TryParse(value, out _))
-            return "";
-
-        return value;
-    }
-
-    private string GetControlPath(Transform transform)
-    {
-        string path = transform.GetSiblingIndex().ToString("D4") + "_" + transform.name;
-        while (transform.parent != null)
-        {
-            transform = transform.parent;
-            path = transform.GetSiblingIndex().ToString("D4") + "_" + transform.name + "/" + path;
-        }
-
-        return path;
-    }
-
-    private void SaveSharedCharacterInputs()
-    {
-        SharedCharacterInputService.Save(currentCharacter, inputFields, tmpInputFields);
-    }
-
-    private void SaveRestResourceMarkers()
-    {
-        SceneRoleLookup.SaveRestResourcePaths(currentSceneData);
-    }
 
     private void LoadSharedCharacterInputs()
     {
@@ -398,18 +167,6 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         SharedCharacterInputService.Clear(currentCharacter, inputFields, tmpInputFields);
     }
 
-    private string GetPlainControlPath(Transform transform)
-    {
-        string path = transform.name;
-        while (transform.parent != null)
-        {
-            transform = transform.parent;
-            path = transform.name + "/" + path;
-        }
-
-        return path;
-    }
-
     #endregion
 
     #region UI EVENTS
@@ -418,7 +175,8 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
     {
         sceneFields.Subscribe(SaveCharacterData, () => DndSaveManager.Instance?.FlushPendingSave());
 
-        SubscribeToCharacterNameField();
+        characterNameField.SubscribeIfOutsideCollectedFields(inputFields, tmpInputFields,
+            SaveCharacterData, () => DndSaveManager.Instance?.FlushPendingSave());
     }
 
     private void BindResetButtons()
@@ -429,7 +187,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         foreach (Button button in resetButtons)
             if (button != null)
             {
-                DisablePersistentOnClick(button);
+                CharacterSceneUiService.DisablePersistentOnClick(button);
                 button.onClick.RemoveAllListeners();
                 button.onClick.AddListener(ResetSceneData);
             }
@@ -460,86 +218,9 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         currentSceneData.ClearValues();
         ClearSharedCharacterInputs();
         CharacterPortraitManager.ClearPortraitForActiveCharacter();
-        ResetInventoryCells();
-        ResetSceneHealthBars();
+        CharacterSceneUiService.ResetSceneWidgets();
         SaveCharacterData();
-        RefreshDropdownDrivenUi();
-        RefreshToggleDrivenPanels();
-    }
-
-    private void ResetInventoryCells()
-    {
-        InventoryItemCell[] inventoryCells = FindObjectsByType<InventoryItemCell>(FindObjectsInactive.Include);
-        foreach (InventoryItemCell inventoryCell in inventoryCells)
-            if (inventoryCell != null)
-                inventoryCell.ResetToDefaults(false);
-    }
-
-    private void ResetSceneHealthBars()
-    {
-        HealthBar[] healthBars = FindObjectsByType<HealthBar>(FindObjectsInactive.Include);
-        foreach (HealthBar healthBar in healthBars)
-            if (healthBar != null)
-                healthBar.ResetHealth();
-
-    }
-
-    private void EnsureCharacterPortraitManager()
-    {
-        if (!SceneHasObject("Buttonphotopersoj") && !SceneHasObject("photopersonaja"))
-            return;
-
-        if (FindAnyObjectByType<CharacterPortraitManager>() != null)
-            return;
-
-        gameObject.AddComponent<CharacterPortraitManager>();
-    }
-
-    private bool SceneHasObject(string objectName)
-    {
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
-        foreach (Transform transform in transforms)
-            if (transform != null && SceneObjectName.Matches(transform.name, objectName))
-                return true;
-
-        return false;
-    }
-
-    private bool IsResetButton(Button button)
-    {
-        if (button == null)
-            return false;
-
-        SceneRoleMarker marker = button.GetComponent<SceneRoleMarker>();
-        if (marker != null)
-            return marker.role == SceneRole.ResetScene;
-
-        string name = button.gameObject.name.ToLowerInvariant();
-        return name.Contains("resetseve") ||
-               name.Contains("reset save") ||
-               name.Contains("resetsave") ||
-               name.Contains("clear save");
-    }
-
-    private void DisablePersistentOnClick(Button button)
-    {
-        for (int i = 0; i < button.onClick.GetPersistentEventCount(); i++)
-            button.onClick.SetPersistentListenerState(i, UnityEventCallState.Off);
-    }
-
-    private void SubscribeToCharacterNameField()
-    {
-        if (characterNameInputField != null && !inputFields.Contains(characterNameInputField))
-        {
-            characterNameInputField.onValueChanged.AddListener(delegate { SaveCharacterData(); });
-            characterNameInputField.onEndEdit.AddListener(delegate { DndSaveManager.Instance?.FlushPendingSave(); });
-        }
-
-        if (characterNameTmpInputField != null && !tmpInputFields.Contains(characterNameTmpInputField))
-        {
-            characterNameTmpInputField.onValueChanged.AddListener(delegate { SaveCharacterData(); });
-            characterNameTmpInputField.onEndEdit.AddListener(delegate { DndSaveManager.Instance?.FlushPendingSave(); });
-        }
+        CharacterSceneUiService.RefreshAfterReset();
     }
 
     #endregion

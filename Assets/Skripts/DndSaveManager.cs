@@ -251,23 +251,7 @@ public class DndSaveManager : MonoBehaviour
         if (character == null)
             return;
 
-        string familyName = GetSceneDataFamilyName(sceneName);
-        foreach (CharacterSceneData state in character.sceneStates)
-            if (state != null && GetSceneDataFamilyName(state.sceneName) == familyName)
-                state.ClearValues();
-    }
-
-    private string GetSceneDataFamilyName(string sceneName)
-    {
-        if (string.IsNullOrWhiteSpace(sceneName))
-            return "";
-
-        sceneName = sceneName.Trim();
-        int lastSpace = sceneName.LastIndexOf(' ');
-        if (lastSpace > 0 && int.TryParse(sceneName.Substring(lastSpace + 1), out _))
-            return sceneName.Substring(0, lastSpace);
-
-        return sceneName;
+        CharacterSceneStateService.ClearFamily(character, sceneName);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

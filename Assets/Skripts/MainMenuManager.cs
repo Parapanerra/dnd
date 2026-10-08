@@ -157,26 +157,25 @@ public class MainMenuManager : MonoBehaviour
 
     internal void OnCharacterSelected(string characterId)
     {
-        if (!DndSaveManager.Instance.SetActiveCharacter(characterId))
-            return;
-        
-        SceneManager.LoadScene(characterSheetSceneName);
+        OpenCharacterScene(characterId, characterSheetSceneName);
     }
 
     internal void OnInventorySelected(string characterId)
     {
-        if (!DndSaveManager.Instance.SetActiveCharacter(characterId))
-            return;
-
-        SceneManager.LoadScene(inventorySceneName);
+        OpenCharacterScene(characterId, inventorySceneName);
     }
 
     internal void OnSpellbookSelected(string characterId)
     {
+        OpenCharacterScene(characterId, spellbookSceneName);
+    }
+
+    private static void OpenCharacterScene(string characterId, string sceneName)
+    {
         if (!DndSaveManager.Instance.SetActiveCharacter(characterId))
             return;
 
-        SceneManager.LoadScene(spellbookSceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
 }

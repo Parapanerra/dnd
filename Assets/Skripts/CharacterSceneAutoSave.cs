@@ -1,29 +1,19 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class CharacterSceneAutoSave : MonoBehaviour
 {
-    private const string RestResourceKeyPrefix = "RestResource_";
-    private const string CharacterNameObjectName = "personajName";
-
     private List<InputField> inputFields = new List<InputField>();
     private List<TMP_InputField> tmpInputFields = new List<TMP_InputField>();
-    private List<Toggle> toggles = new List<Toggle>();
-    private List<Slider> sliders = new List<Slider>();
-    private List<Dropdown> dropdowns = new List<Dropdown>();
-    private List<TMP_Dropdown> tmpDropdowns = new List<TMP_Dropdown>();
     private List<Button> resetButtons = new List<Button>();
     private CharacterSceneData sceneData;
     private string characterId;
     private string sceneName;
     private bool isLoadingSceneData;
     private readonly SceneSaveController sceneFields = new SceneSaveController();
-    private InputField characterNameInputField;
-    private TMP_InputField characterNameTmpInputField;
+    private readonly CharacterNameFieldService characterNameField = new CharacterNameFieldService();
 
     private void Start()
     {
@@ -34,17 +24,17 @@ public class CharacterSceneAutoSave : MonoBehaviour
         sceneData = character.GetSceneData(sceneName);
         CacheSceneControls();
         DoubleClickInputFieldActivator.ConfigureSceneInputs();
-        EnsureCharacterPortraitManager();
+        CharacterSceneUiService.EnsurePortraitManager(gameObject);
         LoadSceneDataToUi();
         DeathSaveToggleSequence.ConfigureScene();
         RuntimeLocalization.EnsureExists().ApplyToScene();
         Subscribe();
     }
 
-    private void SaveIdentityAndSharedInputs()
+    private void SaveIdentityAndSharedInputs(CharacterData character)
     {
-        SaveCharacterNameIfPossible();
-        SaveSharedCharacterInputs();
+        characterNameField.Save(character);
+        SharedCharacterInputService.Save(character, inputFields, tmpInputFields);
     }
 
     public void SaveSceneData()
@@ -52,20 +42,10 @@ public class CharacterSceneAutoSave : MonoBehaviour
         if (isLoadingSceneData)
             return;
 
-        if (DndSaveManager.Instance == null)
-            return;
-
-        if (sceneData == null)
-            sceneData = DndSaveManager.Instance.GetSceneDataForCharacter(characterId, sceneName);
-
-        if (sceneData == null)
-            return;
-
-        sceneFields.Save(sceneData, SaveIdentityAndSharedInputs);
-
-        SaveRestResourceMarkers();
-
-        DndSaveManager.Instance.RequestSaveData();
+        CharacterSceneData saved = CharacterSceneSaveService.Save(
+            DndSaveManager.Instance, characterId, sceneName, sceneFields, SaveIdentityAndSharedInputs);
+        if (saved != null)
+            sceneData = saved;
     }
 
     private void CacheSceneControls()
@@ -73,98 +53,14 @@ public class CharacterSceneAutoSave : MonoBehaviour
         sceneFields.Collect(IsManagedByHealthBar, excludeDropdownTemplates: true);
         inputFields = sceneFields.InputFields;
         tmpInputFields = sceneFields.TmpInputFields;
-        toggles = sceneFields.Toggles;
-        sliders = sceneFields.Sliders;
-        dropdowns = sceneFields.Dropdowns;
-        tmpDropdowns = sceneFields.TmpDropdowns;
         resetButtons = sceneFields.ResetButtons;
-        resetButtons.RemoveAll(button => !IsResetButton(button));
-        CacheCharacterNameField();
+        resetButtons.RemoveAll(button => !CharacterSceneUiService.IsResetButton(button));
+        characterNameField.Cache(inputFields, tmpInputFields, false);
     }
 
     private bool IsManagedByHealthBar(Transform transform)
     {
         return transform != null && transform.GetComponentInParent<HealthBar>(true) != null;
-    }
-
-    private void CacheCharacterNameField()
-    {
-        characterNameInputField = null;
-        characterNameTmpInputField = null;
-
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
-        foreach (Transform item in transforms)
-        {
-            if (!SceneObjectName.Matches(item.name, CharacterNameObjectName))
-                continue;
-
-            characterNameInputField = item.GetComponent<InputField>();
-            if (characterNameInputField == null)
-                characterNameInputField = item.GetComponentInChildren<InputField>(true);
-            if (characterNameInputField == null && item.parent != null)
-                characterNameInputField = item.parent.GetComponent<InputField>();
-            if (characterNameInputField != null)
-                return;
-
-            characterNameTmpInputField = item.GetComponent<TMP_InputField>();
-            if (characterNameTmpInputField == null)
-                characterNameTmpInputField = item.GetComponentInChildren<TMP_InputField>(true);
-            if (characterNameTmpInputField == null && item.parent != null)
-                characterNameTmpInputField = item.parent.GetComponent<TMP_InputField>();
-            if (characterNameTmpInputField != null)
-                return;
-        }
-    }
-
-    private void LoadCharacterNameToUi()
-    {
-        if (characterNameInputField == null && characterNameTmpInputField == null)
-            return;
-
-        CharacterData character = DndSaveManager.Instance != null ? DndSaveManager.Instance.GetCharacter(characterId) : null;
-        if (character == null)
-            return;
-
-        string savedName = CleanCharacterName(character.characterName);
-        if (string.IsNullOrEmpty(savedName))
-            return;
-
-        if (characterNameInputField != null)
-            characterNameInputField.SetTextWithoutNotify(savedName);
-        else if (characterNameTmpInputField != null)
-            characterNameTmpInputField.SetTextWithoutNotify(savedName);
-    }
-
-    private void SaveCharacterNameIfPossible()
-    {
-        if (characterNameInputField == null && characterNameTmpInputField == null)
-            return;
-
-        CharacterData character = DndSaveManager.Instance != null ? DndSaveManager.Instance.GetCharacter(characterId) : null;
-        if (character == null)
-            return;
-
-        string newName = null;
-        if (characterNameInputField != null)
-            newName = characterNameInputField.text;
-        else if (characterNameTmpInputField != null)
-            newName = characterNameTmpInputField.text;
-
-        newName = CleanCharacterName(newName);
-        if (!string.IsNullOrEmpty(newName))
-            character.characterName = newName;
-    }
-
-    private string CleanCharacterName(string value)
-    {
-        if (string.IsNullOrWhiteSpace(value))
-            return "";
-
-        value = value.Trim();
-        if (float.TryParse(value, out _))
-            return "";
-
-        return value;
     }
 
     private void LoadSceneDataToUi()
@@ -175,46 +71,14 @@ public class CharacterSceneAutoSave : MonoBehaviour
             sceneFields.Load(sceneData);
 
             LoadSharedCharacterInputs();
-            LoadCharacterNameToUi();
+            characterNameField.Load(DndSaveManager.Instance != null ? DndSaveManager.Instance.GetCharacter(characterId) : null);
         }
         finally
         {
             isLoadingSceneData = false;
         }
 
-        RefreshDropdownDrivenUi();
-        RefreshToggleDrivenPanels();
-        RefreshHealthBars();
-    }
-
-    private void RefreshDropdownDrivenUi()
-    {
-        DropdownManager[] dropdownManagers = FindObjectsByType<DropdownManager>(FindObjectsInactive.Include);
-        foreach (DropdownManager manager in dropdownManagers)
-            if (manager != null)
-                manager.RefreshAll();
-
-        DropdownVisibilityController[] visibilityControllers = FindObjectsByType<DropdownVisibilityController>(FindObjectsInactive.Include);
-        foreach (DropdownVisibilityController controller in visibilityControllers)
-            if (controller != null)
-                controller.RefreshVisibility();
-    }
-
-    private void RefreshToggleDrivenPanels()
-    {
-        PanelToggleManager[] panelToggleManagers = FindObjectsByType<PanelToggleManager>(FindObjectsInactive.Include);
-        foreach (PanelToggleManager manager in panelToggleManagers)
-            if (manager != null)
-                manager.RefreshPanels();
-    }
-
-    private void RefreshHealthBars()
-    {
-        HealthBar[] healthBars = FindObjectsByType<HealthBar>(FindObjectsInactive.Include);
-        foreach (HealthBar healthBar in healthBars)
-            if (healthBar != null)
-                healthBar.RefreshHealthFromData();
-
+        CharacterSceneUiService.RefreshAfterLoad();
     }
 
     public void SwitchSceneData(string newSceneName)
@@ -242,7 +106,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
         foreach (Button resetButton in resetButtons)
             if (resetButton != null)
             {
-                DisablePersistentOnClick(resetButton);
+                CharacterSceneUiService.DisablePersistentOnClick(resetButton);
                 resetButton.onClick.RemoveAllListeners();
                 resetButton.onClick.AddListener(ResetSceneData);
             }
@@ -273,95 +137,11 @@ public class CharacterSceneAutoSave : MonoBehaviour
         sceneData.ClearValues();
         ClearSharedCharacterInputs();
         CharacterPortraitManager.ClearPortraitForActiveCharacter();
-        ResetInventoryCells();
-        ResetSceneHealthBars();
+        CharacterSceneUiService.ResetSceneWidgets();
         SaveSceneData();
-        RefreshDropdownDrivenUi();
-        RefreshToggleDrivenPanels();
+        CharacterSceneUiService.RefreshAfterReset();
     }
 
-    private void ResetInventoryCells()
-    {
-        InventoryItemCell[] inventoryCells = FindObjectsByType<InventoryItemCell>(FindObjectsInactive.Include);
-        foreach (InventoryItemCell inventoryCell in inventoryCells)
-            if (inventoryCell != null)
-                inventoryCell.ResetToDefaults(false);
-    }
-
-    private void ResetSceneHealthBars()
-    {
-        HealthBar[] healthBars = FindObjectsByType<HealthBar>(FindObjectsInactive.Include);
-        foreach (HealthBar healthBar in healthBars)
-            if (healthBar != null)
-                healthBar.ResetHealth();
-
-    }
-
-    private void EnsureCharacterPortraitManager()
-    {
-        if (!SceneHasObject("Buttonphotopersoj") && !SceneHasObject("photopersonaja"))
-            return;
-
-        if (FindAnyObjectByType<CharacterPortraitManager>() != null)
-            return;
-
-        gameObject.AddComponent<CharacterPortraitManager>();
-    }
-
-    private bool SceneHasObject(string objectName)
-    {
-        Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
-        foreach (Transform transform in transforms)
-            if (transform != null && SceneObjectName.BaseName(transform.name).Equals(objectName, StringComparison.OrdinalIgnoreCase))
-                return true;
-
-        return false;
-    }
-
-    private bool IsResetButton(Button button)
-    {
-        if (button == null)
-            return false;
-
-        SceneRoleMarker marker = button.GetComponent<SceneRoleMarker>();
-        if (marker != null)
-            return marker.role == SceneRole.ResetScene;
-
-        string name = button.gameObject.name.ToLowerInvariant();
-        return name.Contains("resetseve") ||
-               name.Contains("reset save") ||
-               name.Contains("resetsave") ||
-               name.Contains("clear save");
-    }
-
-    private void DisablePersistentOnClick(Button button)
-    {
-        for (int i = 0; i < button.onClick.GetPersistentEventCount(); i++)
-            button.onClick.SetPersistentListenerState(i, UnityEventCallState.Off);
-    }
-
-    private string GetControlPath(Transform transform)
-    {
-        string path = transform.GetSiblingIndex().ToString("D4") + "_" + transform.name;
-        while (transform.parent != null)
-        {
-            transform = transform.parent;
-            path = transform.GetSiblingIndex().ToString("D4") + "_" + transform.name + "/" + path;
-        }
-
-        return path;
-    }
-
-    private void SaveSharedCharacterInputs()
-    {
-        CharacterData character = DndSaveManager.Instance != null ? DndSaveManager.Instance.GetCharacter(characterId) : null;
-        SharedCharacterInputService.Save(character, inputFields, tmpInputFields);
-    }
-
-    private void SaveRestResourceMarkers()
-    {
-        SceneRoleLookup.SaveRestResourcePaths(sceneData);
-    }
 
     private void LoadSharedCharacterInputs()
     {
