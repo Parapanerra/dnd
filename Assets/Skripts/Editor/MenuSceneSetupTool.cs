@@ -84,13 +84,13 @@ public static class MenuSceneSetupTool
             }
         }
 
-        RectTransform content = menuManager.characterListContent as RectTransform;
+        RectTransform content = menuManager.CharacterListContent as RectTransform;
         if (content == null && scrollRect != null)
             content = scrollRect.content;
 
         if (content != null)
         {
-            menuManager.characterListContent = content;
+            menuManager.SetCharacterListContent(content);
 
             content.anchorMin = new Vector2(0f, 1f);
             content.anchorMax = new Vector2(1f, 1f);
@@ -126,11 +126,7 @@ public static class MenuSceneSetupTool
                 scrollRect.content = content;
         }
 
-        menuManager.openCharacterAfterCreate = false;
-        menuManager.useCharacterButtonPrefab = true;
-        menuManager.repairScrollViewAtRuntime = false;
-        menuManager.applyDefaultCharacterListLayout = false;
-        menuManager.applyDefaultCharacterButtonStyle = false;
+        menuManager.PrepareRepairedCharacterMenu();
         EnsureCharacterButtonTemplate(menuManager, false);
 
         EditorUtility.SetDirty(menuManager);
@@ -142,15 +138,15 @@ public static class MenuSceneSetupTool
 
     private static void EnsureCharacterButtonTemplate(MainMenuManager menuManager, bool logWhenExists)
     {
-        if (menuManager.characterListContent == null)
+        if (menuManager.CharacterListContent == null)
             return;
 
-        Transform existingTemplate = menuManager.characterListContent.Find(CharacterButtonTemplateName);
+        Transform existingTemplate = menuManager.CharacterListContent.Find(CharacterButtonTemplateName);
         if (existingTemplate != null)
         {
-            menuManager.characterButtonTemplate = existingTemplate.gameObject;
-            menuManager.useCharacterButtonPrefab = true;
-            ConfigureContentLayoutForTemplateSize(menuManager.characterListContent);
+            menuManager.SetCharacterButtonTemplate(existingTemplate.gameObject);
+            menuManager.UseCharacterButtonTemplate(false);
+            ConfigureContentLayoutForTemplateSize(menuManager.CharacterListContent);
             EditorUtility.SetDirty(menuManager);
 
             if (logWhenExists)
@@ -159,8 +155,8 @@ public static class MenuSceneSetupTool
             return;
         }
 
-        GameObject prefab = menuManager.characterButtonPrefab != null
-            ? menuManager.characterButtonPrefab
+        GameObject prefab = menuManager.CharacterButtonPrefab != null
+            ? menuManager.CharacterButtonPrefab
             : AssetDatabase.LoadAssetAtPath<GameObject>(CharacterButtonPrefabPath);
 
         if (prefab == null)
@@ -169,7 +165,7 @@ public static class MenuSceneSetupTool
             return;
         }
 
-        GameObject template = PrefabUtility.InstantiatePrefab(prefab, menuManager.characterListContent) as GameObject;
+        GameObject template = PrefabUtility.InstantiatePrefab(prefab, menuManager.CharacterListContent) as GameObject;
         if (template == null)
             return;
 
@@ -177,13 +173,10 @@ public static class MenuSceneSetupTool
         template.SetActive(true);
         template.transform.SetAsFirstSibling();
 
-        menuManager.characterButtonTemplate = template;
-        menuManager.characterButtonPrefab = prefab;
-        menuManager.useCharacterButtonPrefab = true;
-        menuManager.repairScrollViewAtRuntime = false;
-        menuManager.applyDefaultCharacterListLayout = false;
-        menuManager.applyDefaultCharacterButtonStyle = false;
-        ConfigureContentLayoutForTemplateSize(menuManager.characterListContent);
+        menuManager.SetCharacterButtonTemplate(template);
+        menuManager.SetCharacterButtonPrefab(prefab);
+        menuManager.UseCharacterButtonTemplate(true);
+        ConfigureContentLayoutForTemplateSize(menuManager.CharacterListContent);
 
         EditorUtility.SetDirty(template);
         EditorUtility.SetDirty(menuManager);

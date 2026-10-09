@@ -10,29 +10,77 @@ using UnityEngine.EventSystems;
 public class MainMenuManager : MonoBehaviour
 {
     [Header("Required")]
-    public Transform characterListContent;
-    public GameObject characterButtonPrefab;
-    public Button createNewCharacterButton;
+    [SerializeField] private Transform characterListContent;
+    [SerializeField] private GameObject characterButtonPrefab;
+    [SerializeField] private Button createNewCharacterButton;
 
     [Header("Scenes")]
-    public string characterSheetSceneName = AppConfig.Scenes.CharacterSheet;
-    public string inventorySceneName = AppConfig.Scenes.Inventory;
-    public string spellbookSceneName = AppConfig.Scenes.Spellbook;
+    [SerializeField] private string characterSheetSceneName = AppConfig.Scenes.CharacterSheet;
+    [SerializeField] private string inventorySceneName = AppConfig.Scenes.Inventory;
+    [SerializeField] private string spellbookSceneName = AppConfig.Scenes.Spellbook;
 
     [Header("Layout")]
-    public float characterRowSpacing = AppConfig.MainMenu.CharacterRowSpacing;
+    [SerializeField] private float characterRowSpacing = AppConfig.MainMenu.CharacterRowSpacing;
 
-    [HideInInspector] public Transform characterRowsContent;
-    [HideInInspector] public GameObject characterRowTemplate;
-    [HideInInspector] public GameObject characterButtonTemplate;
-    [HideInInspector] public Button addCharacterButton;
-    [HideInInspector] public bool openCharacterAfterCreate;
-    [HideInInspector] public bool useCharacterButtonPrefab = true;
-    [HideInInspector] public bool repairScrollViewAtRuntime;
-    [HideInInspector] public bool applyDefaultCharacterListLayout;
-    [HideInInspector] public bool applyDefaultCharacterButtonStyle;
-    [HideInInspector] public float characterButtonSpacing = AppConfig.MainMenu.CharacterButtonSpacing;
+    [SerializeField, HideInInspector] private bool openCharacterAfterCreate;
+    [SerializeField, HideInInspector] private bool useCharacterButtonPrefab = true;
+    [SerializeField, HideInInspector] private bool repairScrollViewAtRuntime;
+    [SerializeField, HideInInspector] private bool applyDefaultCharacterListLayout;
+    [SerializeField, HideInInspector] private bool applyDefaultCharacterButtonStyle;
+    [SerializeField, HideInInspector] private float characterButtonSpacing = AppConfig.MainMenu.CharacterButtonSpacing;
 
+    public Transform CharacterListContent => characterListContent;
+    public GameObject CharacterButtonPrefab => characterButtonPrefab;
+    internal float CharacterRowSpacing => characterRowSpacing;
+    internal bool UseCharacterButtonPrefab => useCharacterButtonPrefab;
+    internal bool ApplyDefaultCharacterListLayout => applyDefaultCharacterListLayout;
+    internal bool ApplyDefaultCharacterButtonStyle => applyDefaultCharacterButtonStyle;
+    internal float CharacterButtonSpacing => characterButtonSpacing;
+
+#if UNITY_EDITOR
+    public void SetCharacterListContent(Transform content)
+    {
+        characterListContent = content;
+    }
+
+    public void SetCharacterButtonPrefab(GameObject prefab)
+    {
+        characterButtonPrefab = prefab;
+    }
+
+    public void PrepareRepairedCharacterMenu()
+    {
+        openCharacterAfterCreate = false;
+        useCharacterButtonPrefab = true;
+        DisableRuntimeMenuRepair();
+    }
+
+    public void UseCharacterButtonTemplate(bool disableRuntimeRepair)
+    {
+        useCharacterButtonPrefab = true;
+        if (disableRuntimeRepair)
+            DisableRuntimeMenuRepair();
+    }
+
+    private void DisableRuntimeMenuRepair()
+    {
+        repairScrollViewAtRuntime = false;
+        applyDefaultCharacterListLayout = false;
+        applyDefaultCharacterButtonStyle = false;
+    }
+
+    public void SetCharacterButtonTemplate(GameObject template)
+    {
+        if (characterListView == null)
+        {
+            characterListView = GetComponent<MainMenuCharacterListView>();
+            if (characterListView == null)
+                characterListView = gameObject.AddComponent<MainMenuCharacterListView>();
+            characterListView.Initialize(this, saveManager);
+        }
+        characterListView.SetCharacterButtonTemplate(template);
+    }
+#endif
 
     private DndSaveManager saveManager;
     private RuntimeLocalization localization;
@@ -80,6 +128,7 @@ public class MainMenuManager : MonoBehaviour
         localization.ApplyToScene();
         languageSelector.SyncLanguageDropdownValue();
 
+        Button addCharacterButton = characterListView.AddCharacterButton;
         if (addCharacterButton != null)
         {
             addCharacterButton.onClick.RemoveAllListeners();
