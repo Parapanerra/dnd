@@ -38,11 +38,16 @@ public class InventoryItemCell : MonoBehaviour
     private InventoryItemImageController imageController;
     private string cellKey;
     private bool isLoading;
+    private DndSaveManager saveManager;
+    private RuntimeLocalization localization;
     private InventoryItemTransferPanel transferPanel;
     internal string CellKey => cellKey;
+    internal DndSaveManager SaveManager => saveManager;
 
-    public void Initialize(int pageIndex, int cellIndex)
+    public void Initialize(int pageIndex, int cellIndex, DndSaveManager dataManager, RuntimeLocalization textCatalog)
     {
+        saveManager = dataManager;
+        localization = textCatalog;
         cellKey = "Inventory_Page_" + pageIndex + "_Cell_" + cellIndex;
         FindControls();
         BindControls();
@@ -51,20 +56,20 @@ public class InventoryItemCell : MonoBehaviour
 
     public void Save()
     {
-        if (isLoading || string.IsNullOrEmpty(cellKey) || DndSaveManager.Instance == null)
+        if (isLoading || string.IsNullOrEmpty(cellKey) || saveManager == null)
             return;
 
-        CharacterSceneData sceneData = DndSaveManager.Instance.GetActiveSceneData();
+        CharacterSceneData sceneData = saveManager.GetActiveSceneData();
         InventoryItemSerializer.WriteScene(sceneData, cellKey, ReadCurrentData());
-        DndSaveManager.Instance.RequestSaveData();
+        saveManager.RequestSaveData();
     }
 
     public void Load()
     {
-        if (string.IsNullOrEmpty(cellKey) || DndSaveManager.Instance == null)
+        if (string.IsNullOrEmpty(cellKey) || saveManager == null)
             return;
 
-        CharacterSceneData sceneData = DndSaveManager.Instance.GetActiveSceneData(false);
+        CharacterSceneData sceneData = saveManager.GetActiveSceneData(false);
         InventoryItemExportData data = InventoryItemSerializer.ReadScene(sceneData, cellKey);
         ApplyData(data, false);
     }
@@ -288,7 +293,7 @@ public class InventoryItemCell : MonoBehaviour
 
     private string Localize(string source)
     {
-        return RuntimeLocalization.EnsureExists().Translate(source);
+        return localization.Translate(source);
     }
 
     private void RefreshCategoryShownValue()

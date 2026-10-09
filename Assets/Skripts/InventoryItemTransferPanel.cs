@@ -120,12 +120,13 @@ public sealed class InventoryItemTransferPanel
         {
             owner.ApplyData(imported, true);
             // An import is an explicit operation: verify its disk write before reporting success.
-            DndSaveManager.Instance?.FlushPendingSave();
-            if (DndSaveManager.Instance != null && !string.IsNullOrEmpty(DndSaveManager.Instance.SaveError))
+            DndSaveManager saveManager = owner.SaveManager;
+            saveManager?.FlushPendingSave();
+            if (saveManager != null && !string.IsNullOrEmpty(saveManager.SaveError))
             {
                 owner.ApplyData(previous, false);
-                InventoryItemSerializer.WriteScene(DndSaveManager.Instance.GetActiveSceneData(), owner.CellKey, previous);
-                throw new System.IO.IOException(DndSaveManager.Instance.SaveError);
+                InventoryItemSerializer.WriteScene(saveManager.GetActiveSceneData(), owner.CellKey, previous);
+                throw new System.IO.IOException(saveManager.SaveError);
             }
             TaruckImportReviewDialog.Show("Імпорт завершено", "Предмет завантажено.", "Закрити", () => { });
         }

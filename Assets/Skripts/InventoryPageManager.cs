@@ -13,6 +13,8 @@ public class InventoryPageManager : MonoBehaviour
 
     private readonly List<InventoryItemCell> cells = new List<InventoryItemCell>();
     private int currentPageIndex;
+    private DndSaveManager saveManager;
+    private RuntimeLocalization localization;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void Bootstrap()
@@ -40,7 +42,8 @@ public class InventoryPageManager : MonoBehaviour
 
     private void Start()
     {
-        DndSaveManager.EnsureExists();
+        saveManager = DndSaveManager.EnsureExists();
+        localization = RuntimeLocalization.EnsureExists();
         KeepMainPageActive();
         BindPageButtons();
         BindNavigationButtons();
@@ -85,7 +88,7 @@ public class InventoryPageManager : MonoBehaviour
         KeepMainPageActive();
 
         string sceneDataName = GetSceneDataName(currentPageIndex);
-        DndSaveManager.EnsureExists().SetActiveSceneDataName(sceneDataName);
+        saveManager.SetActiveSceneDataName(sceneDataName);
 
         InitializeCells();
         UpdatePageTitle(currentPageIndex);
@@ -111,7 +114,7 @@ public class InventoryPageManager : MonoBehaviour
             if (cell == null)
                 cell = cellTransforms[i].gameObject.AddComponent<InventoryItemCell>();
 
-            cell.Initialize(currentPageIndex, i);
+            cell.Initialize(currentPageIndex, i, saveManager, localization);
             cells.Add(cell);
         }
     }
@@ -155,7 +158,7 @@ public class InventoryPageManager : MonoBehaviour
 
     private void UpdatePageTitle(int pageIndex)
     {
-        string title = RuntimeLocalization.EnsureExists().Translate("\u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u2116" + (pageIndex + 1));
+        string title = localization.Translate("\u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u2116" + (pageIndex + 1));
 
         Text[] texts = FindObjectsByType<Text>(FindObjectsInactive.Include);
         foreach (Text text in texts)
