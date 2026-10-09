@@ -1,34 +1,85 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DropdownManager : MonoBehaviour
 {
-    [System.Serializable]
+    [Serializable]
     public class DropdownConfig
     {
-        public Dropdown dropdown; // Dropdown UI элемент
-        public List<GameObject> tangles; // Список объектов, связанных с этим Dropdown
+        [SerializeField] private Dropdown dropdown;
+        [SerializeField] private List<GameObject> tangles;
+
+        public void Bind()
+        {
+            if (dropdown == null)
+                return;
+
+            dropdown.onValueChanged.RemoveListener(OnValueChanged);
+            dropdown.onValueChanged.AddListener(OnValueChanged);
+            Apply();
+        }
+
+        public void Unbind()
+        {
+            if (dropdown != null)
+                dropdown.onValueChanged.RemoveListener(OnValueChanged);
+        }
+
+        public void Apply()
+        {
+            if (dropdown == null || tangles == null)
+                return;
+
+            int selectedNumber = dropdown.value;
+            for (int i = 0; i < tangles.Count; i++)
+            {
+                GameObject group = tangles[i];
+                if (group == null)
+                    continue;
+
+                if (i < selectedNumber)
+                    group.SetActive(true);
+                else
+                {
+                    ClearToggles(group);
+                    group.SetActive(false);
+                }
+            }
+        }
+
+        private void OnValueChanged(int value)
+        {
+            Apply();
+        }
+
+        private static void ClearToggles(GameObject root)
+        {
+            foreach (Toggle toggle in root.GetComponentsInChildren<Toggle>(true))
+                if (toggle != null && toggle.isOn)
+                    toggle.isOn = false;
+        }
     }
 
     [SerializeField] private List<DropdownConfig> dropdownConfigs;
 
-    void Start()
+    private void Start()
     {
         if (dropdownConfigs == null)
             return;
 
-        foreach (var config in dropdownConfigs)
-        {
-            if (config == null || config.dropdown == null)
-                continue;
+        foreach (DropdownConfig config in dropdownConfigs)
+            config?.Bind();
+    }
 
-            // Добавляем слушатель на изменение значения в каждом Dropdown
-            config.dropdown.onValueChanged.AddListener(delegate { UpdateTangles(config); });
+    private void OnDestroy()
+    {
+        if (dropdownConfigs == null)
+            return;
 
-            // Инициализируем отображение объектов при старте
-            UpdateTangles(config);
-        }
+        foreach (DropdownConfig config in dropdownConfigs)
+            config?.Unbind();
     }
 
     public void RefreshAll()
@@ -36,43 +87,7 @@ public class DropdownManager : MonoBehaviour
         if (dropdownConfigs == null)
             return;
 
-        foreach (var config in dropdownConfigs)
-            UpdateTangles(config);
-    }
-
-    void UpdateTangles(DropdownConfig config)
-    {
-        if (config == null || config.dropdown == null || config.tangles == null)
-            return;
-
-        // Получаем выбранное значение из Dropdown
-        int selectedNumber = config.dropdown.value;
-
-        // Проходим по списку объектов и скрываем/показываем их
-        for (int i = 0; i < config.tangles.Count; i++)
-        {
-            if (config.tangles[i] == null)
-                continue;
-
-            if (i < selectedNumber)
-            {
-                config.tangles[i].SetActive(true);
-            }
-            else
-            {
-                ClearToggles(config.tangles[i]);
-                config.tangles[i].SetActive(false);
-            }
-        }
-    }
-
-    private void ClearToggles(GameObject root)
-    {
-        if (root == null)
-            return;
-
-        foreach (Toggle toggle in root.GetComponentsInChildren<Toggle>(true))
-            if (toggle != null && toggle.isOn)
-                toggle.isOn = false;
+        foreach (DropdownConfig config in dropdownConfigs)
+            config?.Apply();
     }
 }

@@ -1,45 +1,77 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InputFieldIncrementer : MonoBehaviour
 {
-    [System.Serializable]
+    [Serializable]
     public class FieldConfig
     {
-        public InputField inputField; // Поле ввода
-        public Button incrementButton; // Кнопка увеличения
-        public Button decrementButton; // Кнопка уменьшения
-        public CharacterSheetManagerScene1 characterSheetManager; // Ссылка на CharacterSheetManagerScene1 для сохранения данных
-    }
+        [SerializeField] private InputField inputField;
+        [SerializeField] private Button incrementButton;
+        [SerializeField] private Button decrementButton;
+        [SerializeField] private CharacterSheetManagerScene1 characterSheetManager;
 
-    [SerializeField] private FieldConfig[] fieldConfigs; // Массив конфигураций для каждого поля ввода
-
-    void Start()
-    {
-        foreach (var config in fieldConfigs)
+        public void Bind()
         {
-            config.incrementButton.onClick.AddListener(() => IncrementValue(config));
-            config.decrementButton.onClick.AddListener(() => DecrementValue(config));
+            if (incrementButton != null)
+            {
+                incrementButton.onClick.RemoveListener(Increment);
+                incrementButton.onClick.AddListener(Increment);
+            }
+            if (decrementButton != null)
+            {
+                decrementButton.onClick.RemoveListener(Decrement);
+                decrementButton.onClick.AddListener(Decrement);
+            }
+        }
+
+        public void Unbind()
+        {
+            if (incrementButton != null)
+                incrementButton.onClick.RemoveListener(Increment);
+            if (decrementButton != null)
+                decrementButton.onClick.RemoveListener(Decrement);
+        }
+
+        private void Increment()
+        {
+            ChangeValue(1);
+        }
+
+        private void Decrement()
+        {
+            ChangeValue(-1);
+        }
+
+        private void ChangeValue(int delta)
+        {
+            if (inputField == null || !int.TryParse(inputField.text, out int value))
+                return;
+
+            inputField.text = (value + delta).ToString();
+            if (characterSheetManager != null)
+                characterSheetManager.SaveCharacterData();
         }
     }
 
-    private void IncrementValue(FieldConfig config)
+    [SerializeField] private FieldConfig[] fieldConfigs;
+
+    private void Start()
     {
-        if (int.TryParse(config.inputField.text, out int value))
-        {
-            value += 1;
-            config.inputField.text = value.ToString();
-            config.characterSheetManager.SaveCharacterData(); // Сохраняем данные после изменения
-        }
+        if (fieldConfigs == null)
+            return;
+
+        foreach (FieldConfig config in fieldConfigs)
+            config?.Bind();
     }
 
-    private void DecrementValue(FieldConfig config)
+    private void OnDestroy()
     {
-        if (int.TryParse(config.inputField.text, out int value))
-        {
-            value -= 1;
-            config.inputField.text = value.ToString();
-            config.characterSheetManager.SaveCharacterData(); // Сохраняем данные после изменения
-        }
+        if (fieldConfigs == null)
+            return;
+
+        foreach (FieldConfig config in fieldConfigs)
+            config?.Unbind();
     }
 }
