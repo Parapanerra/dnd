@@ -13,6 +13,7 @@ public class panelSktollveiwSripts : MonoBehaviour
 
     [SerializeField] private List<InventoryConfig> inventoryConfigs;
     [SerializeField] private zoomCam cameraController;
+    private DndSaveManager saveManager;
 
     private void Start()
     {
@@ -22,7 +23,7 @@ public class panelSktollveiwSripts : MonoBehaviour
             return;
         }
 
-        DndSaveManager.EnsureExists();
+        saveManager = DndSaveManager.EnsureExists();
         LoadInventoryState();
 
         foreach (InventoryConfig config in inventoryConfigs)
@@ -66,7 +67,7 @@ public class panelSktollveiwSripts : MonoBehaviour
 
     private void LoadInventoryState()
     {
-        CharacterSceneData sceneData = DndSaveManager.Instance.GetActiveSceneData();
+        CharacterSceneData sceneData = saveManager.GetActiveSceneData();
 
         foreach (InventoryConfig config in inventoryConfigs)
         {

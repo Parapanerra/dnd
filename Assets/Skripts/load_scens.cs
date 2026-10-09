@@ -77,14 +77,14 @@ public class load_scenes : MonoBehaviour
 
     public static void LoadSceneByName(string sceneName)
     {
-        DndSaveManager.EnsureExists();
+        DndSaveManager saveManager = DndSaveManager.EnsureExists();
         sceneName = NormalizeSceneName(sceneName);
         if (string.IsNullOrEmpty(sceneName))
             return;
 
         string sceneToLoad = GetVisualSceneName(sceneName);
         if (sceneToLoad != sceneName)
-            DndSaveManager.Instance.SetPendingSceneDataName(sceneName);
+            saveManager.SetPendingSceneDataName(sceneName);
 
         SceneManager.LoadScene(sceneToLoad);
     }

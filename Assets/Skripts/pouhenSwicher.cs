@@ -6,13 +6,14 @@ public class PrefabSwitcher : MonoBehaviour
     [SerializeField] private string identifier; // Идентификатор для этого переключателя
     private int currentIndex = 0;
     private GameObject currentInstance;
+    private DndSaveManager saveManager;
 
     [SerializeField] private Transform prefabParent; // The parent transform where prefabs will be instantiated
 
     void Start()
     {
-        DndSaveManager.EnsureExists();
-        currentIndex = DndSaveManager.Instance.GetActiveSceneData().GetInt(GetSaveKey(), 0);
+        saveManager = DndSaveManager.EnsureExists();
+        currentIndex = saveManager.GetActiveSceneData().GetInt(GetSaveKey(), 0);
         SpawnPrefab();
     }
 
@@ -49,7 +50,7 @@ public class PrefabSwitcher : MonoBehaviour
 
     private void SaveCurrentIndex()
     {
-        DndSaveManager.Instance.GetActiveSceneData().SetInt(GetSaveKey(), currentIndex);
-        DndSaveManager.Instance.RequestSaveData();
+        saveManager.GetActiveSceneData().SetInt(GetSaveKey(), currentIndex);
+        saveManager.RequestSaveData();
     }
 }
