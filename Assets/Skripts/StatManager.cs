@@ -1,18 +1,65 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
+[Serializable]
 public class StatConfig
 {
-    [SerializeField] internal InputField statField;
-    [SerializeField] internal InputField masteryBonusField;
-    [SerializeField] internal List<InputField> skillFields;
-    [SerializeField] internal List<Toggle> skillToggles;
+    [SerializeField] private InputField statField;
+    [SerializeField] private InputField masteryBonusField;
+    [SerializeField] private List<InputField> skillFields;
+    [SerializeField] private List<Toggle> skillToggles;
+    [SerializeField, HideInInspector] private List<bool> manuallyEditedSkills = new List<bool>();
 
-    [SerializeField, HideInInspector]
-    internal List<bool> manuallyEditedSkills = new List<bool>();
+    internal InputField StatField => statField;
+    internal InputField MasteryBonusField => masteryBonusField;
+    internal int SkillCount => skillFields != null ? skillFields.Count : 0;
+    internal IEnumerable<Toggle> SkillToggles => skillToggles ?? (IEnumerable<Toggle>)Array.Empty<Toggle>();
+
+    internal InputField GetSkillField(int index)
+    {
+        return index >= 0 && index < SkillCount ? skillFields[index] : null;
+    }
+
+    internal Toggle GetSkillToggle(int index)
+    {
+        return skillToggles != null && index >= 0 && index < skillToggles.Count ? skillToggles[index] : null;
+    }
+
+    internal void InitializeManualFlags(Func<int, bool> load)
+    {
+        if (manuallyEditedSkills == null)
+            manuallyEditedSkills = new List<bool>();
+        manuallyEditedSkills.Clear();
+        for (int index = 0; index < SkillCount; index++)
+            manuallyEditedSkills.Add(load(index));
+    }
+
+    internal void ClearManualFlags(Action<int> persist)
+    {
+        if (manuallyEditedSkills == null)
+            return;
+        for (int index = 0; index < manuallyEditedSkills.Count; index++)
+        {
+            manuallyEditedSkills[index] = false;
+            persist(index);
+        }
+    }
+
+    internal bool IsManuallyEdited(int index)
+    {
+        return manuallyEditedSkills != null && index >= 0 && index < manuallyEditedSkills.Count && manuallyEditedSkills[index];
+    }
+
+    internal bool MarkManuallyEdited(int index)
+    {
+        if (manuallyEditedSkills == null || index < 0 || index >= manuallyEditedSkills.Count)
+            return false;
+        manuallyEditedSkills[index] = true;
+        return true;
+    }
 }
 
 public class StatManager : MonoBehaviour
@@ -33,11 +80,9 @@ public class StatManager : MonoBehaviour
     {
         for (int configIndex = 0; configIndex < statConfigs.Count; configIndex++)
         {
-            StatConfig config = statConfigs[configIndex];
-            config.manuallyEditedSkills.Clear();
-
-            for (int skillIndex = 0; skillIndex < config.skillFields.Count; skillIndex++)
-                config.manuallyEditedSkills.Add(LoadManualFlag(configIndex, skillIndex));
+            int capturedConfigIndex = configIndex;
+            statConfigs[configIndex].InitializeManualFlags(
+                skillIndex => LoadManualFlag(capturedConfigIndex, skillIndex));
         }
     }
 
@@ -50,24 +95,23 @@ public class StatManager : MonoBehaviour
             StatConfig config = statConfigs[configIndex];
             int capturedConfigIndex = configIndex;
 
-            if (config.statField != null)
-                config.statField.onEndEdit.AddListener(delegate { OnStatOrBonusChanged(config, capturedConfigIndex); });
+            if (config.StatField != null)
+                config.StatField.onEndEdit.AddListener(delegate { OnStatOrBonusChanged(config, capturedConfigIndex); });
 
-            if (config.masteryBonusField != null)
-                config.masteryBonusField.onEndEdit.AddListener(delegate { OnStatOrBonusChanged(config, capturedConfigIndex); });
+            if (config.MasteryBonusField != null)
+                config.MasteryBonusField.onEndEdit.AddListener(delegate { OnStatOrBonusChanged(config, capturedConfigIndex); });
 
-            foreach (Toggle toggle in config.skillToggles)
+            foreach (Toggle toggle in config.SkillToggles)
                 if (toggle != null)
                     toggle.onValueChanged.AddListener(delegate { OnStatOrBonusChanged(config, capturedConfigIndex); });
 
-            for (int skillIndex = 0; skillIndex < config.skillFields.Count; skillIndex++)
+            for (int skillIndex = 0; skillIndex < config.SkillCount; skillIndex++)
             {
                 int capturedSkillIndex = skillIndex;
-                if (config.skillFields[capturedSkillIndex] != null)
-                {
-                    config.skillFields[capturedSkillIndex].onEndEdit.AddListener(
+                InputField skillField = config.GetSkillField(skillIndex);
+                if (skillField != null)
+                    skillField.onEndEdit.AddListener(
                         delegate { OnSkillFieldEdited(config, capturedConfigIndex, capturedSkillIndex); });
-                }
             }
         }
 
@@ -79,12 +123,7 @@ public class StatManager : MonoBehaviour
         if (!listenersReady)
             return;
 
-        for (int skillIndex = 0; skillIndex < config.manuallyEditedSkills.Count; skillIndex++)
-        {
-            config.manuallyEditedSkills[skillIndex] = false;
-            SaveManualFlag(configIndex, skillIndex, false);
-        }
-
+        config.ClearManualFlags(skillIndex => SaveManualFlag(configIndex, skillIndex, false));
         UpdateSkills(config);
         SaveDndData();
     }
@@ -92,42 +131,36 @@ public class StatManager : MonoBehaviour
     private void UpdateSkills(StatConfig config)
     {
         float masteryBonus = 0;
-        if (config.masteryBonusField != null)
-            float.TryParse(config.masteryBonusField.text, out masteryBonus);
+        if (config.MasteryBonusField != null)
+            float.TryParse(config.MasteryBonusField.text, out masteryBonus);
 
-        for (int skillIndex = 0; skillIndex < config.skillFields.Count; skillIndex++)
+        for (int skillIndex = 0; skillIndex < config.SkillCount; skillIndex++)
         {
-            if (skillIndex < config.manuallyEditedSkills.Count && config.manuallyEditedSkills[skillIndex])
+            if (config.IsManuallyEdited(skillIndex))
                 continue;
 
-            if (config.skillFields[skillIndex] == null)
+            InputField skillField = config.GetSkillField(skillIndex);
+            if (skillField == null)
                 continue;
 
             float statValue = 0;
-            if (config.statField != null)
-                float.TryParse(config.statField.text, out statValue);
+            if (config.StatField != null)
+                float.TryParse(config.StatField.text, out statValue);
 
             float skillValue = statValue;
-            if (skillIndex < config.skillToggles.Count &&
-                config.skillToggles[skillIndex] != null &&
-                config.skillToggles[skillIndex].isOn)
-            {
+            Toggle skillToggle = config.GetSkillToggle(skillIndex);
+            if (skillToggle != null && skillToggle.isOn)
                 skillValue += masteryBonus;
-            }
 
-            config.skillFields[skillIndex].text = FormatValueWithSign(skillValue);
+            skillField.text = FormatValueWithSign(skillValue);
         }
     }
 
     private void OnSkillFieldEdited(StatConfig config, int configIndex, int skillIndex)
     {
-        if (!listenersReady)
+        if (!listenersReady || !config.MarkManuallyEdited(skillIndex))
             return;
 
-        if (skillIndex >= config.manuallyEditedSkills.Count)
-            return;
-
-        config.manuallyEditedSkills[skillIndex] = true;
         SaveManualFlag(configIndex, skillIndex, true);
         SaveDndData();
     }
