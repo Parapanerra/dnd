@@ -17,7 +17,7 @@ public class StatConfig
 
 public class StatManager : MonoBehaviour
 {
-    public List<StatConfig> statConfigs;
+    [SerializeField] private List<StatConfig> statConfigs;
 
     private bool listenersReady;
 

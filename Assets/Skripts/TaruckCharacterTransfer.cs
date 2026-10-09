@@ -22,10 +22,10 @@ public static class TaruckCharacterTransfer
             : LegacyJsonImporter.Character(LegacyJsonImporter.DecodeFile(bytes));
     }
 
-    public static void WriteCollection(string path, AppSaveData data, string version)
+    public static void WriteCollection(string path, DndSaveManager manager, string version)
     {
         FileBrowserHelpers.WriteBytesToFile(TaruckTransferFileUtility.EnsureExtension(path, ".tall"),
-            TaruckBinaryCodec.EncodeFullSave(data, version));
+            TaruckBinaryCodec.EncodeFullSave(manager.GetCollectionForExport(), version));
     }
 
     public static void WriteCharacter(string path, CharacterData character, string version)
@@ -66,9 +66,9 @@ public static class TaruckCharacterTransfer
 
     private static bool CharacterNameExists(DndSaveManager manager, string name)
     {
-        if (manager == null || manager.saveData == null || manager.saveData.characters == null)
+        if (manager == null || manager.GetCharacterCount() == 0)
             return false;
-        foreach (CharacterData character in manager.saveData.characters)
+        foreach (CharacterData character in manager.GetCharactersSnapshot())
             if (character != null && string.Equals(character.characterName, name, StringComparison.OrdinalIgnoreCase))
                 return true;
         return false;

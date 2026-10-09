@@ -112,7 +112,7 @@ public class MainMenuTransferPanel : MonoBehaviour
                 {
                     try
                     {
-                        TaruckCharacterTransfer.WriteCollection(paths[0], saveManager.saveData, Application.version);
+                        TaruckCharacterTransfer.WriteCollection(paths[0], saveManager, Application.version);
                         TaruckImportReviewDialog.Show("Експорт", "Колекцію персонажів збережено.", "Закрити", () => { });
                     }
                     catch (System.Exception exception)
@@ -259,7 +259,7 @@ public class MainMenuTransferPanel : MonoBehaviour
         }
         owner.RefreshCharacterList();
         TaruckImportReviewDialog.Show("Імпорт завершено",
-            TaruckImportReviewDialog.Text("Персонажів у колекції: ", "Characters in collection: ") + manager.saveData.characters.Count,
+            TaruckImportReviewDialog.Text("Персонажів у колекції: ", "Characters in collection: ") + manager.GetCharacterCount(),
             "Закрити", () => { });
     }
 
@@ -280,7 +280,7 @@ public class MainMenuTransferPanel : MonoBehaviour
     private CharacterData GetSelectedCharacterForExport()
     {
         DndSaveManager saveManager = DndSaveManager.EnsureExists();
-        if (saveManager.saveData == null || saveManager.saveData.characters == null || saveManager.saveData.characters.Count == 0)
+        if (saveManager.GetCharacterCount() == 0)
             return null;
 
         if (!oneCharacterDropdownHasSelection)
@@ -290,22 +290,20 @@ public class MainMenuTransferPanel : MonoBehaviour
             ? oneCharacterDropdown.value
             : oneCharacterTmpDropdown != null ? oneCharacterTmpDropdown.value : 0;
 
-        index = Mathf.Clamp(index, 0, saveManager.saveData.characters.Count - 1);
-        return saveManager.saveData.characters[index];
+        index = Mathf.Clamp(index, 0, saveManager.GetCharacterCount() - 1);
+        return saveManager.GetCharacterAt(index);
     }
 
     public void RefreshOneCharacterDropdown()
     {
         DndSaveManager saveManager = DndSaveManager.EnsureExists();
         List<string> options = new List<string>();
-        bool hasCharacters = saveManager.saveData != null &&
-                             saveManager.saveData.characters != null &&
-                             saveManager.saveData.characters.Count > 0;
+        bool hasCharacters = saveManager.GetCharacterCount() > 0;
         oneCharacterDropdownHasSelection = false;
 
         if (hasCharacters)
         {
-            foreach (CharacterData character in saveManager.saveData.characters)
+            foreach (CharacterData character in saveManager.GetCharactersSnapshot())
                 options.Add(MainMenuCharacterLabels.GetDisplayName(character));
         }
         else
@@ -400,9 +398,7 @@ public class MainMenuTransferPanel : MonoBehaviour
     private bool HasOneCharacterDropdownOptions()
     {
         DndSaveManager saveManager = DndSaveManager.EnsureExists();
-        return saveManager.saveData != null &&
-               saveManager.saveData.characters != null &&
-               saveManager.saveData.characters.Count > 0;
+        return saveManager.GetCharacterCount() > 0;
     }
 
     private void ApplyOneCharacterDropdownPlaceholder()

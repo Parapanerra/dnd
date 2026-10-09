@@ -11,8 +11,8 @@ public class panelSktollveiwSripts : MonoBehaviour
         public GameObject submenuPanel;
     }
 
-    public List<InventoryConfig> inventoryConfigs;
-    public zoomCam cameraController;
+    [SerializeField] private List<InventoryConfig> inventoryConfigs;
+    [SerializeField] private zoomCam cameraController;
 
     private void Start()
     {

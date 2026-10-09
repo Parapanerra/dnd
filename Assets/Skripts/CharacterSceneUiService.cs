@@ -57,7 +57,7 @@ public static class CharacterSceneUiService
 
         SceneRoleMarker marker = button.GetComponent<SceneRoleMarker>();
         if (marker != null)
-            return marker.role == SceneRole.ResetScene;
+            return marker.Role == SceneRole.ResetScene;
 
         string name = button.gameObject.name.ToLowerInvariant();
         return name.Contains("resetseve") || name.Contains("reset save") ||

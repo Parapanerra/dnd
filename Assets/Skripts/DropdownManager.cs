@@ -11,7 +11,7 @@ public class DropdownManager : MonoBehaviour
         public List<GameObject> tangles; // Список объектов, связанных с этим Dropdown
     }
 
-    public List<DropdownConfig> dropdownConfigs;
+    [SerializeField] private List<DropdownConfig> dropdownConfigs;
 
     void Start()
     {

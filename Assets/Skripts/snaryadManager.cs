@@ -12,7 +12,7 @@ public class InputFieldIncrementer : MonoBehaviour
         public CharacterSheetManagerScene1 characterSheetManager; // Ссылка на CharacterSheetManagerScene1 для сохранения данных
     }
 
-    public FieldConfig[] fieldConfigs; // Массив конфигураций для каждого поля ввода
+    [SerializeField] private FieldConfig[] fieldConfigs; // Массив конфигураций для каждого поля ввода
 
     void Start()
     {

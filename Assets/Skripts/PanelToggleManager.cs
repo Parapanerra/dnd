@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class PanelToggleManager : MonoBehaviour
 {
-    public GameObject[] panels;
-    public Toggle[] toggles;
+    [SerializeField] private GameObject[] panels;
+    [SerializeField] private Toggle[] toggles;
 
     private void Start()
     {

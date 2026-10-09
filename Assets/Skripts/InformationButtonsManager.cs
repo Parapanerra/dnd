@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class InformationButtonsManager : MonoBehaviour
 {
-    public GameObject[] panels;
-    public Button[] buttons;
+    [SerializeField] private GameObject[] panels;
+    [SerializeField] private Button[] buttons;
 
     private int activePanelIndex = -1; // Индекс текущей активной панели
 

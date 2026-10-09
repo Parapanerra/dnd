@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class DropdownVisibilityController : MonoBehaviour
 {
-    public Dropdown dropdown;
-    public List<GameObject> objectsToToggle;
+    [SerializeField] private Dropdown dropdown;
+    [SerializeField] private List<GameObject> objectsToToggle;
 
     void Start()
     {

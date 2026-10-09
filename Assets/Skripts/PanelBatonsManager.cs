@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class PanelBatonsManager : MonoBehaviour
 {
-    public GameObject[] panels;
-    public Button[] buttons;
+    [SerializeField] private GameObject[] panels;
+    [SerializeField] private Button[] buttons;
 
     private void Start()
     {

@@ -207,8 +207,8 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
 
         if (mapBounds != null)
         {
-            float mapWidth = mapBounds.maxBounds.x - mapBounds.minBounds.x;
-            float mapHeight = mapBounds.maxBounds.y - mapBounds.minBounds.y;
+            float mapWidth = mapBounds.MaxBounds.x - mapBounds.MinBounds.x;
+            float mapHeight = mapBounds.MaxBounds.y - mapBounds.MinBounds.y;
 
             if (mapWidth > 0f && mapHeight > 0f)
             {

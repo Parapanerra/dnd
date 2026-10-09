@@ -27,10 +27,10 @@ public class DeathSaveToggleSequence : MonoBehaviour
             }
 
             SceneRoleMarker roleMarker = transform.GetComponent<SceneRoleMarker>();
-            if (roleMarker != null ? roleMarker.role == SceneRole.Exhaustion : SceneObjectName.Matches(transform.name, "vtoma"))
+            if (roleMarker != null ? roleMarker.Role == SceneRole.Exhaustion : SceneObjectName.Matches(transform.name, "vtoma"))
                 ConfigureGroup(transform, true, false);
 
-            if (roleMarker != null ? roleMarker.role == SceneRole.SpellSlots : SceneObjectName.Matches(transform.name, "spelChek"))
+            if (roleMarker != null ? roleMarker.Role == SceneRole.SpellSlots : SceneObjectName.Matches(transform.name, "spelChek"))
                 ConfigureSpellCheckGroups(transform);
 
             if (SceneObjectName.Matches(transform.name, "artefactsNavuk"))
@@ -190,7 +190,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
         }
 
         SceneRoleMarker marker = GetComponent<SceneRoleMarker>();
-        if (marker != null ? marker.role == SceneRole.Exhaustion : SceneObjectName.Matches(name, "vtoma"))
+        if (marker != null ? marker.Role == SceneRole.Exhaustion : SceneObjectName.Matches(name, "vtoma"))
             ExhaustionEffects.Apply(count);
     }
 

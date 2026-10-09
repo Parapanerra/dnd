@@ -51,7 +51,7 @@ public static class SceneRoleMigration
                     foreach (Transform transform in root.GetComponentsInChildren<Transform>(true))
                     {
                         SceneRoleMarker marker = transform.GetComponent<SceneRoleMarker>();
-                        if (marker != null && marker.role == SceneRole.TemporaryHealth &&
+                        if (marker != null && marker.Role == SceneRole.TemporaryHealth &&
                             transform.GetComponentInChildren<Slider>(true) == null)
                         {
                             UnityEngine.Object.DestroyImmediate(marker);
@@ -69,10 +69,9 @@ public static class SceneRoleMigration
                             changed = true;
                         }
 
-                        if (marker.role != role || marker.useParentAsPanel != useParent)
+                        if (marker.Role != role || marker.UsesParentAsPanel != useParent)
                         {
-                            marker.role = role;
-                            marker.useParentAsPanel = useParent;
+                            marker.Configure(role, useParent);
                             EditorUtility.SetDirty(marker);
                             changed = true;
                         }
@@ -154,13 +153,13 @@ public static class SceneRoleMigration
         foreach (GameObject root in scene.GetRootGameObjects())
             foreach (SceneRoleMarker marker in root.GetComponentsInChildren<SceneRoleMarker>(true))
             {
-                counts.TryGetValue(marker.role, out int count);
-                counts[marker.role] = count + 1;
-                if (marker.useParentAsPanel && marker.transform.parent == null)
-                    errors.Add($"Scene role {marker.role} has no parent");
-                if (marker.role == SceneRole.ResetScene && marker.GetComponent<Button>() == null)
+                counts.TryGetValue(marker.Role, out int count);
+                counts[marker.Role] = count + 1;
+                if (marker.UsesParentAsPanel && marker.transform.parent == null)
+                    errors.Add($"Scene role {marker.Role} has no parent");
+                if (marker.Role == SceneRole.ResetScene && marker.GetComponent<Button>() == null)
                     errors.Add("Reset scene role has no Button");
-                if (marker.role == SceneRole.TemporaryHealth && marker.GetComponentInChildren<Slider>(true) == null)
+                if (marker.Role == SceneRole.TemporaryHealth && marker.GetComponentInChildren<Slider>(true) == null)
                     errors.Add("Temporary health role has no Slider");
             }
 

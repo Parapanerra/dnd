@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PrefabSwitcher : MonoBehaviour
 {
-    public GameObject[] prefabs; // Array of prefab objects to switch between
-    public string identifier; // Идентификатор для этого переключателя
+    [SerializeField] private GameObject[] prefabs; // Array of prefab objects to switch between
+    [SerializeField] private string identifier; // Идентификатор для этого переключателя
     private int currentIndex = 0;
     private GameObject currentInstance;
 
-    public Transform prefabParent; // The parent transform where prefabs will be instantiated
+    [SerializeField] private Transform prefabParent; // The parent transform where prefabs will be instantiated
 
     void Start()
     {

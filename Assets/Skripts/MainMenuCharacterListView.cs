@@ -205,7 +205,7 @@ public class MainMenuCharacterListView : MonoBehaviour
 
         lastUserMenuRowRect = null;
         int index = 0;
-        foreach (CharacterData character in DndSaveManager.Instance.saveData.characters)
+        foreach (CharacterData character in DndSaveManager.Instance.GetCharactersSnapshot())
         {
             CreateUserMenuCharacterRow(character, index);
             index++;
@@ -392,7 +392,7 @@ public class MainMenuCharacterListView : MonoBehaviour
     {
         yield return null;
         PositionAddButtonAfterRows();
-        ResizeUserMenuContent(DndSaveManager.Instance != null && DndSaveManager.Instance.saveData != null ? DndSaveManager.Instance.saveData.characters.Count : 0);
+        ResizeUserMenuContent(DndSaveManager.Instance != null ? DndSaveManager.Instance.GetCharacterCount() : 0);
         addButtonPositionCoroutine = null;
     }
 
@@ -463,7 +463,7 @@ public class MainMenuCharacterListView : MonoBehaviour
 
         int buttonIndex = 0;
         RectTransform layoutSourceRect = templateRect;
-        foreach (CharacterData character in DndSaveManager.Instance.saveData.characters)
+        foreach (CharacterData character in DndSaveManager.Instance.GetCharactersSnapshot())
         {
             GameObject btnObj = CreateCharacterButtonObject(character);
             btnObj.transform.SetParent(owner.characterListContent, false);
@@ -533,7 +533,7 @@ public class MainMenuCharacterListView : MonoBehaviour
 
         RectTransform templateRect = owner.characterRowTemplate.GetComponent<RectTransform>();
         int rowIndex = 0;
-        foreach (CharacterData character in DndSaveManager.Instance.saveData.characters)
+        foreach (CharacterData character in DndSaveManager.Instance.GetCharactersSnapshot())
         {
             GameObject row = Instantiate(owner.characterRowTemplate, owner.characterRowsContent, false);
             row.name = "CharacterRow_" + (string.IsNullOrEmpty(character.characterName) ? character.id : character.characterName);
@@ -774,7 +774,7 @@ public class MainMenuCharacterListView : MonoBehaviour
             image = btnObj.AddComponent<Image>();
 
         bool isActive = DndSaveManager.Instance != null &&
-                        DndSaveManager.Instance.saveData.lastActiveCharacterId == character.id;
+                        DndSaveManager.Instance.GetActiveCharacterId() == character.id;
         if (owner.applyDefaultCharacterButtonStyle)
         {
             image.color = isActive

@@ -56,8 +56,7 @@ public class A6SceneRoleTests
         {
             child.transform.SetParent(panel.transform);
             SceneRoleMarker marker = child.AddComponent<SceneRoleMarker>();
-            marker.role = SceneRole.Rage;
-            marker.useParentAsPanel = true;
+            marker.Configure(SceneRole.Rage, true);
 
             Assert.AreSame(panel.transform, SceneRoleLookup.FindPanel(SceneRole.Rage, "Rage", true));
 

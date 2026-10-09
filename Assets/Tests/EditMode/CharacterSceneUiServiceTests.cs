@@ -23,12 +23,14 @@ public class CharacterSceneUiServiceTests
             Assert.IsTrue((bool)isResetButton.Invoke(null, new object[] { button }));
 
             Component marker = objectWithButton.AddComponent(markerType);
-            FieldInfo role = markerType.GetField("role");
-            role.SetValue(marker, Enum.Parse(role.FieldType, "Rage"));
+            MethodInfo configure = markerType.GetMethod("Configure");
+            Assert.NotNull(configure);
+            Type roleType = markerType.GetProperty("Role").PropertyType;
+            configure.Invoke(marker, new object[] { Enum.Parse(roleType, "Rage"), false });
             Assert.IsFalse((bool)isResetButton.Invoke(null, new object[] { button }),
                 "A role marker must override a legacy-looking object name.");
 
-            role.SetValue(marker, Enum.Parse(role.FieldType, "ResetScene"));
+            configure.Invoke(marker, new object[] { Enum.Parse(roleType, "ResetScene"), false });
             Assert.IsTrue((bool)isResetButton.Invoke(null, new object[] { button }));
         }
         finally

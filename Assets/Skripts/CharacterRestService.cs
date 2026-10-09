@@ -5,48 +5,53 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public struct CharacterRestResult
+public readonly struct CharacterRestResult
 {
-    public bool HasHealthBar;
-    public bool HasHitDice;
-    public int Healed;
-    public int DiceRolled;
-    public int DiceSides;
-    public int Roll;
-}
+    public bool HasHealthBar { get; }
+    public bool HasHitDice { get; }
+    public int Healed { get; }
+    public int DiceRolled { get; }
+    public int DiceSides { get; }
+    public int Roll { get; }
 
+    public CharacterRestResult(bool hasHealthBar, bool hasHitDice = false, int healed = 0,
+        int diceRolled = 0, int diceSides = 0, int roll = 0)
+    {
+        HasHealthBar = hasHealthBar;
+        HasHitDice = hasHitDice;
+        Healed = healed;
+        DiceRolled = diceRolled;
+        DiceSides = diceSides;
+        Roll = roll;
+    }
+}
 public static class CharacterRestService
 {
     private const string RestResourceKeyPrefix = "RestResource_";
 
     public static CharacterRestResult ApplyLongRest(HealthBar healthBar)
     {
-        CharacterRestResult result = new CharacterRestResult { HasHealthBar = healthBar != null };
-        if (healthBar != null)
-            result.Healed = healthBar.RestoreToMaxHealth();
-
+        int healed = healthBar != null ? healthBar.RestoreToMaxHealth() : 0;
         Apply(true);
-        return result;
+        return new CharacterRestResult(healthBar != null, healed: healed);
     }
 
     public static CharacterRestResult ApplyShortRest(HealthBar healthBar)
     {
-        CharacterRestResult result = new CharacterRestResult { HasHealthBar = healthBar != null };
         if (healthBar != null)
             healthBar.ClearTemporaryHealth();
 
         Apply(false);
         if (healthBar == null || !TryGetHitDice(out int diceCount, out int diceSides))
-            return result;
+            return new CharacterRestResult(healthBar != null);
 
-        result.HasHitDice = true;
-        result.DiceSides = diceSides;
-        result.DiceRolled = Mathf.CeilToInt(diceCount / AppConfig.Calculator.ShortRestDiceDivisor);
-        for (int i = 0; i < result.DiceRolled; i++)
-            result.Roll += UnityEngine.Random.Range(1, diceSides + 1);
+        int diceRolled = Mathf.CeilToInt(diceCount / AppConfig.Calculator.ShortRestDiceDivisor);
+        int roll = 0;
+        for (int i = 0; i < diceRolled; i++)
+            roll += UnityEngine.Random.Range(1, diceSides + 1);
 
-        result.Healed = healthBar.ApplyHeal(result.Roll);
-        return result;
+        int healed = healthBar.ApplyHeal(roll);
+        return new CharacterRestResult(true, true, healed, diceRolled, diceSides, roll);
     }
 
     private static bool TryGetHitDice(out int diceCount, out int diceSides)

@@ -8,7 +8,7 @@ public class DndSaveManager : MonoBehaviour
 {
     public static DndSaveManager Instance { get; private set; }
 
-    public AppSaveData saveData;
+    [SerializeField] private AppSaveData saveData;
     private readonly CharacterSceneContext sceneContext = new CharacterSceneContext();
     private float lastCreateCharacterTime = -AppConfig.SaveData.CharacterCreateDebounceSeconds;
 
@@ -175,6 +175,30 @@ public class DndSaveManager : MonoBehaviour
         return newChar;
     }
 
+    public int GetCharacterCount()
+    {
+        return saveData?.characters?.Count ?? 0;
+    }
+
+    public CharacterData[] GetCharactersSnapshot()
+    {
+        return saveData?.characters?.ToArray() ?? Array.Empty<CharacterData>();
+    }
+
+    public CharacterData GetCharacterAt(int index)
+    {
+        return index >= 0 && index < GetCharacterCount() ? saveData.characters[index] : null;
+    }
+
+    public string GetActiveCharacterId()
+    {
+        return saveData?.lastActiveCharacterId ?? "";
+    }
+
+    internal AppSaveData GetCollectionForExport()
+    {
+        return saveData;
+    }
     public CharacterData GetCharacter(string id)
     {
         return CharacterCollectionService.Find(saveData, id);

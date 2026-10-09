@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class zoomCam : MonoBehaviour
 {
     Vector3 touchStart;
-    public float zoomMin = AppConfig.Input.DefaultMinimumZoom;
-    public float zoomMax = AppConfig.Input.DefaultMaximumZoom;
-    public Vector2 minBounds;
-    public Vector2 maxBounds;
-    public List<GameObject> scrollViews = new List<GameObject>(); // Список всех скролл вью в сцене
+    [SerializeField] private float zoomMin = AppConfig.Input.DefaultMinimumZoom;
+    [SerializeField] private float zoomMax = AppConfig.Input.DefaultMaximumZoom;
+    [SerializeField] private Vector2 minBounds;
+    [SerializeField] private Vector2 maxBounds;
+    public Vector2 MinBounds => minBounds;
+    public Vector2 MaxBounds => maxBounds;
+    [SerializeField] private List<GameObject> scrollViews = new List<GameObject>(); // Список всех скролл вью в сцене
 
     private const int BackgroundSortingOrder = -2;
     private const float BackgroundOverscan = 1.05f;

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class LinkHandler : MonoBehaviour
 {
-    public List<Button> linkButtons; // Список кнопок
-    public List<string> urls; // Список URL-адрес
+    [SerializeField] private List<Button> linkButtons; // Список кнопок
+    [SerializeField] private List<string> urls; // Список URL-адрес
 
     void Start()
     {

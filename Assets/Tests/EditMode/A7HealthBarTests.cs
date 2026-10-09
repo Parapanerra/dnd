@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
@@ -16,11 +17,11 @@ public class A7HealthBarTests
         Type sharedType = Type.GetType("HealthBar, Assembly-CSharp");
         Assert.NotNull(sharedType);
         Assert.AreSame(legacy, prefab.GetComponent(sharedType));
-        Assert.NotNull(sharedType.GetField("healthSlider").GetValue(legacy));
-        Assert.NotNull(sharedType.GetField("healthText").GetValue(legacy));
-        Assert.NotNull(sharedType.GetField("maxHealthInputField").GetValue(legacy));
-        Assert.NotNull(sharedType.GetField("damageButton").GetValue(legacy));
-        Assert.NotNull(sharedType.GetField("healButton").GetValue(legacy));
+        Assert.NotNull(sharedType.GetField("healthSlider", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(legacy));
+        Assert.NotNull(sharedType.GetField("healthText", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(legacy));
+        Assert.NotNull(sharedType.GetField("maxHealthInputField", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(legacy));
+        Assert.NotNull(sharedType.GetField("damageButton", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(legacy));
+        Assert.NotNull(sharedType.GetField("healButton", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(legacy));
     }
 
     [Test]

@@ -23,8 +23,17 @@ public enum SceneRole
 // The role survives visual renames. Legacy scene names remain a fallback while scenes migrate.
 public sealed class SceneRoleMarker : MonoBehaviour
 {
-    public SceneRole role;
-    public bool useParentAsPanel;
+    [SerializeField] private SceneRole role;
+    [SerializeField] private bool useParentAsPanel;
+
+    public SceneRole Role => role;
+    public bool UsesParentAsPanel => useParentAsPanel;
+
+    public void Configure(SceneRole newRole, bool parentAsPanel)
+    {
+        role = newRole;
+        useParentAsPanel = parentAsPanel;
+    }
 
     public Transform Panel => useParentAsPanel && transform.parent != null ? transform.parent : transform;
 }
@@ -36,7 +45,7 @@ public static class SceneRoleLookup
     public static SceneRoleMarker Find(SceneRole role)
     {
         foreach (SceneRoleMarker marker in UnityEngine.Object.FindObjectsByType<SceneRoleMarker>(FindObjectsInactive.Include))
-            if (marker != null && marker.gameObject.scene.IsValid() && marker.role == role)
+            if (marker != null && marker.gameObject.scene.IsValid() && marker.Role == role)
                 return marker;
 
         return null;

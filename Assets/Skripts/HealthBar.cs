@@ -4,18 +4,18 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Slider healthSlider;
-    public Slider temporaryHealthSlider;
-    public Text healthText;
-    public Text temporaryHealthText;
-    public InputField maxHealthInputField;
-    public InputField damageInputField;
-    public InputField healInputField;
-    public Button damageButton;
-    public Button healButton;
-    public Button confirmMaxHealthButton;
-    public Button resetButton;
-    public int customIndex;
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private Slider temporaryHealthSlider;
+    [SerializeField] private Text healthText;
+    [SerializeField] private Text temporaryHealthText;
+    [SerializeField] private InputField maxHealthInputField;
+    [SerializeField] private InputField damageInputField;
+    [SerializeField] private InputField healInputField;
+    [SerializeField] private Button damageButton;
+    [SerializeField] private Button healButton;
+    [SerializeField] private Button confirmMaxHealthButton;
+    [SerializeField] private Button resetButton;
+    [SerializeField] private int customIndex;
 
     public bool IsUsableForCalculator => isActiveAndEnabled && (healthSlider == null || healthSlider.gameObject.activeInHierarchy);
 
@@ -25,8 +25,14 @@ public class HealthBar : MonoBehaviour
     private int maxTemporaryHealth;
     private int damage;
     private int heal;
+    private DndSaveManager saveManager;
     private CharacterSceneData sceneData;
     private Coroutine deferredUiRefresh;
+
+    protected virtual void Awake()
+    {
+        saveManager = DndSaveManager.EnsureExists();
+    }
 
     protected virtual void OnEnable()
     {
@@ -35,9 +41,8 @@ public class HealthBar : MonoBehaviour
 
     protected virtual void Start()
     {
-        DndSaveManager.EnsureExists();
-        DndSaveManager.Instance.EnsureActiveCharacter();
-        sceneData = DndSaveManager.Instance.GetActiveSceneData();
+        saveManager.EnsureActiveCharacter();
+        sceneData = saveManager.GetActiveSceneData();
 
         if (maxHealthInputField != null) maxHealthInputField.contentType = InputField.ContentType.IntegerNumber;
         if (damageInputField != null) damageInputField.contentType = InputField.ContentType.IntegerNumber;
@@ -188,11 +193,11 @@ public class HealthBar : MonoBehaviour
 
     public void RefreshHealthFromData()
     {
-        if (DndSaveManager.Instance == null)
+        if (saveManager == null)
             return;
 
         if (sceneData == null)
-            sceneData = DndSaveManager.Instance.GetActiveSceneData();
+            sceneData = saveManager.GetActiveSceneData();
 
         if (sceneData == null)
             return;
@@ -220,11 +225,11 @@ public class HealthBar : MonoBehaviour
 
     private void SaveSceneData()
     {
-        if (DndSaveManager.Instance == null)
+        if (saveManager == null)
             return;
 
         if (sceneData == null)
-            sceneData = DndSaveManager.Instance.GetActiveSceneData();
+            sceneData = saveManager.GetActiveSceneData();
 
         if (sceneData == null)
             return;
@@ -233,7 +238,7 @@ public class HealthBar : MonoBehaviour
         sceneData.SetInt(GetSaveKey("currentHealth"), currentHealth);
         sceneData.SetInt(GetSaveKey("maxTemporaryHealth"), maxTemporaryHealth);
         sceneData.SetInt(GetSaveKey("currentTemporaryHealth"), currentTemporaryHealth);
-        DndSaveManager.Instance.RequestSaveData();
+        saveManager.RequestSaveData();
     }
 
     private string GetSaveKey(string fieldName)
