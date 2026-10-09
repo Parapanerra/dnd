@@ -18,7 +18,7 @@ public sealed class SceneLocalizationApplier
         foreach (ManualLocalizedText text in Resources.FindObjectsOfTypeAll<ManualLocalizedText>())
         {
             if (IsSceneObject(text != null ? text.gameObject : null))
-                text.Apply();
+                text.Apply(localization);
         }
 
         foreach (Text text in Resources.FindObjectsOfTypeAll<Text>())
@@ -29,7 +29,7 @@ public sealed class SceneLocalizationApplier
             LocalizedText localizedText = text.GetComponent<LocalizedText>();
             if (localizedText == null)
                 localizedText = text.gameObject.AddComponent<LocalizedText>();
-            localizedText.Apply();
+            localizedText.Apply(localization);
         }
 
         foreach (TMP_Text text in Resources.FindObjectsOfTypeAll<TMP_Text>())
@@ -40,7 +40,7 @@ public sealed class SceneLocalizationApplier
             LocalizedTmpText localizedText = text.GetComponent<LocalizedTmpText>();
             if (localizedText == null)
                 localizedText = text.gameObject.AddComponent<LocalizedTmpText>();
-            localizedText.Apply();
+            localizedText.Apply(localization);
         }
 
         foreach (TextMesh text in Resources.FindObjectsOfTypeAll<TextMesh>())
@@ -51,7 +51,7 @@ public sealed class SceneLocalizationApplier
             LocalizedTextMesh localizedText = text.GetComponent<LocalizedTextMesh>();
             if (localizedText == null)
                 localizedText = text.gameObject.AddComponent<LocalizedTextMesh>();
-            localizedText.Apply();
+            localizedText.Apply(localization);
         }
 
         foreach (Dropdown dropdown in Resources.FindObjectsOfTypeAll<Dropdown>())

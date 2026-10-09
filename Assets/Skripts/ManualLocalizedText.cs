@@ -22,11 +22,11 @@ public class ManualLocalizedText : MonoBehaviour
     private Text uiText;
     private TMP_Text tmpText;
     private TextMesh textMesh;
+    private RuntimeLocalization localization;
 
     private void Awake()
     {
         CacheTextComponent();
-        CaptureSourceIfNeeded();
     }
 
     private void OnEnable()
@@ -34,15 +34,18 @@ public class ManualLocalizedText : MonoBehaviour
         Apply();
     }
 
-    public void Apply()
+    public void Apply(RuntimeLocalization service = null)
     {
+        if (service != null)
+            localization = service;
+        if (localization == null)
+            localization = RuntimeLocalization.EnsureExists();
         CacheTextComponent();
         CaptureSourceIfNeeded();
 
         if (string.IsNullOrWhiteSpace(ukrainianText))
             return;
 
-        RuntimeLocalization localization = RuntimeLocalization.EnsureExists();
         ukrainianText = localization.GetSourceText(ukrainianText);
         string translated = GetTranslatedText();
 
@@ -56,7 +59,6 @@ public class ManualLocalizedText : MonoBehaviour
 
     private string GetTranslatedText()
     {
-        RuntimeLocalization localization = RuntimeLocalization.EnsureExists();
         if (localization.CurrentLanguage == AppLanguage.English && !string.IsNullOrWhiteSpace(englishText))
             return englishText;
 
@@ -91,7 +93,7 @@ public class ManualLocalizedText : MonoBehaviour
 
         string currentText = GetCurrentText();
         if (!string.IsNullOrWhiteSpace(currentText))
-            ukrainianText = RuntimeLocalization.EnsureExists().GetSourceText(currentText);
+            ukrainianText = localization.GetSourceText(currentText);
     }
 
     private string GetCurrentText()

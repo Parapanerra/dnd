@@ -15,20 +15,17 @@ public class CalculatorEasterEggTests
         bool createdLocalization = false;
         FieldInfo catalogField = null;
         object previousCatalog = null;
-        FieldInfo instanceField = null;
-        object previousInstance = null;
         try
         {
             Type localizationType = Type.GetType("RuntimeLocalization, Assembly-CSharp");
             Type catalogType = Type.GetType("TranslationCatalog, Assembly-CSharp");
             Assert.NotNull(localizationType);
             Assert.NotNull(catalogType);
-            instanceField = localizationType.GetField("<Instance>k__BackingField",
-                BindingFlags.Static | BindingFlags.NonPublic);
-            previousInstance = instanceField.GetValue(null);
-            createdLocalization = previousInstance == null;
+            createdLocalization = UnityEngine.Object.FindObjectsByType(localizationType,
+                FindObjectsInactive.Include, FindObjectsSortMode.None).Length == 0;
             localizationComponent = (Component)localizationType.GetMethod("EnsureExists").Invoke(null, null);
-            instanceField.SetValue(null, localizationComponent);
+            Assert.AreSame(localizationComponent,
+                localizationType.GetMethod("EnsureExists").Invoke(null, null));
             catalogField = localizationType.GetField("catalog", BindingFlags.Instance | BindingFlags.NonPublic);
             previousCatalog = catalogField.GetValue(localizationComponent);
             if (previousCatalog == null)
@@ -63,7 +60,6 @@ public class CalculatorEasterEggTests
             if (localizationComponent != null)
             {
                 catalogField?.SetValue(localizationComponent, previousCatalog);
-                instanceField?.SetValue(null, previousInstance);
                 if (createdLocalization)
                     UnityEngine.Object.DestroyImmediate(localizationComponent.gameObject);
             }

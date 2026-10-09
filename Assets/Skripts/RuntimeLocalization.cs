@@ -19,7 +19,7 @@ public class LocalizedIgnore : MonoBehaviour
 
 public partial class RuntimeLocalization : MonoBehaviour
 {
-    public static RuntimeLocalization Instance { get; private set; }
+    private bool initialized;
 
     private TranslationCatalog catalog;
     private SceneLocalizationApplier sceneApplier;
@@ -35,13 +35,14 @@ public partial class RuntimeLocalization : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        RuntimeLocalization existing = FindExisting();
+        if (existing != null && existing != this && existing.initialized)
         {
             Destroy(gameObject);
             return;
         }
 
-        Instance = this;
+        initialized = true;
         DontDestroyOnLoad(gameObject);
         catalog = new TranslationCatalog();
         CurrentLanguage = GetInitialLanguage();
@@ -51,17 +52,27 @@ public partial class RuntimeLocalization : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (Instance == this)
+        if (initialized)
             SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public static RuntimeLocalization EnsureExists()
     {
-        if (Instance != null)
-            return Instance;
+        RuntimeLocalization existing = FindExisting();
+        if (existing != null)
+            return existing;
 
         GameObject localizationObject = new GameObject("RuntimeLocalization");
         return localizationObject.AddComponent<RuntimeLocalization>();
+    }
+
+    private static RuntimeLocalization FindExisting()
+    {
+        RuntimeLocalization[] candidates = FindObjectsByType<RuntimeLocalization>(FindObjectsInactive.Include);
+        foreach (RuntimeLocalization candidate in candidates)
+            if (candidate != null && candidate.initialized)
+                return candidate;
+        return candidates.Length > 0 ? candidates[0] : null;
     }
 
     public void SetLanguage(AppLanguage language)
@@ -186,11 +197,11 @@ public class LocalizedText : MonoBehaviour
     [SerializeField] private string sourceText;
 
     private Text text;
+    private RuntimeLocalization localization;
 
     private void Awake()
     {
         text = GetComponent<Text>();
-        CaptureSourceIfNeeded();
     }
 
     private void OnEnable()
@@ -198,15 +209,18 @@ public class LocalizedText : MonoBehaviour
         Apply();
     }
 
-    public void Apply()
+    public void Apply(RuntimeLocalization service = null)
     {
+        if (service != null)
+            localization = service;
+        if (localization == null)
+            localization = RuntimeLocalization.EnsureExists();
         if (text == null)
             text = GetComponent<Text>();
 
         if (text == null)
             return;
 
-        RuntimeLocalization localization = RuntimeLocalization.EnsureExists();
         CaptureSourceFromVisibleTextIfPossible(localization);
         CaptureSourceIfNeeded();
         text.text = localization.Translate(sourceText);
@@ -218,7 +232,7 @@ public class LocalizedText : MonoBehaviour
             return;
 
         if (string.IsNullOrEmpty(sourceText))
-            sourceText = RuntimeLocalization.EnsureExists().GetSourceText(text.text);
+            sourceText = localization.GetSourceText(text.text);
     }
 
     private void CaptureSourceFromVisibleTextIfPossible(RuntimeLocalization localization)
@@ -237,11 +251,11 @@ public class LocalizedTmpText : MonoBehaviour
     [SerializeField] private string sourceText;
 
     private TMP_Text text;
+    private RuntimeLocalization localization;
 
     private void Awake()
     {
         text = GetComponent<TMP_Text>();
-        CaptureSourceIfNeeded();
     }
 
     private void OnEnable()
@@ -249,15 +263,18 @@ public class LocalizedTmpText : MonoBehaviour
         Apply();
     }
 
-    public void Apply()
+    public void Apply(RuntimeLocalization service = null)
     {
+        if (service != null)
+            localization = service;
+        if (localization == null)
+            localization = RuntimeLocalization.EnsureExists();
         if (text == null)
             text = GetComponent<TMP_Text>();
 
         if (text == null)
             return;
 
-        RuntimeLocalization localization = RuntimeLocalization.EnsureExists();
         CaptureSourceFromVisibleTextIfPossible(localization);
         CaptureSourceIfNeeded();
         text.text = localization.Translate(sourceText);
@@ -269,7 +286,7 @@ public class LocalizedTmpText : MonoBehaviour
             return;
 
         if (string.IsNullOrEmpty(sourceText))
-            sourceText = RuntimeLocalization.EnsureExists().GetSourceText(text.text);
+            sourceText = localization.GetSourceText(text.text);
     }
 
     private void CaptureSourceFromVisibleTextIfPossible(RuntimeLocalization localization)
@@ -288,11 +305,11 @@ public class LocalizedTextMesh : MonoBehaviour
     [SerializeField] private string sourceText;
 
     private TextMesh text;
+    private RuntimeLocalization localization;
 
     private void Awake()
     {
         text = GetComponent<TextMesh>();
-        CaptureSourceIfNeeded();
     }
 
     private void OnEnable()
@@ -300,15 +317,18 @@ public class LocalizedTextMesh : MonoBehaviour
         Apply();
     }
 
-    public void Apply()
+    public void Apply(RuntimeLocalization service = null)
     {
+        if (service != null)
+            localization = service;
+        if (localization == null)
+            localization = RuntimeLocalization.EnsureExists();
         if (text == null)
             text = GetComponent<TextMesh>();
 
         if (text == null)
             return;
 
-        RuntimeLocalization localization = RuntimeLocalization.EnsureExists();
         CaptureSourceFromVisibleTextIfPossible(localization);
         CaptureSourceIfNeeded();
         text.text = localization.Translate(sourceText);
@@ -320,7 +340,7 @@ public class LocalizedTextMesh : MonoBehaviour
             return;
 
         if (string.IsNullOrEmpty(sourceText))
-            sourceText = RuntimeLocalization.EnsureExists().GetSourceText(text.text);
+            sourceText = localization.GetSourceText(text.text);
     }
 
     private void CaptureSourceFromVisibleTextIfPossible(RuntimeLocalization localization)
