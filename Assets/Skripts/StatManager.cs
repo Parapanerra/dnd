@@ -6,13 +6,13 @@ using UnityEngine.UI;
 [System.Serializable]
 public class StatConfig
 {
-    public InputField statField;
-    public InputField masteryBonusField;
-    public List<InputField> skillFields;
-    public List<Toggle> skillToggles;
+    [SerializeField] internal InputField statField;
+    [SerializeField] internal InputField masteryBonusField;
+    [SerializeField] internal List<InputField> skillFields;
+    [SerializeField] internal List<Toggle> skillToggles;
 
-    [HideInInspector]
-    public List<bool> manuallyEditedSkills = new List<bool>();
+    [SerializeField, HideInInspector]
+    internal List<bool> manuallyEditedSkills = new List<bool>();
 }
 
 public class StatManager : MonoBehaviour
@@ -20,9 +20,11 @@ public class StatManager : MonoBehaviour
     [SerializeField] private List<StatConfig> statConfigs;
 
     private bool listenersReady;
+    private DndSaveManager saveManager;
 
     private void Start()
     {
+        saveManager = DndSaveManager.EnsureExists();
         InitializeManualFlags();
         StartCoroutine(SubscribeAfterUiLoad());
     }
@@ -132,19 +134,19 @@ public class StatManager : MonoBehaviour
 
     private bool LoadManualFlag(int configIndex, int skillIndex)
     {
-        if (DndSaveManager.Instance == null)
+        if (saveManager == null)
             return false;
 
-        CharacterSceneData sceneData = DndSaveManager.Instance.GetActiveSceneData();
+        CharacterSceneData sceneData = saveManager.GetActiveSceneData();
         return sceneData.GetInt(GetManualFlagKey(configIndex, skillIndex), 0) == 1;
     }
 
     private void SaveManualFlag(int configIndex, int skillIndex, bool value)
     {
-        if (DndSaveManager.Instance == null)
+        if (saveManager == null)
             return;
 
-        CharacterSceneData sceneData = DndSaveManager.Instance.GetActiveSceneData();
+        CharacterSceneData sceneData = saveManager.GetActiveSceneData();
         sceneData.SetInt(GetManualFlagKey(configIndex, skillIndex), value ? 1 : 0);
     }
 
@@ -155,8 +157,8 @@ public class StatManager : MonoBehaviour
 
     private void SaveDndData()
     {
-        if (DndSaveManager.Instance != null)
-            DndSaveManager.Instance.RequestSaveData();
+        if (saveManager != null)
+            saveManager.RequestSaveData();
     }
 
     private string FormatValueWithSign(float value)
