@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class DndSaveManager : MonoBehaviour
 {
-    public static DndSaveManager Instance { get; private set; }
+    private bool initialized;
 
     [SerializeField] private AppSaveData saveData;
     private readonly CharacterSceneContext sceneContext = new CharacterSceneContext();
@@ -21,13 +21,14 @@ public class DndSaveManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        DndSaveManager existing = FindExisting();
+        if (existing != null && existing != this && existing.initialized)
         {
             Destroy(gameObject);
             return;
         }
         
-        Instance = this;
+        initialized = true;
         DontDestroyOnLoad(gameObject);
         RuntimeLocalization.EnsureExists();
         LoadData();
@@ -37,7 +38,7 @@ public class DndSaveManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (Instance == this)
+        if (initialized)
         {
             FlushPendingSave();
             SceneManager.sceneLoaded -= OnSceneLoaded;
@@ -77,11 +78,21 @@ public class DndSaveManager : MonoBehaviour
 
     public static DndSaveManager EnsureExists()
     {
-        if (Instance != null)
-            return Instance;
+        DndSaveManager existing = FindExisting();
+        if (existing != null)
+            return existing;
 
         GameObject managerObject = new GameObject("DndSaveManager");
         return managerObject.AddComponent<DndSaveManager>();
+    }
+
+    private static DndSaveManager FindExisting()
+    {
+        DndSaveManager[] candidates = FindObjectsByType<DndSaveManager>(FindObjectsInactive.Include);
+        foreach (DndSaveManager candidate in candidates)
+            if (candidate != null && candidate.initialized)
+                return candidate;
+        return candidates.Length > 0 ? candidates[0] : null;
     }
 
     public void LoadData()
