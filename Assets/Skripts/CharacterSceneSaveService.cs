@@ -1,13 +1,20 @@
 using System;
 
-public static class CharacterSceneSaveService
+public sealed class CharacterSceneSaveService
 {
-    public static CharacterSceneData Save(
-        DndSaveManager manager,
-        string characterId,
-        string sceneName,
-        SceneSaveController fields,
+    private readonly DndSaveManager manager;
+    private readonly SceneSaveController fields;
+    private readonly Action<CharacterData> saveIdentityAndSharedInputs;
+
+    public CharacterSceneSaveService(DndSaveManager manager, SceneSaveController fields,
         Action<CharacterData> saveIdentityAndSharedInputs)
+    {
+        this.manager = manager;
+        this.fields = fields;
+        this.saveIdentityAndSharedInputs = saveIdentityAndSharedInputs;
+    }
+
+    public CharacterSceneData Save(string characterId, string sceneName)
     {
         if (manager == null)
             return null;

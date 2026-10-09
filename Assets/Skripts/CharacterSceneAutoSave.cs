@@ -8,6 +8,8 @@ public class CharacterSceneAutoSave : MonoBehaviour
     private List<InputField> inputFields = new List<InputField>();
     private List<TMP_InputField> tmpInputFields = new List<TMP_InputField>();
     private List<Button> resetButtons = new List<Button>();
+    private DndSaveManager saveManager;
+    private CharacterSceneSaveService sceneSaveService;
     private CharacterSceneData sceneData;
     private string characterId;
     private string sceneName;
@@ -17,12 +19,13 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     private void Start()
     {
-        DndSaveManager.EnsureExists();
-        CharacterData character = DndSaveManager.Instance.EnsureActiveCharacter();
+        saveManager = DndSaveManager.EnsureExists();
+        CharacterData character = saveManager.EnsureActiveCharacter();
         characterId = character.id;
-        sceneName = DndSaveManager.Instance.GetActiveSceneDataName();
+        sceneName = saveManager.GetActiveSceneDataName();
         sceneData = character.GetSceneData(sceneName);
         CacheSceneControls();
+        sceneSaveService = new CharacterSceneSaveService(saveManager, sceneFields, SaveIdentityAndSharedInputs);
         DoubleClickInputFieldActivator.ConfigureSceneInputs();
         CharacterSceneUiService.EnsurePortraitManager(gameObject);
         LoadSceneDataToUi();
@@ -39,11 +42,10 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     public void SaveSceneData()
     {
-        if (isLoadingSceneData)
+        if (isLoadingSceneData || sceneSaveService == null)
             return;
 
-        CharacterSceneData saved = CharacterSceneSaveService.Save(
-            DndSaveManager.Instance, characterId, sceneName, sceneFields, SaveIdentityAndSharedInputs);
+        CharacterSceneData saved = sceneSaveService.Save(characterId, sceneName);
         if (saved != null)
             sceneData = saved;
     }
@@ -71,7 +73,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
             sceneFields.Load(sceneData);
 
             LoadSharedCharacterInputs();
-            characterNameField.Load(DndSaveManager.Instance != null ? DndSaveManager.Instance.GetCharacter(characterId) : null);
+            characterNameField.Load(saveManager != null ? saveManager.GetCharacter(characterId) : null);
         }
         finally
         {
@@ -83,16 +85,16 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     public void SwitchSceneData(string newSceneName)
     {
-        if (string.IsNullOrWhiteSpace(newSceneName) || DndSaveManager.Instance == null)
+        if (string.IsNullOrWhiteSpace(newSceneName) || saveManager == null)
             return;
 
         SaveSceneData();
-        DndSaveManager.Instance.FlushPendingSave();
+        saveManager.FlushPendingSave();
 
-        CharacterData character = DndSaveManager.Instance.EnsureActiveCharacter();
+        CharacterData character = saveManager.EnsureActiveCharacter();
         characterId = character.id;
         sceneName = newSceneName;
-        DndSaveManager.Instance.SetActiveSceneDataName(sceneName);
+        saveManager.SetActiveSceneDataName(sceneName);
         sceneData = character.GetSceneData(sceneName);
 
         LoadSceneDataToUi();
@@ -101,7 +103,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     private void Subscribe()
     {
-        sceneFields.Subscribe(SaveSceneData, () => DndSaveManager.Instance?.FlushPendingSave());
+        sceneFields.Subscribe(SaveSceneData, () => saveManager?.FlushPendingSave());
 
         foreach (Button resetButton in resetButtons)
             if (resetButton != null)
@@ -114,11 +116,11 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     public void ResetSceneData()
     {
-        if (DndSaveManager.Instance == null)
+        if (saveManager == null)
             return;
 
         if (sceneData == null)
-            sceneData = DndSaveManager.Instance.GetSceneDataForCharacter(characterId, sceneName);
+            sceneData = saveManager.GetSceneDataForCharacter(characterId, sceneName);
 
         if (sceneData == null)
             return;
@@ -133,7 +135,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
             isLoadingSceneData = false;
         }
 
-        DndSaveManager.Instance.ClearSceneDataFamilyForCharacter(characterId, sceneName);
+        saveManager.ClearSceneDataFamilyForCharacter(characterId, sceneName);
         sceneData.ClearValues();
         ClearSharedCharacterInputs();
         CharacterPortraitManager.ClearPortraitForActiveCharacter();
@@ -145,13 +147,13 @@ public class CharacterSceneAutoSave : MonoBehaviour
 
     private void LoadSharedCharacterInputs()
     {
-        CharacterData character = DndSaveManager.Instance != null ? DndSaveManager.Instance.GetCharacter(characterId) : null;
+        CharacterData character = saveManager != null ? saveManager.GetCharacter(characterId) : null;
         SharedCharacterInputService.Load(character, inputFields, tmpInputFields);
     }
 
     private void ClearSharedCharacterInputs()
     {
-        CharacterData character = DndSaveManager.Instance != null ? DndSaveManager.Instance.GetCharacter(characterId) : null;
+        CharacterData character = saveManager != null ? saveManager.GetCharacter(characterId) : null;
         SharedCharacterInputService.Clear(character, inputFields, tmpInputFields);
     }
 
@@ -160,19 +162,19 @@ public class CharacterSceneAutoSave : MonoBehaviour
         if (paused)
         {
             SaveSceneData();
-            DndSaveManager.Instance?.FlushPendingSave();
+            saveManager?.FlushPendingSave();
         }
     }
 
     private void OnDisable()
     {
         SaveSceneData();
-        DndSaveManager.Instance?.FlushPendingSave();
+        saveManager?.FlushPendingSave();
     }
 
     private void OnApplicationQuit()
     {
         SaveSceneData();
-        DndSaveManager.Instance?.FlushPendingSave();
+        saveManager?.FlushPendingSave();
     }
 }

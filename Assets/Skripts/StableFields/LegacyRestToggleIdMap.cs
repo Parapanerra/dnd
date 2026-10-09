@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Frozen A0 aliases let a rest update stable toggle values in saves made before A6.
-public static class LegacyRestToggleIdMap
+public sealed class LegacyRestToggleIdMap
 {
-    private static Dictionary<string, string> ids;
+    private Dictionary<string, string> ids;
 
-    public static bool TryGetStableId(string legacyKey, out string stableId)
+    public bool TryGetStableId(string legacyKey, out string stableId)
     {
         if (ids == null)
         {

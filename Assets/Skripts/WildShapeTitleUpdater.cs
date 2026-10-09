@@ -6,16 +6,14 @@ using UnityEngine.UI;
 
 public class WildShapeTitleUpdater : MonoBehaviour
 {
-    private static WildShapeTitleUpdater instance;
-
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Bootstrap()
     {
-        if (instance != null)
+        if (FindAnyObjectByType<WildShapeTitleUpdater>() != null)
             return;
 
         GameObject updaterObject = new GameObject("WildShapeTitleUpdater");
-        instance = updaterObject.AddComponent<WildShapeTitleUpdater>();
+        updaterObject.AddComponent<WildShapeTitleUpdater>();
         DontDestroyOnLoad(updaterObject);
     }
 

@@ -13,11 +13,12 @@ public static class RestSavedToggleUpdater
         if (data == null || data.intData == null)
             return;
 
+        var aliases = new LegacyRestToggleIdMap();
         var stableIds = new HashSet<string>(StringComparer.Ordinal);
         foreach (IntSaveEntry entry in GetLegacyEntries(data, panelPath, minToggleNumber, maxToggleNumber))
         {
             entry.value = 0;
-            if (LegacyRestToggleIdMap.TryGetStableId(entry.key, out string id))
+            if (aliases.TryGetStableId(entry.key, out string id))
                 stableIds.Add(id);
         }
 
@@ -33,6 +34,7 @@ public static class RestSavedToggleUpdater
         if (data == null || data.intData == null)
             return;
 
+        var aliases = new LegacyRestToggleIdMap();
         List<RoleToggle> mapped = GetRoleToggles(data, "Exhaustion", 0, lastToggleNumber);
         mapped.Sort((left, right) => left.number.CompareTo(right.number));
         if (mapped.Count > 0)
@@ -64,7 +66,7 @@ public static class RestSavedToggleUpdater
 
         IntSaveEntry last = entries[Math.Min(count - 1, entries.Count - 1)];
         last.value = 0;
-        if (LegacyRestToggleIdMap.TryGetStableId(last.key, out string stableId))
+        if (aliases.TryGetStableId(last.key, out string stableId))
             data.SetInt(StablePrefix + stableId, 0);
     }
 

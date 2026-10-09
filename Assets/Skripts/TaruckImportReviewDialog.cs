@@ -93,7 +93,6 @@ public sealed class TaruckImportReviewDialog : MonoBehaviour
     [SerializeField] private float maximumPanelHeight = 380f;
     [SerializeField] private float contentPaddingHeight = 190f;
 
-    private static TaruckImportReviewDialog active;
     private Action primary;
     private Action secondary;
     private Action queued;
@@ -106,11 +105,11 @@ public sealed class TaruckImportReviewDialog : MonoBehaviour
         if (prefab == null)
             throw new InvalidOperationException("Missing Resources/UI/TaruckImportReviewDialog prefab");
 
-        if (active != null)
-            active.Close();
+        TaruckImportReviewDialog current = FindAnyObjectByType<TaruckImportReviewDialog>();
+        if (current != null)
+            current.Close();
 
         var dialog = Instantiate(prefab);
-        active = dialog;
         if (EventSystem.current == null)
         {
             dialog.ownedEventSystem = new GameObject("TaruckDialogEventSystem",
@@ -165,7 +164,6 @@ public sealed class TaruckImportReviewDialog : MonoBehaviour
 
     private void Close()
     {
-        if (active == this) active = null;
         if (ownedEventSystem != null)
         {
             Destroy(ownedEventSystem);
@@ -176,7 +174,6 @@ public sealed class TaruckImportReviewDialog : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (active == this) active = null;
         if (ownedEventSystem != null) Destroy(ownedEventSystem);
     }
 }

@@ -8,9 +8,9 @@ using TMPro;
 
 public class CalculatorManager : MonoBehaviour
 {
-    public List<Button> buttons;
-    public Text equationText;
-    public Text resultText;
+    [SerializeField] private List<Button> buttons;
+    [SerializeField] private Text equationText;
+    [SerializeField] private Text resultText;
 
     private string currentEquation = "";
     private readonly CalculatorEasterEgg easterEgg = new CalculatorEasterEgg();

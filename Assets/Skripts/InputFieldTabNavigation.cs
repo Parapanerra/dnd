@@ -26,7 +26,6 @@ public class InputFieldTabNavigation : MonoBehaviour
         public float Tolerance;
     }
 
-    private static InputFieldTabNavigation instance;
     private readonly List<InputTarget> orderedTargets = new List<InputTarget>();
     private readonly List<InputRow> rows = new List<InputRow>();
     private bool tabPressedThisFrame;
@@ -38,30 +37,16 @@ public class InputFieldTabNavigation : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void Install()
     {
-        if (instance != null)
-            return;
-
         InputFieldTabNavigation existing = FindAnyObjectByType<InputFieldTabNavigation>();
         if (existing != null)
-        {
-            instance = existing;
             return;
-        }
 
         GameObject navigator = new GameObject(nameof(InputFieldTabNavigation));
-        instance = navigator.AddComponent<InputFieldTabNavigation>();
-        DontDestroyOnLoad(navigator);
+        navigator.AddComponent<InputFieldTabNavigation>();
     }
 
     private void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        instance = this;
         DontDestroyOnLoad(gameObject);
     }
 

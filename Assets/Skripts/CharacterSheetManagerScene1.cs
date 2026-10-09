@@ -8,16 +8,18 @@ using System;
 public class CharacterSheetManagerScene1 : MonoBehaviour
 {
     [Header("UI References")]
-    public List<InputField> inputFields;
-    public List<Toggle> toggles;
-    public List<Slider> sliders;
-    public List<Dropdown> dropdowns;
+    [SerializeField] private List<InputField> inputFields;
+    [SerializeField] private List<Toggle> toggles;
+    [SerializeField] private List<Slider> sliders;
+    [SerializeField] private List<Dropdown> dropdowns;
     
     [Header("Buttons")]
-    public Button backToMenuButton;
-    public Button deleteCharacterButton;
-    public Button resetButton;
+    [SerializeField] private Button backToMenuButton;
+    [SerializeField] private Button deleteCharacterButton;
+    [SerializeField] private Button resetButton;
 
+    private DndSaveManager saveManager;
+    private CharacterSceneSaveService sceneSaveService;
     private CharacterData currentCharacter;
     private CharacterSceneData currentSceneData;
     private List<TMP_InputField> tmpInputFields = new List<TMP_InputField>();
@@ -34,13 +36,14 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         if (!SceneManager.GetActiveScene().name.StartsWith(AppConfig.Scenes.CharacterSheet, StringComparison.Ordinal))
             return;
 
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
+        saveManager = DndSaveManager.EnsureExists();
 
         currentCharacter = saveManager.EnsureActiveCharacter();
         characterId = currentCharacter.id;
         sceneName = saveManager.GetActiveSceneDataName();
         currentSceneData = currentCharacter.GetSceneData(sceneName);
         CacheSceneControls();
+        sceneSaveService = new CharacterSceneSaveService(saveManager, sceneFields, SaveIdentityAndSharedInputs);
         DoubleClickInputFieldActivator.ConfigureSceneInputs();
         CharacterSceneUiService.EnsurePortraitManager(gameObject);
 
@@ -63,7 +66,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         {
             deleteCharacterButton.onClick.AddListener(() => 
             {
-                DndSaveManager.Instance.DeleteCharacter(characterId);
+                saveManager.DeleteCharacter(characterId);
                 SceneManager.LoadScene("menu");
             });
         }
@@ -81,15 +84,14 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
     public void SaveCharacterData()
     {
-        if (isLoadingSceneData)
+        if (isLoadingSceneData || sceneSaveService == null)
             return;
 
-        CharacterSceneData saved = CharacterSceneSaveService.Save(
-            DndSaveManager.Instance, characterId, sceneName, sceneFields, SaveIdentityAndSharedInputs);
+        CharacterSceneData saved = sceneSaveService.Save(characterId, sceneName);
         if (saved == null)
             return;
 
-        currentCharacter = DndSaveManager.Instance.GetCharacter(characterId);
+        currentCharacter = saveManager.GetCharacter(characterId);
         currentSceneData = saved;
     }
 
@@ -117,19 +119,19 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
     public void SwitchSceneData(string newSceneName)
     {
-        if (string.IsNullOrWhiteSpace(newSceneName) || DndSaveManager.Instance == null)
+        if (string.IsNullOrWhiteSpace(newSceneName) || saveManager == null)
             return;
 
         SaveCharacterData();
-        DndSaveManager.Instance.FlushPendingSave();
+        saveManager.FlushPendingSave();
 
-        currentCharacter = DndSaveManager.Instance.GetCharacter(characterId);
+        currentCharacter = saveManager.GetCharacter(characterId);
         if (currentCharacter == null)
-            currentCharacter = DndSaveManager.Instance.EnsureActiveCharacter();
+            currentCharacter = saveManager.EnsureActiveCharacter();
 
         characterId = currentCharacter.id;
         sceneName = newSceneName;
-        DndSaveManager.Instance.SetActiveSceneDataName(sceneName);
+        saveManager.SetActiveSceneDataName(sceneName);
         currentSceneData = currentCharacter.GetSceneData(sceneName);
 
         LoadCharacterDataToUI();
@@ -173,10 +175,10 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
     private void SubscribeToUIEvents()
     {
-        sceneFields.Subscribe(SaveCharacterData, () => DndSaveManager.Instance?.FlushPendingSave());
+        sceneFields.Subscribe(SaveCharacterData, () => saveManager?.FlushPendingSave());
 
         characterNameField.SubscribeIfOutsideCollectedFields(inputFields, tmpInputFields,
-            SaveCharacterData, () => DndSaveManager.Instance?.FlushPendingSave());
+            SaveCharacterData, () => saveManager?.FlushPendingSave());
     }
 
     private void BindResetButtons()
@@ -195,11 +197,11 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
 
     public void ResetSceneData()
     {
-        if (DndSaveManager.Instance == null)
+        if (saveManager == null)
             return;
 
         if (currentSceneData == null)
-            currentSceneData = DndSaveManager.Instance.GetSceneDataForCharacter(characterId, sceneName);
+            currentSceneData = saveManager.GetSceneDataForCharacter(characterId, sceneName);
 
         if (currentSceneData == null)
             return;
@@ -214,7 +216,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
             isLoadingSceneData = false;
         }
 
-        DndSaveManager.Instance.ClearSceneDataFamilyForCharacter(characterId, sceneName);
+        saveManager.ClearSceneDataFamilyForCharacter(characterId, sceneName);
         currentSceneData.ClearValues();
         ClearSharedCharacterInputs();
         CharacterPortraitManager.ClearPortraitForActiveCharacter();
@@ -230,19 +232,19 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         if (paused)
         {
             SaveCharacterData();
-            DndSaveManager.Instance?.FlushPendingSave();
+            saveManager?.FlushPendingSave();
         }
     }
 
     private void OnDisable()
     {
         SaveCharacterData();
-        DndSaveManager.Instance?.FlushPendingSave();
+        saveManager?.FlushPendingSave();
     }
 
     private void OnApplicationQuit()
     {
         SaveCharacterData();
-        DndSaveManager.Instance?.FlushPendingSave();
+        saveManager?.FlushPendingSave();
     }
 }
