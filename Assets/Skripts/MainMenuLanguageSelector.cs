@@ -8,12 +8,14 @@ using UnityEngine.UI;
 public class MainMenuLanguageSelector : MonoBehaviour
 {
     private MainMenuManager owner;
+    private RuntimeLocalization localization;
     private Dropdown languageDropdown;
     private TMP_Dropdown languageTmpDropdown;
 
-    public void Initialize(MainMenuManager manager)
+    public void Initialize(MainMenuManager manager, RuntimeLocalization runtimeLocalization)
     {
         owner = manager;
+        localization = runtimeLocalization;
     }
 
     public void ScheduleSync()
@@ -40,9 +42,9 @@ public class MainMenuLanguageSelector : MonoBehaviour
     {
         RemoveOldLanguageButtons();
 
-        if (RuntimeLocalization.EnsureExists().CurrentLanguage == AppLanguage.Russian)
+        if (localization.CurrentLanguage == AppLanguage.Russian)
         {
-            RuntimeLocalization.EnsureExists().SetLanguage(AppLanguage.Ukrainian);
+            localization.SetLanguage(AppLanguage.Ukrainian);
         }
 
         Dropdown dropdown = MainMenuSceneLookup.FindFirstDropdownInScene("localiza", "LanguageDropdown");
@@ -225,7 +227,6 @@ public class MainMenuLanguageSelector : MonoBehaviour
         if (value >= 0 && value < SupportedDropdownLanguages.Length)
             language = SupportedDropdownLanguages[value];
 
-        RuntimeLocalization localization = RuntimeLocalization.EnsureExists();
         localization.SetLanguage(language);
         owner.RefreshCharacterList();
         localization.ApplyToScene();
@@ -234,7 +235,7 @@ public class MainMenuLanguageSelector : MonoBehaviour
 
     private int GetCurrentLanguageIndex()
     {
-        AppLanguage current = RuntimeLocalization.EnsureExists().CurrentLanguage;
+        AppLanguage current = localization.CurrentLanguage;
         for (int i = 0; i < SupportedDropdownLanguages.Length; i++)
         {
             if (SupportedDropdownLanguages[i] == current)

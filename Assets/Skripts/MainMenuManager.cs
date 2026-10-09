@@ -33,9 +33,9 @@ public class MainMenuManager : MonoBehaviour
     [HideInInspector] public bool applyDefaultCharacterButtonStyle;
     [HideInInspector] public float characterButtonSpacing = AppConfig.MainMenu.CharacterButtonSpacing;
 
-    [HideInInspector] public Button importButton;
-    [HideInInspector] public Button exportButton;
 
+    private DndSaveManager saveManager;
+    private RuntimeLocalization localization;
     private MainMenuLanguageSelector languageSelector;
     private MainMenuTransferPanel transferPanel;
     private MainMenuCharacterListView characterListView;
@@ -50,17 +50,17 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         NormalizeSceneNames();
-        DndSaveManager.EnsureExists();
-        RuntimeLocalization.EnsureExists();
+        saveManager = DndSaveManager.EnsureExists();
+        localization = RuntimeLocalization.EnsureExists();
         characterListView = GetComponent<MainMenuCharacterListView>();
         if (characterListView == null)
             characterListView = gameObject.AddComponent<MainMenuCharacterListView>();
-        characterListView.Initialize(this);
+        characterListView.Initialize(this, saveManager);
         characterListView.Wire();
         transferPanel = GetComponent<MainMenuTransferPanel>();
         if (transferPanel == null)
             transferPanel = gameObject.AddComponent<MainMenuTransferPanel>();
-        transferPanel.Initialize(this);
+        transferPanel.Initialize(this, saveManager);
         transferPanel.Wire();
         transferPanel.HideSavePanel();
 
@@ -71,13 +71,13 @@ public class MainMenuManager : MonoBehaviour
         languageSelector = GetComponent<MainMenuLanguageSelector>();
         if (languageSelector == null)
             languageSelector = gameObject.AddComponent<MainMenuLanguageSelector>();
-        languageSelector.Initialize(this);
+        languageSelector.Initialize(this, localization);
         languageSelector.EnsureLanguageDropdown();
         characterListView.CacheCharacterButtonTemplate();
         characterListView.DisableAutomaticContentLayout();
 
         RefreshCharacterList();
-        RuntimeLocalization.EnsureExists().ApplyToScene();
+        localization.ApplyToScene();
         languageSelector.SyncLanguageDropdownValue();
 
         if (addCharacterButton != null)
@@ -94,7 +94,7 @@ public class MainMenuManager : MonoBehaviour
 
         transferPanel.BindButtons();
 
-        string storageError = DndSaveManager.Instance != null ? DndSaveManager.Instance.SaveError : null;
+        string storageError = saveManager != null ? saveManager.SaveError : null;
         if (!string.IsNullOrEmpty(storageError))
             TaruckImportReviewDialog.Show("Стан сховища", storageError, "Закрити", () => { });
     }
@@ -118,7 +118,7 @@ public class MainMenuManager : MonoBehaviour
             characterListView = GetComponent<MainMenuCharacterListView>();
             if (characterListView == null)
                 characterListView = gameObject.AddComponent<MainMenuCharacterListView>();
-            characterListView.Initialize(this);
+            characterListView.Initialize(this, saveManager);
         }
 
         characterListView.EnsureEditableCharacterScrollView();
@@ -140,7 +140,7 @@ public class MainMenuManager : MonoBehaviour
 
         lastCharacterCreateTime = Time.unscaledTime;
 
-        CharacterData newChar = DndSaveManager.Instance.CreateNewCharacter();
+        CharacterData newChar = saveManager.CreateNewCharacter();
         RefreshCharacterList();
 
         if (openCharacterAfterCreate)
@@ -170,9 +170,9 @@ public class MainMenuManager : MonoBehaviour
         OpenCharacterScene(characterId, spellbookSceneName);
     }
 
-    private static void OpenCharacterScene(string characterId, string sceneName)
+    private void OpenCharacterScene(string characterId, string sceneName)
     {
-        if (!DndSaveManager.Instance.SetActiveCharacter(characterId))
+        if (!saveManager.SetActiveCharacter(characterId))
             return;
 
         SceneManager.LoadScene(sceneName);

@@ -10,6 +10,9 @@ using UnityEngine.UI;
 public class MainMenuTransferPanel : MonoBehaviour
 {
     private MainMenuManager owner;
+    private DndSaveManager saveManager;
+    private Button exportButton;
+    private Button importButton;
     private Button exportOneCharacterButton;
     private Button importOneCharacterButton;
     private Button openSavePanelButton;
@@ -18,9 +21,10 @@ public class MainMenuTransferPanel : MonoBehaviour
     private GameObject savePanel;
     private bool oneCharacterDropdownHasSelection;
 
-    public void Initialize(MainMenuManager manager)
+    public void Initialize(MainMenuManager manager, DndSaveManager dataManager)
     {
         owner = manager;
+        saveManager = dataManager;
     }
 
     public void HideSavePanel()
@@ -31,16 +35,16 @@ public class MainMenuTransferPanel : MonoBehaviour
 
     public void BindButtons()
     {
-        if (owner.exportButton != null)
+        if (exportButton != null)
         {
-            owner.exportButton.onClick.RemoveAllListeners();
-            owner.exportButton.onClick.AddListener(ExportFile);
+            exportButton.onClick.RemoveAllListeners();
+            exportButton.onClick.AddListener(ExportFile);
         }
 
-        if (owner.importButton != null)
+        if (importButton != null)
         {
-            owner.importButton.onClick.RemoveAllListeners();
-            owner.importButton.onClick.AddListener(ImportFile);
+            importButton.onClick.RemoveAllListeners();
+            importButton.onClick.AddListener(ImportFile);
         }
 
         if (exportOneCharacterButton != null)
@@ -81,11 +85,11 @@ public class MainMenuTransferPanel : MonoBehaviour
     {
         Button downloadButton = MainMenuSceneLookup.FindFirstButtonInScene("dowload", "download");
         if (downloadButton != null)
-            owner.exportButton = downloadButton;
+            exportButton = downloadButton;
 
         Button uploadButton = MainMenuSceneLookup.FindButtonInScene("upload");
         if (uploadButton != null)
-            owner.importButton = uploadButton;
+            importButton = uploadButton;
 
         exportOneCharacterButton = MainMenuSceneLookup.FindButtonInScene("downLoadOne");
         importOneCharacterButton = MainMenuSceneLookup.FindButtonInScene("upLoadOne");
@@ -101,7 +105,6 @@ public class MainMenuTransferPanel : MonoBehaviour
 
     private void ExportFile()
     {
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
         saveManager.SaveData();
 
         FileBrowser.SetFilters(false, new FileBrowser.Filter("Taruck", ".tall"));
@@ -133,7 +136,6 @@ public class MainMenuTransferPanel : MonoBehaviour
 
     private void ImportFile()
     {
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
 
         FileBrowser.SetFilters(true, new FileBrowser.Filter(
             TaruckImportReviewDialog.Text("Taruck або старий JSON", "Taruck or legacy JSON"),
@@ -213,7 +215,6 @@ public class MainMenuTransferPanel : MonoBehaviour
 
     private void ImportCharacterFile()
     {
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
 
         FileBrowser.SetFilters(true, new FileBrowser.Filter(
             TaruckImportReviewDialog.Text("Taruck або старий JSON", "Taruck or legacy JSON"),
@@ -279,7 +280,6 @@ public class MainMenuTransferPanel : MonoBehaviour
 
     private CharacterData GetSelectedCharacterForExport()
     {
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
         if (saveManager.GetCharacterCount() == 0)
             return null;
 
@@ -296,7 +296,6 @@ public class MainMenuTransferPanel : MonoBehaviour
 
     public void RefreshOneCharacterDropdown()
     {
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
         List<string> options = new List<string>();
         bool hasCharacters = saveManager.GetCharacterCount() > 0;
         oneCharacterDropdownHasSelection = false;
@@ -397,7 +396,6 @@ public class MainMenuTransferPanel : MonoBehaviour
 
     private bool HasOneCharacterDropdownOptions()
     {
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
         return saveManager.GetCharacterCount() > 0;
     }
 

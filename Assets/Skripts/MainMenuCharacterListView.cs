@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class MainMenuCharacterListView : MonoBehaviour
 {
     private MainMenuManager owner;
+    private DndSaveManager saveManager;
     private Button userCharacterButtonTemplate;
     private Transform userMenuRoot;
     private Transform userMenuContent;
@@ -16,9 +17,10 @@ public class MainMenuCharacterListView : MonoBehaviour
     private bool hasAddButtonWorldOffsetFromTemplate;
     private Coroutine addButtonPositionCoroutine;
 
-    public void Initialize(MainMenuManager manager)
+    public void Initialize(MainMenuManager manager, DndSaveManager dataManager)
     {
         owner = manager;
+        saveManager = dataManager;
     }
 
     public void EnsureEditableCharacterScrollView()
@@ -205,7 +207,7 @@ public class MainMenuCharacterListView : MonoBehaviour
 
         lastUserMenuRowRect = null;
         int index = 0;
-        foreach (CharacterData character in DndSaveManager.Instance.GetCharactersSnapshot())
+        foreach (CharacterData character in saveManager.GetCharactersSnapshot())
         {
             CreateUserMenuCharacterRow(character, index);
             index++;
@@ -240,7 +242,7 @@ public class MainMenuCharacterListView : MonoBehaviour
         MainMenuSceneLookup.BindButton(spellsButton, () => owner.OnSpellbookSelected(characterId));
         MainMenuSceneLookup.BindButton(deleteButton, () =>
         {
-            DndSaveManager.Instance.DeleteCharacter(characterId);
+            saveManager.DeleteCharacter(characterId);
             owner.RefreshCharacterList();
         });
 
@@ -392,7 +394,7 @@ public class MainMenuCharacterListView : MonoBehaviour
     {
         yield return null;
         PositionAddButtonAfterRows();
-        ResizeUserMenuContent(DndSaveManager.Instance != null ? DndSaveManager.Instance.GetCharacterCount() : 0);
+        ResizeUserMenuContent(saveManager != null ? saveManager.GetCharacterCount() : 0);
         addButtonPositionCoroutine = null;
     }
 
@@ -435,7 +437,7 @@ public class MainMenuCharacterListView : MonoBehaviour
 
     private void RefreshLegacyButtons()
     {
-        if (DndSaveManager.Instance == null || owner.characterListContent == null)
+        if (saveManager == null || owner.characterListContent == null)
             return;
 
         if (owner.applyDefaultCharacterListLayout)
@@ -463,7 +465,7 @@ public class MainMenuCharacterListView : MonoBehaviour
 
         int buttonIndex = 0;
         RectTransform layoutSourceRect = templateRect;
-        foreach (CharacterData character in DndSaveManager.Instance.GetCharactersSnapshot())
+        foreach (CharacterData character in saveManager.GetCharactersSnapshot())
         {
             GameObject btnObj = CreateCharacterButtonObject(character);
             btnObj.transform.SetParent(owner.characterListContent, false);
@@ -500,7 +502,7 @@ public class MainMenuCharacterListView : MonoBehaviour
                     deleteBtn.onClick.RemoveAllListeners();
                     deleteBtn.onClick.AddListener(() =>
                     {
-                        DndSaveManager.Instance.DeleteCharacter(characterId);
+                        saveManager.DeleteCharacter(characterId);
                         owner.RefreshCharacterList();
                     });
                 }
@@ -514,7 +516,7 @@ public class MainMenuCharacterListView : MonoBehaviour
 
     private void RefreshCharacterRows()
     {
-        if (DndSaveManager.Instance == null)
+        if (saveManager == null)
             return;
 
         owner.characterRowTemplate.SetActive(false);
@@ -533,7 +535,7 @@ public class MainMenuCharacterListView : MonoBehaviour
 
         RectTransform templateRect = owner.characterRowTemplate.GetComponent<RectTransform>();
         int rowIndex = 0;
-        foreach (CharacterData character in DndSaveManager.Instance.GetCharactersSnapshot())
+        foreach (CharacterData character in saveManager.GetCharactersSnapshot())
         {
             GameObject row = Instantiate(owner.characterRowTemplate, owner.characterRowsContent, false);
             row.name = "CharacterRow_" + (string.IsNullOrEmpty(character.characterName) ? character.id : character.characterName);
@@ -599,7 +601,7 @@ public class MainMenuCharacterListView : MonoBehaviour
         MainMenuSceneLookup.BindButton(spellsButton, () => owner.OnSpellbookSelected(characterId));
         MainMenuSceneLookup.BindButton(deleteButton, () =>
         {
-            DndSaveManager.Instance.DeleteCharacter(characterId);
+            saveManager.DeleteCharacter(characterId);
             owner.RefreshCharacterList();
         });
     }
@@ -773,8 +775,8 @@ public class MainMenuCharacterListView : MonoBehaviour
         if (image == null)
             image = btnObj.AddComponent<Image>();
 
-        bool isActive = DndSaveManager.Instance != null &&
-                        DndSaveManager.Instance.GetActiveCharacterId() == character.id;
+        bool isActive = saveManager != null &&
+                        saveManager.GetActiveCharacterId() == character.id;
         if (owner.applyDefaultCharacterButtonStyle)
         {
             image.color = isActive
