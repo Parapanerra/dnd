@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class WildShapeTitleUpdater : MonoBehaviour
 {
+    private DndSaveManager saveManager;
+    private RuntimeLocalization localization;
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Bootstrap()
     {
@@ -47,8 +50,13 @@ public class WildShapeTitleUpdater : MonoBehaviour
         }
     }
 
-    public static void Apply()
+    public void Apply()
     {
+        if (saveManager == null)
+            saveManager = DndSaveManager.EnsureExists();
+        if (localization == null)
+            localization = RuntimeLocalization.EnsureExists();
+
         int number = GetWildShapeNumber();
         string title = GetWildShapeTitle(number);
 
@@ -86,9 +94,9 @@ public class WildShapeTitleUpdater : MonoBehaviour
         }
     }
 
-    private static string GetWildShapeTitle(int number)
+    private string GetWildShapeTitle(int number)
     {
-        AppLanguage language = RuntimeLocalization.EnsureExists().CurrentLanguage;
+        AppLanguage language = localization.CurrentLanguage;
         if (language == AppLanguage.English)
             return "Wild Shape #" + number;
 
@@ -98,10 +106,10 @@ public class WildShapeTitleUpdater : MonoBehaviour
         return "\u0414\u0438\u043a\u0430 \u0444\u043e\u0440\u043c\u0430 \u2116" + number;
     }
 
-    private static int GetWildShapeNumber()
+    private int GetWildShapeNumber()
     {
-        string sceneDataName = DndSaveManager.Instance != null
-            ? DndSaveManager.Instance.GetActiveSceneDataName()
+        string sceneDataName = saveManager != null
+            ? saveManager.GetActiveSceneDataName()
             : SceneManager.GetActiveScene().name;
 
         if (string.IsNullOrWhiteSpace(sceneDataName) || sceneDataName == "petsesn")
@@ -126,7 +134,7 @@ public class WildShapeTitleUpdater : MonoBehaviour
                trimmed.StartsWith("Р”РёРєР° С„РѕСЂРјР° в„–");
     }
 
-    private static bool TryGetWildShapeButtonText(string value, out string translated)
+    private bool TryGetWildShapeButtonText(string value, out string translated)
     {
         translated = "";
         if (string.IsNullOrWhiteSpace(value))
@@ -136,7 +144,7 @@ public class WildShapeTitleUpdater : MonoBehaviour
         if (TryReadNumberAfterPrefix(trimmed, "\u0424\u043e\u0440\u043c\u0430 ", out int number) ||
             TryReadNumberAfterPrefix(trimmed, "Form ", out number))
         {
-            translated = RuntimeLocalization.EnsureExists().CurrentLanguage == AppLanguage.English
+            translated = localization.CurrentLanguage == AppLanguage.English
                 ? "Form " + number
                 : "\u0424\u043e\u0440\u043c\u0430 " + number;
             return true;
@@ -159,7 +167,7 @@ public class WildShapeTitleUpdater : MonoBehaviour
         return gameObject != null && gameObject.scene.IsValid() && gameObject.scene.isLoaded;
     }
 
-    private static void BindSpellbookButton()
+    private void BindSpellbookButton()
     {
         Button[] buttons = Resources.FindObjectsOfTypeAll<Button>();
         foreach (Button button in buttons)

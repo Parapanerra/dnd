@@ -79,7 +79,11 @@ public sealed class SceneLocalizationApplier
         }
 
         if (SceneManager.GetActiveScene().name.Contains("petsesn"))
-            WildShapeTitleUpdater.Apply();
+        {
+            WildShapeTitleUpdater updater = UnityEngine.Object.FindAnyObjectByType<WildShapeTitleUpdater>();
+            if (updater != null)
+                updater.Apply();
+        }
     }
 
     private void ApplyDropdownOptions(Dropdown dropdown)
