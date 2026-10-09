@@ -10,14 +10,18 @@ public class CalculatorPotionController : MonoBehaviour
     private readonly string[] potionFormulas = (string[])AppConfig.Calculator.PotionFormulas.Clone();
     private readonly int[] potionCounts = new int[AppConfig.Calculator.PotionTypeCount];
     private CalculatorManager owner;
+    private DndSaveManager saveManager;
+    private RuntimeLocalization localization;
     private Dropdown potionDropdown;
     private Button potionPlusButton;
     private Button potionMinusButton;
     private Button potionUseButton;
 
-    public void Initialize(CalculatorManager calculator)
+    public void Initialize(CalculatorManager calculator, DndSaveManager dataManager, RuntimeLocalization textCatalog)
     {
         owner = calculator;
+        saveManager = dataManager;
+        localization = textCatalog;
     }
 
     public void Wire()
@@ -74,18 +78,17 @@ public class CalculatorPotionController : MonoBehaviour
     private void SavePotionCounts()
     {
         CharacterSceneData sceneData = GetPotionSceneData(true);
-        if (sceneData == null || DndSaveManager.Instance == null)
+        if (sceneData == null || saveManager == null)
             return;
 
         for (int i = 0; i < potionCounts.Length; i++)
             sceneData.SetInt(PotionSaveKeyPrefix + i, Mathf.Max(0, potionCounts[i]));
 
-        DndSaveManager.Instance.SaveData();
+        saveManager.SaveData();
     }
 
     private CharacterSceneData GetPotionSceneData(bool createIfMissing)
     {
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
         if (saveManager == null)
             return null;
 
@@ -175,7 +178,7 @@ public class CalculatorPotionController : MonoBehaviour
 
     private string GetPotionName(int index)
     {
-        AppLanguage language = RuntimeLocalization.EnsureExists().CurrentLanguage;
+        AppLanguage language = localization.CurrentLanguage;
         if (language == AppLanguage.English)
         {
             switch (index)

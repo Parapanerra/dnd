@@ -13,14 +13,18 @@ public class CalculatorManager : MonoBehaviour
     [SerializeField] private Text resultText;
 
     private string currentEquation = "";
-    private readonly CalculatorEasterEgg easterEgg = new CalculatorEasterEgg();
+    private CalculatorEasterEgg easterEgg;
     private readonly CalculatorHealthController healthController = new CalculatorHealthController();
     private bool isLastInputDice;
     private CalculatorPotionController potionController;
+    private DndSaveManager saveManager;
+    private RuntimeLocalization localization;
 
     private void Start()
     {
-        RuntimeLocalization.EnsureExists();
+        localization = RuntimeLocalization.EnsureExists();
+        saveManager = DndSaveManager.EnsureExists();
+        easterEgg = new CalculatorEasterEgg(localization, saveManager);
         CalculatorControlBinder controls = new CalculatorControlBinder(transform, NormalizeLabel, IsCalculatorButtonLabel);
         controls.ResolveDisplayTexts(ref equationText, ref resultText);
         if (buttons == null)
@@ -29,14 +33,17 @@ public class CalculatorManager : MonoBehaviour
         potionController = GetComponent<CalculatorPotionController>();
         if (potionController == null)
             potionController = gameObject.AddComponent<CalculatorPotionController>();
-        potionController.Initialize(this);
+        potionController.Initialize(this, saveManager, localization);
         potionController.Wire();
     }
 
     public void RefreshLocalization()
     {
+        if (localization == null || easterEgg == null)
+            return;
+
         if (healthController.IsActive)
-            healthController.RefreshLabel(GetCalculatorText, RuntimeLocalization.EnsureExists().CurrentLanguage);
+            healthController.RefreshLabel(GetCalculatorText, localization.CurrentLanguage);
 
         if (potionController != null)
             potionController.RefreshPotionDropdownOptions();
@@ -52,7 +59,7 @@ public class CalculatorManager : MonoBehaviour
 
     internal string GetCalculatorText(string key)
     {
-        return CalculatorTextCatalog.Get(key, RuntimeLocalization.EnsureExists().CurrentLanguage);
+        return CalculatorTextCatalog.Get(key, localization.CurrentLanguage);
     }
 
     internal string GetHealedText(int value)
@@ -151,7 +158,7 @@ public class CalculatorManager : MonoBehaviour
         if (easterEgg.IsShowing)
             ResetCalculator();
         healthController.TrySelectMode(normalized, GetCalculatorText,
-            RuntimeLocalization.EnsureExists().CurrentLanguage);
+            localization.CurrentLanguage);
         currentEquation = "";
         isLastInputDice = false;
         if (equationText != null)

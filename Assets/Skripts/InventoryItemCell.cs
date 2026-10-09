@@ -93,6 +93,9 @@ public class InventoryItemCell : MonoBehaviour
 
     public void RefreshLocalization()
     {
+        if (localization == null)
+            return;
+
         EnsureCategoryOptions();
     }
 

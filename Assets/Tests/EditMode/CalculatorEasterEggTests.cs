@@ -43,7 +43,7 @@ public class CalculatorEasterEggTests
             int resetCalls = 0;
             Type eggType = Type.GetType("CalculatorEasterEgg, Assembly-CSharp");
             Assert.NotNull(eggType);
-            object easterEgg = Activator.CreateInstance(eggType);
+            object easterEgg = Activator.CreateInstance(eggType, localizationComponent, null);
 
             Assert.IsTrue((bool)eggType.GetMethod("TryShow").Invoke(easterEgg,
                 new object[] { "1984", equation, result, (Action)(() => resetCalls++) }));

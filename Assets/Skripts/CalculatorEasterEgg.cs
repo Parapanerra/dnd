@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public sealed class CalculatorEasterEgg
 {
     private const string ResetCountKey = "Calculator.EasterEgg67.Count";
+    private readonly RuntimeLocalization localization;
+    private readonly DndSaveManager saveManager;
     private Text equationText;
     private Text resultText;
     private string topSource = "";
@@ -17,6 +19,12 @@ public sealed class CalculatorEasterEgg
     private int maxSizeBefore;
 
     public bool IsShowing { get; private set; }
+
+    public CalculatorEasterEgg(RuntimeLocalization textCatalog, DndSaveManager dataManager)
+    {
+        localization = textCatalog;
+        saveManager = dataManager;
+    }
 
     public bool TryShow(string equation, Text equationDisplay, Text resultDisplay, Action resetCalculator)
     {
@@ -67,7 +75,6 @@ public sealed class CalculatorEasterEgg
 
     public void Refresh()
     {
-        RuntimeLocalization localization = RuntimeLocalization.EnsureExists();
         string topLine = localization.Translate(topSource);
         string message = localization.Translate(messageSource);
         if (splitResetMessage)
@@ -103,9 +110,8 @@ public sealed class CalculatorEasterEgg
         splitResetMessage = false;
     }
 
-    private static string AdvanceResetMessage()
+    private string AdvanceResetMessage()
     {
-        DndSaveManager saveManager = DndSaveManager.Instance;
         CharacterData character = saveManager != null ? saveManager.GetActiveCharacter() : null;
         if (character == null)
             return "Спочатку обери персонажа.";
