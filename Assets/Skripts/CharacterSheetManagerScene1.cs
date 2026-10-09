@@ -54,7 +54,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         }
 
         LoadCharacterDataToUI();
-        DeathSaveToggleSequence.ConfigureScene();
+        DeathSaveToggleSequence.ConfigureScene(saveManager);
         RuntimeLocalization.EnsureExists().ApplyToScene();
 
         SubscribeToUIEvents();

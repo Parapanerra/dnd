@@ -13,9 +13,11 @@ public class DeathSaveToggleSequence : MonoBehaviour
     private readonly List<UnityAction<bool>> listeners = new List<UnityAction<bool>>();
     private int currentCount;
     private bool isApplying;
+    private ExhaustionEffects exhaustionEffects;
 
-    public static void ConfigureScene()
+    public static void ConfigureScene(DndSaveManager saveManager)
     {
+        ExhaustionEffects exhaustion = new ExhaustionEffects(saveManager);
         Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform transform in transforms)
         {
@@ -28,7 +30,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
 
             SceneRoleMarker roleMarker = transform.GetComponent<SceneRoleMarker>();
             if (roleMarker != null ? roleMarker.Role == SceneRole.Exhaustion : SceneObjectName.Matches(transform.name, "vtoma"))
-                ConfigureGroup(transform, true, false);
+                ConfigureGroup(transform, true, false, exhaustion: exhaustion);
 
             if (roleMarker != null ? roleMarker.Role == SceneRole.SpellSlots : SceneObjectName.Matches(transform.name, "spelChek"))
                 ConfigureSpellCheckGroups(transform);
@@ -103,7 +105,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
         }
     }
 
-    private static void ConfigureGroup(Transform groupRoot, bool ascending, bool clampToActive, int maxToggleNumber = int.MaxValue, int[] customOrder = null, string toggleBaseName = "Toggle")
+    private static void ConfigureGroup(Transform groupRoot, bool ascending, bool clampToActive, int maxToggleNumber = int.MaxValue, int[] customOrder = null, string toggleBaseName = "Toggle", ExhaustionEffects exhaustion = null)
     {
         List<Toggle> groupToggles = new List<Toggle>();
         foreach (Toggle toggle in groupRoot.GetComponentsInChildren<Toggle>(true))
@@ -119,15 +121,18 @@ public class DeathSaveToggleSequence : MonoBehaviour
         if (sequence == null)
             sequence = groupRoot.gameObject.AddComponent<DeathSaveToggleSequence>();
 
-        sequence.Configure(groupToggles.ToArray(), clampToActive);
+        sequence.Configure(groupToggles.ToArray(), clampToActive, exhaustion);
     }
 
-    private void Configure(Toggle[] toggles, bool clampToActive)
+    private void Configure(Toggle[] toggles, bool clampToActive, ExhaustionEffects exhaustion)
     {
         if (orderedToggles != null)
             for (int i = 0; i < orderedToggles.Length && i < listeners.Count; i++)
                 if (orderedToggles[i] != null && listeners[i] != null)
                     orderedToggles[i].onValueChanged.RemoveListener(listeners[i]);
+
+        if (IsExhaustionGroup() && exhaustionEffects == null)
+            exhaustionEffects = exhaustion;
 
         orderedToggles = toggles ?? Array.Empty<Toggle>();
         clampToActiveToggles = clampToActive;
@@ -189,9 +194,14 @@ public class DeathSaveToggleSequence : MonoBehaviour
             isApplying = false;
         }
 
+        if (IsExhaustionGroup() && exhaustionEffects != null)
+            exhaustionEffects.Apply(count);
+    }
+
+    private bool IsExhaustionGroup()
+    {
         SceneRoleMarker marker = GetComponent<SceneRoleMarker>();
-        if (marker != null ? marker.Role == SceneRole.Exhaustion : SceneObjectName.Matches(name, "vtoma"))
-            ExhaustionEffects.Apply(count);
+        return marker != null ? marker.Role == SceneRole.Exhaustion : SceneObjectName.Matches(name, "vtoma");
     }
 
     private int GetAllowedSequenceCount()

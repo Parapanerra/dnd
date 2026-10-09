@@ -48,6 +48,21 @@ public class A6SceneRoleTests
     }
 
     [Test]
+    public void ExhaustionPenaltyUsesSelectedLanguageAndOnlyD20Rolls()
+    {
+        System.Type effectsType = System.Type.GetType("ExhaustionEffects, Assembly-CSharp");
+        System.Type languageType = System.Type.GetType("AppLanguage, Assembly-CSharp");
+        Assert.NotNull(effectsType);
+        Assert.NotNull(languageType);
+        var isD20Roll = effectsType.GetMethod("IsD20Roll");
+        var penaltyLabel = effectsType.GetMethod("PenaltyLabel");
+        Assert.IsTrue((bool)isD20Roll.Invoke(null, new object[] { "1d20+4" }));
+        Assert.IsFalse((bool)isD20Roll.Invoke(null, new object[] { "1d12+4" }));
+        Assert.AreEqual(" −4 втома", penaltyLabel.Invoke(null, new object[] { 4, System.Enum.Parse(languageType, "Ukrainian") }));
+        Assert.AreEqual(" −4 exhaustion", penaltyLabel.Invoke(null, new object[] { 4, System.Enum.Parse(languageType, "English") }));
+    }
+
+    [Test]
     public void RestPanelMarkerSurvivesVisualRename()
     {
         GameObject panel = new GameObject("Unrelated panel");

@@ -19,12 +19,14 @@ public class CalculatorManager : MonoBehaviour
     private CalculatorPotionController potionController;
     private DndSaveManager saveManager;
     private RuntimeLocalization localization;
+    private ExhaustionEffects exhaustionEffects;
 
     private void Start()
     {
         localization = RuntimeLocalization.EnsureExists();
         saveManager = DndSaveManager.EnsureExists();
         easterEgg = new CalculatorEasterEgg(localization, saveManager);
+        exhaustionEffects = new ExhaustionEffects(saveManager);
         CalculatorControlBinder controls = new CalculatorControlBinder(transform, NormalizeLabel, IsCalculatorButtonLabel);
         controls.ResolveDisplayTexts(ref equationText, ref resultText);
         if (buttons == null)
@@ -231,7 +233,7 @@ public class CalculatorManager : MonoBehaviour
             return;
 
         int exhaustionPenalty = !healthController.IsActive && ExhaustionEffects.IsD20Roll(expression)
-            ? 2 * ExhaustionEffects.Level : 0;
+            ? 2 * exhaustionEffects.Level : 0;
         expression = DiceExpressionEvaluator.RollDice(expression);
         if (!DiceExpressionEvaluator.TryEvaluate(expression, out double result))
         {
@@ -249,7 +251,7 @@ public class CalculatorManager : MonoBehaviour
         result -= exhaustionPenalty;
         string formattedResult = FormatNumber(result);
         if (resultText != null)
-            resultText.text = "=" + formattedResult + (exhaustionPenalty > 0 ? " (" + ExhaustionEffects.PenaltyLabel(exhaustionPenalty).Trim() + ")" : "");
+            resultText.text = "=" + formattedResult + (exhaustionPenalty > 0 ? " (" + ExhaustionEffects.PenaltyLabel(exhaustionPenalty, localization.CurrentLanguage).Trim() + ")" : "");
         currentEquation = formattedResult;
         isLastInputDice = false;
         RefreshEquationText();
@@ -351,12 +353,12 @@ public class CalculatorManager : MonoBehaviour
 
     private void RefreshEquationText()
     {
-        if (equationText == null || easterEgg.IsShowing)
+        if (equationText == null || easterEgg == null || exhaustionEffects == null || easterEgg.IsShowing)
             return;
 
         equationText.text = healthController.IsActive ? healthController.ModeLabel + currentEquation : currentEquation;
-        if (!healthController.IsActive && ExhaustionEffects.IsD20Roll(currentEquation) && ExhaustionEffects.Level > 0)
-            equationText.text += ExhaustionEffects.PenaltyLabel(2 * ExhaustionEffects.Level);
+        if (!healthController.IsActive && ExhaustionEffects.IsD20Roll(currentEquation) && exhaustionEffects.Level > 0)
+            equationText.text += ExhaustionEffects.PenaltyLabel(2 * exhaustionEffects.Level, localization.CurrentLanguage);
     }
 
     private string FormatNumber(double value)

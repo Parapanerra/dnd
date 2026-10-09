@@ -29,7 +29,7 @@ public class CharacterSceneAutoSave : MonoBehaviour
         DoubleClickInputFieldActivator.ConfigureSceneInputs();
         CharacterSceneUiService.EnsurePortraitManager(gameObject);
         LoadSceneDataToUi();
-        DeathSaveToggleSequence.ConfigureScene();
+        DeathSaveToggleSequence.ConfigureScene(saveManager);
         RuntimeLocalization.EnsureExists().ApplyToScene();
         Subscribe();
     }

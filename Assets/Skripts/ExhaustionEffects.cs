@@ -4,11 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Base speed is saved separately so clamping to zero never loses movement.
-public static class ExhaustionEffects
+public sealed class ExhaustionEffects
 {
     private const string BaseSpeedKey = "Exhaustion.BaseSpeed";
+    private readonly DndSaveManager saveManager;
 
-    public static int Level
+    public ExhaustionEffects(DndSaveManager dataManager)
+    {
+        saveManager = dataManager;
+    }
+
+    public int Level
     {
         get
         {
@@ -20,7 +26,7 @@ public static class ExhaustionEffects
                 if (item.name == "vtoma")
                     return CountExhaustionToggles(item);
 
-            CharacterData character = DndSaveManager.Instance?.GetActiveCharacter();
+            CharacterData character = saveManager != null ? saveManager.GetActiveCharacter() : null;
             if (character != null)
                 foreach (CharacterSceneData scene in character.sceneStates)
                 {
@@ -50,17 +56,16 @@ public static class ExhaustionEffects
         return Regex.IsMatch(expression ?? "", @"(?<![\w.])\d*[dD]20(?!\d)");
     }
 
-    public static string PenaltyLabel(int penalty)
+    public static string PenaltyLabel(int penalty, AppLanguage language)
     {
-        AppLanguage language = RuntimeLocalization.EnsureExists().CurrentLanguage;
         string label = language == AppLanguage.English ? "exhaustion" : language == AppLanguage.Russian ? "усталость" : "втома";
         return " −" + penalty + " " + label;
     }
 
-    public static void Apply(int level)
+    public void Apply(int level)
     {
-        if (DndSaveManager.Instance == null) return;
-        CharacterSceneData data = DndSaveManager.Instance.GetActiveSceneData();
+        if (saveManager == null) return;
+        CharacterSceneData data = saveManager.GetActiveSceneData();
         foreach (Transform item in UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include))
         {
             if (item.name != "movsped") continue;
@@ -81,14 +86,14 @@ public static class ExhaustionEffects
         }
         foreach (CalculatorManager calculator in UnityEngine.Object.FindObjectsByType<CalculatorManager>(FindObjectsInactive.Include))
             calculator.RefreshExhaustionDisplay();
-        DndSaveManager.Instance.RequestSaveData();
+        saveManager.RequestSaveData();
     }
 
-    private static void OnSpeedEdited(string value)
+    private void OnSpeedEdited(string value)
     {
-        if (!int.TryParse(value, out int speed) || DndSaveManager.Instance == null) return;
+        if (!int.TryParse(value, out int speed) || saveManager == null) return;
         // The user edits the displayed (effective) speed.
-        DndSaveManager.Instance.GetActiveSceneData().SetInt(BaseSpeedKey, Mathf.Max(0, speed) + 5 * Level);
+        saveManager.GetActiveSceneData().SetInt(BaseSpeedKey, Mathf.Max(0, speed) + 5 * Level);
         Apply(Level);
     }
 }
