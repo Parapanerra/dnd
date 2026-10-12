@@ -1,10 +1,12 @@
 using System;
 
-public static class SaveMigrationService
+internal sealed class SaveMigrationService
 {
-    public static AppSaveData FromLegacy(AppSaveData data)
+    private readonly SaveDataNormalizer normalizer = new SaveDataNormalizer();
+
+    internal AppSaveData FromLegacy(AppSaveData data)
     {
-        data = SaveDataNormalizer.Normalize(data);
+        data = normalizer.Normalize(data);
         if (data.characters.Count > 0 &&
             !data.characters.Exists(character => character.id == data.lastActiveCharacterId))
             data.lastActiveCharacterId = data.characters[0].id;

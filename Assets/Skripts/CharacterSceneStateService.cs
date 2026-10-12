@@ -1,7 +1,7 @@
 // Clears all saved pages that belong to the same scene family.
-public static class CharacterSceneStateService
+internal sealed class CharacterSceneStateService
 {
-    public static void ClearFamily(CharacterData character, string sceneName)
+    internal void ClearFamily(CharacterData character, string sceneName)
     {
         if (character == null || character.sceneStates == null)
             return;
@@ -12,7 +12,7 @@ public static class CharacterSceneStateService
                 state.ClearValues();
     }
 
-    public static string GetFamilyName(string sceneName)
+    internal string GetFamilyName(string sceneName)
     {
         if (string.IsNullOrWhiteSpace(sceneName))
             return "";

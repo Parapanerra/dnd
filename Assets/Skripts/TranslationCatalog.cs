@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Owns the translation dictionary and legacy visible-text lookup.
-public partial class TranslationCatalog
+public class TranslationCatalog
 {
     private readonly Dictionary<string, Translation> translations = new Dictionary<string, Translation>();
     private readonly Dictionary<string, string> sourceByTranslatedText = new Dictionary<string, string>();
@@ -199,6 +199,10 @@ public partial class TranslationCatalog
         Add("Інше", "Other", "Другое");
         Add("Скарби", "Treasure", "Сокровища");
         Add("Своя картинка", "Custom image", "Своя картинка");
+        Add("Зберегти предмет", "Save item", "Сохранить предмет");
+        Add("Виберіть предмет", "Select item", "Выберите предмет");
+        Add("Зберегти", "Save", "Сохранить");
+        Add("Вибрати", "Select", "Выбрать");
         Add("Набори", "Kits", "Наборы");
         Add("Різне", "Other", "Разное");
         Add("Прикраси", "Jewelry", "Украшения");
@@ -350,10 +354,8 @@ public partial class TranslationCatalog
         Add("\u0422\u0430\u0454\u043c\u043d\u0438\u0447\u0456 \u0437\u0430\u043a\u043b\u0438\u043a\u0438", "Eldritch Invocations", "\u041c\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0432\u043e\u0437\u0437\u0432\u0430\u043d\u0438\u044f");
         Add("\u041c\u0456\u0441\u0442\u0438\u0447\u043d\u0438\u0439 \u0430\u0440\u043a\u0430\u043d\u0443\u043c", "Mystic Arcanum", "\u041c\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u0440\u043a\u0430\u043d\u0443\u043c");
         LoadTranslationsFromResource();
-        BuildGeneratedTranslations();
     }
 
-    partial void BuildGeneratedTranslations();
 
     private void LoadTranslationsFromResource()
     {

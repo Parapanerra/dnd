@@ -1,10 +1,11 @@
 using System;
 
-public sealed class CharacterSceneSaveService
+internal sealed class CharacterSceneSaveService
 {
     private readonly DndSaveManager manager;
     private readonly SceneSaveController fields;
     private readonly Action<CharacterData> saveIdentityAndSharedInputs;
+    private readonly RestResourceRoleMapper restRoles = new RestResourceRoleMapper();
 
     public CharacterSceneSaveService(DndSaveManager manager, SceneSaveController fields,
         Action<CharacterData> saveIdentityAndSharedInputs)
@@ -25,7 +26,7 @@ public sealed class CharacterSceneSaveService
             return null;
 
         fields.Save(scene, () => saveIdentityAndSharedInputs(character));
-        SceneRoleLookup.SaveRestResourcePaths(scene);
+        restRoles.Save(scene);
         manager.RequestSaveData();
         return scene;
     }

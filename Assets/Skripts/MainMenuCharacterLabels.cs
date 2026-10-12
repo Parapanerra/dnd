@@ -1,9 +1,16 @@
 using System;
 
 // Formats names for menu rows and the transfer dropdown without changing saved names.
-public static class MainMenuCharacterLabels
+internal sealed class MainMenuCharacterLabels
 {
-    public static string GetDisplayName(CharacterData character, string emptyFallback = "Новий персонаж")
+    private readonly RuntimeLocalization localization;
+
+    internal MainMenuCharacterLabels(RuntimeLocalization localization)
+    {
+        this.localization = localization ?? throw new ArgumentNullException(nameof(localization));
+    }
+
+    internal string GetDisplayName(CharacterData character, string emptyFallback = "Новий персонаж")
     {
         string rawName = character != null ? character.characterName : "";
         if (TryGetDefaultCharacterNumber(rawName, out int number))
@@ -15,9 +22,9 @@ public static class MainMenuCharacterLabels
         return string.IsNullOrWhiteSpace(rawName) ? Localize(emptyFallback) : rawName;
     }
 
-    public static string Localize(string source)
+    internal string Localize(string source)
     {
-        return RuntimeLocalization.EnsureExists().Translate(source);
+        return localization.Translate(source);
     }
 
     private static bool TryGetDefaultCharacterNumber(string name, out int number)

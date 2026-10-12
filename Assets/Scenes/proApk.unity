@@ -2641,9 +2641,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1159098661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e8473a40cdecfe419931df449e8ee41, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f4d81d87a224f5e8a4140d495c2db4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 2
   panels:
   - {fileID: 84137286}
   - {fileID: 359391515}

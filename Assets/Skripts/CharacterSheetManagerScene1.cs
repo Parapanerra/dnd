@@ -1,250 +1,147 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
-using System;
+using UnityEngine.UI;
 
+// Unity entry point for character scenes; the session owns their saved data.
 public class CharacterSheetManagerScene1 : MonoBehaviour
 {
-    [Header("UI References")]
-    [SerializeField] private List<InputField> inputFields;
-    [SerializeField] private List<Toggle> toggles;
-    [SerializeField] private List<Slider> sliders;
-    [SerializeField] private List<Dropdown> dropdowns;
-    
     [Header("Buttons")]
     [SerializeField] private Button backToMenuButton;
     [SerializeField] private Button deleteCharacterButton;
     [SerializeField] private Button resetButton;
 
+    private readonly CharacterSceneUiService uiService = new CharacterSceneUiService();
     private DndSaveManager saveManager;
-    private CharacterSceneSaveService sceneSaveService;
-    private CharacterData currentCharacter;
-    private CharacterSceneData currentSceneData;
-    private List<TMP_InputField> tmpInputFields = new List<TMP_InputField>();
-    private string characterId;
-    private string sceneName;
-    private readonly CharacterNameFieldService characterNameField = new CharacterNameFieldService();
-    private bool isLoadingSceneData;
-    private readonly SceneSaveController sceneFields = new SceneSaveController();
-    private List<TMP_Dropdown> tmpDropdowns = new List<TMP_Dropdown>();
-    private List<Button> resetButtons = new List<Button>();
+    private RuntimeLocalization localization;
+    private CharacterPortraitManager portraitManager;
+    private CharacterSceneDataSession session;
+    private bool isMainSheetScene;
+
+    private void Awake()
+    {
+        saveManager = new RuntimeManagerResolver().SaveManager();
+        BindSceneComponents();
+    }
 
     private void Start()
     {
-        if (!SceneManager.GetActiveScene().name.StartsWith(AppConfig.Scenes.CharacterSheet, StringComparison.Ordinal))
-            return;
-
-        saveManager = DndSaveManager.EnsureExists();
-
-        currentCharacter = saveManager.EnsureActiveCharacter();
-        characterId = currentCharacter.id;
-        sceneName = saveManager.GetActiveSceneDataName();
-        currentSceneData = currentCharacter.GetSceneData(sceneName);
-        CacheSceneControls();
-        sceneSaveService = new CharacterSceneSaveService(saveManager, sceneFields, SaveIdentityAndSharedInputs);
-        DoubleClickInputFieldActivator.ConfigureSceneInputs();
-        CharacterSceneUiService.EnsurePortraitManager(gameObject);
-
-        if (currentCharacter == null)
+        isMainSheetScene = SceneManager.GetActiveScene().name == AppConfig.Scenes.CharacterSheet;
+        localization = new RuntimeManagerResolver().Localization();
+        session = new CharacterSceneDataSession(saveManager, isMainSheetScene);
+        if (!session.Initialize())
         {
             Debug.LogError("Could not find or create active character.");
             return;
         }
 
-        LoadCharacterDataToUI();
-        DeathSaveToggleSequence.ConfigureScene(saveManager);
-        RuntimeLocalization.EnsureExists().ApplyToScene();
-
-        SubscribeToUIEvents();
-
-        if (backToMenuButton != null)
-            backToMenuButton.onClick.AddListener(() => SceneManager.LoadScene("menu"));
-
-        if (deleteCharacterButton != null)
-        {
-            deleteCharacterButton.onClick.AddListener(() => 
-            {
-                saveManager.DeleteCharacter(characterId);
-                SceneManager.LoadScene("menu");
-            });
-        }
-
+        new SceneInputActivationInstaller().Install();
+        portraitManager = uiService.EnsurePortraitManager(gameObject, saveManager);
+        session.Load();
+        uiService.RefreshAfterLoad();
+        new ToggleSequenceSceneInstaller(saveManager).Install();
+        localization.ApplyToScene();
+        session.Subscribe();
+        BindNavigationButtons();
         BindResetButtons();
     }
 
-    #region ЗБЕРЕЖЕННЯ / ЗАВАНТАЖЕННЯ (ООП)
-
-    private void SaveIdentityAndSharedInputs(CharacterData character)
+    internal void SaveCharacterData()
     {
-        characterNameField.Save(character);
-        SharedCharacterInputService.Save(character, inputFields, tmpInputFields);
+        session?.Save();
     }
 
-    public void SaveCharacterData()
+    internal void SwitchSceneData(string newSceneName)
     {
-        if (isLoadingSceneData || sceneSaveService == null)
+        if (session == null || !session.Switch(newSceneName))
             return;
 
-        CharacterSceneData saved = sceneSaveService.Save(characterId, sceneName);
-        if (saved == null)
-            return;
-
-        currentCharacter = saveManager.GetCharacter(characterId);
-        currentSceneData = saved;
+        uiService.RefreshAfterLoad();
+        localization.ApplyToScene();
     }
 
-    private void LoadCharacterDataToUI()
+    internal void ResetSceneData()
     {
-        if (currentCharacter == null || currentSceneData == null) return;
+        if (session == null || !session.ResetData())
+            return;
 
-        CharacterSceneMigrationService.CopyLegacyFieldsIfEmpty(currentCharacter, currentSceneData);
+        if (isMainSheetScene)
+            portraitManager?.ClearPortraitForActiveCharacter();
+        uiService.ResetSceneWidgets();
+        session.Save();
+        uiService.RefreshAfterReset();
+    }
 
-        isLoadingSceneData = true;
-        try
+    private void BindSceneComponents()
+    {
+        foreach (HealthBar healthBar in FindObjectsByType<HealthBar>(FindObjectsInactive.Include))
+            if (healthBar != null && healthBar.gameObject.scene == gameObject.scene)
+                healthBar.Initialize(saveManager);
+
+        foreach (PrefabSwitcher switcher in FindObjectsByType<PrefabSwitcher>(FindObjectsInactive.Include))
+            if (switcher != null && switcher.gameObject.scene == gameObject.scene)
+                switcher.Initialize(saveManager);
+
+        foreach (StatManager statManager in FindObjectsByType<StatManager>(FindObjectsInactive.Include))
+            if (statManager != null && statManager.gameObject.scene == gameObject.scene)
+                statManager.Initialize(saveManager);
+
+        foreach (InventorySubmenuController scrollPanel in FindObjectsByType<InventorySubmenuController>(FindObjectsInactive.Include))
+            if (scrollPanel != null && scrollPanel.gameObject.scene == gameObject.scene)
+                scrollPanel.Initialize(saveManager);
+    }
+
+    private void BindNavigationButtons()
+    {
+        if (backToMenuButton != null)
+            backToMenuButton.onClick.AddListener(() => SceneManager.LoadScene(AppConfig.Scenes.Menu));
+
+        if (deleteCharacterButton != null)
         {
-            sceneFields.Load(currentSceneData);
-
-            characterNameField.Load(currentCharacter);
-            LoadSharedCharacterInputs();
+            deleteCharacterButton.onClick.AddListener(() =>
+            {
+                saveManager.DeleteCharacter(session.CharacterId);
+                SceneManager.LoadScene(AppConfig.Scenes.Menu);
+            });
         }
-        finally
-        {
-            isLoadingSceneData = false;
-        }
-
-        CharacterSceneUiService.RefreshAfterLoad();
-    }
-
-    public void SwitchSceneData(string newSceneName)
-    {
-        if (string.IsNullOrWhiteSpace(newSceneName) || saveManager == null)
-            return;
-
-        SaveCharacterData();
-        saveManager.FlushPendingSave();
-
-        currentCharacter = saveManager.GetCharacter(characterId);
-        if (currentCharacter == null)
-            currentCharacter = saveManager.EnsureActiveCharacter();
-
-        characterId = currentCharacter.id;
-        sceneName = newSceneName;
-        saveManager.SetActiveSceneDataName(sceneName);
-        currentSceneData = currentCharacter.GetSceneData(sceneName);
-
-        LoadCharacterDataToUI();
-        RuntimeLocalization.EnsureExists().ApplyToScene();
-    }
-
-    private void CacheSceneControls()
-    {
-        sceneFields.Collect(IsManagedByHealthBar, excludeDropdownTemplates: false);
-        inputFields = sceneFields.InputFields;
-        tmpInputFields = sceneFields.TmpInputFields;
-        toggles = sceneFields.Toggles;
-        sliders = sceneFields.Sliders;
-        dropdowns = sceneFields.Dropdowns;
-        tmpDropdowns = sceneFields.TmpDropdowns;
-        resetButtons = sceneFields.ResetButtons;
-        resetButtons.RemoveAll(button => !CharacterSceneUiService.IsResetButton(button));
-
-        characterNameField.Cache(inputFields, tmpInputFields, true);
-    }
-
-    private bool IsManagedByHealthBar(Transform transform)
-    {
-        return transform != null && transform.GetComponentInParent<HealthBar>(true) != null;
-    }
-
-
-    private void LoadSharedCharacterInputs()
-    {
-        SharedCharacterInputService.Load(currentCharacter, inputFields, tmpInputFields);
-    }
-
-    private void ClearSharedCharacterInputs()
-    {
-        SharedCharacterInputService.Clear(currentCharacter, inputFields, tmpInputFields);
-    }
-
-    #endregion
-
-    #region UI EVENTS
-
-    private void SubscribeToUIEvents()
-    {
-        sceneFields.Subscribe(SaveCharacterData, () => saveManager?.FlushPendingSave());
-
-        characterNameField.SubscribeIfOutsideCollectedFields(inputFields, tmpInputFields,
-            SaveCharacterData, () => saveManager?.FlushPendingSave());
     }
 
     private void BindResetButtons()
     {
+        List<Button> resetButtons = new List<Button>(session.ResetButtons);
+        resetButtons.RemoveAll(button => !uiService.IsResetButton(button));
         if (resetButton != null && !resetButtons.Contains(resetButton))
             resetButtons.Add(resetButton);
 
         foreach (Button button in resetButtons)
             if (button != null)
             {
-                CharacterSceneUiService.DisablePersistentOnClick(button);
+                uiService.DisablePersistentOnClick(button);
                 button.onClick.RemoveAllListeners();
                 button.onClick.AddListener(ResetSceneData);
             }
     }
 
-    public void ResetSceneData()
+    private void OnEnable()
     {
-        if (saveManager == null)
-            return;
-
-        if (currentSceneData == null)
-            currentSceneData = saveManager.GetSceneDataForCharacter(characterId, sceneName);
-
-        if (currentSceneData == null)
-            return;
-
-        isLoadingSceneData = true;
-        try
-        {
-            sceneFields.Reset();
-        }
-        finally
-        {
-            isLoadingSceneData = false;
-        }
-
-        saveManager.ClearSceneDataFamilyForCharacter(characterId, sceneName);
-        currentSceneData.ClearValues();
-        ClearSharedCharacterInputs();
-        CharacterPortraitManager.ClearPortraitForActiveCharacter();
-        CharacterSceneUiService.ResetSceneWidgets();
-        SaveCharacterData();
-        CharacterSceneUiService.RefreshAfterReset();
+        session?.NoteChange();
     }
-
-    #endregion
 
     private void OnApplicationPause(bool paused)
     {
         if (paused)
-        {
-            SaveCharacterData();
-            saveManager?.FlushPendingSave();
-        }
+            session?.FlushOnExit();
+        else
+            session?.NoteChange();
     }
 
     private void OnDisable()
     {
-        SaveCharacterData();
-        saveManager?.FlushPendingSave();
+        session?.FlushOnExit();
     }
 
     private void OnApplicationQuit()
     {
-        SaveCharacterData();
-        saveManager?.FlushPendingSave();
+        session?.FlushOnExit();
     }
 }

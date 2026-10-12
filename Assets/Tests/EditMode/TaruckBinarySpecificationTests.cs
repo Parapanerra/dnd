@@ -1,10 +1,12 @@
 using System;
 using System.IO;
+using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
 
 public class TaruckBinarySpecificationTests
 {
+    private readonly TaruckLocalRepository repository = new TaruckLocalRepository();
     [Test]
     public void FrozenV1ControlVectors()
     {
@@ -81,15 +83,40 @@ public class TaruckBinarySpecificationTests
     public void LegacyImporters_ReadFrozenFilesAndRepairMissingActiveId()
     {
         string fixtureRoot = Path.Combine(Application.dataPath, "Tests", "Fixtures", "Legacy");
-        AppSaveData full = LegacyJsonImporter.FullSave(File.ReadAllText(Path.Combine(fixtureRoot, "legacy_full_v1.json")));
+        Type importerType = Type.GetType("LegacyJsonImporter, TaruckShip.Persistence");
+        Type migrationType = Type.GetType("SaveMigrationService, TaruckShip.Persistence");
+        Assert.NotNull(importerType);
+        Assert.NotNull(migrationType);
+        object importer = Activator.CreateInstance(importerType, true);
+        object migration = Activator.CreateInstance(migrationType, true);
+        AppSaveData full = (AppSaveData)InvokeInternal(importerType, importer, "FullSave",
+            File.ReadAllText(Path.Combine(fixtureRoot, "legacy_full_v1.json")));
         Assert.That(full.characters[0].characterName, Is.EqualTo("Тестовий герой"));
         full.lastActiveCharacterId = "missing";
-        Assert.That(SaveMigrationService.FromLegacy(full).lastActiveCharacterId, Is.EqualTo(full.characters[0].id));
-        CharacterData single = LegacyJsonImporter.Character(File.ReadAllText(Path.Combine(fixtureRoot, "legacy_character_v1.json")));
+        Assert.That(((AppSaveData)InvokeInternal(migrationType, migration, "FromLegacy", full)).lastActiveCharacterId,
+            Is.EqualTo(full.characters[0].id));
+        CharacterData single = (CharacterData)InvokeInternal(importerType, importer, "Character",
+            File.ReadAllText(Path.Combine(fixtureRoot, "legacy_character_v1.json")));
         Assert.That(single.id, Is.EqualTo("fixture-character"));
-        InventoryItemExportData item = LegacyJsonImporter.Item(File.ReadAllText(Path.Combine(fixtureRoot, "legacy_item_v1.json")));
+        InventoryItemExportData item = (InventoryItemExportData)InvokeInternal(importerType, importer, "Item",
+            File.ReadAllText(Path.Combine(fixtureRoot, "legacy_item_v1.json")));
         Assert.That(item.itemName, Is.EqualTo("Тестовий артефакт"));
-        Assert.Throws<InvalidDataException>(() => LegacyJsonImporter.FullSave("{}"));
+        Assert.Throws<InvalidDataException>(() => InvokeInternal(importerType, importer, "FullSave", "{}"));
+    }
+
+    private static object InvokeInternal(Type type, object instance, string methodName, object argument)
+    {
+        MethodInfo method = type.GetMethod(methodName,
+            BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        Assert.NotNull(method, methodName);
+        try
+        {
+            return method.Invoke(instance, new[] { argument });
+        }
+        catch (TargetInvocationException exception)
+        {
+            throw exception.InnerException;
+        }
     }
 
     [Test]
@@ -102,12 +129,12 @@ public class TaruckBinarySpecificationTests
             string legacy = Path.Combine(directory, "DndCharactersData.json");
             string binary = Path.Combine(directory, "DndCharactersData.taruck-data");
             File.WriteAllText(legacy, File.ReadAllText(Path.Combine(Application.dataPath, "Tests", "Fixtures", "Legacy", "legacy_full_v1.json")));
-            TaruckLocalLoadResult result = TaruckLocalRepository.Load(binary, legacy, "test");
+            TaruckLocalLoadResult result = repository.Load(binary, legacy, "test");
             Assert.That(result.Source, Is.EqualTo(TaruckLocalSource.LegacyPrimary));
             Assert.That(result.Data.characters[0].characterName, Is.EqualTo("Тестовий герой"));
             Assert.That(File.Exists(legacy), Is.True);
             result.Data.characters[0].characterName = "Нове ім'я";
-            TaruckLocalRepository.Save(binary, result.Data, "test");
+            repository.Save(binary, result.Data, "test");
             Assert.That(TaruckBinaryCodec.DecodeLocal(File.ReadAllBytes(binary)).characters[0].characterName, Is.EqualTo("Нове ім'я"));
             Assert.That(File.Exists(binary + ".bak"), Is.True);
             Assert.That(TaruckBinaryCodec.DecodeLocal(File.ReadAllBytes(binary + ".bak")).characters[0].characterName, Is.EqualTo("Тестовий герой"));
@@ -127,7 +154,7 @@ public class TaruckBinarySpecificationTests
             string binary = Path.Combine(directory, "DndCharactersData.taruck-data");
             File.WriteAllText(legacy, File.ReadAllText(Path.Combine(Application.dataPath, "Tests", "Fixtures", "Legacy", "legacy_full_v1.json")));
             File.WriteAllBytes(binary, new byte[] { 1, 2, 3 });
-            TaruckLocalLoadResult result = TaruckLocalRepository.Load(binary, legacy, "test");
+            TaruckLocalLoadResult result = repository.Load(binary, legacy, "test");
             Assert.That(result.Source, Is.EqualTo(TaruckLocalSource.Unreadable));
             Assert.That(result.Data.characters[0].id, Is.EqualTo("fixture-character"));
             Assert.That(result.CanWrite, Is.False);
@@ -147,11 +174,11 @@ public class TaruckBinarySpecificationTests
             var save = new AppSaveData();
             save.characters.Add(new CharacterData("one"));
             save.lastActiveCharacterId = "one";
-            TaruckLocalRepository.Save(binary, save, "test");
+            repository.Save(binary, save, "test");
             byte[] damaged = new byte[] { 1, 2, 3 };
             File.Copy(binary, binary + ".bak");
             File.WriteAllBytes(binary, damaged);
-            TaruckLocalLoadResult result = TaruckLocalRepository.Load(binary, Path.Combine(directory, "legacy.json"), "test");
+            TaruckLocalLoadResult result = repository.Load(binary, Path.Combine(directory, "legacy.json"), "test");
             Assert.That(result.Source, Is.EqualTo(TaruckLocalSource.Backup));
             Assert.That(result.Data.characters[0].id, Is.EqualTo("one"));
             CollectionAssert.AreEqual(damaged, File.ReadAllBytes(binary + ".corrupt"));
@@ -173,7 +200,7 @@ public class TaruckBinarySpecificationTests
             File.WriteAllBytes(binary + ".bak", future);
             future[8] = 2;
             File.WriteAllBytes(binary, future);
-            TaruckLocalLoadResult result = TaruckLocalRepository.Load(binary, Path.Combine(directory, "legacy.json"), "test");
+            TaruckLocalLoadResult result = repository.Load(binary, Path.Combine(directory, "legacy.json"), "test");
             Assert.That(result.Source, Is.EqualTo(TaruckLocalSource.Unreadable));
             Assert.That(result.CanWrite, Is.False);
             CollectionAssert.AreEqual(future, File.ReadAllBytes(binary));

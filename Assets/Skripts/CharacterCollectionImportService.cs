@@ -1,9 +1,30 @@
 using System;
+using System.IO;
 
-// Prepares a fully validated replacement or merge without mutating the active save.
-public static class CharacterCollectionImportService
+// Owns preparation and durable replacement of an imported collection.
+internal sealed class CharacterCollectionImportService
 {
-    public static AppSaveData Prepare(AppSaveData current, AppSaveData imported, bool merge, string appVersion)
+    private readonly string filePath;
+    private readonly string appVersion;
+    private readonly TaruckLocalRepository repository;
+
+    internal CharacterCollectionImportService(TaruckLocalRepository repository, string filePath, string appVersion)
+    {
+        this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
+        this.filePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
+        this.appVersion = appVersion ?? throw new ArgumentNullException(nameof(appVersion));
+    }
+
+    internal AppSaveData Import(AppSaveData current, AppSaveData imported, bool merge)
+    {
+        AppSaveData candidate = Prepare(current, imported, merge);
+        if (File.Exists(filePath))
+            File.Copy(filePath, filePath + ".preimport.bak", true);
+        repository.Save(filePath, candidate, appVersion);
+        return candidate;
+    }
+
+    internal AppSaveData Prepare(AppSaveData current, AppSaveData imported, bool merge)
     {
         TaruckDataValidator.Validate(imported);
 

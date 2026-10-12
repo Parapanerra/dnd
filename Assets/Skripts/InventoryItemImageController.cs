@@ -5,45 +5,26 @@ using UnityEngine.UI;
 // Owns one inventory cell's gallery image and the runtime texture/sprite lifecycle.
 public class InventoryItemImageController : MonoBehaviour
 {
-    private Image image;
-    private Sprite runtimeSprite;
-    private Texture2D runtimeTexture;
-    private Sprite defaultSprite;
-    private Color defaultColor = Color.white;
-    private bool defaultPreserveAspect;
+    private readonly GalleryImagePicker galleryPicker = new GalleryImagePicker();
+    private readonly RuntimeImageView imageView = new RuntimeImageView();
 
-    public void Initialize(Image target)
+    internal void Initialize(Image target)
     {
-        if (image != null)
-            return;
-
-        image = target;
-        if (image == null)
-            return;
-
-        defaultSprite = image.sprite;
-        defaultColor = image.color;
-        defaultPreserveAspect = image.preserveAspect;
+        imageView.Bind(target);
     }
 
-    public void SelectFromGallery(Action onChanged)
+    internal void SelectFromGallery(Action onChanged)
     {
-        NativeGallery.GetImageFromGallery(
-            path =>
-            {
-                if (string.IsNullOrEmpty(path))
-                    return;
+        if (!imageView.IsBound)
+            return;
 
+        galleryPicker.Pick("Select item image",
+            AppConfig.Images.InventoryImageSize, AppConfig.Images.InventoryImageSize,
+            texture =>
+            {
                 try
                 {
-                    Texture2D source = NativeGallery.LoadImageAtPath(
-                        path, AppConfig.Images.GalleryPreviewMaxSize, false, false);
-                    if (source == null)
-                        return;
-
-                    Texture2D resized = ResizeToSquare(source);
-                    DestroyRuntimeObject(source);
-                    ApplyTexture(resized);
+                    imageView.Show(texture);
                     onChanged?.Invoke();
                 }
                 catch (Exception exception)
@@ -51,15 +32,14 @@ public class InventoryItemImageController : MonoBehaviour
                     Debug.LogError("Could not load inventory item image: " + exception.Message);
                 }
             },
-            "Select item image",
-            "image/*");
+            exception => Debug.LogError("Could not load inventory item image: " + exception.Message));
     }
 
-    public void ApplyBase64(string base64)
+    internal void ApplyBase64(string base64)
     {
         if (string.IsNullOrWhiteSpace(base64))
         {
-            RestoreDefault();
+            imageView.Restore();
             return;
         }
 
@@ -72,67 +52,30 @@ public class InventoryItemImageController : MonoBehaviour
                 TextureFormat.RGBA32,
                 false);
             if (texture.LoadImage(bytes))
-                ApplyTexture(texture);
+            {
+                imageView.Show(texture);
+            }
             else
+            {
                 DestroyRuntimeObject(texture);
+                imageView.Restore();
+            }
         }
         catch
         {
-            RestoreDefault();
+            imageView.Restore();
         }
     }
 
-    public string GetBase64()
+    internal string GetBase64()
     {
-        return runtimeTexture == null ? "" :
-            Convert.ToBase64String(runtimeTexture.EncodeToJPG(AppConfig.Images.InventoryJpgQuality));
-    }
-
-    private void ApplyTexture(Texture2D texture)
-    {
-        if (image == null || texture == null)
-            return;
-
-        ClearRuntimeImage();
-        runtimeTexture = texture;
-        runtimeSprite = Sprite.Create(texture,
-            new Rect(0f, 0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-        image.sprite = runtimeSprite;
-        image.color = Color.white;
-        image.type = Image.Type.Simple;
-        image.preserveAspect = false;
-        image.SetAllDirty();
-    }
-
-    private void RestoreDefault()
-    {
-        if (image == null)
-            return;
-
-        ClearRuntimeImage();
-        image.sprite = defaultSprite;
-        image.color = defaultColor;
-        image.preserveAspect = defaultPreserveAspect;
-    }
-
-    private void ClearRuntimeImage()
-    {
-        if (runtimeSprite != null)
-        {
-            DestroyRuntimeObject(runtimeSprite);
-            runtimeSprite = null;
-        }
-
-        if (runtimeTexture != null)
-        {
-            DestroyRuntimeObject(runtimeTexture);
-            runtimeTexture = null;
-        }
+        return imageView.Texture == null ? "" :
+            Convert.ToBase64String(imageView.Texture.EncodeToJPG(AppConfig.Images.InventoryJpgQuality));
     }
 
     private void OnDestroy()
     {
-        ClearRuntimeImage();
+        imageView.Dispose();
     }
 
     private static void DestroyRuntimeObject(UnityEngine.Object value)
@@ -143,24 +86,4 @@ public class InventoryItemImageController : MonoBehaviour
             DestroyImmediate(value);
     }
 
-    private static Texture2D ResizeToSquare(Texture2D source)
-    {
-        int size = AppConfig.Images.InventoryImageSize;
-        Texture2D result = new Texture2D(size, size, TextureFormat.RGB24, false);
-        Color[] pixels = new Color[size * size];
-
-        for (int y = 0; y < size; y++)
-        {
-            float sourceY = size == 1 ? 0f : (float)y / (size - 1);
-            for (int x = 0; x < size; x++)
-            {
-                float sourceX = size == 1 ? 0f : (float)x / (size - 1);
-                pixels[y * size + x] = source.GetPixelBilinear(sourceX, sourceY);
-            }
-        }
-
-        result.SetPixels(pixels);
-        result.Apply(false, false);
-        return result;
-    }
 }

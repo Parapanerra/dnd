@@ -1,9 +1,16 @@
 using System;
 
 // Mutates character membership and selection in memory; persistence stays with DndSaveManager.
-public static class CharacterCollectionService
+internal sealed class CharacterCollectionService
 {
-    public static CharacterData Create(AppSaveData data)
+    private readonly AppSaveData data;
+
+    internal CharacterCollectionService(AppSaveData data)
+    {
+        this.data = data ?? throw new ArgumentNullException(nameof(data));
+    }
+
+    internal CharacterData Create()
     {
         string id = Guid.NewGuid().ToString();
         CharacterData character = new CharacterData(id)
@@ -17,23 +24,23 @@ public static class CharacterCollectionService
         return character;
     }
 
-    public static CharacterData Find(AppSaveData data, string id)
+    internal CharacterData Find(string id)
     {
         return data.characters.Find(character => character.id == id);
     }
 
-    public static bool Select(AppSaveData data, string id)
+    internal bool Select(string id)
     {
-        if (Find(data, id) == null)
+        if (Find(id) == null)
             return false;
 
         data.lastActiveCharacterId = id;
         return true;
     }
 
-    public static bool Delete(AppSaveData data, string id)
+    internal bool Delete(string id)
     {
-        CharacterData character = Find(data, id);
+        CharacterData character = Find(id);
         if (character == null)
             return false;
 

@@ -13,25 +13,26 @@ public class CharacterSceneUiServiceTests
         Type markerType = Type.GetType("SceneRoleMarker, TaruckShip.StableFields");
         Assert.NotNull(service);
         Assert.NotNull(markerType);
-        MethodInfo isResetButton = service.GetMethod("IsResetButton", BindingFlags.Public | BindingFlags.Static);
+        MethodInfo isResetButton = service.GetMethod("IsResetButton", BindingFlags.NonPublic | BindingFlags.Instance);
         Assert.NotNull(isResetButton);
+        object uiService = Activator.CreateInstance(service);
 
         GameObject objectWithButton = new GameObject("resetseve", typeof(RectTransform), typeof(Button));
         try
         {
             Button button = objectWithButton.GetComponent<Button>();
-            Assert.IsTrue((bool)isResetButton.Invoke(null, new object[] { button }));
+            Assert.IsTrue((bool)isResetButton.Invoke(uiService, new object[] { button }));
 
             Component marker = objectWithButton.AddComponent(markerType);
             MethodInfo configure = markerType.GetMethod("Configure");
             Assert.NotNull(configure);
             Type roleType = markerType.GetProperty("Role").PropertyType;
             configure.Invoke(marker, new object[] { Enum.Parse(roleType, "Rage"), false });
-            Assert.IsFalse((bool)isResetButton.Invoke(null, new object[] { button }),
+            Assert.IsFalse((bool)isResetButton.Invoke(uiService, new object[] { button }),
                 "A role marker must override a legacy-looking object name.");
 
             configure.Invoke(marker, new object[] { Enum.Parse(roleType, "ResetScene"), false });
-            Assert.IsTrue((bool)isResetButton.Invoke(null, new object[] { button }));
+            Assert.IsTrue((bool)isResetButton.Invoke(uiService, new object[] { button }));
         }
         finally
         {

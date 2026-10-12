@@ -7,16 +7,20 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Canvas))]
 public sealed class OverlayBoundsFitter : MonoBehaviour
 {
+    private const float WildShapeVerticalOffsetPixels = 24f;
+    private const float WildShapeBottomPaddingPixels = 20f;
+    private const float DefaultMinimumWideAspect = 0.75f;
+    private const float VisibleAlphaThreshold = 0.001f;
     [SerializeField] private float bottomPaddingPixels;
     [SerializeField] private float wideScreenVerticalOffsetPixels;
-    [SerializeField] private float minimumWideAspect = 0.75f;
+    [SerializeField] private float minimumWideAspect = DefaultMinimumWideAspect;
 
     private readonly Vector3[] worldCorners = new Vector3[4];
     private readonly Dictionary<RectTransform, Vector2> appliedOffsets =
         new Dictionary<RectTransform, Vector2>();
     private Canvas targetCanvas;
     private RectTransform canvasRect;
-    private zoomCam mapBounds;
+    private MapCameraController mapBounds;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void RegisterSceneCallback()
@@ -43,7 +47,7 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
             {
                 float verticalOffset;
                 if (canvas.name == "DFormOverLey")
-                    verticalOffset = 24f;
+                    verticalOffset = WildShapeVerticalOffsetPixels;
                 else if (canvas.name == "overLey")
                     verticalOffset = 0f;
                 else
@@ -53,9 +57,9 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
                 if (fitter == null)
                     fitter = canvas.gameObject.AddComponent<OverlayBoundsFitter>();
 
-                fitter.bottomPaddingPixels = canvas.name == "DFormOverLey" ? 20f : 0f;
+                fitter.bottomPaddingPixels = canvas.name == "DFormOverLey" ? WildShapeBottomPaddingPixels : 0f;
                 fitter.wideScreenVerticalOffsetPixels = verticalOffset;
-                fitter.minimumWideAspect = 0.75f;
+                fitter.minimumWideAspect = DefaultMinimumWideAspect;
                 fitter.RefreshReferences();
             }
         }
@@ -70,7 +74,7 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
     {
         targetCanvas = GetComponent<Canvas>();
         canvasRect = transform as RectTransform;
-        mapBounds = FindFirstObjectByType<zoomCam>();
+        mapBounds = FindAnyObjectByType<MapCameraController>();
     }
 
     private void LateUpdate()
@@ -135,6 +139,9 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
             return 0f;
         }
 
+        if (targetCanvas != null && targetCanvas.renderMode != RenderMode.WorldSpace)
+            return wideScreenVerticalOffsetPixels * canvasRect.rect.height / Mathf.Max(1, Screen.height);
+
         Camera canvasCamera = targetCanvas != null &&
                               targetCanvas.renderMode != RenderMode.ScreenSpaceOverlay
             ? targetCanvas.worldCamera
@@ -166,7 +173,7 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
         Graphic[] graphics = group.GetComponentsInChildren<Graphic>(false);
         foreach (Graphic graphic in graphics)
         {
-            if (!graphic.enabled || graphic.color.a <= 0.001f)
+            if (!graphic.enabled || graphic.color.a <= VisibleAlphaThreshold)
                 continue;
 
             graphic.rectTransform.GetWorldCorners(worldCorners);
@@ -194,16 +201,11 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
 
     private Rect GetScreenBoundsInCanvas()
     {
-        Camera canvasCamera = targetCanvas != null &&
-                              targetCanvas.renderMode != RenderMode.ScreenSpaceOverlay
-            ? targetCanvas.worldCamera
-            : null;
-
         Rect safeArea = Screen.safeArea;
         safeArea.yMin = Mathf.Min(safeArea.yMax, safeArea.yMin + bottomPaddingPixels);
 
         if (mapBounds == null)
-            mapBounds = FindFirstObjectByType<zoomCam>();
+            mapBounds = FindAnyObjectByType<MapCameraController>();
 
         if (mapBounds != null)
         {
@@ -222,15 +224,30 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
             }
         }
 
+        // Screen-space canvas coordinates follow the screen, even while its camera moves.
+        // A camera-based conversion here can use the canvas transform from the previous
+        // frame and make the fitted elements trail behind a camera pan.
+        if (targetCanvas != null && targetCanvas.renderMode != RenderMode.WorldSpace)
+        {
+            Rect rect = canvasRect.rect;
+            float xScale = rect.width / Mathf.Max(1, Screen.width);
+            float yScale = rect.height / Mathf.Max(1, Screen.height);
+            return Rect.MinMaxRect(
+                rect.xMin + safeArea.xMin * xScale,
+                rect.yMin + safeArea.yMin * yScale,
+                rect.xMin + safeArea.xMax * xScale,
+                rect.yMin + safeArea.yMax * yScale);
+        }
+
         bool hasMin = RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvasRect,
             safeArea.min,
-            canvasCamera,
+            targetCanvas != null ? targetCanvas.worldCamera : null,
             out Vector2 minLocal);
         bool hasMax = RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvasRect,
             safeArea.max,
-            canvasCamera,
+            targetCanvas != null ? targetCanvas.worldCamera : null,
             out Vector2 maxLocal);
 
         if (!hasMin || !hasMax)

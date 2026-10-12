@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public readonly struct CharacterRestResult
+internal readonly struct CharacterRestResult
 {
     public bool HasHealthBar { get; }
     public bool HasHitDice { get; }
@@ -25,18 +24,28 @@ public readonly struct CharacterRestResult
         Roll = roll;
     }
 }
-public static class CharacterRestService
+internal sealed class CharacterRestService
 {
-    private const string RestResourceKeyPrefix = "RestResource_";
+    // Short rest spends half the available hit dice, rounded up.
+    private const float HitDiceDivisorForShortRest = 2f;
 
-    public static CharacterRestResult ApplyLongRest(HealthBar healthBar)
+    private readonly CharacterRestSavedStateService savedState;
+    private readonly SceneRoleLookup roleLookup = new SceneRoleLookup();
+    private readonly RestSceneToggleFinder toggleFinder = new RestSceneToggleFinder();
+
+    internal CharacterRestService(DndSaveManager saveManager)
+    {
+        savedState = new CharacterRestSavedStateService(saveManager);
+    }
+
+    internal CharacterRestResult ApplyLongRest(HealthBar healthBar)
     {
         int healed = healthBar != null ? healthBar.RestoreToMaxHealth() : 0;
         Apply(true);
         return new CharacterRestResult(healthBar != null, healed: healed);
     }
 
-    public static CharacterRestResult ApplyShortRest(HealthBar healthBar)
+    internal CharacterRestResult ApplyShortRest(HealthBar healthBar)
     {
         if (healthBar != null)
             healthBar.ClearTemporaryHealth();
@@ -45,7 +54,7 @@ public static class CharacterRestService
         if (healthBar == null || !TryGetHitDice(out int diceCount, out int diceSides))
             return new CharacterRestResult(healthBar != null);
 
-        int diceRolled = Mathf.CeilToInt(diceCount / AppConfig.Calculator.ShortRestDiceDivisor);
+        int diceRolled = Mathf.CeilToInt(diceCount / HitDiceDivisorForShortRest);
         int roll = 0;
         for (int i = 0; i < diceRolled; i++)
             roll += UnityEngine.Random.Range(1, diceSides + 1);
@@ -54,7 +63,7 @@ public static class CharacterRestService
         return new CharacterRestResult(true, true, healed, diceRolled, diceSides, roll);
     }
 
-    private static bool TryGetHitDice(out int diceCount, out int diceSides)
+    private bool TryGetHitDice(out int diceCount, out int diceSides)
     {
         diceCount = 0;
         diceSides = 0;
@@ -72,7 +81,7 @@ public static class CharacterRestService
         return diceCount > 0;
     }
 
-    private static InputField FindInputFieldByName(params string[] objectNames)
+    private InputField FindInputFieldByName(params string[] objectNames)
     {
         InputField[] fields = UnityEngine.Object.FindObjectsByType<InputField>(FindObjectsInactive.Include);
         foreach (InputField field in fields)
@@ -105,7 +114,7 @@ public static class CharacterRestService
         return null;
     }
 
-    private static string ExtractFirstNumber(string value)
+    private string ExtractFirstNumber(string value)
     {
         if (string.IsNullOrWhiteSpace(value))
             return "";
@@ -114,7 +123,7 @@ public static class CharacterRestService
         return match.Success ? match.Value : "";
     }
 
-    public static void Apply(bool isLongRest)
+    internal void Apply(bool isLongRest)
     {
         ApplyRestResources(isLongRest);
         if (isLongRest)
@@ -124,66 +133,65 @@ public static class CharacterRestService
             ClearDeathSaves();
         }
         SaveSceneAfterRest();
-        ApplyGlobalRestToSaveData(isLongRest);
+        savedState.Apply(isLongRest);
     }
 
-    private static void ApplyRestResources(bool isLongRest)
+    private void ApplyRestResources(bool isLongRest)
     {
-        Transform resourceRoot = SceneRoleLookup.FindPanel(SceneRole.ClassResources, "resursClas");
+        Transform resourceRoot = roleLookup.FindPanel(SceneRole.ClassResources, "resursClas");
         if (resourceRoot == null)
             return;
 
-        ClearPanelsByMarkers(resourceRoot, "WildShape", "ChannelDivinity", "KiPoints", "DragonBreath");
+        ClearPanelsByMarkers(resourceRoot, SceneRole.WildShape, SceneRole.ChannelDivinity,
+            SceneRole.KiPoints, SceneRole.DragonBreath);
 
-        Transform bloodPanel = FindPanelByMarker(resourceRoot, "BloodCurse");
+        Transform bloodPanel = FindPanelByMarker(resourceRoot, SceneRole.BloodCurse);
         if (bloodPanel == null)
-            bloodPanel = FindDirectChild(resourceRoot, AppConfig.Calculator.BloodHunterPanelName);
+            bloodPanel = FindDirectChild(resourceRoot, RestToggleGroups.LegacyBloodCursePanelName);
 
         if (bloodPanel != null)
         {
-            ClearPanelToggles(bloodPanel, 0, AppConfig.Calculator.BloodHunterPrimaryToggleLastIndex);
+            ClearPanelToggles(bloodPanel, RestToggleGroups.BloodCurseShortRest.First,
+                RestToggleGroups.BloodCurseShortRest.Last);
             if (isLongRest)
                 ClearPanelToggles(
                     bloodPanel,
-                    AppConfig.Calculator.BloodHunterSecondaryToggleFirstIndex,
-                    AppConfig.Calculator.BloodHunterSecondaryToggleLastIndex);
+                    RestToggleGroups.BloodCurseLongRestExtra.First,
+                    RestToggleGroups.BloodCurseLongRestExtra.Last);
         }
 
         if (isLongRest)
-            ClearPanelsByMarkers(resourceRoot, "Rage", "SorceryPoints", "Flight");
+            ClearPanelsByMarkers(resourceRoot, SceneRole.Rage, SceneRole.SorceryPoints, SceneRole.Flight);
     }
 
-    private static void ClearPanelsByMarkers(Transform resourceRoot, params string[] markerNames)
+    private void ClearPanelsByMarkers(Transform resourceRoot, params SceneRole[] roles)
     {
         HashSet<Transform> clearedPanels = new HashSet<Transform>();
-        foreach (string markerName in markerNames)
+        foreach (SceneRole role in roles)
         {
-            Transform panel = FindPanelByMarker(resourceRoot, markerName);
+            Transform panel = FindPanelByMarker(resourceRoot, role);
             if (panel != null && clearedPanels.Add(panel))
                 ClearPanelToggles(panel);
         }
     }
 
-    private static Transform FindPanelByMarker(Transform resourceRoot, string markerName)
+    private Transform FindPanelByMarker(Transform resourceRoot, SceneRole role)
     {
-        if (Enum.TryParse(markerName, out SceneRole role))
-        {
-            SceneRoleMarker roleMarker = SceneRoleLookup.Find(role);
-            if (roleMarker != null)
-                return roleMarker.Panel;
-        }
+        SceneRoleMarker roleMarker = roleLookup.Find(role);
+        if (roleMarker != null)
+            return roleMarker.Panel;
 
         if (resourceRoot == null)
             return null;
 
         foreach (Transform child in resourceRoot.GetComponentsInChildren<Transform>(true))
-            if (child != resourceRoot && SceneObjectName.Matches(child.name, markerName))
+            if (child != resourceRoot && SceneObjectName.Matches(child.name, role.ToString()))
                 return child.parent;
 
         return null;
     }
 
-    private static Transform FindDirectChild(Transform parent, string childName)
+    private Transform FindDirectChild(Transform parent, string childName)
     {
         if (parent == null)
             return null;
@@ -195,20 +203,20 @@ public static class CharacterRestService
         return null;
     }
 
-    private static void ReduceExhaustionByOne()
+    private void ReduceExhaustionByOne()
     {
-        Transform exhaustionRoot = SceneRoleLookup.FindPanel(SceneRole.Exhaustion, "vtoma");
+        Transform exhaustionRoot = roleLookup.FindPanel(SceneRole.Exhaustion, "vtoma");
         if (exhaustionRoot == null)
             return;
 
-        List<Toggle> toggles = GetPanelToggles(
+        List<Toggle> toggles = toggleFinder.Find(
             exhaustionRoot,
-            0,
-            AppConfig.Calculator.ExhaustionToggleLastIndex);
+            RestToggleGroups.Exhaustion.First,
+            RestToggleGroups.Exhaustion.Last);
         if (toggles.Count == 0)
             return;
 
-        toggles.Sort((left, right) => GetToggleNumber(left.name).CompareTo(GetToggleNumber(right.name)));
+        toggles.Sort((left, right) => SceneObjectName.ToggleNumber(left.name).CompareTo(SceneObjectName.ToggleNumber(right.name)));
 
         int checkedCount = 0;
         foreach (Toggle toggle in toggles)
@@ -223,11 +231,11 @@ public static class CharacterRestService
             lastCheckedToggle.isOn = false;
     }
 
-    private static void ClearDeathSaves()
+    private void ClearDeathSaves()
     {
-        Transform deathRoot = SceneRoleLookup.FindPanel(SceneRole.DeathSaves, "deadChekBox");
+        Transform deathRoot = roleLookup.FindPanel(SceneRole.DeathSaves, "deadChekBox");
         if (deathRoot == null)
-            deathRoot = SceneRoleLookup.FindPanel(SceneRole.DeathSaves, "deadCheckBox");
+            deathRoot = roleLookup.FindPanel(SceneRole.DeathSaves, "deadCheckBox");
 
         if (deathRoot == null)
             return;
@@ -235,168 +243,30 @@ public static class CharacterRestService
         ClearPanelToggles(deathRoot);
     }
 
-    private static void ClearSpellSlots()
+    private void ClearSpellSlots()
     {
-        Transform spellSlotsRoot = SceneRoleLookup.FindPanel(SceneRole.SpellSlots, "spelChek");
+        Transform spellSlotsRoot = roleLookup.FindPanel(SceneRole.SpellSlots, "spelChek");
         if (spellSlotsRoot == null)
             return;
 
         ClearPanelToggles(spellSlotsRoot);
     }
 
-    private static void ClearPanelToggles(Transform panel, int minToggleNumber = int.MinValue, int maxToggleNumber = int.MaxValue)
+    private void ClearPanelToggles(Transform panel, int minToggleNumber = int.MinValue, int maxToggleNumber = int.MaxValue)
     {
-        foreach (Toggle toggle in GetPanelToggles(panel, minToggleNumber, maxToggleNumber))
+        foreach (Toggle toggle in toggleFinder.Find(panel, minToggleNumber, maxToggleNumber))
             if (toggle != null)
                 toggle.isOn = false;
     }
 
-    private static List<Toggle> GetPanelToggles(Transform panel, int minToggleNumber, int maxToggleNumber)
+    private void SaveSceneAfterRest()
     {
-        List<Toggle> toggles = new List<Toggle>();
-        if (panel == null)
-            return toggles;
-
-        foreach (Toggle toggle in panel.GetComponentsInChildren<Toggle>(true))
-        {
-            if (toggle == null || !SceneObjectName.Matches(toggle.name, "Toggle"))
-                continue;
-
-            int toggleNumber = GetToggleNumber(toggle.name);
-            if (toggleNumber < minToggleNumber || toggleNumber > maxToggleNumber)
-                continue;
-
-            if (IsInsideDropdown(toggle.transform, panel))
-                continue;
-
-            toggles.Add(toggle);
-        }
-
-        return toggles;
+        FindActiveSceneSaveController()?.SaveCharacterData();
     }
 
-    private static bool IsInsideDropdown(Transform transform, Transform stopAt)
+    private CharacterSheetManagerScene1 FindActiveSceneSaveController()
     {
-        Transform current = transform;
-        while (current != null && current != stopAt)
-        {
-            if (current.GetComponent<Dropdown>() != null || current.GetComponent<TMP_Dropdown>() != null)
-                return true;
-
-            current = current.parent;
-        }
-
-        return false;
-    }
-
-    private static int GetToggleNumber(string name)
-    {
-        int open = name.LastIndexOf('(');
-        int close = name.LastIndexOf(')');
-        if (open >= 0 && close > open && int.TryParse(name.Substring(open + 1, close - open - 1), out int number))
-            return number;
-
-        return 0;
-    }
-
-    private static void SaveSceneAfterRest()
-    {
-        CharacterSheetManagerScene1 sheetManager = UnityEngine.Object.FindAnyObjectByType<CharacterSheetManagerScene1>();
-        if (sheetManager != null)
-        {
-            sheetManager.SaveCharacterData();
-            return;
-        }
-
-        CharacterSceneAutoSave autoSave = UnityEngine.Object.FindAnyObjectByType<CharacterSceneAutoSave>();
-        if (autoSave != null)
-            autoSave.SaveSceneData();
-    }
-
-    private static void ApplyGlobalRestToSaveData(bool isLongRest)
-    {
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
-        CharacterData character = saveManager.EnsureActiveCharacter();
-        if (character == null || character.sceneStates == null)
-            return;
-
-        foreach (CharacterSceneData sceneData in character.sceneStates)
-        {
-            if (sceneData == null)
-                continue;
-
-            ClearSavedPanelsByMarkers(sceneData, "WildShape", "ChannelDivinity", "KiPoints", "DragonBreath");
-
-            string bloodPanelPath = GetRestPanelPath(sceneData, "BloodCurse");
-            ClearSavedPanelToggles(
-                sceneData,
-                bloodPanelPath,
-                "BloodCurse",
-                0,
-                AppConfig.Calculator.BloodHunterPrimaryToggleLastIndex);
-            if (isLongRest)
-                ClearSavedPanelToggles(
-                    sceneData,
-                    bloodPanelPath,
-                    "BloodCurse",
-                    AppConfig.Calculator.BloodHunterSecondaryToggleFirstIndex,
-                    AppConfig.Calculator.BloodHunterSecondaryToggleLastIndex);
-
-            if (!isLongRest)
-                continue;
-
-            RestoreSavedHealthBars(sceneData);
-            ClearSavedPanelsByMarkers(sceneData, "Rage", "SorceryPoints", "Flight");
-            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "SpellSlots"), "SpellSlots");
-            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "DeathSaves"), "DeathSaves");
-            // The current scene's toggles were already reduced and saved above.
-            if (sceneData != saveManager.GetActiveSceneData())
-                ReduceSavedExhaustionByOne(sceneData, GetRestPanelPath(sceneData, "Exhaustion"));
-        }
-
-        saveManager.SaveData();
-    }
-
-    private static void RestoreSavedHealthBars(CharacterSceneData sceneData)
-    {
-        if (sceneData == null || sceneData.intData == null)
-            return;
-
-        foreach (IntSaveEntry entry in sceneData.intData)
-        {
-            if (entry == null || string.IsNullOrEmpty(entry.key) || !entry.key.StartsWith("HealthBar_", StringComparison.Ordinal))
-                continue;
-
-            if (!entry.key.EndsWith("_maxHealth", StringComparison.Ordinal))
-                continue;
-
-            string prefix = entry.key.Substring(0, entry.key.Length - "maxHealth".Length);
-            sceneData.SetInt(prefix + "currentHealth", Mathf.Max(0, entry.value));
-            sceneData.SetInt(prefix + "maxTemporaryHealth", 0);
-            sceneData.SetInt(prefix + "currentTemporaryHealth", 0);
-        }
-    }
-
-    private static void ClearSavedPanelsByMarkers(CharacterSceneData sceneData, params string[] markerNames)
-    {
-        foreach (string markerName in markerNames)
-            ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, markerName), markerName);
-    }
-
-    private static string GetRestPanelPath(CharacterSceneData sceneData, string markerName)
-    {
-        return sceneData != null ? sceneData.GetString(RestResourceKeyPrefix + markerName, "") : "";
-    }
-
-    private static void ClearSavedPanelToggles(CharacterSceneData sceneData, string panelPath, string role, int minToggleNumber = int.MinValue, int maxToggleNumber = int.MaxValue)
-    {
-        RestSavedToggleUpdater.Clear(sceneData, role, panelPath, minToggleNumber, maxToggleNumber);
-    }
-
-    private static void ReduceSavedExhaustionByOne(CharacterSceneData sceneData, string panelPath)
-    {
-        RestSavedToggleUpdater.ReduceExhaustionByOne(
-            sceneData, panelPath, AppConfig.Calculator.ExhaustionToggleLastIndex);
+        return UnityEngine.Object.FindAnyObjectByType<CharacterSheetManagerScene1>();
     }
 
 }

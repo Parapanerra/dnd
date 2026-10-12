@@ -4,16 +4,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // Applies the selected language to scene UI while preserving editable user text.
-public sealed class SceneLocalizationApplier
+internal sealed class SceneLocalizationApplier
 {
     private readonly RuntimeLocalization localization;
 
-    public SceneLocalizationApplier(RuntimeLocalization localization)
+    internal SceneLocalizationApplier(RuntimeLocalization localization)
     {
         this.localization = localization;
     }
 
-    public void Apply()
+    internal void Apply()
     {
         foreach (ManualLocalizedText text in Resources.FindObjectsOfTypeAll<ManualLocalizedText>())
         {
@@ -78,7 +78,7 @@ public sealed class SceneLocalizationApplier
                 inventoryCell.RefreshLocalization();
         }
 
-        if (SceneManager.GetActiveScene().name.Contains("petsesn"))
+        if (load_scenes.GetVisualSceneName(SceneManager.GetActiveScene().name) == AppConfig.Scenes.WildShape)
         {
             WildShapeTitleUpdater updater = UnityEngine.Object.FindAnyObjectByType<WildShapeTitleUpdater>();
             if (updater != null)
@@ -124,10 +124,11 @@ public sealed class SceneLocalizationApplier
     private bool ShouldSkip(Text text)
     {
         if (text == null || text.GetComponentInParent<LocalizedIgnore>(true) != null ||
+            text.GetComponentInParent<SimpleFileBrowser.FileBrowser>(true) != null ||
             text.GetComponentInParent<Dropdown>(true) != null)
             return true;
 
-        if (IsEditableInputText(text) && !HasTranslationForVisibleText(text.text))
+        if (IsEditableInputText(text))
             return true;
 
         return IsCharacterMenuLabel(text.transform);
@@ -136,10 +137,11 @@ public sealed class SceneLocalizationApplier
     private bool ShouldSkip(TMP_Text text)
     {
         if (text == null || text.GetComponentInParent<LocalizedIgnore>(true) != null ||
+            text.GetComponentInParent<SimpleFileBrowser.FileBrowser>(true) != null ||
             text.GetComponentInParent<TMP_Dropdown>(true) != null)
             return true;
 
-        if (IsEditableInputText(text) && !HasTranslationForVisibleText(text.text))
+        if (IsEditableInputText(text))
             return true;
 
         return IsCharacterMenuLabel(text.transform);
@@ -175,8 +177,4 @@ public sealed class SceneLocalizationApplier
         return inputField != null && inputField.textComponent == text;
     }
 
-    private bool HasTranslationForVisibleText(string value)
-    {
-        return localization.HasTranslationSource(localization.GetSourceText(value));
-    }
 }

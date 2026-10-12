@@ -27,6 +27,7 @@ public class InputFieldTabNavigation : MonoBehaviour
     }
 
     private readonly List<InputTarget> orderedTargets = new List<InputTarget>();
+    private readonly List<DoubleClickInputFieldActivator> configuredInputs = new List<DoubleClickInputFieldActivator>();
     private readonly List<InputRow> rows = new List<InputRow>();
     private bool tabPressedThisFrame;
     private InputField protectedLegacyInput;
@@ -105,6 +106,14 @@ public class InputFieldTabNavigation : MonoBehaviour
         protectedTmpInput = null;
     }
 
+    internal void SetConfiguredInputs(IEnumerable<DoubleClickInputFieldActivator> activators)
+    {
+        configuredInputs.Clear();
+        foreach (DoubleClickInputFieldActivator activator in activators)
+            if (activator != null)
+                configuredInputs.Add(activator);
+    }
+
     private void MoveToNextInput()
     {
         BuildNavigationOrder();
@@ -125,9 +134,9 @@ public class InputFieldTabNavigation : MonoBehaviour
         orderedTargets.Clear();
         rows.Clear();
 
-        foreach (DoubleClickInputFieldActivator activator in DoubleClickInputFieldActivator.GetConfiguredInputs())
+        foreach (DoubleClickInputFieldActivator activator in configuredInputs)
         {
-            if (activator.TryGetInput(out Selectable selectable, out RectTransform rectTransform))
+            if (activator != null && activator.TryGetInput(out Selectable selectable, out RectTransform rectTransform))
                 AddTarget(activator, selectable, rectTransform);
         }
 

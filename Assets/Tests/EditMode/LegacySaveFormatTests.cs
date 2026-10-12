@@ -7,6 +7,7 @@ using UnityEngine;
 public class LegacySaveFormatTests
 {
     private string tempDirectory;
+    private readonly LegacyJsonSaveRepository repository = new LegacyJsonSaveRepository();
 
     [SetUp]
     public void SetUp()
@@ -28,7 +29,7 @@ public class LegacySaveFormatTests
     [Test]
     public void CurrentJsonFixture_LoadsCharacterAndSceneValues()
     {
-        AppSaveData data = LegacyJsonSaveRepository.Deserialize(
+        AppSaveData data = repository.Deserialize(
             File.ReadAllText(FixturePath("legacy_full_v1.json")));
 
         Assert.That(data.lastActiveCharacterId, Is.EqualTo("fixture-character"));
@@ -50,7 +51,7 @@ public class LegacySaveFormatTests
         File.Copy(FixturePath("legacy_corrupted.json"), primaryPath);
         File.Copy(FixturePath("legacy_full_v1.json"), backupPath);
 
-        LegacyJsonLoadResult result = LegacyJsonSaveRepository.Load(primaryPath, backupPath);
+        LegacyJsonLoadResult result = repository.Load(primaryPath, backupPath);
 
         Assert.That(result.Source, Is.EqualTo(LegacyJsonSaveSource.Backup));
         Assert.That(result.PrimaryError, Is.Not.Null);
@@ -63,7 +64,7 @@ public class LegacySaveFormatTests
     {
         string primaryPath = Path.Combine(tempDirectory, "DndCharactersData.json");
         File.Copy(FixturePath("legacy_full_v1.json"), primaryPath + ".bak");
-        LegacyJsonLoadResult result = LegacyJsonSaveRepository.Load(primaryPath, primaryPath + ".bak");
+        LegacyJsonLoadResult result = repository.Load(primaryPath, primaryPath + ".bak");
         Assert.That(result.Source, Is.EqualTo(LegacyJsonSaveSource.Backup));
         Assert.That(result.Data.characters[0].id, Is.EqualTo("fixture-character"));
     }
@@ -76,7 +77,7 @@ public class LegacySaveFormatTests
         File.Copy(FixturePath("legacy_corrupted.json"), primaryPath);
         File.Copy(FixturePath("legacy_corrupted.json"), backupPath);
 
-        LegacyJsonLoadResult result = LegacyJsonSaveRepository.Load(primaryPath, backupPath);
+        LegacyJsonLoadResult result = repository.Load(primaryPath, backupPath);
 
         Assert.That(result.Source, Is.EqualTo(LegacyJsonSaveSource.None));
         Assert.That(result.Data, Is.Null);
@@ -95,8 +96,8 @@ public class LegacySaveFormatTests
         File.WriteAllText(backupPath, JsonUtility.ToJson(first));
         File.WriteAllText(primaryPath, JsonUtility.ToJson(second));
 
-        LegacyJsonLoadResult current = LegacyJsonSaveRepository.Load(primaryPath, backupPath);
-        AppSaveData backup = LegacyJsonSaveRepository.Deserialize(File.ReadAllText(backupPath));
+        LegacyJsonLoadResult current = repository.Load(primaryPath, backupPath);
+        AppSaveData backup = repository.Deserialize(File.ReadAllText(backupPath));
         Assert.That(current.Source, Is.EqualTo(LegacyJsonSaveSource.Primary));
         Assert.That(current.Data.lastActiveCharacterId, Is.EqualTo("second"));
         Assert.That(backup.lastActiveCharacterId, Is.EqualTo("first"));
@@ -105,10 +106,8 @@ public class LegacySaveFormatTests
     [Test]
     public void NullLegacyCollections_AreNormalizedWithoutLosingCharacter()
     {
-        AppSaveData data = LegacyJsonSaveRepository.Deserialize(
+        AppSaveData data = repository.Deserialize(
             File.ReadAllText(FixturePath("legacy_null_collections.json")));
-
-        data = SaveDataNormalizer.Normalize(data);
 
         Assert.That(data.characters, Has.Count.EqualTo(1));
         CharacterData character = data.characters[0];

@@ -1,7 +1,7 @@
 // Copies pre-scene character fields into the first character-sheet scene when needed.
-public static class CharacterSceneMigrationService
+internal sealed class CharacterSceneMigrationService
 {
-    public static void CopyLegacyFieldsIfEmpty(CharacterData character, CharacterSceneData sceneData)
+    internal void CopyLegacyFieldsIfEmpty(CharacterData character, CharacterSceneData sceneData)
     {
         if (character == null || sceneData == null ||
             sceneData.inputData.Count > 0 || sceneData.toggleData.Count > 0 ||

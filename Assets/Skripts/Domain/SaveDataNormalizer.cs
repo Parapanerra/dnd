@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
-public static class SaveDataNormalizer
+public sealed class SaveDataNormalizer
 {
-    public static AppSaveData Normalize(AppSaveData saveData)
+    public AppSaveData Normalize(AppSaveData saveData)
     {
         if (saveData == null)
             saveData = new AppSaveData();
@@ -13,6 +14,9 @@ public static class SaveDataNormalizer
 
         foreach (CharacterData character in saveData.characters)
         {
+            if (character == null)
+                throw new InvalidDataException("Invalid character in save");
+
             if (string.IsNullOrEmpty(character.id))
                 character.id = Guid.NewGuid().ToString();
 
@@ -34,6 +38,9 @@ public static class SaveDataNormalizer
 
             foreach (CharacterSceneData sceneData in character.sceneStates)
             {
+                if (sceneData == null)
+                    throw new InvalidDataException("Invalid scene in save");
+
                 if (sceneData.inputData == null)
                     sceneData.inputData = new List<string>();
                 if (sceneData.toggleData == null)
@@ -54,7 +61,7 @@ public static class SaveDataNormalizer
         return saveData;
     }
 
-    private static bool IsNumericName(string value)
+    private bool IsNumericName(string value)
     {
         return float.TryParse(value, out _);
     }

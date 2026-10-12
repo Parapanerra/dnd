@@ -151,7 +151,7 @@ public static class LegacyFieldMapTool
         bool usesCharacterSheetManager = FindInScene<CharacterSheetManagerScene1>(scene).Count > 0;
         string controller = usesCharacterSheetManager
             ? nameof(CharacterSheetManagerScene1)
-            : nameof(CharacterSceneAutoSave);
+            : "CharacterSceneAutoSave"; // Frozen v1 baseline controller label.
 
         List<InputField> inputFields = FindInScene<InputField>(scene);
         List<TMP_InputField> tmpInputFields = FindInScene<TMP_InputField>(scene);

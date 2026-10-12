@@ -9,11 +9,14 @@ public class MainMenuCharacterListView : MonoBehaviour
 {
     private MainMenuManager owner;
     private DndSaveManager saveManager;
+    private MainMenuCharacterLabels characterLabels;
+    private MainMenuCharacterButtonFactory buttonFactory;
+    private readonly MainMenuSceneLookup sceneLookup = new MainMenuSceneLookup();
     [SerializeField, HideInInspector] private Transform characterRowsContent;
     [SerializeField, HideInInspector] private GameObject characterRowTemplate;
     [SerializeField, HideInInspector] private GameObject characterButtonTemplate;
     [SerializeField, HideInInspector] private Button addCharacterButton;
-    public Button AddCharacterButton => addCharacterButton;
+    internal Button AddCharacterButton => addCharacterButton;
 
     private Button userCharacterButtonTemplate;
     private Transform userMenuRoot;
@@ -23,13 +26,15 @@ public class MainMenuCharacterListView : MonoBehaviour
     private bool hasAddButtonWorldOffsetFromTemplate;
     private Coroutine addButtonPositionCoroutine;
 
-    public void Initialize(MainMenuManager manager, DndSaveManager dataManager)
+    internal void Initialize(MainMenuManager manager, DndSaveManager dataManager, MainMenuCharacterLabels labels)
     {
         owner = manager;
         saveManager = dataManager;
+        characterLabels = labels;
+        buttonFactory = new MainMenuCharacterButtonFactory(manager, dataManager, labels);
     }
 
-    public void SetCharacterButtonTemplate(GameObject template)
+    internal void SetCharacterButtonTemplate(GameObject template)
     {
         characterButtonTemplate = template;
 #if UNITY_EDITOR
@@ -37,114 +42,24 @@ public class MainMenuCharacterListView : MonoBehaviour
 #endif
     }
 
-    public void EnsureEditableCharacterScrollView()
-    {
-        if (owner == null)
-            return;
-
-        Transform parent = owner.transform.parent != null ? owner.transform.parent : owner.transform;
-        Transform existingScrollView = parent.Find("CharacterRowsScrollView");
-        if (existingScrollView != null)
-        {
-            WireEditableCharacterScrollView(existingScrollView);
-            return;
-        }
-
-        GameObject scrollView = RuntimeUiFactory.CreateElement(RuntimeUiElementSpec.Create(
-            "CharacterRowsScrollView",
-            parent,
-            AppConfig.MainMenu.CenterAnchor,
-            AppConfig.MainMenu.CharacterScrollPosition,
-            AppConfig.MainMenu.CharacterScrollSize));
-        Image scrollImage = scrollView.AddComponent<Image>();
-        scrollImage.color = AppConfig.MainMenu.Transparent;
-        scrollImage.raycastTarget = false;
-        ScrollRect scrollRect = scrollView.AddComponent<ScrollRect>();
-        scrollRect.horizontal = false;
-        scrollRect.vertical = true;
-        scrollRect.movementType = ScrollRect.MovementType.Clamped;
-
-        GameObject viewport = RuntimeUiFactory.CreateElement(RuntimeUiElementSpec.Create(
-            "Viewport",
-            scrollView.transform,
-            AppConfig.MainMenu.CenterAnchor,
-            Vector2.zero,
-            AppConfig.MainMenu.CharacterScrollSize));
-        Image viewportImage = viewport.AddComponent<Image>();
-        viewportImage.color = AppConfig.MainMenu.Transparent;
-        viewportImage.raycastTarget = false;
-        Mask mask = viewport.AddComponent<Mask>();
-        mask.showMaskGraphic = false;
-
-        GameObject content = RuntimeUiFactory.CreateElement(RuntimeUiElementSpec.Create(
-            "RowsContent",
-            viewport.transform,
-            AppConfig.MainMenu.TopCenterAnchor,
-            Vector2.zero,
-            AppConfig.MainMenu.CharacterScrollSize));
-        GameObject rowTemplate = CreateDefaultCharacterRowTemplate(content.transform);
-        GameObject addButtonObject = RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
-            "AddCharacterButton",
-            scrollView.transform,
-            AppConfig.MainMenu.AddButtonPosition,
-            AppConfig.MainMenu.AddButtonSize,
-            "Додати персонажа"));
-
-        scrollRect.viewport = viewport.GetComponent<RectTransform>();
-        scrollRect.content = content.GetComponent<RectTransform>();
-
-        characterRowsContent = content.transform;
-        characterRowTemplate = rowTemplate;
-        addCharacterButton = addButtonObject.GetComponent<Button>();
-
 #if UNITY_EDITOR
-        UnityEditor.EditorUtility.SetDirty(this);
-        UnityEditor.EditorUtility.SetDirty(owner);
-        UnityEditor.EditorUtility.SetDirty(scrollView);
-        UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(owner.gameObject.scene);
-#endif
-    }
-
-    private void WireEditableCharacterScrollView(Transform scrollView)
+    public void SetEditableCharacterScrollViewReferences(Transform content, GameObject rowTemplate, Button addButton)
     {
-        Transform viewport = scrollView.Find("Viewport");
-        Transform content = viewport != null ? viewport.Find("RowsContent") : scrollView.Find("RowsContent");
-        Transform rowTemplate = content != null ? content.Find("CharacterRowTemplate") : null;
-        Transform addButton = scrollView.Find("AddCharacterButton");
-
         if (content != null)
             characterRowsContent = content;
         if (rowTemplate != null)
-            characterRowTemplate = rowTemplate.gameObject;
+            characterRowTemplate = rowTemplate;
         if (addButton != null)
-            addCharacterButton = addButton.GetComponent<Button>();
+            addCharacterButton = addButton;
     }
+#endif
 
-    private GameObject CreateDefaultCharacterRowTemplate(Transform parent)
+    internal void Wire()
     {
-        GameObject row = RuntimeUiFactory.CreateElement(RuntimeUiElementSpec.Create(
-            "CharacterRowTemplate",
-            parent,
-            AppConfig.MainMenu.TopCenterAnchor,
-            Vector2.zero,
-            AppConfig.MainMenu.CharacterRowSize));
-        RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
-            "InventoryButton", row.transform, AppConfig.MainMenu.InventoryButtonPosition, AppConfig.MainMenu.RowActionButtonSize, "I"));
-        RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
-            "CharacterButton", row.transform, AppConfig.MainMenu.CharacterButtonPosition, AppConfig.MainMenu.CharacterNameButtonSize, "Персонаж №1"));
-        RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
-            "SpellsButton", row.transform, AppConfig.MainMenu.SpellsButtonPosition, AppConfig.MainMenu.RowActionButtonSize, "S"));
-        RuntimeUiFactory.CreateButton(RuntimeButtonSpec.Create(
-            "DeleteButton", row.transform, AppConfig.MainMenu.DeleteRowButtonPosition, AppConfig.MainMenu.RowActionButtonSize, "X"));
-        return row;
-    }
-
-    public void Wire()
-    {
-        ScrollRect menuScroll = MainMenuSceneLookup.FindScrollRectInScene("menukart");
+        ScrollRect menuScroll = sceneLookup.FindScrollRectInScene("menukart");
         if (menuScroll == null || menuScroll.content == null)
         {
-            Button addButton = MainMenuSceneLookup.FindButtonInScene("newpersonajbaton");
+            Button addButton = sceneLookup.FindButtonInScene("newpersonajbaton");
             if (addButton != null)
                 addCharacterButton = addButton;
 
@@ -156,16 +71,16 @@ public class MainMenuCharacterListView : MonoBehaviour
         userMenuRoot = menuScroll.transform;
         userMenuContent = menuScroll.content;
 
-        userCharacterButtonTemplate = MainMenuSceneLookup.FindButtonUnder(userMenuContent, "kartaPerson (1)");
+        userCharacterButtonTemplate = sceneLookup.FindButtonUnder(userMenuContent, "kartaPerson (1)");
         if (userCharacterButtonTemplate == null)
-            userCharacterButtonTemplate = MainMenuSceneLookup.FindFirstDirectButtonInContent(userMenuContent);
+            userCharacterButtonTemplate = sceneLookup.FindFirstDirectButtonInContent(userMenuContent);
 
-        Button contentAddButton = MainMenuSceneLookup.FindButtonUnder(userMenuContent, "newpersonajbaton");
+        Button contentAddButton = sceneLookup.FindButtonUnder(userMenuContent, "newpersonajbaton");
         if (contentAddButton != null)
             addCharacterButton = contentAddButton;
         else
         {
-            Button addButton = MainMenuSceneLookup.FindButtonInScene("newpersonajbaton");
+            Button addButton = sceneLookup.FindButtonInScene("newpersonajbaton");
             if (addButton != null)
                 addCharacterButton = addButton;
         }
@@ -240,27 +155,18 @@ public class MainMenuCharacterListView : MonoBehaviour
         if (characterButton == null)
             return;
 
-        Button inventoryButton = MainMenuSceneLookup.FindButtonUnder(characterButton.transform, "spellbook");
-        Button spellsButton = MainMenuSceneLookup.FindFirstButtonUnder(characterButton.transform, "invetory", "inventory");
-        Button deleteButton = MainMenuSceneLookup.FindButtonUnder(characterButton.transform, "DeleteButton");
+        Button inventoryButton = sceneLookup.FindButtonUnder(characterButton.transform, "spellbook");
+        Button spellsButton = sceneLookup.FindFirstButtonUnder(characterButton.transform, "invetory", "inventory");
+        Button deleteButton = sceneLookup.FindButtonUnder(characterButton.transform, "DeleteButton");
 
         Text nameText = FindCharacterNameText(characterButton);
         if (nameText != null)
             IgnoreLocalizationForDynamicText(nameText.gameObject);
 
         if (nameText != null)
-            nameText.text = MainMenuCharacterLabels.GetDisplayName(character);
+            nameText.text = characterLabels.GetDisplayName(character);
 
-        string characterId = character.id;
-        MainMenuSceneLookup.BindButton(characterButton, () => owner.OnCharacterSelected(characterId));
-        MainMenuSceneLookup.BindButton(inventoryButton, () => owner.OnInventorySelected(characterId));
-        MainMenuSceneLookup.BindButton(spellsButton, () => owner.OnSpellbookSelected(characterId));
-        MainMenuSceneLookup.BindButton(deleteButton, () =>
-        {
-            saveManager.DeleteCharacter(characterId);
-            owner.RefreshCharacterList();
-        });
-
+        BindCharacterActions(character, characterButton, inventoryButton, spellsButton, deleteButton);
     }
 
     private void IgnoreLocalizationForDynamicText(GameObject textObject)
@@ -320,19 +226,9 @@ public class MainMenuCharacterListView : MonoBehaviour
 
         RectTransform templateRect = template.GetComponent<RectTransform>();
         RectTransform cloneRect = clone.GetComponent<RectTransform>();
+        ApplyTemplateRectToClone(templateRect, cloneRect, index, owner.CharacterRowSpacing);
         if (templateRect != null && cloneRect != null)
-        {
-            cloneRect.anchorMin = templateRect.anchorMin;
-            cloneRect.anchorMax = templateRect.anchorMax;
-            cloneRect.pivot = templateRect.pivot;
-            cloneRect.sizeDelta = templateRect.sizeDelta;
-            cloneRect.localScale = templateRect.localScale;
-            cloneRect.localRotation = templateRect.localRotation;
-
-            float height = Mathf.Max(AppConfig.MainMenu.MinimumUsableRectSize, templateRect.rect.height);
-            cloneRect.anchoredPosition = templateRect.anchoredPosition + new Vector2(0f, -index * (height + owner.CharacterRowSpacing));
             lastUserMenuRowRect = cloneRect;
-        }
 
         return clone.GetComponent<Button>();
     }
@@ -357,7 +253,7 @@ public class MainMenuCharacterListView : MonoBehaviour
     {
         Button[] buttons = cloneRoot.GetComponentsInChildren<Button>(true);
         foreach (Button button in buttons)
-            if (button != null && MainMenuSceneLookup.Matches(button.gameObject.name, "newpersonajbaton"))
+            if (button != null && sceneLookup.Matches(button.gameObject.name, "newpersonajbaton"))
                 Destroy(button.gameObject);
     }
 
@@ -438,7 +334,7 @@ public class MainMenuCharacterListView : MonoBehaviour
             contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, bottom);
     }
 
-    public void Refresh()
+    internal void Refresh()
     {
         if (RefreshUserCreatedMenu())
             return;
@@ -482,7 +378,7 @@ public class MainMenuCharacterListView : MonoBehaviour
         RectTransform layoutSourceRect = templateRect;
         foreach (CharacterData character in saveManager.GetCharactersSnapshot())
         {
-            GameObject btnObj = CreateCharacterButtonObject(character);
+            GameObject btnObj = buttonFactory.Create(character, characterButtonTemplate);
             btnObj.transform.SetParent(owner.CharacterListContent, false);
             btnObj.SetActive(true);
             btnObj.transform.localScale = Vector3.one;
@@ -491,7 +387,7 @@ public class MainMenuCharacterListView : MonoBehaviour
             if (layoutSourceRect == null)
                 layoutSourceRect = rectTransform;
 
-            ApplyTemplateRectToClone(layoutSourceRect, rectTransform, buttonIndex);
+            ApplyTemplateRectToClone(layoutSourceRect, rectTransform, buttonIndex, owner.CharacterButtonSpacing);
             if (owner.ApplyDefaultCharacterListLayout && rectTransform != null)
             {
                 rectTransform.anchorMin = new Vector2(0f, 1f);
@@ -501,32 +397,14 @@ public class MainMenuCharacterListView : MonoBehaviour
             }
 
             Button btn = btnObj.GetComponent<Button>();
-            if (btn != null)
-            {
-                btn.onClick.RemoveAllListeners();
-                btn.onClick.AddListener(() => owner.OnCharacterSelected(character.id));
-            }
-
             Transform deleteBtnTransform = btnObj.transform.Find("DeleteButton");
-            if (deleteBtnTransform != null)
-            {
-                Button deleteBtn = deleteBtnTransform.GetComponent<Button>();
-                if (deleteBtn != null)
-                {
-                    string characterId = character.id;
-                    deleteBtn.onClick.RemoveAllListeners();
-                    deleteBtn.onClick.AddListener(() =>
-                    {
-                        saveManager.DeleteCharacter(characterId);
-                        owner.RefreshCharacterList();
-                    });
-                }
-            }
+            Button deleteBtn = deleteBtnTransform != null ? deleteBtnTransform.GetComponent<Button>() : null;
+            BindCharacterActions(character, btn, null, null, deleteBtn);
 
             buttonIndex++;
         }
 
-        ResizeContentForManualLayout(layoutSourceRect, buttonIndex);
+        ResizeContentForManualLayout(owner.CharacterListContent as RectTransform, layoutSourceRect, buttonIndex, owner.CharacterButtonSpacing);
     }
 
     private void RefreshCharacterRows()
@@ -557,44 +435,13 @@ public class MainMenuCharacterListView : MonoBehaviour
             row.SetActive(true);
 
             RectTransform rowRect = row.GetComponent<RectTransform>();
-            ApplyRowTemplateRect(templateRect, rowRect, rowIndex);
+            ApplyTemplateRectToClone(templateRect, rowRect, rowIndex, owner.CharacterRowSpacing);
 
             BindCharacterRow(row.transform, character);
             rowIndex++;
         }
 
-        ResizeRowsContent(templateRect, rowIndex);
-    }
-
-    private void ApplyRowTemplateRect(RectTransform templateRect, RectTransform rowRect, int index)
-    {
-        if (templateRect == null || rowRect == null)
-            return;
-
-        rowRect.anchorMin = templateRect.anchorMin;
-        rowRect.anchorMax = templateRect.anchorMax;
-        rowRect.pivot = templateRect.pivot;
-        rowRect.sizeDelta = templateRect.sizeDelta;
-        rowRect.localRotation = templateRect.localRotation;
-        rowRect.localScale = templateRect.localScale;
-
-        float height = Mathf.Max(AppConfig.MainMenu.MinimumUsableRectSize, templateRect.rect.height);
-        rowRect.anchoredPosition = templateRect.anchoredPosition + new Vector2(0f, -index * (height + owner.CharacterRowSpacing));
-    }
-
-    private void ResizeRowsContent(RectTransform templateRect, int rowCount)
-    {
-        RectTransform contentRect = characterRowsContent as RectTransform;
-        if (contentRect == null || templateRect == null || rowCount <= 0)
-            return;
-
-        float height = Mathf.Max(AppConfig.MainMenu.MinimumUsableRectSize, templateRect.rect.height);
-        float topOffset = Mathf.Abs(templateRect.anchoredPosition.y);
-        float requiredHeight = topOffset + rowCount * height +
-            Mathf.Max(0, rowCount - 1) * owner.CharacterRowSpacing +
-            AppConfig.MainMenu.ContentBottomPadding;
-        if (contentRect.sizeDelta.y < requiredHeight)
-            contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, requiredHeight);
+        ResizeContentForManualLayout(characterRowsContent as RectTransform, templateRect, rowIndex, owner.CharacterRowSpacing);
     }
 
     private void BindCharacterRow(Transform row, CharacterData character)
@@ -608,17 +455,35 @@ public class MainMenuCharacterListView : MonoBehaviour
             ? characterButton.GetComponentInChildren<Text>(true)
             : row.GetComponentInChildren<Text>(true);
         if (nameText != null)
-            nameText.text = MainMenuCharacterLabels.GetDisplayName(character);
+        {
+            IgnoreLocalizationForDynamicText(nameText.gameObject);
+            nameText.text = characterLabels.GetDisplayName(character);
+        }
 
+        BindCharacterActions(character, characterButton, inventoryButton, spellsButton, deleteButton);
+    }
+
+    private void BindCharacterActions(CharacterData character, Button characterButton, Button inventoryButton,
+        Button spellsButton, Button deleteButton)
+    {
         string characterId = character.id;
-        MainMenuSceneLookup.BindButton(characterButton, () => owner.OnCharacterSelected(characterId));
-        MainMenuSceneLookup.BindButton(inventoryButton, () => owner.OnInventorySelected(characterId));
-        MainMenuSceneLookup.BindButton(spellsButton, () => owner.OnSpellbookSelected(characterId));
-        MainMenuSceneLookup.BindButton(deleteButton, () =>
+        BindButton(characterButton, () => owner.OnCharacterSelected(characterId));
+        BindButton(inventoryButton, () => owner.OnInventorySelected(characterId));
+        BindButton(spellsButton, () => owner.OnSpellbookSelected(characterId));
+        BindButton(deleteButton, () =>
         {
             saveManager.DeleteCharacter(characterId);
             owner.RefreshCharacterList();
         });
+    }
+
+    private void BindButton(Button button, UnityEngine.Events.UnityAction action)
+    {
+        if (button == null)
+            return;
+
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(action);
     }
 
     private Button FindButton(Transform root, string name)
@@ -627,7 +492,7 @@ public class MainMenuCharacterListView : MonoBehaviour
         return found != null ? found.GetComponent<Button>() : null;
     }
 
-    public void CacheCharacterButtonTemplate()
+    internal void CacheCharacterButtonTemplate()
     {
         if (characterButtonTemplate != null || owner.CharacterListContent == null)
             return;
@@ -637,7 +502,7 @@ public class MainMenuCharacterListView : MonoBehaviour
             characterButtonTemplate = template.gameObject;
     }
 
-    public void DisableAutomaticContentLayout()
+    internal void DisableAutomaticContentLayout()
     {
         if (owner.CharacterListContent == null)
             return;
@@ -645,7 +510,7 @@ public class MainMenuCharacterListView : MonoBehaviour
         DisableAutomaticLayout(owner.CharacterListContent);
     }
 
-    internal void DisableAutomaticLayout(Transform content)
+    private void DisableAutomaticLayout(Transform content)
     {
         if (content == null)
             return;
@@ -659,7 +524,7 @@ public class MainMenuCharacterListView : MonoBehaviour
             fitter.enabled = false;
     }
 
-    private void ApplyTemplateRectToClone(RectTransform templateRect, RectTransform cloneRect, int index)
+    private static void ApplyTemplateRectToClone(RectTransform templateRect, RectTransform cloneRect, int index, float spacing)
     {
         if (templateRect == null || cloneRect == null)
             return;
@@ -672,25 +537,24 @@ public class MainMenuCharacterListView : MonoBehaviour
         cloneRect.localScale = templateRect.localScale;
 
         float height = Mathf.Max(AppConfig.MainMenu.MinimumUsableRectSize, templateRect.rect.height);
-        cloneRect.anchoredPosition = templateRect.anchoredPosition + new Vector2(0f, -index * (height + owner.CharacterButtonSpacing));
+        cloneRect.anchoredPosition = templateRect.anchoredPosition + new Vector2(0f, -index * (height + spacing));
     }
 
-    private void ResizeContentForManualLayout(RectTransform templateRect, int buttonCount)
+    private static void ResizeContentForManualLayout(RectTransform contentRect, RectTransform templateRect, int buttonCount, float spacing)
     {
-        RectTransform contentRect = owner.CharacterListContent as RectTransform;
         if (contentRect == null || templateRect == null || buttonCount <= 0)
             return;
 
         float height = Mathf.Max(AppConfig.MainMenu.MinimumUsableRectSize, templateRect.rect.height);
         float topOffset = Mathf.Abs(templateRect.anchoredPosition.y);
         float requiredHeight = topOffset + buttonCount * height +
-            Mathf.Max(0, buttonCount - 1) * owner.CharacterButtonSpacing +
+            Mathf.Max(0, buttonCount - 1) * spacing +
             AppConfig.MainMenu.ContentBottomPadding;
         if (contentRect.sizeDelta.y < requiredHeight)
             contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, requiredHeight);
     }
 
-    public void EnsureCharacterListLayout()
+    internal void EnsureCharacterListLayout()
     {
         if (owner.CharacterListContent == null)
             return;
@@ -727,7 +591,7 @@ public class MainMenuCharacterListView : MonoBehaviour
         fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
     }
 
-    public void EnsureScrollViewIsVisible()
+    internal void EnsureScrollViewIsVisible()
     {
         ScrollRect scrollRect = GetComponent<ScrollRect>();
         if (scrollRect == null)
@@ -767,112 +631,5 @@ public class MainMenuCharacterListView : MonoBehaviour
 
         if (scrollRect.content == null && owner.CharacterListContent is RectTransform contentRect)
             scrollRect.content = contentRect;
-    }
-
-    private GameObject CreateCharacterButtonObject(CharacterData character)
-    {
-        GameObject sourceButton = characterButtonTemplate != null
-            ? characterButtonTemplate
-            : owner.UseCharacterButtonPrefab && owner.CharacterButtonPrefab != null
-                ? owner.CharacterButtonPrefab
-                : null;
-
-        GameObject btnObj = sourceButton != null
-            ? Instantiate(sourceButton)
-            : CreateFallbackCharacterButton();
-
-        btnObj.name = "CharacterButton_" + (string.IsNullOrEmpty(character.characterName) ? character.id : character.characterName);
-
-        if (btnObj.GetComponent<Button>() == null)
-            btnObj.AddComponent<Button>();
-
-        Image image = btnObj.GetComponent<Image>();
-        if (image == null)
-            image = btnObj.AddComponent<Image>();
-
-        bool isActive = saveManager != null &&
-                        saveManager.GetActiveCharacterId() == character.id;
-        if (owner.ApplyDefaultCharacterButtonStyle)
-        {
-            image.color = isActive
-                ? AppConfig.MainMenu.ActiveCharacterColor
-                : AppConfig.MainMenu.InactiveCharacterColor;
-        }
-
-        Text btnText = btnObj.GetComponentInChildren<Text>(true);
-        if (btnText == null)
-            btnText = CreateButtonText(btnObj.transform, "CharacterName", TextAnchor.MiddleLeft);
-
-        btnText.text = MainMenuCharacterLabels.GetDisplayName(character, "Невідомий персонаж");
-        if (owner.ApplyDefaultCharacterButtonStyle)
-        {
-            btnText.color = Color.white;
-            btnText.fontSize = AppConfig.MainMenu.CharacterNameFontSize;
-            btnText.resizeTextForBestFit = true;
-            btnText.resizeTextMinSize = AppConfig.MainMenu.CharacterNameMinimumFontSize;
-            btnText.resizeTextMaxSize = AppConfig.MainMenu.CharacterNameFontSize;
-        }
-
-        EnsureDeleteButton(btnObj.transform);
-        return btnObj;
-    }
-
-    private GameObject CreateFallbackCharacterButton()
-    {
-        GameObject buttonObject = new GameObject("CharacterButton", typeof(RectTransform), typeof(Image), typeof(Button));
-        CreateButtonText(buttonObject.transform, "CharacterName", TextAnchor.MiddleLeft);
-        return buttonObject;
-    }
-
-    public Text CreateButtonText(Transform parent, string name, TextAnchor alignment)
-    {
-        GameObject textObject = new GameObject(name, typeof(RectTransform), typeof(Text));
-        textObject.transform.SetParent(parent, false);
-
-        RectTransform textRect = textObject.GetComponent<RectTransform>();
-        textRect.anchorMin = new Vector2(0f, 0f);
-        textRect.anchorMax = new Vector2(1f, 1f);
-        textRect.offsetMin = new Vector2(
-            AppConfig.MainMenu.CharacterTextLeftPadding,
-            AppConfig.MainMenu.CharacterTextVerticalPadding);
-        textRect.offsetMax = new Vector2(
-            -AppConfig.MainMenu.CharacterTextRightPadding,
-            -AppConfig.MainMenu.CharacterTextVerticalPadding);
-
-        Text text = textObject.GetComponent<Text>();
-        text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        if (text.font == null)
-            text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-
-        text.alignment = alignment;
-        return text;
-    }
-
-    public void EnsureDeleteButton(Transform parent)
-    {
-        Transform existingDeleteButton = parent.Find("DeleteButton");
-        if (existingDeleteButton != null)
-            return;
-
-        GameObject deleteObject = new GameObject("DeleteButton", typeof(RectTransform), typeof(Image), typeof(Button));
-        deleteObject.transform.SetParent(parent, false);
-
-        RectTransform deleteRect = deleteObject.GetComponent<RectTransform>();
-        deleteRect.anchorMin = new Vector2(1f, 0.5f);
-        deleteRect.anchorMax = new Vector2(1f, 0.5f);
-        deleteRect.pivot = new Vector2(0.5f, 0.5f);
-        deleteRect.anchoredPosition = AppConfig.MainMenu.DeleteButtonPosition;
-        deleteRect.sizeDelta = AppConfig.MainMenu.DeleteButtonSize;
-
-        Image deleteImage = deleteObject.GetComponent<Image>();
-        deleteImage.color = AppConfig.MainMenu.DeleteButtonColor;
-
-        Text deleteText = CreateButtonText(deleteObject.transform, "Text", TextAnchor.MiddleCenter);
-        RectTransform textRect = deleteText.GetComponent<RectTransform>();
-        textRect.offsetMin = Vector2.zero;
-        textRect.offsetMax = Vector2.zero;
-        deleteText.text = "X";
-        deleteText.color = Color.white;
-        deleteText.fontSize = AppConfig.MainMenu.DeleteButtonFontSize;
     }
 }

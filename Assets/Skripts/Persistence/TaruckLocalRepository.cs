@@ -17,9 +17,11 @@ public sealed class TaruckLocalLoadResult
     }
 }
 
-public static class TaruckLocalRepository
+public sealed class TaruckLocalRepository
 {
-    public static TaruckLocalLoadResult Load(string binaryPath, string legacyPath, string appVersion)
+    private readonly LegacyJsonSaveRepository legacyRepository = new LegacyJsonSaveRepository();
+
+    public TaruckLocalLoadResult Load(string binaryPath, string legacyPath, string appVersion)
     {
         string backup = binaryPath + ".bak";
         bool binaryExists = File.Exists(binaryPath) || File.Exists(backup) || File.Exists(binaryPath + ".tmp");
@@ -33,8 +35,8 @@ public static class TaruckLocalRepository
             }
             if (primaryError is UnsupportedTaruckVersionException)
             {
-                LegacyJsonLoadResult older = LegacyJsonSaveRepository.Load(legacyPath, legacyPath + ".bak");
-                AppSaveData olderData = older.Data != null ? SaveMigrationService.FromLegacy(older.Data) : null;
+                LegacyJsonLoadResult older = legacyRepository.Load(legacyPath, legacyPath + ".bak");
+                AppSaveData olderData = older.Data;
                 return new TaruckLocalLoadResult(olderData, TaruckLocalSource.Unreadable, primaryError);
             }
             if (File.Exists(backup))
@@ -53,8 +55,8 @@ public static class TaruckLocalRepository
             }
             // A leftover .tmp is not trusted as committed data. Keep any readable legacy data
             // available in memory, but block writes until the damaged binary is resolved.
-            LegacyJsonLoadResult fallback = LegacyJsonSaveRepository.Load(legacyPath, legacyPath + ".bak");
-            AppSaveData legacyData = fallback.Data != null ? SaveMigrationService.FromLegacy(fallback.Data) : null;
+            LegacyJsonLoadResult fallback = legacyRepository.Load(legacyPath, legacyPath + ".bak");
+            AppSaveData legacyData = fallback.Data;
             return new TaruckLocalLoadResult(legacyData, TaruckLocalSource.Unreadable,
                 primaryError ?? new InvalidDataException("Uncommitted or damaged binary save exists"));
         }
@@ -62,14 +64,14 @@ public static class TaruckLocalRepository
         bool legacyExists = File.Exists(legacyPath) || File.Exists(legacyPath + ".bak");
         if (!legacyExists) return new TaruckLocalLoadResult(new AppSaveData(), TaruckLocalSource.Empty, null);
 
-        LegacyJsonLoadResult legacy = LegacyJsonSaveRepository.Load(legacyPath, legacyPath + ".bak");
+        LegacyJsonLoadResult legacy = legacyRepository.Load(legacyPath, legacyPath + ".bak");
         if (legacy.Source == LegacyJsonSaveSource.None || legacy.Data == null)
             return new TaruckLocalLoadResult(null, TaruckLocalSource.Unreadable,
                 legacy.PrimaryError ?? legacy.BackupError ?? new InvalidDataException("Legacy save unreadable"));
 
         try
         {
-            AppSaveData data = SaveMigrationService.FromLegacy(legacy.Data);
+            AppSaveData data = legacy.Data;
             Save(binaryPath, data, appVersion);
             // Reread the actual promoted file before declaring migration complete.
             AppSaveData verified = TaruckBinaryCodec.DecodeLocal(File.ReadAllBytes(binaryPath));
@@ -84,7 +86,7 @@ public static class TaruckLocalRepository
         }
     }
 
-    public static void Save(string binaryPath, AppSaveData data, string appVersion)
+    public void Save(string binaryPath, AppSaveData data, string appVersion)
     {
         byte[] bytes = TaruckBinaryCodec.EncodeLocal(data, appVersion);
         string directory = Path.GetDirectoryName(binaryPath);

@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Refreshes and resets scene UI that is shared by both character-sheet adapters.
-public static class CharacterSceneUiService
+// Coordinates the UI owned by the active character scene controller.
+internal sealed class CharacterSceneUiService
 {
-    public static void RefreshAfterLoad()
+    internal void RefreshAfterLoad()
     {
         RefreshDropdowns();
         RefreshPanels();
@@ -15,13 +15,13 @@ public static class CharacterSceneUiService
                 healthBar.RefreshHealthFromData();
     }
 
-    public static void RefreshAfterReset()
+    internal void RefreshAfterReset()
     {
         RefreshDropdowns();
         RefreshPanels();
     }
 
-    public static void ResetSceneWidgets()
+    internal void ResetSceneWidgets()
     {
         foreach (InventoryItemCell cell in Object.FindObjectsByType<InventoryItemCell>(FindObjectsInactive.Include))
             if (cell != null)
@@ -32,10 +32,17 @@ public static class CharacterSceneUiService
                 healthBar.ResetHealth();
     }
 
-    public static void EnsurePortraitManager(GameObject host)
+    internal CharacterPortraitManager EnsurePortraitManager(GameObject host, DndSaveManager saveManager)
     {
-        if (host == null || Object.FindAnyObjectByType<CharacterPortraitManager>() != null)
-            return;
+        if (host == null)
+            return null;
+
+        CharacterPortraitManager existing = Object.FindAnyObjectByType<CharacterPortraitManager>();
+        if (existing != null)
+        {
+            existing.Initialize(saveManager);
+            return existing;
+        }
 
         bool hasPortraitUi = false;
         foreach (Transform transform in Object.FindObjectsByType<Transform>(FindObjectsInactive.Include))
@@ -46,11 +53,15 @@ public static class CharacterSceneUiService
                 break;
             }
 
-        if (hasPortraitUi)
-            host.AddComponent<CharacterPortraitManager>();
+        if (!hasPortraitUi)
+            return null;
+
+        CharacterPortraitManager created = host.AddComponent<CharacterPortraitManager>();
+        created.Initialize(saveManager);
+        return created;
     }
 
-    public static bool IsResetButton(Button button)
+    internal bool IsResetButton(Button button)
     {
         if (button == null)
             return false;
@@ -64,13 +75,13 @@ public static class CharacterSceneUiService
                name.Contains("resetsave") || name.Contains("clear save");
     }
 
-    public static void DisablePersistentOnClick(Button button)
+    internal void DisablePersistentOnClick(Button button)
     {
         for (int i = 0; i < button.onClick.GetPersistentEventCount(); i++)
             button.onClick.SetPersistentListenerState(i, UnityEventCallState.Off);
     }
 
-    private static void RefreshDropdowns()
+    private void RefreshDropdowns()
     {
         foreach (DropdownManager manager in Object.FindObjectsByType<DropdownManager>(FindObjectsInactive.Include))
             if (manager != null)
@@ -81,9 +92,9 @@ public static class CharacterSceneUiService
                 controller.RefreshVisibility();
     }
 
-    private static void RefreshPanels()
+    private void RefreshPanels()
     {
-        foreach (PanelToggleManager manager in Object.FindObjectsByType<PanelToggleManager>(FindObjectsInactive.Include))
+        foreach (PanelGroupController manager in Object.FindObjectsByType<PanelGroupController>(FindObjectsInactive.Include))
             if (manager != null)
                 manager.RefreshPanels();
     }

@@ -14,6 +14,7 @@ public class A5AutoSaveTests
             string savePath = Path.Combine(directory, "DndCharactersData.taruck-data");
             var data = new AppSaveData();
             var gate = new AutoSaveWriteGate();
+            var repository = new TaruckLocalRepository();
             int diskWrites = 0;
 
             for (int i = 0; i < 10; i++)
@@ -24,7 +25,7 @@ public class A5AutoSaveTests
             Assert.That(File.Exists(savePath), Is.False);
 
             Assert.That(gate.IsDue(1.71f, 0.8f), Is.True);
-            TaruckLocalRepository.Save(savePath, data, "A5-test");
+            repository.Save(savePath, data, "A5-test");
             diskWrites++;
             gate.MarkSaved();
 
@@ -35,7 +36,7 @@ public class A5AutoSaveTests
             for (int i = 0; i < 10; i++)
                 gate.Request(3f + i * 0.1f);
             Assert.That(gate.Pending, Is.True);
-            TaruckLocalRepository.Save(savePath, data, "A5-test");
+            repository.Save(savePath, data, "A5-test");
             diskWrites++;
             gate.MarkSaved();
             Assert.That(diskWrites, Is.EqualTo(2));

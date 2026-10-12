@@ -24,7 +24,8 @@ public class CalculatorControlBinderTests
             string hpName = null;
             object binder = Activator.CreateInstance(binderType, host.transform,
                 new Func<string, string>(label => label),
-                new Func<string, bool>(label => label == "1"));
+                new Func<string, bool>(label => label == "1"),
+                new Func<string, bool>(name => name == "damage"));
 
             binderType.GetMethod("BindButtons").Invoke(binder, new object[]
             {

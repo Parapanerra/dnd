@@ -1,13 +1,17 @@
 using System;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
 // Base speed is saved separately so clamping to zero never loses movement.
-public sealed class ExhaustionEffects
+internal sealed class ExhaustionEffects
 {
+    internal const int DicePenaltyPerLevel = 2;
     private const string BaseSpeedKey = "Exhaustion.BaseSpeed";
+    private const int MaximumExhaustionLevel = 6;
+    private const int SpeedPenaltyPerLevel = 5;
     private readonly DndSaveManager saveManager;
+    private readonly SceneRoleLookup roleLookup = new SceneRoleLookup();
+    private readonly RestSceneToggleFinder toggleFinder = new RestSceneToggleFinder();
 
     public ExhaustionEffects(DndSaveManager dataManager)
     {
@@ -18,7 +22,7 @@ public sealed class ExhaustionEffects
     {
         get
         {
-            SceneRoleMarker exhaustionMarker = SceneRoleLookup.Find(SceneRole.Exhaustion);
+            SceneRoleMarker exhaustionMarker = roleLookup.Find(SceneRole.Exhaustion);
             if (exhaustionMarker != null)
                 return CountExhaustionToggles(exhaustionMarker.Panel);
 
@@ -36,30 +40,19 @@ public sealed class ExhaustionEffects
                     foreach (IntSaveEntry entry in scene.intData)
                         if (entry.key.StartsWith("Toggle_" + panel + "/", StringComparison.Ordinal) && entry.value != 0)
                             count++;
-                    return Mathf.Clamp(count, 0, 6);
+                    return Mathf.Clamp(count, 0, MaximumExhaustionLevel);
                 }
             return 0;
         }
     }
 
-    private static int CountExhaustionToggles(Transform panel)
+    private int CountExhaustionToggles(Transform panel)
     {
         int count = 0;
-        foreach (Toggle toggle in panel.GetComponentsInChildren<Toggle>(true))
-            if (toggle.name.StartsWith("Toggle", StringComparison.Ordinal) && toggle.isOn)
+        foreach (Toggle toggle in toggleFinder.Find(panel))
+            if (toggle.isOn)
                 count++;
-        return Mathf.Clamp(count, 0, 6);
-    }
-
-    public static bool IsD20Roll(string expression)
-    {
-        return Regex.IsMatch(expression ?? "", @"(?<![\w.])\d*[dD]20(?!\d)");
-    }
-
-    public static string PenaltyLabel(int penalty, AppLanguage language)
-    {
-        string label = language == AppLanguage.English ? "exhaustion" : language == AppLanguage.Russian ? "усталость" : "втома";
-        return " −" + penalty + " " + label;
+        return Mathf.Clamp(count, 0, MaximumExhaustionLevel);
     }
 
     public void Apply(int level)
@@ -74,12 +67,12 @@ public sealed class ExhaustionEffects
             if (!data.HasInt(BaseSpeedKey) && int.TryParse(input.text, out int original))
                 data.SetInt(BaseSpeedKey, Mathf.Max(0, original));
             if (data.HasInt(BaseSpeedKey))
-                input.text = Mathf.Max(0, data.GetInt(BaseSpeedKey) - 5 * level).ToString();
+                input.text = Mathf.Max(0, data.GetInt(BaseSpeedKey) - SpeedPenaltyPerLevel * level).ToString();
             input.onEndEdit.RemoveListener(OnSpeedEdited);
             input.onEndEdit.AddListener(OnSpeedEdited);
         }
 
-        if (level == 6)
+        if (level == MaximumExhaustionLevel)
         {
             foreach (HealthBar bar in UnityEngine.Object.FindObjectsByType<HealthBar>(FindObjectsInactive.Include))
                 if (bar.IsUsableForCalculator) bar.SetHealthToZero();
@@ -93,7 +86,7 @@ public sealed class ExhaustionEffects
     {
         if (!int.TryParse(value, out int speed) || saveManager == null) return;
         // The user edits the displayed (effective) speed.
-        saveManager.GetActiveSceneData().SetInt(BaseSpeedKey, Mathf.Max(0, speed) + 5 * Level);
+        saveManager.GetActiveSceneData().SetInt(BaseSpeedKey, Mathf.Max(0, speed) + SpeedPenaltyPerLevel * Level);
         Apply(Level);
     }
 }

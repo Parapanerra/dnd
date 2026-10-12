@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,53 +5,26 @@ using UnityEngine.UI;
 
 public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandler
 {
-    private static readonly List<DoubleClickInputFieldActivator> configuredInputs = new List<DoubleClickInputFieldActivator>();
-
     private InputField inputField;
     private TMP_InputField tmpInputField;
     private float lastClickTime = -1f;
 
-    public static void ConfigureSceneInputs()
+    internal void Configure(InputField input)
     {
-        foreach (InputField input in FindObjectsByType<InputField>(FindObjectsInactive.Include))
-            Configure(input);
-
-        foreach (TMP_InputField input in FindObjectsByType<TMP_InputField>(FindObjectsInactive.Include))
-            Configure(input);
+        inputField = input;
+        tmpInputField = null;
+        input.onEndEdit.RemoveListener(LockLegacyInput);
+        input.onEndEdit.AddListener(LockLegacyInput);
+        LockInput();
     }
 
-    public static void Configure(InputField input)
+    internal void Configure(TMP_InputField input)
     {
-        if (input == null)
-            return;
-
-        DoubleClickInputFieldActivator activator = input.GetComponent<DoubleClickInputFieldActivator>();
-        if (activator == null)
-            activator = input.gameObject.AddComponent<DoubleClickInputFieldActivator>();
-
-        activator.inputField = input;
-        activator.tmpInputField = null;
-        Register(activator);
-        input.onEndEdit.RemoveListener(activator.LockLegacyInput);
-        input.onEndEdit.AddListener(activator.LockLegacyInput);
-        activator.LockInput();
-    }
-
-    public static void Configure(TMP_InputField input)
-    {
-        if (input == null)
-            return;
-
-        DoubleClickInputFieldActivator activator = input.GetComponent<DoubleClickInputFieldActivator>();
-        if (activator == null)
-            activator = input.gameObject.AddComponent<DoubleClickInputFieldActivator>();
-
-        activator.inputField = null;
-        activator.tmpInputField = input;
-        Register(activator);
-        input.onEndEdit.RemoveListener(activator.LockTmpInput);
-        input.onEndEdit.AddListener(activator.LockTmpInput);
-        activator.LockInput();
+        inputField = null;
+        tmpInputField = input;
+        input.onEndEdit.RemoveListener(LockTmpInput);
+        input.onEndEdit.AddListener(LockTmpInput);
+        LockInput();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -70,13 +42,7 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
         LockInput();
     }
 
-    public static IReadOnlyList<DoubleClickInputFieldActivator> GetConfiguredInputs()
-    {
-        configuredInputs.RemoveAll(activator => activator == null);
-        return configuredInputs;
-    }
-
-    public bool TryGetInput(out Selectable selectable, out RectTransform rectTransform)
+    internal bool TryGetInput(out Selectable selectable, out RectTransform rectTransform)
     {
         if (inputField != null)
             selectable = inputField;
@@ -85,17 +51,6 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
 
         rectTransform = selectable != null ? selectable.transform as RectTransform : null;
         return selectable != null && rectTransform != null;
-    }
-
-    private static void Register(DoubleClickInputFieldActivator activator)
-    {
-        if (!configuredInputs.Contains(activator))
-            configuredInputs.Add(activator);
-    }
-
-    private void OnDestroy()
-    {
-        configuredInputs.Remove(this);
     }
 
     private void LockInput()
@@ -126,7 +81,7 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
         LockInput();
     }
 
-    public void ActivateInput()
+    internal void ActivateInput()
     {
         if (inputField != null)
         {

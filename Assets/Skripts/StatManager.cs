@@ -69,9 +69,18 @@ public class StatManager : MonoBehaviour
     private bool listenersReady;
     private DndSaveManager saveManager;
 
+    internal void Initialize(DndSaveManager manager)
+    {
+        saveManager = manager;
+    }
+
     private void Start()
     {
-        saveManager = DndSaveManager.EnsureExists();
+        if (saveManager == null)
+        {
+            Debug.LogError("StatManager was not initialized by the character scene controller.");
+            return;
+        }
         InitializeManualFlags();
         StartCoroutine(SubscribeAfterUiLoad());
     }

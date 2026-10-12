@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Finds and synchronizes the character-name field across character-sheet scenes.
-public sealed class CharacterNameFieldService
+internal sealed class CharacterNameFieldService
 {
     private const string ObjectName = "personajName";
     private const string CurrentPath = "playerInfo/inputPises/personajName";

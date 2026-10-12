@@ -1,43 +1,20 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
 [DefaultExecutionOrder(100)]
 public class SpellbookPageSwitcher : MonoBehaviour
 {
-    private const string SceneName = "spelBook";
-    private const string PageButtonPrefix = "page";
-
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    private static void Bootstrap()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        EnsureForActiveScene();
-    }
-
-    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        EnsureForActiveScene();
-    }
-
-    private static void EnsureForActiveScene()
-    {
-        if (SceneManager.GetActiveScene().name != SceneName)
-            return;
-
-        if (FindAnyObjectByType<SpellbookPageSwitcher>() != null)
-            return;
-
-        GameObject switcherObject = new GameObject("SpellbookPageSwitcher");
-        switcherObject.AddComponent<SpellbookPageSwitcher>();
-    }
+    private const string SceneName = AppConfig.Scenes.Spellbook;
+    private DndSaveManager saveManager;
+    private RuntimeLocalization localization;
 
     private void Start()
     {
+        saveManager = new RuntimeManagerResolver().SaveManager();
+        localization = new RuntimeManagerResolver().Localization();
         KeepMainPagePanelActive();
         BindPageButtons();
         BindNavigationButtons();
@@ -46,67 +23,17 @@ public class SpellbookPageSwitcher : MonoBehaviour
 
     private void BindPageButtons()
     {
-        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include);
-        List<Button> pageButtons = new List<Button>();
-
-        foreach (Button button in buttons)
-        {
-            if (button == null || !TryGetPageIndex(button.gameObject.name, out _))
-                continue;
-
-            pageButtons.Add(button);
-        }
-
-        pageButtons.Sort((a, b) =>
-            GetPageIndex(a.gameObject.name).CompareTo(GetPageIndex(b.gameObject.name)));
-
-        foreach (Button button in pageButtons)
-        {
-            int pageIndex = GetPageIndex(button.gameObject.name);
-            DisablePersistentOnClick(button);
-            button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => SwitchToPage(pageIndex));
-        }
+        new ScenePageButtonBinder(SwitchToPage).Bind();
     }
 
     private void BindNavigationButtons()
     {
-        BindNavigationButton("dukaforma", "petsesn");
-        BindNavigationButton("inventar", "inventory");
-        BindNavigationButton("inventory", "inventory");
-        BindNavigationButton("ifopropersonaj", "informForPerson");
+        SceneNavigationButtonBinder binder = new SceneNavigationButtonBinder(new SceneNavigator().LoadSceneByName);
+        binder.BindFirst(AppConfig.Scenes.WildShape, "dukaforma");
+        binder.BindFirst(AppConfig.Scenes.Inventory, "inventar");
+        binder.BindFirst(AppConfig.Scenes.Inventory, "inventory");
+        binder.BindFirst(AppConfig.Scenes.CharacterInfo, "ifopropersonaj");
     }
-
-    private void BindNavigationButton(string buttonName, string sceneName)
-    {
-        Button button = FindButtonByName(buttonName);
-        if (button == null)
-            return;
-
-        DisablePersistentOnClick(button);
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => load_scenes.LoadSceneByName(sceneName));
-    }
-
-    private void DisablePersistentOnClick(Button button)
-    {
-        if (button == null)
-            return;
-
-        for (int i = 0; i < button.onClick.GetPersistentEventCount(); i++)
-            button.onClick.SetPersistentListenerState(i, UnityEventCallState.Off);
-    }
-
-    private Button FindButtonByName(string objectName)
-    {
-        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include);
-        foreach (Button button in buttons)
-            if (button != null && NameMatches(button.gameObject.name, objectName))
-                return button;
-
-        return null;
-    }
-
     private void SwitchToPage(int pageIndex)
     {
         KeepMainPagePanelActive();
@@ -120,21 +47,14 @@ public class SpellbookPageSwitcher : MonoBehaviour
             return;
         }
 
-        CharacterSceneAutoSave autoSave = FindAnyObjectByType<CharacterSceneAutoSave>();
-        if (autoSave != null)
-        {
-            autoSave.SwitchSceneData(sceneDataName);
-            UpdatePageTitle(pageIndex);
-            return;
-        }
 
-        DndSaveManager.EnsureExists().SetActiveSceneDataName(sceneDataName);
+        saveManager.SetActiveSceneDataName(sceneDataName);
         UpdatePageTitle(pageIndex);
     }
 
     private void UpdatePageTitle(int pageIndex)
     {
-        string title = RuntimeLocalization.EnsureExists().Translate("\u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u2116" + (pageIndex + 1));
+        string title = localization.Translate("\u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u2116" + (pageIndex + 1));
 
         Text[] texts = FindObjectsByType<Text>(FindObjectsInactive.Include);
         foreach (Text text in texts)
@@ -170,17 +90,6 @@ public class SpellbookPageSwitcher : MonoBehaviour
                transform.name.StartsWith("Text", StringComparison.OrdinalIgnoreCase);
     }
 
-    private bool NameMatches(string actualName, string expectedName)
-    {
-        return GetBaseName(actualName).Equals(expectedName, StringComparison.OrdinalIgnoreCase);
-    }
-
-    private string GetBaseName(string name)
-    {
-        int suffixStart = name.LastIndexOf(" (", StringComparison.Ordinal);
-        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
-    }
-
     private void KeepMainPagePanelActive()
     {
         Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
@@ -189,29 +98,4 @@ public class SpellbookPageSwitcher : MonoBehaviour
                 transform.gameObject.SetActive(true);
     }
 
-    private static int GetPageIndex(string objectName)
-    {
-        TryGetPageIndex(objectName, out int pageIndex);
-        return pageIndex;
-    }
-
-    private static bool TryGetPageIndex(string objectName, out int pageIndex)
-    {
-        pageIndex = 0;
-        if (string.IsNullOrWhiteSpace(objectName))
-            return false;
-
-        objectName = objectName.Trim();
-        if (string.Equals(objectName, PageButtonPrefix, StringComparison.OrdinalIgnoreCase))
-            return true;
-
-        if (!objectName.StartsWith(PageButtonPrefix + " (", StringComparison.OrdinalIgnoreCase) ||
-            !objectName.EndsWith(")", StringComparison.Ordinal))
-        {
-            return false;
-        }
-
-        string numberText = objectName.Substring(PageButtonPrefix.Length + 2, objectName.Length - PageButtonPrefix.Length - 3);
-        return int.TryParse(numberText, out pageIndex);
-    }
 }

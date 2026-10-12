@@ -28,6 +28,16 @@ public static class TaruckBinaryCodec
     private static readonly byte[] Magic = Encoding.ASCII.GetBytes("TARUCKPK");
     private static readonly UTF8Encoding Utf8 = new UTF8Encoding(false, true);
 
+    public static bool HasMagic(byte[] bytes)
+    {
+        if (bytes == null || bytes.Length < Magic.Length)
+            return false;
+        for (int i = 0; i < Magic.Length; i++)
+            if (bytes[i] != Magic[i])
+                return false;
+        return true;
+    }
+
     private enum Kind : byte { Text = 1, Int = 2, UInt = 3, Float = 4, Bool = 5, Object = 6, List = 7 }
 
     private sealed class Field

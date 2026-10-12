@@ -4,20 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Owns inventory item import/export dialogs and the verified replacement flow.
-public sealed class InventoryItemTransferPanel
+internal sealed class InventoryItemTransferPanel
 {
     private InventoryItemCell owner;
+    private RuntimeLocalization localization;
+    private TaruckDialogPresenter dialogPresenter;
+    private readonly InventoryItemFileTransfer fileTransfer = new InventoryItemFileTransfer();
+    private readonly InventoryItemSerializer serializer = new InventoryItemSerializer();
     private Button exportButton;
     private Button importButton;
 
-    public void Initialize(InventoryItemCell cell, Button export, Button import)
+    internal void Initialize(InventoryItemCell cell, Button export, Button import, RuntimeLocalization textCatalog)
     {
         owner = cell;
+        localization = textCatalog;
+        dialogPresenter = new TaruckDialogPresenter(() => localization.CurrentLanguage);
         exportButton = export;
         importButton = import;
     }
 
-    public void BindButtons()
+    internal void BindButtons()
     {
         if (exportButton != null)
         {
@@ -32,13 +38,17 @@ public sealed class InventoryItemTransferPanel
         }
     }
 
+    private string DialogText(string ukrainian)
+    {
+        return localization != null ? localization.Translate(ukrainian) : ukrainian;
+    }
     private void ExportItem()
     {
         InventoryItemExportData data = owner.ReadCurrentData();
         if (string.IsNullOrWhiteSpace(data.itemName))
         {
-            TaruckImportReviewDialog.Show("Експорт",
-                TaruckImportReviewDialog.Text("Спочатку введіть назву предмета, щоб зберегти його у файл.",
+            dialogPresenter.Show("Експорт",
+                dialogPresenter.Text("Спочатку введіть назву предмета, щоб зберегти його у файл.",
                     "Enter an item name before saving it to a file."), "Закрити", () => { });
             return;
         }
@@ -53,12 +63,12 @@ public sealed class InventoryItemTransferPanel
 
                 try
                 {
-                    InventoryItemSerializer.WriteFile(paths[0], data, Application.version);
-                    TaruckImportReviewDialog.Show("Експорт", "Предмет збережено.", "Закрити", () => { });
+                    fileTransfer.Write(paths[0], data, Application.version);
+                    dialogPresenter.Show("Експорт", "Предмет збережено.", "Закрити", () => { });
                 }
                 catch (Exception exception)
                 {
-                    TaruckImportReviewDialog.Show("Помилка експорту", exception.Message, "Закрити", () => { });
+                    dialogPresenter.Show("Помилка експорту", exception.Message, "Закрити", () => { });
                 }
             },
             () => { },
@@ -66,15 +76,15 @@ public sealed class InventoryItemTransferPanel
             false,
             TaruckTransferFileUtility.DefaultFileBrowserPath(),
             fileName,
-            "Save item",
-            "Save"
+            DialogText("Зберегти предмет"),
+            DialogText("Зберегти")
         );
     }
 
     private void ImportItem()
     {
         FileBrowser.SetFilters(true, new FileBrowser.Filter(
-            TaruckImportReviewDialog.Text("Taruck або старий JSON", "Taruck or legacy JSON"),
+            dialogPresenter.Text("Taruck або старий JSON", "Taruck or legacy JSON"),
             ".titem", ".taruck-item", ".json"));
         FileBrowser.ShowLoadDialog(
             paths =>
@@ -85,22 +95,22 @@ public sealed class InventoryItemTransferPanel
                 byte[] bytes = null;
                 try
                 {
-                    InventoryItemExportData data = InventoryItemSerializer.ReadFile(paths[0], out bytes);
+                    InventoryItemExportData data = fileTransfer.Read(paths[0], out bytes);
                     InventoryItemExportData previous = owner.ReadCurrentData();
                     string current = string.IsNullOrWhiteSpace(previous.itemName)
-                        ? TaruckImportReviewDialog.Text("порожню комірку", "empty cell")
+                        ? dialogPresenter.Text("порожню комірку", "empty cell")
                         : "«" + previous.itemName + "»";
-                    string preview = TaruckImportReviewDialog.Text("Предмет: «", "Item: “") + data.itemName +
-                        TaruckImportReviewDialog.Text("»\nКатегорія: ", "”\nCategory: ") + data.category +
-                        TaruckImportReviewDialog.Text("\nОпис: ", "\nDescription: ") + data.itemDescription +
-                        TaruckImportReviewDialog.Text("\n\nЗамінити ", "\n\nReplace ") + current + "?";
-                    TaruckImportReviewDialog.Show("Перевірка предмета", preview, "Замінити",
+                    string preview = dialogPresenter.Text("Предмет: «", "Item: “") + data.itemName +
+                        dialogPresenter.Text("»\nКатегорія: ", "”\nCategory: ") + InventoryItemCategoryView.LabelFor(data.category, localization) +
+                        dialogPresenter.Text("\nОпис: ", "\nDescription: ") + data.itemDescription +
+                        dialogPresenter.Text("\n\nЗамінити ", "\n\nReplace ") + current + "?";
+                    dialogPresenter.Show("Перевірка предмета", preview, "Замінити",
                         () => ApplyImportedItem(data, previous));
                 }
                 catch (Exception exception)
                 {
-                    TaruckImportReviewDialog.Show("Помилка імпорту",
-                        TaruckImportReviewDialog.ImportError(exception, bytes, TaruckFileType.ItemExport),
+                    dialogPresenter.Show("Помилка імпорту",
+                        dialogPresenter.ImportError(exception, bytes, TaruckFileType.ItemExport),
                         "Закрити", () => { });
                 }
             },
@@ -109,8 +119,8 @@ public sealed class InventoryItemTransferPanel
             false,
             TaruckTransferFileUtility.DefaultFileBrowserPath(),
             null,
-            "Select item",
-            "Select"
+            DialogText("Виберіть предмет"),
+            DialogText("Вибрати")
         );
     }
 
@@ -125,15 +135,15 @@ public sealed class InventoryItemTransferPanel
             if (saveManager != null && !string.IsNullOrEmpty(saveManager.SaveError))
             {
                 owner.ApplyData(previous, false);
-                InventoryItemSerializer.WriteScene(saveManager.GetActiveSceneData(), owner.CellKey, previous);
+                serializer.WriteScene(saveManager.GetActiveSceneData(), owner.CellKey, previous);
                 throw new System.IO.IOException(saveManager.SaveError);
             }
-            TaruckImportReviewDialog.Show("Імпорт завершено", "Предмет завантажено.", "Закрити", () => { });
+            dialogPresenter.Show("Імпорт завершено", "Предмет завантажено.", "Закрити", () => { });
         }
         catch (Exception exception)
         {
             owner.ApplyData(previous, false);
-            TaruckImportReviewDialog.Show("Помилка імпорту", exception.Message, "Закрити", () => { });
+            dialogPresenter.Show("Помилка імпорту", exception.Message, "Закрити", () => { });
         }
     }
 

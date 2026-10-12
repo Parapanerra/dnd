@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-public static class DiceExpressionEvaluator
+internal static class DiceExpressionEvaluator
 {
     public static string RollDice(string equation)
     {

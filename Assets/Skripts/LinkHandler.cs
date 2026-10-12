@@ -4,28 +4,32 @@ using System.Collections.Generic;
 
 public class LinkHandler : MonoBehaviour
 {
-    [SerializeField] private List<Button> linkButtons; // Список кнопок
-    [SerializeField] private List<string> urls; // Список URL-адрес
+    [SerializeField] private List<Button> linkButtons;
+    [SerializeField] private List<string> urls;
 
-    void Start()
+    private void Start()
     {
-        // Перевірка, чи всі елементи присутні у списках
+        if (linkButtons == null || urls == null)
+            return;
+
         for (int i = 0; i < linkButtons.Count; i++)
         {
-            if (i < urls.Count)
-            {
-                int index = i; // Локальна копія для замикання
-                linkButtons[i].onClick.AddListener(() => OpenLink(urls[index]));
-            }
-            else
+            if (linkButtons[i] == null)
+                continue;
+            if (i >= urls.Count)
             {
                 Debug.LogError("URL list is shorter than button list!");
+                continue;
             }
+
+            string url = urls[i];
+            linkButtons[i].onClick.AddListener(() => OpenLink(url));
         }
     }
 
-    void OpenLink(string url)
+    private void OpenLink(string url)
     {
-        Application.OpenURL(url); // Відкриття посилання в браузері
+        if (!string.IsNullOrWhiteSpace(url))
+            Application.OpenURL(url);
     }
 }

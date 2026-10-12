@@ -2,12 +2,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // Tracks which character scene is active and attaches its save controller.
-public sealed class CharacterSceneContext
+internal sealed class CharacterSceneContext
 {
     private string pendingSceneDataName;
     private string currentSceneDataName;
 
-    public void OnSceneLoaded(Scene scene)
+    internal void OnSceneLoaded(Scene scene)
     {
         currentSceneDataName = !string.IsNullOrWhiteSpace(pendingSceneDataName)
             ? pendingSceneDataName : scene.name;
@@ -16,25 +16,22 @@ public sealed class CharacterSceneContext
         if (!IsCharacterSheetScene(scene.name))
             return;
 
-        if (Object.FindAnyObjectByType<CharacterSheetManagerScene1>() != null)
-            return;
-
-        if (Object.FindAnyObjectByType<CharacterSceneAutoSave>() == null)
-            new GameObject("CharacterSceneAutoSave").AddComponent<CharacterSceneAutoSave>();
+        if (Object.FindAnyObjectByType<CharacterSheetManagerScene1>() == null)
+            new GameObject("CharacterSheetController").AddComponent<CharacterSheetManagerScene1>();
     }
 
-    public void SetPendingSceneDataName(string sceneName)
+    internal void SetPendingSceneDataName(string sceneName)
     {
         pendingSceneDataName = sceneName;
     }
 
-    public void SetActiveSceneDataName(string sceneName)
+    internal void SetActiveSceneDataName(string sceneName)
     {
         if (!string.IsNullOrWhiteSpace(sceneName))
             currentSceneDataName = sceneName;
     }
 
-    public string GetActiveSceneDataName()
+    internal string GetActiveSceneDataName()
     {
         return !string.IsNullOrWhiteSpace(currentSceneDataName)
             ? currentSceneDataName : SceneManager.GetActiveScene().name;
@@ -42,11 +39,11 @@ public sealed class CharacterSceneContext
 
     private static bool IsCharacterSheetScene(string sceneName)
     {
-        return sceneName.Contains("cartaPersonaj") ||
-               sceneName.Contains("inventory") ||
-               sceneName.Contains("informForPerson") ||
-               sceneName.Contains("Spels") ||
-               sceneName.Contains("spelBook") ||
-               sceneName.Contains("petsesn");
+        return sceneName == AppConfig.Scenes.CharacterSheet ||
+               sceneName == AppConfig.Scenes.Inventory ||
+               sceneName == AppConfig.Scenes.CharacterInfo ||
+               sceneName == AppConfig.Scenes.Spells ||
+               sceneName == AppConfig.Scenes.Spellbook ||
+               sceneName == AppConfig.Scenes.WildShape;
     }
 }

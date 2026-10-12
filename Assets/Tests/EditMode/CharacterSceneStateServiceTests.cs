@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using NUnit.Framework;
 
 public class CharacterSceneStateServiceTests
@@ -8,6 +9,7 @@ public class CharacterSceneStateServiceTests
     {
         Type service = Type.GetType("CharacterSceneStateService, Assembly-CSharp");
         Assert.NotNull(service);
+        object instance = Activator.CreateInstance(service, true);
 
         CharacterData character = new CharacterData("test");
         CharacterSceneData first = character.GetSceneData("cartaPersonaj 1");
@@ -17,7 +19,7 @@ public class CharacterSceneStateServiceTests
         second.SetString("note", "second");
         inventory.SetString("note", "keep");
 
-        service.GetMethod("ClearFamily").Invoke(null, new object[] { character, "cartaPersonaj 1" });
+        service.GetMethod("ClearFamily", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(instance, new object[] { character, "cartaPersonaj 1" });
 
         Assert.AreEqual("", first.GetString("note"));
         Assert.AreEqual("", second.GetString("note"));

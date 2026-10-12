@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -32,30 +31,19 @@ public class WildShapeTitleUpdater : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (!scene.name.Contains("petsesn"))
+        if (load_scenes.GetVisualSceneName(scene.name) != AppConfig.Scenes.WildShape)
             return;
 
         Apply();
         BindSpellbookButton();
-        StartCoroutine(ApplyAfterLoad());
-    }
-
-    private IEnumerator ApplyAfterLoad()
-    {
-        for (int i = 0; i < AppConfig.ToggleSequences.WildShapeButtonCount; i++)
-        {
-            yield return null;
-            Apply();
-            BindSpellbookButton();
-        }
     }
 
     public void Apply()
     {
         if (saveManager == null)
-            saveManager = DndSaveManager.EnsureExists();
+            saveManager = new RuntimeManagerResolver().SaveManager();
         if (localization == null)
-            localization = RuntimeLocalization.EnsureExists();
+            localization = new RuntimeManagerResolver().Localization();
 
         int number = GetWildShapeNumber();
         string title = GetWildShapeTitle(number);
@@ -112,7 +100,7 @@ public class WildShapeTitleUpdater : MonoBehaviour
             ? saveManager.GetActiveSceneDataName()
             : SceneManager.GetActiveScene().name;
 
-        if (string.IsNullOrWhiteSpace(sceneDataName) || sceneDataName == "petsesn")
+        if (string.IsNullOrWhiteSpace(sceneDataName) || sceneDataName == AppConfig.Scenes.WildShape)
             return 1;
 
         string prefix = "petsesn ";
@@ -169,33 +157,9 @@ public class WildShapeTitleUpdater : MonoBehaviour
 
     private void BindSpellbookButton()
     {
-        Button[] buttons = Resources.FindObjectsOfTypeAll<Button>();
-        foreach (Button button in buttons)
-        {
-            if (button == null || !IsSceneObject(button.gameObject) || !IsSpellbookButton(button.gameObject.name))
-                continue;
-
-            DisablePersistentOnClick(button);
-            button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => load_scenes.LoadSceneByName("spelBook"));
-        }
-    }
-
-    private static bool IsSpellbookButton(string objectName)
-    {
-        string baseName = GetBaseName(objectName);
-        return baseName == "spelbook" || baseName == "spellbook";
-    }
-
-    private static void DisablePersistentOnClick(Button button)
-    {
-        for (int i = 0; i < button.onClick.GetPersistentEventCount(); i++)
-            button.onClick.SetPersistentListenerState(i, UnityEngine.Events.UnityEventCallState.Off);
-    }
-
-    private static string GetBaseName(string name)
-    {
-        int suffixStart = name.LastIndexOf(" (", System.StringComparison.Ordinal);
-        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
+        new SceneNavigationButtonBinder(
+            new SceneNavigator().LoadSceneByName, Resources.FindObjectsOfTypeAll<Button>())
+            .BindAll(AppConfig.Scenes.Spellbook, button => IsSceneObject(button.gameObject),
+                "spelbook", "spellbook");
     }
 }

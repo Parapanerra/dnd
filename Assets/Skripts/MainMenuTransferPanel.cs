@@ -9,8 +9,13 @@ using UnityEngine.UI;
 // Owns the import/export panel and its selection state.
 public class MainMenuTransferPanel : MonoBehaviour
 {
+    private readonly TaruckCharacterTransfer characterTransfer = new TaruckCharacterTransfer();
+    private readonly CharacterSingleImportService singleImport = new CharacterSingleImportService();
+    private readonly MainMenuSceneLookup sceneLookup = new MainMenuSceneLookup();
     private MainMenuManager owner;
     private DndSaveManager saveManager;
+    private TaruckDialogPresenter dialogPresenter;
+    private MainMenuCharacterLabels characterLabels;
     private Button exportButton;
     private Button importButton;
     private Button exportOneCharacterButton;
@@ -21,19 +26,22 @@ public class MainMenuTransferPanel : MonoBehaviour
     private GameObject savePanel;
     private bool oneCharacterDropdownHasSelection;
 
-    public void Initialize(MainMenuManager manager, DndSaveManager dataManager)
+    internal void Initialize(MainMenuManager manager, DndSaveManager dataManager, MainMenuCharacterLabels labels,
+        RuntimeLocalization localization)
     {
         owner = manager;
         saveManager = dataManager;
+        characterLabels = labels;
+        dialogPresenter = new TaruckDialogPresenter(() => localization.CurrentLanguage);
     }
 
-    public void HideSavePanel()
+    internal void HideSavePanel()
     {
         if (savePanel != null)
             savePanel.SetActive(false);
     }
 
-    public void BindButtons()
+    internal void BindButtons()
     {
         if (exportButton != null)
         {
@@ -81,23 +89,23 @@ public class MainMenuTransferPanel : MonoBehaviour
 
     }
 
-    public void Wire()
+    internal void Wire()
     {
-        Button downloadButton = MainMenuSceneLookup.FindFirstButtonInScene("dowload", "download");
+        Button downloadButton = sceneLookup.FindFirstButtonInScene("dowload", "download");
         if (downloadButton != null)
             exportButton = downloadButton;
 
-        Button uploadButton = MainMenuSceneLookup.FindButtonInScene("upload");
+        Button uploadButton = sceneLookup.FindButtonInScene("upload");
         if (uploadButton != null)
             importButton = uploadButton;
 
-        exportOneCharacterButton = MainMenuSceneLookup.FindButtonInScene("downLoadOne");
-        importOneCharacterButton = MainMenuSceneLookup.FindButtonInScene("upLoadOne");
-        oneCharacterDropdown = MainMenuSceneLookup.FindDropdownInScene("choisSeveFailPersonsj");
-        oneCharacterTmpDropdown = MainMenuSceneLookup.FindTmpDropdownInScene("choisSeveFailPersonsj");
-        openSavePanelButton = MainMenuSceneLookup.FindButtonInScene("openPanelSaveBatton");
+        exportOneCharacterButton = sceneLookup.FindButtonInScene("downLoadOne");
+        importOneCharacterButton = sceneLookup.FindButtonInScene("upLoadOne");
+        oneCharacterDropdown = sceneLookup.FindDropdownInScene("choisSeveFailPersonsj");
+        oneCharacterTmpDropdown = sceneLookup.FindTmpDropdownInScene("choisSeveFailPersonsj");
+        openSavePanelButton = sceneLookup.FindButtonInScene("openPanelSaveBatton");
 
-        Transform panelTransform = MainMenuSceneLookup.FindTransformInScene("openPanelSavePanel");
+        Transform panelTransform = sceneLookup.FindTransformInScene("openPanelSavePanel");
         savePanel = panelTransform != null ? panelTransform.gameObject : null;
 
         RefreshOneCharacterDropdown();
@@ -115,12 +123,12 @@ public class MainMenuTransferPanel : MonoBehaviour
                 {
                     try
                     {
-                        TaruckCharacterTransfer.WriteCollection(paths[0], saveManager, Application.version);
-                        TaruckImportReviewDialog.Show("Експорт", "Колекцію персонажів збережено.", "Закрити", () => { });
+                        characterTransfer.WriteCollection(paths[0], saveManager, Application.version);
+                        dialogPresenter.Show("Експорт", "Колекцію персонажів збережено.", "Закрити", () => { });
                     }
                     catch (System.Exception exception)
                     {
-                        TaruckImportReviewDialog.Show("Помилка експорту", exception.Message, "Закрити", () => { });
+                        dialogPresenter.Show("Помилка експорту", exception.Message, "Закрити", () => { });
                     }
                 }
             },
@@ -129,8 +137,8 @@ public class MainMenuTransferPanel : MonoBehaviour
             false,
             TaruckTransferFileUtility.DefaultFileBrowserPath(),
             "AllCharacters.tall",
-            TaruckImportReviewDialog.Text("Зберегти файл", "Save file"),
-            TaruckImportReviewDialog.Text("Зберегти", "Save")
+            dialogPresenter.Text("Зберегти файл", "Save file"),
+            dialogPresenter.Text("Зберегти", "Save")
         );
     }
 
@@ -138,7 +146,7 @@ public class MainMenuTransferPanel : MonoBehaviour
     {
 
         FileBrowser.SetFilters(true, new FileBrowser.Filter(
-            TaruckImportReviewDialog.Text("Taruck або старий JSON", "Taruck or legacy JSON"),
+            dialogPresenter.Text("Taruck або старий JSON", "Taruck or legacy JSON"),
             ".tall", ".taruck-save", ".json"));
         FileBrowser.ShowLoadDialog(
             (paths) =>
@@ -148,23 +156,23 @@ public class MainMenuTransferPanel : MonoBehaviour
                 byte[] bytes = null;
                 try
                 {
-                    AppSaveData importedData = TaruckCharacterTransfer.ReadCollection(paths[0], out bool binary, out bytes);
-                    string preview = (binary ? "Taruck v1" : TaruckImportReviewDialog.Text("Старий JSON", "Legacy JSON")) +
-                        TaruckImportReviewDialog.Text("\nПерсонажів: ", "\nCharacters: ") + importedData.characters.Count;
+                    AppSaveData importedData = characterTransfer.ReadCollection(paths[0], out bool binary, out bytes);
+                    string preview = (binary ? "Taruck v1" : dialogPresenter.Text("Старий JSON", "Legacy JSON")) +
+                        dialogPresenter.Text("\nПерсонажів: ", "\nCharacters: ") + importedData.characters.Count;
                     for (int i = 0; i < Mathf.Min(importedData.characters.Count, 50); i++)
                         preview += "\n• " + importedData.characters[i].characterName;
                     if (importedData.characters.Count > 50)
-                        preview += TaruckImportReviewDialog.Text("\n… ще ", "\n… and ") + (importedData.characters.Count - 50);
-                    TaruckImportReviewDialog.Show("Перевірка імпорту", preview +
-                        TaruckImportReviewDialog.Text("\n\nЗамінити всю колекцію чи додати персонажів?",
+                        preview += dialogPresenter.Text("\n… ще ", "\n… and ") + (importedData.characters.Count - 50);
+                    dialogPresenter.Show("Перевірка імпорту", preview +
+                        dialogPresenter.Text("\n\nЗамінити всю колекцію чи додати персонажів?",
                             "\n\nReplace the whole collection or add these characters?"),
                         "Замінити все", () => ApplyCollectionImport(saveManager, importedData, false),
                         "Додати", () => ApplyCollectionImport(saveManager, importedData, true));
                 }
                 catch (System.Exception exception)
                 {
-                    TaruckImportReviewDialog.Show("Помилка імпорту",
-                        TaruckImportReviewDialog.ImportError(exception, bytes, TaruckFileType.FullSaveExport),
+                    dialogPresenter.Show("Помилка імпорту",
+                        dialogPresenter.ImportError(exception, bytes, TaruckFileType.FullSaveExport),
                         "Закрити", () => { });
                 }
             },
@@ -173,8 +181,8 @@ public class MainMenuTransferPanel : MonoBehaviour
             false,
             TaruckTransferFileUtility.DefaultFileBrowserPath(),
             null,
-            TaruckImportReviewDialog.Text("Виберіть файл Taruck або JSON", "Select Taruck or JSON file"),
-            TaruckImportReviewDialog.Text("Вибрати", "Select")
+            dialogPresenter.Text("Виберіть файл Taruck або JSON", "Select Taruck or JSON file"),
+            dialogPresenter.Text("Вибрати", "Select")
         );
     }
 
@@ -195,12 +203,12 @@ public class MainMenuTransferPanel : MonoBehaviour
 
                 try
                 {
-                    TaruckCharacterTransfer.WriteCharacter(paths[0], character, Application.version);
-                    TaruckImportReviewDialog.Show("Експорт", "Персонажа збережено.", "Закрити", () => { });
+                    characterTransfer.WriteCharacter(paths[0], character, Application.version);
+                    dialogPresenter.Show("Експорт", "Персонажа збережено.", "Закрити", () => { });
                 }
                 catch (System.Exception exception)
                 {
-                    TaruckImportReviewDialog.Show("Помилка експорту", exception.Message, "Закрити", () => { });
+                    dialogPresenter.Show("Помилка експорту", exception.Message, "Закрити", () => { });
                 }
             },
             () => { },
@@ -208,8 +216,8 @@ public class MainMenuTransferPanel : MonoBehaviour
             false,
             TaruckTransferFileUtility.DefaultFileBrowserPath(),
             fileName,
-            TaruckImportReviewDialog.Text("Зберегти персонажа", "Save character"),
-            TaruckImportReviewDialog.Text("Зберегти", "Save")
+            dialogPresenter.Text("Зберегти персонажа", "Save character"),
+            dialogPresenter.Text("Зберегти", "Save")
         );
     }
 
@@ -217,7 +225,7 @@ public class MainMenuTransferPanel : MonoBehaviour
     {
 
         FileBrowser.SetFilters(true, new FileBrowser.Filter(
-            TaruckImportReviewDialog.Text("Taruck або старий JSON", "Taruck or legacy JSON"),
+            dialogPresenter.Text("Taruck або старий JSON", "Taruck or legacy JSON"),
             ".tchar", ".taruck-character", ".json", ".dndchar"));
         FileBrowser.ShowLoadDialog(
             (paths) =>
@@ -228,16 +236,16 @@ public class MainMenuTransferPanel : MonoBehaviour
                 byte[] bytes = null;
                 try
                 {
-                    CharacterData importedCharacter = TaruckCharacterTransfer.ReadCharacter(paths[0], out bytes);
-                    TaruckImportReviewDialog.Show("Перевірка персонажа",
-                        TaruckImportReviewDialog.Text("Імпортувати персонажа «", "Import character “") +
-                            importedCharacter.characterName + TaruckImportReviewDialog.Text("»?", "”?"),
+                    CharacterData importedCharacter = characterTransfer.ReadCharacter(paths[0], out bytes);
+                    dialogPresenter.Show("Перевірка персонажа",
+                        dialogPresenter.Text("Імпортувати персонажа «", "Import character “") +
+                            importedCharacter.characterName + dialogPresenter.Text("»?", "”?"),
                         "Додати", () => ApplyCharacterImport(saveManager, importedCharacter));
                 }
                 catch (System.Exception exception)
                 {
-                    TaruckImportReviewDialog.Show("Помилка імпорту",
-                        TaruckImportReviewDialog.ImportError(exception, bytes, TaruckFileType.CharacterExport),
+                    dialogPresenter.Show("Помилка імпорту",
+                        dialogPresenter.ImportError(exception, bytes, TaruckFileType.CharacterExport),
                         "Закрити", () => { });
                 }
             },
@@ -246,8 +254,8 @@ public class MainMenuTransferPanel : MonoBehaviour
             false,
             TaruckTransferFileUtility.DefaultFileBrowserPath(),
             null,
-            TaruckImportReviewDialog.Text("Виберіть файл персонажа", "Select character file"),
-            TaruckImportReviewDialog.Text("Вибрати", "Select")
+            dialogPresenter.Text("Виберіть файл персонажа", "Select character file"),
+            dialogPresenter.Text("Вибрати", "Select")
         );
     }
 
@@ -255,12 +263,12 @@ public class MainMenuTransferPanel : MonoBehaviour
     {
         if (!manager.TryImportCollection(imported, merge, out string error))
         {
-            TaruckImportReviewDialog.Show("Помилка імпорту", error, "Закрити", () => { });
+            dialogPresenter.Show("Помилка імпорту", error, "Закрити", () => { });
             return;
         }
         owner.RefreshCharacterList();
-        TaruckImportReviewDialog.Show("Імпорт завершено",
-            TaruckImportReviewDialog.Text("Персонажів у колекції: ", "Characters in collection: ") + manager.GetCharacterCount(),
+        dialogPresenter.Show("Імпорт завершено",
+            dialogPresenter.Text("Персонажів у колекції: ", "Characters in collection: ") + manager.GetCharacterCount(),
             "Закрити", () => { });
     }
 
@@ -268,13 +276,13 @@ public class MainMenuTransferPanel : MonoBehaviour
     {
         try
         {
-            string importedId = TaruckCharacterTransfer.ImportCharacter(manager, imported, Application.version);
+            string importedId = singleImport.Import(manager, imported, Application.version);
             owner.RefreshCharacterList();
             owner.OpenImportedCharacter(importedId);
         }
         catch (System.Exception exception)
         {
-            TaruckImportReviewDialog.Show("Помилка імпорту", exception.Message, "Закрити", () => { });
+            dialogPresenter.Show("Помилка імпорту", exception.Message, "Закрити", () => { });
         }
     }
 
@@ -294,7 +302,7 @@ public class MainMenuTransferPanel : MonoBehaviour
         return saveManager.GetCharacterAt(index);
     }
 
-    public void RefreshOneCharacterDropdown()
+    internal void RefreshOneCharacterDropdown()
     {
         List<string> options = new List<string>();
         bool hasCharacters = saveManager.GetCharacterCount() > 0;
@@ -303,11 +311,11 @@ public class MainMenuTransferPanel : MonoBehaviour
         if (hasCharacters)
         {
             foreach (CharacterData character in saveManager.GetCharactersSnapshot())
-                options.Add(MainMenuCharacterLabels.GetDisplayName(character));
+                options.Add(characterLabels.GetDisplayName(character));
         }
         else
         {
-            options.Add(MainMenuCharacterLabels.Localize("Немає персонажів"));
+            options.Add(characterLabels.Localize("Немає персонажів"));
         }
 
         if (oneCharacterDropdown != null)
@@ -402,10 +410,10 @@ public class MainMenuTransferPanel : MonoBehaviour
     private void ApplyOneCharacterDropdownPlaceholder()
     {
         if (oneCharacterDropdown != null && oneCharacterDropdown.captionText != null)
-            oneCharacterDropdown.captionText.text = MainMenuCharacterLabels.Localize("Оберіть персонажа");
+            oneCharacterDropdown.captionText.text = characterLabels.Localize("Оберіть персонажа");
 
         if (oneCharacterTmpDropdown != null && oneCharacterTmpDropdown.captionText != null)
-            oneCharacterTmpDropdown.captionText.text = MainMenuCharacterLabels.Localize("Оберіть персонажа");
+            oneCharacterTmpDropdown.captionText.text = characterLabels.Localize("Оберіть персонажа");
     }
 
     private void ApplySelectedOneCharacterDropdownCaption()
@@ -414,7 +422,7 @@ public class MainMenuTransferPanel : MonoBehaviour
         if (character == null)
             return;
 
-        string label = MainMenuCharacterLabels.GetDisplayName(character);
+        string label = characterLabels.GetDisplayName(character);
 
         if (oneCharacterDropdown != null && oneCharacterDropdown.captionText != null)
             oneCharacterDropdown.captionText.text = label;

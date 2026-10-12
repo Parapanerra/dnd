@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class CalculatorPotionController : MonoBehaviour
 {
     private const string PotionSaveKeyPrefix = "PotionCount_";
-    private readonly string[] potionFormulas = (string[])AppConfig.Calculator.PotionFormulas.Clone();
-    private readonly int[] potionCounts = new int[AppConfig.Calculator.PotionTypeCount];
+    private readonly HealingPotionCatalog catalog = new HealingPotionCatalog();
+    private int[] potionCounts;
     private CalculatorManager owner;
     private DndSaveManager saveManager;
     private RuntimeLocalization localization;
@@ -17,14 +17,19 @@ public class CalculatorPotionController : MonoBehaviour
     private Button potionMinusButton;
     private Button potionUseButton;
 
-    public void Initialize(CalculatorManager calculator, DndSaveManager dataManager, RuntimeLocalization textCatalog)
+    private void Awake()
+    {
+        potionCounts = new int[catalog.Count];
+    }
+
+    internal void Initialize(CalculatorManager calculator, DndSaveManager dataManager, RuntimeLocalization textCatalog)
     {
         owner = calculator;
         saveManager = dataManager;
         localization = textCatalog;
     }
 
-    public void Wire()
+    internal void Wire()
     {
         Transform[] transforms = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform item in transforms)
@@ -134,7 +139,7 @@ public class CalculatorPotionController : MonoBehaviour
             return;
         }
 
-        string rolledExpression = DiceExpressionEvaluator.RollDice(potionFormulas[index]);
+        string rolledExpression = DiceExpressionEvaluator.RollDice(catalog.GetFormula(index));
         if (!DiceExpressionEvaluator.TryEvaluate(rolledExpression, out double rollResult))
         {
             owner.ShowHpResult(owner.GetCalculatorText("potionError"));
@@ -146,7 +151,7 @@ public class CalculatorPotionController : MonoBehaviour
         potionCounts[index]--;
         SavePotionCounts();
         RefreshPotionDropdownOptions();
-        owner.ShowHpResult(owner.GetHealedText(healed) + " (" + potionFormulas[index] + "=" + roll + ")");
+        owner.ShowHpResult(owner.GetHealedText(healed) + " (" + catalog.GetFormula(index) + "=" + roll + ")");
         owner.ResetHpInputState();
     }
 
@@ -161,7 +166,7 @@ public class CalculatorPotionController : MonoBehaviour
         return Mathf.Clamp(potionDropdown.value - 1, 0, potionCounts.Length - 1);
     }
 
-    public void RefreshPotionDropdownOptions()
+    internal void RefreshPotionDropdownOptions()
     {
         if (potionDropdown == null)
             return;
@@ -170,58 +175,11 @@ public class CalculatorPotionController : MonoBehaviour
         potionDropdown.options.Clear();
         potionDropdown.options.Add(new Dropdown.OptionData(owner.GetCalculatorText("choosePotion")));
         for (int i = 0; i < potionCounts.Length; i++)
-            potionDropdown.options.Add(new Dropdown.OptionData(GetPotionName(i) + " x" + potionCounts[i]));
+            potionDropdown.options.Add(new Dropdown.OptionData(catalog.GetName(i, localization.CurrentLanguage) + " x" + potionCounts[i]));
 
         potionDropdown.SetValueWithoutNotify(selectedDropdownValue);
         potionDropdown.RefreshShownValue();
     }
 
-    private string GetPotionName(int index)
-    {
-        AppLanguage language = localization.CurrentLanguage;
-        if (language == AppLanguage.English)
-        {
-            switch (index)
-            {
-                case 0:
-                    return "Potion of Healing";
-                case 1:
-                    return "Potion of Greater Healing";
-                case 2:
-                    return "Potion of Superior Healing";
-                case 3:
-                    return "Potion of Supreme Healing";
-            }
-        }
-
-        if (language == AppLanguage.Russian)
-        {
-            switch (index)
-            {
-                case 0:
-                    return "Зелье лечения";
-                case 1:
-                    return "Большое зелье лечения";
-                case 2:
-                    return "Улучшенное зелье лечения";
-                case 3:
-                    return "Высшее зелье лечения";
-            }
-        }
-
-        switch (index)
-        {
-            case 0:
-                return "Зілля лікування";
-            case 1:
-                return "Велике зілля лікування";
-            case 2:
-                return "Покращене зілля лікування";
-            case 3:
-                return "Найвище зілля лікування";
-            default:
-                return "Зілля";
-        }
-    }
 
 }

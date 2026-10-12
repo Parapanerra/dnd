@@ -4,6 +4,23 @@ using NUnit.Framework;
 public class TranslationCatalogTests
 {
     [Test]
+    public void ItemFileDialogHasUkrainianEnglishAndRussianLabels()
+    {
+        Type catalogType = Type.GetType("TranslationCatalog, Assembly-CSharp");
+        Type languageType = Type.GetType("AppLanguage, Assembly-CSharp");
+        Assert.NotNull(catalogType);
+        Assert.NotNull(languageType);
+
+        object catalog = Activator.CreateInstance(catalogType);
+        var translate = catalogType.GetMethod("Translate");
+        Assert.AreEqual("Зберегти предмет", translate.Invoke(catalog,
+            new[] { "Зберегти предмет", Enum.Parse(languageType, "Ukrainian") }));
+        Assert.AreEqual("Save item", translate.Invoke(catalog,
+            new[] { "Зберегти предмет", Enum.Parse(languageType, "English") }));
+        Assert.AreEqual("Сохранить предмет", translate.Invoke(catalog,
+            new[] { "Зберегти предмет", Enum.Parse(languageType, "Russian") }));
+    }
+    [Test]
     public void SwitchingLanguagesRecoversTheOriginalSource()
     {
         Type catalogType = Type.GetType("TranslationCatalog, Assembly-CSharp");

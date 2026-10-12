@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using NUnit.Framework;
 using TMPro;
 using UnityEditor.SceneManagement;
@@ -10,6 +11,14 @@ using UnityEngine.UI;
 public class SceneSaveControllerTests
 {
     private readonly List<GameObject> objects = new List<GameObject>();
+
+    private static List<T> Mutable<T>(SceneSaveController controller, string fieldName)
+    {
+        FieldInfo field = typeof(SceneSaveController).GetField(fieldName,
+            BindingFlags.Instance | BindingFlags.NonPublic);
+        Assert.NotNull(field);
+        return (List<T>)field.GetValue(controller);
+    }
 
     private T Create<T>(string id, string collection, int index) where T : Component
     {
@@ -28,6 +37,17 @@ public class SceneSaveControllerTests
     }
 
     [Test]
+    public void CollectedControlsCannotBeMutatedThroughPublicProperty()
+    {
+        var controller = new SceneSaveController();
+        var input = Create<InputField>("input", "inputData", 0);
+        Mutable<InputField>(controller, "inputFields").Add(input);
+
+        var exposed = (IList<InputField>)controller.InputFields;
+        Assert.Throws<NotSupportedException>(() => exposed.Clear());
+        Assert.AreEqual(1, controller.InputFields.Count);
+    }
+    [Test]
     public void SaveLoadResetAndEvents_PreserveAllSixControlTypes()
     {
         var controller = new SceneSaveController();
@@ -39,12 +59,12 @@ public class SceneSaveControllerTests
         var tmpDropdown = Create<TMP_Dropdown>("tmpDropdown", "dropdownData", 1);
         dropdown.options = new List<Dropdown.OptionData> { new Dropdown.OptionData("A"), new Dropdown.OptionData("B") };
         tmpDropdown.options = new List<TMP_Dropdown.OptionData> { new TMP_Dropdown.OptionData("A"), new TMP_Dropdown.OptionData("B") };
-        controller.InputFields.Add(input);
-        controller.TmpInputFields.Add(tmp);
-        controller.Toggles.Add(toggle);
-        controller.Sliders.Add(slider);
-        controller.Dropdowns.Add(dropdown);
-        controller.TmpDropdowns.Add(tmpDropdown);
+        Mutable<InputField>(controller, "inputFields").Add(input);
+        Mutable<TMP_InputField>(controller, "tmpInputFields").Add(tmp);
+        Mutable<Toggle>(controller, "toggles").Add(toggle);
+        Mutable<Slider>(controller, "sliders").Add(slider);
+        Mutable<Dropdown>(controller, "dropdowns").Add(dropdown);
+        Mutable<TMP_Dropdown>(controller, "tmpDropdowns").Add(tmpDropdown);
 
         input.text = "alpha";
         tmp.text = "beta";
@@ -99,7 +119,7 @@ public class SceneSaveControllerTests
         var controller = new SceneSaveController();
         var a = Create<InputField>("a", "inputData", 0);
         var b = Create<InputField>("b", "inputData", 1);
-        controller.InputFields.AddRange(new[] { b, a });
+        Mutable<InputField>(controller, "inputFields").AddRange(new[] { b, a });
         var first = new CharacterSceneData("first");
         first.inputData.AddRange(new[] { "first A", "first B" });
         var second = new CharacterSceneData("second");

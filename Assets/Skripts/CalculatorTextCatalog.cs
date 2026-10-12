@@ -1,6 +1,6 @@
-public static class CalculatorTextCatalog
+internal sealed class CalculatorTextCatalog
 {
-    public static string Get(string key, AppLanguage language)
+    internal string Get(string key, AppLanguage language)
     {
         bool english = language == AppLanguage.English;
         bool russian = language == AppLanguage.Russian;
@@ -30,6 +30,12 @@ public static class CalculatorTextCatalog
         }
 
         return key;
+    }
+
+    internal string PenaltyLabel(int penalty, AppLanguage language)
+    {
+        string label = language == AppLanguage.English ? "exhaustion" : language == AppLanguage.Russian ? "усталость" : "втома";
+        return " −" + penalty + " " + label;
     }
 
 }

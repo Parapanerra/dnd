@@ -5,18 +5,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Finds calculator controls and connects them to the calculation and HP actions.
-public sealed class CalculatorControlBinder
+internal sealed class CalculatorControlBinder
 {
     private readonly Transform host;
     private readonly Func<string, string> normalizeLabel;
     private readonly Func<string, bool> isCalculatorInput;
+    private readonly Func<string, bool> isHealthButton;
 
     public CalculatorControlBinder(Transform host, Func<string, string> normalizeLabel,
-        Func<string, bool> isCalculatorInput)
+        Func<string, bool> isCalculatorInput, Func<string, bool> isHealthButton)
     {
         this.host = host;
         this.normalizeLabel = normalizeLabel;
         this.isCalculatorInput = isCalculatorInput;
+        this.isHealthButton = isHealthButton;
     }
 
     public void ResolveDisplayTexts(ref Text equationText, ref Text resultText)
@@ -73,7 +75,7 @@ public sealed class CalculatorControlBinder
                 continue;
 
             string buttonName = normalizeLabel(button.gameObject.name);
-            if (!CalculatorHealthController.IsButtonName(buttonName))
+            if (!isHealthButton(buttonName))
                 continue;
 
             button.onClick.RemoveAllListeners();
@@ -93,7 +95,7 @@ public sealed class CalculatorControlBinder
         return host.parent != null ? host.parent : host;
     }
 
-    private static string GetButtonLabel(Button button)
+    private string GetButtonLabel(Button button)
     {
         if (button == null)
             return "";
@@ -104,7 +106,7 @@ public sealed class CalculatorControlBinder
         return tmpText != null ? tmpText.text.Trim() : "";
     }
 
-    private static int CompareDisplayTextCandidates(Text left, Text right)
+    private int CompareDisplayTextCandidates(Text left, Text right)
     {
         bool leftEmpty = left == null || string.IsNullOrWhiteSpace(left.text);
         bool rightEmpty = right == null || string.IsNullOrWhiteSpace(right.text);
@@ -113,7 +115,7 @@ public sealed class CalculatorControlBinder
         return right.rectTransform.position.y.CompareTo(left.rectTransform.position.y);
     }
 
-    private static bool IsInsideInteractiveControl(Transform transform)
+    private bool IsInsideInteractiveControl(Transform transform)
     {
         for (Transform current = transform; current != null; current = current.parent)
             if (current.GetComponent<Button>() != null || current.GetComponent<Dropdown>() != null ||
@@ -140,7 +142,7 @@ public sealed class CalculatorControlBinder
     private bool IsSpecialCalculatorButton(Button button)
     {
         string name = normalizeLabel(button.gameObject.name).ToLowerInvariant();
-        return CalculatorHealthController.IsButtonName(name) ||
+        return isHealthButton(name) ||
                name == "potionplus" || name == "potionminus" || name == "potionuse";
     }
 }

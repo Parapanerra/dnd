@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Owns HP calculator modes, their effects, and rest results.
-public sealed class CalculatorHealthController
+internal sealed class CalculatorHealthController
 {
     private enum Mode
     {
@@ -12,6 +12,13 @@ public sealed class CalculatorHealthController
         TemporaryHp,
         Damage,
         Heal
+    }
+
+    private CharacterRestService restService;
+
+    internal void Initialize(CharacterRestService restService)
+    {
+        this.restService = restService;
     }
 
     private Mode mode;
@@ -87,7 +94,7 @@ public sealed class CalculatorHealthController
 
     public string ApplyShortRest(HealthBar healthBar, Func<string, string> localizedText)
     {
-        CharacterRestResult result = CharacterRestService.ApplyShortRest(healthBar);
+        CharacterRestResult result = restService.ApplyShortRest(healthBar);
         if (!result.HasHealthBar)
             return localizedText("shortRest");
         if (!result.HasHitDice)
@@ -99,7 +106,7 @@ public sealed class CalculatorHealthController
 
     public string ApplyLongRest(HealthBar healthBar, Func<string, string> localizedText)
     {
-        CharacterRestResult result = CharacterRestService.ApplyLongRest(healthBar);
+        CharacterRestResult result = restService.ApplyLongRest(healthBar);
         return result.HasHealthBar ? FormatHealed(result.Healed, localizedText) : localizedText("longRest");
     }
 
@@ -129,12 +136,12 @@ public sealed class CalculatorHealthController
             resultText.color = textColor;
     }
 
-    public static string FormatHealed(int value, Func<string, string> localizedText)
+    internal string FormatHealed(int value, Func<string, string> localizedText)
     {
         return localizedText("healed") + "  " + value + " HP";
     }
 
-    public static bool IsButtonName(string label)
+    internal bool IsButtonName(string label)
     {
         switch (label.ToLowerInvariant())
         {
@@ -150,7 +157,7 @@ public sealed class CalculatorHealthController
         }
     }
 
-    public static HealthBar FindActiveHealthBar()
+    internal HealthBar FindActiveHealthBar()
     {
         HealthBar[] bars = UnityEngine.Object.FindObjectsByType<HealthBar>(FindObjectsInactive.Exclude);
         foreach (HealthBar bar in bars)

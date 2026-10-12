@@ -28,9 +28,11 @@ public sealed class LegacyJsonLoadResult
     }
 }
 
-public static class LegacyJsonSaveRepository
+public sealed class LegacyJsonSaveRepository
 {
-    public static LegacyJsonLoadResult Load(string primaryPath, string backupPath)
+    private readonly LegacyJsonImporter importer = new LegacyJsonImporter();
+
+    public LegacyJsonLoadResult Load(string primaryPath, string backupPath)
     {
         Exception primaryError = null;
         Exception backupError = null;
@@ -81,8 +83,8 @@ public static class LegacyJsonSaveRepository
         return new LegacyJsonLoadResult(null, LegacyJsonSaveSource.None, primaryError, backupError);
     }
 
-    public static AppSaveData Deserialize(string json)
+    public AppSaveData Deserialize(string json)
     {
-        return LegacyJsonImporter.FullSave(json);
+        return importer.FullSave(json);
     }
 }

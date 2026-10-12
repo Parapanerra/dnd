@@ -58828,9 +58828,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5267842383211732554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f44e424ffb2ad9c4ebb4aae4643609df, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f4d81d87a224f5e8a4140d495c2db4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 1
   panels:
   - {fileID: 9078325886498439820}
   - {fileID: 5805123748368666457}

@@ -1,0 +1,155 @@
+# Аудит скриптів A7
+
+Підсумковий перелік аудиту A7. Позначка означає перегляд призначення, викликів, `public/static`, дублювання та Unity GUID/UnityEvent; результати наведені нижче. Позначка ставиться лише після перегляду призначення, викликів, `public/static`, дублювання та Unity GUID/UnityEvent. 12 жовтня звірено 120/120 чинних скриптів; останній EditMode-прогін пройшов 104/104. Release APK `Logs/Taruck-A7-final.apk` зібрано й перевірено у BlueStacks: старий персонаж та предмет із зображенням, створення й збереження нового персонажа, імпорт старого JSON, темна рамка до вибору власної картинки та окремі заголовки діалогів імпорту. Повний 18-пунктовий core smoke Частини A не зараховано лише за цими перевірками.
+
+## Файли
+
+- [x] `Assets/Skripts/AdaptiveBackgroundFitter.cs`
+- [x] `Assets/Skripts/AppConfig.cs`
+- [x] `Assets/Skripts/CalculatorControlBinder.cs`
+- [x] `Assets/Skripts/CalculatorEasterEgg.cs`
+- [x] `Assets/Skripts/CalculatorExpressionInput.cs`
+- [x] `Assets/Skripts/CalculatorHealthController.cs`
+- [x] `Assets/Skripts/CalculatorManager.cs`
+- [x] `Assets/Skripts/CalculatorPotionController.cs`
+- [x] `Assets/Skripts/CalculatorResultEvaluator.cs`
+- [x] `Assets/Skripts/CalculatorTextCatalog.cs`
+- [x] `Assets/Skripts/CharacterCollectionImportService.cs`
+- [x] `Assets/Skripts/CharacterCollectionService.cs`
+- [x] `Assets/Skripts/CharacterNameFieldService.cs`
+- [x] `Assets/Skripts/CharacterPortraitManager.cs`
+- [x] `Assets/Skripts/CharacterRestSavedStateService.cs`
+- [x] `Assets/Skripts/CharacterRestService.cs`
+- [x] `Assets/Skripts/CharacterSceneDataSession.cs`
+- [x] `Assets/Skripts/CharacterSceneContext.cs`
+- [x] `Assets/Skripts/CharacterSceneMigrationService.cs`
+- [x] `Assets/Skripts/CharacterSceneSaveService.cs`
+- [x] `Assets/Skripts/CharacterSceneStateService.cs`
+- [x] `Assets/Skripts/CharacterSceneUiService.cs`
+- [x] `Assets/Skripts/CharacterSingleImportService.cs`
+- [x] `Assets/Skripts/CharacterSheetManagerScene1.cs`
+- [x] `Assets/Skripts/DeathSaveToggleSequence.cs`
+- [x] `Assets/Skripts/DiceExpressionEvaluator.cs`
+- [x] `Assets/Skripts/DndSaveManager.cs`
+- [x] `Assets/Skripts/Domain/SaveDataModels.cs`
+- [x] `Assets/Skripts/Domain/SaveDataNormalizer.cs`
+- [x] `Assets/Skripts/DoubleClickInputFieldActivator.cs`
+- [x] `Assets/Skripts/DropdownManager.cs`
+- [x] `Assets/Skripts/DropdownVisibilityController.cs`
+- [x] `Assets/Skripts/Editor/InputFieldTabOrderTool.cs`
+- [x] `Assets/Skripts/Editor/LegacyFieldMapTool.cs`
+- [x] `Assets/Skripts/Editor/MenuSceneLayout.cs`
+- [x] `Assets/Skripts/Editor/MenuSceneSetupTool.cs`
+- [x] `Assets/Skripts/Editor/MenuSceneUiFactory.cs`
+- [x] `Assets/Skripts/Editor/SceneRoleMigration.cs`
+- [x] `Assets/Skripts/ExhaustionEffects.cs`
+- [x] `Assets/Skripts/GalleryImagePicker.cs`
+- [x] `Assets/Skripts/HealingPotionCatalog.cs`
+- [x] `Assets/Skripts/HealthBar.cs`
+- [x] `Assets/Skripts/HealthBar1.cs`
+- [x] `Assets/Skripts/HealthBarPersistence.cs`
+- [x] `Assets/Skripts/HealthBarView.cs`
+- [x] `Assets/Skripts/InputFieldTabNavigation.cs`
+- [x] `Assets/Skripts/InputFieldTabOrder.cs`
+- [x] `Assets/Skripts/InventoryItemCategoryView.cs`
+- [x] `Assets/Skripts/InventoryItemCell.cs`
+- [x] `Assets/Skripts/InventoryItemFileTransfer.cs`
+- [x] `Assets/Skripts/InventoryItemImageController.cs`
+- [x] `Assets/Skripts/InventoryItemSerializer.cs`
+- [x] `Assets/Skripts/InventoryItemTransferPanel.cs`
+- [x] `Assets/Skripts/InventoryPageManager.cs`
+- [x] `Assets/Skripts/InventorySubmenuController.cs`
+- [x] `Assets/Skripts/LegacySceneIndexMap.cs`
+- [x] `Assets/Skripts/LinkHandler.cs`
+- [x] `Assets/Skripts/load_scenes.cs`
+- [x] `Assets/Skripts/LocalizedIgnore.cs`
+- [x] `Assets/Skripts/LocalizedText.cs`
+- [x] `Assets/Skripts/LocalizedTextMesh.cs`
+- [x] `Assets/Skripts/LocalizedTextSource.cs`
+- [x] `Assets/Skripts/LocalizedTmpText.cs`
+- [x] `Assets/Skripts/MainMenuCharacterButtonFactory.cs`
+- [x] `Assets/Skripts/MainMenuCharacterLabels.cs`
+- [x] `Assets/Skripts/MainMenuCharacterListView.cs`
+- [x] `Assets/Skripts/MainMenuLanguageSelector.cs`
+- [x] `Assets/Skripts/MainMenuManager.cs`
+- [x] `Assets/Skripts/MainMenuSceneLookup.cs`
+- [x] `Assets/Skripts/MainMenuTransferPanel.cs`
+- [x] `Assets/Skripts/ManualLocalizedText.cs`
+- [x] `Assets/Skripts/OverlayBoundsFitter.cs`
+- [x] `Assets/Skripts/PanelGroupController.cs`
+- [x] `Assets/Skripts/Persistence/AutoSaveWriteGate.cs`
+- [x] `Assets/Skripts/Persistence/LegacyJsonImporter.cs`
+- [x] `Assets/Skripts/Persistence/LegacyJsonSaveRepository.cs`
+- [x] `Assets/Skripts/Persistence/SaveMigrationService.cs`
+- [x] `Assets/Skripts/Persistence/TaruckBinaryCodec.cs`
+- [x] `Assets/Skripts/Persistence/TaruckDataValidator.cs`
+- [x] `Assets/Skripts/Persistence/TaruckLocalRepository.cs`
+- [x] `Assets/Skripts/PrefabSwitcher.cs`
+- [x] `Assets/Skripts/RestResourceRoleMapper.cs`
+- [x] `Assets/Skripts/RestSavedToggleUpdater.cs`
+- [x] `Assets/Skripts/RestSceneToggleFinder.cs`
+- [x] `Assets/Skripts/RestToggleGroups.cs`
+- [x] `Assets/Skripts/RuntimeLocalization.cs`
+- [x] `Assets/Skripts/RuntimeManagerResolver.cs`
+- [x] `Assets/Skripts/RuntimeImageView.cs`
+- [x] `Assets/Skripts/SceneExitSaveGate.cs`
+- [x] `Assets/Skripts/SceneInputActivationInstaller.cs`
+- [x] `Assets/Skripts/SceneLocalizationApplier.cs`
+- [x] `Assets/Skripts/SceneNavigator.cs`
+- [x] `Assets/Skripts/SceneNavigationButtonBinder.cs`
+- [x] `Assets/Skripts/SceneObjectName.cs`
+- [x] `Assets/Skripts/ScenePageButtonBinder.cs`
+- [x] `Assets/Skripts/ScenePageControllerInstaller.cs`
+- [x] `Assets/Skripts/SceneSwitcher.cs`
+- [x] `Assets/Skripts/SharedCharacterInputService.cs`
+- [x] `Assets/Skripts/InputFieldIncrementer.cs`
+- [x] `Assets/Skripts/SpellbookPageSwitcher.cs`
+- [x] `Assets/Skripts/StableFields/Editor/StableFieldIdTool.cs`
+- [x] `Assets/Skripts/StableFields/LegacyRestToggleIdMap.cs`
+- [x] `Assets/Skripts/StableFields/PersistentFieldId.cs`
+- [x] `Assets/Skripts/StableFields/SceneRoleMarker.cs`
+- [x] `Assets/Skripts/StableFields/SceneSaveController.cs`
+- [x] `Assets/Skripts/StableFields/StableFieldPath.cs`
+- [x] `Assets/Skripts/StableFields/StableFieldStorage.cs`
+- [x] `Assets/Skripts/StatManager.cs`
+- [x] `Assets/Skripts/TaruckCharacterTransfer.cs`
+- [x] `Assets/Skripts/TaruckDialogPresenter.cs`
+- [x] `Assets/Skripts/TaruckDialogText.cs`
+- [x] `Assets/Skripts/TaruckImportReviewDialog.cs`
+- [x] `Assets/Skripts/TaruckTransferFileReader.cs`
+- [x] `Assets/Skripts/TaruckTransferFileUtility.cs`
+- [x] `Assets/Skripts/TextureResizer.cs`
+- [x] `Assets/Skripts/ToggleSequenceSceneInstaller.cs`
+- [x] `Assets/Skripts/TranslationCatalog.cs`
+- [x] `Assets/Skripts/UnityLocaleSynchronizer.cs`
+- [x] `Assets/Skripts/WildShapeTitleUpdater.cs`
+- [x] `Assets/Skripts/MapCameraController.cs`
+
+## Підтверджені рішення
+
+- CharacterSheetManagerScene1 і MainMenuManager координують сервіси власних сцен, не читають файли самостійно. MainMenuTransferPanel керує лише діалогами імпорту/експорту та вибором персонажа; фактичні файлові операції й імпорт делеговані окремим сервісам. InventoryItemCell збирає й застосовує стан однієї комірки, а InventoryItemTransferPanel займається її файловими діалогами. HealthBar, HealthBarView та HealthBarPersistence мають окремі ролі стану, показу й сейву.
+- Повторна перевірка CharacterSheetManagerScene1 перед тестами: SceneSaveController збирає звичайні поля, CharacterSceneSaveService додає ім'я/спільні поля та просить відкладений запис, DndSaveManager виконує файл, SceneExitSaveGate об'єднує pause/disable/quit. Скидання іншої сцени більше не видаляє спільний портрет персонажа. Скидання портрета просить відкладений запис, який у цій же дії просить і SaveCharacterData, щоб не створювати зайвого негайного запису посеред скидання. Поточні правки ще не перевірено Unity чи APK.
+- Після додаткової перевірки стан і цикл збереження картки перенесено в CharacterSceneDataSession: вибір персонажа й сторінки, збирання/читання полів, міграція старого сейву, reset даних і flush на виході. CharacterSheetManagerScene1 залишився Unity-контролером, який прив'язує кнопки та компоненти, а також оновлює UI після дій сесії. Формат ключів сейву, порядок початкового завантаження UI та GUID компонента сцени не змінені; компіляція й поведінка ще не перевірені.
+- MainMenuCharacterListView відповідає за два наявні варіанти відображення списку: налаштований користувачем ScrollRect та старі кнопки. Його єдиний public-метод редагування посилань викликається Editor-інструментом; статичні функції компонування не тримають стану. TranslationCatalog містить словник, нормалізацію й правила динамічних підписів; після видалення порожнього generated-файлу окремого дубля немає.
+- Шість Editor-інструментів працюють лише в Unity Editor: їхні статичні точки входу потрібні `MenuItem` або пакетному запуску. MenuSceneSetupTool задає операції над сценою, MenuSceneUiFactory створює UI-елементи, MenuSceneLayout тримає розміри; поділу цих ролей достатньо. LegacyFieldMapTool генерує A0-карту, StableFieldIdTool установлює й перевіряє ID, SceneRoleMigration обробляє маркери ролей, InputFieldTabOrderTool проставляє порядок Tab.
+- RuntimeManagerResolver тепер знаходить і за потреби створює менеджери сейвів та локалізації; статичні `EnsureExists` видалено з обох менеджерів. Їхні `Awake` далі відкидають дублікати, а RuntimeLocalization має лише статичний Unity bootstrap-hook. DndSaveManager керує життєвим циклом сейву й делегує нормалізацію, файл, колекцію та стан сцени. SceneNavigator виконує перехід між сценами та встановлює ім'я сторінки сейву; load_scenes лишається Unity-адаптером і чистим нормалізатором старих назв. MainMenuLanguageSelector відповідає за один мовний Dropdown, включно з його пошкодженим legacy-шаблоном.
+- SceneRoleLookup читає поточну Unity-сцену, тому його пошук став екземплярним; CharacterRestService, ExhaustionEffects, HealthBarView і RestResourceRoleMapper володіють своїми екземплярами. Статичним лишилося тільки чисте порівняння старих назв.
+
+- HealthBar1, SceneSwitcher, InputFieldTabOrder, LinkHandler і PersistentFieldId мають посилання з Unity-сцен або префабів. Для PersistentFieldId також перевірено виклики C#.
+- LegacyRestToggleIdMap, LegacySceneIndexMap та SceneExitSaveGate не є компонентами сцен, але мають чинних власників у C#; видаляти їх не можна.
+- AutoSaveWriteGate відповідає лише за відкладений запис; CharacterCollectionService — за склад і вибір персонажів у пам'яті; CharacterCollectionImportService — за підготовку та файлову транзакцію імпорту.
+- CharacterSceneContext відповідає за активну сцену й установку її контролера; CharacterSceneMigrationService — за старі поля; CharacterSceneStateService — за очищення сімейства сторінок; CharacterSceneSaveService — за збирання сцени та запит збереження.
+- SaveDataNormalizer змінює неповні DTO, SaveMigrationService завершує міграцію, LegacyJsonImporter читає старий формат, LegacyJsonSaveRepository вибирає основний файл або backup. Повторний виклик міграції після репозиторію прибрано; потрібно перевірити старі файли після аудиту.
+- TaruckTransferFileReader читає файл із обмеженням розміру; InventoryItemFileTransfer обирає формат предмета; InventoryItemSerializer працює лише з полями сцени. Власники цих сервісів звірені за викликами C#.
+- TaruckLocalRepository є одним власником атомарного запису основного файлу, backup та відновлення; після читання через LegacyJsonSaveRepository більше не повторює міграцію.
+- RestResourceRoleMapper перенесено до основної збірки: він використовує SceneObjectName з цієї збірки. StableFieldPath лишається в StableFields і є відкритою чистою функцією, потрібною також основній збірці. RestSceneToggleFinder об'єднав відбір перемикачів для живої сцени й маркування сейву; обидва сценарії пропускають шаблони Dropdown і TMP_Dropdown. StableFieldStorage зберігає перевірену A0 поведінку: якщо старий індекс поля відсутній, не підставляє значення сусіднього поля.
+- TaruckCharacterTransfer тепер відповідає за читання/запис одного файлу, CharacterSingleImportService — за додавання імпортованого персонажа й вибір його назви. Бінарний кодек зберігає один власний алгоритм заголовка та CRC; його статичні методи не тримають глобального стану.
+- TranslationCatalog.Generated.cs містив лише порожній метод; файл і виклик видалено. snaryadManager.cs, pouhenSwicher.cs і load_scens.cs перейменовано відповідно до назв їхніх MonoBehaviour-класів, зі збереженням Unity GUID і назв GameObject у сценах.
+- Галерея телефону тепер читається й масштабується лише в GalleryImagePicker для портрета та предмета; RuntimeImageView спільно відповідає за тимчасові Texture2D/Sprite та відновлення початкової картинки. Обробка й збереження вибраного зображення лишаються у відповідних контролерах.
+- Межі asmdef перевірено: TaruckBinaryCodec.HasMagic викликається з основної збірки, тому цей метод відкрито й прибрано зайвий проксі з TaruckTransferFileUtility. LegacyJsonImporter використовується Persistence та основною збіркою, SaveDataNormalizer — Domain, Persistence і основною; їхні типи та потрібні методи public саме для цієї межі, а не як глобальний стан.
+- MainMenuCharacterLabels форматує лише видиме ім'я, не змінюючи сейв; HealingPotionCatalog тримає формули й три мови назв; RestToggleGroups — історичні межі перемикачів.
+- TextureResizer об'єднав однаковий алгоритм для портрета й предмета; UnityLocaleSynchronizer тримає корутину синхронізації мови; SceneObjectName та StableFieldPath централізують правила старих імен і шляхів. Останні два залишаються статичними функціями без змінюваного глобального стану.
+- PanelGroupController замінив три компоненти панелей: незалежні кнопки, панелі за станом Toggle та взаємовиключні кнопки. Для кожного з 15 компонентів у сценах/префабах задано відповідний режим; спільні дії відкриття й перевірки панелей тепер в одному місці. DropdownManager скидає перемикачі з подією, DropdownVisibilityController — без неї, тому їхня різниця збережена.
+- ScenePageButtonBinder і SceneNavigationButtonBinder мають різні цілі: нумеровані сторінки та переходи між сценами. ScenePageControllerInstaller об'єднав повторений bootstrap двох контролерів, залишивши один статичний Unity hook; ці класи використовуються через C# або RuntimeInitializeOnLoadMethod.
+- MainMenuCharacterButtonFactory створює кнопки legacy-списку; CalculatorResultEvaluator обчислює вираз і d20-штраф; CalculatorTextCatalog тримає підписи; InventoryItemCategoryView показує категорії предмета. Їхні власники звірені за викликами.
+- TaruckDialogPresenter створює діалог, TaruckDialogText формує локалізовані повідомлення. Повторну перевірку сигнатури `TARUCKPK` у повідомленнях замінено викликом кодека; сам діалог отримує екземпляр текстового сервісу. TaruckTransferFileUtility лишається статичним набором незалежних функцій для назв/розширень/шляху без глобального змінюваного стану.

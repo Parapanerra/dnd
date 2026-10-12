@@ -9,36 +9,49 @@ public class MainMenuLanguageSelector : MonoBehaviour
 {
     private MainMenuManager owner;
     private RuntimeLocalization localization;
+    private readonly MainMenuSceneLookup sceneLookup = new MainMenuSceneLookup();
     private Dropdown languageDropdown;
     private TMP_Dropdown languageTmpDropdown;
 
-    public void Initialize(MainMenuManager manager, RuntimeLocalization runtimeLocalization)
+    internal void Initialize(MainMenuManager manager, RuntimeLocalization runtimeLocalization)
     {
         owner = manager;
         localization = runtimeLocalization;
     }
 
-    public void ScheduleSync()
+    internal void ScheduleSync()
     {
         StartCoroutine(SyncLanguageDropdownNextFrame());
     }
 
-    // RU is temporarily hidden. Uncomment the Russian entries below to re-enable.
-    private static readonly AppLanguage[] SupportedDropdownLanguages = new AppLanguage[]
+    private readonly struct LanguageOption
     {
-        AppLanguage.Ukrainian,
-        AppLanguage.English
-        // AppLanguage.Russian
+        internal readonly AppLanguage Language;
+        internal readonly string Label;
+
+        internal LanguageOption(AppLanguage language, string label)
+        {
+            Language = language;
+            Label = label;
+        }
+    }
+
+    // RU is temporarily hidden. Add it here to re-enable it.
+    private readonly LanguageOption[] languageOptions =
+    {
+        new LanguageOption(AppLanguage.Ukrainian, "UA"),
+        new LanguageOption(AppLanguage.English, "EN")
     };
 
-    private static readonly List<string> SupportedDropdownLanguageLabels = new List<string>
+    private List<string> CreateLanguageLabels()
     {
-        "UA",
-        "EN"
-        // "RU"
-    };
+        List<string> labels = new List<string>(languageOptions.Length);
+        foreach (LanguageOption option in languageOptions)
+            labels.Add(option.Label);
+        return labels;
+    }
 
-    public void EnsureLanguageDropdown()
+    internal void EnsureLanguageDropdown()
     {
         RemoveOldLanguageButtons();
 
@@ -47,8 +60,8 @@ public class MainMenuLanguageSelector : MonoBehaviour
             localization.SetLanguage(AppLanguage.Ukrainian);
         }
 
-        Dropdown dropdown = MainMenuSceneLookup.FindFirstDropdownInScene("localiza", "LanguageDropdown");
-        TMP_Dropdown tmpDropdown = MainMenuSceneLookup.FindFirstTmpDropdownInScene("localiza", "LanguageDropdown");
+        Dropdown dropdown = sceneLookup.FindFirstDropdownInScene("localiza", "LanguageDropdown");
+        TMP_Dropdown tmpDropdown = sceneLookup.FindFirstTmpDropdownInScene("localiza", "LanguageDropdown");
 
         if (dropdown == null && tmpDropdown == null)
         {
@@ -70,7 +83,7 @@ public class MainMenuLanguageSelector : MonoBehaviour
         RepairDropdownTemplate(dropdown);
         dropdown.onValueChanged.RemoveAllListeners();
         dropdown.ClearOptions();
-        dropdown.AddOptions(SupportedDropdownLanguageLabels);
+        dropdown.AddOptions(CreateLanguageLabels());
         dropdown.SetValueWithoutNotify(GetCurrentLanguageIndex());
         dropdown.RefreshShownValue();
         dropdown.onValueChanged.AddListener(OnLanguageDropdownChanged);
@@ -215,7 +228,7 @@ public class MainMenuLanguageSelector : MonoBehaviour
         AddLocalizedIgnore(dropdown.gameObject);
         dropdown.onValueChanged.RemoveAllListeners();
         dropdown.ClearOptions();
-        dropdown.AddOptions(SupportedDropdownLanguageLabels);
+        dropdown.AddOptions(CreateLanguageLabels());
         dropdown.SetValueWithoutNotify(GetCurrentLanguageIndex());
         dropdown.RefreshShownValue();
         dropdown.onValueChanged.AddListener(OnLanguageDropdownChanged);
@@ -224,8 +237,8 @@ public class MainMenuLanguageSelector : MonoBehaviour
     private void OnLanguageDropdownChanged(int value)
     {
         AppLanguage language = AppLanguage.Ukrainian;
-        if (value >= 0 && value < SupportedDropdownLanguages.Length)
-            language = SupportedDropdownLanguages[value];
+        if (value >= 0 && value < languageOptions.Length)
+            language = languageOptions[value].Language;
 
         localization.SetLanguage(language);
         owner.RefreshCharacterList();
@@ -236,9 +249,9 @@ public class MainMenuLanguageSelector : MonoBehaviour
     private int GetCurrentLanguageIndex()
     {
         AppLanguage current = localization.CurrentLanguage;
-        for (int i = 0; i < SupportedDropdownLanguages.Length; i++)
+        for (int i = 0; i < languageOptions.Length; i++)
         {
-            if (SupportedDropdownLanguages[i] == current)
+            if (languageOptions[i].Language == current)
                 return i;
         }
 
@@ -253,12 +266,12 @@ public class MainMenuLanguageSelector : MonoBehaviour
         SyncLanguageDropdownValue();
     }
 
-    public void SyncLanguageDropdownValue()
+    internal void SyncLanguageDropdownValue()
     {
         int index = GetCurrentLanguageIndex();
 
         if (languageDropdown == null)
-            languageDropdown = MainMenuSceneLookup.FindFirstDropdownInScene("localiza", "LanguageDropdown");
+            languageDropdown = sceneLookup.FindFirstDropdownInScene("localiza", "LanguageDropdown");
 
         if (languageDropdown != null)
         {
@@ -267,7 +280,7 @@ public class MainMenuLanguageSelector : MonoBehaviour
         }
 
         if (languageTmpDropdown == null)
-            languageTmpDropdown = MainMenuSceneLookup.FindFirstTmpDropdownInScene("localiza", "LanguageDropdown");
+            languageTmpDropdown = sceneLookup.FindFirstTmpDropdownInScene("localiza", "LanguageDropdown");
 
         if (languageTmpDropdown != null)
         {
@@ -287,7 +300,7 @@ public class MainMenuLanguageSelector : MonoBehaviour
         Transform[] transforms = Resources.FindObjectsOfTypeAll<Transform>();
         foreach (Transform item in transforms)
         {
-            if (!MainMenuSceneLookup.IsSceneObject(item.gameObject))
+            if (!sceneLookup.IsSceneObject(item.gameObject))
                 continue;
 
             if (item.name == "LanguageButtons")

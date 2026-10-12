@@ -39,7 +39,7 @@ public class ManualLocalizedText : MonoBehaviour
         if (service != null)
             localization = service;
         if (localization == null)
-            localization = RuntimeLocalization.EnsureExists();
+            localization = new RuntimeManagerResolver().Localization();
         CacheTextComponent();
         CaptureSourceIfNeeded();
 

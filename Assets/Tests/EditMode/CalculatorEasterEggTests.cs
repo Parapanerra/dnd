@@ -23,9 +23,15 @@ public class CalculatorEasterEggTests
             Assert.NotNull(catalogType);
             createdLocalization = UnityEngine.Object.FindObjectsByType(localizationType,
                 FindObjectsInactive.Include, FindObjectsSortMode.None).Length == 0;
-            localizationComponent = (Component)localizationType.GetMethod("EnsureExists").Invoke(null, null);
+            Type resolverType = Type.GetType("RuntimeManagerResolver, Assembly-CSharp");
+            Assert.NotNull(resolverType);
+            object resolver = Activator.CreateInstance(resolverType, true);
+            MethodInfo resolveLocalization = resolverType.GetMethod("Localization",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            Assert.NotNull(resolveLocalization);
+            localizationComponent = (Component)resolveLocalization.Invoke(resolver, null);
             Assert.AreSame(localizationComponent,
-                localizationType.GetMethod("EnsureExists").Invoke(null, null));
+                resolveLocalization.Invoke(resolver, null));
             catalogField = localizationType.GetField("catalog", BindingFlags.Instance | BindingFlags.NonPublic);
             previousCatalog = catalogField.GetValue(localizationComponent);
             if (previousCatalog == null)

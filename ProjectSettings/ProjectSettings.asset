@@ -734,7 +734,7 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Android: JSONSerializationFileSave;SENTIS_ANALYTICS_ENABLED;APP_UI_EDITOR_ONLY
+    Android: JSONSerializationFileSave;APP_UI_EDITOR_ONLY;SENTIS_ANALYTICS_ENABLED
     PS4: 
     Standalone: SENTIS_ANALYTICS_ENABLED;APP_UI_EDITOR_ONLY
     WebGL: SENTIS_ANALYTICS_ENABLED;APP_UI_EDITOR_ONLY

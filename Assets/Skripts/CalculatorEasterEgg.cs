@@ -4,9 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Owns the calculator's hidden messages and their display state.
-public sealed class CalculatorEasterEgg
+internal sealed class CalculatorEasterEgg
 {
     private const string ResetCountKey = "Calculator.EasterEgg67.Count";
+    private const string ResetTriggerCode = "67";
+    private const string RadioCode = "4221";
+    private const string DevilCode = "666";
+    private const string NiceCode = "69";
+    private const string BookCode = "1984";
+    private const int WarningsBeforeReset = 2;
+    private const int ResetTriggerCount = WarningsBeforeReset + 1;
+    private const int MinimumMessageFontSize = 10;
     private readonly RuntimeLocalization localization;
     private readonly DndSaveManager saveManager;
     private Text equationText;
@@ -32,19 +40,19 @@ public sealed class CalculatorEasterEgg
         string message;
         switch (equation)
         {
-            case "67":
+            case ResetTriggerCode:
                 message = AdvanceResetMessage();
                 break;
-            case "4221":
+            case RadioCode:
                 message = "Раз, два, три, прийом! Ця штука працює?";
                 break;
-            case "666":
+            case DevilCode:
                 message = "О, так!!!";
                 break;
-            case "69":
+            case NiceCode:
                 message = "Нааайс";
                 break;
-            case "1984":
+            case BookCode:
                 topLine = "Це як у 1984";
                 message = "Але я не читав";
                 break;
@@ -57,7 +65,7 @@ public sealed class CalculatorEasterEgg
         resultText = resultDisplay;
         topSource = topLine;
         messageSource = message;
-        splitResetMessage = equation == "67";
+        splitResetMessage = equation == ResetTriggerCode;
         if (resultText != null)
         {
             IsShowing = true;
@@ -65,8 +73,8 @@ public sealed class CalculatorEasterEgg
             minSizeBefore = resultText.resizeTextMinSize;
             maxSizeBefore = resultText.resizeTextMaxSize;
             resultText.resizeTextForBestFit = true;
-            resultText.resizeTextMinSize = 10;
-            resultText.resizeTextMaxSize = Mathf.Max(10, resultText.fontSize);
+            resultText.resizeTextMinSize = MinimumMessageFontSize;
+            resultText.resizeTextMaxSize = Mathf.Max(MinimumMessageFontSize, resultText.fontSize);
         }
 
         Refresh();
@@ -117,20 +125,17 @@ public sealed class CalculatorEasterEgg
             return "Спочатку обери персонажа.";
 
         int.TryParse(character.GetSharedString(ResetCountKey, "0"), out int count);
-        count = Mathf.Clamp(count, 0, 2) + 1;
-        if (count == 3)
+        count = Mathf.Clamp(count, 0, WarningsBeforeReset) + 1;
+        if (count == ResetTriggerCount)
         {
             CharacterSheetManagerScene1 sheet = UnityEngine.Object.FindAnyObjectByType<CharacterSheetManagerScene1>();
-            CharacterSceneAutoSave autoSave = UnityEngine.Object.FindAnyObjectByType<CharacterSceneAutoSave>();
             if (sheet != null)
                 sheet.ResetSceneData();
-            else if (autoSave != null)
-                autoSave.ResetSceneData();
             else
                 return "Не вдалося знайти Reset для цього листа.";
         }
 
-        character.SetSharedString(ResetCountKey, (count == 3 ? 0 : count).ToString(CultureInfo.InvariantCulture));
+        character.SetSharedString(ResetCountKey, (count == ResetTriggerCount ? 0 : count).ToString(CultureInfo.InvariantCulture));
         saveManager.SaveData();
         switch (count)
         {

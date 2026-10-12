@@ -76,7 +76,7 @@ public class MainMenuManager : MonoBehaviour
             characterListView = GetComponent<MainMenuCharacterListView>();
             if (characterListView == null)
                 characterListView = gameObject.AddComponent<MainMenuCharacterListView>();
-            characterListView.Initialize(this, saveManager);
+            characterListView.Initialize(this, saveManager, characterLabels);
         }
         characterListView.SetCharacterButtonTemplate(template);
     }
@@ -84,10 +84,11 @@ public class MainMenuManager : MonoBehaviour
 
     private DndSaveManager saveManager;
     private RuntimeLocalization localization;
+    private MainMenuCharacterLabels characterLabels;
     private MainMenuLanguageSelector languageSelector;
     private MainMenuTransferPanel transferPanel;
     private MainMenuCharacterListView characterListView;
-    private float lastCharacterCreateTime = -AppConfig.MainMenu.CharacterCreateDebounceSeconds;
+    private float lastCharacterCreateTime = -AppConfig.SaveData.CharacterCreateDebounceSeconds;
 
     private void OnEnable()
     {
@@ -98,17 +99,18 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         NormalizeSceneNames();
-        saveManager = DndSaveManager.EnsureExists();
-        localization = RuntimeLocalization.EnsureExists();
+        saveManager = new RuntimeManagerResolver().SaveManager();
+        localization = new RuntimeManagerResolver().Localization();
+        characterLabels = new MainMenuCharacterLabels(localization);
         characterListView = GetComponent<MainMenuCharacterListView>();
         if (characterListView == null)
             characterListView = gameObject.AddComponent<MainMenuCharacterListView>();
-        characterListView.Initialize(this, saveManager);
+        characterListView.Initialize(this, saveManager, characterLabels);
         characterListView.Wire();
         transferPanel = GetComponent<MainMenuTransferPanel>();
         if (transferPanel == null)
             transferPanel = gameObject.AddComponent<MainMenuTransferPanel>();
-        transferPanel.Initialize(this, saveManager);
+        transferPanel.Initialize(this, saveManager, characterLabels, localization);
         transferPanel.Wire();
         transferPanel.HideSavePanel();
 
@@ -145,7 +147,8 @@ public class MainMenuManager : MonoBehaviour
 
         string storageError = saveManager != null ? saveManager.SaveError : null;
         if (!string.IsNullOrEmpty(storageError))
-            TaruckImportReviewDialog.Show("Стан сховища", storageError, "Закрити", () => { });
+            new TaruckDialogPresenter(() => localization.CurrentLanguage)
+                .Show("Стан сховища", storageError, "Закрити", () => { });
     }
 
     private void NormalizeSceneNames()
@@ -160,20 +163,7 @@ public class MainMenuManager : MonoBehaviour
             spellbookSceneName = AppConfig.Scenes.Spellbook;
     }
 
-    public void EnsureEditableCharacterScrollView()
-    {
-        if (characterListView == null)
-        {
-            characterListView = GetComponent<MainMenuCharacterListView>();
-            if (characterListView == null)
-                characterListView = gameObject.AddComponent<MainMenuCharacterListView>();
-            characterListView.Initialize(this, saveManager);
-        }
-
-        characterListView.EnsureEditableCharacterScrollView();
-    }
-
-    public void RefreshCharacterList()
+    internal void RefreshCharacterList()
     {
         if (transferPanel != null)
             transferPanel.RefreshOneCharacterDropdown();
@@ -184,7 +174,7 @@ public class MainMenuManager : MonoBehaviour
     private void OnCreateNewCharacterClicked()
     {
         if (Time.unscaledTime - lastCharacterCreateTime <
-            AppConfig.MainMenu.CharacterCreateDebounceSeconds)
+            AppConfig.SaveData.CharacterCreateDebounceSeconds)
             return;
 
         lastCharacterCreateTime = Time.unscaledTime;

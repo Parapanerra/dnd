@@ -2,48 +2,21 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InventoryPageManager : MonoBehaviour
 {
-    private const string SceneName = "inventory";
-    private const string PageButtonPrefix = "page";
+    private const string SceneName = AppConfig.Scenes.Inventory;
 
     private readonly List<InventoryItemCell> cells = new List<InventoryItemCell>();
     private int currentPageIndex;
     private DndSaveManager saveManager;
     private RuntimeLocalization localization;
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    private static void Bootstrap()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        EnsureForActiveScene();
-    }
-
-    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        EnsureForActiveScene();
-    }
-
-    private static void EnsureForActiveScene()
-    {
-        if (!string.Equals(SceneManager.GetActiveScene().name, SceneName, StringComparison.Ordinal))
-            return;
-
-        if (FindAnyObjectByType<InventoryPageManager>() != null)
-            return;
-
-        GameObject managerObject = new GameObject("InventoryPageManager");
-        managerObject.AddComponent<InventoryPageManager>();
-    }
-
     private void Start()
     {
-        saveManager = DndSaveManager.EnsureExists();
-        localization = RuntimeLocalization.EnsureExists();
+        saveManager = new RuntimeManagerResolver().SaveManager();
+        localization = new RuntimeManagerResolver().Localization();
         KeepMainPageActive();
         BindPageButtons();
         BindNavigationButtons();
@@ -52,33 +25,13 @@ public class InventoryPageManager : MonoBehaviour
 
     private void BindPageButtons()
     {
-        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include);
-        List<Button> pageButtons = new List<Button>();
-
-        foreach (Button button in buttons)
-            if (button != null && TryGetPageIndex(button.gameObject.name, out _))
-                pageButtons.Add(button);
-
-        pageButtons.Sort((left, right) => GetPageIndex(left.name).CompareTo(GetPageIndex(right.name)));
-
-        foreach (Button button in pageButtons)
-        {
-            int pageIndex = GetPageIndex(button.gameObject.name);
-            DisablePersistentOnClick(button);
-            button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => SwitchToPage(pageIndex));
-        }
+        new ScenePageButtonBinder(SwitchToPage).Bind();
     }
 
     private void BindNavigationButtons()
     {
-        Button spellbookButton = FindButtonByName("spelbook", "spellbook");
-        if (spellbookButton == null)
-            return;
-
-        DisablePersistentOnClick(spellbookButton);
-        spellbookButton.onClick.RemoveAllListeners();
-        spellbookButton.onClick.AddListener(() => load_scenes.LoadSceneByName("spelBook"));
+        new SceneNavigationButtonBinder(new SceneNavigator().LoadSceneByName)
+            .BindFirst(AppConfig.Scenes.Spellbook, "spelbook", "spellbook");
     }
 
     private void SwitchToPage(int pageIndex)
@@ -103,10 +56,10 @@ public class InventoryPageManager : MonoBehaviour
 
         List<Transform> cellTransforms = new List<Transform>();
         foreach (Transform child in page.GetComponentsInChildren<Transform>(true))
-            if (child != page && NameMatches(child.name, "Cels"))
+            if (child != page && SceneObjectName.Matches(child.name, "Cels"))
                 cellTransforms.Add(child);
 
-        cellTransforms.Sort((left, right) => GetHierarchyOrder(left).CompareTo(GetHierarchyOrder(right)));
+        cellTransforms.Sort(CompareHierarchyOrder);
 
         for (int i = 0; i < cellTransforms.Count; i++)
         {
@@ -185,79 +138,30 @@ public class InventoryPageManager : MonoBehaviour
                textTransform.name.StartsWith("pageTitle", StringComparison.OrdinalIgnoreCase);
     }
 
-    private void DisablePersistentOnClick(Button button)
+    private int CompareHierarchyOrder(Transform left, Transform right)
     {
-        if (button == null)
-            return;
+        List<int> leftPath = GetSiblingPath(left);
+        List<int> rightPath = GetSiblingPath(right);
 
-        for (int i = 0; i < button.onClick.GetPersistentEventCount(); i++)
-            button.onClick.SetPersistentListenerState(i, UnityEventCallState.Off);
-    }
-
-    private Button FindButtonByName(params string[] objectNames)
-    {
-        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include);
-        foreach (Button button in buttons)
+        for (int leftIndex = leftPath.Count - 1, rightIndex = rightPath.Count - 1;
+             leftIndex >= 0 && rightIndex >= 0;
+             leftIndex--, rightIndex--)
         {
-            if (button == null)
-                continue;
-
-            foreach (string objectName in objectNames)
-                if (NameMatches(button.gameObject.name, objectName))
-                    return button;
+            int difference = leftPath[leftIndex].CompareTo(rightPath[rightIndex]);
+            if (difference != 0)
+                return difference;
         }
 
-        return null;
+        return leftPath.Count.CompareTo(rightPath.Count);
     }
 
-    private int GetHierarchyOrder(Transform transform)
+    private List<int> GetSiblingPath(Transform transform)
     {
-        int order = 0;
-        int multiplier = 1;
-        while (transform != null)
-        {
-            order += transform.GetSiblingIndex() * multiplier;
-            multiplier *= AppConfig.Inventory.PageSortMultiplier;
-            transform = transform.parent;
-        }
-
-        return order;
+        List<int> path = new List<int>();
+        for (; transform != null; transform = transform.parent)
+            path.Add(transform.GetSiblingIndex());
+        return path;
     }
 
-    private static int GetPageIndex(string objectName)
-    {
-        TryGetPageIndex(objectName, out int pageIndex);
-        return pageIndex;
-    }
 
-    private static bool TryGetPageIndex(string objectName, out int pageIndex)
-    {
-        pageIndex = 0;
-        if (string.IsNullOrWhiteSpace(objectName))
-            return false;
-
-        objectName = objectName.Trim();
-        if (string.Equals(objectName, PageButtonPrefix, StringComparison.OrdinalIgnoreCase))
-            return true;
-
-        if (!objectName.StartsWith(PageButtonPrefix + " (", StringComparison.OrdinalIgnoreCase) ||
-            !objectName.EndsWith(")", StringComparison.Ordinal))
-        {
-            return false;
-        }
-
-        string numberText = objectName.Substring(PageButtonPrefix.Length + 2, objectName.Length - PageButtonPrefix.Length - 3);
-        return int.TryParse(numberText, out pageIndex);
-    }
-
-    private bool NameMatches(string actualName, string expectedName)
-    {
-        return GetBaseName(actualName).Equals(expectedName, StringComparison.OrdinalIgnoreCase);
-    }
-
-    private string GetBaseName(string name)
-    {
-        int suffixStart = name.LastIndexOf(" (", StringComparison.Ordinal);
-        return suffixStart >= 0 ? name.Substring(0, suffixStart) : name;
-    }
 }

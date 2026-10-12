@@ -1,21 +1,8 @@
 using System;
 using System.IO;
-using System.Text;
 
 public static class TaruckTransferFileUtility
 {
-    private static readonly byte[] Magic = Encoding.ASCII.GetBytes("TARUCKPK");
-
-    public static bool HasMagic(byte[] bytes)
-    {
-        if (bytes == null || bytes.Length < Magic.Length)
-            return false;
-        for (int i = 0; i < Magic.Length; i++)
-            if (bytes[i] != Magic[i])
-                return false;
-        return true;
-    }
-
     public static string EnsureExtension(string path, string extension)
     {
         if (string.IsNullOrEmpty(path) || !Path.IsPathRooted(path))

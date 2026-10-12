@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,12 +5,6 @@ using UnityEngine.UI;
 public class InventoryItemCell : MonoBehaviour
 {
     private const int CategoryWeapon = AppConfig.Inventory.WeaponCategory;
-    private const int CategoryArmor = AppConfig.Inventory.ArmorCategory;
-    private const int CategoryBags = AppConfig.Inventory.BagsCategory;
-    private const int CategoryMagic = AppConfig.Inventory.MagicCategory;
-    private const int CategoryOther = AppConfig.Inventory.OtherCategory;
-    private const int CategoryCheger = AppConfig.Inventory.ChegerCategory;
-    private const int CategoryCustom = AppConfig.Inventory.CustomCategory;
     private InputField itemNameInput;
     private TMP_InputField itemNameTmpInput;
     private InputField itemDescriptionInput;
@@ -34,17 +27,19 @@ public class InventoryItemCell : MonoBehaviour
     private Button exportButton;
     private Button importButton;
     private Button clearButton;
-    private GameObject customImagePanel;
+    private InventoryItemCategoryView categoryView;
     private InventoryItemImageController imageController;
     private string cellKey;
     private bool isLoading;
     private DndSaveManager saveManager;
     private RuntimeLocalization localization;
     private InventoryItemTransferPanel transferPanel;
+    private readonly InventoryItemSerializer serializer = new InventoryItemSerializer();
+    private Transform[] controls;
     internal string CellKey => cellKey;
     internal DndSaveManager SaveManager => saveManager;
 
-    public void Initialize(int pageIndex, int cellIndex, DndSaveManager dataManager, RuntimeLocalization textCatalog)
+    internal void Initialize(int pageIndex, int cellIndex, DndSaveManager dataManager, RuntimeLocalization textCatalog)
     {
         saveManager = dataManager;
         localization = textCatalog;
@@ -54,27 +49,27 @@ public class InventoryItemCell : MonoBehaviour
         Load();
     }
 
-    public void Save()
+    internal void Save()
     {
         if (isLoading || string.IsNullOrEmpty(cellKey) || saveManager == null)
             return;
 
         CharacterSceneData sceneData = saveManager.GetActiveSceneData();
-        InventoryItemSerializer.WriteScene(sceneData, cellKey, ReadCurrentData());
+        serializer.WriteScene(sceneData, cellKey, ReadCurrentData());
         saveManager.RequestSaveData();
     }
 
-    public void Load()
+    internal void Load()
     {
         if (string.IsNullOrEmpty(cellKey) || saveManager == null)
             return;
 
         CharacterSceneData sceneData = saveManager.GetActiveSceneData(false);
-        InventoryItemExportData data = InventoryItemSerializer.ReadScene(sceneData, cellKey);
+        InventoryItemExportData data = serializer.ReadScene(sceneData, cellKey);
         ApplyData(data, false);
     }
 
-    public void ResetToDefaults(bool saveAfterReset)
+    internal void ResetToDefaults(bool saveAfterReset)
     {
         InventoryItemExportData data = new InventoryItemExportData
         {
@@ -91,16 +86,17 @@ public class InventoryItemCell : MonoBehaviour
         ApplyData(data, saveAfterReset);
     }
 
-    public void RefreshLocalization()
+    internal void RefreshLocalization()
     {
         if (localization == null)
             return;
 
-        EnsureCategoryOptions();
+        categoryView.RefreshOptions();
     }
 
     private void FindControls()
     {
+        controls = GetComponentsInChildren<Transform>(true);
         itemNameInput = FindInput("itemNameInput");
         itemNameTmpInput = FindTmpInput("itemNameInput");
         itemDescriptionInput = FindInput("itemDescriptionInput");
@@ -127,9 +123,9 @@ public class InventoryItemCell : MonoBehaviour
         clearButton = FindButton("clearItemButton");
         if (transferPanel == null)
             transferPanel = new InventoryItemTransferPanel();
-        transferPanel.Initialize(this, exportButton, importButton);
+        transferPanel.Initialize(this, exportButton, importButton, localization);
         Image image = FindImage("customItemImage");
-        customImagePanel = FindChildGameObject("PanelForphoto");
+        GameObject customImagePanel = FindChildGameObject("PanelForphoto");
         if (customImagePanel == null && image != null)
             customImagePanel = image.gameObject;
 
@@ -138,7 +134,12 @@ public class InventoryItemCell : MonoBehaviour
             imageController = gameObject.AddComponent<InventoryItemImageController>();
         imageController.Initialize(image);
 
-        EnsureCategoryOptions();
+        categoryView = new InventoryItemCategoryView(
+            categoryDropdown, categoryTmpDropdown,
+            new[] { weaponDropdown, armorDropdown, bagsDropdown, magicDropdown, otherDropdown, chegerDropdown },
+            new[] { weaponTmpDropdown, armorTmpDropdown, bagsTmpDropdown, magicTmpDropdown, otherTmpDropdown, chegerTmpDropdown },
+            customImagePanel, localization);
+        categoryView.RefreshOptions();
     }
 
     private void BindControls()
@@ -185,8 +186,7 @@ public class InventoryItemCell : MonoBehaviour
 
     private void OnCategoryChanged(int value)
     {
-        ApplyCategoryVisibility(value);
-        RefreshCategoryShownValue();
+        categoryView.ShowCategory(value);
         Save();
     }
 
@@ -237,8 +237,7 @@ public class InventoryItemCell : MonoBehaviour
             SetDropdownValue(chegerDropdown, chegerTmpDropdown, data.chegerIndex);
             if (imageController != null)
                 imageController.ApplyBase64(data.customImageBase64);
-            ApplyCategoryVisibility(data.category);
-            RefreshCategoryShownValue();
+            categoryView.ShowCategory(data.category);
         }
         finally
         {
@@ -247,73 +246,6 @@ public class InventoryItemCell : MonoBehaviour
 
         if (saveAfterApply)
             Save();
-    }
-
-    private void ApplyCategoryVisibility(int category)
-    {
-        SetDropdownVisible(weaponDropdown, weaponTmpDropdown, category == CategoryWeapon);
-        SetDropdownVisible(armorDropdown, armorTmpDropdown, category == CategoryArmor);
-        SetDropdownVisible(bagsDropdown, bagsTmpDropdown, category == CategoryBags);
-        SetDropdownVisible(magicDropdown, magicTmpDropdown, category == CategoryMagic);
-        SetDropdownVisible(otherDropdown, otherTmpDropdown, category == CategoryOther);
-        SetDropdownVisible(chegerDropdown, chegerTmpDropdown, category == CategoryCheger);
-
-        if (customImagePanel != null)
-            customImagePanel.SetActive(category == CategoryCustom);
-    }
-
-    private void EnsureCategoryOptions()
-    {
-        string[] labels =
-        {
-            Localize("Зброя"),
-            Localize("Броня"),
-            Localize("Сумки"),
-            Localize("Магія"),
-            Localize("Інше"),
-            Localize("Скарби"),
-            Localize("Своя картинка")
-        };
-
-        if (categoryDropdown != null)
-        {
-            int currentValue = categoryDropdown.value;
-            categoryDropdown.ClearOptions();
-            categoryDropdown.AddOptions(new List<string>(labels));
-            categoryDropdown.SetValueWithoutNotify(Mathf.Clamp(currentValue, 0, categoryDropdown.options.Count - 1));
-            categoryDropdown.RefreshShownValue();
-        }
-
-        if (categoryTmpDropdown != null)
-        {
-            int currentValue = categoryTmpDropdown.value;
-            categoryTmpDropdown.ClearOptions();
-            categoryTmpDropdown.AddOptions(new List<string>(labels));
-            categoryTmpDropdown.SetValueWithoutNotify(Mathf.Clamp(currentValue, 0, categoryTmpDropdown.options.Count - 1));
-            categoryTmpDropdown.RefreshShownValue();
-        }
-    }
-
-    private string Localize(string source)
-    {
-        return localization.Translate(source);
-    }
-
-    private void RefreshCategoryShownValue()
-    {
-        if (categoryDropdown != null)
-            categoryDropdown.RefreshShownValue();
-
-        if (categoryTmpDropdown != null)
-            categoryTmpDropdown.RefreshShownValue();
-    }
-
-    private void SetDropdownVisible(Dropdown dropdown, TMP_Dropdown tmpDropdown, bool visible)
-    {
-        if (dropdown != null)
-            dropdown.gameObject.SetActive(visible);
-        if (tmpDropdown != null)
-            tmpDropdown.gameObject.SetActive(visible);
     }
 
     private void BindInput(InputField input)
@@ -438,8 +370,7 @@ public class InventoryItemCell : MonoBehaviour
 
     private Transform FindChild(string objectName)
     {
-        Transform[] children = GetComponentsInChildren<Transform>(true);
-        foreach (Transform child in children)
+        foreach (Transform child in controls)
             if (child != null && SceneObjectName.Matches(child.name, objectName))
                 return child;
 

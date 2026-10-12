@@ -3,11 +3,11 @@ using System.IO;
 using SimpleFileBrowser;
 using UnityEngine;
 
-public static class TaruckTransferFileReader
+internal sealed class TaruckTransferFileReader
 {
     private const int MaxImportBytes = 128 * 1024 * 1024;
 
-    public static byte[] Read(string selectedPath)
+    internal byte[] Read(string selectedPath)
     {
         if (string.IsNullOrEmpty(selectedPath)) throw new InvalidDataException("No file selected");
         if (File.Exists(selectedPath)) return ReadLocal(selectedPath);
@@ -27,7 +27,7 @@ public static class TaruckTransferFileReader
         }
     }
 
-    private static byte[] ReadLocal(string path)
+    private byte[] ReadLocal(string path)
     {
         using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
         {

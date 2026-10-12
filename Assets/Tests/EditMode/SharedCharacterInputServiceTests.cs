@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class SharedCharacterInputServiceTests
     {
         Type service = Type.GetType("SharedCharacterInputService, Assembly-CSharp");
         Assert.NotNull(service);
+        object instance = Activator.CreateInstance(service, true);
 
         GameObject container = new GameObject("magMod (Clone)");
         GameObject fieldObject = new GameObject("Input");
@@ -23,11 +25,13 @@ public class SharedCharacterInputServiceTests
             InputField[] fields = { field };
             TMP_InputField[] tmpFields = Array.Empty<TMP_InputField>();
 
-            service.GetMethod("Save").Invoke(null, new object[] { character, fields, tmpFields });
+            service.GetMethod("Save", BindingFlags.Instance | BindingFlags.NonPublic)
+                .Invoke(instance, new object[] { character, fields, tmpFields });
             Assert.AreEqual("7", character.GetSharedString("SharedInput_magMod", ""));
 
             field.SetTextWithoutNotify("0");
-            service.GetMethod("Load").Invoke(null, new object[] { character, fields, tmpFields });
+            service.GetMethod("Load", BindingFlags.Instance | BindingFlags.NonPublic)
+                .Invoke(instance, new object[] { character, fields, tmpFields });
             Assert.AreEqual("7", field.text);
         }
         finally

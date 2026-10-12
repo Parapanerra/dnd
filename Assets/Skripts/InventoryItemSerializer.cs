@@ -1,9 +1,7 @@
-using SimpleFileBrowser;
-
-// Owns both persisted forms of an inventory item; the cell only reads and displays it.
-public static class InventoryItemSerializer
+// Maps inventory item data to and from its saved scene fields.
+internal sealed class InventoryItemSerializer
 {
-    public static void WriteScene(CharacterSceneData sceneData, string cellKey, InventoryItemExportData data)
+    internal void WriteScene(CharacterSceneData sceneData, string cellKey, InventoryItemExportData data)
     {
         if (sceneData == null || data == null)
             return;
@@ -24,7 +22,7 @@ public static class InventoryItemSerializer
             sceneData.SetString(cellKey + "_CustomImage", data.customImageBase64);
     }
 
-    public static InventoryItemExportData ReadScene(CharacterSceneData sceneData, string cellKey)
+    internal InventoryItemExportData ReadScene(CharacterSceneData sceneData, string cellKey)
     {
         if (sceneData == null)
             return new InventoryItemExportData();
@@ -44,18 +42,4 @@ public static class InventoryItemSerializer
         };
     }
 
-    public static void WriteFile(string path, InventoryItemExportData data, string version)
-    {
-        FileBrowserHelpers.WriteBytesToFile(
-            TaruckTransferFileUtility.EnsureExtension(path, ".titem"),
-            TaruckBinaryCodec.EncodeItemExport(data, version));
-    }
-
-    public static InventoryItemExportData ReadFile(string path, out byte[] bytes)
-    {
-        bytes = TaruckTransferFileReader.Read(path);
-        return TaruckTransferFileUtility.HasMagic(bytes)
-            ? TaruckBinaryCodec.DecodeItemExport(bytes)
-            : LegacyJsonImporter.Item(LegacyJsonImporter.DecodeFile(bytes));
-    }
 }

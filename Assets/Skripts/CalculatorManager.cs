@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -12,10 +9,11 @@ public class CalculatorManager : MonoBehaviour
     [SerializeField] private Text equationText;
     [SerializeField] private Text resultText;
 
-    private string currentEquation = "";
+    private readonly CalculatorExpressionInput expressionInput = new CalculatorExpressionInput();
+    private readonly CalculatorTextCatalog textCatalog = new CalculatorTextCatalog();
+    private CalculatorResultEvaluator resultEvaluator;
     private CalculatorEasterEgg easterEgg;
     private readonly CalculatorHealthController healthController = new CalculatorHealthController();
-    private bool isLastInputDice;
     private CalculatorPotionController potionController;
     private DndSaveManager saveManager;
     private RuntimeLocalization localization;
@@ -23,11 +21,14 @@ public class CalculatorManager : MonoBehaviour
 
     private void Start()
     {
-        localization = RuntimeLocalization.EnsureExists();
-        saveManager = DndSaveManager.EnsureExists();
+        localization = new RuntimeManagerResolver().Localization();
+        saveManager = new RuntimeManagerResolver().SaveManager();
+        healthController.Initialize(new CharacterRestService(saveManager));
         easterEgg = new CalculatorEasterEgg(localization, saveManager);
         exhaustionEffects = new ExhaustionEffects(saveManager);
-        CalculatorControlBinder controls = new CalculatorControlBinder(transform, NormalizeLabel, IsCalculatorButtonLabel);
+        resultEvaluator = new CalculatorResultEvaluator(() => exhaustionEffects.Level);
+        CalculatorControlBinder controls = new CalculatorControlBinder(transform, expressionInput.NormalizeLabel,
+            expressionInput.IsCalculatorButtonLabel, healthController.IsButtonName);
         controls.ResolveDisplayTexts(ref equationText, ref resultText);
         if (buttons == null)
             buttons = new List<Button>();
@@ -39,7 +40,7 @@ public class CalculatorManager : MonoBehaviour
         potionController.Wire();
     }
 
-    public void RefreshLocalization()
+    internal void RefreshLocalization()
     {
         if (localization == null || easterEgg == null)
             return;
@@ -54,19 +55,19 @@ public class CalculatorManager : MonoBehaviour
             easterEgg.Refresh();
     }
 
-    public void RefreshExhaustionDisplay()
+    internal void RefreshExhaustionDisplay()
     {
         RefreshEquationText();
     }
 
     internal string GetCalculatorText(string key)
     {
-        return CalculatorTextCatalog.Get(key, localization.CurrentLanguage);
+        return textCatalog.Get(key, localization.CurrentLanguage);
     }
 
     internal string GetHealedText(int value)
     {
-        return CalculatorHealthController.FormatHealed(value, GetCalculatorText);
+        return healthController.FormatHealed(value, GetCalculatorText);
     }
 
     private void OnHpButtonClick(string buttonName, Button button)
@@ -84,7 +85,7 @@ public class CalculatorManager : MonoBehaviour
 
     private void OnButtonClick(string rawLabel)
     {
-        string label = NormalizeLabel(rawLabel);
+        string label = expressionInput.NormalizeLabel(rawLabel);
         if (string.IsNullOrEmpty(label))
             return;
 
@@ -109,33 +110,22 @@ public class CalculatorManager : MonoBehaviour
             return;
         }
 
-        if (IsOperator(label))
+        if (expressionInput.IsOperator(label))
         {
             AddOperator(label[0]);
             return;
         }
 
-        if (IsDiceLabel(label))
+        if (expressionInput.IsDiceLabel(label))
         {
             AddDice(label);
             return;
         }
 
-        if (IsNumberLabel(label))
+        if (expressionInput.IsNumberLabel(label))
         {
             AddNumber(label);
         }
-    }
-
-    private string NormalizeLabel(string label)
-    {
-        if (label == "×" || label == "x" || label == "X")
-            return "*";
-
-        if (label == "÷")
-            return "/";
-
-        return label.Replace(" ", "");
     }
 
     private bool HandleHpModeButton(string label)
@@ -155,14 +145,13 @@ public class CalculatorManager : MonoBehaviour
             return true;
         }
 
-        if (!CalculatorHealthController.IsButtonName(normalized))
+        if (!healthController.IsButtonName(normalized))
             return false;
         if (easterEgg.IsShowing)
             ResetCalculator();
         healthController.TrySelectMode(normalized, GetCalculatorText,
             localization.CurrentLanguage);
-        currentEquation = "";
-        isLastInputDice = false;
+        expressionInput.Reset();
         if (equationText != null)
             equationText.text = healthController.ModeLabel;
         if (resultText != null)
@@ -175,35 +164,13 @@ public class CalculatorManager : MonoBehaviour
     {
         if (HasDisplayedResult())
             ResetCalculator();
-
-        currentEquation += label;
-        isLastInputDice = false;
+        expressionInput.AddNumber(label);
         RefreshEquationText();
     }
 
     private void AddOperator(char operatorChar)
     {
-        if (currentEquation.Length == 0)
-        {
-            if (operatorChar == '-')
-            {
-                currentEquation = "-";
-                RefreshEquationText();
-            }
-
-            return;
-        }
-
-        if (IsLastCharOperator())
-        {
-            currentEquation = currentEquation.Substring(0, currentEquation.Length - 1) + operatorChar;
-        }
-        else
-        {
-            currentEquation += operatorChar;
-        }
-
-        isLastInputDice = false;
+        expressionInput.AddOperator(operatorChar);
         RefreshEquationText();
     }
 
@@ -211,31 +178,24 @@ public class CalculatorManager : MonoBehaviour
     {
         if (HasDisplayedResult())
             ResetCalculator();
-
-        if (isLastInputDice)
-            return;
-
-        currentEquation += label.ToLowerInvariant();
-        isLastInputDice = true;
+        expressionInput.AddDice(label);
         RefreshEquationText();
     }
 
     private void CalculateResult()
     {
-        if (string.IsNullOrWhiteSpace(currentEquation))
+        if (string.IsNullOrWhiteSpace(expressionInput.Value))
             return;
 
-        if (!healthController.IsActive && easterEgg.TryShow(currentEquation, equationText, resultText, ResetCalculator))
+        if (!healthController.IsActive && easterEgg.TryShow(expressionInput.Value, equationText, resultText, ResetCalculator))
             return;
 
-        string expression = TrimTrailingOperators(currentEquation);
+        string expression = expressionInput.ExpressionForEvaluation();
         if (string.IsNullOrWhiteSpace(expression))
             return;
 
-        int exhaustionPenalty = !healthController.IsActive && ExhaustionEffects.IsD20Roll(expression)
-            ? 2 * exhaustionEffects.Level : 0;
-        expression = DiceExpressionEvaluator.RollDice(expression);
-        if (!DiceExpressionEvaluator.TryEvaluate(expression, out double result))
+        if (!resultEvaluator.TryEvaluate(expression, !healthController.IsActive,
+            out double result, out int exhaustionPenalty))
         {
             if (resultText != null)
                 resultText.text = "=0";
@@ -248,27 +208,23 @@ public class CalculatorManager : MonoBehaviour
             return;
         }
 
-        result -= exhaustionPenalty;
-        string formattedResult = FormatNumber(result);
+        string formattedResult = expressionInput.FormatNumber(result);
         if (resultText != null)
-            resultText.text = "=" + formattedResult + (exhaustionPenalty > 0 ? " (" + ExhaustionEffects.PenaltyLabel(exhaustionPenalty, localization.CurrentLanguage).Trim() + ")" : "");
-        currentEquation = formattedResult;
-        isLastInputDice = false;
+            resultText.text = "=" + formattedResult + (exhaustionPenalty > 0 ? " (" + textCatalog.PenaltyLabel(exhaustionPenalty, localization.CurrentLanguage).Trim() + ")" : "");
+        expressionInput.SetResult(formattedResult);
         RefreshEquationText();
     }
 
     private void ApplyHpMode(int value)
     {
         ShowHpResult(healthController.Apply(value, FindActiveHealthBar(), GetCalculatorText));
-        currentEquation = "";
-        isLastInputDice = false;
+        expressionInput.Reset();
     }
 
     internal void ResetHpInputState()
     {
         healthController.Reset();
-        currentEquation = "";
-        isLastInputDice = false;
+        expressionInput.Reset();
     }
 
     private bool HasDisplayedResult()
@@ -279,28 +235,25 @@ public class CalculatorManager : MonoBehaviour
     private void ResetCalculator()
     {
         easterEgg.ResetDisplay();
-        currentEquation = "";
+        expressionInput.Reset();
         healthController.Reset();
         if (equationText != null)
             equationText.text = "";
         if (resultText != null)
             resultText.text = "";
-        isLastInputDice = false;
     }
 
     private void ClearEntry()
     {
-        if (currentEquation.Length == 0)
+        if (expressionInput.IsEmpty)
             return;
-
-        currentEquation = currentEquation.Substring(0, currentEquation.Length - 1);
-        RecalculateInputFlags();
+        expressionInput.ClearEntry();
         RefreshEquationText();
     }
 
     internal HealthBar FindActiveHealthBar()
     {
-        return CalculatorHealthController.FindActiveHealthBar();
+        return healthController.FindActiveHealthBar();
     }
 
     internal void ShowHpResult(string message)
@@ -312,61 +265,15 @@ public class CalculatorManager : MonoBehaviour
         healthController.ApplyTextColor(equationText, resultText);
     }
 
-    private bool IsCalculatorButtonLabel(string label)
-    {
-        return IsNumberLabel(label) || IsOperator(label) || IsDiceLabel(label) ||
-               label == "C" || label == "CE" || label == "=";
-    }
-
-    private bool IsNumberLabel(string label)
-    {
-        return double.TryParse(label, NumberStyles.Float, CultureInfo.InvariantCulture, out _);
-    }
-
-    private bool IsDiceLabel(string label)
-    {
-        return Regex.IsMatch(label, @"^[dD]\d+$");
-    }
-
-    private bool IsOperator(string label)
-    {
-        return label.Length == 1 && "+-*/".Contains(label);
-    }
-
-    private bool IsLastCharOperator()
-    {
-        return currentEquation.Length > 0 && "+-*/".Contains(currentEquation[currentEquation.Length - 1].ToString());
-    }
-
-    private string TrimTrailingOperators(string expression)
-    {
-        while (expression.Length > 0 && "+-*/".Contains(expression[expression.Length - 1].ToString()))
-            expression = expression.Substring(0, expression.Length - 1);
-
-        return expression;
-    }
-
-    private void RecalculateInputFlags()
-    {
-        isLastInputDice = Regex.IsMatch(currentEquation, @"[dD]\d+$");
-    }
-
     private void RefreshEquationText()
     {
-        if (equationText == null || easterEgg == null || exhaustionEffects == null || easterEgg.IsShowing)
+        if (equationText == null || easterEgg == null || exhaustionEffects == null || resultEvaluator == null ||
+            localization == null || easterEgg.IsShowing)
             return;
 
-        equationText.text = healthController.IsActive ? healthController.ModeLabel + currentEquation : currentEquation;
-        if (!healthController.IsActive && ExhaustionEffects.IsD20Roll(currentEquation) && exhaustionEffects.Level > 0)
-            equationText.text += ExhaustionEffects.PenaltyLabel(2 * exhaustionEffects.Level, localization.CurrentLanguage);
+        equationText.text = healthController.IsActive ? healthController.ModeLabel + expressionInput.Value : expressionInput.Value;
+        if (!healthController.IsActive && resultEvaluator.IsD20Roll(expressionInput.Value) && exhaustionEffects.Level > 0)
+            equationText.text += textCatalog.PenaltyLabel(
+                ExhaustionEffects.DicePenaltyPerLevel * exhaustionEffects.Level, localization.CurrentLanguage);
     }
-
-    private string FormatNumber(double value)
-    {
-        if (Math.Abs(value % 1) < 0.000001)
-            return ((long)Math.Round(value)).ToString(CultureInfo.InvariantCulture);
-
-        return value.ToString("0.###", CultureInfo.InvariantCulture);
-    }
-
 }

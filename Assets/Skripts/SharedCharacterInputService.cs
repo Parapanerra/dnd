@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 // Reads and writes the two character-wide input fields shared by multiple scenes.
-public static class SharedCharacterInputService
+internal sealed class SharedCharacterInputService
 {
-    public static void Save(CharacterData character, IEnumerable<InputField> inputs,
+    internal void Save(CharacterData character, IEnumerable<InputField> inputs,
         IEnumerable<TMP_InputField> tmpInputs)
     {
         if (character == null)
@@ -18,44 +19,22 @@ public static class SharedCharacterInputService
             SaveField(character, input != null ? input.transform : null, input != null ? input.text : "");
     }
 
-    public static void Load(CharacterData character, IEnumerable<InputField> inputs,
+    internal void Load(CharacterData character, IEnumerable<InputField> inputs,
         IEnumerable<TMP_InputField> tmpInputs)
     {
         if (character == null)
             return;
 
         foreach (InputField input in inputs)
-        {
-            if (input == null)
-                continue;
-
-            string key = GetKey(input.transform);
-            if (string.IsNullOrEmpty(key))
-                continue;
-
-            if (character.HasSharedString(key))
-                input.SetTextWithoutNotify(character.GetSharedString(key, ""));
-            else
-                character.SetSharedString(key, input.text);
-        }
+            if (input != null)
+                LoadField(character, input.transform, input.text, input.SetTextWithoutNotify);
 
         foreach (TMP_InputField input in tmpInputs)
-        {
-            if (input == null)
-                continue;
-
-            string key = GetKey(input.transform);
-            if (string.IsNullOrEmpty(key))
-                continue;
-
-            if (character.HasSharedString(key))
-                input.SetTextWithoutNotify(character.GetSharedString(key, ""));
-            else
-                character.SetSharedString(key, input.text);
-        }
+            if (input != null)
+                LoadField(character, input.transform, input.text, input.SetTextWithoutNotify);
     }
 
-    public static void Clear(CharacterData character, IEnumerable<InputField> inputs,
+    internal void Clear(CharacterData character, IEnumerable<InputField> inputs,
         IEnumerable<TMP_InputField> tmpInputs)
     {
         if (character == null || !ContainsSharedField(inputs, tmpInputs))
@@ -65,7 +44,7 @@ public static class SharedCharacterInputService
         character.DeleteSharedString("SharedInput_slogSpas");
     }
 
-    public static string GetKey(Transform transform)
+    internal string GetKey(Transform transform)
     {
         while (transform != null)
         {
@@ -79,14 +58,26 @@ public static class SharedCharacterInputService
         return "";
     }
 
-    private static void SaveField(CharacterData character, Transform transform, string value)
+    private void SaveField(CharacterData character, Transform transform, string value)
     {
         string key = GetKey(transform);
         if (!string.IsNullOrEmpty(key))
             character.SetSharedString(key, value);
     }
 
-    private static bool ContainsSharedField(IEnumerable<InputField> inputs,
+    private void LoadField(CharacterData character, Transform transform, string currentValue, Action<string> setText)
+    {
+        string key = GetKey(transform);
+        if (string.IsNullOrEmpty(key))
+            return;
+
+        if (character.HasSharedString(key))
+            setText(character.GetSharedString(key, ""));
+        else
+            character.SetSharedString(key, currentValue);
+    }
+
+    private bool ContainsSharedField(IEnumerable<InputField> inputs,
         IEnumerable<TMP_InputField> tmpInputs)
     {
         foreach (InputField input in inputs)

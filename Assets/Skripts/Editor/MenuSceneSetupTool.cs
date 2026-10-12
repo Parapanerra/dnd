@@ -32,7 +32,7 @@ public static class MenuSceneSetupTool
             return;
         }
 
-        menuManager.EnsureEditableCharacterScrollView();
+        EnsureEditableCharacterScrollView(menuManager);
         EditorUtility.SetDirty(menuManager);
         EditorSceneManager.MarkSceneDirty(menuManager.gameObject.scene);
         Debug.Log("Created clean editable CharacterRowsScrollView.");
@@ -53,11 +53,11 @@ public static class MenuSceneSetupTool
         RectTransform scrollRectTransform = menuManager.transform as RectTransform;
         if (scrollRectTransform != null)
         {
-            scrollRectTransform.anchorMin = AppConfig.MainMenu.CenterAnchor;
-            scrollRectTransform.anchorMax = AppConfig.MainMenu.CenterAnchor;
-            scrollRectTransform.pivot = AppConfig.MainMenu.CenterAnchor;
-            scrollRectTransform.anchoredPosition = AppConfig.EditorLayout.MenuScrollPosition;
-            scrollRectTransform.sizeDelta = AppConfig.EditorLayout.MenuScrollSize;
+            scrollRectTransform.anchorMin = MenuSceneLayout.CenterAnchor;
+            scrollRectTransform.anchorMax = MenuSceneLayout.CenterAnchor;
+            scrollRectTransform.pivot = MenuSceneLayout.CenterAnchor;
+            scrollRectTransform.anchoredPosition = MenuSceneLayout.MenuScrollPosition;
+            scrollRectTransform.sizeDelta = MenuSceneLayout.MenuScrollSize;
         }
 
         VerticalLayoutGroup wrongLayout = menuManager.GetComponent<VerticalLayoutGroup>();
@@ -136,6 +136,89 @@ public static class MenuSceneSetupTool
         Debug.Log("Menu character list repaired and menu.unity saved.");
     }
 
+    private static void EnsureEditableCharacterScrollView(MainMenuManager menuManager)
+    {
+        Transform parent = menuManager.transform.parent != null
+            ? menuManager.transform.parent : menuManager.transform;
+        Transform existing = parent.Find("CharacterRowsScrollView");
+        if (existing != null)
+        {
+            BindEditableCharacterScrollView(menuManager, existing);
+            return;
+        }
+
+        GameObject scrollView = MenuSceneUiFactory.CreateElement(MenuSceneUiElementSpec.Create(
+            "CharacterRowsScrollView", parent, MenuSceneLayout.CenterAnchor,
+            MenuSceneLayout.CharacterScrollPosition, MenuSceneLayout.CharacterScrollSize));
+        Image scrollImage = scrollView.AddComponent<Image>();
+        scrollImage.color = AppConfig.MainMenu.Transparent;
+        scrollImage.raycastTarget = false;
+        ScrollRect scrollRect = scrollView.AddComponent<ScrollRect>();
+        scrollRect.horizontal = false;
+        scrollRect.vertical = true;
+        scrollRect.movementType = ScrollRect.MovementType.Clamped;
+
+        GameObject viewport = MenuSceneUiFactory.CreateElement(MenuSceneUiElementSpec.Create(
+            "Viewport", scrollView.transform, MenuSceneLayout.CenterAnchor,
+            Vector2.zero, MenuSceneLayout.CharacterScrollSize));
+        Image viewportImage = viewport.AddComponent<Image>();
+        viewportImage.color = AppConfig.MainMenu.Transparent;
+        viewportImage.raycastTarget = false;
+        Mask mask = viewport.AddComponent<Mask>();
+        mask.showMaskGraphic = false;
+
+        GameObject content = MenuSceneUiFactory.CreateElement(MenuSceneUiElementSpec.Create(
+            "RowsContent", viewport.transform, MenuSceneLayout.TopCenterAnchor,
+            Vector2.zero, MenuSceneLayout.CharacterScrollSize));
+        CreateDefaultCharacterRowTemplate(content.transform);
+        MenuSceneUiFactory.CreateButton(MenuSceneButtonSpec.Create(
+            "AddCharacterButton", scrollView.transform,
+            MenuSceneLayout.AddButtonPosition, MenuSceneLayout.AddButtonSize,
+            "Додати персонажа"));
+
+        scrollRect.viewport = viewport.GetComponent<RectTransform>();
+        scrollRect.content = content.GetComponent<RectTransform>();
+        BindEditableCharacterScrollView(menuManager, scrollView.transform);
+        EditorUtility.SetDirty(scrollView);
+        EditorSceneManager.MarkSceneDirty(menuManager.gameObject.scene);
+    }
+
+    private static void BindEditableCharacterScrollView(MainMenuManager menuManager, Transform scrollView)
+    {
+        MainMenuCharacterListView listView = menuManager.GetComponent<MainMenuCharacterListView>();
+        if (listView == null)
+            listView = menuManager.gameObject.AddComponent<MainMenuCharacterListView>();
+
+        Transform viewport = scrollView.Find("Viewport");
+        Transform content = viewport != null ? viewport.Find("RowsContent") : scrollView.Find("RowsContent");
+        Transform rowTemplate = content != null ? content.Find("CharacterRowTemplate") : null;
+        Transform addButton = scrollView.Find("AddCharacterButton");
+        listView.SetEditableCharacterScrollViewReferences(
+            content, rowTemplate != null ? rowTemplate.gameObject : null,
+            addButton != null ? addButton.GetComponent<Button>() : null);
+        EditorUtility.SetDirty(listView);
+        EditorUtility.SetDirty(menuManager);
+    }
+
+    private static GameObject CreateDefaultCharacterRowTemplate(Transform parent)
+    {
+        GameObject row = MenuSceneUiFactory.CreateElement(MenuSceneUiElementSpec.Create(
+            "CharacterRowTemplate", parent, MenuSceneLayout.TopCenterAnchor,
+            Vector2.zero, MenuSceneLayout.CharacterRowSize));
+        MenuSceneUiFactory.CreateButton(MenuSceneButtonSpec.Create(
+            "InventoryButton", row.transform, MenuSceneLayout.InventoryButtonPosition,
+            MenuSceneLayout.RowActionButtonSize, "I"));
+        MenuSceneUiFactory.CreateButton(MenuSceneButtonSpec.Create(
+            "CharacterButton", row.transform, MenuSceneLayout.CharacterButtonPosition,
+            MenuSceneLayout.CharacterNameButtonSize, "Персонаж №1"));
+        MenuSceneUiFactory.CreateButton(MenuSceneButtonSpec.Create(
+            "SpellsButton", row.transform, MenuSceneLayout.SpellsButtonPosition,
+            MenuSceneLayout.RowActionButtonSize, "S"));
+        MenuSceneUiFactory.CreateButton(MenuSceneButtonSpec.Create(
+            "DeleteButton", row.transform, MenuSceneLayout.DeleteRowButtonPosition,
+            MenuSceneLayout.RowActionButtonSize, "X"));
+        return row;
+    }
     private static void EnsureCharacterButtonTemplate(MainMenuManager menuManager, bool logWhenExists)
     {
         if (menuManager.CharacterListContent == null)

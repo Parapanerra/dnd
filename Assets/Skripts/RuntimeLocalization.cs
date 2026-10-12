@@ -1,10 +1,6 @@
-using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using System.Collections;
 
 public enum AppLanguage
 {
@@ -13,29 +9,26 @@ public enum AppLanguage
     Russian
 }
 
-public class LocalizedIgnore : MonoBehaviour
-{
-}
-
-public partial class RuntimeLocalization : MonoBehaviour
+public class RuntimeLocalization : MonoBehaviour
 {
     private bool initialized;
+    internal bool IsInitialized => initialized;
 
     private TranslationCatalog catalog;
     private SceneLocalizationApplier sceneApplier;
+    private UnityLocaleSynchronizer localeSynchronizer;
 
-    public AppLanguage CurrentLanguage { get; private set; }
-    private Coroutine syncUnityLocaleCoroutine;
+    internal AppLanguage CurrentLanguage { get; private set; }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Bootstrap()
     {
-        EnsureExists();
+        new RuntimeManagerResolver().Localization();
     }
 
     private void Awake()
     {
-        RuntimeLocalization existing = FindExisting();
+        RuntimeLocalization existing = new RuntimeManagerResolver().FindLocalization();
         if (existing != null && existing != this && existing.initialized)
         {
             Destroy(gameObject);
@@ -45,8 +38,9 @@ public partial class RuntimeLocalization : MonoBehaviour
         initialized = true;
         DontDestroyOnLoad(gameObject);
         catalog = new TranslationCatalog();
+        localeSynchronizer = new UnityLocaleSynchronizer(this);
         CurrentLanguage = GetInitialLanguage();
-        SyncUnityLocalizationPackage(CurrentLanguage);
+        localeSynchronizer.Sync(CurrentLanguage);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -56,41 +50,26 @@ public partial class RuntimeLocalization : MonoBehaviour
             SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    public static RuntimeLocalization EnsureExists()
-    {
-        RuntimeLocalization existing = FindExisting();
-        if (existing != null)
-            return existing;
-
-        GameObject localizationObject = new GameObject("RuntimeLocalization");
-        return localizationObject.AddComponent<RuntimeLocalization>();
-    }
-
-    private static RuntimeLocalization FindExisting()
-    {
-        RuntimeLocalization[] candidates = FindObjectsByType<RuntimeLocalization>(FindObjectsInactive.Include);
-        foreach (RuntimeLocalization candidate in candidates)
-            if (candidate != null && candidate.initialized)
-                return candidate;
-        return candidates.Length > 0 ? candidates[0] : null;
-    }
-
-    public void SetLanguage(AppLanguage language)
+    internal void SetLanguage(AppLanguage language)
     {
         CurrentLanguage = NormalizeLanguage((int)language);
         PlayerPrefs.SetInt(AppConfig.Localization.LanguagePrefsKey, (int)CurrentLanguage);
         PlayerPrefs.Save();
-        SyncUnityLocalizationPackage(CurrentLanguage);
+        localeSynchronizer.Sync(CurrentLanguage);
         ApplyToScene();
     }
 
     private AppLanguage NormalizeLanguage(int value)
     {
-        if (value < AppConfig.Localization.MinimumLanguageIndex ||
-            value > AppConfig.Localization.MaximumLanguageIndex)
-            return AppLanguage.Ukrainian;
-
-        return (AppLanguage)value;
+        switch ((AppLanguage)value)
+        {
+            case AppLanguage.Ukrainian:
+            case AppLanguage.English:
+            case AppLanguage.Russian:
+                return (AppLanguage)value;
+            default:
+                return AppLanguage.Ukrainian;
+        }
     }
 
     private AppLanguage GetInitialLanguage()
@@ -112,57 +91,17 @@ public partial class RuntimeLocalization : MonoBehaviour
         }
     }
 
-    private void SyncUnityLocalizationPackage(AppLanguage language)
-    {
-        if (!isActiveAndEnabled)
-            return;
-
-        if (syncUnityLocaleCoroutine != null)
-            StopCoroutine(syncUnityLocaleCoroutine);
-
-        syncUnityLocaleCoroutine = StartCoroutine(SyncUnityLocalizationPackageRoutine(language));
-    }
-
-    private IEnumerator SyncUnityLocalizationPackageRoutine(AppLanguage language)
-    {
-        yield return LocalizationSettings.InitializationOperation;
-
-        string targetCode = GetUnityLocaleCode(language);
-        foreach (Locale locale in LocalizationSettings.AvailableLocales.Locales)
-        {
-            if (locale != null &&
-                (locale.Identifier.Code == targetCode || locale.Identifier.Code.StartsWith(targetCode + "-")))
-            {
-                LocalizationSettings.SelectedLocale = locale;
-                break;
-            }
-        }
-
-        syncUnityLocaleCoroutine = null;
-    }
-
-    private string GetUnityLocaleCode(AppLanguage language)
-    {
-        if (language == AppLanguage.English)
-            return "en";
-
-        if (language == AppLanguage.Russian)
-            return "ru";
-
-        return "uk";
-    }
-
-    public string Translate(string source)
+    internal string Translate(string source)
     {
         return catalog.Translate(source, CurrentLanguage);
     }
 
-    public bool HasTranslationSource(string source)
+    internal bool HasTranslationSource(string source)
     {
         return catalog.HasTranslationSource(source);
     }
 
-    public void ApplyToScene()
+    internal void ApplyToScene()
     {
         if (sceneApplier == null)
             sceneApplier = new SceneLocalizationApplier(this);
@@ -185,171 +124,9 @@ public partial class RuntimeLocalization : MonoBehaviour
         ApplyToScene();
     }
 
-    public string GetSourceText(string value)
+    internal string GetSourceText(string value)
     {
         return catalog.GetSourceText(value);
     }
 
-}
-
-public class LocalizedText : MonoBehaviour
-{
-    [SerializeField] private string sourceText;
-
-    private Text text;
-    private RuntimeLocalization localization;
-
-    private void Awake()
-    {
-        text = GetComponent<Text>();
-    }
-
-    private void OnEnable()
-    {
-        Apply();
-    }
-
-    public void Apply(RuntimeLocalization service = null)
-    {
-        if (service != null)
-            localization = service;
-        if (localization == null)
-            localization = RuntimeLocalization.EnsureExists();
-        if (text == null)
-            text = GetComponent<Text>();
-
-        if (text == null)
-            return;
-
-        CaptureSourceFromVisibleTextIfPossible(localization);
-        CaptureSourceIfNeeded();
-        text.text = localization.Translate(sourceText);
-    }
-
-    private void CaptureSourceIfNeeded()
-    {
-        if (text == null)
-            return;
-
-        if (string.IsNullOrEmpty(sourceText))
-            sourceText = localization.GetSourceText(text.text);
-    }
-
-    private void CaptureSourceFromVisibleTextIfPossible(RuntimeLocalization localization)
-    {
-        if (text == null || localization == null)
-            return;
-
-        string visibleSource = localization.GetSourceText(text.text);
-        if (localization.HasTranslationSource(visibleSource))
-            sourceText = visibleSource;
-    }
-}
-
-public class LocalizedTmpText : MonoBehaviour
-{
-    [SerializeField] private string sourceText;
-
-    private TMP_Text text;
-    private RuntimeLocalization localization;
-
-    private void Awake()
-    {
-        text = GetComponent<TMP_Text>();
-    }
-
-    private void OnEnable()
-    {
-        Apply();
-    }
-
-    public void Apply(RuntimeLocalization service = null)
-    {
-        if (service != null)
-            localization = service;
-        if (localization == null)
-            localization = RuntimeLocalization.EnsureExists();
-        if (text == null)
-            text = GetComponent<TMP_Text>();
-
-        if (text == null)
-            return;
-
-        CaptureSourceFromVisibleTextIfPossible(localization);
-        CaptureSourceIfNeeded();
-        text.text = localization.Translate(sourceText);
-    }
-
-    private void CaptureSourceIfNeeded()
-    {
-        if (text == null)
-            return;
-
-        if (string.IsNullOrEmpty(sourceText))
-            sourceText = localization.GetSourceText(text.text);
-    }
-
-    private void CaptureSourceFromVisibleTextIfPossible(RuntimeLocalization localization)
-    {
-        if (text == null || localization == null)
-            return;
-
-        string visibleSource = localization.GetSourceText(text.text);
-        if (localization.HasTranslationSource(visibleSource))
-            sourceText = visibleSource;
-    }
-}
-
-public class LocalizedTextMesh : MonoBehaviour
-{
-    [SerializeField] private string sourceText;
-
-    private TextMesh text;
-    private RuntimeLocalization localization;
-
-    private void Awake()
-    {
-        text = GetComponent<TextMesh>();
-    }
-
-    private void OnEnable()
-    {
-        Apply();
-    }
-
-    public void Apply(RuntimeLocalization service = null)
-    {
-        if (service != null)
-            localization = service;
-        if (localization == null)
-            localization = RuntimeLocalization.EnsureExists();
-        if (text == null)
-            text = GetComponent<TextMesh>();
-
-        if (text == null)
-            return;
-
-        CaptureSourceFromVisibleTextIfPossible(localization);
-        CaptureSourceIfNeeded();
-        text.text = localization.Translate(sourceText);
-    }
-
-    private void CaptureSourceIfNeeded()
-    {
-        if (text == null)
-            return;
-
-        if (string.IsNullOrEmpty(sourceText))
-            sourceText = localization.GetSourceText(text.text);
-    }
-
-    private void CaptureSourceFromVisibleTextIfPossible(RuntimeLocalization localization)
-    {
-        if (text == null || localization == null)
-            return;
-
-        string visibleSource = localization.GetSourceText(text.text);
-        if (localization.HasTranslationSource(visibleSource))
-            sourceText = visibleSource;
-    }
 }

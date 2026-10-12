@@ -7,13 +7,16 @@ public class CharacterPortraitManager : MonoBehaviour
     private const string PortraitDataKey = "CharacterPortraitJpgBase64";
     private const string PortraitImageName = "photopersonaja";
     private const string SelectButtonName = "Buttonphotopersoj";
+    private readonly GalleryImagePicker galleryPicker = new GalleryImagePicker();
+    private readonly RuntimeImageView imageView = new RuntimeImageView();
+    private DndSaveManager saveManager;
     private Button selectPortraitButton;
     private Image portraitImage;
-    private Sprite loadedSprite;
-    private Texture2D loadedTexture;
-    private Sprite defaultSprite;
-    private Color defaultColor = Color.white;
-    private bool defaultPreserveAspect;
+
+    internal void Initialize(DndSaveManager dataManager)
+    {
+        saveManager = dataManager;
+    }
 
     private void Start()
     {
@@ -22,9 +25,7 @@ public class CharacterPortraitManager : MonoBehaviour
 
         if (portraitImage != null)
         {
-            defaultSprite = portraitImage.sprite;
-            defaultColor = portraitImage.color;
-            defaultPreserveAspect = portraitImage.preserveAspect;
+            imageView.Bind(portraitImage);
             ConfigureImageForFullFill();
         }
 
@@ -39,42 +40,25 @@ public class CharacterPortraitManager : MonoBehaviour
 
     private void SelectPortrait()
     {
-        NativeGallery.GetImageFromGallery(
-            path =>
-            {
-                if (string.IsNullOrEmpty(path))
-                    return;
-
-                LoadPortraitFromPath(path);
-            },
-            "Select portrait",
-            "image/*"
-        );
-    }
-
-    private void LoadPortraitFromPath(string path)
-    {
         if (portraitImage == null)
             return;
 
+        galleryPicker.Pick("Select portrait", AppConfig.Images.PortraitWidth,
+            AppConfig.Images.PortraitHeight, ApplySelectedPortrait,
+            exception => Debug.LogError("Could not load character portrait: " + exception.Message));
+    }
+
+    private void ApplySelectedPortrait(Texture2D texture)
+    {
         try
         {
-            Texture2D texture = NativeGallery.LoadImageAtPath(
-                path,
-                AppConfig.Images.GalleryPreviewMaxSize,
-                false,
-                false);
-            if (texture == null)
-                return;
-
-            Texture2D resizedTexture = ResizeToPortrait(texture);
-            Destroy(texture);
-
-            SavePortrait(resizedTexture);
-            ApplyTexture(resizedTexture);
+            SavePortrait(texture);
+            imageView.Show(texture);
         }
         catch (Exception exception)
         {
+            if (imageView.Texture != texture)
+                Destroy(texture);
             Debug.LogError("Could not load character portrait: " + exception.Message);
         }
     }
@@ -97,7 +81,7 @@ public class CharacterPortraitManager : MonoBehaviour
                 TextureFormat.RGBA32,
                 false);
             if (texture.LoadImage(bytes))
-                ApplyTexture(texture);
+                imageView.Show(texture);
             else
                 Destroy(texture);
         }
@@ -107,37 +91,16 @@ public class CharacterPortraitManager : MonoBehaviour
         }
     }
 
-    private void ApplyTexture(Texture2D texture)
+    internal void ClearPortraitForActiveCharacter()
     {
-        if (portraitImage == null || texture == null)
-            return;
-
-        if (loadedSprite != null)
-            Destroy(loadedSprite);
-        if (loadedTexture != null)
-            Destroy(loadedTexture);
-
-        loadedTexture = texture;
-        loadedSprite = Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-
-        portraitImage.sprite = loadedSprite;
-        portraitImage.color = Color.white;
-        ConfigureImageForFullFill();
-    }
-
-    public static void ClearPortraitForActiveCharacter()
-    {
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
         CharacterData character = saveManager.EnsureActiveCharacter();
         if (character != null)
         {
             character.DeleteSharedString(PortraitDataKey);
-            saveManager.SaveData();
+            saveManager.RequestSaveData();
         }
 
-        CharacterPortraitManager manager = FindAnyObjectByType<CharacterPortraitManager>();
-        if (manager != null)
-            manager.ClearPortraitImage();
+        ClearPortraitImage();
     }
 
     private void SavePortrait(Texture2D texture)
@@ -145,7 +108,6 @@ public class CharacterPortraitManager : MonoBehaviour
         if (texture == null)
             return;
 
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
         CharacterData character = saveManager.EnsureActiveCharacter();
         if (character == null)
             return;
@@ -157,31 +119,8 @@ public class CharacterPortraitManager : MonoBehaviour
 
     private string GetSavedPortrait()
     {
-        DndSaveManager saveManager = DndSaveManager.EnsureExists();
         CharacterData character = saveManager.EnsureActiveCharacter();
         return character != null ? character.GetSharedString(PortraitDataKey, "") : "";
-    }
-
-    private Texture2D ResizeToPortrait(Texture2D source)
-    {
-        int portraitWidth = AppConfig.Images.PortraitWidth;
-        int portraitHeight = AppConfig.Images.PortraitHeight;
-        Texture2D result = new Texture2D(portraitWidth, portraitHeight, TextureFormat.RGB24, false);
-        Color[] pixels = new Color[portraitWidth * portraitHeight];
-
-        for (int y = 0; y < portraitHeight; y++)
-        {
-            float sourceY = portraitHeight == 1 ? 0f : (float)y / (portraitHeight - 1);
-            for (int x = 0; x < portraitWidth; x++)
-            {
-                float sourceX = portraitWidth == 1 ? 0f : (float)x / (portraitWidth - 1);
-                pixels[y * portraitWidth + x] = source.GetPixelBilinear(sourceX, sourceY);
-            }
-        }
-
-        result.SetPixels(pixels);
-        result.Apply(false, false);
-        return result;
     }
 
     private void ClearPortraitImage()
@@ -189,21 +128,12 @@ public class CharacterPortraitManager : MonoBehaviour
         if (portraitImage == null)
             return;
 
-        if (loadedSprite != null)
-        {
-            Destroy(loadedSprite);
-            loadedSprite = null;
-        }
+        imageView.Restore();
+    }
 
-        if (loadedTexture != null)
-        {
-            Destroy(loadedTexture);
-            loadedTexture = null;
-        }
-
-        portraitImage.sprite = defaultSprite;
-        portraitImage.color = defaultColor;
-        portraitImage.preserveAspect = defaultPreserveAspect;
+    private void OnDestroy()
+    {
+        imageView.Dispose();
     }
 
     private void ConfigureImageForFullFill()
