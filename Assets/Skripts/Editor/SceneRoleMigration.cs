@@ -33,12 +33,21 @@ public static class SceneRoleMigration
         { "deadChekBox", SceneRole.DeathSaves },
         { "deadCheckBox", SceneRole.DeathSaves },
         { "resursClas", SceneRole.ClassResources },
-        { "folslive", SceneRole.TemporaryHealth }
+        { "folslive", SceneRole.TemporaryHealth },
+        { "alldise", SceneRole.HitDiceCount },
+        { "alldaise", SceneRole.HitDiceCount },
+        { "daicevalueperson", SceneRole.HitDiceSides },
+        { "movsped", SceneRole.MovementSpeed },
+        { "photopersonaja", SceneRole.PortraitImage },
+        { "Buttonphotopersoj", SceneRole.PortraitButton },
+        { "overLey", SceneRole.Overlay },
+        { "DFormOverLey", SceneRole.WildShapeOverlay }
     };
 
     [MenuItem("Tools/Taruck/Migrate Scene Roles")]
     public static void MigrateAndValidate()
     {
+        EnsureNoDirtyScenes();
         SceneSetup[] previousSetup = EditorSceneManager.GetSceneManagerSetup();
         int changes = 0;
         try
@@ -77,13 +86,14 @@ public static class SceneRoleMigration
                         }
                     }
 
-                if (changed)
+                UiDependencyMigration.Migrate(scene);
+                ValidateScene(scene);
+                if (changed || scene.isDirty)
                 {
                     EditorSceneManager.MarkSceneDirty(scene);
                     EditorSceneManager.SaveScene(scene);
                 }
 
-                ValidateScene(scene);
             }
         }
         finally
@@ -98,6 +108,7 @@ public static class SceneRoleMigration
     [MenuItem("Tools/Taruck/Validate Scene Roles")]
     public static void ValidateOnly()
     {
+        EnsureNoDirtyScenes();
         SceneSetup[] previousSetup = EditorSceneManager.GetSceneManagerSetup();
         try
         {
@@ -148,6 +159,7 @@ public static class SceneRoleMigration
 
     private static void ValidateScene(Scene scene)
     {
+        UiDependencyMigration.Validate(scene);
         var counts = new Dictionary<SceneRole, int>();
         var errors = new List<string>();
         foreach (GameObject root in scene.GetRootGameObjects())
@@ -161,6 +173,13 @@ public static class SceneRoleMigration
                     errors.Add("Reset scene role has no Button");
                 if (marker.Role == SceneRole.TemporaryHealth && marker.GetComponentInChildren<Slider>(true) == null)
                     errors.Add("Temporary health role has no Slider");
+                if ((marker.Role == SceneRole.HitDiceCount || marker.Role == SceneRole.HitDiceSides ||
+                     marker.Role == SceneRole.MovementSpeed) && marker.GetComponentInChildren<InputField>(true) == null)
+                    errors.Add($"Scene role {marker.Role} has no InputField");
+                if (marker.Role == SceneRole.PortraitImage && marker.GetComponent<Image>() == null)
+                    errors.Add("Portrait image role has no Image");
+                if (marker.Role == SceneRole.PortraitButton && marker.GetComponent<Button>() == null)
+                    errors.Add("Portrait button role has no Button");
             }
 
         foreach (KeyValuePair<SceneRole, int> entry in counts)
@@ -174,7 +193,8 @@ public static class SceneRoleMigration
                 SceneRole.Rage, SceneRole.WildShape, SceneRole.ChannelDivinity,
                 SceneRole.KiPoints, SceneRole.SorceryPoints, SceneRole.BloodCurse,
                 SceneRole.DragonBreath, SceneRole.Flight, SceneRole.Exhaustion,
-                SceneRole.DeathSaves, SceneRole.ClassResources
+                SceneRole.DeathSaves, SceneRole.ClassResources,
+                SceneRole.HitDiceCount, SceneRole.HitDiceSides, SceneRole.MovementSpeed
             })
                 RequireRole(role);
         if (scene.name == "Spels")
@@ -190,5 +210,12 @@ public static class SceneRoleMigration
             if (!counts.ContainsKey(role))
                 errors.Add("Missing scene role " + role);
         }
+    }
+
+    private static void EnsureNoDirtyScenes()
+    {
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+            if (SceneManager.GetSceneAt(i).isDirty)
+                throw new InvalidOperationException("Save pending scene edits before migrating or validating scene roles.");
     }
 }

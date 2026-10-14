@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,6 +66,26 @@ public class InventoryItemImageController : MonoBehaviour
         {
             imageView.Restore();
         }
+    }
+
+    // Decode the candidate before any UI or saved data is changed.
+    internal static void ValidateImportImage(string base64)
+    {
+        if (string.IsNullOrEmpty(base64)) return;
+        byte[] bytes = Convert.FromBase64String(base64);
+        InventoryItemValidator.ValidateImage(bytes);
+        Texture2D texture = new Texture2D(AppConfig.Images.TextureBootstrapSize,
+            AppConfig.Images.TextureBootstrapSize, TextureFormat.RGBA32, false);
+        try
+        {
+            if (!texture.LoadImage(bytes, true))
+                throw new InvalidDataException("Item image cannot be decoded");
+            if (texture.width > InventoryItemValidator.MaximumImageDimension ||
+                texture.height > InventoryItemValidator.MaximumImageDimension ||
+                (long)texture.width * texture.height > InventoryItemValidator.MaximumImagePixels)
+                throw new InvalidDataException("Item image dimensions are too large");
+        }
+        finally { DestroyRuntimeObject(texture); }
     }
 
     internal string GetBase64()

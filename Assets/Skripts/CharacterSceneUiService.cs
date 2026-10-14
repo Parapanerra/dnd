@@ -44,7 +44,10 @@ internal sealed class CharacterSceneUiService
             return existing;
         }
 
-        bool hasPortraitUi = false;
+        SceneRoleLookup roles = new SceneRoleLookup();
+        bool hasPortraitUi = roles.Find(SceneRole.PortraitImage) != null || roles.Find(SceneRole.PortraitButton) != null;
+        // Legacy scene compatibility when no portrait roles are present.
+        if (!hasPortraitUi)
         foreach (Transform transform in Object.FindObjectsByType<Transform>(FindObjectsInactive.Include))
             if (transform != null && (SceneObjectName.Matches(transform.name, "Buttonphotopersoj") ||
                                       SceneObjectName.Matches(transform.name, "photopersonaja")))

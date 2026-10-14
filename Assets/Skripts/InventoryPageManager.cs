@@ -55,6 +55,11 @@ public class InventoryPageManager : MonoBehaviour
             return;
 
         List<Transform> cellTransforms = new List<Transform>();
+        foreach (UiControlMarker marker in page.GetComponentsInChildren<UiControlMarker>(true))
+            if (marker.Role == UiControlRole.InventoryCell)
+                cellTransforms.Add(marker.transform);
+
+        if (cellTransforms.Count == 0) // Legacy scene fallback.
         foreach (Transform child in page.GetComponentsInChildren<Transform>(true))
             if (child != page && SceneObjectName.Matches(child.name, "Cels"))
                 cellTransforms.Add(child);
@@ -81,6 +86,16 @@ public class InventoryPageManager : MonoBehaviour
 
     private void KeepMainPageActive()
     {
+        SceneRoleMarker page = new SceneRoleLookup().Find(SceneRole.MainPage);
+        if (page != null)
+        {
+            page.gameObject.SetActive(true);
+            foreach (UiControlMarker marker in FindObjectsByType<UiControlMarker>(FindObjectsInactive.Include))
+                if (marker.gameObject.scene == gameObject.scene && marker.Role == UiControlRole.InactiveInventoryPage)
+                    marker.gameObject.SetActive(false);
+            return;
+        }
+        // Legacy scene fallback.
         Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform transform in transforms)
         {
@@ -96,6 +111,8 @@ public class InventoryPageManager : MonoBehaviour
 
     private Transform FindMainPage()
     {
+        SceneRoleMarker page = new SceneRoleLookup().Find(SceneRole.MainPage);
+        if (page != null) return page.transform;
         Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform transform in transforms)
             if (transform != null && string.Equals(transform.name, "Page", StringComparison.Ordinal))
@@ -126,6 +143,8 @@ public class InventoryPageManager : MonoBehaviour
 
     private bool IsPageTitle(Transform textTransform, string text)
     {
+        if (textTransform != null && textTransform.TryGetComponent(out UiControlMarker marker))
+            return marker.Role == UiControlRole.PageTitle;
         if (textTransform == null || string.IsNullOrWhiteSpace(text))
             return false;
 

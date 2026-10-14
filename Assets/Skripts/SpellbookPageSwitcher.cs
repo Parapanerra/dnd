@@ -74,6 +74,8 @@ public class SpellbookPageSwitcher : MonoBehaviour
 
     private bool IsPageTitle(Transform transform, string text)
     {
+        if (transform != null && transform.TryGetComponent(out UiControlMarker marker))
+            return marker.Role == UiControlRole.PageTitle;
         if (transform == null)
             return false;
 
@@ -92,6 +94,13 @@ public class SpellbookPageSwitcher : MonoBehaviour
 
     private void KeepMainPagePanelActive()
     {
+        SceneRoleMarker page = new SceneRoleLookup().Find(SceneRole.MainPage);
+        if (page != null)
+        {
+            page.gameObject.SetActive(true);
+            return;
+        }
+        // Legacy scene fallback.
         Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform transform in transforms)
             if (transform != null && string.Equals(transform.name, "Page", StringComparison.Ordinal))

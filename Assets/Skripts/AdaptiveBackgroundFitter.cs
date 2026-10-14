@@ -9,6 +9,8 @@ internal sealed class AdaptiveBackgroundFitter
     private readonly Dictionary<SpriteRenderer, Vector2> originalSizes =
         new Dictionary<SpriteRenderer, Vector2>();
 
+    internal IEnumerable<SpriteRenderer> Backgrounds => originalSizes.Keys;
+
     internal void Collect()
     {
         originalSizes.Clear();

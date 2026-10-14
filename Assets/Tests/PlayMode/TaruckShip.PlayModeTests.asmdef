@@ -1,0 +1,21 @@
+{
+  "name": "TaruckShip.PlayModeTests",
+  "rootNamespace": "",
+  "references": [
+    "TaruckShip.Domain",
+    "TaruckShip.Persistence",
+    "TaruckShip.StableFields",
+    "UnityEngine.UI",
+    "Unity.TextMeshPro"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "noEngineReferences": false
+}

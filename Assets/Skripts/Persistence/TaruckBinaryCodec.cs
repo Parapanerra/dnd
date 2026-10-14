@@ -324,6 +324,7 @@ public static class TaruckBinaryCodec
     }
     public static byte[] EncodeItemExport(InventoryItemExportData data, string appVersion)
     {
+        InventoryItemValidator.Validate(data);
         byte[] media = string.IsNullOrEmpty(data.customImageBase64) ? null : Convert.FromBase64String(data.customImageBase64);
         if (media != null && (media.Length > MaxMedia || (!IsPng(media) && !IsJpeg(media))))
             throw new InvalidDataException("Invalid item image");
@@ -405,6 +406,7 @@ public static class TaruckBinaryCodec
         uint id; var item = DecodeItemBody(body, out id);
         if ((id == 0) != (media == null) || id > 1) throw new InvalidDataException("Invalid image reference");
         if (media != null) item.customImageBase64 = Convert.ToBase64String(media);
+        InventoryItemValidator.Validate(item);
         return item;
     }
     public static uint Crc32(byte[] bytes)

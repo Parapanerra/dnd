@@ -96,6 +96,7 @@ internal sealed class InventoryItemTransferPanel
                 try
                 {
                     InventoryItemExportData data = fileTransfer.Read(paths[0], out bytes);
+                    owner.ValidateImportedData(data);
                     InventoryItemExportData previous = owner.ReadCurrentData();
                     string current = string.IsNullOrWhiteSpace(previous.itemName)
                         ? dialogPresenter.Text("порожню комірку", "empty cell")
@@ -128,21 +129,26 @@ internal sealed class InventoryItemTransferPanel
     {
         try
         {
-            owner.ApplyData(imported, true);
-            // An import is an explicit operation: verify its disk write before reporting success.
-            DndSaveManager saveManager = owner.SaveManager;
-            saveManager?.FlushPendingSave();
-            if (saveManager != null && !string.IsNullOrEmpty(saveManager.SaveError))
-            {
-                owner.ApplyData(previous, false);
-                serializer.WriteScene(saveManager.GetActiveSceneData(), owner.CellKey, previous);
-                throw new System.IO.IOException(saveManager.SaveError);
-            }
+            InventoryItemImportCommitter.Commit(imported, previous, owner.ValidateImportedData,
+                data => owner.ApplyData(data, true),
+                () =>
+                {
+                    DndSaveManager saveManager = owner.SaveManager;
+                    saveManager?.FlushPendingSave();
+                    if (saveManager != null && !string.IsNullOrEmpty(saveManager.SaveError))
+                        throw new System.IO.IOException(saveManager.SaveError);
+                },
+                data =>
+                {
+                    owner.ApplyData(data, false);
+                    DndSaveManager saveManager = owner.SaveManager;
+                    if (saveManager != null)
+                        serializer.WriteScene(saveManager.GetActiveSceneData(), owner.CellKey, data);
+                });
             dialogPresenter.Show("Імпорт завершено", "Предмет завантажено.", "Закрити", () => { });
         }
         catch (Exception exception)
         {
-            owner.ApplyData(previous, false);
             dialogPresenter.Show("Помилка імпорту", exception.Message, "Закрити", () => { });
         }
     }

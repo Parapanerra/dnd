@@ -68,8 +68,8 @@ internal sealed class CharacterRestService
         diceCount = 0;
         diceSides = 0;
 
-        InputField allDiceField = FindInputFieldByName("alldise", "alldaise");
-        InputField diceValueField = FindInputFieldByName("daicevalueperson");
+        InputField allDiceField = FindRoleInput(SceneRole.HitDiceCount, "alldise", "alldaise");
+        InputField diceValueField = FindRoleInput(SceneRole.HitDiceSides, "daicevalueperson");
         if (allDiceField == null || diceValueField == null ||
             !int.TryParse(ExtractFirstNumber(allDiceField.text), out diceCount) ||
             !int.TryParse(ExtractFirstNumber(diceValueField.text), out diceSides))
@@ -81,6 +81,15 @@ internal sealed class CharacterRestService
         return diceCount > 0;
     }
 
+    private InputField FindRoleInput(SceneRole role, params string[] legacyNames)
+    {
+        SceneRoleMarker marker = roleLookup.Find(role);
+        return marker != null
+            ? marker.GetComponentInChildren<InputField>(true)
+            : FindInputFieldByName(legacyNames);
+    }
+
+    // Compatibility only for scenes that have not received role markers.
     private InputField FindInputFieldByName(params string[] objectNames)
     {
         InputField[] fields = UnityEngine.Object.FindObjectsByType<InputField>(FindObjectsInactive.Include);
@@ -216,7 +225,7 @@ internal sealed class CharacterRestService
         if (toggles.Count == 0)
             return;
 
-        toggles.Sort((left, right) => SceneObjectName.ToggleNumber(left.name).CompareTo(SceneObjectName.ToggleNumber(right.name)));
+        toggles.Sort((left, right) => ResourceToggleMarker.NumberOf(left).CompareTo(ResourceToggleMarker.NumberOf(right)));
 
         int checkedCount = 0;
         foreach (Toggle toggle in toggles)

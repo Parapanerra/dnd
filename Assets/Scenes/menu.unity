@@ -1190,7 +1190,7 @@ Transform:
   m_GameObject: {fileID: 245312009}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.13, y: 11.833, z: 0}
+  m_LocalPosition: {x: 4.05, y: 11.75, z: 0}
   m_LocalScale: {x: 0.74722517, y: 0.7363853, z: 0.6297835}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3132,18 +3132,12 @@ MonoBehaviour:
   inventorySceneName: inventory
   spellbookSceneName: spelBook
   characterRowSpacing: 12
-  characterRowsContent: {fileID: 0}
-  characterRowTemplate: {fileID: 0}
-  characterButtonTemplate: {fileID: 0}
-  addCharacterButton: {fileID: 0}
   openCharacterAfterCreate: 0
   useCharacterButtonPrefab: 0
   repairScrollViewAtRuntime: 0
   applyDefaultCharacterListLayout: 0
   applyDefaultCharacterButtonStyle: 0
   characterButtonSpacing: 12
-  importButton: {fileID: 0}
-  exportButton: {fileID: 0}
 --- !u!4 &1038211907
 Transform:
   m_ObjectHideFlags: 0
@@ -4864,8 +4858,8 @@ Transform:
   m_GameObject: {fileID: 1825008841}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 51.441536, y: -371.8409, z: -52078.08}
-  m_LocalScale: {x: 242.43245, y: 242.43245, z: 242.43245}
+  m_LocalPosition: {x: 19, y: -374, z: -52078.08}
+  m_LocalScale: {x: 172.39641, y: 172.39641, z: 242.43245}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2585233568198294103}
@@ -4919,7 +4913,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: a335efc286dc8d24ca75698d588c0c0c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0b27bb361a354784f9fb7914d1211155, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8020,6 +8014,5 @@ SceneRoots:
   - {fileID: 1698057107}
   - {fileID: 1041553673251174418}
   - {fileID: 245312011}
-  - {fileID: 564821555}
   - {fileID: 858357261}
   - {fileID: 1038211907}

@@ -105,7 +105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edde384fcff600a49a942de66b8a255d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomMin: 3
+  zoomMin: 2
   zoomMax: 8
   minBounds: {x: -0.14, y: -4.26}
   maxBounds: {x: 8.76, y: 15.2}
+  formHorizontalTravelFraction: 0.2
+  backgroundMovementFraction: 0.3
+  scrollViews: []

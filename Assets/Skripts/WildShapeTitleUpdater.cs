@@ -48,7 +48,7 @@ public class WildShapeTitleUpdater : MonoBehaviour
         int number = GetWildShapeNumber();
         string title = GetWildShapeTitle(number);
 
-        foreach (Text text in Resources.FindObjectsOfTypeAll<Text>())
+        foreach (Text text in UnityEngine.Object.FindObjectsByType<Text>(FindObjectsInactive.Include))
         {
             if (!IsSceneObject(text != null ? text.gameObject : null))
                 continue;
@@ -59,7 +59,7 @@ public class WildShapeTitleUpdater : MonoBehaviour
                 text.text = translatedButton;
         }
 
-        foreach (TMP_Text text in Resources.FindObjectsOfTypeAll<TMP_Text>())
+        foreach (TMP_Text text in UnityEngine.Object.FindObjectsByType<TMP_Text>(FindObjectsInactive.Include))
         {
             if (!IsSceneObject(text != null ? text.gameObject : null))
                 continue;
@@ -70,7 +70,7 @@ public class WildShapeTitleUpdater : MonoBehaviour
                 text.text = translatedButton;
         }
 
-        foreach (TextMesh text in Resources.FindObjectsOfTypeAll<TextMesh>())
+        foreach (TextMesh text in UnityEngine.Object.FindObjectsByType<TextMesh>(FindObjectsInactive.Include))
         {
             if (!IsSceneObject(text != null ? text.gameObject : null))
                 continue;
@@ -158,7 +158,7 @@ public class WildShapeTitleUpdater : MonoBehaviour
     private void BindSpellbookButton()
     {
         new SceneNavigationButtonBinder(
-            new SceneNavigator().LoadSceneByName, Resources.FindObjectsOfTypeAll<Button>())
+            new SceneNavigator().LoadSceneByName, UnityEngine.Object.FindObjectsByType<Button>(FindObjectsInactive.Include))
             .BindAll(AppConfig.Scenes.Spellbook, button => IsSceneObject(button.gameObject),
                 "spelbook", "spellbook");
     }

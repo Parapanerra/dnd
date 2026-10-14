@@ -59,11 +59,10 @@ internal sealed class ExhaustionEffects
     {
         if (saveManager == null) return;
         CharacterSceneData data = saveManager.GetActiveSceneData();
-        foreach (Transform item in UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include))
+        Transform speedRoot = roleLookup.FindPanel(SceneRole.MovementSpeed, "movsped");
+        InputField input = speedRoot != null ? speedRoot.GetComponentInChildren<InputField>(true) : null;
+        if (input != null)
         {
-            if (item.name != "movsped") continue;
-            InputField input = item.GetComponentInChildren<InputField>(true);
-            if (input == null) continue;
             if (!data.HasInt(BaseSpeedKey) && int.TryParse(input.text, out int original))
                 data.SetInt(BaseSpeedKey, Mathf.Max(0, original));
             if (data.HasInt(BaseSpeedKey))

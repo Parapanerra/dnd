@@ -941,6 +941,7 @@ GameObject:
   - component: {fileID: 15522419}
   - component: {fileID: 15522418}
   - component: {fileID: 15522421}
+  - component: {fileID: 15522422}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -1092,6 +1093,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 10
   legacyKey: 
+--- !u!114 &15522422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15522416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 1
+  index: 0
 --- !u!1 &16166083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,6 +1592,7 @@ GameObject:
   - component: {fileID: 30378621}
   - component: {fileID: 30378620}
   - component: {fileID: 30378619}
+  - component: {fileID: 30378622}
   m_Layer: 5
   m_Name: importItemButton
   m_TagString: Untagged
@@ -1685,6 +1701,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30378617}
   m_CullTransparentMesh: 1
+--- !u!114 &30378622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30378617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 12
+  index: 0
 --- !u!1 &37276791
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,6 +2067,7 @@ GameObject:
   - component: {fileID: 58907638}
   - component: {fileID: 58907637}
   - component: {fileID: 58907640}
+  - component: {fileID: 58907641}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -2215,6 +2246,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 32
   legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0009_Dropdown bags
+--- !u!114 &58907641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58907635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 6
+  index: 0
 --- !u!1 &59617209
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,6 +2272,7 @@ GameObject:
   - component: {fileID: 59617213}
   - component: {fileID: 59617212}
   - component: {fileID: 59617211}
+  - component: {fileID: 59617214}
   m_Layer: 5
   m_Name: exportItemButton
   m_TagString: Untagged
@@ -2335,6 +2381,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59617209}
   m_CullTransparentMesh: 1
+--- !u!114 &59617214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59617209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 11
+  index: 0
 --- !u!1 &60537109
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,6 +2487,7 @@ GameObject:
   - component: {fileID: 62320423}
   - component: {fileID: 62320422}
   - component: {fileID: 62320425}
+  - component: {fileID: 62320426}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -2578,6 +2639,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 21
   legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0001_itemCategoryDropdown
+--- !u!114 &62320426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62320420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 3
+  index: 0
 --- !u!1001 &64038202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3433,6 +3508,7 @@ GameObject:
   - component: {fileID: 91230913}
   - component: {fileID: 91230912}
   - component: {fileID: 91230915}
+  - component: {fileID: 91230916}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -3611,6 +3687,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 11
   legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0009_Dropdown bags
+--- !u!114 &91230916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91230910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 6
+  index: 0
 --- !u!1 &92407182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4273,6 +4363,7 @@ GameObject:
   - component: {fileID: 112168807}
   - component: {fileID: 112168806}
   - component: {fileID: 112168805}
+  - component: {fileID: 112168808}
   m_Layer: 5
   m_Name: clearItemButton
   m_TagString: Untagged
@@ -4382,6 +4473,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112168803}
   m_CullTransparentMesh: 1
+--- !u!114 &112168808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112168803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 13
+  index: 0
 --- !u!1 &112970002
 GameObject:
   m_ObjectHideFlags: 0
@@ -4431,6 +4536,7 @@ GameObject:
   - component: {fileID: 114334242}
   - component: {fileID: 114334241}
   - component: {fileID: 114334244}
+  - component: {fileID: 114334245}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -4609,6 +4715,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 54
   legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0010_Dropdown magic
+--- !u!114 &114334245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114334239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 7
+  index: 0
 --- !u!1 &118519536
 GameObject:
   m_ObjectHideFlags: 0
@@ -7464,6 +7584,7 @@ GameObject:
   - component: {fileID: 196660171}
   - component: {fileID: 196660170}
   - component: {fileID: 196660173}
+  - component: {fileID: 196660174}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -7642,6 +7763,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 60
   legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0009_Dropdown magic
+--- !u!114 &196660174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196660168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 7
+  index: 0
 --- !u!1 &198198263
 GameObject:
   m_ObjectHideFlags: 0
@@ -8816,6 +8951,7 @@ GameObject:
   - component: {fileID: 223808886}
   - component: {fileID: 223808885}
   - component: {fileID: 223808888}
+  - component: {fileID: 223808889}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -8994,6 +9130,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 51
   legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0007_Dropdown cheger
+--- !u!114 &223808889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223808883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 9
+  index: 0
 --- !u!1 &224351496
 GameObject:
   m_ObjectHideFlags: 0
@@ -9559,6 +9709,7 @@ GameObject:
   - component: {fileID: 234306163}
   - component: {fileID: 234306162}
   - component: {fileID: 234306165}
+  - component: {fileID: 234306166}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -9737,6 +9888,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 37
   legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0007_Dropdown cheger
+--- !u!114 &234306166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234306160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 9
+  index: 0
 --- !u!1 &235480089
 GameObject:
   m_ObjectHideFlags: 0
@@ -10395,6 +10560,7 @@ GameObject:
   - component: {fileID: 264761757}
   - component: {fileID: 264761756}
   - component: {fileID: 264761759}
+  - component: {fileID: 264761760}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -10573,6 +10739,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 45
   legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0008_Dropdown armor
+--- !u!114 &264761760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264761754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 5
+  index: 0
 --- !u!1 &266527353
 GameObject:
   m_ObjectHideFlags: 0
@@ -10586,6 +10766,7 @@ GameObject:
   - component: {fileID: 266527356}
   - component: {fileID: 266527355}
   - component: {fileID: 266527358}
+  - component: {fileID: 266527359}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -10737,6 +10918,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 8
   legacyKey: 
+--- !u!114 &266527359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266527353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 1
+  index: 0
 --- !u!1 &266946758
 GameObject:
   m_ObjectHideFlags: 0
@@ -11050,6 +11245,7 @@ GameObject:
   - component: {fileID: 274210664}
   - component: {fileID: 274210663}
   - component: {fileID: 274210666}
+  - component: {fileID: 274210667}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -11228,6 +11424,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 8
   legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0006_Dropdown weapon
+--- !u!114 &274210667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274210661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 4
+  index: 0
 --- !u!1 &274666155
 GameObject:
   m_ObjectHideFlags: 0
@@ -11314,6 +11524,7 @@ GameObject:
   - component: {fileID: 277414322}
   - component: {fileID: 277414324}
   - component: {fileID: 277414323}
+  - component: {fileID: 277414325}
   m_Layer: 5
   m_Name: PanelForphoto
   m_TagString: Untagged
@@ -11380,6 +11591,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277414321}
   m_CullTransparentMesh: 1
+--- !u!114 &277414325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277414321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 15
+  index: 0
 --- !u!1 &279552119
 GameObject:
   m_ObjectHideFlags: 0
@@ -12404,6 +12629,7 @@ GameObject:
   - component: {fileID: 306829567}
   - component: {fileID: 306829566}
   - component: {fileID: 306829569}
+  - component: {fileID: 306829570}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -12582,6 +12808,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 61
   legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0010_Dropdown other
+--- !u!114 &306829570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306829564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 8
+  index: 0
 --- !u!1 &314520444
 GameObject:
   m_ObjectHideFlags: 0
@@ -12595,6 +12835,7 @@ GameObject:
   - component: {fileID: 314520447}
   - component: {fileID: 314520446}
   - component: {fileID: 314520449}
+  - component: {fileID: 314520450}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -12773,6 +13014,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 31
   legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0008_Dropdown armor
+--- !u!114 &314520450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314520444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 5
+  index: 0
 --- !u!1 &314844098
 GameObject:
   m_ObjectHideFlags: 0
@@ -13053,6 +13308,7 @@ GameObject:
   - component: {fileID: 333000660}
   - component: {fileID: 333000659}
   - component: {fileID: 333000658}
+  - component: {fileID: 333000661}
   m_Layer: 5
   m_Name: clearItemButton
   m_TagString: Untagged
@@ -13162,6 +13418,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333000656}
   m_CullTransparentMesh: 1
+--- !u!114 &333000661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333000656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 13
+  index: 0
 --- !u!1 &334818289
 GameObject:
   m_ObjectHideFlags: 0
@@ -15665,6 +15935,7 @@ GameObject:
   - component: {fileID: 400303635}
   - component: {fileID: 400303634}
   - component: {fileID: 400303637}
+  - component: {fileID: 400303638}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -15816,6 +16087,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 5
   legacyKey: 
+--- !u!114 &400303638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400303632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 2
+  index: 0
 --- !u!1 &404693040
 GameObject:
   m_ObjectHideFlags: 0
@@ -16504,6 +16789,7 @@ GameObject:
   - component: {fileID: 430326039}
   - component: {fileID: 430326038}
   - component: {fileID: 430326037}
+  - component: {fileID: 430326040}
   m_Layer: 5
   m_Name: exportItemButton
   m_TagString: Untagged
@@ -16612,6 +16898,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430326035}
   m_CullTransparentMesh: 1
+--- !u!114 &430326040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430326035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 11
+  index: 0
 --- !u!1 &430688086
 GameObject:
   m_ObjectHideFlags: 0
@@ -16931,6 +17231,7 @@ GameObject:
   - component: {fileID: 442553174}
   - component: {fileID: 442553176}
   - component: {fileID: 442553175}
+  - component: {fileID: 442553177}
   m_Layer: 5
   m_Name: Cels (8)
   m_TagString: Untagged
@@ -17009,6 +17310,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442553173}
   m_CullTransparentMesh: 1
+--- !u!114 &442553177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442553173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 0
+  index: 0
 --- !u!1 &444568504
 GameObject:
   m_ObjectHideFlags: 0
@@ -17128,6 +17443,7 @@ GameObject:
   - component: {fileID: 444776073}
   - component: {fileID: 444776072}
   - component: {fileID: 444776071}
+  - component: {fileID: 444776074}
   m_Layer: 5
   m_Name: importItemButton
   m_TagString: Untagged
@@ -17236,6 +17552,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444776069}
   m_CullTransparentMesh: 1
+--- !u!114 &444776074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444776069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 12
+  index: 0
 --- !u!1 &446179896
 GameObject:
   m_ObjectHideFlags: 0
@@ -17618,6 +17948,7 @@ GameObject:
   - component: {fileID: 460228135}
   - component: {fileID: 460228137}
   - component: {fileID: 460228136}
+  - component: {fileID: 460228138}
   m_Layer: 5
   m_Name: customItemImage
   m_TagString: Untagged
@@ -17682,6 +18013,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460228134}
   m_CullTransparentMesh: 1
+--- !u!114 &460228138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460228134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 14
+  index: 0
 --- !u!1 &460427704
 GameObject:
   m_ObjectHideFlags: 0
@@ -18829,6 +19174,7 @@ GameObject:
   - component: {fileID: 505546538}
   - component: {fileID: 505546537}
   - component: {fileID: 505546540}
+  - component: {fileID: 505546541}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -19007,6 +19353,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 53
   legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0009_Dropdown bags
+--- !u!114 &505546541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505546535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 6
+  index: 0
 --- !u!1 &507045364
 GameObject:
   m_ObjectHideFlags: 0
@@ -19957,6 +20317,7 @@ GameObject:
   - component: {fileID: 526579215}
   - component: {fileID: 526579214}
   - component: {fileID: 526579213}
+  - component: {fileID: 526579216}
   m_Layer: 5
   m_Name: exportItemButton
   m_TagString: Untagged
@@ -20065,6 +20426,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526579211}
   m_CullTransparentMesh: 1
+--- !u!114 &526579216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526579211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 11
+  index: 0
 --- !u!1 &527169346
 GameObject:
   m_ObjectHideFlags: 0
@@ -21247,6 +21622,7 @@ GameObject:
   - component: {fileID: 549080363}
   - component: {fileID: 549080362}
   - component: {fileID: 549080365}
+  - component: {fileID: 549080366}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -21425,6 +21801,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 46
   legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0009_Dropdown bags
+--- !u!114 &549080366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549080360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 6
+  index: 0
 --- !u!1 &550933689
 GameObject:
   m_ObjectHideFlags: 0
@@ -22047,6 +22437,7 @@ GameObject:
   - component: {fileID: 573104294}
   - component: {fileID: 573104296}
   - component: {fileID: 573104295}
+  - component: {fileID: 573104297}
   m_Layer: 5
   m_Name: Cels (7)
   m_TagString: Untagged
@@ -22125,6 +22516,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573104293}
   m_CullTransparentMesh: 1
+--- !u!114 &573104297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573104293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 0
+  index: 0
 --- !u!1 &581904741
 GameObject:
   m_ObjectHideFlags: 0
@@ -22212,6 +22617,7 @@ GameObject:
   - component: {fileID: 582091294}
   - component: {fileID: 582091293}
   - component: {fileID: 582091292}
+  - component: {fileID: 582091295}
   m_Layer: 5
   m_Name: clearItemButton
   m_TagString: Untagged
@@ -22321,6 +22727,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582091290}
   m_CullTransparentMesh: 1
+--- !u!114 &582091295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582091290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 13
+  index: 0
 --- !u!1 &586692823
 GameObject:
   m_ObjectHideFlags: 0
@@ -22409,6 +22829,7 @@ GameObject:
   - component: {fileID: 588115680}
   - component: {fileID: 588115679}
   - component: {fileID: 588115682}
+  - component: {fileID: 588115683}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -22560,6 +22981,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 11
   legacyKey: 
+--- !u!114 &588115683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588115677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 2
+  index: 0
 --- !u!1 &592412461
 GameObject:
   m_ObjectHideFlags: 0
@@ -22938,6 +23373,7 @@ GameObject:
   - component: {fileID: 597912972}
   - component: {fileID: 597912971}
   - component: {fileID: 597912974}
+  - component: {fileID: 597912975}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -23089,6 +23525,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 42
   legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0001_itemCategoryDropdown
+--- !u!114 &597912975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597912969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 3
+  index: 0
 --- !u!1 &598078156
 GameObject:
   m_ObjectHideFlags: 0
@@ -23712,6 +24162,7 @@ GameObject:
   - component: {fileID: 615974083}
   - component: {fileID: 615974085}
   - component: {fileID: 615974084}
+  - component: {fileID: 615974086}
   m_Layer: 5
   m_Name: PanelForphoto
   m_TagString: Untagged
@@ -23778,6 +24229,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615974082}
   m_CullTransparentMesh: 1
+--- !u!114 &615974086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615974082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 15
+  index: 0
 --- !u!1 &620050618
 GameObject:
   m_ObjectHideFlags: 0
@@ -24275,6 +24740,7 @@ GameObject:
   - component: {fileID: 627548729}
   - component: {fileID: 627548728}
   - component: {fileID: 627548727}
+  - component: {fileID: 627548730}
   m_Layer: 5
   m_Name: importItemButton
   m_TagString: Untagged
@@ -24383,6 +24849,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 627548725}
   m_CullTransparentMesh: 1
+--- !u!114 &627548730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627548725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 12
+  index: 0
 --- !u!1 &629790996
 GameObject:
   m_ObjectHideFlags: 0
@@ -24395,6 +24875,7 @@ GameObject:
   - component: {fileID: 629791000}
   - component: {fileID: 629790999}
   - component: {fileID: 629790998}
+  - component: {fileID: 629791001}
   m_Layer: 5
   m_Name: exportItemButton
   m_TagString: Untagged
@@ -24503,6 +24984,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629790996}
   m_CullTransparentMesh: 1
+--- !u!114 &629791001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629790996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 11
+  index: 0
 --- !u!1 &630931350
 GameObject:
   m_ObjectHideFlags: 0
@@ -24695,6 +25190,7 @@ GameObject:
   - component: {fileID: 637245525}
   - component: {fileID: 637245527}
   - component: {fileID: 637245526}
+  - component: {fileID: 637245528}
   m_Layer: 5
   m_Name: customItemImage
   m_TagString: Untagged
@@ -24759,6 +25255,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637245524}
   m_CullTransparentMesh: 1
+--- !u!114 &637245528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637245524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 14
+  index: 0
 --- !u!1 &640848913
 GameObject:
   m_ObjectHideFlags: 0
@@ -25163,6 +25673,7 @@ GameObject:
   - component: {fileID: 653526310}
   - component: {fileID: 653526309}
   - component: {fileID: 653526312}
+  - component: {fileID: 653526313}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -25314,6 +25825,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 49
   legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0001_itemCategoryDropdown
+--- !u!114 &653526313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653526307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 3
+  index: 0
 --- !u!1 &655561910
 GameObject:
   m_ObjectHideFlags: 0
@@ -25401,6 +25926,7 @@ GameObject:
   - component: {fileID: 655735435}
   - component: {fileID: 655735434}
   - component: {fileID: 655735433}
+  - component: {fileID: 655735436}
   m_Layer: 5
   m_Name: clearItemButton
   m_TagString: Untagged
@@ -25510,6 +26036,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655735431}
   m_CullTransparentMesh: 1
+--- !u!114 &655735436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655735431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 13
+  index: 0
 --- !u!1 &660303779
 GameObject:
   m_ObjectHideFlags: 0
@@ -25924,6 +26464,7 @@ GameObject:
   - component: {fileID: 663505910}
   - component: {fileID: 663505909}
   - component: {fileID: 663505912}
+  - component: {fileID: 663505913}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -26102,6 +26643,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 27
   legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0011_Dropdown other
+--- !u!114 &663505913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663505907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 8
+  index: 0
 --- !u!1 &665384236
 GameObject:
   m_ObjectHideFlags: 0
@@ -26344,6 +26899,7 @@ GameObject:
   - component: {fileID: 677099124}
   - component: {fileID: 677099123}
   - component: {fileID: 677099126}
+  - component: {fileID: 677099127}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -26495,6 +27051,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 14
   legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0001_itemCategoryDropdown
+--- !u!114 &677099127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677099121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 3
+  index: 0
 --- !u!1 &677419863
 GameObject:
   m_ObjectHideFlags: 0
@@ -26694,6 +27264,7 @@ GameObject:
   - component: {fileID: 680977322}
   - component: {fileID: 680977321}
   - component: {fileID: 680977324}
+  - component: {fileID: 680977325}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -26845,6 +27416,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 12
   legacyKey: 
+--- !u!114 &680977325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680977319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 1
+  index: 0
 --- !u!1 &681160116
 GameObject:
   m_ObjectHideFlags: 0
@@ -26933,6 +27518,7 @@ GameObject:
   - component: {fileID: 682828006}
   - component: {fileID: 682828005}
   - component: {fileID: 682828008}
+  - component: {fileID: 682828009}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -27084,6 +27670,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 28
   legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0001_itemCategoryDropdown
+--- !u!114 &682828009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682828003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 3
+  index: 0
 --- !u!1 &685767470
 GameObject:
   m_ObjectHideFlags: 0
@@ -27703,6 +28303,7 @@ GameObject:
   - component: {fileID: 719734337}
   - component: {fileID: 719734339}
   - component: {fileID: 719734338}
+  - component: {fileID: 719734340}
   m_Layer: 5
   m_Name: customItemImage
   m_TagString: Untagged
@@ -27767,6 +28368,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719734336}
   m_CullTransparentMesh: 1
+--- !u!114 &719734340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719734336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 14
+  index: 0
 --- !u!1 &719945776
 GameObject:
   m_ObjectHideFlags: 0
@@ -27780,6 +28395,7 @@ GameObject:
   - component: {fileID: 719945779}
   - component: {fileID: 719945778}
   - component: {fileID: 719945781}
+  - component: {fileID: 719945782}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -27931,6 +28547,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 6
   legacyKey: 
+--- !u!114 &719945782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719945776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 1
+  index: 0
 --- !u!1 &722489253
 GameObject:
   m_ObjectHideFlags: 0
@@ -27943,6 +28573,7 @@ GameObject:
   - component: {fileID: 722489257}
   - component: {fileID: 722489256}
   - component: {fileID: 722489255}
+  - component: {fileID: 722489258}
   m_Layer: 5
   m_Name: importItemButton
   m_TagString: Untagged
@@ -28051,6 +28682,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722489253}
   m_CullTransparentMesh: 1
+--- !u!114 &722489258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722489253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 12
+  index: 0
 --- !u!1 &728174059
 GameObject:
   m_ObjectHideFlags: 0
@@ -30562,6 +31207,7 @@ GameObject:
   - component: {fileID: 812564851}
   - component: {fileID: 812564850}
   - component: {fileID: 812564853}
+  - component: {fileID: 812564854}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -30713,6 +31359,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 2
   legacyKey: 
+--- !u!114 &812564854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812564848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 1
+  index: 0
 --- !u!1 &812798531
 GameObject:
   m_ObjectHideFlags: 0
@@ -30922,6 +31582,7 @@ GameObject:
   - component: {fileID: 816858176}
   - component: {fileID: 816858175}
   - component: {fileID: 816858178}
+  - component: {fileID: 816858179}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -31100,6 +31761,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 57
   legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0006_Dropdown cheger
+--- !u!114 &816858179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816858173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 9
+  index: 0
 --- !u!1 &817341469
 GameObject:
   m_ObjectHideFlags: 0
@@ -31448,6 +32123,7 @@ GameObject:
   - component: {fileID: 822187776}
   - component: {fileID: 822187775}
   - component: {fileID: 822187778}
+  - component: {fileID: 822187779}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -31626,6 +32302,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 59
   legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0008_Dropdown bags
+--- !u!114 &822187779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822187773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 6
+  index: 0
 --- !u!1 &823946233
 GameObject:
   m_ObjectHideFlags: 0
@@ -31983,6 +32673,7 @@ GameObject:
   - component: {fileID: 838329230}
   - component: {fileID: 838329229}
   - component: {fileID: 838329228}
+  - component: {fileID: 838329231}
   m_Layer: 5
   m_Name: clearItemButton
   m_TagString: Untagged
@@ -32092,6 +32783,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838329226}
   m_CullTransparentMesh: 1
+--- !u!114 &838329231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838329226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 13
+  index: 0
 --- !u!1 &838411173
 GameObject:
   m_ObjectHideFlags: 0
@@ -32408,6 +33113,7 @@ GameObject:
   - component: {fileID: 845435833}
   - component: {fileID: 845435832}
   - component: {fileID: 845435835}
+  - component: {fileID: 845435836}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -32586,6 +33292,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 38
   legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0008_Dropdown armor
+--- !u!114 &845435836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845435830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 5
+  index: 0
 --- !u!1 &845451234
 GameObject:
   m_ObjectHideFlags: 0
@@ -32901,6 +33621,7 @@ GameObject:
   - component: {fileID: 847705388}
   - component: {fileID: 847705390}
   - component: {fileID: 847705389}
+  - component: {fileID: 847705391}
   m_Layer: 5
   m_Name: customItemImage
   m_TagString: Untagged
@@ -32965,6 +33686,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847705387}
   m_CullTransparentMesh: 1
+--- !u!114 &847705391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847705387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 14
+  index: 0
 --- !u!1 &850207990
 GameObject:
   m_ObjectHideFlags: 0
@@ -33132,6 +33867,7 @@ GameObject:
   - component: {fileID: 861499094}
   - component: {fileID: 861499093}
   - component: {fileID: 861499096}
+  - component: {fileID: 861499097}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -33310,6 +34046,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 30
   legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0007_Dropdown cheger
+--- !u!114 &861499097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861499091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 9
+  index: 0
 --- !u!1 &863750221
 GameObject:
   m_ObjectHideFlags: 0
@@ -33614,6 +34364,7 @@ GameObject:
   - component: {fileID: 871956249}
   - component: {fileID: 871956248}
   - component: {fileID: 871956251}
+  - component: {fileID: 871956252}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -33792,6 +34543,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 23
   legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0007_Dropdown cheger
+--- !u!114 &871956252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871956246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 9
+  index: 0
 --- !u!1 &875826348
 GameObject:
   m_ObjectHideFlags: 0
@@ -34363,6 +35128,7 @@ GameObject:
   - component: {fileID: 899343665}
   - component: {fileID: 899343664}
   - component: {fileID: 899343663}
+  - component: {fileID: 899343666}
   m_Layer: 5
   m_Name: customItemImageButton
   m_TagString: Untagged
@@ -34472,6 +35238,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899343661}
   m_CullTransparentMesh: 1
+--- !u!114 &899343666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899343661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 10
+  index: 0
 --- !u!1 &900735112
 GameObject:
   m_ObjectHideFlags: 0
@@ -35040,6 +35820,7 @@ GameObject:
   - component: {fileID: 910544674}
   - component: {fileID: 910544673}
   - component: {fileID: 910544676}
+  - component: {fileID: 910544677}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -35218,6 +35999,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 44
   legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0007_Dropdown cheger
+--- !u!114 &910544677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910544671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 9
+  index: 0
 --- !u!1 &913792623
 GameObject:
   m_ObjectHideFlags: 0
@@ -35471,6 +36266,7 @@ GameObject:
   - component: {fileID: 916397307}
   - component: {fileID: 916397306}
   - component: {fileID: 916397309}
+  - component: {fileID: 916397310}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -35622,6 +36418,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 6
   legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0011_itemCategoryDropdown
+--- !u!114 &916397310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916397304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 3
+  index: 0
 --- !u!1 &918288508
 GameObject:
   m_ObjectHideFlags: 0
@@ -35635,6 +36445,7 @@ GameObject:
   - component: {fileID: 918288511}
   - component: {fileID: 918288510}
   - component: {fileID: 918288513}
+  - component: {fileID: 918288514}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -35813,6 +36624,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 50
   legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0006_Dropdown weapon
+--- !u!114 &918288514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918288508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 4
+  index: 0
 --- !u!1 &919659918
 GameObject:
   m_ObjectHideFlags: 0
@@ -36035,6 +36860,7 @@ GameObject:
   - component: {fileID: 929242849}
   - component: {fileID: 929242851}
   - component: {fileID: 929242850}
+  - component: {fileID: 929242852}
   m_Layer: 5
   m_Name: PanelForphoto
   m_TagString: Untagged
@@ -36101,6 +36927,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929242848}
   m_CullTransparentMesh: 1
+--- !u!114 &929242852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929242848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 15
+  index: 0
 --- !u!1 &932169747
 GameObject:
   m_ObjectHideFlags: 0
@@ -36569,6 +37409,7 @@ GameObject:
   - component: {fileID: 945993152}
   - component: {fileID: 945993151}
   - component: {fileID: 945993154}
+  - component: {fileID: 945993155}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -36747,6 +37588,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 26
   legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0010_Dropdown magic
+--- !u!114 &945993155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945993149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 7
+  index: 0
 --- !u!1 &946586715
 GameObject:
   m_ObjectHideFlags: 0
@@ -36760,6 +37615,7 @@ GameObject:
   - component: {fileID: 946586718}
   - component: {fileID: 946586717}
   - component: {fileID: 946586720}
+  - component: {fileID: 946586721}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -36938,6 +37794,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 24
   legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0008_Dropdown armor
+--- !u!114 &946586721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946586715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 5
+  index: 0
 --- !u!1 &953287267
 GameObject:
   m_ObjectHideFlags: 0
@@ -37705,6 +38575,7 @@ GameObject:
   - component: {fileID: 983408191}
   - component: {fileID: 983408190}
   - component: {fileID: 983408189}
+  - component: {fileID: 983408192}
   m_Layer: 5
   m_Name: importItemButton
   m_TagString: Untagged
@@ -37813,6 +38684,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983408187}
   m_CullTransparentMesh: 1
+--- !u!114 &983408192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983408187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 12
+  index: 0
 --- !u!1 &987209729
 GameObject:
   m_ObjectHideFlags: 0
@@ -38107,6 +38992,7 @@ GameObject:
   - component: {fileID: 991672965}
   - component: {fileID: 991672964}
   - component: {fileID: 991672967}
+  - component: {fileID: 991672968}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -38285,6 +39171,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 41
   legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0011_Dropdown other
+--- !u!114 &991672968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991672962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 8
+  index: 0
 --- !u!1 &998686184
 GameObject:
   m_ObjectHideFlags: 0
@@ -38667,6 +39567,7 @@ GameObject:
   - component: {fileID: 1015466445}
   - component: {fileID: 1015466447}
   - component: {fileID: 1015466446}
+  - component: {fileID: 1015466448}
   m_Layer: 5
   m_Name: PanelForphoto
   m_TagString: Untagged
@@ -38733,6 +39634,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015466444}
   m_CullTransparentMesh: 1
+--- !u!114 &1015466448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015466444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 15
+  index: 0
 --- !u!1 &1017676305
 GameObject:
   m_ObjectHideFlags: 0
@@ -39007,6 +39922,7 @@ GameObject:
   - component: {fileID: 1021275762}
   - component: {fileID: 1021275761}
   - component: {fileID: 1021275764}
+  - component: {fileID: 1021275765}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -39158,6 +40074,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 7
   legacyKey: 
+--- !u!114 &1021275765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021275759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 2
+  index: 0
 --- !u!1 &1022841140
 GameObject:
   m_ObjectHideFlags: 0
@@ -39246,6 +40176,7 @@ GameObject:
   - component: {fileID: 1023786704}
   - component: {fileID: 1023786703}
   - component: {fileID: 1023786706}
+  - component: {fileID: 1023786707}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -39424,6 +40355,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 55
   legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0011_Dropdown other
+--- !u!114 &1023786707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023786701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 8
+  index: 0
 --- !u!1 &1028567818
 GameObject:
   m_ObjectHideFlags: 0
@@ -39527,6 +40472,7 @@ GameObject:
   - component: {fileID: 1031200972}
   - component: {fileID: 1031200971}
   - component: {fileID: 1031200974}
+  - component: {fileID: 1031200975}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -39705,6 +40651,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 29
   legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0006_Dropdown weapon
+--- !u!114 &1031200975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031200969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 4
+  index: 0
 --- !u!1 &1031465189
 GameObject:
   m_ObjectHideFlags: 0
@@ -40011,6 +40971,7 @@ GameObject:
   - component: {fileID: 1051467466}
   - component: {fileID: 1051467465}
   - component: {fileID: 1051467464}
+  - component: {fileID: 1051467467}
   m_Layer: 5
   m_Name: importItemButton
   m_TagString: Untagged
@@ -40119,6 +41080,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051467462}
   m_CullTransparentMesh: 1
+--- !u!114 &1051467467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051467462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 12
+  index: 0
 --- !u!1 &1052833026
 GameObject:
   m_ObjectHideFlags: 0
@@ -40517,6 +41492,7 @@ GameObject:
   - component: {fileID: 1060587842}
   - component: {fileID: 1060587841}
   - component: {fileID: 1060587844}
+  - component: {fileID: 1060587845}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -40695,6 +41671,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 18
   legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0009_Dropdown bags
+--- !u!114 &1060587845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060587839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 6
+  index: 0
 --- !u!1 &1062929683
 GameObject:
   m_ObjectHideFlags: 0
@@ -40708,6 +41698,7 @@ GameObject:
   - component: {fileID: 1062929686}
   - component: {fileID: 1062929685}
   - component: {fileID: 1062929688}
+  - component: {fileID: 1062929689}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -40886,6 +41877,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 22
   legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0006_Dropdown weapon
+--- !u!114 &1062929689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062929683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 4
+  index: 0
 --- !u!1 &1065096913
 GameObject:
   m_ObjectHideFlags: 0
@@ -41004,6 +42009,7 @@ GameObject:
   - component: {fileID: 1072822509}
   - component: {fileID: 1072822508}
   - component: {fileID: 1072822507}
+  - component: {fileID: 1072822510}
   m_Layer: 5
   m_Name: customItemImageButton
   m_TagString: Untagged
@@ -41113,6 +42119,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072822505}
   m_CullTransparentMesh: 1
+--- !u!114 &1072822510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072822505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 10
+  index: 0
 --- !u!1 &1072881517
 GameObject:
   m_ObjectHideFlags: 0
@@ -41374,6 +42394,7 @@ GameObject:
   - component: {fileID: 1078567828}
   - component: {fileID: 1078567827}
   - component: {fileID: 1078567826}
+  - component: {fileID: 1078567829}
   m_Layer: 5
   m_Name: clearItemButton
   m_TagString: Untagged
@@ -41483,6 +42504,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078567824}
   m_CullTransparentMesh: 1
+--- !u!114 &1078567829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078567824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 13
+  index: 0
 --- !u!1 &1079398933
 GameObject:
   m_ObjectHideFlags: 0
@@ -41601,6 +42636,7 @@ GameObject:
   - component: {fileID: 1081723457}
   - component: {fileID: 1081723459}
   - component: {fileID: 1081723458}
+  - component: {fileID: 1081723460}
   m_Layer: 5
   m_Name: customItemImage
   m_TagString: Untagged
@@ -41665,6 +42701,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081723456}
   m_CullTransparentMesh: 1
+--- !u!114 &1081723460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081723456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 14
+  index: 0
 --- !u!1 &1082727493
 GameObject:
   m_ObjectHideFlags: 0
@@ -41676,6 +42726,7 @@ GameObject:
   - component: {fileID: 1082727494}
   - component: {fileID: 1082727496}
   - component: {fileID: 1082727495}
+  - component: {fileID: 1082727497}
   m_Layer: 5
   m_Name: Cels (4)
   m_TagString: Untagged
@@ -41754,6 +42805,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082727493}
   m_CullTransparentMesh: 1
+--- !u!114 &1082727497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082727493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 0
+  index: 0
 --- !u!1 &1088601340
 GameObject:
   m_ObjectHideFlags: 0
@@ -41921,6 +42986,7 @@ GameObject:
   - component: {fileID: 1090098016}
   - component: {fileID: 1090098015}
   - component: {fileID: 1090098018}
+  - component: {fileID: 1090098019}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -42099,6 +43165,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 19
   legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0010_Dropdown magic
+--- !u!114 &1090098019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090098013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 7
+  index: 0
 --- !u!1 &1096413278
 GameObject:
   m_ObjectHideFlags: 0
@@ -42187,6 +43267,7 @@ GameObject:
   - component: {fileID: 1097822475}
   - component: {fileID: 1097822474}
   - component: {fileID: 1097822477}
+  - component: {fileID: 1097822478}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -42365,6 +43446,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 39
   legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0009_Dropdown bags
+--- !u!114 &1097822478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097822472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 6
+  index: 0
 --- !u!1 &1104481328
 GameObject:
   m_ObjectHideFlags: 0
@@ -43460,6 +44555,7 @@ GameObject:
   - component: {fileID: 1154242351}
   - component: {fileID: 1154242350}
   - component: {fileID: 1154242353}
+  - component: {fileID: 1154242354}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -43638,6 +44734,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 17
   legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0008_Dropdown armor
+--- !u!114 &1154242354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154242348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 5
+  index: 0
 --- !u!1 &1155660745
 GameObject:
   m_ObjectHideFlags: 0
@@ -43870,6 +44980,7 @@ GameObject:
   - component: {fileID: 1173296364}
   - component: {fileID: 1173296363}
   - component: {fileID: 1173296366}
+  - component: {fileID: 1173296367}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -44021,6 +45132,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 16
   legacyKey: 
+--- !u!114 &1173296367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173296361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 1
+  index: 0
 --- !u!1 &1175298413
 GameObject:
   m_ObjectHideFlags: 0
@@ -45066,6 +46191,7 @@ GameObject:
   - component: {fileID: 1224243736}
   - component: {fileID: 1224243735}
   - component: {fileID: 1224243734}
+  - component: {fileID: 1224243737}
   m_Layer: 5
   m_Name: clearItemButton
   m_TagString: Untagged
@@ -45175,6 +46301,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224243732}
   m_CullTransparentMesh: 1
+--- !u!114 &1224243737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224243732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 13
+  index: 0
 --- !u!1 &1227000803
 GameObject:
   m_ObjectHideFlags: 0
@@ -45278,6 +46418,7 @@ GameObject:
   - component: {fileID: 1229928818}
   - component: {fileID: 1229928817}
   - component: {fileID: 1229928820}
+  - component: {fileID: 1229928821}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -45429,6 +46570,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 7
   legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0001_itemCategoryDropdown
+--- !u!114 &1229928821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229928815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 3
+  index: 0
 --- !u!1 &1230330232
 GameObject:
   m_ObjectHideFlags: 0
@@ -45624,6 +46779,7 @@ GameObject:
   - component: {fileID: 1233557545}
   - component: {fileID: 1233557544}
   - component: {fileID: 1233557547}
+  - component: {fileID: 1233557548}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -45802,6 +46958,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 10
   legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0008_Dropdown armor
+--- !u!114 &1233557548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233557542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 5
+  index: 0
 --- !u!1 &1236396826
 GameObject:
   m_ObjectHideFlags: 0
@@ -47131,6 +48301,7 @@ GameObject:
   - component: {fileID: 1273635127}
   - component: {fileID: 1273635126}
   - component: {fileID: 1273635129}
+  - component: {fileID: 1273635130}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -47309,6 +48480,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 33
   legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0010_Dropdown magic
+--- !u!114 &1273635130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273635124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 7
+  index: 0
 --- !u!1 &1273839169
 GameObject:
   m_ObjectHideFlags: 0
@@ -47322,6 +48507,7 @@ GameObject:
   - component: {fileID: 1273839172}
   - component: {fileID: 1273839171}
   - component: {fileID: 1273839174}
+  - component: {fileID: 1273839175}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -47473,6 +48659,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 13
   legacyKey: 
+--- !u!114 &1273839175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273839169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 2
+  index: 0
 --- !u!1 &1275722123
 GameObject:
   m_ObjectHideFlags: 0
@@ -47644,6 +48844,7 @@ GameObject:
   - component: {fileID: 1281027204}
   - component: {fileID: 1281027203}
   - component: {fileID: 1281027206}
+  - component: {fileID: 1281027207}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -47795,6 +48996,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 35
   legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0001_itemCategoryDropdown
+--- !u!114 &1281027207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281027201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 3
+  index: 0
 --- !u!1 &1281079222
 GameObject:
   m_ObjectHideFlags: 0
@@ -48173,6 +49388,7 @@ GameObject:
   - component: {fileID: 1297395511}
   - component: {fileID: 1297395513}
   - component: {fileID: 1297395512}
+  - component: {fileID: 1297395514}
   m_Layer: 5
   m_Name: PanelForphoto
   m_TagString: Untagged
@@ -48239,6 +49455,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297395510}
   m_CullTransparentMesh: 1
+--- !u!114 &1297395514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297395510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 15
+  index: 0
 --- !u!1 &1302245170
 GameObject:
   m_ObjectHideFlags: 0
@@ -48325,6 +49555,7 @@ GameObject:
   - component: {fileID: 1305011871}
   - component: {fileID: 1305011873}
   - component: {fileID: 1305011872}
+  - component: {fileID: 1305011874}
   m_Layer: 5
   m_Name: Cels (2)
   m_TagString: Untagged
@@ -48403,6 +49634,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305011870}
   m_CullTransparentMesh: 1
+--- !u!114 &1305011874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305011870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 0
+  index: 0
 --- !u!1 &1305034733
 GameObject:
   m_ObjectHideFlags: 0
@@ -48415,6 +49660,7 @@ GameObject:
   - component: {fileID: 1305034737}
   - component: {fileID: 1305034736}
   - component: {fileID: 1305034735}
+  - component: {fileID: 1305034738}
   m_Layer: 5
   m_Name: exportItemButton
   m_TagString: Untagged
@@ -48523,6 +49769,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305034733}
   m_CullTransparentMesh: 1
+--- !u!114 &1305034738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305034733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 11
+  index: 0
 --- !u!1 &1309969739
 GameObject:
   m_ObjectHideFlags: 0
@@ -49231,6 +50491,7 @@ GameObject:
   - component: {fileID: 1340612362}
   - component: {fileID: 1340612361}
   - component: {fileID: 1340612360}
+  - component: {fileID: 1340612363}
   m_Layer: 5
   m_Name: customItemImageButton
   m_TagString: Untagged
@@ -49340,6 +50601,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340612358}
   m_CullTransparentMesh: 1
+--- !u!114 &1340612363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340612358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 10
+  index: 0
 --- !u!1 &1343756391
 GameObject:
   m_ObjectHideFlags: 0
@@ -49353,6 +50628,7 @@ GameObject:
   - component: {fileID: 1343756394}
   - component: {fileID: 1343756393}
   - component: {fileID: 1343756396}
+  - component: {fileID: 1343756397}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -49504,6 +50780,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 3
   legacyKey: 
+--- !u!114 &1343756397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343756391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 2
+  index: 0
 --- !u!1 &1344049459
 GameObject:
   m_ObjectHideFlags: 0
@@ -50266,6 +51556,7 @@ GameObject:
   - component: {fileID: 1369735185}
   - component: {fileID: 1369735184}
   - component: {fileID: 1369735183}
+  - component: {fileID: 1369735186}
   m_Layer: 5
   m_Name: importItemButton
   m_TagString: Untagged
@@ -50374,6 +51665,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369735181}
   m_CullTransparentMesh: 1
+--- !u!114 &1369735186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369735181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 12
+  index: 0
 --- !u!1 &1371550411
 GameObject:
   m_ObjectHideFlags: 0
@@ -51632,6 +52937,7 @@ GameObject:
   - component: {fileID: 1398788733}
   - component: {fileID: 1398788732}
   - component: {fileID: 1398788731}
+  - component: {fileID: 1398788734}
   m_Layer: 5
   m_Name: customItemImageButton
   m_TagString: Untagged
@@ -51741,6 +53047,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398788729}
   m_CullTransparentMesh: 1
+--- !u!114 &1398788734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398788729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 10
+  index: 0
 --- !u!1 &1400046549
 GameObject:
   m_ObjectHideFlags: 0
@@ -51953,6 +53273,7 @@ GameObject:
   - component: {fileID: 1403122524}
   - component: {fileID: 1403122526}
   - component: {fileID: 1403122525}
+  - component: {fileID: 1403122527}
   m_Layer: 5
   m_Name: customItemImage
   m_TagString: Untagged
@@ -52017,6 +53338,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403122523}
   m_CullTransparentMesh: 1
+--- !u!114 &1403122527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403122523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 14
+  index: 0
 --- !u!1 &1403465901
 GameObject:
   m_ObjectHideFlags: 0
@@ -52186,6 +53521,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405691290}
   m_CullTransparentMesh: 1
+--- !u!1 &1412391923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4500544054641741681, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+  m_PrefabInstance: {fileID: 3529938275672817531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1412391924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412391923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c74559a4c15431995fa407aaef5a0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::SceneRoleMarker
+  role: 20
+  useParentAsPanel: 0
 --- !u!1 &1413701131
 GameObject:
   m_ObjectHideFlags: 0
@@ -53073,6 +54427,7 @@ GameObject:
   - component: {fileID: 1441544871}
   - component: {fileID: 1441544873}
   - component: {fileID: 1441544872}
+  - component: {fileID: 1441544874}
   m_Layer: 5
   m_Name: Cels (1)
   m_TagString: Untagged
@@ -53151,6 +54506,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441544870}
   m_CullTransparentMesh: 1
+--- !u!114 &1441544874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441544870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 0
+  index: 0
 --- !u!1 &1452665283
 GameObject:
   m_ObjectHideFlags: 0
@@ -53500,6 +54869,7 @@ GameObject:
   - component: {fileID: 1459748236}
   - component: {fileID: 1459748235}
   - component: {fileID: 1459748238}
+  - component: {fileID: 1459748239}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -53651,6 +55021,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 14
   legacyKey: 
+--- !u!114 &1459748239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459748233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 1
+  index: 0
 --- !u!1 &1469196883
 GameObject:
   m_ObjectHideFlags: 0
@@ -53754,6 +55138,7 @@ GameObject:
   - component: {fileID: 1471129575}
   - component: {fileID: 1471129574}
   - component: {fileID: 1471129577}
+  - component: {fileID: 1471129578}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -53932,6 +55317,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 56
   legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0005_Dropdown weapon
+--- !u!114 &1471129578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471129572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 4
+  index: 0
 --- !u!1 &1473914790
 GameObject:
   m_ObjectHideFlags: 0
@@ -54157,6 +55556,7 @@ GameObject:
   - component: {fileID: 1481742159}
   - component: {fileID: 1481742158}
   - component: {fileID: 1481742161}
+  - component: {fileID: 1481742162}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -54335,6 +55735,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 48
   legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0011_Dropdown other
+--- !u!114 &1481742162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481742156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 8
+  index: 0
 --- !u!1 &1484131624
 GameObject:
   m_ObjectHideFlags: 0
@@ -54577,6 +55991,7 @@ GameObject:
   - component: {fileID: 1484861514}
   - component: {fileID: 1484861513}
   - component: {fileID: 1484861516}
+  - component: {fileID: 1484861517}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -54728,6 +56143,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 9
   legacyKey: 
+--- !u!114 &1484861517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484861511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 2
+  index: 0
 --- !u!1 &1486339696
 GameObject:
   m_ObjectHideFlags: 0
@@ -54739,6 +56168,7 @@ GameObject:
   - component: {fileID: 1486339697}
   - component: {fileID: 1486339699}
   - component: {fileID: 1486339698}
+  - component: {fileID: 1486339700}
   m_Layer: 5
   m_Name: PanelForphoto
   m_TagString: Untagged
@@ -54805,6 +56235,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486339696}
   m_CullTransparentMesh: 1
+--- !u!114 &1486339700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486339696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 15
+  index: 0
 --- !u!1 &1489572999
 GameObject:
   m_ObjectHideFlags: 0
@@ -54897,6 +56341,7 @@ GameObject:
   - component: {fileID: 1490062391}
   - component: {fileID: 1490062390}
   - component: {fileID: 1490062393}
+  - component: {fileID: 1490062394}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -55075,6 +56520,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 52
   legacyKey: Dropdown_0000_inventory/0002_Page/0008_Cels (7)/0008_Dropdown armor
+--- !u!114 &1490062394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490062388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 5
+  index: 0
 --- !u!1 &1491883630
 GameObject:
   m_ObjectHideFlags: 0
@@ -56799,6 +58258,7 @@ GameObject:
   - component: {fileID: 1545420394}
   - component: {fileID: 1545420393}
   - component: {fileID: 1545420396}
+  - component: {fileID: 1545420397}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -56977,6 +58437,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 16
   legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0007_Dropdown cheger
+--- !u!114 &1545420397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545420391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 9
+  index: 0
 --- !u!1 &1553308319
 GameObject:
   m_ObjectHideFlags: 0
@@ -57064,6 +58538,7 @@ GameObject:
   - component: {fileID: 1554094568}
   - component: {fileID: 1554094567}
   - component: {fileID: 1554094566}
+  - component: {fileID: 1554094569}
   m_Layer: 5
   m_Name: exportItemButton
   m_TagString: Untagged
@@ -57172,6 +58647,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554094564}
   m_CullTransparentMesh: 1
+--- !u!114 &1554094569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554094564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 11
+  index: 0
 --- !u!1 &1554252414
 GameObject:
   m_ObjectHideFlags: 0
@@ -57185,6 +58674,7 @@ GameObject:
   - component: {fileID: 1554252417}
   - component: {fileID: 1554252416}
   - component: {fileID: 1554252419}
+  - component: {fileID: 1554252420}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -57363,6 +58853,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 34
   legacyKey: Dropdown_0000_inventory/0002_Page/0005_Cels (4)/0011_Dropdown other
+--- !u!114 &1554252420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554252414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 8
+  index: 0
 --- !u!1 &1556010981
 GameObject:
   m_ObjectHideFlags: 0
@@ -57374,6 +58878,7 @@ GameObject:
   - component: {fileID: 1556010982}
   - component: {fileID: 1556010984}
   - component: {fileID: 1556010983}
+  - component: {fileID: 1556010985}
   m_Layer: 5
   m_Name: Cels (5)
   m_TagString: Untagged
@@ -57452,6 +58957,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556010981}
   m_CullTransparentMesh: 1
+--- !u!114 &1556010985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556010981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 0
+  index: 0
 --- !u!1 &1556019255
 GameObject:
   m_ObjectHideFlags: 0
@@ -58029,6 +59548,7 @@ GameObject:
   - component: {fileID: 1575581135}
   - component: {fileID: 1575581134}
   - component: {fileID: 1575581137}
+  - component: {fileID: 1575581138}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -58207,6 +59727,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 15
   legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0006_Dropdown weapon
+--- !u!114 &1575581138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575581132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 4
+  index: 0
 --- !u!1 &1580267722
 GameObject:
   m_ObjectHideFlags: 0
@@ -59003,6 +60537,7 @@ GameObject:
   - component: {fileID: 1597444090}
   - component: {fileID: 1597444092}
   - component: {fileID: 1597444091}
+  - component: {fileID: 1597444093}
   m_Layer: 5
   m_Name: PanelForphoto
   m_TagString: Untagged
@@ -59069,6 +60604,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597444089}
   m_CullTransparentMesh: 1
+--- !u!114 &1597444093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597444089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 15
+  index: 0
 --- !u!1 &1598497022
 GameObject:
   m_ObjectHideFlags: 0
@@ -59641,6 +61190,7 @@ GameObject:
   - component: {fileID: 1606701927}
   - component: {fileID: 1606701929}
   - component: {fileID: 1606701928}
+  - component: {fileID: 1606701930}
   m_Layer: 5
   m_Name: customItemImage
   m_TagString: Untagged
@@ -59705,6 +61255,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606701926}
   m_CullTransparentMesh: 1
+--- !u!114 &1606701930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606701926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 14
+  index: 0
 --- !u!1 &1607828079
 GameObject:
   m_ObjectHideFlags: 0
@@ -61315,6 +62879,7 @@ GameObject:
   - component: {fileID: 1661019349}
   - component: {fileID: 1661019348}
   - component: {fileID: 1661019351}
+  - component: {fileID: 1661019352}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -61466,6 +63031,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 4
   legacyKey: 
+--- !u!114 &1661019352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661019346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 1
+  index: 0
 --- !u!1 &1665467985
 GameObject:
   m_ObjectHideFlags: 0
@@ -61950,6 +63529,7 @@ GameObject:
   - component: {fileID: 1675890797}
   - component: {fileID: 1675890799}
   - component: {fileID: 1675890798}
+  - component: {fileID: 1675890800}
   m_Layer: 5
   m_Name: Cels (3)
   m_TagString: Untagged
@@ -62028,6 +63608,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675890796}
   m_CullTransparentMesh: 1
+--- !u!114 &1675890800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675890796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 0
+  index: 0
 --- !u!1 &1681334796
 GameObject:
   m_ObjectHideFlags: 0
@@ -62313,6 +63907,7 @@ GameObject:
   - component: {fileID: 1694479804}
   - component: {fileID: 1694479803}
   - component: {fileID: 1694479806}
+  - component: {fileID: 1694479807}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -62491,6 +64086,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 13
   legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0011_Dropdown other
+--- !u!114 &1694479807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694479801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 8
+  index: 0
 --- !u!1 &1697775091
 GameObject:
   m_ObjectHideFlags: 0
@@ -62504,6 +64113,7 @@ GameObject:
   - component: {fileID: 1697775094}
   - component: {fileID: 1697775093}
   - component: {fileID: 1697775096}
+  - component: {fileID: 1697775097}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -62682,6 +64292,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 36
   legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0006_Dropdown weapon
+--- !u!114 &1697775097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697775091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 4
+  index: 0
 --- !u!1 &1698057104
 GameObject:
   m_ObjectHideFlags: 0
@@ -62842,6 +64466,7 @@ GameObject:
   - component: {fileID: 1704455142}
   - component: {fileID: 1704455141}
   - component: {fileID: 1704455144}
+  - component: {fileID: 1704455145}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -62993,6 +64618,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 17
   legacyKey: 
+--- !u!114 &1704455145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704455139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 2
+  index: 0
 --- !u!1 &1705537591
 GameObject:
   m_ObjectHideFlags: 0
@@ -65046,6 +66685,7 @@ GameObject:
   - component: {fileID: 1761937104}
   - component: {fileID: 1761937106}
   - component: {fileID: 1761937105}
+  - component: {fileID: 1761937107}
   m_Layer: 5
   m_Name: PanelForphoto
   m_TagString: Untagged
@@ -65112,6 +66752,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761937103}
   m_CullTransparentMesh: 1
+--- !u!114 &1761937107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761937103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 15
+  index: 0
 --- !u!1 &1765081689
 GameObject:
   m_ObjectHideFlags: 0
@@ -65231,6 +66885,7 @@ GameObject:
   - component: {fileID: 1765814779}
   - component: {fileID: 1765814778}
   - component: {fileID: 1765814777}
+  - component: {fileID: 1765814780}
   m_Layer: 5
   m_Name: importItemButton
   m_TagString: Untagged
@@ -65339,6 +66994,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765814775}
   m_CullTransparentMesh: 1
+--- !u!114 &1765814780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765814775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 12
+  index: 0
 --- !u!1 &1767579362
 GameObject:
   m_ObjectHideFlags: 0
@@ -65427,6 +67096,7 @@ GameObject:
   - component: {fileID: 1775957511}
   - component: {fileID: 1775957510}
   - component: {fileID: 1775957513}
+  - component: {fileID: 1775957514}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -65605,6 +67275,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 25
   legacyKey: Dropdown_0000_inventory/0002_Page/0004_Cels (3)/0009_Dropdown bags
+--- !u!114 &1775957514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775957508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 6
+  index: 0
 --- !u!1 &1778736611
 GameObject:
   m_ObjectHideFlags: 0
@@ -65986,6 +67670,7 @@ GameObject:
   - component: {fileID: 1786086797}
   - component: {fileID: 1786086796}
   - component: {fileID: 1786086795}
+  - component: {fileID: 1786086798}
   m_Layer: 5
   m_Name: customItemImageButton
   m_TagString: Untagged
@@ -66095,6 +67780,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786086793}
   m_CullTransparentMesh: 1
+--- !u!114 &1786086798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786086793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 10
+  index: 0
 --- !u!1 &1789590997
 GameObject:
   m_ObjectHideFlags: 0
@@ -66534,6 +68233,7 @@ GameObject:
   - component: {fileID: 1797890425}
   - component: {fileID: 1797890424}
   - component: {fileID: 1797890427}
+  - component: {fileID: 1797890428}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -66685,6 +68385,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 15
   legacyKey: 
+--- !u!114 &1797890428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797890422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 2
+  index: 0
 --- !u!1 &1812501392
 GameObject:
   m_ObjectHideFlags: 0
@@ -67038,6 +68752,7 @@ GameObject:
   - component: {fileID: 1825676944}
   - component: {fileID: 1825676943}
   - component: {fileID: 1825676942}
+  - component: {fileID: 1825676945}
   m_Layer: 5
   m_Name: exportItemButton
   m_TagString: Untagged
@@ -67146,6 +68861,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825676940}
   m_CullTransparentMesh: 1
+--- !u!114 &1825676945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825676940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 11
+  index: 0
 --- !u!1 &1827385027
 GameObject:
   m_ObjectHideFlags: 0
@@ -67159,6 +68888,7 @@ GameObject:
   - component: {fileID: 1827385030}
   - component: {fileID: 1827385029}
   - component: {fileID: 1827385032}
+  - component: {fileID: 1827385033}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -67337,6 +69067,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 40
   legacyKey: Dropdown_0000_inventory/0002_Page/0006_Cels (5)/0010_Dropdown magic
+--- !u!114 &1827385033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827385027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 7
+  index: 0
 --- !u!1 &1830144093
 GameObject:
   m_ObjectHideFlags: 0
@@ -67731,6 +69475,7 @@ GameObject:
   - component: {fileID: 1843974712}
   - component: {fileID: 1843974714}
   - component: {fileID: 1843974713}
+  - component: {fileID: 1843974715}
   m_Layer: 5
   m_Name: customItemImage
   m_TagString: Untagged
@@ -67795,6 +69540,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843974711}
   m_CullTransparentMesh: 1
+--- !u!114 &1843974715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843974711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 14
+  index: 0
 --- !u!1 &1851943685
 GameObject:
   m_ObjectHideFlags: 0
@@ -68098,6 +69857,7 @@ GameObject:
   - component: {fileID: 1859846994}
   - component: {fileID: 1859846993}
   - component: {fileID: 1859846996}
+  - component: {fileID: 1859846997}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -68276,6 +70036,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 20
   legacyKey: Dropdown_0000_inventory/0002_Page/0003_Cels (2)/0011_Dropdown other
+--- !u!114 &1859846997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859846991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 8
+  index: 0
 --- !u!1 &1866043697
 GameObject:
   m_ObjectHideFlags: 0
@@ -68518,6 +70292,7 @@ GameObject:
   - component: {fileID: 1869823629}
   - component: {fileID: 1869823628}
   - component: {fileID: 1869823631}
+  - component: {fileID: 1869823632}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -68696,6 +70471,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 12
   legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0010_Dropdown magic
+--- !u!114 &1869823632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869823626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 7
+  index: 0
 --- !u!1 &1873340747
 GameObject:
   m_ObjectHideFlags: 0
@@ -69272,6 +71061,7 @@ GameObject:
   - component: {fileID: 1889189179}
   - component: {fileID: 1889189178}
   - component: {fileID: 1889189177}
+  - component: {fileID: 1889189180}
   m_Layer: 5
   m_Name: exportItemButton
   m_TagString: Untagged
@@ -69380,6 +71170,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889189175}
   m_CullTransparentMesh: 1
+--- !u!114 &1889189180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889189175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 11
+  index: 0
 --- !u!1 &1892060234
 GameObject:
   m_ObjectHideFlags: 0
@@ -69563,6 +71367,7 @@ GameObject:
   - component: {fileID: 1896404921}
   - component: {fileID: 1896404923}
   - component: {fileID: 1896404922}
+  - component: {fileID: 1896404924}
   m_Layer: 5
   m_Name: Cels (6)
   m_TagString: Untagged
@@ -69641,6 +71446,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896404920}
   m_CullTransparentMesh: 1
+--- !u!114 &1896404924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896404920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 0
+  index: 0
 --- !u!1 &1905166678
 GameObject:
   m_ObjectHideFlags: 0
@@ -70006,6 +71825,7 @@ GameObject:
   - component: {fileID: 1916654177}
   - component: {fileID: 1916654176}
   - component: {fileID: 1916654175}
+  - component: {fileID: 1916654178}
   m_Layer: 5
   m_Name: clearItemButton
   m_TagString: Untagged
@@ -70115,6 +71935,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916654173}
   m_CullTransparentMesh: 1
+--- !u!114 &1916654178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916654173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 13
+  index: 0
 --- !u!1 &1918487827
 GameObject:
   m_ObjectHideFlags: 0
@@ -70869,6 +72703,7 @@ GameObject:
   - component: {fileID: 1939026928}
   - component: {fileID: 1939026927}
   - component: {fileID: 1939026926}
+  - component: {fileID: 1939026929}
   m_Layer: 5
   m_Name: customItemImageButton
   m_TagString: Untagged
@@ -70978,6 +72813,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939026924}
   m_CullTransparentMesh: 1
+--- !u!114 &1939026929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939026924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 10
+  index: 0
 --- !u!1 &1942451435
 GameObject:
   m_ObjectHideFlags: 0
@@ -71172,6 +73021,7 @@ GameObject:
   - component: {fileID: 1946833606}
   - component: {fileID: 1946833605}
   - component: {fileID: 1946833608}
+  - component: {fileID: 1946833609}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -71350,6 +73200,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 9
   legacyKey: Dropdown_0000_inventory/0002_Page/0002_Cels (1)/0007_Dropdown cheger
+--- !u!114 &1946833609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946833603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 9
+  index: 0
 --- !u!1 &1951716307
 GameObject:
   m_ObjectHideFlags: 0
@@ -72119,6 +73983,7 @@ GameObject:
   - component: {fileID: 1964767215}
   - component: {fileID: 1964767214}
   - component: {fileID: 1964767217}
+  - component: {fileID: 1964767218}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -72297,6 +74162,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 43
   legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0006_Dropdown weapon
+--- !u!114 &1964767218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964767212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 4
+  index: 0
 --- !u!1 &1964970418
 GameObject:
   m_ObjectHideFlags: 0
@@ -73072,6 +74951,7 @@ GameObject:
   - component: {fileID: 1995866390}
   - component: {fileID: 1995866392}
   - component: {fileID: 1995866391}
+  - component: {fileID: 1995866393}
   m_Layer: 5
   m_Name: customItemImage
   m_TagString: Untagged
@@ -73136,6 +75016,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995866389}
   m_CullTransparentMesh: 1
+--- !u!114 &1995866393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995866389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 14
+  index: 0
 --- !u!1 &1997131196
 GameObject:
   m_ObjectHideFlags: 0
@@ -73422,6 +75316,7 @@ GameObject:
   - component: {fileID: 2003811553}
   - component: {fileID: 2003811552}
   - component: {fileID: 2003811555}
+  - component: {fileID: 2003811556}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -73600,6 +75495,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 58
   legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0007_Dropdown armor
+--- !u!114 &2003811556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003811550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 5
+  index: 0
 --- !u!1 &2005388671
 GameObject:
   m_ObjectHideFlags: 0
@@ -73649,6 +75558,7 @@ GameObject:
   - component: {fileID: 2007091222}
   - component: {fileID: 2007091221}
   - component: {fileID: 2007091224}
+  - component: {fileID: 2007091225}
   m_Layer: 5
   m_Name: itemCategoryDropdown
   m_TagString: Untagged
@@ -73800,6 +75710,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 62
   legacyKey: Dropdown_0000_inventory/0002_Page/0009_Cels (8)/0011_itemCategoryDropdown
+--- !u!114 &2007091225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007091219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 3
+  index: 0
 --- !u!1 &2010264434
 GameObject:
   m_ObjectHideFlags: 0
@@ -74596,6 +76520,7 @@ GameObject:
   - component: {fileID: 2041409380}
   - component: {fileID: 2041409379}
   - component: {fileID: 2041409378}
+  - component: {fileID: 2041409381}
   m_Layer: 5
   m_Name: clearItemButton
   m_TagString: Untagged
@@ -74705,6 +76630,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041409376}
   m_CullTransparentMesh: 1
+--- !u!114 &2041409381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041409376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 13
+  index: 0
 --- !u!1 &2041708773
 GameObject:
   m_ObjectHideFlags: 0
@@ -74824,6 +76763,7 @@ GameObject:
   - component: {fileID: 2045513994}
   - component: {fileID: 2045513993}
   - component: {fileID: 2045513992}
+  - component: {fileID: 2045513995}
   m_Layer: 5
   m_Name: importItemButton
   m_TagString: Untagged
@@ -74932,6 +76872,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2045513990}
   m_CullTransparentMesh: 1
+--- !u!114 &2045513995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045513990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 12
+  index: 0
 --- !u!1 &2046134255
 GameObject:
   m_ObjectHideFlags: 0
@@ -75354,6 +77308,7 @@ GameObject:
   - component: {fileID: 2061886446}
   - component: {fileID: 2061886448}
   - component: {fileID: 2061886447}
+  - component: {fileID: 2061886449}
   m_Layer: 5
   m_Name: PanelForphoto
   m_TagString: Untagged
@@ -75420,6 +77375,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061886445}
   m_CullTransparentMesh: 1
+--- !u!114 &2061886449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061886445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 15
+  index: 0
 --- !u!1 &2063871897
 GameObject:
   m_ObjectHideFlags: 0
@@ -75432,6 +77401,7 @@ GameObject:
   - component: {fileID: 2063871901}
   - component: {fileID: 2063871900}
   - component: {fileID: 2063871899}
+  - component: {fileID: 2063871902}
   m_Layer: 5
   m_Name: customItemImageButton
   m_TagString: Untagged
@@ -75541,6 +77511,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063871897}
   m_CullTransparentMesh: 1
+--- !u!114 &2063871902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063871897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 10
+  index: 0
 --- !u!1 &2069070974
 GameObject:
   m_ObjectHideFlags: 0
@@ -76087,6 +78071,7 @@ GameObject:
   - component: {fileID: 2082686018}
   - component: {fileID: 2082686017}
   - component: {fileID: 2082686016}
+  - component: {fileID: 2082686019}
   m_Layer: 5
   m_Name: customItemImageButton
   m_TagString: Untagged
@@ -76196,6 +78181,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082686014}
   m_CullTransparentMesh: 1
+--- !u!114 &2082686019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082686014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 10
+  index: 0
 --- !u!1 &2091749360
 GameObject:
   m_ObjectHideFlags: 0
@@ -76553,6 +78552,7 @@ GameObject:
   - component: {fileID: 2102587049}
   - component: {fileID: 2102587048}
   - component: {fileID: 2102587047}
+  - component: {fileID: 2102587050}
   m_Layer: 5
   m_Name: exportItemButton
   m_TagString: Untagged
@@ -76661,6 +78661,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102587045}
   m_CullTransparentMesh: 1
+--- !u!114 &2102587050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102587045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 11
+  index: 0
 --- !u!1 &2103370812
 GameObject:
   m_ObjectHideFlags: 0
@@ -77628,6 +79642,7 @@ GameObject:
   - component: {fileID: 2137358546}
   - component: {fileID: 2137358545}
   - component: {fileID: 2137358548}
+  - component: {fileID: 2137358549}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -77806,6 +79821,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 47
   legacyKey: Dropdown_0000_inventory/0002_Page/0007_Cels (6)/0010_Dropdown magic
+--- !u!114 &2137358549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137358543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 7
+  index: 0
 --- !u!1 &2137703891
 GameObject:
   m_ObjectHideFlags: 0
@@ -77968,6 +79997,7 @@ GameObject:
   - component: {fileID: 2144184951}
   - component: {fileID: 2144184950}
   - component: {fileID: 2144184949}
+  - component: {fileID: 2144184952}
   m_Layer: 5
   m_Name: customItemImageButton
   m_TagString: Untagged
@@ -78077,6 +80107,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144184947}
   m_CullTransparentMesh: 1
+--- !u!114 &2144184952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144184947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 10
+  index: 0
 --- !u!212 &66744847474596716
 SpriteRenderer:
   serializedVersion: 2
@@ -78126,12 +80170,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: e857e7cad824b564994aed624d7a9473, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ba01c94fbb953740a5f15a4c508963b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 24.380953, y: 13.714286}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -78864,6 +80908,7 @@ GameObject:
   - component: {fileID: 2587690281343265026}
   - component: {fileID: 6409745838648006491}
   - component: {fileID: 6409745838648006492}
+  - component: {fileID: 6409745838648006493}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -78914,6 +80959,7 @@ GameObject:
   - component: {fileID: 8854983089228429636}
   - component: {fileID: 1116641008904874318}
   - component: {fileID: 8854983089228429637}
+  - component: {fileID: 8854983089228429638}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -79453,7 +81499,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 23, y: -360.29272, z: -52078.08}
-  m_LocalScale: {x: 243.36624, y: 243.36624, z: 243.36624}
+  m_LocalScale: {x: 173.06042, y: 173.06042, z: 243.36624}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2966662196572861240}
@@ -80184,6 +82230,7 @@ GameObject:
   - component: {fileID: 695903418666005955}
   - component: {fileID: 7803539950801056690}
   - component: {fileID: 1363195546069339650}
+  - component: {fileID: 7803539950801056691}
   m_Layer: 5
   m_Name: page (4)
   m_TagString: Untagged
@@ -80418,6 +82465,7 @@ GameObject:
   - component: {fileID: 1127424290002028277}
   - component: {fileID: 5107821794030566974}
   - component: {fileID: 196327633175057836}
+  - component: {fileID: 5107821794030566975}
   m_Layer: 5
   m_Name: page
   m_TagString: Untagged
@@ -80654,6 +82702,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4256132962488881674, guid: e96a75c3377b3e54283aa74cfeec63f2, type: 3}
   m_PrefabInstance: {fileID: 2537917670596901102}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2537917670596901104 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4649971254365795289, guid: e96a75c3377b3e54283aa74cfeec63f2, type: 3}
+  m_PrefabInstance: {fileID: 2537917670596901102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edde384fcff600a49a942de66b8a255d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2570365452264381812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81660,6 +83719,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -12.855103
       objectReference: {fileID: 0}
+    - target: {fileID: 909000000000000001, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      propertyPath: mapBounds
+      value: 
+      objectReference: {fileID: 2537917670596901104}
     - target: {fileID: 2007033491447955828, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1.1643009
@@ -81883,6 +83946,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 326596580}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4500544054641741681, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1412391924}
     - targetCorrespondingSourceObject: {fileID: 1886280768646428267, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3529938275672817537}
@@ -82649,6 +84715,7 @@ GameObject:
   - component: {fileID: 516402311463048627}
   - component: {fileID: 8069333794359013164}
   - component: {fileID: 4573440733513347165}
+  - component: {fileID: 8069333794359013165}
   m_Layer: 5
   m_Name: Page
   m_TagString: Untagged
@@ -82806,6 +84873,7 @@ GameObject:
   - component: {fileID: 6887842617150618236}
   - component: {fileID: 6181430402597096067}
   - component: {fileID: 7916743296501417408}
+  - component: {fileID: 7916743296501417409}
   m_Layer: 5
   m_Name: itemNameInput
   m_TagString: Untagged
@@ -82825,6 +84893,7 @@ GameObject:
   - component: {fileID: 2896248535280839342}
   - component: {fileID: 3816895210717849873}
   - component: {fileID: 5810023392586805711}
+  - component: {fileID: 8013133290515420579}
   m_Layer: 5
   m_Name: page (1)
   m_TagString: Untagged
@@ -83113,6 +85182,7 @@ GameObject:
   - component: {fileID: 1990164694521766551}
   - component: {fileID: 1250449486014032363}
   - component: {fileID: 5500634141484243331}
+  - component: {fileID: 5500634141484243332}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -83260,6 +85330,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5107821794030566975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476133197377955509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 17
+  index: 0
 --- !u!222 &5120625890077889913
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -83584,6 +85668,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 0
   legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0005_Dropdown weapon
+--- !u!114 &5500634141484243332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4886544178279574154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 4
+  index: 0
 --- !u!1 &5554723750962409802
 GameObject:
   m_ObjectHideFlags: 0
@@ -83645,6 +85743,7 @@ GameObject:
   - component: {fileID: 2491226458403906518}
   - component: {fileID: 7576943155146023530}
   - component: {fileID: 8530177842117430347}
+  - component: {fileID: 8530177842117430348}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -83732,6 +85831,7 @@ GameObject:
   - component: {fileID: 6086793128864520105}
   - component: {fileID: 3240749483892816946}
   - component: {fileID: 6514735578903603447}
+  - component: {fileID: 6514735578903603448}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -84134,6 +86234,7 @@ GameObject:
   - component: {fileID: 7609315029969433575}
   - component: {fileID: 3546119886464372541}
   - component: {fileID: 8913920093298730572}
+  - component: {fileID: 8913920093298730573}
   m_Layer: 5
   m_Name: itemDescriptionInput
   m_TagString: Untagged
@@ -84176,6 +86277,7 @@ GameObject:
   - component: {fileID: 6131121590128768650}
   - component: {fileID: 1031584456000441962}
   - component: {fileID: 7306143136111846376}
+  - component: {fileID: 7306143136111846377}
   m_Layer: 5
   m_Name: page (2)
   m_TagString: Untagged
@@ -87335,6 +89437,20 @@ MonoBehaviour:
   englishText: 
   russianText: 
   useCurrentTextAsSource: 1
+--- !u!114 &6409745838648006493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996134383593815514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 16
+  index: 0
 --- !u!114 &6456369552636910698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87432,6 +89548,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 5
   legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0010_Dropdown other
+--- !u!114 &6514735578903603448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5674937148954073830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 8
+  index: 0
 --- !u!224 &6517836795293031162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -88243,6 +90373,7 @@ GameObject:
   - component: {fileID: 3175512228137135081}
   - component: {fileID: 7140917053484117137}
   - component: {fileID: 7165470176574917012}
+  - component: {fileID: 7165470176574917013}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -88267,6 +90398,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 4
   legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0009_Dropdown magic
+--- !u!114 &7165470176574917013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165470176574917011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 7
+  index: 0
 --- !u!222 &7180483830321721288
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -88411,6 +90556,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7306143136111846377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6005946796540448524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 17
+  index: 2
 --- !u!222 &7321838617838503355
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -88432,6 +90591,7 @@ GameObject:
   - component: {fileID: 4783967868601109660}
   - component: {fileID: 2516816259472391228}
   - component: {fileID: 7334135704426129275}
+  - component: {fileID: 7334135704426129276}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -88456,6 +90616,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 2
   legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0007_Dropdown armor
+--- !u!114 &7334135704426129276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7334135704426129274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 5
+  index: 0
 --- !u!1 &7335364052261831492
 GameObject:
   m_ObjectHideFlags: 0
@@ -89029,6 +91203,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7803539950801056691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2255181104716340690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 17
+  index: 4
 --- !u!1 &7846594832623969297
 GameObject:
   m_ObjectHideFlags: 0
@@ -89135,6 +91323,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 0
   legacyKey: 
+--- !u!114 &7916743296501417409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4575946429839051184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 1
+  index: 0
 --- !u!1 &7926916519824775046
 GameObject:
   m_ObjectHideFlags: 0
@@ -89189,6 +91391,20 @@ RectTransform:
   m_AnchoredPosition: {x: -0.4, y: 2.174}
   m_SizeDelta: {x: 197.6158, y: 43.7714}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8013133290515420579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616198136017475723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 17
+  index: 1
 --- !u!224 &8021058215997315566
 RectTransform:
   m_ObjectHideFlags: 0
@@ -89246,6 +91462,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4413621461468519276}
   m_CullTransparentMesh: 1
+--- !u!114 &8069333794359013165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4413621461468519276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c74559a4c15431995fa407aaef5a0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::SceneRoleMarker
+  role: 19
+  useParentAsPanel: 0
 --- !u!1 &8136665201626582130
 GameObject:
   m_ObjectHideFlags: 0
@@ -89489,6 +91719,7 @@ GameObject:
   - component: {fileID: 2319017539262942506}
   - component: {fileID: 2645564204226506319}
   - component: {fileID: 8519187231213764487}
+  - component: {fileID: 8519187231213764488}
   m_Layer: 5
   m_Name: Cels
   m_TagString: Untagged
@@ -89620,6 +91851,7 @@ GameObject:
   - component: {fileID: 6481797186181094475}
   - component: {fileID: 8745907215262262215}
   - component: {fileID: 6743272560917410246}
+  - component: {fileID: 8745907215262262216}
   m_Layer: 5
   m_Name: page (3)
   m_TagString: Untagged
@@ -89731,6 +91963,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 4
+--- !u!114 &8519187231213764488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316146628439194507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 0
+  index: 0
 --- !u!224 &8530177842117430346
 RectTransform:
   m_ObjectHideFlags: 0
@@ -89771,6 +92017,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 1
   legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0006_Dropdown cheger
+--- !u!114 &8530177842117430348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582076603597861727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 9
+  index: 0
 --- !u!1 &8544076479543877073
 GameObject:
   m_ObjectHideFlags: 0
@@ -89915,6 +92175,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8745907215262262216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8456052746906189990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 17
+  index: 3
 --- !u!114 &8773557567817688354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90102,6 +92376,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 3
   legacyKey: Dropdown_0000_inventory/0002_Page/0001_Cels/0008_Dropdown bags
+--- !u!114 &8854983089228429638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063287750982577863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 6
+  index: 0
 --- !u!1 &8862372250101299142
 GameObject:
   m_ObjectHideFlags: 0
@@ -90166,6 +92454,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 1
   legacyKey: 
+--- !u!114 &8913920093298730573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5978810376171680703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 2
+  index: 0
 --- !u!114 &8974985767818466203
 MonoBehaviour:
   m_ObjectHideFlags: 0

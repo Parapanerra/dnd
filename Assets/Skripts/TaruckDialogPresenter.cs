@@ -24,6 +24,20 @@ internal sealed class TaruckDialogPresenter
     internal void Show(string title, string details, string primaryLabel, Action primary,
         string secondaryLabel = null, Action secondary = null)
     {
+        TaruckImportReviewDialog dialog = OpenDialog();
+        dialog.Configure(messages.KnownText(title), messages.KnownText(details),
+            messages.KnownText(primaryLabel), primary, messages.KnownText(secondaryLabel),
+            secondary, messages);
+    }
+
+    internal void ShowImage(string title, Texture2D image)
+    {
+        TaruckImportReviewDialog dialog = OpenDialog();
+        dialog.ConfigureImage(title, image, messages);
+    }
+
+    private TaruckImportReviewDialog OpenDialog()
+    {
         TaruckImportReviewDialog prefab = Resources.Load<TaruckImportReviewDialog>("UI/TaruckImportReviewDialog");
         if (prefab == null)
             throw new InvalidOperationException("Missing Resources/UI/TaruckImportReviewDialog prefab");
@@ -37,8 +51,6 @@ internal sealed class TaruckDialogPresenter
             dialog.AttachEventSystem(new GameObject("TaruckDialogEventSystem",
                 typeof(EventSystem), typeof(StandaloneInputModule)));
 
-        dialog.Configure(messages.KnownText(title), messages.KnownText(details),
-            messages.KnownText(primaryLabel), primary, messages.KnownText(secondaryLabel),
-            secondary, messages);
+        return dialog;
     }
 }

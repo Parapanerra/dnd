@@ -14,10 +14,11 @@ internal sealed class RestSceneToggleFinder
 
         foreach (Toggle toggle in panel.GetComponentsInChildren<Toggle>(true))
         {
-            if (toggle == null || !SceneObjectName.Matches(toggle.name, "Toggle") || IsInsideDropdown(toggle.transform, panel))
+            if (toggle == null || (toggle.GetComponent<ResourceToggleMarker>() == null &&
+                !SceneObjectName.Matches(toggle.name, "Toggle")) || IsInsideDropdown(toggle.transform, panel))
                 continue;
 
-            int number = SceneObjectName.ToggleNumber(toggle.name);
+            int number = ResourceToggleMarker.NumberOf(toggle);
             if (number >= minNumber && number <= maxNumber)
                 result.Add(toggle);
         }

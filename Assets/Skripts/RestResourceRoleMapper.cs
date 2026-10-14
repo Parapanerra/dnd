@@ -53,7 +53,7 @@ internal sealed class RestResourceRoleMapper
             if (field == null)
                 continue;
 
-            sceneData.SetString("RestRole_" + field.Id, role + "|" + SceneObjectName.ToggleNumber(toggle.name));
+            sceneData.SetString("RestRole_" + field.Id, role + "|" + ResourceToggleMarker.NumberOf(toggle));
         }
     }
 

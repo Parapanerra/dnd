@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -143,5 +144,67 @@ internal sealed class CalculatorEasterEgg
             case 2: return "Я взагалі-то серйозно.";
             default: return "Я попереджував.";
         }
+    }
+}
+
+// Character-name surprise lives beside the calculator easter eggs.
+internal sealed class CharacterNameEasterEgg
+{
+    private readonly TaruckDialogPresenter dialogs;
+    private bool shownForCurrentEntry;
+
+    internal CharacterNameEasterEgg(RuntimeLocalization localization)
+    {
+        dialogs = new TaruckDialogPresenter(() => localization.CurrentLanguage);
+    }
+
+    internal void Bind(InputField input, TMP_InputField tmpInput)
+    {
+        if (input != null)
+        {
+            shownForCurrentEntry = IsTriggerName(input.text);
+            input.onValueChanged.AddListener(HandleValueChanged);
+            input.onEndEdit.AddListener(HandleEndEdit);
+        }
+        else if (tmpInput != null)
+        {
+            shownForCurrentEntry = IsTriggerName(tmpInput.text);
+            tmpInput.onValueChanged.AddListener(HandleValueChanged);
+            tmpInput.onEndEdit.AddListener(HandleEndEdit);
+        }
+    }
+
+    private void HandleValueChanged(string value)
+    {
+        if (!IsTriggerName(value))
+            shownForCurrentEntry = false;
+    }
+
+    private void HandleEndEdit(string value)
+    {
+        if (shownForCurrentEntry || !IsTriggerName(value))
+            return;
+
+        Texture2D photo = Resources.Load<Texture2D>("UI/TaruckShipEasterEgg");
+        if (photo == null)
+        {
+            Debug.LogError("Missing Resources/UI/TaruckShipEasterEgg image");
+            return;
+        }
+
+        shownForCurrentEntry = true;
+        dialogs.ShowImage("Taruck ship", photo);
+    }
+
+    internal static bool IsTriggerName(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return false;
+
+        string name = value.Trim();
+        return name.Equals("Taruck ship", StringComparison.OrdinalIgnoreCase) ||
+               name.Equals("Taruck", StringComparison.OrdinalIgnoreCase) ||
+               name.Equals("Тарук", StringComparison.OrdinalIgnoreCase) ||
+               name.Equals("Тарук Шип", StringComparison.OrdinalIgnoreCase);
     }
 }

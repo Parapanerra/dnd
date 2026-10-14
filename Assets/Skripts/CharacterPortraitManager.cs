@@ -10,8 +10,8 @@ public class CharacterPortraitManager : MonoBehaviour
     private readonly GalleryImagePicker galleryPicker = new GalleryImagePicker();
     private readonly RuntimeImageView imageView = new RuntimeImageView();
     private DndSaveManager saveManager;
-    private Button selectPortraitButton;
-    private Image portraitImage;
+    [SerializeField] private Button selectPortraitButton;
+    [SerializeField] private Image portraitImage;
 
     internal void Initialize(DndSaveManager dataManager)
     {
@@ -20,8 +20,17 @@ public class CharacterPortraitManager : MonoBehaviour
 
     private void Start()
     {
-        portraitImage = FindImageByName(PortraitImageName);
-        selectPortraitButton = FindButtonByName(SelectButtonName);
+        SceneRoleLookup roles = new SceneRoleLookup();
+        if (portraitImage == null)
+        {
+            SceneRoleMarker marker = roles.Find(SceneRole.PortraitImage);
+            portraitImage = marker != null ? marker.GetComponent<Image>() : FindImageByName(PortraitImageName);
+        }
+        if (selectPortraitButton == null)
+        {
+            SceneRoleMarker marker = roles.Find(SceneRole.PortraitButton);
+            selectPortraitButton = marker != null ? marker.GetComponent<Button>() : FindButtonByName(SelectButtonName);
+        }
 
         if (portraitImage != null)
         {

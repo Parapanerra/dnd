@@ -11,6 +11,7 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
     private const float WildShapeBottomPaddingPixels = 20f;
     private const float DefaultMinimumWideAspect = 0.75f;
     private const float VisibleAlphaThreshold = 0.001f;
+    private const float OverlayHorizontalMovementFraction = 0.1f;
     [SerializeField] private float bottomPaddingPixels;
     [SerializeField] private float wideScreenVerticalOffsetPixels;
     [SerializeField] private float minimumWideAspect = DefaultMinimumWideAspect;
@@ -20,7 +21,7 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
         new Dictionary<RectTransform, Vector2>();
     private Canvas targetCanvas;
     private RectTransform canvasRect;
-    private MapCameraController mapBounds;
+    [SerializeField] private MapCameraController mapBounds;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void RegisterSceneCallback()
@@ -45,10 +46,17 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
             Canvas[] canvases = root.GetComponentsInChildren<Canvas>(true);
             foreach (Canvas canvas in canvases)
             {
+                SceneRoleMarker marker = canvas.GetComponent<SceneRoleMarker>();
+                bool wildShape = marker != null
+                    ? marker.Role == SceneRole.WildShapeOverlay
+                    : canvas.name == "DFormOverLey";
+                bool standard = marker != null
+                    ? marker.Role == SceneRole.Overlay
+                    : canvas.name == "overLey";
                 float verticalOffset;
-                if (canvas.name == "DFormOverLey")
+                if (wildShape)
                     verticalOffset = WildShapeVerticalOffsetPixels;
-                else if (canvas.name == "overLey")
+                else if (standard)
                     verticalOffset = 0f;
                 else
                     continue;
@@ -57,7 +65,7 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
                 if (fitter == null)
                     fitter = canvas.gameObject.AddComponent<OverlayBoundsFitter>();
 
-                fitter.bottomPaddingPixels = canvas.name == "DFormOverLey" ? WildShapeBottomPaddingPixels : 0f;
+                fitter.bottomPaddingPixels = wildShape ? WildShapeBottomPaddingPixels : 0f;
                 fitter.wideScreenVerticalOffsetPixels = verticalOffset;
                 fitter.minimumWideAspect = DefaultMinimumWideAspect;
                 fitter.RefreshReferences();
@@ -74,7 +82,8 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
     {
         targetCanvas = GetComponent<Canvas>();
         canvasRect = transform as RectTransform;
-        mapBounds = FindAnyObjectByType<MapCameraController>();
+        if (mapBounds == null)
+            mapBounds = FindSceneMapBounds();
     }
 
     private void LateUpdate()
@@ -88,6 +97,7 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
             return;
 
         Rect bounds = GetVisibleBounds();
+        float horizontalParallaxOffset = GetHorizontalParallaxOffset();
 
         for (int i = 0; i < canvasRect.childCount; i++)
         {
@@ -107,7 +117,7 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
                 bottomLeft.x,
                 topRight.x,
                 bounds.xMin,
-                bounds.xMax);
+                bounds.xMax) + horizontalParallaxOffset;
 
             float verticalOffset = GetAxisOffset(
                 bottomLeft.y,
@@ -129,6 +139,35 @@ public sealed class OverlayBoundsFitter : MonoBehaviour
                 appliedOffsets[child] = Vector2.zero;
             }
         }
+    }
+
+    private float GetHorizontalParallaxOffset()
+    {
+        if (targetCanvas == null || targetCanvas.renderMode == RenderMode.WorldSpace)
+            return 0f;
+
+        if (mapBounds == null)
+            mapBounds = FindSceneMapBounds();
+
+        Camera camera = Camera.main;
+        if (mapBounds == null || camera == null || !camera.orthographic)
+            return 0f;
+
+        float canvasUnitsPerWorldUnit = canvasRect.rect.height /
+            (camera.orthographicSize * 2f);
+        return -mapBounds.HorizontalPanWorldDelta *
+            canvasUnitsPerWorldUnit * OverlayHorizontalMovementFraction;
+    }
+
+    // Legacy fallback for scenes without the serialized camera binding.
+    private MapCameraController FindSceneMapBounds()
+    {
+        foreach (GameObject root in gameObject.scene.GetRootGameObjects())
+        {
+            MapCameraController controller = root.GetComponentInChildren<MapCameraController>(true);
+            if (controller != null) return controller;
+        }
+        return null;
     }
 
     private float GetWideScreenVerticalOffset()

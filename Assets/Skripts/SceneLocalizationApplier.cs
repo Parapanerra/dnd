@@ -15,13 +15,13 @@ internal sealed class SceneLocalizationApplier
 
     internal void Apply()
     {
-        foreach (ManualLocalizedText text in Resources.FindObjectsOfTypeAll<ManualLocalizedText>())
+        foreach (ManualLocalizedText text in UnityEngine.Object.FindObjectsByType<ManualLocalizedText>(FindObjectsInactive.Include))
         {
             if (IsSceneObject(text != null ? text.gameObject : null))
                 text.Apply(localization);
         }
 
-        foreach (Text text in Resources.FindObjectsOfTypeAll<Text>())
+        foreach (Text text in UnityEngine.Object.FindObjectsByType<Text>(FindObjectsInactive.Include))
         {
             if (!IsSceneObject(text != null ? text.gameObject : null) || ShouldSkip(text))
                 continue;
@@ -32,7 +32,7 @@ internal sealed class SceneLocalizationApplier
             localizedText.Apply(localization);
         }
 
-        foreach (TMP_Text text in Resources.FindObjectsOfTypeAll<TMP_Text>())
+        foreach (TMP_Text text in UnityEngine.Object.FindObjectsByType<TMP_Text>(FindObjectsInactive.Include))
         {
             if (!IsSceneObject(text != null ? text.gameObject : null) || ShouldSkip(text))
                 continue;
@@ -43,7 +43,7 @@ internal sealed class SceneLocalizationApplier
             localizedText.Apply(localization);
         }
 
-        foreach (TextMesh text in Resources.FindObjectsOfTypeAll<TextMesh>())
+        foreach (TextMesh text in UnityEngine.Object.FindObjectsByType<TextMesh>(FindObjectsInactive.Include))
         {
             if (!IsSceneObject(text != null ? text.gameObject : null) || ShouldSkip(text))
                 continue;
@@ -54,25 +54,25 @@ internal sealed class SceneLocalizationApplier
             localizedText.Apply(localization);
         }
 
-        foreach (Dropdown dropdown in Resources.FindObjectsOfTypeAll<Dropdown>())
+        foreach (Dropdown dropdown in UnityEngine.Object.FindObjectsByType<Dropdown>(FindObjectsInactive.Include))
         {
             if (IsSceneObject(dropdown != null ? dropdown.gameObject : null))
                 ApplyDropdownOptions(dropdown);
         }
 
-        foreach (TMP_Dropdown dropdown in Resources.FindObjectsOfTypeAll<TMP_Dropdown>())
+        foreach (TMP_Dropdown dropdown in UnityEngine.Object.FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include))
         {
             if (IsSceneObject(dropdown != null ? dropdown.gameObject : null))
                 ApplyDropdownOptions(dropdown);
         }
 
-        foreach (CalculatorManager calculator in Resources.FindObjectsOfTypeAll<CalculatorManager>())
+        foreach (CalculatorManager calculator in UnityEngine.Object.FindObjectsByType<CalculatorManager>(FindObjectsInactive.Include))
         {
             if (IsSceneObject(calculator != null ? calculator.gameObject : null))
                 calculator.RefreshLocalization();
         }
 
-        foreach (InventoryItemCell inventoryCell in Resources.FindObjectsOfTypeAll<InventoryItemCell>())
+        foreach (InventoryItemCell inventoryCell in UnityEngine.Object.FindObjectsByType<InventoryItemCell>(FindObjectsInactive.Include))
         {
             if (IsSceneObject(inventoryCell != null ? inventoryCell.gameObject : null))
                 inventoryCell.RefreshLocalization();

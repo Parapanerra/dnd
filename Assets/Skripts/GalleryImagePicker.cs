@@ -9,37 +9,56 @@ internal sealed class GalleryImagePicker
     internal void Pick(string title, int width, int height,
         Action<Texture2D> onReady, Action<Exception> onError)
     {
-        NativeGallery.GetImageFromGallery(path =>
+#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+        try
         {
-            if (string.IsNullOrEmpty(path))
-                return;
+            string path = WindowsNativeImagePicker.Pick(title);
+            LoadSelectedImage(path, width, height, onReady, onError);
+        }
+        catch (Exception exception)
+        {
+            onError?.Invoke(exception);
+        }
+#else
+        NativeGallery.GetImageFromGallery(path =>
+            LoadSelectedImage(path, width, height, onReady, onError), title, "image/*");
+#endif
+    }
 
-            Texture2D source = null;
-            Texture2D resized = null;
-            try
-            {
-                source = NativeGallery.LoadImageAtPath(
-                    path, AppConfig.Images.GalleryPreviewMaxSize, false, false);
-                if (source != null)
-                    resized = resizer.Resize(source, width, height);
-            }
-            catch (Exception exception)
-            {
-                onError?.Invoke(exception);
-            }
-            finally
-            {
-                DestroyRuntimeObject(source);
-            }
+    private void LoadSelectedImage(string path, int width, int height,
+        Action<Texture2D> onReady, Action<Exception> onError)
+    {
+        if (string.IsNullOrEmpty(path))
+            return;
 
-            if (resized != null)
-            {
-                if (onReady != null)
-                    onReady(resized);
-                else
-                    DestroyRuntimeObject(resized);
-            }
-        }, title, "image/*");
+        Texture2D source = null;
+        Texture2D resized = null;
+        try
+        {
+            source = NativeGallery.LoadImageAtPath(
+                path, AppConfig.Images.GalleryPreviewMaxSize, false, false);
+            if (source == null)
+                throw new System.IO.InvalidDataException("Selected image could not be decoded");
+            resized = resizer.Resize(source, width, height);
+            if (resized == null)
+                throw new System.IO.InvalidDataException("Selected image could not be resized");
+        }
+        catch (Exception exception)
+        {
+            onError?.Invoke(exception);
+        }
+        finally
+        {
+            DestroyRuntimeObject(source);
+        }
+
+        if (resized != null)
+        {
+            if (onReady != null)
+                onReady(resized);
+            else
+                DestroyRuntimeObject(resized);
+        }
     }
 
     private void DestroyRuntimeObject(UnityEngine.Object value)

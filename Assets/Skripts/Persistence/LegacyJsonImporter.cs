@@ -51,11 +51,7 @@ public sealed class LegacyJsonImporter
             throw new InvalidDataException("Not a legacy item file");
         InventoryItemExportData item = JsonUtility.FromJson<InventoryItemExportData>(json);
         if (item == null) throw new InvalidDataException("Invalid legacy item");
-        if (!string.IsNullOrEmpty(item.customImageBase64))
-        {
-            byte[] image = Convert.FromBase64String(item.customImageBase64);
-            if (image.Length > 16 * 1024 * 1024) throw new InvalidDataException("Item image too large");
-        }
+        InventoryItemValidator.Validate(item);
         return item;
     }
 }

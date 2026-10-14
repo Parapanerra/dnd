@@ -72,7 +72,7 @@ public class TaruckBinarySpecificationTests
         var item = new InventoryItemExportData { itemName = "Зілля", category = 3 };
         byte[] itemBytes = TaruckBinaryCodec.EncodeItemExport(item, "test");
         Assert.That(TaruckBinaryCodec.DecodeItemExport(itemBytes).itemName, Is.EqualTo("Зілля"));
-        item.customImageBase64 = Convert.ToBase64String(new byte[] { 0x89, 0x50, 0x4E, 0x47, 13, 10, 26, 10 });
+        item.customImageBase64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=";
         itemBytes = TaruckBinaryCodec.EncodeItemExport(item, "test");
         Assert.That(TaruckBinaryCodec.DecodeItemExport(itemBytes).customImageBase64, Is.EqualTo(item.customImageBase64));
         itemBytes[itemBytes.Length - 1] ^= 1;

@@ -55,13 +55,13 @@ public static class AppConfig
 
     internal static class Inventory
     {
-        public const int WeaponCategory = 0;
-        public const int ArmorCategory = 1;
-        public const int BagsCategory = 2;
-        public const int MagicCategory = 3;
-        public const int OtherCategory = 4;
-        public const int ChegerCategory = 5;
-        public const int CustomCategory = 6;
+        public const int WeaponCategory = (int)InventoryItemCategory.Weapon;
+        public const int ArmorCategory = (int)InventoryItemCategory.Armor;
+        public const int BagsCategory = (int)InventoryItemCategory.Bags;
+        public const int MagicCategory = (int)InventoryItemCategory.Magic;
+        public const int OtherCategory = (int)InventoryItemCategory.Other;
+        public const int ChegerCategory = (int)InventoryItemCategory.Cheger;
+        public const int CustomCategory = (int)InventoryItemCategory.Custom;
     }
 
     internal static class SaveData

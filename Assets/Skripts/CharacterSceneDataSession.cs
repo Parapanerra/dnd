@@ -25,6 +25,8 @@ internal sealed class CharacterSceneDataSession
     internal IReadOnlyList<Button> ResetButtons => sceneFields.ResetButtons;
     internal string CharacterId => characterId;
     internal bool IsReady => sceneSaveService != null;
+    internal InputField CharacterNameInput => characterNameField.InputField;
+    internal TMP_InputField CharacterNameTmpInput => characterNameField.TmpInputField;
 
     internal CharacterSceneDataSession(DndSaveManager saveManager, bool isMainSheetScene)
     {

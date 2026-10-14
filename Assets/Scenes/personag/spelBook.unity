@@ -2704,6 +2704,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 40
   legacyKey: Toggle_0001_spelbook/0002_Page/0011_Cels (10)/0001_Toggle
+--- !u!114 &160407435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &175124907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2803,6 +2816,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 8
   legacyKey: Toggle_0001_spelbook/0002_Page/0003_Cels (2)/0001_Toggle
+--- !u!114 &228192629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!20 &232228900 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8350058478048620391, guid: e96a75c3377b3e54283aa74cfeec63f2, type: 3}
@@ -2908,6 +2934,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 24
   legacyKey: Toggle_0001_spelbook/0002_Page/0007_Cels (6)/0001_Toggle
+--- !u!114 &318622646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &344306800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3769,6 +3808,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 4
   legacyKey: Toggle_0001_spelbook/0002_Page/0002_Cels (1)/0001_Toggle
+--- !u!114 &774896515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &782037163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4575,6 +4627,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 20
   legacyKey: Toggle_0001_spelbook/0002_Page/0006_Cels (5)/0001_Toggle
+--- !u!114 &1107896566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &1133031489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4694,6 +4759,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 36
   legacyKey: Toggle_0001_spelbook/0002_Page/0010_Cels (9)/0001_Toggle
+--- !u!114 &1257422298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &1260104813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4795,6 +4873,106 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 27
   legacyKey: Toggle_0001_spelbook/0002_Page/0007_Cels (6)/0004_DropdownLvl/0002_Template/0000_Viewport/0000_Content/0000_Item
+--- !u!1 &1322328946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4959143690429904577, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+  m_PrefabInstance: {fileID: 8503517179328502907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1322328947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1024101716386643249, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+  m_PrefabInstance: {fileID: 8503517179328502907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1322328948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4452538884340428154, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+  m_PrefabInstance: {fileID: 8503517179328502907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1322328949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1312623470789943970, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+  m_PrefabInstance: {fileID: 8503517179328502907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1322328950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6194807045486337016, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+  m_PrefabInstance: {fileID: 8503517179328502907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1322328951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4112035092133454181, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+  m_PrefabInstance: {fileID: 8503517179328502907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1322328952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322328947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 17
+  index: 3
+--- !u!114 &1322328953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322328948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 17
+  index: 2
+--- !u!114 &1322328954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322328949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 17
+  index: 1
+--- !u!114 &1322328955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322328950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 17
+  index: 0
+--- !u!114 &1322328956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322328951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c74559a4c15431995fa407aaef5a0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::SceneRoleMarker
+  role: 19
+  useParentAsPanel: 0
 --- !u!114 &1329411980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4911,6 +5089,20 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 20
   legacyKey: Dropdown_0001_spelbook/0002_Page/0007_Cels (6)/0004_DropdownLvl
+--- !u!114 &1424095269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322328946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 17
+  index: 4
 --- !u!114 &1424641900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4945,6 +5137,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 16
   legacyKey: Toggle_0001_spelbook/0002_Page/0005_Cels (4)/0001_Toggle
+--- !u!114 &1471452573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &1472931556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5261,6 +5466,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -931637994, guid: 8411a2dac3e8f6b478d5e393050d1b71, type: 3}
+    - target: {fileID: 909000000000000001, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      propertyPath: mapBounds
+      value: 
+      objectReference: {fileID: 634131783}
     - target: {fileID: 2434985894925077886, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -5458,6 +5667,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 22959947}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4500544054641741681, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1794762996}
     - targetCorrespondingSourceObject: {fileID: 1886280768646428267, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1550026795}
@@ -5586,6 +5798,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 0
   legacyKey: Toggle_0001_spelbook/0002_Page/0001_Cels/0001_Toggle
+--- !u!114 &1557836266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &1573220549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5906,6 +6131,25 @@ MonoBehaviour:
   legacyCollection: dropdownData
   legacyIndex: 13
   legacyKey: Dropdown_0001_spelbook/0002_Page/0005_Cels (4)/0003_DropdownTime
+--- !u!1 &1794762995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4500544054641741681, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+  m_PrefabInstance: {fileID: 1550026788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1794762996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794762995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c74559a4c15431995fa407aaef5a0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::SceneRoleMarker
+  role: 20
+  useParentAsPanel: 0
 --- !u!114 &1823871540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6025,6 +6269,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 56
   legacyKey: Toggle_0001_spelbook/0002_Page/0015_Cels (14)/0001_Toggle
+--- !u!114 &1846001391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108576998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &1846696074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6110,6 +6367,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 28
   legacyKey: Toggle_0001_spelbook/0002_Page/0008_Cels (7)/0001_Toggle
+--- !u!114 &1880506510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &1881992639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6127,6 +6397,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 44
   legacyKey: Toggle_0001_spelbook/0002_Page/0012_Cels (11)/0001_Toggle
+--- !u!114 &1881992640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &1886534511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6212,6 +6495,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 12
   legacyKey: Toggle_0001_spelbook/0002_Page/0004_Cels (3)/0001_Toggle
+--- !u!114 &1926384844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &1927770366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6313,6 +6609,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 48
   legacyKey: Toggle_0001_spelbook/0002_Page/0013_Cels (12)/0001_Toggle
+--- !u!114 &1970643569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &1977505687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6650,6 +6959,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 32
   legacyKey: Toggle_0001_spelbook/0002_Page/0009_Cels (8)/0001_Toggle
+--- !u!114 &2049607274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &2058643725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6701,6 +7023,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 52
   legacyKey: Toggle_0001_spelbook/0002_Page/0014_Cels (13)/0001_Toggle
+--- !u!114 &2089684182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108577013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!1001 &2093428120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8650,6 +8985,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 25.78003
       objectReference: {fileID: 0}
+    - target: {fileID: 2797047796466845568, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 173.06042
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797047796466845568, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 173.06042
+      objectReference: {fileID: 0}
     - target: {fileID: 2983047917662055192, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.099853516
@@ -8934,6 +9277,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8253784384611734160, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c0c1ca48800a1584f9ce3a9c2b5f92a5, type: 3}
     - target: {fileID: 8338159964433847440, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 385.09998
@@ -9046,12 +9393,21 @@ PrefabInstance:
     - {fileID: 7573178765457091946, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4112035092133454181, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1322328956}
     - targetCorrespondingSourceObject: {fileID: 9127752044552965141, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8503517179328502948}
+    - targetCorrespondingSourceObject: {fileID: 9127752044552965141, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8503517179328502949}
     - targetCorrespondingSourceObject: {fileID: 707029203264312612, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1557836265}
+    - targetCorrespondingSourceObject: {fileID: 707029203264312612, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1557836266}
     - targetCorrespondingSourceObject: {fileID: 2013108994893761948, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1927770366}
@@ -9085,6 +9441,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3661153835505694350, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 774896514}
+    - targetCorrespondingSourceObject: {fileID: 3661153835505694350, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 774896515}
     - targetCorrespondingSourceObject: {fileID: 7855895496949959052, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1908512674}
@@ -9118,6 +9477,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8389712352103899608, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 228192628}
+    - targetCorrespondingSourceObject: {fileID: 8389712352103899608, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 228192629}
     - targetCorrespondingSourceObject: {fileID: 7222460460282697710, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1177263343}
@@ -9151,6 +9513,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3443996993765503450, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1926384843}
+    - targetCorrespondingSourceObject: {fileID: 3443996993765503450, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1926384844}
     - targetCorrespondingSourceObject: {fileID: 8545473281790150586, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 471586787}
@@ -9184,6 +9549,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1958388342599138230, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1471452572}
+    - targetCorrespondingSourceObject: {fileID: 1958388342599138230, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1471452573}
     - targetCorrespondingSourceObject: {fileID: 6057740753266591508, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1285130436}
@@ -9217,6 +9585,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 352468561534041811, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1107896565}
+    - targetCorrespondingSourceObject: {fileID: 352468561534041811, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1107896566}
     - targetCorrespondingSourceObject: {fileID: 7995990754491355531, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1077806136}
@@ -9250,6 +9621,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1161311743486160104, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 318622645}
+    - targetCorrespondingSourceObject: {fileID: 1161311743486160104, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 318622646}
     - targetCorrespondingSourceObject: {fileID: 6485306433206206003, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 647926298}
@@ -9283,6 +9657,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7730032531630729253, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1880506509}
+    - targetCorrespondingSourceObject: {fileID: 7730032531630729253, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1880506510}
     - targetCorrespondingSourceObject: {fileID: 594897148154402511, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 803855756}
@@ -9316,6 +9693,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 483639077386879645, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2049607273}
+    - targetCorrespondingSourceObject: {fileID: 483639077386879645, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2049607274}
     - targetCorrespondingSourceObject: {fileID: 690582123420672242, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 467828537}
@@ -9349,6 +9729,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3498853979127602839, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1257422297}
+    - targetCorrespondingSourceObject: {fileID: 3498853979127602839, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1257422298}
     - targetCorrespondingSourceObject: {fileID: 5101327727885324832, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1424641900}
@@ -9382,6 +9765,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6890793975189197487, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 160407434}
+    - targetCorrespondingSourceObject: {fileID: 6890793975189197487, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 160407435}
     - targetCorrespondingSourceObject: {fileID: 6387619152739970019, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 692173887}
@@ -9415,6 +9801,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2510267978010358017, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1881992639}
+    - targetCorrespondingSourceObject: {fileID: 2510267978010358017, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1881992640}
     - targetCorrespondingSourceObject: {fileID: 4337581878707837281, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1194005012}
@@ -9448,6 +9837,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4512834026694867257, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1970643568}
+    - targetCorrespondingSourceObject: {fileID: 4512834026694867257, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1970643569}
     - targetCorrespondingSourceObject: {fileID: 4402421223279102911, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1690347947}
@@ -9481,6 +9873,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 757465263865137860, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2089684181}
+    - targetCorrespondingSourceObject: {fileID: 757465263865137860, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2089684182}
     - targetCorrespondingSourceObject: {fileID: 3404602797058410757, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1709683430}
@@ -9514,6 +9909,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7723222597978445080, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1846001390}
+    - targetCorrespondingSourceObject: {fileID: 7723222597978445080, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1846001391}
     - targetCorrespondingSourceObject: {fileID: 1537880149320858995, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1846696074}
@@ -9544,18 +9942,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 530267502130714996, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1947380501}
+    - targetCorrespondingSourceObject: {fileID: 6194807045486337016, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1322328955}
     - targetCorrespondingSourceObject: {fileID: 5225598085656854359, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8503517179328502947}
+    - targetCorrespondingSourceObject: {fileID: 1312623470789943970, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1322328954}
     - targetCorrespondingSourceObject: {fileID: 2125422898277319941, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8503517179328502946}
+    - targetCorrespondingSourceObject: {fileID: 4452538884340428154, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1322328953}
     - targetCorrespondingSourceObject: {fileID: 5117896909737210654, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8503517179328502945}
+    - targetCorrespondingSourceObject: {fileID: 1024101716386643249, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1322328952}
     - targetCorrespondingSourceObject: {fileID: 2875032348088401890, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8503517179328502944}
+    - targetCorrespondingSourceObject: {fileID: 4959143690429904577, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1424095269}
     - targetCorrespondingSourceObject: {fileID: 6486391920001588184, guid: 0439d71075742564cb99ae8e83a7ebde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1607500770}
@@ -9820,6 +10233,20 @@ MonoBehaviour:
   englishText: 
   russianText: 
   useCurrentTextAsSource: 1
+--- !u!114 &8503517179328502949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8503517179328502943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d5cd0d713275044a1a942af925291b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
+  role: 16
+  index: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

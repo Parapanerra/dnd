@@ -97,35 +97,35 @@ public class InventoryItemCell : MonoBehaviour
     private void FindControls()
     {
         controls = GetComponentsInChildren<Transform>(true);
-        itemNameInput = FindInput("itemNameInput");
-        itemNameTmpInput = FindTmpInput("itemNameInput");
-        itemDescriptionInput = FindInput("itemDescriptionInput");
-        itemDescriptionTmpInput = FindTmpInput("itemDescriptionInput");
+        itemNameInput = FindInput(UiControlRole.ItemName, "itemNameInput");
+        itemNameTmpInput = FindTmpInput(UiControlRole.ItemName, "itemNameInput");
+        itemDescriptionInput = FindInput(UiControlRole.ItemDescription, "itemDescriptionInput");
+        itemDescriptionTmpInput = FindTmpInput(UiControlRole.ItemDescription, "itemDescriptionInput");
 
-        categoryDropdown = FindDropdown("itemCategoryDropdown");
-        categoryTmpDropdown = FindTmpDropdown("itemCategoryDropdown");
-        weaponDropdown = FindDropdown("Dropdown weapon");
-        armorDropdown = FindDropdown("Dropdown armor");
-        bagsDropdown = FindDropdown("Dropdown bags");
-        magicDropdown = FindDropdown("Dropdown magic");
-        otherDropdown = FindDropdown("Dropdown other");
-        chegerDropdown = FindDropdown("Dropdown cheger");
-        weaponTmpDropdown = FindTmpDropdown("Dropdown weapon");
-        armorTmpDropdown = FindTmpDropdown("Dropdown armor");
-        bagsTmpDropdown = FindTmpDropdown("Dropdown bags");
-        magicTmpDropdown = FindTmpDropdown("Dropdown magic");
-        otherTmpDropdown = FindTmpDropdown("Dropdown other");
-        chegerTmpDropdown = FindTmpDropdown("Dropdown cheger");
+        categoryDropdown = FindDropdown(UiControlRole.ItemCategory, "itemCategoryDropdown");
+        categoryTmpDropdown = FindTmpDropdown(UiControlRole.ItemCategory, "itemCategoryDropdown");
+        weaponDropdown = FindDropdown(UiControlRole.Weapon, "Dropdown weapon");
+        armorDropdown = FindDropdown(UiControlRole.Armor, "Dropdown armor");
+        bagsDropdown = FindDropdown(UiControlRole.Bags, "Dropdown bags");
+        magicDropdown = FindDropdown(UiControlRole.Magic, "Dropdown magic");
+        otherDropdown = FindDropdown(UiControlRole.Other, "Dropdown other");
+        chegerDropdown = FindDropdown(UiControlRole.Cheger, "Dropdown cheger");
+        weaponTmpDropdown = FindTmpDropdown(UiControlRole.Weapon, "Dropdown weapon");
+        armorTmpDropdown = FindTmpDropdown(UiControlRole.Armor, "Dropdown armor");
+        bagsTmpDropdown = FindTmpDropdown(UiControlRole.Bags, "Dropdown bags");
+        magicTmpDropdown = FindTmpDropdown(UiControlRole.Magic, "Dropdown magic");
+        otherTmpDropdown = FindTmpDropdown(UiControlRole.Other, "Dropdown other");
+        chegerTmpDropdown = FindTmpDropdown(UiControlRole.Cheger, "Dropdown cheger");
 
-        customImageButton = FindButton("customItemImageButton");
-        exportButton = FindButton("exportItemButton");
-        importButton = FindButton("importItemButton");
-        clearButton = FindButton("clearItemButton");
+        customImageButton = FindButton(UiControlRole.SelectItemImage, "customItemImageButton");
+        exportButton = FindButton(UiControlRole.ExportItem, "exportItemButton");
+        importButton = FindButton(UiControlRole.ImportItem, "importItemButton");
+        clearButton = FindButton(UiControlRole.ClearItem, "clearItemButton");
         if (transferPanel == null)
             transferPanel = new InventoryItemTransferPanel();
         transferPanel.Initialize(this, exportButton, importButton, localization);
-        Image image = FindImage("customItemImage");
-        GameObject customImagePanel = FindChildGameObject("PanelForphoto");
+        Image image = FindImage(UiControlRole.ItemImage, "customItemImage");
+        GameObject customImagePanel = FindChildGameObject(UiControlRole.ItemImagePanel, "PanelForphoto");
         if (customImagePanel == null && image != null)
             customImagePanel = image.gameObject;
 
@@ -216,6 +216,27 @@ public class InventoryItemCell : MonoBehaviour
             chegerIndex = GetDropdownValue(chegerDropdown, chegerTmpDropdown),
             customImageBase64 = imageController != null ? imageController.GetBase64() : ""
         };
+    }
+
+    internal void ValidateImportedData(InventoryItemExportData data)
+    {
+        InventoryItemValidator.Validate(data, new InventoryItemOptionCounts
+        {
+            Category = OptionCount(categoryDropdown, categoryTmpDropdown),
+            Weapon = OptionCount(weaponDropdown, weaponTmpDropdown),
+            Armor = OptionCount(armorDropdown, armorTmpDropdown),
+            Bags = OptionCount(bagsDropdown, bagsTmpDropdown),
+            Magic = OptionCount(magicDropdown, magicTmpDropdown),
+            Other = OptionCount(otherDropdown, otherTmpDropdown),
+            Cheger = OptionCount(chegerDropdown, chegerTmpDropdown)
+        });
+        InventoryItemImageController.ValidateImportImage(data.customImageBase64);
+    }
+
+    private static int OptionCount(Dropdown dropdown, TMP_Dropdown tmpDropdown)
+    {
+        if (dropdown != null) return dropdown.options?.Count ?? 0;
+        return tmpDropdown != null ? tmpDropdown.options?.Count ?? 0 : 0;
     }
 
     internal void ApplyData(InventoryItemExportData data, bool saveAfterApply)
@@ -326,50 +347,55 @@ public class InventoryItemCell : MonoBehaviour
         }
     }
 
-    private InputField FindInput(string objectName)
+    private InputField FindInput(UiControlRole role, string objectName)
     {
-        Transform child = FindChild(objectName);
+        Transform child = FindChild(role, objectName);
         return child != null ? child.GetComponent<InputField>() : null;
     }
 
-    private TMP_InputField FindTmpInput(string objectName)
+    private TMP_InputField FindTmpInput(UiControlRole role, string objectName)
     {
-        Transform child = FindChild(objectName);
+        Transform child = FindChild(role, objectName);
         return child != null ? child.GetComponent<TMP_InputField>() : null;
     }
 
-    private Dropdown FindDropdown(string objectName)
+    private Dropdown FindDropdown(UiControlRole role, string objectName)
     {
-        Transform child = FindChild(objectName);
+        Transform child = FindChild(role, objectName);
         return child != null ? child.GetComponent<Dropdown>() : null;
     }
 
-    private TMP_Dropdown FindTmpDropdown(string objectName)
+    private TMP_Dropdown FindTmpDropdown(UiControlRole role, string objectName)
     {
-        Transform child = FindChild(objectName);
+        Transform child = FindChild(role, objectName);
         return child != null ? child.GetComponent<TMP_Dropdown>() : null;
     }
 
-    private Button FindButton(string objectName)
+    private Button FindButton(UiControlRole role, string objectName)
     {
-        Transform child = FindChild(objectName);
+        Transform child = FindChild(role, objectName);
         return child != null ? child.GetComponent<Button>() : null;
     }
 
-    private Image FindImage(string objectName)
+    private Image FindImage(UiControlRole role, string objectName)
     {
-        Transform child = FindChild(objectName);
+        Transform child = FindChild(role, objectName);
         return child != null ? child.GetComponent<Image>() : null;
     }
 
-    private GameObject FindChildGameObject(string objectName)
+    private GameObject FindChildGameObject(UiControlRole role, string objectName)
     {
-        Transform child = FindChild(objectName);
+        Transform child = FindChild(role, objectName);
         return child != null ? child.gameObject : null;
     }
 
-    private Transform FindChild(string objectName)
+    private Transform FindChild(UiControlRole role, string objectName)
     {
+        foreach (UiControlMarker marker in GetComponentsInChildren<UiControlMarker>(true))
+            if (marker.Role == role)
+                return marker.transform;
+
+        // Legacy fallback for unmigrated inventory cells.
         foreach (Transform child in controls)
             if (child != null && SceneObjectName.Matches(child.name, objectName))
                 return child;

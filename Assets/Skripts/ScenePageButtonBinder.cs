@@ -21,15 +21,15 @@ internal sealed class ScenePageButtonBinder
         List<Button> pageButtons = new List<Button>();
 
         foreach (Button button in buttons)
-            if (button != null && TryGetPageIndex(button.gameObject.name, out _))
+            if (button != null && TryReadPageIndex(button, out _))
                 pageButtons.Add(button);
 
         pageButtons.Sort((left, right) =>
-            GetPageIndex(left.gameObject.name).CompareTo(GetPageIndex(right.gameObject.name)));
+            GetPageIndex(left).CompareTo(GetPageIndex(right)));
 
         foreach (Button button in pageButtons)
         {
-            int pageIndex = GetPageIndex(button.gameObject.name);
+            int pageIndex = GetPageIndex(button);
             for (int i = 0; i < button.onClick.GetPersistentEventCount(); i++)
                 button.onClick.SetPersistentListenerState(i, UnityEventCallState.Off);
 
@@ -38,9 +38,20 @@ internal sealed class ScenePageButtonBinder
         }
     }
 
-    private int GetPageIndex(string objectName)
+    private bool TryReadPageIndex(Button button, out int pageIndex)
     {
-        TryGetPageIndex(objectName, out int pageIndex);
+        UiControlMarker marker = button.GetComponent<UiControlMarker>();
+        if (marker != null)
+        {
+            pageIndex = marker.Index;
+            return marker.Role == UiControlRole.PageButton && pageIndex >= 0;
+        }
+        return TryGetPageIndex(button.name, out pageIndex);
+    }
+
+    private int GetPageIndex(Button button)
+    {
+        TryReadPageIndex(button, out int pageIndex);
         return pageIndex;
     }
 

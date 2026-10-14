@@ -66,12 +66,12 @@ internal sealed class MainMenuSceneLookup
     internal bool IsSceneObject(GameObject gameObject)
     {
         return gameObject != null && gameObject.scene.IsValid() &&
-               !string.IsNullOrEmpty(gameObject.scene.name);
+               gameObject.scene == UnityEngine.SceneManagement.SceneManager.GetActiveScene();
     }
 
     private T FindInScene<T>(string name) where T : Component
     {
-        foreach (T component in Resources.FindObjectsOfTypeAll<T>())
+        foreach (T component in UnityEngine.Object.FindObjectsByType<T>(FindObjectsInactive.Include))
             if (IsSceneObject(component.gameObject) && Matches(component.gameObject.name, name))
                 return component;
         return null;
@@ -79,7 +79,7 @@ internal sealed class MainMenuSceneLookup
 
     private T FindFirstInScene<T>(params string[] names) where T : Component
     {
-        T[] components = Resources.FindObjectsOfTypeAll<T>();
+        T[] components = UnityEngine.Object.FindObjectsByType<T>(FindObjectsInactive.Include);
         foreach (string name in names)
             foreach (T component in components)
                 if (IsSceneObject(component.gameObject) && Matches(component.gameObject.name, name))

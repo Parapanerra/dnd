@@ -16,6 +16,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
     private RuntimeLocalization localization;
     private CharacterPortraitManager portraitManager;
     private CharacterSceneDataSession session;
+    private CharacterNameEasterEgg characterNameEasterEgg;
     private bool isMainSheetScene;
 
     private void Awake()
@@ -42,6 +43,11 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         new ToggleSequenceSceneInstaller(saveManager).Install();
         localization.ApplyToScene();
         session.Subscribe();
+        if (isMainSheetScene)
+        {
+            characterNameEasterEgg = new CharacterNameEasterEgg(localization);
+            characterNameEasterEgg.Bind(session.CharacterNameInput, session.CharacterNameTmpInput);
+        }
         BindNavigationButtons();
         BindResetButtons();
     }

@@ -85,6 +85,11 @@ public class InventorySubmenuController : MonoBehaviour
 
     private bool HasNewInventoryCellLayout()
     {
+        foreach (UiControlMarker marker in FindObjectsByType<UiControlMarker>(FindObjectsInactive.Include))
+            if (marker.gameObject.scene == gameObject.scene && marker.Role == UiControlRole.ItemCategory)
+                return true;
+
+        // Compatibility for scenes that do not yet have typed controls.
         Transform[] transforms = FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform candidate in transforms)
             if (candidate != null && candidate.name == "itemCategoryDropdown")

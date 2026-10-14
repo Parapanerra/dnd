@@ -419,6 +419,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &336571973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4500544054641741681, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+  m_PrefabInstance: {fileID: 834536425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &336571974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336571973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c74559a4c15431995fa407aaef5a0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::SceneRoleMarker
+  role: 20
+  useParentAsPanel: 0
 --- !u!224 &371917289 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4381309171059182151, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
@@ -811,6 +830,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -12.855103
       objectReference: {fileID: 0}
+    - target: {fileID: 909000000000000001, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      propertyPath: mapBounds
+      value: 
+      objectReference: {fileID: 8396168354099940928}
     - target: {fileID: 1187993899758572860, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       propertyPath: m_Name
       value: "Panel\u0445\u0440"
@@ -1059,6 +1082,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1673311353}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4500544054641741681, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 336571974}
     - targetCorrespondingSourceObject: {fileID: 1886280768646428267, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 834536431}
@@ -3737,6 +3763,7 @@ GameObject:
   - component: {fileID: 7052030194037669637}
   - component: {fileID: 2198074682130793812}
   - component: {fileID: 7052030194037669638}
+  - component: {fileID: 7052030194037669639}
   m_Layer: 5
   m_Name: Toggle (17)
   m_TagString: Untagged
@@ -6239,6 +6266,7 @@ GameObject:
   - component: {fileID: 5922418775104696180}
   - component: {fileID: 8511038738646993237}
   - component: {fileID: 8511038738646993238}
+  - component: {fileID: 8511038738646993239}
   m_Layer: 5
   m_Name: Toggle (9)
   m_TagString: Untagged
@@ -7066,6 +7094,7 @@ GameObject:
   - component: {fileID: 5107097503530043912}
   - component: {fileID: 4189545811157375003}
   - component: {fileID: 5107097503530043913}
+  - component: {fileID: 5107097503530043914}
   m_Layer: 5
   m_Name: Toggle (19)
   m_TagString: Untagged
@@ -7773,6 +7802,7 @@ GameObject:
   - component: {fileID: 3158909052325385648}
   - component: {fileID: 6452686294446081781}
   - component: {fileID: 6452686294446081782}
+  - component: {fileID: 6452686294446081783}
   m_Layer: 5
   m_Name: alldaise
   m_TagString: Untagged
@@ -8000,6 +8030,7 @@ GameObject:
   - component: {fileID: 8714571925070623043}
   - component: {fileID: 3872220580586634665}
   - component: {fileID: 8714571925070623044}
+  - component: {fileID: 8714571925070623045}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -8075,6 +8106,7 @@ GameObject:
   - component: {fileID: 1441552349028730406}
   - component: {fileID: 5344041755033091138}
   - component: {fileID: 5344041755033091139}
+  - component: {fileID: 5344041755033091140}
   m_Layer: 5
   m_Name: Toggle (10)
   m_TagString: Untagged
@@ -8185,6 +8217,7 @@ GameObject:
   - component: {fileID: 5088303812559230399}
   - component: {fileID: 3203586700577607968}
   - component: {fileID: 5088303812559230400}
+  - component: {fileID: 5088303812559230401}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -9000,6 +9033,7 @@ GameObject:
   - component: {fileID: 5686801103210776046}
   - component: {fileID: 9145219409148386261}
   - component: {fileID: 9145219409148386262}
+  - component: {fileID: 9145219409148386263}
   m_Layer: 5
   m_Name: Toggle (9)
   m_TagString: Untagged
@@ -9595,6 +9629,7 @@ GameObject:
   - component: {fileID: 515788205818052868}
   - component: {fileID: 7468817650660266081}
   - component: {fileID: 7468817650660266082}
+  - component: {fileID: 7468817650660266083}
   m_Layer: 5
   m_Name: Toggle (15)
   m_TagString: Untagged
@@ -9632,6 +9667,7 @@ GameObject:
   - component: {fileID: 8692272895893166842}
   - component: {fileID: 1717452901934564290}
   - component: {fileID: 8692272895893166843}
+  - component: {fileID: 8692272895893166844}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -9969,6 +10005,7 @@ GameObject:
   - component: {fileID: 7041185986017349999}
   - component: {fileID: 723754271424084301}
   - component: {fileID: 7041185986017350000}
+  - component: {fileID: 7041185986017350001}
   m_Layer: 5
   m_Name: Toggle (14)
   m_TagString: Untagged
@@ -11791,6 +11828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8384291659815446083}
   - component: {fileID: 8384291659815446084}
+  - component: {fileID: 8384291659815446085}
   m_Layer: 0
   m_Name: vtoma
   m_TagString: Untagged
@@ -12032,6 +12070,7 @@ GameObject:
   - component: {fileID: 6022798282601654068}
   - component: {fileID: 4235814239595257896}
   - component: {fileID: 6022798282601654069}
+  - component: {fileID: 6022798282601654070}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -12924,6 +12963,7 @@ GameObject:
   - component: {fileID: 7640391210546840095}
   - component: {fileID: 2902990921924079529}
   - component: {fileID: 7640391210546840096}
+  - component: {fileID: 7640391210546840097}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -13097,6 +13137,7 @@ GameObject:
   - component: {fileID: 4386733854809734627}
   - component: {fileID: 4005876672539135488}
   - component: {fileID: 4386733854809734628}
+  - component: {fileID: 4386733854809734629}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -13471,6 +13512,7 @@ GameObject:
   - component: {fileID: 394943475268078236}
   - component: {fileID: 5522525585827551472}
   - component: {fileID: 5522525585827551473}
+  - component: {fileID: 5522525585827551474}
   m_Layer: 5
   m_Name: Toggle (19)
   m_TagString: Untagged
@@ -14085,6 +14127,7 @@ GameObject:
   - component: {fileID: 3676295658849603507}
   - component: {fileID: 3966609443623558873}
   - component: {fileID: 3966609443623558874}
+  - component: {fileID: 3966609443623558875}
   m_Layer: 5
   m_Name: Toggle (15)
   m_TagString: Untagged
@@ -14129,6 +14172,7 @@ GameObject:
   - component: {fileID: 5718578978205197138}
   - component: {fileID: 5684790531313675579}
   - component: {fileID: 5718578978205197139}
+  - component: {fileID: 5718578978205197140}
   m_Layer: 5
   m_Name: Toggle (8)
   m_TagString: Untagged
@@ -16217,6 +16261,7 @@ GameObject:
   - component: {fileID: 3359505684628946559}
   - component: {fileID: 3966264030548799524}
   - component: {fileID: 3966264030548799525}
+  - component: {fileID: 3966264030548799526}
   m_Layer: 5
   m_Name: Toggle (10)
   m_TagString: Untagged
@@ -18141,6 +18186,7 @@ GameObject:
   - component: {fileID: 8511710297174021867}
   - component: {fileID: 3867697114837154143}
   - component: {fileID: 8511710297174021868}
+  - component: {fileID: 8511710297174021869}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -20480,6 +20526,7 @@ GameObject:
   - component: {fileID: 740879860193643567}
   - component: {fileID: 7914339691516215629}
   - component: {fileID: 7914339691516215630}
+  - component: {fileID: 7914339691516215631}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -20688,6 +20735,7 @@ GameObject:
   - component: {fileID: 7259038481935290545}
   - component: {fileID: 8691196749815332964}
   - component: {fileID: 8691196749815332965}
+  - component: {fileID: 8691196749815332966}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -22965,6 +23013,7 @@ GameObject:
   - component: {fileID: 7322713669005130223}
   - component: {fileID: 4882263328294778681}
   - component: {fileID: 7322713669005130224}
+  - component: {fileID: 7322713669005130225}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -24239,6 +24288,7 @@ GameObject:
   - component: {fileID: 2388714701953632597}
   - component: {fileID: 7670396500106379163}
   - component: {fileID: 7670396500106379164}
+  - component: {fileID: 7670396500106379165}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -24595,6 +24645,7 @@ GameObject:
   - component: {fileID: 9158920873147019923}
   - component: {fileID: 3427713582147782149}
   - component: {fileID: 9158920873147019924}
+  - component: {fileID: 9158920873147019925}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -24728,6 +24779,7 @@ GameObject:
   - component: {fileID: 2578537985156262462}
   - component: {fileID: 5238570351294146344}
   - component: {fileID: 5238570351294146345}
+  - component: {fileID: 5238570351294146346}
   m_Layer: 5
   m_Name: Toggle (15)
   m_TagString: Untagged
@@ -24885,6 +24937,7 @@ GameObject:
   - component: {fileID: 7438588583599064724}
   - component: {fileID: 556378613036458478}
   - component: {fileID: 7438588583599064725}
+  - component: {fileID: 7438588583599064726}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -27089,6 +27142,7 @@ GameObject:
   - component: {fileID: 3958692603811960421}
   - component: {fileID: 8858617504100120864}
   - component: {fileID: 8858617504100120865}
+  - component: {fileID: 8858617504100120866}
   m_Layer: 5
   m_Name: Toggle (12)
   m_TagString: Untagged
@@ -28386,6 +28440,7 @@ GameObject:
   - component: {fileID: 721525490659187026}
   - component: {fileID: 8333030532220512503}
   - component: {fileID: 8333030532220512504}
+  - component: {fileID: 8333030532220512505}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -28642,6 +28697,7 @@ GameObject:
   - component: {fileID: 2036212821984893041}
   - component: {fileID: 1342365047925550795}
   - component: {fileID: 2206496420420614575}
+  - component: {fileID: 2206496420420614576}
   m_Layer: 5
   m_Name: Toggle (17)
   m_TagString: Untagged
@@ -28666,6 +28722,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 105
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0020_Toggle (17)
+--- !u!114 &2206496420420614576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2206496420420614574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 17
 --- !u!1 &2207673868037126482
 GameObject:
   m_ObjectHideFlags: 0
@@ -28677,6 +28746,7 @@ GameObject:
   - component: {fileID: 8724459029448223478}
   - component: {fileID: 6733742232454611881}
   - component: {fileID: 8724459029448223479}
+  - component: {fileID: 8724459029448223480}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -29089,6 +29159,7 @@ GameObject:
   - component: {fileID: 723381934924771073}
   - component: {fileID: 4693131177496285875}
   - component: {fileID: 4693131177496285876}
+  - component: {fileID: 4693131177496285877}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -30063,6 +30134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1403273753283935143}
+  - component: {fileID: 2312617365497237025}
   m_Layer: 0
   m_Name: movsped
   m_TagString: Untagged
@@ -30070,6 +30142,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2312617365497237025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2312617365497237024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c74559a4c15431995fa407aaef5a0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::SceneRoleMarker
+  role: 16
+  useParentAsPanel: 0
 --- !u!222 &2313563001930759118
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30263,6 +30349,7 @@ GameObject:
   - component: {fileID: 5236856328489538077}
   - component: {fileID: 5183580133136482588}
   - component: {fileID: 5236856328489538078}
+  - component: {fileID: 5236856328489538079}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -31148,6 +31235,7 @@ GameObject:
   - component: {fileID: 8686177437389983624}
   - component: {fileID: 8810041742095451216}
   - component: {fileID: 8810041742095451217}
+  - component: {fileID: 8810041742095451218}
   m_Layer: 5
   m_Name: Toggle (8)
   m_TagString: Untagged
@@ -31451,7 +31539,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 51.441536, y: -370.1, z: -52078.08}
-  m_LocalScale: {x: 242.43245, y: 242.43245, z: 242.43245}
+  m_LocalScale: {x: 172.39641, y: 172.39641, z: 242.43245}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3458954007522413705}
@@ -31672,6 +31760,7 @@ GameObject:
   - component: {fileID: 7278533379366988532}
   - component: {fileID: 6634563507252171203}
   - component: {fileID: 7278533379366988533}
+  - component: {fileID: 7278533379366988534}
   m_Layer: 5
   m_Name: Toggle (10)
   m_TagString: Untagged
@@ -33044,6 +33133,7 @@ GameObject:
   - component: {fileID: 3476819012739813507}
   - component: {fileID: 7057961935645255110}
   - component: {fileID: 7057961935645255111}
+  - component: {fileID: 7057961935645255112}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -33223,6 +33313,7 @@ GameObject:
   - component: {fileID: 3557284571362719873}
   - component: {fileID: 2149344278741339693}
   - component: {fileID: 1935986351595621664}
+  - component: {fileID: 3557284571362719874}
   m_Layer: 5
   m_Name: Panel (2)
   m_TagString: Untagged
@@ -33505,6 +33596,7 @@ GameObject:
   - component: {fileID: 6116780024260789820}
   - component: {fileID: 4217384685445010787}
   - component: {fileID: 6116780024260789821}
+  - component: {fileID: 6116780024260789822}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -33687,6 +33779,7 @@ GameObject:
   - component: {fileID: 1780465923785490042}
   - component: {fileID: 1648063092761595143}
   - component: {fileID: 2654687605452678803}
+  - component: {fileID: 2654687605452678804}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -33711,6 +33804,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 6
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0000_Toggle
+--- !u!114 &2654687605452678804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2654687605452678802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!1 &2658047518354063444
 GameObject:
   m_ObjectHideFlags: 0
@@ -33966,6 +34072,7 @@ GameObject:
   - component: {fileID: 1636226979343671861}
   - component: {fileID: 7301408666132713347}
   - component: {fileID: 7301408666132713348}
+  - component: {fileID: 7301408666132713349}
   m_Layer: 5
   m_Name: Toggle (8)
   m_TagString: Untagged
@@ -34054,6 +34161,7 @@ GameObject:
   - component: {fileID: 1284242470033555946}
   - component: {fileID: 3524916469248639077}
   - component: {fileID: 3524916469248639078}
+  - component: {fileID: 3524916469248639079}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -34353,12 +34461,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 5736891988ef2854a8274d41ee62e616, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38b25a263494aeb43b481d38a2b472c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 24.380953, y: 13.714286}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -35514,6 +35622,7 @@ GameObject:
   - component: {fileID: 7318674985263239065}
   - component: {fileID: 503210092910585888}
   - component: {fileID: 7318674985263239066}
+  - component: {fileID: 7318674985263239067}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -35988,6 +36097,7 @@ GameObject:
   - component: {fileID: 1259475985515045561}
   - component: {fileID: 6995022749284520709}
   - component: {fileID: 6995022749284520710}
+  - component: {fileID: 6995022749284520711}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -36168,6 +36278,7 @@ GameObject:
   - component: {fileID: 2827459768583150209}
   - component: {fileID: 4249906100298867229}
   - component: {fileID: 4249906100298867230}
+  - component: {fileID: 4249906100298867231}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -36342,6 +36453,7 @@ GameObject:
   - component: {fileID: 8724620044613465228}
   - component: {fileID: 5281389442295574271}
   - component: {fileID: 8724620044613465229}
+  - component: {fileID: 8724620044613465230}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -36470,6 +36582,7 @@ GameObject:
   - component: {fileID: 5866700482069374890}
   - component: {fileID: 8245724653435020832}
   - component: {fileID: 8562826576121232446}
+  - component: {fileID: 8562826576121232447}
   m_Layer: 5
   m_Name: Panel (5)
   m_TagString: Untagged
@@ -37259,6 +37372,7 @@ GameObject:
   - component: {fileID: 5652172023842752639}
   - component: {fileID: 1151588448554222565}
   - component: {fileID: 5652172023842752640}
+  - component: {fileID: 5652172023842752641}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -37341,6 +37455,7 @@ GameObject:
   - component: {fileID: 207759077022284224}
   - component: {fileID: 6862278533422477619}
   - component: {fileID: 6862278533422477620}
+  - component: {fileID: 6862278533422477621}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -37982,6 +38097,7 @@ GameObject:
   - component: {fileID: 9106564936814107434}
   - component: {fileID: 4506128348685144613}
   - component: {fileID: 9106564936814107435}
+  - component: {fileID: 9106564936814107436}
   m_Layer: 5
   m_Name: Toggle (13)
   m_TagString: Untagged
@@ -39384,6 +39500,7 @@ GameObject:
   - component: {fileID: 1885759960265667501}
   - component: {fileID: 6823111621832349330}
   - component: {fileID: 6823111621832349331}
+  - component: {fileID: 6823111621832349332}
   m_Layer: 5
   m_Name: Toggle (17)
   m_TagString: Untagged
@@ -39855,6 +39972,7 @@ GameObject:
   - component: {fileID: 9174476703492093753}
   - component: {fileID: 1295400785318589714}
   - component: {fileID: 5684114288702312464}
+  - component: {fileID: 9174476703492093754}
   m_Layer: 5
   m_Name: Panel (8)
   m_TagString: Untagged
@@ -40863,6 +40981,7 @@ GameObject:
   - component: {fileID: 1581925031688707119}
   - component: {fileID: 8017489430479061030}
   - component: {fileID: 8017489430479061031}
+  - component: {fileID: 8017489430479061032}
   m_Layer: 5
   m_Name: Toggle (16)
   m_TagString: Untagged
@@ -42172,6 +42291,7 @@ GameObject:
   - component: {fileID: 3411754745058368969}
   - component: {fileID: 4767553464119126551}
   - component: {fileID: 4767553464119126552}
+  - component: {fileID: 4767553464119126553}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -42599,6 +42719,7 @@ GameObject:
   - component: {fileID: 4756248112480410435}
   - component: {fileID: 6847253313307231159}
   - component: {fileID: 6847253313307231160}
+  - component: {fileID: 6847253313307231161}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -43937,6 +44058,7 @@ GameObject:
   - component: {fileID: 6036866818354611716}
   - component: {fileID: 6694592757223172438}
   - component: {fileID: 6694592757223172439}
+  - component: {fileID: 6694592757223172440}
   m_Layer: 5
   m_Name: Toggle (18)
   m_TagString: Untagged
@@ -43955,6 +44077,7 @@ GameObject:
   - component: {fileID: 211339602591221894}
   - component: {fileID: 4383560766521656578}
   - component: {fileID: 4383560766521656579}
+  - component: {fileID: 4383560766521656580}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -44569,6 +44692,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 45
   legacyKey: Toggle_0001_karta/0029_vtoma/0004_Toggle (1)
+--- !u!114 &3524916469248639079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2688195840413847531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!1 &3525350167454656097
 GameObject:
   m_ObjectHideFlags: 0
@@ -44580,6 +44716,7 @@ GameObject:
   - component: {fileID: 1068061285741360914}
   - component: {fileID: 5406659184226140817}
   - component: {fileID: 5406659184226140818}
+  - component: {fileID: 5406659184226140819}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -44863,6 +45000,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0.3999939, y: -19.292847}
   m_SizeDelta: {x: -20.91687, y: -54.914642}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3557284571362719874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2610457345671577079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 2414717199295103268}
+  - {fileID: 4235814239595257896}
+  - {fileID: 6862278533422477619}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!114 &3560274331220725306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46416,6 +46571,7 @@ GameObject:
   - component: {fileID: 1257070685474153708}
   - component: {fileID: 3575563978758465578}
   - component: {fileID: 3713867282922907503}
+  - component: {fileID: 3713867282922907504}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -46440,6 +46596,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 51
   legacyKey: Toggle_0001_karta/0030_resursClas/0002_Panel/0007_Toggle (4)
+--- !u!114 &3713867282922907504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713867282922907502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!224 &3714562786409836282
 RectTransform:
   m_ObjectHideFlags: 0
@@ -46773,6 +46942,7 @@ GameObject:
   - component: {fileID: 1387303452760076853}
   - component: {fileID: 1784996776580725520}
   - component: {fileID: 3733048073710956964}
+  - component: {fileID: 3733048073710956965}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -46797,6 +46967,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 4
   legacyKey: Toggle_0001_karta/0002_spasKidki/0008_tonggle/0004_Toggle (1)
+--- !u!114 &3733048073710956965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3733048073710956963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!224 &3735173821784586024
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49178,6 +49361,7 @@ GameObject:
   - component: {fileID: 3410135013869931108}
   - component: {fileID: 3857447662432906447}
   - component: {fileID: 3924732583896177638}
+  - component: {fileID: 3924732583896177639}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -49202,6 +49386,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 90
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0005_Toggle (2)
+--- !u!114 &3924732583896177639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3924732583896177637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!114 &3926410544594193090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49583,6 +49780,7 @@ GameObject:
   - component: {fileID: 4079660768998033073}
   - component: {fileID: 1900839937670688906}
   - component: {fileID: 4079660768998033074}
+  - component: {fileID: 4079660768998033075}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -49601,6 +49799,7 @@ GameObject:
   - component: {fileID: 3268083609147658955}
   - component: {fileID: 2609632226435121133}
   - component: {fileID: 3946590102309550387}
+  - component: {fileID: 3946590102309550388}
   m_Layer: 5
   m_Name: Toggle (18)
   m_TagString: Untagged
@@ -49625,6 +49824,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 142
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0020_Toggle (18)
+--- !u!114 &3946590102309550388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3946590102309550386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 18
 --- !u!1 &3951847945818546053
 GameObject:
   m_ObjectHideFlags: 0
@@ -49636,6 +49848,7 @@ GameObject:
   - component: {fileID: 5046652370187218655}
   - component: {fileID: 3189342116422149669}
   - component: {fileID: 5046652370187218656}
+  - component: {fileID: 5046652370187218657}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -49988,6 +50201,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 98
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0013_Toggle (10)
+--- !u!114 &3966264030548799526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097203636213150278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 10
 --- !u!114 &3966609443623558873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50053,6 +50279,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 21
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0015_Toggle (15)
+--- !u!114 &3966609443623558875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033412709660095440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 15
 --- !u!114 &3967890118125895547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51155,6 +51394,7 @@ GameObject:
   - component: {fileID: 8031862701259618419}
   - component: {fileID: 7725604810831090127}
   - component: {fileID: 7059215117900226124}
+  - component: {fileID: 8031862701259618420}
   m_Layer: 5
   m_Name: Panel (1)
   m_TagString: Untagged
@@ -51181,6 +51421,7 @@ GameObject:
   - component: {fileID: 6854224135380391376}
   - component: {fileID: 3726476992137318131}
   - component: {fileID: 6854224135380391377}
+  - component: {fileID: 6854224135380391378}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -51274,6 +51515,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 111
   legacyKey: Toggle_0001_karta/0030_resursClas/0007_Panel (5)/0010_Toggle (1)
+--- !u!114 &4079660768998033075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945769284616706961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!114 &4081167215827017446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52807,6 +53061,7 @@ GameObject:
   - component: {fileID: 8937031448496057214}
   - component: {fileID: 7472475098110279370}
   - component: {fileID: 8937031448496057215}
+  - component: {fileID: 8937031448496057216}
   m_Layer: 5
   m_Name: Toggle (9)
   m_TagString: Untagged
@@ -53075,6 +53330,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 68
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0002_Toggle (1)
+--- !u!114 &4249906100298867231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2867086450427666536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!114 &4250509721080469951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53165,6 +53433,7 @@ GameObject:
   - component: {fileID: 1217812774651240676}
   - component: {fileID: 2894942519348634043}
   - component: {fileID: 4277555453460929876}
+  - component: {fileID: 4277555453460929877}
   m_Layer: 5
   m_Name: Panel (4)
   m_TagString: Untagged
@@ -53349,6 +53618,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4277555453460929877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4253599866833613958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 5281389442295574271}
+  - {fileID: 545506802929104625}
+  - {fileID: 3857447662432906447}
+  - {fileID: 164190222367389354}
+  - {fileID: 9207096460435251299}
+  - {fileID: 3872220580586634665}
+  - {fileID: 3296178163185122168}
+  - {fileID: 6075038507330213585}
+  - {fileID: 8810041742095451216}
+  - {fileID: 9145219409148386261}
+  - {fileID: 3966264030548799524}
+  - {fileID: 7216752531474228465}
+  - {fileID: 6701107279264345540}
+  - {fileID: 8222111712493912130}
+  - {fileID: 1393150168217023234}
+  - {fileID: 8435243514897308062}
+  - {fileID: 8017489430479061030}
+  - {fileID: 1342365047925550795}
+  - {fileID: 5856587022703940471}
+  - {fileID: 5522525585827551472}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!224 &4282453117930237043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53927,6 +54231,7 @@ GameObject:
   - component: {fileID: 5186001809119314814}
   - component: {fileID: 545506802929104625}
   - component: {fileID: 5186001809119314815}
+  - component: {fileID: 5186001809119314816}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -54383,6 +54688,7 @@ GameObject:
   - component: {fileID: 910829788598246360}
   - component: {fileID: 3232756831985397643}
   - component: {fileID: 7308731058508580188}
+  - component: {fileID: 7308731058508580189}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -54783,6 +55089,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 13
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0007_Toggle (7)
+--- !u!114 &4383560766521656580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3488000400847233694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!224 &4384890308867982382
 RectTransform:
   m_ObjectHideFlags: 0
@@ -54841,6 +55160,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 41
   legacyKey: Toggle_0001_karta/0029_vtoma/0000_Toggle (5)
+--- !u!114 &4386733854809734629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925988695052432420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!114 &4388170578156438983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54886,6 +55218,7 @@ GameObject:
   - component: {fileID: 4761489815918620484}
   - component: {fileID: 3932436478562995917}
   - component: {fileID: 4761489815918620485}
+  - component: {fileID: 4761489815918620486}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -55564,6 +55897,7 @@ GameObject:
   - component: {fileID: 6621157707553703503}
   - component: {fileID: 8184362494136663362}
   - component: {fileID: 8184362494136663363}
+  - component: {fileID: 8184362494136663364}
   m_Layer: 5
   m_Name: Toggle (13)
   m_TagString: Untagged
@@ -56814,6 +57148,7 @@ GameObject:
   - component: {fileID: 2215693388021678825}
   - component: {fileID: 164190222367389354}
   - component: {fileID: 4562734060791326123}
+  - component: {fileID: 4562734060791326124}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -56838,6 +57173,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 91
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0006_Toggle (3)
+--- !u!114 &4562734060791326124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4562734060791326122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!1 &4564155579639699580
 GameObject:
   m_ObjectHideFlags: 0
@@ -56849,6 +57197,7 @@ GameObject:
   - component: {fileID: 636648596827099218}
   - component: {fileID: 1393150168217023234}
   - component: {fileID: 4564155579639699581}
+  - component: {fileID: 4564155579639699582}
   m_Layer: 5
   m_Name: Toggle (14)
   m_TagString: Untagged
@@ -56873,6 +57222,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 102
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0017_Toggle (14)
+--- !u!114 &4564155579639699582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4564155579639699580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 14
 --- !u!4 &4564992353056593250
 Transform:
   m_ObjectHideFlags: 0
@@ -57393,6 +57755,7 @@ GameObject:
   - component: {fileID: 8599522779864993702}
   - component: {fileID: 7605696467246245462}
   - component: {fileID: 8599522779864993703}
+  - component: {fileID: 8599522779864993704}
   m_Layer: 5
   m_Name: Toggle (8)
   m_TagString: Untagged
@@ -58134,6 +58497,7 @@ GameObject:
   - component: {fileID: 4536422483415120027}
   - component: {fileID: 3737759918126585104}
   - component: {fileID: 4659035951282354174}
+  - component: {fileID: 4659035951282354175}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -58158,6 +58522,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 127
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0005_Toggle (3)
+--- !u!114 &4659035951282354175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659035951282354173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!222 &4659169069107351983
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -58581,6 +58958,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 114
   legacyKey: Toggle_0001_karta/0030_resursClas/0007_Panel (5)/0013_Toggle (4)
+--- !u!114 &4693131177496285877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2255008418510745729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!212 &4700804033524630111
 SpriteRenderer:
   serializedVersion: 2
@@ -59139,6 +59529,7 @@ GameObject:
   - component: {fileID: 4246186410647068210}
   - component: {fileID: 7248494129097447985}
   - component: {fileID: 7248494129097447986}
+  - component: {fileID: 7248494129097447987}
   m_Layer: 5
   m_Name: Toggle (17)
   m_TagString: Untagged
@@ -59173,6 +59564,7 @@ GameObject:
   - component: {fileID: 8600397462858057825}
   - component: {fileID: 6368222582479533047}
   - component: {fileID: 8600397462858057826}
+  - component: {fileID: 8600397462858057827}
   m_Layer: 5
   m_Name: Toggle (12)
   m_TagString: Untagged
@@ -59427,6 +59819,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 126
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0004_Toggle (2)
+--- !u!114 &4761489815918620486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4391995663890001491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!114 &4761773389171266721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59661,6 +60066,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 26
   legacyKey: Toggle_0001_karta/0007_deadChekBox/0002_proval/0002_Toggle (2)
+--- !u!114 &4767553464119126553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3343148959530240579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!114 &4768087267555019213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61320,6 +61738,7 @@ GameObject:
   - component: {fileID: 3683617185049758550}
   - component: {fileID: 5804239755625009008}
   - component: {fileID: 5804239755625009009}
+  - component: {fileID: 5804239755625009010}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -61715,6 +62134,7 @@ GameObject:
   - component: {fileID: 7361817471178781962}
   - component: {fileID: 8014743684248957700}
   - component: {fileID: 8014743684248957701}
+  - component: {fileID: 8014743684248957702}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -62522,6 +62942,7 @@ GameObject:
   - component: {fileID: 7135039791463874848}
   - component: {fileID: 2414717199295103268}
   - component: {fileID: 7135039791463874849}
+  - component: {fileID: 7135039791463874850}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -63277,6 +63698,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 48
   legacyKey: Toggle_0001_karta/0030_resursClas/0002_Panel/0004_Toggle (1)
+--- !u!114 &5046652370187218657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3951847945818546053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!224 &5047629863310680654
 RectTransform:
   m_ObjectHideFlags: 0
@@ -63779,6 +64213,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 67
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0001_Toggle
+--- !u!114 &5088303812559230401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453850965946314921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!1 &5088399049622213148
 GameObject:
   m_ObjectHideFlags: 0
@@ -63788,6 +64235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1741748225126032072}
+  - component: {fileID: 5088399049622213149}
   m_Layer: 0
   m_Name: uspih
   m_TagString: Untagged
@@ -63795,6 +64243,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5088399049622213149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5088399049622213148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 4882263328294778681}
+  - {fileID: 3726476992137318131}
+  - {fileID: 2027843417198291962}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!114 &5095292150745666824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63872,6 +64338,7 @@ GameObject:
   - component: {fileID: 4139587685524896935}
   - component: {fileID: 3105288344529756199}
   - component: {fileID: 5103875183919537453}
+  - component: {fileID: 5103875183919537454}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -63896,6 +64363,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 12
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0006_Toggle (2)
+--- !u!114 &5103875183919537454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5103875183919537452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!114 &5104032405083991709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64032,6 +64512,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 143
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0021_Toggle (19)
+--- !u!114 &5107097503530043914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381035148018012575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 19
 --- !u!224 &5107853972735834611
 RectTransform:
   m_ObjectHideFlags: 0
@@ -65010,6 +65503,7 @@ GameObject:
   - component: {fileID: 8401770815932518955}
   - component: {fileID: 4594503796500719088}
   - component: {fileID: 8401770815932518956}
+  - component: {fileID: 8401770815932518957}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -65255,6 +65749,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 89
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0004_Toggle (1)
+--- !u!114 &5186001809119314816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4323984537745605940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!1 &5186347396108720623
 GameObject:
   m_ObjectHideFlags: 0
@@ -66627,6 +67134,7 @@ GameObject:
   - component: {fileID: 7410386636523893487}
   - component: {fileID: 1529875789730820144}
   - component: {fileID: 7410386636523893488}
+  - component: {fileID: 7410386636523893489}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -66854,6 +67362,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 59
   legacyKey: Toggle_0001_karta/0030_resursClas/0003_Panel (1)/0006_Toggle (3)
+--- !u!114 &5236856328489538079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2326445794505405206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!114 &5236981445712575505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67004,6 +67525,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 139
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0017_Toggle (15)
+--- !u!114 &5238570351294146346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815712321210282355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 15
 --- !u!224 &5239304690389612637
 RectTransform:
   m_ObjectHideFlags: 0
@@ -67035,6 +67569,7 @@ GameObject:
   - component: {fileID: 4369930014770357982}
   - component: {fileID: 744005748943448870}
   - component: {fileID: 5240374379284704958}
+  - component: {fileID: 5240374379284704959}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -67059,6 +67594,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 30
   legacyKey: Toggle_0001_karta/0015_plauerInfo/0001_panelMclass/0001_Toggle
+--- !u!114 &5240374379284704959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5240374379284704957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &5240807105752930288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68238,6 +68786,7 @@ GameObject:
   - component: {fileID: 3137922279831130559}
   - component: {fileID: 7216752531474228465}
   - component: {fileID: 7216752531474228466}
+  - component: {fileID: 7216752531474228467}
   m_Layer: 5
   m_Name: Toggle (11)
   m_TagString: Untagged
@@ -68310,6 +68859,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 117
   legacyKey: Toggle_0001_karta/0030_resursClas/0007_Panel (5)/0016_Toggle (10)
+--- !u!114 &5344041755033091140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450559196038150995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 10
 --- !u!114 &5344637009257830226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68926,6 +69488,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 31
   legacyKey: Toggle_0001_karta/0020_zamitki (1)/0001_Toggle
+--- !u!114 &5406659184226140819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3525350167454656097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &5408394408772421543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69934,6 +70509,7 @@ GameObject:
   - component: {fileID: 6137342878912663487}
   - component: {fileID: 6874450982344308991}
   - component: {fileID: 6874450982344308992}
+  - component: {fileID: 6874450982344308993}
   m_Layer: 5
   m_Name: Toggle (19)
   m_TagString: Untagged
@@ -70268,6 +70844,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 107
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0022_Toggle (19)
+--- !u!114 &5522525585827551474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966480026460632421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 19
 --- !u!222 &5532055509284383224
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -71034,6 +71623,7 @@ GameObject:
   - component: {fileID: 4604277116170010656}
   - component: {fileID: 7832915092252897419}
   - component: {fileID: 1018504681159693478}
+  - component: {fileID: 7832915092252897420}
   m_Layer: 5
   m_Name: Panel (3)
   m_TagString: Untagged
@@ -71494,6 +72084,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 43
   legacyKey: Toggle_0001_karta/0029_vtoma/0002_Toggle (3)
+--- !u!114 &5652172023842752641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2931709738605469054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!222 &5652768736240443495
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -72174,6 +72777,7 @@ GameObject:
   - component: {fileID: 4575613757266850387}
   - component: {fileID: 7933079621706566546}
   - component: {fileID: 7933079621706566547}
+  - component: {fileID: 7933079621706566548}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -72234,6 +72838,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 132
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0010_Toggle (8)
+--- !u!114 &5718578978205197140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036051754144707133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 8
 --- !u!224 &5722397317807860625
 RectTransform:
   m_ObjectHideFlags: 0
@@ -72523,6 +73140,7 @@ GameObject:
   - component: {fileID: 3014293520943499027}
   - component: {fileID: 5024706220778354211}
   - component: {fileID: 5739269324443246244}
+  - component: {fileID: 5739269324443246245}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -72547,6 +73165,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 44
   legacyKey: Toggle_0001_karta/0029_vtoma/0003_Toggle (2)
+--- !u!114 &5739269324443246245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5739269324443246243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!222 &5740658998313072316
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -73627,6 +74258,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 9
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0003_Toggle (1)
+--- !u!114 &5804239755625009010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897447480114081865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!1 &5804372584189008249
 GameObject:
   m_ObjectHideFlags: 0
@@ -74153,6 +74797,7 @@ GameObject:
   - component: {fileID: 6029111720374604344}
   - component: {fileID: 6885921390969472908}
   - component: {fileID: 6885921390969472909}
+  - component: {fileID: 6885921390969472910}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -75289,6 +75934,7 @@ GameObject:
   - component: {fileID: 1358681448992681697}
   - component: {fileID: 2568075496146341133}
   - component: {fileID: 5964812783872425397}
+  - component: {fileID: 5964812783872425398}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -75313,6 +75959,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 5
   legacyKey: Toggle_0001_karta/0002_spasKidki/0008_tonggle/0005_Toggle (5)
+--- !u!114 &5964812783872425398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5964812783872425396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!1 &5967418551561738468
 GameObject:
   m_ObjectHideFlags: 0
@@ -75662,6 +76321,7 @@ GameObject:
   - component: {fileID: 7768925273946769160}
   - component: {fileID: 3415060975562465525}
   - component: {fileID: 7768925273946769161}
+  - component: {fileID: 7768925273946769162}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -75969,6 +76629,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 64
   legacyKey: Toggle_0001_karta/0030_resursClas/0004_Panel (2)/0004_Toggle (1)
+--- !u!114 &6022798282601654070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797583077662271740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!224 &6024358894028660156
 RectTransform:
   m_ObjectHideFlags: 0
@@ -76160,6 +76833,7 @@ GameObject:
   - component: {fileID: 7041532110108952879}
   - component: {fileID: 188242372761271356}
   - component: {fileID: 7041532110108952880}
+  - component: {fileID: 7041532110108952881}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -76399,6 +77073,7 @@ GameObject:
   - component: {fileID: 5772905845611050475}
   - component: {fileID: 5594467038494018224}
   - component: {fileID: 6051362254342568092}
+  - component: {fileID: 6051362254342568093}
   m_Layer: 5
   m_Name: Toggle (14)
   m_TagString: Untagged
@@ -76423,6 +77098,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 81
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0015_Toggle (14)
+--- !u!114 &6051362254342568093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051362254342568091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 14
 --- !u!114 &6053956432973212250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77370,6 +78058,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 18
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0012_Toggle (4)
+--- !u!114 &6116780024260789822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632244307038048196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!222 &6118126855760450918
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -77528,6 +78229,7 @@ GameObject:
   - component: {fileID: 4503935312119367068}
   - component: {fileID: 6657798947820724121}
   - component: {fileID: 6657798947820724122}
+  - component: {fileID: 6657798947820724123}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -78006,6 +78708,7 @@ MonoBehaviour:
   - {fileID: 8644544674212820480}
   - {fileID: 6197438444769195793}
   - {fileID: 4211348241782116782}
+  buttons: []
   toggles:
   - {fileID: 744005748943448870}
   - {fileID: 5406659184226140817}
@@ -78573,6 +79276,7 @@ GameObject:
   - component: {fileID: 4111718806527193196}
   - component: {fileID: 5856587022703940471}
   - component: {fileID: 6244026728382240027}
+  - component: {fileID: 6244026728382240028}
   m_Layer: 5
   m_Name: Toggle (18)
   m_TagString: Untagged
@@ -78597,6 +79301,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 106
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0021_Toggle (18)
+--- !u!114 &6244026728382240028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6244026728382240026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 18
 --- !u!1 &6244149864628422813
 GameObject:
   m_ObjectHideFlags: 0
@@ -78761,6 +79478,7 @@ GameObject:
   - component: {fileID: 5427366376342429781}
   - component: {fileID: 50066380432002343}
   - component: {fileID: 6250161726286663339}
+  - component: {fileID: 6250161726286663340}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -78785,6 +79503,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 55
   legacyKey: Toggle_0001_karta/0030_resursClas/0003_Panel (1)/0002_Toggle (7)
+--- !u!114 &6250161726286663340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6250161726286663338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!114 &6254465269013584551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78922,6 +79653,7 @@ GameObject:
   - component: {fileID: 5122738753479060691}
   - component: {fileID: 6853606374659597637}
   - component: {fileID: 6853606374659597638}
+  - component: {fileID: 6853606374659597639}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -78970,6 +79702,7 @@ GameObject:
   - component: {fileID: 930049617306418168}
   - component: {fileID: 2455845270794652063}
   - component: {fileID: 6264028868151638635}
+  - component: {fileID: 6264028868151638636}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -78994,6 +79727,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 47
   legacyKey: Toggle_0001_karta/0030_resursClas/0002_Panel/0003_Toggle
+--- !u!114 &6264028868151638636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6264028868151638634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &6264209730096713191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79559,6 +80305,7 @@ GameObject:
   - component: {fileID: 15652484685579445}
   - component: {fileID: 2488706689043647455}
   - component: {fileID: 6317464725672057326}
+  - component: {fileID: 6317464725672057327}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -79583,6 +80330,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 112
   legacyKey: Toggle_0001_karta/0030_resursClas/0007_Panel (5)/0011_Toggle (2)
+--- !u!114 &6317464725672057327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317464725672057325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!224 &6321321605530055264
 RectTransform:
   m_ObjectHideFlags: 0
@@ -80280,6 +81040,7 @@ GameObject:
   - component: {fileID: 2005441894698722494}
   - component: {fileID: 5517831008634725192}
   - component: {fileID: 6378872241045564104}
+  - component: {fileID: 6378872241045564105}
   m_Layer: 5
   m_Name: Toggle (16)
   m_TagString: Untagged
@@ -80304,6 +81065,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 140
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0018_Toggle (16)
+--- !u!114 &6378872241045564105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6378872241045564103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 16
 --- !u!222 &6380060103477985972
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -81151,6 +81925,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 42
   legacyKey: 
+--- !u!114 &6452686294446081783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428014620159543027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c74559a4c15431995fa407aaef5a0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::SceneRoleMarker
+  role: 14
+  useParentAsPanel: 0
 --- !u!224 &6453776874555938802
 RectTransform:
   m_ObjectHideFlags: 0
@@ -83215,6 +84003,7 @@ GameObject:
   - component: {fileID: 8767340822791296495}
   - component: {fileID: 3931401459037263297}
   - component: {fileID: 8767340822791296496}
+  - component: {fileID: 8767340822791296497}
   m_Layer: 5
   m_Name: Toggle (11)
   m_TagString: Untagged
@@ -83591,6 +84380,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 7
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0001_Toggle (5)
+--- !u!114 &6657798947820724123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6131442573568679443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!1 &6659009588180919049
 GameObject:
   m_ObjectHideFlags: 0
@@ -83911,6 +84713,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 85
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0019_Toggle (18)
+--- !u!114 &6694592757223172440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3486551600612209892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 18
 --- !u!1 &6697379218100413835
 GameObject:
   m_ObjectHideFlags: 0
@@ -84284,6 +85099,7 @@ GameObject:
   - component: {fileID: 3278831035734884438}
   - component: {fileID: 2311343741773640279}
   - component: {fileID: 6715140734219235136}
+  - component: {fileID: 6715140734219235137}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -84308,6 +85124,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 128
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0006_Toggle (4)
+--- !u!114 &6715140734219235137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6715140734219235135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!222 &6715489342784045035
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -85419,6 +86248,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 141
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0019_Toggle (17)
+--- !u!114 &6823111621832349332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3126876624937628061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 17
 --- !u!222 &6826802244814027565
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -85761,6 +86603,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 50
   legacyKey: Toggle_0001_karta/0030_resursClas/0002_Panel/0006_Toggle (3)
+--- !u!114 &6847253313307231161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374052683420115846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!114 &6847962698348044161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85917,6 +86772,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 113
   legacyKey: Toggle_0001_karta/0030_resursClas/0007_Panel (5)/0012_Toggle (3)
+--- !u!114 &6853606374659597639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6261924701948980124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!224 &6854224135380391376
 RectTransform:
   m_ObjectHideFlags: 0
@@ -85954,6 +86822,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 28
   legacyKey: Toggle_0001_karta/0007_deadChekBox/0003_uspih/0001_Toggle (1)
+--- !u!114 &6854224135380391378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4073305283917202945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!114 &6860510877137351225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86053,6 +86934,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 65
   legacyKey: Toggle_0001_karta/0030_resursClas/0004_Panel (2)/0005_Toggle (2)
+--- !u!114 &6862278533422477621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2939389133156677064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!4 &6871354272884030317
 Transform:
   m_ObjectHideFlags: 0
@@ -86159,6 +87053,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 86
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0020_Toggle (19)
+--- !u!114 &6874450982344308993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5501158206626239145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 19
 --- !u!222 &6875398535909180366
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -86315,6 +87222,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 2
   legacyKey: Toggle_0001_karta/0002_spasKidki/0008_tonggle/0002_Toggle (3)
+--- !u!114 &6885921390969472910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5841587821666615876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!1 &6888066529452617345
 GameObject:
   m_ObjectHideFlags: 0
@@ -87626,6 +88546,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 46
   legacyKey: Toggle_0001_karta/0029_vtoma/0005_Toggle
+--- !u!114 &6995022749284520711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847148339888606589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!212 &6995114777769811958
 SpriteRenderer:
   serializedVersion: 2
@@ -88340,6 +89273,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 20
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0014_Toggle (14)
+--- !u!114 &7041185986017350001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582850350877896537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 14
 --- !u!222 &7041479192744381584
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -88386,6 +89332,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 42
   legacyKey: Toggle_0001_karta/0029_vtoma/0001_Toggle (4)
+--- !u!114 &7041532110108952881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6033190463836335301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!1 &7042601373502128807
 GameObject:
   m_ObjectHideFlags: 0
@@ -88520,6 +89479,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 84
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0018_Toggle (17)
+--- !u!114 &7052030194037669639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78615555558759103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 17
 --- !u!114 &7056823142071107378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88615,6 +89587,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 10
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0004_Toggle (6)
+--- !u!114 &7057961935645255112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597400808994262580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 6
 --- !u!114 &7059215117900226124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88768,6 +89753,7 @@ GameObject:
   - component: {fileID: 6800848433199247622}
   - component: {fileID: 3210933897416452906}
   - component: {fileID: 7073719513542566219}
+  - component: {fileID: 7073719513542566220}
   m_Layer: 5
   m_Name: Toggle (16)
   m_TagString: Untagged
@@ -88792,6 +89778,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 22
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0016_Toggle (16)
+--- !u!114 &7073719513542566220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7073719513542566218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 16
 --- !u!1 &7075005133615727874
 GameObject:
   m_ObjectHideFlags: 0
@@ -89735,6 +90734,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 63
   legacyKey: Toggle_0001_karta/0030_resursClas/0004_Panel (2)/0003_Toggle
+--- !u!114 &7135039791463874850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4992276779367325427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!1 &7135136566400833309
 GameObject:
   m_ObjectHideFlags: 0
@@ -90327,6 +91339,7 @@ GameObject:
   - component: {fileID: 7397052105359137996}
   - component: {fileID: 1868785055631445349}
   - component: {fileID: 7397052105359137997}
+  - component: {fileID: 7397052105359137998}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -90515,6 +91528,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 99
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0014_Toggle (11)
+--- !u!114 &7216752531474228467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341617215984287811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 11
 --- !u!114 &7217475594242425408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90928,6 +91954,7 @@ GameObject:
   - component: {fileID: 3038749414254172164}
   - component: {fileID: 8325470176515642648}
   - component: {fileID: 8325470176515642649}
+  - component: {fileID: 8325470176515642650}
   m_Layer: 5
   m_Name: Toggle (10)
   m_TagString: Untagged
@@ -91050,6 +92077,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 23
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0017_Toggle (17)
+--- !u!114 &7248494129097447987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4739622847291417383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 17
 --- !u!224 &7249601298938062257
 RectTransform:
   m_ObjectHideFlags: 0
@@ -91387,6 +92427,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 77
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0011_Toggle (10)
+--- !u!114 &7278533379366988534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453795751943311315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 10
 --- !u!1 &7278925185442266570
 GameObject:
   m_ObjectHideFlags: 0
@@ -91685,6 +92738,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 16
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0010_Toggle (8)
+--- !u!114 &7301408666132713349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2675221131062228686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 8
 --- !u!114 &7302418513658470518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91838,6 +92904,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7308731058508580189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362916827919773715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 2455845270794652063}
+  - {fileID: 3189342116422149669}
+  - {fileID: 3867697114837154143}
+  - {fileID: 6847253313307231159}
+  - {fileID: 3575563978758465578}
+  - {fileID: 4850245789467095490}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!1 &7311146487771584986
 GameObject:
   m_ObjectHideFlags: 0
@@ -91998,6 +93085,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 24
   legacyKey: Toggle_0001_karta/0007_deadChekBox/0002_proval/0000_Toggle
+--- !u!114 &7318674985263239067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2820511699955857648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!222 &7318905935456664579
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -92059,6 +93159,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 29
   legacyKey: Toggle_0001_karta/0007_deadChekBox/0003_uspih/0002_Toggle (2)
+--- !u!114 &7322713669005130225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684820083485571391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!224 &7323060805630548581
 RectTransform:
   m_ObjectHideFlags: 0
@@ -92377,6 +93490,7 @@ GameObject:
   - component: {fileID: 5354465854901894453}
   - component: {fileID: 2115338354278476546}
   - component: {fileID: 7359509010320639253}
+  - component: {fileID: 7359509010320639254}
   m_Layer: 5
   m_Name: Toggle (8)
   m_TagString: Untagged
@@ -92401,6 +93515,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 75
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0009_Toggle (8)
+--- !u!114 &7359509010320639254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7359509010320639252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 8
 --- !u!224 &7361817471178781962
 RectTransform:
   m_ObjectHideFlags: 0
@@ -92840,6 +93967,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 70
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0004_Toggle (3)
+--- !u!114 &7397052105359137998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193927217731102634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!114 &7400808099315523627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93010,6 +94150,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 124
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0002_Toggle
+--- !u!114 &7410386636523893489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220318794233025414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &7415044119259670687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93410,6 +94563,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 57
   legacyKey: Toggle_0001_karta/0030_resursClas/0003_Panel (1)/0004_Toggle (1)
+--- !u!114 &7438588583599064726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831437109408692632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!224 &7443991171094650156
 RectTransform:
   m_ObjectHideFlags: 0
@@ -93481,6 +94647,7 @@ GameObject:
   - component: {fileID: 5283830537028435744}
   - component: {fileID: 8774865061500494272}
   - component: {fileID: 8774865061500494273}
+  - component: {fileID: 8774865061500494274}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -93722,6 +94889,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 82
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0016_Toggle (15)
+--- !u!114 &7468817650660266083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554580685289169621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 15
 --- !u!222 &7469827732966762337
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -95185,6 +96365,7 @@ GameObject:
   - component: {fileID: 6061470181894773257}
   - component: {fileID: 126737757638022535}
   - component: {fileID: 7553387000989710658}
+  - component: {fileID: 7553387000989710659}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -95209,6 +96390,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 130
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0008_Toggle (6)
+--- !u!114 &7553387000989710659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7553387000989710657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 6
 --- !u!1 &7557193845848333290
 GameObject:
   m_ObjectHideFlags: 0
@@ -96112,6 +97306,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 25
   legacyKey: Toggle_0001_karta/0007_deadChekBox/0002_proval/0001_Toggle (1)
+--- !u!114 &7640391210546840097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900327653768356416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!114 &7643721534295977874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96549,6 +97756,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 115
   legacyKey: Toggle_0001_karta/0030_resursClas/0007_Panel (5)/0014_Toggle (5)
+--- !u!114 &7670396500106379165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774295928321340306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!1 &7671675860017372651
 GameObject:
   m_ObjectHideFlags: 0
@@ -96560,6 +97780,7 @@ GameObject:
   - component: {fileID: 5462273151902514424}
   - component: {fileID: 1509200067037714905}
   - component: {fileID: 7671675860017372652}
+  - component: {fileID: 7671675860017372653}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -96584,6 +97805,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 32
   legacyKey: Toggle_0001_karta/0021_zamitki (2)/0001_Toggle
+--- !u!114 &7671675860017372653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671675860017372651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &7673873025963751484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96814,6 +98048,7 @@ GameObject:
   - component: {fileID: 5009472484150509705}
   - component: {fileID: 4350700938259199211}
   - component: {fileID: 7692644126934246057}
+  - component: {fileID: 7692644126934246058}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -96838,6 +98073,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 34
   legacyKey: Toggle_0001_karta/0023_zamitki (4)/0001_Toggle
+--- !u!114 &7692644126934246058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692644126934246056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!224 &7695617228695947829
 RectTransform:
   m_ObjectHideFlags: 0
@@ -97843,6 +99091,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 131
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0009_Toggle (7)
+--- !u!114 &7768925273946769162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5998421605963907021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!222 &7770641200527867588
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -97898,6 +99159,7 @@ GameObject:
   - component: {fileID: 5785001575931462710}
   - component: {fileID: 9207096460435251299}
   - component: {fileID: 9207096460435251300}
+  - component: {fileID: 9207096460435251301}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -98141,6 +99403,7 @@ GameObject:
   - component: {fileID: 8611604191933538784}
   - component: {fileID: 1711543759023430770}
   - component: {fileID: 8611604191933538785}
+  - component: {fileID: 8611604191933538786}
   m_Layer: 5
   m_Name: Toggle (11)
   m_TagString: Untagged
@@ -98426,6 +99689,7 @@ GameObject:
   - component: {fileID: 442257081729604516}
   - component: {fileID: 6075038507330213585}
   - component: {fileID: 7802731498356764796}
+  - component: {fileID: 7802731498356764797}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -98450,6 +99714,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 95
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0010_Toggle (7)
+--- !u!114 &7802731498356764797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802731498356764795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!1 &7804075383336514073
 GameObject:
   m_ObjectHideFlags: 0
@@ -98841,6 +100118,7 @@ GameObject:
   - component: {fileID: 5378075376418940451}
   - component: {fileID: 4850245789467095490}
   - component: {fileID: 7828827930366280994}
+  - component: {fileID: 7828827930366280995}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -98865,6 +100143,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 52
   legacyKey: Toggle_0001_karta/0030_resursClas/0002_Panel/0008_Toggle (5)
+--- !u!114 &7828827930366280995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7828827930366280993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!224 &7830559882770751412
 RectTransform:
   m_ObjectHideFlags: 0
@@ -98910,6 +100201,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5603775415875875407}
   m_CullTransparentMesh: 1
+--- !u!114 &7832915092252897420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5603775415875875407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 3203586700577607968}
+  - {fileID: 4249906100298867229}
+  - {fileID: 6389517931448594142}
+  - {fileID: 1868785055631445349}
+  - {fileID: 3427713582147782149}
+  - {fileID: 8691196749815332964}
+  - {fileID: 6976785023787372155}
+  - {fileID: 3552110689391965345}
+  - {fileID: 2115338354278476546}
+  - {fileID: 8511038738646993237}
+  - {fileID: 6634563507252171203}
+  - {fileID: 1418284909689215961}
+  - {fileID: 6368222582479533047}
+  - {fileID: 8184362494136663362}
+  - {fileID: 5594467038494018224}
+  - {fileID: 7468817650660266081}
+  - {fileID: 4048974619922539294}
+  - {fileID: 2198074682130793812}
+  - {fileID: 6694592757223172438}
+  - {fileID: 6874450982344308991}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!114 &7834653006056883606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99856,6 +101182,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 54
   legacyKey: Toggle_0001_karta/0030_resursClas/0003_Panel (1)/0001_Toggle
+--- !u!114 &7914339691516215631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434669606522839269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &7918432827290651141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100093,6 +101432,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 33
   legacyKey: Toggle_0001_karta/0022_zamitki (3)/0001_Toggle
+--- !u!114 &7933079621706566548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5715908725372984006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &7933422184922929299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101037,6 +102389,7 @@ GameObject:
   - component: {fileID: 5253836307128627747}
   - component: {fileID: 5110025896636809123}
   - component: {fileID: 8004110291188887253}
+  - component: {fileID: 8004110291188887254}
   m_Layer: 5
   m_Name: Toggle (8)
   m_TagString: Untagged
@@ -101061,6 +102414,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 56
   legacyKey: Toggle_0001_karta/0030_resursClas/0003_Panel (1)/0003_Toggle (8)
+--- !u!114 &8004110291188887254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8004110291188887252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 8
 --- !u!1 &8007486165310845371
 GameObject:
   m_ObjectHideFlags: 0
@@ -101261,6 +102627,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 109
   legacyKey: Toggle_0001_karta/0030_resursClas/0007_Panel (5)/0008_Toggle
+--- !u!114 &8014743684248957702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930742332354923914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!1 &8017036134098546688
 GameObject:
   m_ObjectHideFlags: 0
@@ -101272,6 +102651,7 @@ GameObject:
   - component: {fileID: 2036241979753147461}
   - component: {fileID: 4048974619922539294}
   - component: {fileID: 8017036134098546689}
+  - component: {fileID: 8017036134098546690}
   m_Layer: 5
   m_Name: Toggle (16)
   m_TagString: Untagged
@@ -101296,6 +102676,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 83
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0017_Toggle (16)
+--- !u!114 &8017036134098546690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017036134098546688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 16
 --- !u!114 &8017489430479061030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101361,6 +102754,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 104
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0019_Toggle (16)
+--- !u!114 &8017489430479061032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3243308243910971279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 16
 --- !u!224 &8017606194089137812
 RectTransform:
   m_ObjectHideFlags: 0
@@ -101539,6 +102945,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0.3999939, y: -19.292847}
   m_SizeDelta: {x: -20.91687, y: -54.914642}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8031862701259618420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072796518754525227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 7914339691516215629}
+  - {fileID: 556378613036458478}
+  - {fileID: 4594503796500719088}
+  - {fileID: 5183580133136482588}
+  - {fileID: 4581162584037478995}
+  - {fileID: 1113379840029858494}
+  - {fileID: 50066380432002343}
+  - {fileID: 5110025896636809123}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!1 &8034443293070463943
 GameObject:
   m_ObjectHideFlags: 0
@@ -101784,6 +103213,7 @@ GameObject:
   - component: {fileID: 7300600979091708652}
   - component: {fileID: 4476762460348413014}
   - component: {fileID: 8059943328159292411}
+  - component: {fileID: 8059943328159292412}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -101808,6 +103238,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 15
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0009_Toggle (3)
+--- !u!114 &8059943328159292412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8059943328159292410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!222 &8062264320631720060
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -101827,6 +103270,7 @@ GameObject:
   - component: {fileID: 5562022847344907803}
   - component: {fileID: 6976785023787372155}
   - component: {fileID: 8067018766005188372}
+  - component: {fileID: 8067018766005188373}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -101851,6 +103295,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 73
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0007_Toggle (6)
+--- !u!114 &8067018766005188373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8067018766005188371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 6
 --- !u!1 &8067566343734751798
 GameObject:
   m_ObjectHideFlags: 0
@@ -101984,6 +103441,7 @@ GameObject:
   - component: {fileID: 4326950860277149826}
   - component: {fileID: 8078970710318875794}
   - component: {fileID: 8078970710318875795}
+  - component: {fileID: 8078970710318875796}
   m_Layer: 5
   m_Name: daicevalueperson
   m_TagString: Untagged
@@ -102021,6 +103479,20 @@ MonoBehaviour:
   legacyCollection: inputData
   legacyIndex: 43
   legacyKey: 
+--- !u!114 &8078970710318875796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8078970710318875793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c74559a4c15431995fa407aaef5a0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::SceneRoleMarker
+  role: 15
+  useParentAsPanel: 0
 --- !u!222 &8078991176802460243
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -102731,6 +104203,7 @@ GameObject:
   - component: {fileID: 1065678758406061339}
   - component: {fileID: 3296178163185122168}
   - component: {fileID: 8123502842202305402}
+  - component: {fileID: 8123502842202305403}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -102755,6 +104228,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 94
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0009_Toggle (6)
+--- !u!114 &8123502842202305403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8123502842202305401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 6
 --- !u!224 &8123782695949014673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -103821,6 +105307,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 80
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0014_Toggle (13)
+--- !u!114 &8184362494136663364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4449759810112258133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 13
 --- !u!114 &8197407082491605403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104099,6 +105598,7 @@ GameObject:
   - component: {fileID: 4490374603570442971}
   - component: {fileID: 8169861300341313731}
   - component: {fileID: 8225278653519488302}
+  - component: {fileID: 8225278653519488303}
   m_Layer: 5
   m_Name: Toggle (9)
   m_TagString: Untagged
@@ -104123,6 +105623,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 133
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0011_Toggle (9)
+--- !u!114 &8225278653519488303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8225278653519488301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 9
 --- !u!224 &8229343567956027744
 RectTransform:
   m_ObjectHideFlags: 0
@@ -104341,6 +105854,7 @@ GameObject:
   - component: {fileID: 6372921937046837333}
   - component: {fileID: 8222111712493912130}
   - component: {fileID: 8251126934334810083}
+  - component: {fileID: 8251126934334810084}
   m_Layer: 5
   m_Name: Toggle (13)
   m_TagString: Untagged
@@ -104365,6 +105879,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 101
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0016_Toggle (13)
+--- !u!114 &8251126934334810084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8251126934334810082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 13
 --- !u!114 &8251450518588492162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104849,6 +106376,7 @@ GameObject:
   - component: {fileID: 5574818265393068430}
   - component: {fileID: 5104998757387051310}
   - component: {fileID: 8298178342224636990}
+  - component: {fileID: 8298178342224636991}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -104873,6 +106401,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 125
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0003_Toggle (1)
+--- !u!114 &8298178342224636991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8298178342224636989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!222 &8298240799514387554
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -105084,6 +106625,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 134
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0012_Toggle (10)
+--- !u!114 &8325470176515642650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7246884488027942659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 10
 --- !u!114 &8326609104492496082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105282,6 +106836,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 110
   legacyKey: Toggle_0001_karta/0030_resursClas/0007_Panel (5)/0009_Toggle (7)
+--- !u!114 &8333030532220512505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2184667834109723145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!1 &8335434285947541089
 GameObject:
   m_ObjectHideFlags: 0
@@ -105293,6 +106860,7 @@ GameObject:
   - component: {fileID: 8897262976184737383}
   - component: {fileID: 1835527246135218432}
   - component: {fileID: 8897262976184737384}
+  - component: {fileID: 8897262976184737385}
   m_Layer: 5
   m_Name: Toggle (9)
   m_TagString: Untagged
@@ -105948,6 +107516,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneRoleMarker
   role: 9
   useParentAsPanel: 0
+--- !u!114 &8384291659815446085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760366657216277764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 6995022749284520709}
+  - {fileID: 3524916469248639077}
+  - {fileID: 5024706220778354211}
+  - {fileID: 1151588448554222565}
+  - {fileID: 188242372761271356}
+  - {fileID: 4005876672539135488}
+  clampToActive: 0
+  appliesExhaustion: 1
 --- !u!222 &8384340709154342974
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -106232,7 +107821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4649971254365795289, guid: e96a75c3377b3e54283aa74cfeec63f2, type: 3}
       propertyPath: zoomMax
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4649971254365795289, guid: e96a75c3377b3e54283aa74cfeec63f2, type: 3}
       propertyPath: maxBounds.x
@@ -106263,6 +107852,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e96a75c3377b3e54283aa74cfeec63f2, type: 3}
+--- !u!114 &8396168354099940928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4649971254365795289, guid: e96a75c3377b3e54283aa74cfeec63f2, type: 3}
+  m_PrefabInstance: {fileID: 8396168354099940927}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edde384fcff600a49a942de66b8a255d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8399241852272905101
 GameObject:
   m_ObjectHideFlags: 0
@@ -106274,6 +107874,7 @@ GameObject:
   - component: {fileID: 6444180060902189722}
   - component: {fileID: 1418284909689215961}
   - component: {fileID: 8399241852272905102}
+  - component: {fileID: 8399241852272905103}
   m_Layer: 5
   m_Name: Toggle (11)
   m_TagString: Untagged
@@ -106298,6 +107899,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 78
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0012_Toggle (11)
+--- !u!114 &8399241852272905103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8399241852272905101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 11
 --- !u!1 &8399304692017625332
 GameObject:
   m_ObjectHideFlags: 0
@@ -106418,6 +108032,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 58
   legacyKey: Toggle_0001_karta/0030_resursClas/0003_Panel (1)/0005_Toggle (2)
+--- !u!114 &8401770815932518957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5175711498249005664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!114 &8402923602176108186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107330,6 +108957,7 @@ GameObject:
   - component: {fileID: 2306142796928599376}
   - component: {fileID: 8435243514897308062}
   - component: {fileID: 8455685108484153435}
+  - component: {fileID: 8455685108484153436}
   m_Layer: 5
   m_Name: Toggle (15)
   m_TagString: Untagged
@@ -107354,6 +108982,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 103
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0018_Toggle (15)
+--- !u!114 &8455685108484153436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8455685108484153434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 15
 --- !u!1 &8457083228154125681
 GameObject:
   m_ObjectHideFlags: 0
@@ -108147,6 +109788,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 76
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0010_Toggle (9)
+--- !u!114 &8511038738646993239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307029068554420730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 9
 --- !u!224 &8511710297174021867
 RectTransform:
   m_ObjectHideFlags: 0
@@ -108184,6 +109838,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 49
   legacyKey: Toggle_0001_karta/0030_resursClas/0002_Panel/0005_Toggle (2)
+--- !u!114 &8511710297174021869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222263429808145592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!114 &8514623206096138792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108767,6 +110434,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8562826576121232447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2891522640612793975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 8014743684248957700}
+  - {fileID: 1900839937670688906}
+  - {fileID: 2488706689043647455}
+  - {fileID: 6853606374659597637}
+  - {fileID: 4693131177496285875}
+  - {fileID: 7670396500106379163}
+  - {fileID: 8333030532220512503}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!224 &8564112860922122795
 RectTransform:
   m_ObjectHideFlags: 0
@@ -109230,6 +110919,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 116
   legacyKey: Toggle_0001_karta/0030_resursClas/0007_Panel (5)/0015_Toggle (8)
+--- !u!114 &8599522779864993704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4608463284927305015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 8
 --- !u!224 &8600397462858057825
 RectTransform:
   m_ObjectHideFlags: 0
@@ -109267,6 +110969,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 79
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0013_Toggle (12)
+--- !u!114 &8600397462858057827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741601676164345951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 12
 --- !u!222 &8601048473796753911
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -109614,6 +111329,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 119
   legacyKey: Toggle_0001_karta/0030_resursClas/0007_Panel (5)/0018_Toggle (11)
+--- !u!114 &8611604191933538786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7796743959845885752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 11
 --- !u!224 &8617345955095127235
 RectTransform:
   m_ObjectHideFlags: 0
@@ -110995,6 +112723,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 72
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0006_Toggle (5)
+--- !u!114 &8691196749815332966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444652352940090536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!224 &8692272895893166842
 RectTransform:
   m_ObjectHideFlags: 0
@@ -111032,6 +112773,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 3
   legacyKey: Toggle_0001_karta/0002_spasKidki/0008_tonggle/0003_Toggle (4)
+--- !u!114 &8692272895893166844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556039353028537880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!114 &8693345880083183653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111258,6 +113012,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 93
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0008_Toggle (5)
+--- !u!114 &8714571925070623045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443939998044372548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!224 &8715825516215166857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -111344,6 +113111,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 122
   legacyKey: Toggle_0001_karta/0030_resursClas/0009_Panel (7)/0003_Toggle
+--- !u!114 &8724459029448223480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207673868037126482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!224 &8724620044613465228
 RectTransform:
   m_ObjectHideFlags: 0
@@ -111381,6 +113161,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 88
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0003_Toggle
+--- !u!114 &8724620044613465230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2881764720794080204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!224 &8724702143041932819
 RectTransform:
   m_ObjectHideFlags: 0
@@ -112065,6 +113858,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 135
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0013_Toggle (11)
+--- !u!114 &8767340822791296497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6634231178576868358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 11
 --- !u!224 &8768949206494087426
 RectTransform:
   m_ObjectHideFlags: 0
@@ -112240,6 +114046,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 129
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0007_Toggle (5)
+--- !u!114 &8774865061500494274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7448805665731226706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!224 &8774956901309108322
 RectTransform:
   m_ObjectHideFlags: 0
@@ -112553,6 +114372,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 96
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0011_Toggle (8)
+--- !u!114 &8810041742095451218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2395677490777399447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 8
 --- !u!224 &8810049211003728832
 RectTransform:
   m_ObjectHideFlags: 0
@@ -112583,6 +114415,7 @@ GameObject:
   - component: {fileID: 528458113105012431}
   - component: {fileID: 5790595110600186411}
   - component: {fileID: 8810910926084941250}
+  - component: {fileID: 8810910926084941251}
   m_Layer: 5
   m_Name: Toggle (14)
   m_TagString: Untagged
@@ -112607,6 +114440,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 138
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0016_Toggle (14)
+--- !u!114 &8810910926084941251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810910926084941249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 14
 --- !u!224 &8811020713031580410
 RectTransform:
   m_ObjectHideFlags: 0
@@ -113050,6 +114896,7 @@ GameObject:
   - component: {fileID: 886224994676628515}
   - component: {fileID: 8781135432110846381}
   - component: {fileID: 8848904405669296958}
+  - component: {fileID: 8848904405669296959}
   m_Layer: 5
   m_Name: Toggle (13)
   m_TagString: Untagged
@@ -113074,6 +114921,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 17
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0011_Toggle (13)
+--- !u!114 &8848904405669296959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8848904405669296957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 13
 --- !u!114 &8849367997451554591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113127,6 +114987,7 @@ GameObject:
   - component: {fileID: 1032131035593503211}
   - component: {fileID: 4581162584037478995}
   - component: {fileID: 8855154256265114622}
+  - component: {fileID: 8855154256265114623}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -113151,6 +115012,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 60
   legacyKey: Toggle_0001_karta/0030_resursClas/0003_Panel (1)/0007_Toggle (4)
+--- !u!114 &8855154256265114623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855154256265114621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!1 &8856516088579347667
 GameObject:
   m_ObjectHideFlags: 0
@@ -113234,6 +115108,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 136
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0014_Toggle (12)
+--- !u!114 &8858617504100120866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050196092222721856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 12
 --- !u!114 &8864796084270683446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113297,6 +115184,7 @@ GameObject:
   - component: {fileID: 3976065798067819918}
   - component: {fileID: 6389517931448594142}
   - component: {fileID: 8866314688654815322}
+  - component: {fileID: 8866314688654815323}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -113321,6 +115209,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 69
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0003_Toggle (2)
+--- !u!114 &8866314688654815323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8866314688654815321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!1 &8875174217063301504
 GameObject:
   m_ObjectHideFlags: 0
@@ -113611,6 +115512,7 @@ GameObject:
   - component: {fileID: 6687853961060229845}
   - component: {fileID: 6701107279264345540}
   - component: {fileID: 8888276248877118625}
+  - component: {fileID: 8888276248877118626}
   m_Layer: 5
   m_Name: Toggle (12)
   m_TagString: Untagged
@@ -113635,6 +115537,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 100
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0015_Toggle (12)
+--- !u!114 &8888276248877118626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888276248877118624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 12
 --- !u!1 &8888472257548122079
 GameObject:
   m_ObjectHideFlags: 0
@@ -113771,6 +115686,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 19
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0013_Toggle (9)
+--- !u!114 &8897262976184737385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335434285947541089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 9
 --- !u!224 &8898807285178825716
 RectTransform:
   m_ObjectHideFlags: 0
@@ -114274,6 +116202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8080454257389380798}
+  - component: {fileID: 8927221024746539884}
   m_Layer: 0
   m_Name: proval
   m_TagString: Untagged
@@ -114281,6 +116210,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8927221024746539884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8927221024746539883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 4767553464119126551}
+  - {fileID: 2902990921924079529}
+  - {fileID: 503210092910585888}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!224 &8929569856682103712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -114442,6 +116389,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 118
   legacyKey: Toggle_0001_karta/0030_resursClas/0007_Panel (5)/0017_Toggle (9)
+--- !u!114 &8937031448496057216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227713718399249982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 9
 --- !u!114 &8937793860949481201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115580,6 +117540,7 @@ GameObject:
   - component: {fileID: 1997180129878738822}
   - component: {fileID: 3552110689391965345}
   - component: {fileID: 9029024147154229566}
+  - component: {fileID: 9029024147154229567}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -115604,6 +117565,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 74
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0008_Toggle (7)
+--- !u!114 &9029024147154229567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029024147154229565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!1 &9031236126701744303
 GameObject:
   m_ObjectHideFlags: 0
@@ -115709,6 +117683,7 @@ GameObject:
   - component: {fileID: 4726728134109359263}
   - component: {fileID: 8156325265770477096}
   - component: {fileID: 9037411175644971501}
+  - component: {fileID: 9037411175644971502}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -115733,6 +117708,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 1
   legacyKey: Toggle_0001_karta/0002_spasKidki/0008_tonggle/0001_Toggle (2)
+--- !u!114 &9037411175644971502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9037411175644971500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!224 &9041201229797831488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -115999,6 +117987,7 @@ GameObject:
   - component: {fileID: 5322848426402367742}
   - component: {fileID: 2027843417198291962}
   - component: {fileID: 9059570305944239735}
+  - component: {fileID: 9059570305944239736}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -116023,6 +118012,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 27
   legacyKey: Toggle_0001_karta/0007_deadChekBox/0003_uspih/0000_Toggle
+--- !u!114 &9059570305944239736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9059570305944239734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!1 &9060498707358936040
 GameObject:
   m_ObjectHideFlags: 0
@@ -116052,6 +118054,7 @@ GameObject:
   - component: {fileID: 6404124977446101528}
   - component: {fileID: 8542203640348984588}
   - component: {fileID: 9061362934266244285}
+  - component: {fileID: 9061362934266244286}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -116076,6 +118079,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 121
   legacyKey: Toggle_0001_karta/0030_resursClas/0008_Panel (6)/0003_Toggle
+--- !u!114 &9061362934266244286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9061362934266244284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!1 &9062215457209523880
 GameObject:
   m_ObjectHideFlags: 0
@@ -116499,6 +118515,7 @@ GameObject:
   - component: {fileID: 7443991171094650156}
   - component: {fileID: 1165123241351319201}
   - component: {fileID: 9082336916672286134}
+  - component: {fileID: 9082336916672286135}
   m_Layer: 5
   m_Name: Toggle (11)
   m_TagString: Untagged
@@ -116523,6 +118540,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 11
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0005_Toggle (11)
+--- !u!114 &9082336916672286135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9082336916672286133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 11
 --- !u!222 &9084043430709547321
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -116786,6 +118816,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 137
   legacyKey: Toggle_0001_karta/0030_resursClas/0010_Panel (8)/0015_Toggle (13)
+--- !u!114 &9106564936814107436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2996054744664232699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 13
 --- !u!1 &9106672816241453396
 GameObject:
   m_ObjectHideFlags: 0
@@ -116815,6 +118858,7 @@ GameObject:
   - component: {fileID: 2451153915476427671}
   - component: {fileID: 2001598286527446779}
   - component: {fileID: 9112506942445691166}
+  - component: {fileID: 9112506942445691167}
   m_Layer: 5
   m_Name: Toggle (12)
   m_TagString: Untagged
@@ -116839,6 +118883,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 14
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0008_Toggle (12)
+--- !u!114 &9112506942445691167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112506942445691165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 12
 --- !u!1 &9113151389703403918
 GameObject:
   m_ObjectHideFlags: 0
@@ -116951,6 +119008,7 @@ MonoBehaviour:
   - {fileID: 637730712824270113}
   buttons:
   - {fileID: 4052990403548426158}
+  toggles: []
 --- !u!114 &9120724101145443707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117288,6 +119346,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 97
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0012_Toggle (9)
+--- !u!114 &9145219409148386263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506980290824396951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 9
 --- !u!114 &9145761887969439539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117343,6 +119414,7 @@ GameObject:
   - component: {fileID: 4314860230070273334}
   - component: {fileID: 3031333855069833007}
   - component: {fileID: 9146301139125726786}
+  - component: {fileID: 9146301139125726787}
   m_Layer: 5
   m_Name: Toggle (10)
   m_TagString: Untagged
@@ -117367,6 +119439,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 8
   legacyKey: Toggle_0001_karta/0003_navuki/0019_toggle/0002_Toggle (10)
+--- !u!114 &9146301139125726787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146301139125726785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 10
 --- !u!224 &9150988570443178266
 RectTransform:
   m_ObjectHideFlags: 0
@@ -117701,6 +119786,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 71
   legacyKey: Toggle_0001_karta/0030_resursClas/0005_Panel (3)/0005_Toggle (4)
+--- !u!114 &9158920873147019925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807309570882298151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!224 &9159267941885888896
 RectTransform:
   m_ObjectHideFlags: 0
@@ -117931,6 +120029,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0.3999939, y: -19.292847}
   m_SizeDelta: {x: -20.91687, y: -54.914642}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9174476703492093754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163356895596315673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 1529875789730820144}
+  - {fileID: 5104998757387051310}
+  - {fileID: 3932436478562995917}
+  - {fileID: 3737759918126585104}
+  - {fileID: 2311343741773640279}
+  - {fileID: 8774865061500494272}
+  - {fileID: 126737757638022535}
+  - {fileID: 3415060975562465525}
+  - {fileID: 5684790531313675579}
+  - {fileID: 8169861300341313731}
+  - {fileID: 8325470176515642648}
+  - {fileID: 3931401459037263297}
+  - {fileID: 8858617504100120864}
+  - {fileID: 4506128348685144613}
+  - {fileID: 5790595110600186411}
+  - {fileID: 5238570351294146344}
+  - {fileID: 5517831008634725192}
+  - {fileID: 6823111621832349330}
+  - {fileID: 2609632226435121133}
+  - {fileID: 4189545811157375003}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!224 &9175467499832086224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -118461,6 +120594,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 92
   legacyKey: Toggle_0001_karta/0030_resursClas/0006_Panel (4)/0007_Toggle (4)
+--- !u!114 &9207096460435251301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7776727789260231565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!222 &9207488724381231441
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -118531,6 +120677,7 @@ GameObject:
   - component: {fileID: 6454356910398748976}
   - component: {fileID: 1113379840029858494}
   - component: {fileID: 9220012010919375750}
+  - component: {fileID: 9220012010919375751}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -118555,6 +120702,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 61
   legacyKey: Toggle_0001_karta/0030_resursClas/0003_Panel (1)/0008_Toggle (5)
+--- !u!114 &9220012010919375751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9220012010919375749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!1 &9222418808298051783
 GameObject:
   m_ObjectHideFlags: 0

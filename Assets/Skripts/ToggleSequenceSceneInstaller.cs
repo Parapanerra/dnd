@@ -15,6 +15,7 @@ internal sealed class ToggleSequenceSceneInstaller
 
     internal int[] CreateSpellCheckToggleOrder() => (int[])spellCheckToggleOrder.Clone();
     private readonly ExhaustionEffects exhaustionEffects;
+    private bool captureConfiguration;
 
     internal ToggleSequenceSceneInstaller(DndSaveManager saveManager)
     {
@@ -23,9 +24,17 @@ internal sealed class ToggleSequenceSceneInstaller
 
     internal void Install()
     {
+        ToggleSequenceConfig[] configs = UnityEngine.Object.FindObjectsByType<ToggleSequenceConfig>(FindObjectsInactive.Include);
+        foreach (ToggleSequenceConfig config in configs)
+            if (!captureConfiguration)
+                config.Install(exhaustionEffects);
+
+        // Legacy fallback only in scenes without migrated group configuration.
         Transform[] transforms = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include);
         foreach (Transform transform in transforms)
         {
+            if (System.Array.Exists(configs, c => c.gameObject.scene == transform.gameObject.scene))
+                continue;
             if (IsDeathCheckContainer(transform.name))
             {
                 ConfigureGroup(transform, "uspih", false);
@@ -122,6 +131,14 @@ internal sealed class ToggleSequenceSceneInstaller
 
         groupToggles.Sort((left, right) => CompareTogglesBySequenceOrder(left, right, ascending, customOrder));
 
+        if (captureConfiguration)
+        {
+            ToggleSequenceConfig config = groupRoot.GetComponent<ToggleSequenceConfig>();
+            if (config == null) config = groupRoot.gameObject.AddComponent<ToggleSequenceConfig>();
+            config.Configure(groupToggles.ToArray(), clampToActive, exhaustion != null);
+            return;
+        }
+
         DeathSaveToggleSequence sequence = groupRoot.GetComponent<DeathSaveToggleSequence>();
         if (sequence == null)
             sequence = groupRoot.gameObject.AddComponent<DeathSaveToggleSequence>();
@@ -175,6 +192,14 @@ internal sealed class ToggleSequenceSceneInstaller
     private bool IsDeathCheckContainer(string name)
     {
         return SceneObjectName.Matches(name, "deadChekBox") || SceneObjectName.Matches(name, "deadCheckBox");
+    }
+
+    // Used only by the Editor migration. It captures bindings without attaching listeners.
+    internal void CaptureConfiguration()
+    {
+        captureConfiguration = true;
+        try { Install(); }
+        finally { captureConfiguration = false; }
     }
 
 }

@@ -137,6 +137,25 @@ MonoBehaviour:
   legacyIndex: 208
   legacyKey: Toggle_0001_spels/0017_artefactInfuz/0002_dropDawnChek/0001_Dropdown
     (Legacy) (1)/0002_Template/0000_Viewport/0000_Content/0000_Item
+--- !u!1 &28622964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4500544054641741681, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+  m_PrefabInstance: {fileID: 1323290127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &28622965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28622964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c74559a4c15431995fa407aaef5a0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TaruckShip.StableFields::SceneRoleMarker
+  role: 20
+  useParentAsPanel: 0
 --- !u!114 &49706217 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7529257900527929631, guid: 10ba8d0d9e4e4194ba8c5d34ebfb952d, type: 3}
@@ -3486,6 +3505,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 8350058478048620391, guid: e96a75c3377b3e54283aa74cfeec63f2, type: 3}
   m_PrefabInstance: {fileID: 1235521112}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1235521114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4649971254365795289, guid: e96a75c3377b3e54283aa74cfeec63f2, type: 3}
+  m_PrefabInstance: {fileID: 1235521112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edde384fcff600a49a942de66b8a255d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1273605227 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6090231542144314756, guid: 10ba8d0d9e4e4194ba8c5d34ebfb952d, type: 3}
@@ -3528,6 +3558,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -11.683006
       objectReference: {fileID: 0}
+    - target: {fileID: 909000000000000001, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      propertyPath: mapBounds
+      value: 
+      objectReference: {fileID: 1235521114}
     - target: {fileID: 2007033491447955828, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1.0480995
@@ -3727,6 +3761,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 331288609}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4500544054641741681, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 28622965}
     - targetCorrespondingSourceObject: {fileID: 1886280768646428267, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1323290134}
@@ -5928,6 +5965,7 @@ GameObject:
   - component: {fileID: 8146473125504268015}
   - component: {fileID: 761551983245157789}
   - component: {fileID: 8146473125504268016}
+  - component: {fileID: 8146473125504268017}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -6150,6 +6188,7 @@ GameObject:
   - component: {fileID: 1276292709342705557}
   - component: {fileID: 1865002609988819884}
   - component: {fileID: 1865002609988819885}
+  - component: {fileID: 1865002609988819886}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -6875,6 +6914,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2809409910863415147}
+  - component: {fileID: 2809409910863415148}
   m_Layer: 0
   m_Name: uspih (4)
   m_TagString: Untagged
@@ -8698,6 +8738,7 @@ GameObject:
   - component: {fileID: 2755715969056806071}
   - component: {fileID: 2119560611986736571}
   - component: {fileID: 2755715969056806072}
+  - component: {fileID: 2755715969056806073}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -9131,6 +9172,7 @@ GameObject:
   - component: {fileID: 3582483601836931862}
   - component: {fileID: 3049898655654902211}
   - component: {fileID: 3582483601836931863}
+  - component: {fileID: 3582483601836931864}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -9982,6 +10024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1466576241615672720}
+  - component: {fileID: 1466576241615672721}
   m_Layer: 5
   m_Name: tonggle (3)
   m_TagString: Untagged
@@ -10457,6 +10500,7 @@ GameObject:
   - component: {fileID: 266376449793175223}
   - component: {fileID: 9005048814120264081}
   - component: {fileID: 9005048814120264082}
+  - component: {fileID: 9005048814120264083}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -12014,6 +12058,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4759413773892890577}
+  - component: {fileID: 4759413773892890578}
   m_Layer: 5
   m_Name: tonggle (5)
   m_TagString: Untagged
@@ -12048,6 +12093,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6841670291769311903}
+  - component: {fileID: 6841670291769311904}
   m_Layer: 5
   m_Name: tonggle (4)
   m_TagString: Untagged
@@ -13546,6 +13592,7 @@ GameObject:
   - component: {fileID: 977216919621167234}
   - component: {fileID: 3438811526947620087}
   - component: {fileID: 3438811526947620088}
+  - component: {fileID: 3438811526947620089}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -15154,6 +15201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9077801600646001007}
+  - component: {fileID: 9077801600646001008}
   m_Layer: 5
   m_Name: tonggle (1)
   m_TagString: Untagged
@@ -15596,6 +15644,7 @@ GameObject:
   - component: {fileID: 2017638735886588919}
   - component: {fileID: 225480283809082027}
   - component: {fileID: 2017638735886588920}
+  - component: {fileID: 2017638735886588921}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -15868,6 +15917,7 @@ GameObject:
   - component: {fileID: 4352783039552854542}
   - component: {fileID: 7032301452989503018}
   - component: {fileID: 7032301452989503019}
+  - component: {fileID: 7032301452989503020}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -16073,6 +16123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5672684035858830680}
+  - component: {fileID: 5672684035858830681}
   m_Layer: 5
   m_Name: tonggle (7)
   m_TagString: Untagged
@@ -16554,6 +16605,7 @@ GameObject:
   - component: {fileID: 4655255082637654418}
   - component: {fileID: 3658371019364071150}
   - component: {fileID: 4655255082637654419}
+  - component: {fileID: 4655255082637654420}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -17557,6 +17609,7 @@ GameObject:
   - component: {fileID: 2184083415226445795}
   - component: {fileID: 2680983502270435333}
   - component: {fileID: 2680983502270435334}
+  - component: {fileID: 2680983502270435335}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -21714,6 +21767,7 @@ GameObject:
   - component: {fileID: 7363732502897877518}
   - component: {fileID: 2981372756156583251}
   - component: {fileID: 7363732502897877519}
+  - component: {fileID: 7363732502897877520}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -22013,6 +22067,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5709806820409998831}
+  - component: {fileID: 5709806820409998832}
   m_Layer: 5
   m_Name: tonggle (1)
   m_TagString: Untagged
@@ -22447,6 +22502,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0.23900001, y: -0.5240001}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1466576241615672721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442559596219852884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 7823815053757218864}
+  - {fileID: 999815462932406439}
+  - {fileID: 6526938289496649265}
+  - {fileID: 4210102242745120216}
+  - {fileID: 3150484838838247987}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!224 &1467193324185119641
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23019,6 +23094,7 @@ GameObject:
   - component: {fileID: 3407981339526918798}
   - component: {fileID: 394105661381993892}
   - component: {fileID: 3407981339526918799}
+  - component: {fileID: 3407981339526918800}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -23363,6 +23439,7 @@ GameObject:
   - component: {fileID: 3839654685790170416}
   - component: {fileID: 2527676317267125639}
   - component: {fileID: 3839654685790170417}
+  - component: {fileID: 3839654685790170418}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -25162,6 +25239,7 @@ GameObject:
   - component: {fileID: 1547061387907361662}
   - component: {fileID: 3064072331952393998}
   - component: {fileID: 3064072331952393999}
+  - component: {fileID: 3064072331952394000}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -25413,6 +25491,7 @@ GameObject:
   - component: {fileID: 5441848608776630973}
   - component: {fileID: 892920313273633768}
   - component: {fileID: 5441848608776630974}
+  - component: {fileID: 5441848608776630975}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -25994,6 +26073,7 @@ GameObject:
   - component: {fileID: 4893779902029090671}
   - component: {fileID: 8719202448051944599}
   - component: {fileID: 8719202448051944600}
+  - component: {fileID: 8719202448051944601}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -26372,6 +26452,7 @@ GameObject:
   - component: {fileID: 7617784661632741062}
   - component: {fileID: 1021529309375390914}
   - component: {fileID: 7617784661632741063}
+  - component: {fileID: 7617784661632741064}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -26635,6 +26716,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 78
   legacyKey: Toggle_0001_spels/0011_spelChek/0008_uspih (5)/0004_Toggle (3)
+--- !u!114 &1865002609988819886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140964433281968402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!222 &1866550348577179335
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27174,6 +27268,7 @@ GameObject:
   - component: {fileID: 3171208890683255128}
   - component: {fileID: 8207003038414303934}
   - component: {fileID: 8207003038414303935}
+  - component: {fileID: 8207003038414303936}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -28155,6 +28250,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8266359510947995038}
+  - component: {fileID: 8266359510947995039}
   m_Layer: 0
   m_Name: uspih
   m_TagString: Untagged
@@ -29017,6 +29113,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 91
   legacyKey: Toggle_0001_spels/0011_spelChek/0010_uspih (7)/0002_Toggle (2)
+--- !u!114 &2017638735886588921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875710280085907541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!224 &2017993150856132558
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30280,6 +30389,7 @@ GameObject:
   - component: {fileID: 8961174357664120710}
   - component: {fileID: 1230779794159714362}
   - component: {fileID: 8961174357664120711}
+  - component: {fileID: 8961174357664120712}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -34325,6 +34435,7 @@ GameObject:
   - component: {fileID: 7531150101131860278}
   - component: {fileID: 3018229286999236813}
   - component: {fileID: 7531150101131860279}
+  - component: {fileID: 7531150101131860280}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -35697,6 +35808,7 @@ GameObject:
   - component: {fileID: 4387379340815686199}
   - component: {fileID: 756364696500037165}
   - component: {fileID: 4387379340815686200}
+  - component: {fileID: 4387379340815686201}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -37005,6 +37117,7 @@ GameObject:
   - component: {fileID: 8786903886321151542}
   - component: {fileID: 7674552998172274717}
   - component: {fileID: 8786903886321151543}
+  - component: {fileID: 8786903886321151544}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -37100,6 +37213,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 87
   legacyKey: Toggle_0001_spels/0011_spelChek/0009_uspih (6)/0005_Toggle (4)
+--- !u!114 &2680983502270435335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029365586518544853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!1 &2685482990953099042
 GameObject:
   m_ObjectHideFlags: 0
@@ -37943,6 +38069,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 0
   legacyKey: Toggle_0001_spels/0000_zamitki (4)/0001_Toggle
+--- !u!114 &2755715969056806073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346008034492097068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &2757021473996842775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38040,6 +38179,7 @@ GameObject:
   - component: {fileID: 380715186895823685}
   - component: {fileID: 4191899832858419222}
   - component: {fileID: 4191899832858419223}
+  - component: {fileID: 4191899832858419224}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -38764,6 +38904,29 @@ Transform:
   - {fileID: 4893779902029090671}
   m_Father: {fileID: 663095478364938661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2809409910863415148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191039728995512486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 7881965486339473304}
+  - {fileID: 4920865758109233772}
+  - {fileID: 4207122597779602919}
+  - {fileID: 9005048814120264081}
+  - {fileID: 1773096111715775001}
+  - {fileID: 3577153905444454217}
+  - {fileID: 3300772254401552903}
+  - {fileID: 8719202448051944599}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!114 &2811119546824072752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38999,6 +39162,7 @@ GameObject:
   - component: {fileID: 8647358930119548288}
   - component: {fileID: 2882313708447568991}
   - component: {fileID: 8647358930119548289}
+  - component: {fileID: 8647358930119548290}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -39194,6 +39358,7 @@ GameObject:
   - component: {fileID: 2335832474800804913}
   - component: {fileID: 9161047271412600054}
   - component: {fileID: 9161047271412600055}
+  - component: {fileID: 9161047271412600056}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -39413,6 +39578,7 @@ GameObject:
   - component: {fileID: 5806876854353891523}
   - component: {fileID: 3391929609181002794}
   - component: {fileID: 5806876854353891524}
+  - component: {fileID: 5806876854353891525}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -39812,6 +39978,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2882047296031069560}
+  - component: {fileID: 2889926005247301430}
   m_Layer: 5
   m_Name: tonggle (2)
   m_TagString: Untagged
@@ -39819,6 +39986,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2889926005247301430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2889926005247301429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 4590830509302634478}
+  - {fileID: 2924581643915593295}
+  - {fileID: 8924450064893329464}
+  - {fileID: 6775500166904731718}
+  - {fileID: 649116964554328150}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!114 &2890950738350256751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40355,6 +40542,7 @@ GameObject:
   - component: {fileID: 7926197036376554127}
   - component: {fileID: 3890883931137605294}
   - component: {fileID: 7926197036376554128}
+  - component: {fileID: 7926197036376554129}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -40866,7 +41054,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.9604285, y: 30.662296, z: -52078.082}
-  m_LocalScale: {x: 246.68849, y: 246.68846, z: 246.6885}
+  m_LocalScale: {x: 175.42290, y: 175.42290, z: 246.6885}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1450717281018890359}
@@ -41022,6 +41210,7 @@ GameObject:
   - component: {fileID: 8666249890001645251}
   - component: {fileID: 3090573159752965903}
   - component: {fileID: 8666249890001645252}
+  - component: {fileID: 8666249890001645253}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -42303,6 +42492,7 @@ GameObject:
   - component: {fileID: 7062920339205463119}
   - component: {fileID: 2342039717190863693}
   - component: {fileID: 7062920339205463120}
+  - component: {fileID: 7062920339205463121}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -42383,6 +42573,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 36
   legacyKey: Toggle_0001_spels/0011_spelChek/0003_uspih/0002_Toggle (1)
+--- !u!114 &3064072331952394000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731453177005559512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!222 &3071632012021662847
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -46275,6 +46478,7 @@ GameObject:
   - component: {fileID: 2945853875370823383}
   - component: {fileID: 7352728372844197232}
   - component: {fileID: 7352728372844197233}
+  - component: {fileID: 7352728372844197234}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -46481,6 +46685,7 @@ GameObject:
   - component: {fileID: 991097119503581286}
   - component: {fileID: 7976274392203400759}
   - component: {fileID: 7976274392203400760}
+  - component: {fileID: 7976274392203400761}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -46934,6 +47139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6898810041186830380}
+  - component: {fileID: 6898810041186830381}
   m_Layer: 5
   m_Name: tonggle (6)
   m_TagString: Untagged
@@ -47417,6 +47623,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 54
   legacyKey: Toggle_0001_spels/0011_spelChek/0005_uspih (2)/0004_Toggle (3)
+--- !u!114 &3407981339526918800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521958390497534277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!1 &3411181701462570113
 GameObject:
   m_ObjectHideFlags: 0
@@ -47428,6 +47647,7 @@ GameObject:
   - component: {fileID: 3785001590543580424}
   - component: {fileID: 2989118274029133612}
   - component: {fileID: 3785001590543580425}
+  - component: {fileID: 3785001590543580426}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -47742,6 +47962,7 @@ GameObject:
   - component: {fileID: 2430587262896354271}
   - component: {fileID: 6765395909553442897}
   - component: {fileID: 6765395909553442898}
+  - component: {fileID: 6765395909553442899}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -47892,6 +48113,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 25
   legacyKey: Toggle_0001_spels/0005_dopPanelSpeliv (1)/0001_Toggle
+--- !u!114 &3438811526947620089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720394913391447863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!224 &3439660477006279755
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49001,6 +49235,7 @@ GameObject:
   - component: {fileID: 3274949430355845553}
   - component: {fileID: 3184626243192487383}
   - component: {fileID: 3516697876625731646}
+  - component: {fileID: 3516697876625731647}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -49025,6 +49260,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 88
   legacyKey: Toggle_0001_spels/0011_spelChek/0009_uspih (6)/0006_Toggle (5)
+--- !u!114 &3516697876625731647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3516697876625731645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!114 &3517386372362995253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49555,6 +49803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3264707744871477611}
+  - component: {fileID: 3548392017802124048}
   m_Layer: 0
   m_Name: uspih (1)
   m_TagString: Untagged
@@ -49562,6 +49811,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3548392017802124048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548392017802124047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 3122420723973055013}
+  - {fileID: 5690884853840916567}
+  - {fileID: 4986465893959886593}
+  - {fileID: 3019834304293718835}
+  - {fileID: 1245872945537768929}
+  - {fileID: 2147218920788848453}
+  - {fileID: 4846952499695499558}
+  - {fileID: 6847742177466354414}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!114 &3553004851112481910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49939,6 +50211,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 56
   legacyKey: Toggle_0001_spels/0011_spelChek/0005_uspih (2)/0006_Toggle (5)
+--- !u!114 &3582483601836931864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373416200260291205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!224 &3582577790057912405
 RectTransform:
   m_ObjectHideFlags: 0
@@ -50207,6 +50492,7 @@ GameObject:
   - component: {fileID: 7630873804506671135}
   - component: {fileID: 4526832271823410297}
   - component: {fileID: 7630873804506671136}
+  - component: {fileID: 7630873804506671137}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -50292,6 +50578,7 @@ GameObject:
   - component: {fileID: 3806939925504182190}
   - component: {fileID: 1773096111715775001}
   - component: {fileID: 3806939925504182191}
+  - component: {fileID: 3806939925504182192}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -51982,6 +52269,7 @@ GameObject:
   - component: {fileID: 2934947414919762864}
   - component: {fileID: 3577153905444454217}
   - component: {fileID: 3742820324244239021}
+  - component: {fileID: 3742820324244239022}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -52006,6 +52294,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 72
   legacyKey: Toggle_0001_spels/0011_spelChek/0007_uspih (4)/0007_Toggle (5)
+--- !u!114 &3742820324244239022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742820324244239020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!1 &3744815795558425159
 GameObject:
   m_ObjectHideFlags: 0
@@ -52534,6 +52835,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 95
   legacyKey: Toggle_0001_spels/0011_spelChek/0010_uspih (7)/0006_Toggle (4)
+--- !u!114 &3785001590543580426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3411181701462570113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!1 &3785921970425612443
 GameObject:
   m_ObjectHideFlags: 0
@@ -52844,6 +53158,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 71
   legacyKey: Toggle_0001_spels/0011_spelChek/0007_uspih (4)/0006_Toggle (4)
+--- !u!114 &3806939925504182192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604072953408840616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!222 &3808539970265327677
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -53279,6 +53606,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 92
   legacyKey: Toggle_0001_spels/0011_spelChek/0010_uspih (7)/0003_Toggle (1)
+--- !u!114 &3839654685790170418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553171092563441193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!224 &3840980217374411824
 RectTransform:
   m_ObjectHideFlags: 0
@@ -55692,6 +56032,7 @@ GameObject:
   - component: {fileID: 4222248568889781653}
   - component: {fileID: 2823512171739446532}
   - component: {fileID: 4222248568889781654}
+  - component: {fileID: 4222248568889781655}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -57596,6 +57937,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 37
   legacyKey: Toggle_0001_spels/0011_spelChek/0003_uspih/0003_Toggle (3)
+--- !u!114 &4191899832858419224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761847901886862827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!114 &4194367825471607034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57905,6 +58259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3155256987836908754}
+  - component: {fileID: 4214291014764447105}
   m_Layer: 0
   m_Name: uspih (3)
   m_TagString: Untagged
@@ -57912,6 +58267,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4214291014764447105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214291014764447104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 7447700995324764112}
+  - {fileID: 6391665497038386332}
+  - {fileID: 3590192678536286476}
+  - {fileID: 1922730328740840977}
+  - {fileID: 2823512171739446532}
+  - {fileID: 925466057568808560}
+  - {fileID: 7709863899270056472}
+  - {fileID: 892920313273633768}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!1 &4214748862512022952
 GameObject:
   m_ObjectHideFlags: 0
@@ -58081,6 +58459,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 63
   legacyKey: Toggle_0001_spels/0011_spelChek/0006_uspih (3)/0006_Toggle (4)
+--- !u!114 &4222248568889781655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4015869827888276668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!222 &4225195785032622663
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -58436,6 +58827,7 @@ GameObject:
   - component: {fileID: 7468512928717346808}
   - component: {fileID: 6391665497038386332}
   - component: {fileID: 7468512928717346809}
+  - component: {fileID: 7468512928717346810}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -58839,6 +59231,7 @@ MonoBehaviour:
   - {fileID: 1312182899364390237}
   - {fileID: 8745753670922608287}
   - {fileID: 7451561119151107024}
+  buttons: []
   toggles:
   - {fileID: 7032301452989503018}
   - {fileID: 3438811526947620087}
@@ -59746,6 +60139,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 90
   legacyKey: Toggle_0001_spels/0011_spelChek/0009_uspih (6)/0008_Toggle (7)
+--- !u!114 &4387379340815686201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2566701576147757545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!224 &4387747329032985226
 RectTransform:
   m_ObjectHideFlags: 0
@@ -60902,6 +61308,7 @@ GameObject:
   - component: {fileID: 378530544381528728}
   - component: {fileID: 7881965486339473304}
   - component: {fileID: 7881965486339473305}
+  - component: {fileID: 7881965486339473306}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -62478,12 +62885,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: be84d319e4eb2b948ae2d05aeec60c7a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d762e0d45faaac14c870b4e209369454, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 24.380953, y: 13.714286}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -62935,6 +63342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3309490654693102541}
+  - component: {fileID: 4616683397606888354}
   m_Layer: 5
   m_Name: tonggle
   m_TagString: Untagged
@@ -62942,6 +63350,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4616683397606888354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616683397606888353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 353902881874662482}
+  - {fileID: 6926774571466041596}
+  - {fileID: 873797361016141244}
+  - {fileID: 1293664441105679163}
+  - {fileID: 3709263411488187614}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!1 &4617124094384103490
 GameObject:
   m_ObjectHideFlags: 0
@@ -63415,6 +63843,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 102
   legacyKey: Toggle_0001_spels/0011_spelChek/0011_uspih (8)/0005_Toggle (3)
+--- !u!114 &4655255082637654420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952644642922574590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!114 &4656973340355806145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64400,6 +64841,7 @@ GameObject:
   - component: {fileID: 8300617052271537163}
   - component: {fileID: 2917849694977327663}
   - component: {fileID: 8300617052271537164}
+  - component: {fileID: 8300617052271537165}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -64572,6 +65014,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0.2529998, y: -0.884}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4759413773892890578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612617420472642469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 6565101644195957603}
+  - {fileID: 20870198781365643}
+  - {fileID: 5380316761611651102}
+  - {fileID: 9115748432721225725}
+  - {fileID: 5916806671078446708}
+  - {fileID: 8200688659292384340}
+  - {fileID: 6506789823481554607}
+  - {fileID: 2275332075124775850}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!1 &4760907343528699577
 GameObject:
   m_ObjectHideFlags: 0
@@ -65120,6 +65585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5748485799201288222}
+  - component: {fileID: 5748485799201288223}
   m_Layer: 0
   m_Name: uspih (7)
   m_TagString: Untagged
@@ -65624,6 +66090,7 @@ GameObject:
   - component: {fileID: 3548042947248700406}
   - component: {fileID: 7211874703946445703}
   - component: {fileID: 7211874703946445704}
+  - component: {fileID: 7211874703946445705}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -66200,6 +66667,7 @@ GameObject:
   - component: {fileID: 672971250236342399}
   - component: {fileID: 8935529908533910572}
   - component: {fileID: 8935529908533910573}
+  - component: {fileID: 8935529908533910574}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -72121,6 +72589,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5408714617535183928}
+  - component: {fileID: 5408714617535183929}
   m_Layer: 0
   m_Name: uspih (2)
   m_TagString: Untagged
@@ -72169,6 +72638,7 @@ GameObject:
   - component: {fileID: 5374407394055806600}
   - component: {fileID: 8042423133922671315}
   - component: {fileID: 8042423133922671316}
+  - component: {fileID: 8042423133922671317}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -72428,6 +72898,29 @@ Transform:
   - {fileID: 8527414365300729094}
   m_Father: {fileID: 663095478364938661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5408714617535183929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5389910011216245455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 8559823923685434757}
+  - {fileID: 7674552998172274717}
+  - {fileID: 7352728372844197232}
+  - {fileID: 394105661381993892}
+  - {fileID: 7911943813116507858}
+  - {fileID: 3049898655654902211}
+  - {fileID: 2412319451194863244}
+  - {fileID: 2214503710752480206}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!114 &5409449647036345181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72819,6 +73312,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 66
   legacyKey: Toggle_0001_spels/0011_spelChek/0006_uspih (3)/0009_Toggle (7)
+--- !u!114 &5441848608776630975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748125189934626030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!212 &5442438115682479371
 SpriteRenderer:
   serializedVersion: 2
@@ -75207,6 +75713,7 @@ GameObject:
   - component: {fileID: 8601091745058917596}
   - component: {fileID: 4123252915428202495}
   - component: {fileID: 8601091745058917597}
+  - component: {fileID: 8601091745058917598}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -75441,6 +75948,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8383832866153637799}
+  - component: {fileID: 8383832866153637800}
   m_Layer: 5
   m_Name: tonggle (5)
   m_TagString: Untagged
@@ -75585,6 +76093,7 @@ GameObject:
   - component: {fileID: 1132150894128786817}
   - component: {fileID: 7447700995324764112}
   - component: {fileID: 7447700995324764113}
+  - component: {fileID: 7447700995324764114}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -75881,6 +76390,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0.23899989, y: -1.298}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5672684035858830681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909956611590171609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 3169839277491282435}
+  - {fileID: 6951297920117462321}
+  - {fileID: 5765755748969721072}
+  - {fileID: 2632327034829964332}
+  - {fileID: 5705190518604307322}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!222 &5673272929138508341
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -76197,6 +76726,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0.23900001, y: -0.1510001}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5709806820409998832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435033855485862078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 8546350509640037947}
+  - {fileID: 5372349415304121770}
+  - {fileID: 218086669442204382}
+  - {fileID: 490368012179089234}
+  - {fileID: 6758225500099381352}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!224 &5709817798217268492
 RectTransform:
   m_ObjectHideFlags: 0
@@ -76293,6 +76842,7 @@ GameObject:
   - component: {fileID: 136418893473672266}
   - component: {fileID: 3300772254401552903}
   - component: {fileID: 5711547890649482735}
+  - component: {fileID: 5711547890649482736}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -76317,6 +76867,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 73
   legacyKey: Toggle_0001_spels/0011_spelChek/0007_uspih (4)/0008_Toggle (6)
+--- !u!114 &5711547890649482736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5711547890649482734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 6
 --- !u!114 &5713511482597088147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76945,6 +77508,29 @@ Transform:
   - {fileID: 3691664112520697658}
   m_Father: {fileID: 663095478364938661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5748485799201288223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801194354375754733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 225480283809082027}
+  - {fileID: 2527676317267125639}
+  - {fileID: 6683696049958049229}
+  - {fileID: 382769848310045465}
+  - {fileID: 2989118274029133612}
+  - {fileID: 2917849694977327663}
+  - {fileID: 4958991035862602819}
+  - {fileID: 3348712413696054374}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!114 &5749638466744236744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77584,6 +78170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6018315792713486563}
+  - component: {fileID: 6018315792713486564}
   m_Layer: 5
   m_Name: tonggle (3)
   m_TagString: Untagged
@@ -77780,6 +78367,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 41
   legacyKey: Toggle_0001_spels/0011_spelChek/0003_uspih/0007_Toggle (2)
+--- !u!114 &5806876854353891525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2870251166943286005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!114 &5812085412934606587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78434,6 +79034,7 @@ GameObject:
   - component: {fileID: 28120607490707536}
   - component: {fileID: 4920865758109233772}
   - component: {fileID: 5859696205794912003}
+  - component: {fileID: 5859696205794912004}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -78458,6 +79059,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 68
   legacyKey: Toggle_0001_spels/0011_spelChek/0007_uspih (4)/0003_Toggle (1)
+--- !u!114 &5859696205794912004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859696205794912002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!114 &5861863667320960873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78561,6 +79175,7 @@ GameObject:
   - component: {fileID: 3992776480491542539}
   - component: {fileID: 2813197731991372723}
   - component: {fileID: 5869412588360602957}
+  - component: {fileID: 5869412588360602958}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -78585,6 +79200,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 105
   legacyKey: Toggle_0001_spels/0011_spelChek/0011_uspih (8)/0008_Toggle (6)
+--- !u!114 &5869412588360602958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5869412588360602956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 6
 --- !u!114 &5869625360141391051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81200,6 +81828,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0.2529998, y: -0.502}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6018315792713486564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5791059240244302835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 1080294895270418891}
+  - {fileID: 8460037337401568367}
+  - {fileID: 8726712829969696280}
+  - {fileID: 2566511210258543975}
+  - {fileID: 2779633167325117455}
+  - {fileID: 732985930488977954}
+  - {fileID: 7548057133480196125}
+  - {fileID: 8318432884653941739}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!224 &6023010572537995028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -83214,6 +83865,7 @@ GameObject:
   - component: {fileID: 2467753667367714495}
   - component: {fileID: 5690884853840916567}
   - component: {fileID: 6200588394688637497}
+  - component: {fileID: 6200588394688637498}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -83238,6 +83890,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 44
   legacyKey: Toggle_0001_spels/0011_spelChek/0004_uspih (1)/0003_Toggle (1)
+--- !u!114 &6200588394688637498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6200588394688637496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!114 &6204588915384888222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84182,6 +84847,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2065214726752103637}
+  - component: {fileID: 6269522653268137254}
   m_Layer: 0
   m_Name: uspih (6)
   m_TagString: Untagged
@@ -84189,6 +84855,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6269522653268137254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6269522653268137253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 3018229286999236813}
+  - {fileID: 4526832271823410297}
+  - {fileID: 3184122447010178445}
+  - {fileID: 8042423133922671315}
+  - {fileID: 2680983502270435333}
+  - {fileID: 3184626243192487383}
+  - {fileID: 8935529908533910572}
+  - {fileID: 756364696500037165}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!224 &6270638623894334152
 RectTransform:
   m_ObjectHideFlags: 0
@@ -85027,6 +85716,7 @@ GameObject:
   - component: {fileID: 3691664112520697658}
   - component: {fileID: 3348712413696054374}
   - component: {fileID: 6275725237313353321}
+  - component: {fileID: 6275725237313353322}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -85051,6 +85741,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 98
   legacyKey: Toggle_0001_spels/0011_spelChek/0010_uspih (7)/0009_Toggle (7)
+--- !u!114 &6275725237313353322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6275725237313353320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!1 &6276181924408776357
 GameObject:
   m_ObjectHideFlags: 0
@@ -85100,6 +85803,7 @@ GameObject:
   - component: {fileID: 3989856316037418858}
   - component: {fileID: 7709863899270056472}
   - component: {fileID: 7709863899270056473}
+  - component: {fileID: 7709863899270056474}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -90255,6 +90959,7 @@ GameObject:
   - component: {fileID: 1428042020461626921}
   - component: {fileID: 3019834304293718835}
   - component: {fileID: 6656449740899921506}
+  - component: {fileID: 6656449740899921507}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -90279,6 +90984,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 46
   legacyKey: Toggle_0001_spels/0011_spelChek/0004_uspih (1)/0005_Toggle (3)
+--- !u!114 &6656449740899921507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6656449740899921505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!1 &6656876752055972359
 GameObject:
   m_ObjectHideFlags: 0
@@ -90549,6 +91267,7 @@ GameObject:
   - component: {fileID: 5969869475865054808}
   - component: {fileID: 382769848310045465}
   - component: {fileID: 6669779784413272037}
+  - component: {fileID: 6669779784413272038}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -90573,6 +91292,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 94
   legacyKey: Toggle_0001_spels/0011_spelChek/0010_uspih (7)/0005_Toggle (3)
+--- !u!114 &6669779784413272038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6669779784413272036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!224 &6670564002046939052
 RectTransform:
   m_ObjectHideFlags: 0
@@ -91895,6 +92627,7 @@ GameObject:
   - component: {fileID: 5606291115606321793}
   - component: {fileID: 925466057568808560}
   - component: {fileID: 6738361032112721035}
+  - component: {fileID: 6738361032112721036}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -91919,6 +92652,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 64
   legacyKey: Toggle_0001_spels/0011_spelChek/0006_uspih (3)/0007_Toggle (5)
+--- !u!114 &6738361032112721036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6738361032112721034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!1 &6738602138111252405
 GameObject:
   m_ObjectHideFlags: 0
@@ -91928,6 +92674,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 689893693944680650}
+  - component: {fileID: 6738602138111252406}
   m_Layer: 0
   m_Name: uspih (8)
   m_TagString: Untagged
@@ -91935,6 +92682,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6738602138111252406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6738602138111252405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 9161047271412600054}
+  - {fileID: 2518291960352631570}
+  - {fileID: 8626367423540714830}
+  - {fileID: 3658371019364071150}
+  - {fileID: 3995410106241542703}
+  - {fileID: 1021529309375390914}
+  - {fileID: 2813197731991372723}
+  - {fileID: 8728133024624685931}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!224 &6741087960673521672
 RectTransform:
   m_ObjectHideFlags: 0
@@ -92462,6 +93232,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 39
   legacyKey: Toggle_0001_spels/0011_spelChek/0003_uspih/0005_Toggle (5)
+--- !u!114 &6765395909553442899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428839277298704861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!224 &6766489797175900929
 RectTransform:
   m_ObjectHideFlags: 0
@@ -93753,6 +94536,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0.23900001, y: -0.72500014}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6841670291769311904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618613337399884561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 1597837661013488114}
+  - {fileID: 3356222529702548537}
+  - {fileID: 6944540438054177344}
+  - {fileID: 6318348331831051612}
+  - {fileID: 435394380726533364}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!114 &6843047968353320098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94479,6 +95282,7 @@ GameObject:
   - component: {fileID: 7087441691511665574}
   - component: {fileID: 4561231880863133542}
   - component: {fileID: 7087441691511665575}
+  - component: {fileID: 7087441691511665576}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -94550,6 +95354,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0.2529997, y: -1.066}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6898810041186830381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3366317825270948372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 2011979772511171672}
+  - {fileID: 3316482301801319374}
+  - {fileID: 4396966569662024062}
+  - {fileID: 6864264709496038140}
+  - {fileID: 5812085412934606587}
+  - {fileID: 2562788203494236922}
+  - {fileID: 466844050031116343}
+  - {fileID: 8203727264139148968}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!222 &6900485148349819312
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -94778,6 +95605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9098561325578875250}
+  - component: {fileID: 9098561325578875251}
   m_Layer: 5
   m_Name: tonggle (7)
   m_TagString: Untagged
@@ -94934,6 +95762,7 @@ GameObject:
   - component: {fileID: 7802329369305378954}
   - component: {fileID: 8559823923685434757}
   - component: {fileID: 8559823923685434758}
+  - component: {fileID: 8559823923685434759}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -95504,6 +96333,7 @@ GameObject:
   - component: {fileID: 4065074621453223892}
   - component: {fileID: 3184122447010178445}
   - component: {fileID: 6952955912498419753}
+  - component: {fileID: 6952955912498419754}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -95528,6 +96358,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 85
   legacyKey: Toggle_0001_spels/0011_spelChek/0009_uspih (6)/0003_Toggle
+--- !u!114 &6952955912498419754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952955912498419752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!222 &6956158375093599130
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -96315,6 +97158,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 14
   legacyKey: Toggle_0001_spels/0004_dopPanelSpeliv/0001_Toggle
+--- !u!114 &7032301452989503020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888172021750273827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!1 &7033487367783796049
 GameObject:
   m_ObjectHideFlags: 0
@@ -96687,6 +97543,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 79
   legacyKey: Toggle_0001_spels/0011_spelChek/0008_uspih (5)/0005_Toggle (4)
+--- !u!114 &7062920339205463121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3054088230414318722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!1 &7064042947351697605
 GameObject:
   m_ObjectHideFlags: 0
@@ -96932,6 +97801,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 81
   legacyKey: Toggle_0001_spels/0011_spelChek/0008_uspih (5)/0007_Toggle (6)
+--- !u!114 &7087441691511665576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6892613575191048192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 6
 --- !u!222 &7088819731381854932
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -97132,6 +98014,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8115333947513747682}
+  - component: {fileID: 8115333947513747683}
   m_Layer: 0
   m_Name: uspih (5)
   m_TagString: Untagged
@@ -97176,6 +98059,7 @@ GameObject:
   - component: {fileID: 2385388774721014076}
   - component: {fileID: 2147218920788848453}
   - component: {fileID: 7129503769934552701}
+  - component: {fileID: 7129503769934552702}
   m_Layer: 5
   m_Name: Toggle (5)
   m_TagString: Untagged
@@ -97200,6 +98084,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 48
   legacyKey: Toggle_0001_spels/0011_spelChek/0004_uspih (1)/0007_Toggle (5)
+--- !u!114 &7129503769934552702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129503769934552700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!224 &7140018290598489774
 RectTransform:
   m_ObjectHideFlags: 0
@@ -98442,6 +99339,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 77
   legacyKey: Toggle_0001_spels/0011_spelChek/0008_uspih (5)/0003_Toggle
+--- !u!114 &7211874703946445705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4850609524778188403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!1 &7212489184865685910
 GameObject:
   m_ObjectHideFlags: 0
@@ -99582,6 +100492,7 @@ GameObject:
   - component: {fileID: 775314047599281126}
   - component: {fileID: 2412319451194863244}
   - component: {fileID: 7302834902179195366}
+  - component: {fileID: 7302834902179195367}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -99606,6 +100517,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 57
   legacyKey: Toggle_0001_spels/0011_spelChek/0005_uspih (2)/0007_Toggle (6)
+--- !u!114 &7302834902179195367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302834902179195365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 6
 --- !u!222 &7303334360732431817
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -100414,6 +101338,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 53
   legacyKey: Toggle_0001_spels/0011_spelChek/0005_uspih (2)/0003_Toggle
+--- !u!114 &7352728372844197234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3320210274094878986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &7356266812204435447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100540,6 +101477,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 42
   legacyKey: Toggle_0001_spels/0011_spelChek/0003_uspih/0008_Toggle (7)
+--- !u!114 &7363732502897877520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403903829800207030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!114 &7364811313596911313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101798,6 +102748,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 59
   legacyKey: Toggle_0001_spels/0011_spelChek/0006_uspih (3)/0002_Toggle (2)
+--- !u!114 &7447700995324764114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5660542829038045463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!114 &7449528284215893821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102017,6 +102980,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 60
   legacyKey: Toggle_0001_spels/0011_spelChek/0006_uspih (3)/0003_Toggle (1)
+--- !u!114 &7468512928717346810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4265195626651995670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!224 &7470407289589774428
 RectTransform:
   m_ObjectHideFlags: 0
@@ -102883,6 +103859,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 83
   legacyKey: Toggle_0001_spels/0011_spelChek/0009_uspih (6)/0001_Toggle (2)
+--- !u!114 &7531150101131860280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447392658694544443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!222 &7532633608232856236
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -104299,6 +105288,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 104
   legacyKey: Toggle_0001_spels/0011_spelChek/0011_uspih (8)/0007_Toggle (5)
+--- !u!114 &7617784661632741064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844961879276034035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!114 &7618353110845145847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104601,6 +105603,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 84
   legacyKey: Toggle_0001_spels/0011_spelChek/0009_uspih (6)/0002_Toggle (1)
+--- !u!114 &7630873804506671137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595957199877300473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!1 &7632618877400655885
 GameObject:
   m_ObjectHideFlags: 0
@@ -105274,6 +106289,7 @@ GameObject:
   - component: {fileID: 1271685362723483200}
   - component: {fileID: 1922730328740840977}
   - component: {fileID: 7681194402320947888}
+  - component: {fileID: 7681194402320947889}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -105298,6 +106314,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 62
   legacyKey: Toggle_0001_spels/0011_spelChek/0006_uspih (3)/0005_Toggle (3)
+--- !u!114 &7681194402320947889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681194402320947887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!224 &7683204852236823981
 RectTransform:
   m_ObjectHideFlags: 0
@@ -105752,6 +106781,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 65
   legacyKey: Toggle_0001_spels/0011_spelChek/0006_uspih (3)/0008_Toggle (6)
+--- !u!114 &7709863899270056474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6288309410475516494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 6
 --- !u!114 &7711109367175120181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105995,6 +107037,7 @@ GameObject:
   - component: {fileID: 2107838622182348635}
   - component: {fileID: 8728133024624685931}
   - component: {fileID: 8728133024624685932}
+  - component: {fileID: 8728133024624685933}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -107685,6 +108728,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 67
   legacyKey: Toggle_0001_spels/0011_spelChek/0007_uspih (4)/0002_Toggle (2)
+--- !u!114 &7881965486339473306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4482444243268347968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!224 &7882922468527632743
 RectTransform:
   m_ObjectHideFlags: 0
@@ -108101,6 +109157,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 2
   legacyKey: Toggle_0001_spels/0002_zamitki (6)/0001_Toggle
+--- !u!114 &7926197036376554129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2923672086374847706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!1 &7929131561187459342
 GameObject:
   m_ObjectHideFlags: 0
@@ -108888,6 +109957,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 38
   legacyKey: Toggle_0001_spels/0011_spelChek/0003_uspih/0004_Toggle (4)
+--- !u!114 &7976274392203400761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3339351120972398575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!114 &7981381012181995427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109687,6 +110769,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 86
   legacyKey: Toggle_0001_spels/0011_spelChek/0009_uspih (6)/0004_Toggle (3)
+--- !u!114 &8042423133922671317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5393417246178689454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!224 &8042711019306653808
 RectTransform:
   m_ObjectHideFlags: 0
@@ -109888,6 +110983,7 @@ GameObject:
   - component: {fileID: 1394688029148779768}
   - component: {fileID: 3122420723973055013}
   - component: {fileID: 8052386618117776903}
+  - component: {fileID: 8052386618117776904}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -109912,6 +111008,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 43
   legacyKey: Toggle_0001_spels/0011_spelChek/0004_uspih (1)/0002_Toggle (2)
+--- !u!114 &8052386618117776904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8052386618117776902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!222 &8054032632350726004
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -112283,6 +113392,29 @@ Transform:
   - {fileID: 5013177449208449576}
   m_Father: {fileID: 663095478364938661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8115333947513747683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112806928733651663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 6935235251305259385}
+  - {fileID: 8207003038414303934}
+  - {fileID: 7211874703946445703}
+  - {fileID: 1865002609988819884}
+  - {fileID: 2342039717190863693}
+  - {fileID: 4123252915428202495}
+  - {fileID: 4561231880863133542}
+  - {fileID: 2882313708447568991}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!222 &8116087899930710216
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -112603,6 +113735,7 @@ GameObject:
   - component: {fileID: 6581544941733861487}
   - component: {fileID: 3995410106241542703}
   - component: {fileID: 8133429953571924232}
+  - component: {fileID: 8133429953571924233}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -112627,6 +113760,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 103
   legacyKey: Toggle_0001_spels/0011_spelChek/0011_uspih (8)/0006_Toggle (4)
+--- !u!114 &8133429953571924233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8133429953571924231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!1 &8134673046338267952
 GameObject:
   m_ObjectHideFlags: 0
@@ -112965,6 +114111,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 40
   legacyKey: Toggle_0001_spels/0011_spelChek/0003_uspih/0006_Toggle (6)
+--- !u!114 &8146473125504268017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120669307914127339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 6
 --- !u!222 &8147599332028739772
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -113185,6 +114344,7 @@ GameObject:
   - component: {fileID: 3595824362392176709}
   - component: {fileID: 4958991035862602819}
   - component: {fileID: 8158598273370830919}
+  - component: {fileID: 8158598273370830920}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -113209,6 +114369,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 97
   legacyKey: Toggle_0001_spels/0011_spelChek/0010_uspih (7)/0008_Toggle (6)
+--- !u!114 &8158598273370830920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158598273370830918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 6
 --- !u!1 &8159957630647564069
 GameObject:
   m_ObjectHideFlags: 0
@@ -113849,6 +115022,7 @@ GameObject:
   - component: {fileID: 2547498891485597918}
   - component: {fileID: 2518291960352631570}
   - component: {fileID: 8204998471761336205}
+  - component: {fileID: 8204998471761336206}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -113873,6 +115047,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 100
   legacyKey: Toggle_0001_spels/0011_spelChek/0011_uspih (8)/0003_Toggle (1)
+--- !u!114 &8204998471761336206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204998471761336204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!114 &8206263502467588753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114109,6 +115296,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 76
   legacyKey: Toggle_0001_spels/0011_spelChek/0008_uspih (5)/0002_Toggle (1)
+--- !u!114 &8207003038414303936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904789275157167196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!114 &8207043192678339480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114742,6 +115942,7 @@ GameObject:
   - component: {fileID: 5963348478657064987}
   - component: {fileID: 6683696049958049229}
   - component: {fileID: 8251124220890709321}
+  - component: {fileID: 8251124220890709322}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -114766,6 +115967,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 93
   legacyKey: Toggle_0001_spels/0011_spelChek/0010_uspih (7)/0004_Toggle
+--- !u!114 &8251124220890709322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8251124220890709320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!224 &8255587691921438424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -114796,6 +116010,7 @@ GameObject:
   - component: {fileID: 5270784810838616559}
   - component: {fileID: 4207122597779602919}
   - component: {fileID: 8258702139299033972}
+  - component: {fileID: 8258702139299033973}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -114820,6 +116035,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 69
   legacyKey: Toggle_0001_spels/0011_spelChek/0007_uspih (4)/0004_Toggle
+--- !u!114 &8258702139299033973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8258702139299033971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &8258869178525365263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114949,6 +116177,29 @@ Transform:
   - {fileID: 6379824794650147386}
   m_Father: {fileID: 663095478364938661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8266359510947995039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984078518112944169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 3391929609181002794}
+  - {fileID: 3064072331952393998}
+  - {fileID: 4007609654433104861}
+  - {fileID: 4191899832858419222}
+  - {fileID: 7976274392203400759}
+  - {fileID: 6765395909553442897}
+  - {fileID: 761551983245157789}
+  - {fileID: 2981372756156583251}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!1 &8266730708829266325
 GameObject:
   m_ObjectHideFlags: 0
@@ -115119,6 +116370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2696835684114172597}
+  - component: {fileID: 8282294982249599079}
   m_Layer: 5
   m_Name: tonggle
   m_TagString: Untagged
@@ -115126,6 +116378,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8282294982249599079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8282294982249599078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 3079070449064075255}
+  - {fileID: 1678512704406191894}
+  - {fileID: 1366074272291845191}
+  - {fileID: 5586711823825833100}
+  - {fileID: 2265265327096296861}
+  - {fileID: 3764027873005921620}
+  - {fileID: 2433732390211839929}
+  - {fileID: 3152125204503877557}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!224 &8284171550909447955
 RectTransform:
   m_ObjectHideFlags: 0
@@ -115604,6 +116879,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 96
   legacyKey: Toggle_0001_spels/0011_spelChek/0010_uspih (7)/0007_Toggle (5)
+--- !u!114 &8300617052271537165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727347055325445630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!224 &8303171692579552465
 RectTransform:
   m_ObjectHideFlags: 0
@@ -116853,6 +118141,7 @@ GameObject:
   - component: {fileID: 3002357116602850664}
   - component: {fileID: 1245872945537768929}
   - component: {fileID: 8378586007312588389}
+  - component: {fileID: 8378586007312588390}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -116877,6 +118166,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 47
   legacyKey: Toggle_0001_spels/0011_spelChek/0004_uspih (1)/0006_Toggle (4)
+--- !u!114 &8378586007312588390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8378586007312588388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!114 &8379277370800965851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117027,6 +118329,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0.23900001, y: -0.9350001}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8383832866153637800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5650738094965502299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 4466293379535547638}
+  - {fileID: 6434343810471247794}
+  - {fileID: 5639609767469574338}
+  - {fileID: 6813815676569009495}
+  - {fileID: 6968408274015579823}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!224 &8384193255460744742
 RectTransform:
   m_ObjectHideFlags: 0
@@ -118410,6 +119732,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6140009409509141096}
+  - component: {fileID: 8486473043027936691}
   m_Layer: 5
   m_Name: tonggle (2)
   m_TagString: Untagged
@@ -118417,6 +119740,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8486473043027936691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486473043027936690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 7484855007525127487}
+  - {fileID: 2886979967663696941}
+  - {fileID: 3656116249564365381}
+  - {fileID: 6176806321523146326}
+  - {fileID: 4230769406531198325}
+  - {fileID: 2210161908894253779}
+  - {fileID: 667804541822602982}
+  - {fileID: 9084989119572049488}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!114 &8489141219589939349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118563,6 +119909,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 397946770520639792}
+  - component: {fileID: 8497294565264936137}
   m_Layer: 5
   m_Name: tonggle (6)
   m_TagString: Untagged
@@ -118570,6 +119917,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8497294565264936137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8497294565264936136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 4130631382718080717}
+  - {fileID: 4636627928801371386}
+  - {fileID: 5284877324536058303}
+  - {fileID: 7623040230743883365}
+  - {fileID: 3988277541949383654}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!212 &8498448972865408743
 SpriteRenderer:
   serializedVersion: 2
@@ -118997,6 +120364,7 @@ GameObject:
   - component: {fileID: 1986656137825724198}
   - component: {fileID: 4007609654433104861}
   - component: {fileID: 8527265018642307366}
+  - component: {fileID: 8527265018642307367}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -119021,6 +120389,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 35
   legacyKey: Toggle_0001_spels/0011_spelChek/0003_uspih/0001_Toggle
+--- !u!114 &8527265018642307367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8527265018642307365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!4 &8527414365300729094
 Transform:
   m_ObjectHideFlags: 0
@@ -119146,6 +120527,7 @@ GameObject:
   - component: {fileID: 6317605902448141154}
   - component: {fileID: 4846952499695499558}
   - component: {fileID: 8544047267110753143}
+  - component: {fileID: 8544047267110753144}
   m_Layer: 5
   m_Name: Toggle (6)
   m_TagString: Untagged
@@ -119170,6 +120552,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 49
   legacyKey: Toggle_0001_spels/0011_spelChek/0004_uspih (1)/0008_Toggle (6)
+--- !u!114 &8544047267110753144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544047267110753142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 6
 --- !u!114 &8546350509640037947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119362,6 +120757,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 51
   legacyKey: Toggle_0001_spels/0011_spelChek/0005_uspih (2)/0001_Toggle (2)
+--- !u!114 &8559823923685434759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6918920152659670341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!224 &8565726525095230248
 RectTransform:
   m_ObjectHideFlags: 0
@@ -120051,6 +121459,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 80
   legacyKey: Toggle_0001_spels/0011_spelChek/0008_uspih (5)/0006_Toggle (5)
+--- !u!114 &8601091745058917598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5633174199263546702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 5
 --- !u!1 &8601199751984737849
 GameObject:
   m_ObjectHideFlags: 0
@@ -120726,6 +122147,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 82
   legacyKey: Toggle_0001_spels/0011_spelChek/0008_uspih (5)/0008_Toggle (7)
+--- !u!114 &8647358930119548290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825292082441249885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!114 &8649804506636255514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120865,6 +122299,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 1
   legacyKey: Toggle_0001_spels/0001_zamitki (5)/0001_Toggle
+--- !u!114 &8666249890001645253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2979478633895005143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!224 &8669097044898103758
 RectTransform:
   m_ObjectHideFlags: 0
@@ -121067,6 +122514,7 @@ GameObject:
   - component: {fileID: 1947051664687963194}
   - component: {fileID: 2214503710752480206}
   - component: {fileID: 8683249928608135891}
+  - component: {fileID: 8683249928608135892}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -121091,6 +122539,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 58
   legacyKey: Toggle_0001_spels/0011_spelChek/0005_uspih (2)/0008_Toggle (7)
+--- !u!114 &8683249928608135892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8683249928608135890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!114 &8683589665296245729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121343,6 +122804,7 @@ GameObject:
   - component: {fileID: 3634810876881283372}
   - component: {fileID: 3590192678536286476}
   - component: {fileID: 8691400199737742703}
+  - component: {fileID: 8691400199737742704}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -121367,6 +122829,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 61
   legacyKey: Toggle_0001_spels/0011_spelChek/0006_uspih (3)/0004_Toggle
+--- !u!114 &8691400199737742704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8691400199737742702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!224 &8694488617865430117
 RectTransform:
   m_ObjectHideFlags: 0
@@ -121840,6 +123315,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 74
   legacyKey: Toggle_0001_spels/0011_spelChek/0007_uspih (4)/0009_Toggle (7)
+--- !u!114 &8719202448051944601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789161597139700262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!114 &8722842534886274603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122001,6 +123489,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 106
   legacyKey: Toggle_0001_spels/0011_spelChek/0011_uspih (8)/0009_Toggle (7)
+--- !u!114 &8728133024624685933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7725441918778883080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!114 &8728599159005899337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123111,6 +124612,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 52
   legacyKey: Toggle_0001_spels/0011_spelChek/0005_uspih (2)/0002_Toggle (1)
+--- !u!114 &8786903886321151544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2678631855834471185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 1
 --- !u!114 &8788520760081954042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123518,6 +125032,7 @@ GameObject:
   - component: {fileID: 4724054242951154301}
   - component: {fileID: 4986465893959886593}
   - component: {fileID: 8822938451219839285}
+  - component: {fileID: 8822938451219839286}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -123542,6 +125057,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 45
   legacyKey: Toggle_0001_spels/0011_spelChek/0004_uspih (1)/0004_Toggle
+--- !u!114 &8822938451219839286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8822938451219839284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!114 &8829054321702972965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125224,6 +126752,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 89
   legacyKey: Toggle_0001_spels/0011_spelChek/0009_uspih (6)/0007_Toggle (6)
+--- !u!114 &8935529908533910574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4907724464851754263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 6
 --- !u!224 &8937296375216678542
 RectTransform:
   m_ObjectHideFlags: 0
@@ -125614,6 +127155,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 3
   legacyKey: Toggle_0001_spels/0003_zamitki (7)/0001_Toggle
+--- !u!114 &8961174357664120712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131477474839662577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!224 &8964470998874306817
 RectTransform:
   m_ObjectHideFlags: 0
@@ -125727,6 +127281,7 @@ GameObject:
   - component: {fileID: 7704188947846818909}
   - component: {fileID: 7911943813116507858}
   - component: {fileID: 8967794068632614378}
+  - component: {fileID: 8967794068632614379}
   m_Layer: 5
   m_Name: Toggle (4)
   m_TagString: Untagged
@@ -125751,6 +127306,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 55
   legacyKey: Toggle_0001_spels/0011_spelChek/0005_uspih (2)/0005_Toggle (4)
+--- !u!114 &8967794068632614379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8967794068632614377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 4
 --- !u!1 &8968284146726842846
 GameObject:
   m_ObjectHideFlags: 0
@@ -126396,6 +127964,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 70
   legacyKey: Toggle_0001_spels/0011_spelChek/0007_uspih (4)/0005_Toggle (3)
+--- !u!114 &9005048814120264083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477632497930853930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 3
 --- !u!114 &9005524559238775166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126820,6 +128401,7 @@ GameObject:
   - component: {fileID: 2029074826781809422}
   - component: {fileID: 6935235251305259385}
   - component: {fileID: 9028145708827740261}
+  - component: {fileID: 9028145708827740262}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -126844,6 +128426,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 75
   legacyKey: Toggle_0001_spels/0011_spelChek/0008_uspih (5)/0001_Toggle (2)
+--- !u!114 &9028145708827740262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9028145708827740260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!224 &9029318404158787415
 RectTransform:
   m_ObjectHideFlags: 0
@@ -127142,6 +128737,7 @@ GameObject:
   - component: {fileID: 7519416293060504380}
   - component: {fileID: 6847742177466354414}
   - component: {fileID: 9051942846485014384}
+  - component: {fileID: 9051942846485014385}
   m_Layer: 5
   m_Name: Toggle (7)
   m_TagString: Untagged
@@ -127166,6 +128762,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 50
   legacyKey: Toggle_0001_spels/0011_spelChek/0004_uspih (1)/0009_Toggle (7)
+--- !u!114 &9051942846485014385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9051942846485014383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 7
 --- !u!114 &9052256044300513096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127451,6 +129060,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0.2529998, y: -0.126}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9077801600646001008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827702582567321583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 8143751788041486405}
+  - {fileID: 8788520760081954042}
+  - {fileID: 4785078183694756501}
+  - {fileID: 6443400823155976661}
+  - {fileID: 8203718463162210193}
+  - {fileID: 96441290036623510}
+  - {fileID: 6232019286730216163}
+  - {fileID: 8219933466041218540}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!1 &9078290382829588674
 GameObject:
   m_ObjectHideFlags: 0
@@ -127972,6 +129604,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0.2529997, y: -1.236}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9098561325578875251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6909264280464323568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 416527021765825555}
+  - {fileID: 8974590358603634610}
+  - {fileID: 659353623406957075}
+  - {fileID: 1591716769818363532}
+  - {fileID: 6522196315885691498}
+  - {fileID: 8300523923455070801}
+  - {fileID: 5151220695960635120}
+  - {fileID: 6210326809745098810}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!222 &9100103131083736149
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -128657,6 +130312,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 99
   legacyKey: Toggle_0001_spels/0011_spelChek/0011_uspih (8)/0002_Toggle (2)
+--- !u!114 &9161047271412600056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845882190261188739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 2
 --- !u!222 &9174813360789786920
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -128819,6 +130487,7 @@ GameObject:
   - component: {fileID: 4277617246883848450}
   - component: {fileID: 8626367423540714830}
   - component: {fileID: 9208251987941842416}
+  - component: {fileID: 9208251987941842417}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -128843,6 +130512,19 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 101
   legacyKey: Toggle_0001_spels/0011_spelChek/0011_uspih (8)/0004_Toggle
+--- !u!114 &9208251987941842417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9208251987941842415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f22bcc561d045346b8bf4c603ea663b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceToggleMarker
+  number: 0
 --- !u!224 &9209269310765781101
 RectTransform:
   m_ObjectHideFlags: 0
@@ -128936,6 +130618,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7747913976658873891}
+  - component: {fileID: 9220478900781951818}
   m_Layer: 5
   m_Name: tonggle (4)
   m_TagString: Untagged
@@ -128943,6 +130626,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9220478900781951818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9220478900781951817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd164d36774fdb64cba454110ace3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleSequenceConfig
+  toggles:
+  - {fileID: 8835696911141087478}
+  - {fileID: 6048319774206813641}
+  - {fileID: 8479404735276074369}
+  - {fileID: 3847211943141947277}
+  - {fileID: 6813264018135356958}
+  - {fileID: 2861256463828915588}
+  - {fileID: 7520790515761785443}
+  - {fileID: 1699803537451570644}
+  clampToActive: 0
+  appliesExhaustion: 0
 --- !u!1 &9221675064983160347
 GameObject:
   m_ObjectHideFlags: 0

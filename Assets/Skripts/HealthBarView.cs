@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 internal sealed class HealthBarView
 {
+    private readonly System.Collections.Generic.Dictionary<Slider, RectTransform> fillRoots =
+        new System.Collections.Generic.Dictionary<Slider, RectTransform>();
     private readonly SceneRoleLookup roleLookup = new SceneRoleLookup();
     private readonly InputField maxHealthInputField;
     private readonly Slider healthSlider;
@@ -100,18 +102,30 @@ internal sealed class HealthBarView
         if (slider == null)
             return null;
 
+        if (fillRoots.TryGetValue(slider, out RectTransform cached) && cached != null)
+            return cached;
+
         if (slider.fillRect != null)
+        {
+            fillRoots[slider] = slider.fillRect;
             return slider.fillRect;
+        }
 
         RectTransform namedFill = FindChildRect(slider.transform, "fild");
         if (namedFill != null)
+        {
+            fillRoots[slider] = namedFill;
             return namedFill;
+        }
 
         Image[] images = slider.GetComponentsInChildren<Image>(true);
         foreach (Image image in images)
         {
             if (image != null && image.transform != slider.transform)
+            {
+                fillRoots[slider] = image.rectTransform;
                 return image.rectTransform;
+            }
         }
 
         return null;
