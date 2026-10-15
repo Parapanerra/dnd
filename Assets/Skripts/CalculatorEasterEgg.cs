@@ -48,7 +48,7 @@ internal sealed class CalculatorEasterEgg
                 message = "Раз, два, три, прийом! Ця штука працює?";
                 break;
             case DevilCode:
-                message = "О, так!!!";
+                message = "Hell Yeah!!!";
                 break;
             case NiceCode:
                 message = "Нааайс";

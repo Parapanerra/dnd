@@ -71,8 +71,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         if (session == null || !session.ResetData())
             return;
 
-        if (isMainSheetScene)
-            portraitManager?.ClearPortraitForActiveCharacter();
+        portraitManager?.ClearPortraitForActiveCharacter();
         uiService.ResetSceneWidgets();
         session.Save();
         uiService.RefreshAfterReset();

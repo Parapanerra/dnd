@@ -30,6 +30,13 @@ internal sealed class SceneInputActivationInstaller
             activator = input.gameObject.AddComponent<DoubleClickInputFieldActivator>();
 
         activator.Configure(input);
+        if (!Application.isMobilePlatform)
+        {
+            DesktopInputHistory history = input.GetComponent<DesktopInputHistory>();
+            if (history == null)
+                history = input.gameObject.AddComponent<DesktopInputHistory>();
+            history.Configure(input);
+        }
         return activator;
     }
 
@@ -43,6 +50,13 @@ internal sealed class SceneInputActivationInstaller
             activator = input.gameObject.AddComponent<DoubleClickInputFieldActivator>();
 
         activator.Configure(input);
+        if (!Application.isMobilePlatform)
+        {
+            DesktopInputHistory history = input.GetComponent<DesktopInputHistory>();
+            if (history == null)
+                history = input.gameObject.AddComponent<DesktopInputHistory>();
+            history.Configure(input);
+        }
         return activator;
     }
 }

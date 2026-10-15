@@ -30,6 +30,7 @@ public class InputFieldTabNavigation : MonoBehaviour
     private readonly List<DoubleClickInputFieldActivator> configuredInputs = new List<DoubleClickInputFieldActivator>();
     private readonly List<InputRow> rows = new List<InputRow>();
     private bool tabPressedThisFrame;
+    private bool moveBackward;
     private InputField protectedLegacyInput;
     private TMP_InputField protectedTmpInput;
     private bool previousLegacyReadOnly;
@@ -53,9 +54,17 @@ public class InputFieldTabNavigation : MonoBehaviour
 
     private void Update()
     {
-        if (!Input.GetKeyDown(KeyCode.Tab))
+        if (!Application.isFocused || !Input.GetKeyDown(KeyCode.Tab))
             return;
 
+        GameObject selected = EventSystem.current != null
+            ? EventSystem.current.currentSelectedGameObject
+            : null;
+        if (selected == null ||
+            (selected.GetComponent<InputField>() == null && selected.GetComponent<TMP_InputField>() == null))
+            return;
+
+        moveBackward = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         tabPressedThisFrame = true;
         ProtectSelectedInputFromTabCharacter();
     }
@@ -66,7 +75,7 @@ public class InputFieldTabNavigation : MonoBehaviour
             return;
 
         RestoreSelectedInputEditing();
-        MoveToNextInput();
+        MoveToNextInput(moveBackward);
         tabPressedThisFrame = false;
     }
 
@@ -114,7 +123,7 @@ public class InputFieldTabNavigation : MonoBehaviour
                 configuredInputs.Add(activator);
     }
 
-    private void MoveToNextInput()
+    private void MoveToNextInput(bool backward)
     {
         BuildNavigationOrder();
         if (orderedTargets.Count == 0)
@@ -125,7 +134,9 @@ public class InputFieldTabNavigation : MonoBehaviour
             : null;
 
         int currentIndex = orderedTargets.FindIndex(target => target.GameObject == selected);
-        int nextIndex = (currentIndex + 1) % orderedTargets.Count;
+        int nextIndex = currentIndex < 0
+            ? (backward ? orderedTargets.Count - 1 : 0)
+            : (currentIndex + (backward ? -1 : 1) + orderedTargets.Count) % orderedTargets.Count;
         Activate(orderedTargets[nextIndex]);
     }
 

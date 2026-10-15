@@ -132,7 +132,6 @@ public class TranslationCatalog
         // Calculator Easter eggs. Sources also identify the currently displayed message
         // so changing language never advances the 67 counter or repeats Reset.
         Add("Раз, два, три, прийом! Ця штука працює?", "One, two, three, testing! Is this thing working?", "Раз, два, три, прием! Эта штука работает?");
-        Add("О, так!!!", "Hell Yeah!!!", "О, да!!!");
         Add("Нааайс", "Niiice", "Нааайс");
         Add("Це як у 1984", "This is like 1984", "Ето как в 1984");
         Add("Але я не читав", "But I haven't read it", "Но я не читал");

@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MapCameraController : MonoBehaviour
 {
@@ -21,6 +24,8 @@ public class MapCameraController : MonoBehaviour
     private RectTransform mainForm;
     private float initialCameraX;
     private bool isStaticMenuCamera;
+    private bool mouseDragStartedOnTextField;
+    private readonly List<RaycastResult> pointerHits = new List<RaycastResult>();
 
     internal float HorizontalPanWorldDelta => transform.position.x - initialCameraX;
 
@@ -50,6 +55,9 @@ public class MapCameraController : MonoBehaviour
         if (isStaticMenuCamera)
             return;
 
+        if (Input.GetMouseButtonUp(0))
+            mouseDragStartedOnTextField = false;
+
         // Если хотя бы один скролл вью активен, не обрабатываем ввод для камеры
         if (IsAnyScrollViewOpen()) return;
 
@@ -58,6 +66,8 @@ public class MapCameraController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                mouseDragStartedOnTextField = !Application.isMobilePlatform &&
+                    IsPointerOnActiveTextField(Input.mousePosition);
                 touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
             else if (Input.touchCount == 1)
@@ -83,7 +93,8 @@ public class MapCameraController : MonoBehaviour
             zoom(difference * AppConfig.Input.PinchZoomSensitivity);
         }
         // Обработка перемещения камеры при перетаскивании
-        else if (Input.GetMouseButton(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved))
+        else if ((!mouseDragStartedOnTextField && Input.GetMouseButton(0)) ||
+                 (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved))
         {
             Vector3 direction = Vector3.zero;
 
@@ -102,6 +113,27 @@ public class MapCameraController : MonoBehaviour
 
         // Обработка зума при прокрутке мыши
         zoom(Input.GetAxis("Mouse ScrollWheel"));
+    }
+
+    private bool IsPointerOnActiveTextField(Vector2 screenPosition)
+    {
+        EventSystem eventSystem = EventSystem.current;
+        if (eventSystem == null)
+            return false;
+
+        pointerHits.Clear();
+        var pointer = new PointerEventData(eventSystem) { position = screenPosition };
+        eventSystem.RaycastAll(pointer, pointerHits);
+        if (pointerHits.Count == 0)
+            return false;
+
+        GameObject hit = pointerHits[0].gameObject;
+        InputField legacy = hit.GetComponentInParent<InputField>();
+        if (legacy != null)
+            return legacy.isActiveAndEnabled && legacy.isFocused;
+
+        TMP_InputField tmp = hit.GetComponentInParent<TMP_InputField>();
+        return tmp != null && tmp.isActiveAndEnabled && tmp.isFocused;
     }
 
     void LateUpdate()
