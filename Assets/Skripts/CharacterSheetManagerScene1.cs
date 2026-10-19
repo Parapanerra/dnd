@@ -77,6 +77,26 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
         uiService.RefreshAfterReset();
     }
 
+    private void ConfirmResetSceneData()
+    {
+        var dialogs = new TaruckDialogPresenter(() => localization.CurrentLanguage);
+        if (SceneManager.GetActiveScene().name == "album")
+        {
+            AlbumSceneController album = FindAnyObjectByType<AlbumSceneController>();
+            if (album == null) return;
+            dialogs.ShowCompact(
+                localization.Translate("Видалити всі зображення?"),
+                localization.Translate("Усі зображення на всіх сторінках альбому цього персонажа буде видалено."),
+                localization.Translate("Видалити"), album.ResetAlbum);
+            return;
+        }
+
+        dialogs.ShowCompact(
+            localization.Translate("Скинути дані сцени?"),
+            localization.Translate("Дані цієї сцени для цього персонажа буде скинуто."),
+            localization.Translate("Скинути"), ResetSceneData);
+    }
+
     private void BindSceneComponents()
     {
         foreach (HealthBar healthBar in FindObjectsByType<HealthBar>(FindObjectsInactive.Include))
@@ -123,7 +143,7 @@ public class CharacterSheetManagerScene1 : MonoBehaviour
             {
                 uiService.DisablePersistentOnClick(button);
                 button.onClick.RemoveAllListeners();
-                button.onClick.AddListener(ResetSceneData);
+                button.onClick.AddListener(ConfirmResetSceneData);
             }
     }
 

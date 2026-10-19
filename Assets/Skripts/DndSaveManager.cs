@@ -22,6 +22,7 @@ public class DndSaveManager : MonoBehaviour
     private bool saveBlocked;
     private readonly AutoSaveWriteGate autoSave = new AutoSaveWriteGate();
     internal string SaveError { get; private set; }
+    internal bool CanWrite => !saveBlocked;
     private int SuccessfulDiskWrites { get; set; }
     internal bool HasPendingSave => autoSave.Pending;
 

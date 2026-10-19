@@ -8,6 +8,7 @@ internal sealed class CharacterSingleImportService
     {
         CharacterData copy = TaruckBinaryCodec.DecodeCharacterExport(
             TaruckBinaryCodec.EncodeCharacterExport(imported, version));
+        TaruckAlbumArchive.CopyReferences(imported, copy);
         copy.id = Guid.NewGuid().ToString();
         copy.characterName = MakeImportedCharacterName(manager, copy.characterName);
         var collection = new AppSaveData { lastActiveCharacterId = copy.id };

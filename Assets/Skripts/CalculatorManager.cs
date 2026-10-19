@@ -131,6 +131,9 @@ public class CalculatorManager : MonoBehaviour
     private bool HandleHpModeButton(string label)
     {
         string normalized = label.ToLowerInvariant();
+        if ((normalized == "heal" || normalized == "shortrest" || normalized == "longrest") &&
+            ShowDeadCharacterAlertIfNeeded())
+            return true;
         if (normalized == "shortrest")
         {
             ShowHpResult(healthController.ApplyShortRest(FindActiveHealthBar(), GetCalculatorText));
@@ -217,8 +220,25 @@ public class CalculatorManager : MonoBehaviour
 
     private void ApplyHpMode(int value)
     {
+        if (healthController.IsHealing && ShowDeadCharacterAlertIfNeeded())
+        {
+            ResetHpInputState();
+            return;
+        }
         ShowHpResult(healthController.Apply(value, FindActiveHealthBar(), GetCalculatorText));
         expressionInput.Reset();
+    }
+
+    internal bool ShowDeadCharacterAlertIfNeeded()
+    {
+        if (exhaustionEffects == null || exhaustionEffects.Level < 6)
+            return false;
+
+        new TaruckDialogPresenter(() => localization.CurrentLanguage).ShowCompact(
+            localization.Translate("Персонаж мертвий"),
+            localization.Translate("Спочатку зніміть шостий рівень виснаження, щоб зцілити персонажа."),
+            localization.Translate("Закрити"), null);
+        return true;
     }
 
     internal void ResetHpInputState()

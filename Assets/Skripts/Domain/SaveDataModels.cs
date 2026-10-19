@@ -16,6 +16,7 @@ public class CharacterData
     public List<int> dropdownData = new List<int>();
     public List<CharacterSceneData> sceneStates = new List<CharacterSceneData>();
     public List<StringSaveEntry> sharedStringData = new List<StringSaveEntry>();
+    public List<AlbumImageData> albumImages = new List<AlbumImageData>();
 
     public CharacterData(string newId)
     {
@@ -71,6 +72,28 @@ public class CharacterData
         if (sharedStringData != null)
             sharedStringData.RemoveAll(item => item.key == key);
     }
+}
+
+[Serializable]
+public class AlbumImageData
+{
+    public string id;
+    public string relativeFilePath;
+    public string thumbnailRelativePath;
+    public string title;
+    public string description;
+    public long createdAtUtcTicks;
+    public int sortOrder;
+    public int pageIndex;
+    public int width;
+    public int height;
+    public long fileSize;
+    public string contentHash;
+    [NonSerialized] public byte[] exportImageBytes;
+    [NonSerialized] public byte[] exportThumbnailBytes;
+    [NonSerialized] public string exportArchivePath;
+    [NonSerialized] public string exportImageEntry;
+    [NonSerialized] public string exportThumbnailEntry;
 }
 
 [Serializable]

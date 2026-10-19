@@ -57,6 +57,16 @@ internal sealed class TaruckDialogText
         return currentLanguage() == AppLanguage.English ? english : ukrainian;
     }
 
+    internal string Text(string ukrainian, string english, string russian)
+    {
+        switch (currentLanguage())
+        {
+            case AppLanguage.English: return english;
+            case AppLanguage.Russian: return russian;
+            default: return ukrainian;
+        }
+    }
+
     internal string KnownText(string source)
     {
         switch (source)

@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/personag/spelBook.unity
     guid: e00f5a8664ff4704995694bb27e52357
+  - enabled: 1
+    path: Assets/Scenes/personag/album.unity
+    guid: cbea153efc83e484f8a8f545b5a07975
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 11cfdf716d4045645bb029536bdaf35e, type: 2}
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}

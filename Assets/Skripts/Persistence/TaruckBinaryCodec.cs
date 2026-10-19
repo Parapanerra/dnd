@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Globalization;
 using System.Text;
 
 public enum TaruckFileType : byte
@@ -78,6 +79,7 @@ public static class TaruckBinaryCodec
             if (field.Type != type) throw new InvalidDataException("Wrong type for field " + id);
             return field.Data;
         }
+        public bool Has(uint id) => fields.ContainsKey(id);
         public string Text(uint id, bool optional = false)
         {
             byte[] data = Get(id, Kind.Text, optional);
@@ -201,6 +203,42 @@ public static class TaruckBinaryCodec
         var r = new ObjectReader(b, depth);
         return new FloatSaveEntry { key = r.Text(1), value = r.Float(2) };
     }
+    private static byte[] EncodeAlbumImage(AlbumImageData image, bool includeMedia) => Build(w =>
+    {
+        Text(w, 1, image.id); Text(w, 2, image.relativeFilePath);
+        Text(w, 3, image.thumbnailRelativePath); Text(w, 4, image.title);
+        Text(w, 5, image.description);
+        Text(w, 6, image.createdAtUtcTicks.ToString(CultureInfo.InvariantCulture));
+        Int(w, 7, image.sortOrder); Int(w, 8, image.width); Int(w, 9, image.height);
+        Text(w, 10, image.fileSize.ToString(CultureInfo.InvariantCulture));
+        Text(w, 11, image.contentHash);
+        Int(w, 12, image.pageIndex);
+        if (includeMedia)
+        {
+            if (image.exportImageBytes == null || image.exportThumbnailBytes == null)
+                throw new InvalidDataException("Album image data is missing from export");
+            if (image.exportImageBytes.Length > MaxMedia || image.exportThumbnailBytes.Length > MaxMedia)
+                throw new InvalidDataException("Album image is too large for export");
+            Obj(w, 13, image.exportImageBytes);
+            Obj(w, 14, image.exportThumbnailBytes);
+        }
+    });
+    private static AlbumImageData DecodeAlbumImage(byte[] bytes, int depth)
+    {
+        var r = new ObjectReader(bytes, depth);
+        if (!long.TryParse(r.Text(6), NumberStyles.None, CultureInfo.InvariantCulture, out long created) ||
+            !long.TryParse(r.Text(10), NumberStyles.None, CultureInfo.InvariantCulture, out long size))
+            throw new InvalidDataException("Invalid album image metadata");
+        return new AlbumImageData
+        {
+            id = r.Text(1), relativeFilePath = r.Text(2), thumbnailRelativePath = r.Text(3),
+            title = r.Text(4), description = r.Text(5), createdAtUtcTicks = created,
+            sortOrder = r.Int(7), width = r.Int(8), height = r.Int(9),
+            fileSize = size, contentHash = r.Text(11), pageIndex = r.Has(12) ? r.Int(12) : 0,
+            exportImageBytes = r.Has(13) ? r.Object(13) : null,
+            exportThumbnailBytes = r.Has(14) ? r.Object(14) : null
+        };
+    }
     private static byte[] EncodeScene(CharacterSceneData s) => Build(w =>
     {
         Text(w, 1, s.sceneName);
@@ -227,7 +265,7 @@ public static class TaruckBinaryCodec
         s.stableFieldVersion = r.Int(9);
         return s;
     }
-    private static byte[] EncodeCharacter(CharacterData c) => Build(w =>
+    private static byte[] EncodeCharacter(CharacterData c, bool includeAlbumMedia = false) => Build(w =>
     {
         Text(w, 1, c.id); Text(w, 2, c.characterName);
         Int(w, 3, c.maxHealth); Int(w, 4, c.currentHealth);
@@ -237,6 +275,8 @@ public static class TaruckBinaryCodec
         List(w, 8, c.dropdownData, i => Scalar(x => x.Write(i)));
         List(w, 9, c.sceneStates, EncodeScene, 128);
         List(w, 10, c.sharedStringData, EncodeStringEntry);
+        if (c.albumImages != null && c.albumImages.Count > 0)
+            List(w, 11, c.albumImages, image => EncodeAlbumImage(image, includeAlbumMedia), 260);
     });
     private static CharacterData DecodeCharacter(byte[] b, int depth)
     {
@@ -248,12 +288,13 @@ public static class TaruckBinaryCodec
         c.dropdownData = r.List(8, x => ReadFixed(x, 4, y => y.ReadInt32()));
         c.sceneStates = r.List(9, x => DecodeScene(x, depth + 1), 128);
         c.sharedStringData = r.List(10, x => DecodeStringEntry(x, depth + 1));
+        c.albumImages = r.Has(11) ? r.List(11, x => DecodeAlbumImage(x, depth + 1), 260) : new List<AlbumImageData>();
         return c;
     }
-    private static byte[] EncodeApp(AppSaveData a) => Build(w =>
+    private static byte[] EncodeApp(AppSaveData a, bool includeAlbumMedia = false) => Build(w =>
     {
         Text(w, 1, a.lastActiveCharacterId);
-        List(w, 2, a.characters, EncodeCharacter, 1000);
+        List(w, 2, a.characters, character => EncodeCharacter(character, includeAlbumMedia), 1000);
     });
     private static AppSaveData DecodeApp(byte[] b)
     {
@@ -312,15 +353,15 @@ public static class TaruckBinaryCodec
         TaruckDataValidator.Validate(data);
         return Envelope(TaruckFileType.LocalData, EncodeApp(data), appVersion);
     }
-    public static byte[] EncodeFullSave(AppSaveData data, string appVersion)
+    public static byte[] EncodeFullSave(AppSaveData data, string appVersion, bool includeAlbumMedia = false)
     {
         TaruckDataValidator.Validate(data);
-        return Envelope(TaruckFileType.FullSaveExport, EncodeApp(data), appVersion);
+        return Envelope(TaruckFileType.FullSaveExport, EncodeApp(data, includeAlbumMedia), appVersion);
     }
-    public static byte[] EncodeCharacterExport(CharacterData data, string appVersion)
+    public static byte[] EncodeCharacterExport(CharacterData data, string appVersion, bool includeAlbumMedia = false)
     {
         TaruckDataValidator.Validate(data);
-        return Envelope(TaruckFileType.CharacterExport, EncodeCharacter(data), appVersion);
+        return Envelope(TaruckFileType.CharacterExport, EncodeCharacter(data, includeAlbumMedia), appVersion);
     }
     public static byte[] EncodeItemExport(InventoryItemExportData data, string appVersion)
     {

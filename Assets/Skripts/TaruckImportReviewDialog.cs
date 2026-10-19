@@ -23,6 +23,7 @@ public sealed class TaruckImportReviewDialog : MonoBehaviour
     private Action primary;
     private Action secondary;
     private Action queued;
+    private Action onDismissed;
     private GameObject ownedEventSystem;
 
     internal void AttachEventSystem(GameObject eventSystem)
@@ -30,13 +31,27 @@ public sealed class TaruckImportReviewDialog : MonoBehaviour
         ownedEventSystem = eventSystem;
     }
 
+    internal void UseCompactLayout()
+    {
+        minimumPanelHeight = 182f;
+        maximumPanelHeight = 245f;
+        contentPaddingHeight = 146f;
+        RectTransform actions = (RectTransform)primaryButton.transform.parent;
+        actions.anchoredPosition = new Vector2(0f, 11f);
+        actions.sizeDelta = new Vector2(-92f, 46f);
+        detailsViewport.anchoredPosition = new Vector2(0f, -3f);
+        detailsViewport.sizeDelta = new Vector2(-92f, -140f);
+    }
+
     internal void Configure(string title, string details, string primaryLabel, Action primaryAction,
-        string secondaryLabel, Action secondaryAction, TaruckDialogText messages)
+        string secondaryLabel, Action secondaryAction, TaruckDialogText messages,
+        Action dismissedAction = null)
     {
         titleText.text = title;
         detailsText.text = details;
         primary = primaryAction;
         secondary = secondaryAction;
+        onDismissed = dismissedAction;
 
         primaryButtonText.text = primaryLabel;
         primaryButton.onClick.RemoveAllListeners();
@@ -48,9 +63,9 @@ public sealed class TaruckImportReviewDialog : MonoBehaviour
         if (secondary != null)
             secondaryButton.onClick.AddListener(() => queued = secondary);
 
-        bool canCancel = primaryLabel != messages.Text("Закрити", "Close");
+        bool canCancel = primaryLabel != messages.Text("Закрити", "Close", "Закрыть");
         cancelButton.gameObject.SetActive(canCancel);
-        cancelButtonText.text = messages.Text("Скасувати", "Cancel");
+        cancelButtonText.text = messages.Text("Скасувати", "Cancel", "Отмена");
         cancelButton.onClick.RemoveAllListeners();
         cancelButton.onClick.AddListener(Close);
 
@@ -127,12 +142,16 @@ public sealed class TaruckImportReviewDialog : MonoBehaviour
         if (queued == null) return;
         Action next = queued;
         queued = null;
+        onDismissed = null;
         Close();
         next();
     }
 
     internal void Close()
     {
+        Action dismissed = onDismissed;
+        onDismissed = null;
+        dismissed?.Invoke();
         if (ownedEventSystem != null)
         {
             Destroy(ownedEventSystem);
@@ -143,6 +162,9 @@ public sealed class TaruckImportReviewDialog : MonoBehaviour
 
     private void OnDestroy()
     {
+        Action dismissed = onDismissed;
+        onDismissed = null;
+        dismissed?.Invoke();
         if (ownedEventSystem != null) Destroy(ownedEventSystem);
     }
 }

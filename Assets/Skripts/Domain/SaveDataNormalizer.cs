@@ -35,6 +35,8 @@ public sealed class SaveDataNormalizer
                 character.dropdownData = new List<int>();
             if (character.sceneStates == null)
                 character.sceneStates = new List<CharacterSceneData>();
+            if (character.albumImages == null)
+                character.albumImages = new List<AlbumImageData>();
 
             foreach (CharacterSceneData sceneData in character.sceneStates)
             {

@@ -1,0 +1,243 @@
+fileFormatVersion: 2
+guid: 90e7e7e6e30a499438d7fed8738d3883
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3283860152165880592
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_0
+  - first:
+      213: 1900860183277375087
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_1
+  - first:
+      213: -7123623064519496070
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_2
+  - first:
+      213: 2115837807682247937
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_3
+  - first:
+      213: 370634349398563985
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_4
+  - first:
+      213: 4182477801800035695
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_5
+  - first:
+      213: 7566094118732924872
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_6
+  - first:
+      213: 7322151727571777804
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_7
+  - first:
+      213: -8379365530478400148
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_8
+  - first:
+      213: -8388826658717695985
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_9
+  - first:
+      213: 333923859792515016
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_10
+  - first:
+      213: 3653435908730188316
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_11
+  - first:
+      213: -6668009016471530854
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_12
+  - first:
+      213: 1413018153671468372
+    second: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_0
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 147
+        width: 1054
+        height: 1000
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fca71a17926d62d0800000000000000
+      internalID: -3283860152165880592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_4
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 134
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19c95712af1c42500800000000000000
+      internalID: 370634349398563985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a9e8ebe95649bca40800d5665091daa4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_0: -3283860152165880592
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_1: 1900860183277375087
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_10: 333923859792515016
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_11: 3653435908730188316
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_12: -6668009016471530854
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_13: 1413018153671468372
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_2: -7123623064519496070
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_3: 2115837807682247937
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_4: 370634349398563985
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_5: 4182477801800035695
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_6: 7566094118732924872
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_7: 7322151727571777804
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_8: -8379365530478400148
+      exec-a2eaf342-aab8-42f5-9cce-130d6c4307ee_9: -8388826658717695985
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

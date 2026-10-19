@@ -347,6 +347,7 @@ GameObject:
   - component: {fileID: 10485824}
   - component: {fileID: 10485823}
   - component: {fileID: 10485822}
+  - component: {fileID: 10485825}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -389,7 +390,7 @@ MonoBehaviour:
   m_Content: {fileID: 1237008870}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -442,6 +443,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10485820}
   m_CullTransparentMesh: 1
+--- !u!114 &10485825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10485820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &10980422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,6 +1391,7 @@ GameObject:
   - component: {fileID: 21618892}
   - component: {fileID: 21618891}
   - component: {fileID: 21618890}
+  - component: {fileID: 21618893}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -1420,7 +1434,7 @@ MonoBehaviour:
   m_Content: {fileID: 1361416899}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -1473,6 +1487,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21618888}
   m_CullTransparentMesh: 1
+--- !u!114 &21618893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21618888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &26705968
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,6 +1511,7 @@ GameObject:
   - component: {fileID: 26705972}
   - component: {fileID: 26705971}
   - component: {fileID: 26705970}
+  - component: {fileID: 26705973}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -1527,7 +1554,7 @@ MonoBehaviour:
   m_Content: {fileID: 751090883}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -1580,6 +1607,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26705968}
   m_CullTransparentMesh: 1
+--- !u!114 &26705973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26705968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &30378617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,6 +2107,7 @@ GameObject:
   - component: {fileID: 58907637}
   - component: {fileID: 58907640}
   - component: {fileID: 58907641}
+  - component: {fileID: 58907642}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -2260,6 +2300,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 6
   index: 0
+--- !u!114 &58907642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58907635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &59617209
 GameObject:
   m_ObjectHideFlags: 0
@@ -2767,15 +2819,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5359743263308192576, guid: 8d50953491a6823409b6a4d4d2cd55ef, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 5359743263308192576, guid: 8d50953491a6823409b6a4d4d2cd55ef, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 5359743263308192576, guid: 8d50953491a6823409b6a4d4d2cd55ef, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 5359743263308192576, guid: 8d50953491a6823409b6a4d4d2cd55ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2787,7 +2839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5359743263308192576, guid: 8d50953491a6823409b6a4d4d2cd55ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 496.09726
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5359743263308192576, guid: 8d50953491a6823409b6a4d4d2cd55ef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2807,11 +2859,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5359743263308192576, guid: 8d50953491a6823409b6a4d4d2cd55ef, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 91.55
+      value: 229.9
       objectReference: {fileID: 0}
     - target: {fileID: 5359743263308192576, guid: 8d50953491a6823409b6a4d4d2cd55ef, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -347.5
+      value: -416.8
       objectReference: {fileID: 0}
     - target: {fileID: 5359743263308192576, guid: 8d50953491a6823409b6a4d4d2cd55ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3054,15 +3106,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3074,7 +3126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 496.09726
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3094,11 +3146,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 33.5
+      value: 96.9
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -63.7
+      value: -75.7
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3235,6 +3287,7 @@ GameObject:
   - component: {fileID: 80287979}
   - component: {fileID: 80287978}
   - component: {fileID: 80287977}
+  - component: {fileID: 80287980}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -3277,7 +3330,7 @@ MonoBehaviour:
   m_Content: {fileID: 953287268}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -3330,6 +3383,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80287975}
   m_CullTransparentMesh: 1
+--- !u!114 &80287980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80287975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &86564666
 GameObject:
   m_ObjectHideFlags: 0
@@ -3509,6 +3574,7 @@ GameObject:
   - component: {fileID: 91230912}
   - component: {fileID: 91230915}
   - component: {fileID: 91230916}
+  - component: {fileID: 91230917}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -3701,6 +3767,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 6
   index: 0
+--- !u!114 &91230917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91230910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &92407182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4382,8 +4460,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.010960668}
   m_LocalScale: {x: 0.9984625, y: 0.9984625, z: 0.9984625}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 216321531}
+  m_Children: []
   m_Father: {fileID: 1896404921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4455,7 +4532,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4511035973507764732, guid: 14a369a9d14102743b24817e8938e8a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92eb254f419fa3a4387e5899f5533df6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4537,6 +4614,7 @@ GameObject:
   - component: {fileID: 114334241}
   - component: {fileID: 114334244}
   - component: {fileID: 114334245}
+  - component: {fileID: 114334246}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -4729,6 +4807,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 7
   index: 0
+--- !u!114 &114334246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114334239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &118519536
 GameObject:
   m_ObjectHideFlags: 0
@@ -5032,6 +5122,7 @@ GameObject:
   - component: {fileID: 132336031}
   - component: {fileID: 132336030}
   - component: {fileID: 132336029}
+  - component: {fileID: 132336032}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -5074,7 +5165,7 @@ MonoBehaviour:
   m_Content: {fileID: 471409930}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -5127,6 +5218,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132336027}
   m_CullTransparentMesh: 1
+--- !u!114 &132336032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132336027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &132524460
 GameObject:
   m_ObjectHideFlags: 0
@@ -5232,81 +5335,6 @@ MonoBehaviour:
   legacyCollection: toggleData
   legacyIndex: 21
   legacyKey: Toggle_0000_inventory/0002_Page/0004_Cels (3)/0001_itemCategoryDropdown/0002_Template/0000_Viewport/0000_Content/0000_Item
---- !u!1 &135499947
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 135499948}
-  - component: {fileID: 135499950}
-  - component: {fileID: 135499949}
-  m_Layer: 5
-  m_Name: Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &135499948
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135499947}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1916654174}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &135499949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135499947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d9f79bdb5703f0498761a41a91f6057, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &135499950
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135499947}
-  m_CullTransparentMesh: 1
 --- !u!1 &138093045
 GameObject:
   m_ObjectHideFlags: 0
@@ -6546,6 +6574,7 @@ GameObject:
   - component: {fileID: 176938218}
   - component: {fileID: 176938217}
   - component: {fileID: 176938216}
+  - component: {fileID: 176938219}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -6588,7 +6617,7 @@ MonoBehaviour:
   m_Content: {fileID: 519649037}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -6641,6 +6670,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176938214}
   m_CullTransparentMesh: 1
+--- !u!114 &176938219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176938214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &177449651
 GameObject:
   m_ObjectHideFlags: 0
@@ -7585,6 +7626,7 @@ GameObject:
   - component: {fileID: 196660170}
   - component: {fileID: 196660173}
   - component: {fileID: 196660174}
+  - component: {fileID: 196660175}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -7777,6 +7819,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 7
   index: 0
+--- !u!114 &196660175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196660168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &198198263
 GameObject:
   m_ObjectHideFlags: 0
@@ -8354,6 +8408,7 @@ GameObject:
   - component: {fileID: 214445544}
   - component: {fileID: 214445543}
   - component: {fileID: 214445542}
+  - component: {fileID: 214445545}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -8396,7 +8451,7 @@ MonoBehaviour:
   m_Content: {fileID: 1505814882}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -8449,6 +8504,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214445540}
   m_CullTransparentMesh: 1
+--- !u!114 &214445545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214445540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &214940981
 GameObject:
   m_ObjectHideFlags: 0
@@ -8709,81 +8776,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215236888}
   m_CullTransparentMesh: 1
---- !u!1 &216321530
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 216321531}
-  - component: {fileID: 216321533}
-  - component: {fileID: 216321532}
-  m_Layer: 5
-  m_Name: Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &216321531
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216321530}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 112168804}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &216321532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216321530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d9f79bdb5703f0498761a41a91f6057, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &216321533
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216321530}
-  m_CullTransparentMesh: 1
 --- !u!1 &217526338
 GameObject:
   m_ObjectHideFlags: 0
@@ -8952,6 +8944,7 @@ GameObject:
   - component: {fileID: 223808885}
   - component: {fileID: 223808888}
   - component: {fileID: 223808889}
+  - component: {fileID: 223808890}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -9144,6 +9137,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 9
   index: 0
+--- !u!114 &223808890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223808883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &224351496
 GameObject:
   m_ObjectHideFlags: 0
@@ -9621,81 +9626,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 8350058478048620391, guid: e96a75c3377b3e54283aa74cfeec63f2, type: 3}
   m_PrefabInstance: {fileID: 2537917670596901102}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &233982467
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 233982468}
-  - component: {fileID: 233982470}
-  - component: {fileID: 233982469}
-  m_Layer: 5
-  m_Name: Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &233982468
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233982467}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 655735432}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &233982469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233982467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d9f79bdb5703f0498761a41a91f6057, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &233982470
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233982467}
-  m_CullTransparentMesh: 1
 --- !u!1 &234306160
 GameObject:
   m_ObjectHideFlags: 0
@@ -9710,6 +9640,7 @@ GameObject:
   - component: {fileID: 234306162}
   - component: {fileID: 234306165}
   - component: {fileID: 234306166}
+  - component: {fileID: 234306167}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -9902,6 +9833,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 9
   index: 0
+--- !u!114 &234306167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234306160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &235480089
 GameObject:
   m_ObjectHideFlags: 0
@@ -10561,6 +10504,7 @@ GameObject:
   - component: {fileID: 264761756}
   - component: {fileID: 264761759}
   - component: {fileID: 264761760}
+  - component: {fileID: 264761761}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -10753,6 +10697,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 5
   index: 0
+--- !u!114 &264761761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264761754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &266527353
 GameObject:
   m_ObjectHideFlags: 0
@@ -11246,6 +11202,7 @@ GameObject:
   - component: {fileID: 274210663}
   - component: {fileID: 274210666}
   - component: {fileID: 274210667}
+  - component: {fileID: 274210668}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -11438,6 +11395,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 4
   index: 0
+--- !u!114 &274210668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274210661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &274666155
 GameObject:
   m_ObjectHideFlags: 0
@@ -12335,6 +12304,7 @@ GameObject:
   - component: {fileID: 301368238}
   - component: {fileID: 301368237}
   - component: {fileID: 301368236}
+  - component: {fileID: 301368239}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -12377,7 +12347,7 @@ MonoBehaviour:
   m_Content: {fileID: 1236396827}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -12430,6 +12400,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301368234}
   m_CullTransparentMesh: 1
+--- !u!114 &301368239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301368234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &303432405
 GameObject:
   m_ObjectHideFlags: 0
@@ -12442,6 +12424,7 @@ GameObject:
   - component: {fileID: 303432409}
   - component: {fileID: 303432408}
   - component: {fileID: 303432407}
+  - component: {fileID: 303432410}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -12484,7 +12467,7 @@ MonoBehaviour:
   m_Content: {fileID: 1660438286}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -12537,6 +12520,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303432405}
   m_CullTransparentMesh: 1
+--- !u!114 &303432410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303432405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &303804409
 GameObject:
   m_ObjectHideFlags: 0
@@ -12630,6 +12625,7 @@ GameObject:
   - component: {fileID: 306829566}
   - component: {fileID: 306829569}
   - component: {fileID: 306829570}
+  - component: {fileID: 306829571}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -12822,6 +12818,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 8
   index: 0
+--- !u!114 &306829571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306829564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &314520444
 GameObject:
   m_ObjectHideFlags: 0
@@ -12836,6 +12844,7 @@ GameObject:
   - component: {fileID: 314520446}
   - component: {fileID: 314520449}
   - component: {fileID: 314520450}
+  - component: {fileID: 314520451}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -13028,6 +13037,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 5
   index: 0
+--- !u!114 &314520451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314520444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &314844098
 GameObject:
   m_ObjectHideFlags: 0
@@ -13134,7 +13155,7 @@ RectTransform:
   m_GameObject: {fileID: 326596579}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 19629.623}
-  m_LocalScale: {x: 1.2046667, y: 1.2046667, z: 1.2046667}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 64038204}
@@ -13144,12 +13165,13 @@ RectTransform:
   - {fileID: 498183034}
   - {fileID: 79892661}
   - {fileID: 1340588335}
-  m_Father: {fileID: 1059544319}
+  - {fileID: 364193478}
+  m_Father: {fileID: 1046356634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -108, y: -13}
-  m_SizeDelta: {x: 198.1, y: -513}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 321, y: 481}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &326596581
 MonoBehaviour:
@@ -13201,6 +13223,7 @@ GameObject:
   - component: {fileID: 331508198}
   - component: {fileID: 331508197}
   - component: {fileID: 331508196}
+  - component: {fileID: 331508199}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -13243,7 +13266,7 @@ MonoBehaviour:
   m_Content: {fileID: 1778736612}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -13296,6 +13319,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331508194}
   m_CullTransparentMesh: 1
+--- !u!114 &331508199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331508194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &333000656
 GameObject:
   m_ObjectHideFlags: 0
@@ -13327,8 +13362,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.010960668}
   m_LocalScale: {x: 0.9984625, y: 0.9984625, z: 0.9984625}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 498889823}
+  m_Children: []
   m_Father: {fileID: 573104294}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -13400,7 +13434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4511035973507764732, guid: 14a369a9d14102743b24817e8938e8a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92eb254f419fa3a4387e5899f5533df6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14535,6 +14569,152 @@ MonoBehaviour:
   englishText: 
   russianText: 
   useCurrentTextAsSource: 1
+--- !u!1 &364193477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 364193478}
+  - component: {fileID: 364193482}
+  - component: {fileID: 364193481}
+  - component: {fileID: 364193480}
+  - component: {fileID: 364193479}
+  m_Layer: 5
+  m_Name: albumButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &364193478
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364193477}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.21, y: 1.21, z: 1.21}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 827003983}
+  m_Father: {fileID: 326596580}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 96.9, y: -416.8}
+  m_SizeDelta: {x: 80, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &364193479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364193477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcbf972d151c8c7439b3fb82efe5d02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneSwitcher
+--- !u!114 &364193480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364193477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.75686276, g: 0.74509805, b: 0.74509805, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: -3566595149302162515, guid: 0bfe7a2d4a8de314bbf0f670d78a6cd2, type: 3}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 364193481}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 364193479}
+        m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
+        m_MethodName: SwitchScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: album
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &364193481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364193477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9fb157fb562aecb42b236f8c32a3ceb6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &364193482
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364193477}
+  m_CullTransparentMesh: 1
 --- !u!1 &368057526
 GameObject:
   m_ObjectHideFlags: 0
@@ -14547,6 +14727,7 @@ GameObject:
   - component: {fileID: 368057530}
   - component: {fileID: 368057529}
   - component: {fileID: 368057528}
+  - component: {fileID: 368057531}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -14589,7 +14770,7 @@ MonoBehaviour:
   m_Content: {fileID: 1053202328}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -14642,6 +14823,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368057526}
   m_CullTransparentMesh: 1
+--- !u!114 &368057531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368057526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &368109790
 GameObject:
   m_ObjectHideFlags: 0
@@ -14838,15 +15031,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14858,7 +15051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 496.09726
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14878,11 +15071,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150.2
+      value: 229.9
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -252.4
+      value: -303.6
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15169,6 +15362,7 @@ GameObject:
   - component: {fileID: 377936020}
   - component: {fileID: 377936019}
   - component: {fileID: 377936018}
+  - component: {fileID: 377936021}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -15211,7 +15405,7 @@ MonoBehaviour:
   m_Content: {fileID: 521518756}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -15264,6 +15458,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377936016}
   m_CullTransparentMesh: 1
+--- !u!114 &377936021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377936016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &379082108
 GameObject:
   m_ObjectHideFlags: 0
@@ -15658,6 +15864,7 @@ GameObject:
   - component: {fileID: 394939670}
   - component: {fileID: 394939669}
   - component: {fileID: 394939668}
+  - component: {fileID: 394939671}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -15700,7 +15907,7 @@ MonoBehaviour:
   m_Content: {fileID: 1877716176}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -15753,6 +15960,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394939666}
   m_CullTransparentMesh: 1
+--- !u!114 &394939671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394939666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &395350850
 GameObject:
   m_ObjectHideFlags: 0
@@ -17336,6 +17555,7 @@ GameObject:
   - component: {fileID: 444568508}
   - component: {fileID: 444568507}
   - component: {fileID: 444568506}
+  - component: {fileID: 444568509}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -17378,7 +17598,7 @@ MonoBehaviour:
   m_Content: {fileID: 1876404527}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -17431,6 +17651,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444568504}
   m_CullTransparentMesh: 1
+--- !u!114 &444568509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444568504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &444776069
 GameObject:
   m_ObjectHideFlags: 0
@@ -17763,6 +17995,7 @@ GameObject:
   - component: {fileID: 459806085}
   - component: {fileID: 459806084}
   - component: {fileID: 459806083}
+  - component: {fileID: 459806086}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -17805,7 +18038,7 @@ MonoBehaviour:
   m_Content: {fileID: 1954628472}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -17858,6 +18091,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459806081}
   m_CullTransparentMesh: 1
+--- !u!114 &459806086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459806081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &460000141
 GameObject:
   m_ObjectHideFlags: 0
@@ -18340,6 +18585,7 @@ GameObject:
   - component: {fileID: 470655862}
   - component: {fileID: 470655861}
   - component: {fileID: 470655860}
+  - component: {fileID: 470655863}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -18382,7 +18628,7 @@ MonoBehaviour:
   m_Content: {fileID: 228142755}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -18435,6 +18681,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470655858}
   m_CullTransparentMesh: 1
+--- !u!114 &470655863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470655858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &471409929
 GameObject:
   m_ObjectHideFlags: 0
@@ -18838,15 +19096,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18858,7 +19116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 496.09726
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18878,11 +19136,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 33.500008
+      value: 96.9
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -252.39996
+      value: -303.6
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -19011,81 +19269,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
   m_PrefabInstance: {fileID: 498183033}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &498889822
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 498889823}
-  - component: {fileID: 498889825}
-  - component: {fileID: 498889824}
-  m_Layer: 5
-  m_Name: Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &498889823
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498889822}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 333000657}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &498889824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498889822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d9f79bdb5703f0498761a41a91f6057, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &498889825
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498889822}
-  m_CullTransparentMesh: 1
 --- !u!1 &501729043
 GameObject:
   m_ObjectHideFlags: 0
@@ -19175,6 +19358,7 @@ GameObject:
   - component: {fileID: 505546537}
   - component: {fileID: 505546540}
   - component: {fileID: 505546541}
+  - component: {fileID: 505546542}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -19367,6 +19551,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 6
   index: 0
+--- !u!114 &505546542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505546535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &507045364
 GameObject:
   m_ObjectHideFlags: 0
@@ -19529,6 +19725,7 @@ GameObject:
   - component: {fileID: 508205087}
   - component: {fileID: 508205086}
   - component: {fileID: 508205085}
+  - component: {fileID: 508205088}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -19571,7 +19768,7 @@ MonoBehaviour:
   m_Content: {fileID: 660618605}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -19624,6 +19821,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508205083}
   m_CullTransparentMesh: 1
+--- !u!114 &508205088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508205083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &508314372
 GameObject:
   m_ObjectHideFlags: 0
@@ -20762,15 +20971,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20782,7 +20991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 496.09726
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20802,11 +21011,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150.19997
+      value: 228.8
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -157.5
+      value: -190.4
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -21623,6 +21832,7 @@ GameObject:
   - component: {fileID: 549080362}
   - component: {fileID: 549080365}
   - component: {fileID: 549080366}
+  - component: {fileID: 549080367}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -21815,6 +22025,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 6
   index: 0
+--- !u!114 &549080367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549080360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &550933689
 GameObject:
   m_ObjectHideFlags: 0
@@ -22426,6 +22648,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568215550}
   m_CullTransparentMesh: 1
+--- !u!1 &571203284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8691296998531095195, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+  m_PrefabInstance: {fileID: 3529938275672817531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &573104293
 GameObject:
   m_ObjectHideFlags: 0
@@ -22636,8 +22863,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.010960668}
   m_LocalScale: {x: 0.9984625, y: 0.9984625, z: 0.9984625}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2018444653}
+  m_Children: []
   m_Father: {fileID: 1556010982}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -22709,7 +22935,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4511035973507764732, guid: 14a369a9d14102743b24817e8938e8a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92eb254f419fa3a4387e5899f5533df6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -25945,8 +26171,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.010960668}
   m_LocalScale: {x: 0.9984625, y: 0.9984625, z: 0.9984625}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 233982468}
+  m_Children: []
   m_Father: {fileID: 442553174}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -26018,7 +26243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4511035973507764732, guid: 14a369a9d14102743b24817e8938e8a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92eb254f419fa3a4387e5899f5533df6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26281,6 +26506,7 @@ GameObject:
   - component: {fileID: 663158271}
   - component: {fileID: 663158270}
   - component: {fileID: 663158269}
+  - component: {fileID: 663158272}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -26323,7 +26549,7 @@ MonoBehaviour:
   m_Content: {fileID: 119009736}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -26376,6 +26602,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663158267}
   m_CullTransparentMesh: 1
+--- !u!114 &663158272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663158267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &663410954
 GameObject:
   m_ObjectHideFlags: 0
@@ -26465,6 +26703,7 @@ GameObject:
   - component: {fileID: 663505909}
   - component: {fileID: 663505912}
   - component: {fileID: 663505913}
+  - component: {fileID: 663505914}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -26657,6 +26896,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 8
   index: 0
+--- !u!114 &663505914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663505907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &665384236
 GameObject:
   m_ObjectHideFlags: 0
@@ -27077,6 +27328,7 @@ GameObject:
   - component: {fileID: 677419867}
   - component: {fileID: 677419866}
   - component: {fileID: 677419865}
+  - component: {fileID: 677419868}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -27119,7 +27371,7 @@ MonoBehaviour:
   m_Content: {fileID: 72811930}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -27172,6 +27424,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677419863}
   m_CullTransparentMesh: 1
+--- !u!114 &677419868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677419863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &679531300
 GameObject:
   m_ObjectHideFlags: 0
@@ -28708,6 +28972,7 @@ GameObject:
   - component: {fileID: 728174063}
   - component: {fileID: 728174062}
   - component: {fileID: 728174061}
+  - component: {fileID: 728174064}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -28750,7 +29015,7 @@ MonoBehaviour:
   m_Content: {fileID: 469605942}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -28803,6 +29068,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728174059}
   m_CullTransparentMesh: 1
+--- !u!114 &728174064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728174059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &730162134
 GameObject:
   m_ObjectHideFlags: 0
@@ -29615,6 +29892,7 @@ GameObject:
   - component: {fileID: 751987868}
   - component: {fileID: 751987867}
   - component: {fileID: 751987866}
+  - component: {fileID: 751987869}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -29657,7 +29935,7 @@ MonoBehaviour:
   m_Content: {fileID: 2002184220}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -29710,6 +29988,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751987864}
   m_CullTransparentMesh: 1
+--- !u!114 &751987869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751987864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &753962737
 GameObject:
   m_ObjectHideFlags: 0
@@ -31583,6 +31873,7 @@ GameObject:
   - component: {fileID: 816858175}
   - component: {fileID: 816858178}
   - component: {fileID: 816858179}
+  - component: {fileID: 816858180}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -31775,6 +32066,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 9
   index: 0
+--- !u!114 &816858180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816858173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &817341469
 GameObject:
   m_ObjectHideFlags: 0
@@ -32124,6 +32427,7 @@ GameObject:
   - component: {fileID: 822187775}
   - component: {fileID: 822187778}
   - component: {fileID: 822187779}
+  - component: {fileID: 822187780}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -32316,6 +32620,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 6
   index: 0
+--- !u!114 &822187780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822187773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &823946233
 GameObject:
   m_ObjectHideFlags: 0
@@ -32431,6 +32747,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 41.48}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!1 &827003982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 827003983}
+  - component: {fileID: 827003985}
+  - component: {fileID: 827003984}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &827003983
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827003982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 364193478}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 1.9500122}
+  m_SizeDelta: {x: 0, y: 3.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &827003984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827003982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.78699994, g: 0.47528625, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &827003985
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827003982}
+  m_CullTransparentMesh: 1
 --- !u!1 &832699138
 GameObject:
   m_ObjectHideFlags: 0
@@ -32692,8 +33087,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.010960668}
   m_LocalScale: {x: 0.9984622, y: 0.9984622, z: 0.9984622}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2027440483}
+  m_Children: []
   m_Father: {fileID: 2319017539262942506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -32765,7 +33159,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4511035973507764732, guid: 14a369a9d14102743b24817e8938e8a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92eb254f419fa3a4387e5899f5533df6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -33114,6 +33508,7 @@ GameObject:
   - component: {fileID: 845435832}
   - component: {fileID: 845435835}
   - component: {fileID: 845435836}
+  - component: {fileID: 845435837}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -33306,6 +33701,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 5
   index: 0
+--- !u!114 &845435837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845435830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &845451234
 GameObject:
   m_ObjectHideFlags: 0
@@ -33868,6 +34275,7 @@ GameObject:
   - component: {fileID: 861499093}
   - component: {fileID: 861499096}
   - component: {fileID: 861499097}
+  - component: {fileID: 861499098}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -34060,6 +34468,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 9
   index: 0
+--- !u!114 &861499098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861499091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &863750221
 GameObject:
   m_ObjectHideFlags: 0
@@ -34365,6 +34785,7 @@ GameObject:
   - component: {fileID: 871956248}
   - component: {fileID: 871956251}
   - component: {fileID: 871956252}
+  - component: {fileID: 871956253}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -34557,6 +34978,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 9
   index: 0
+--- !u!114 &871956253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871956246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &875826348
 GameObject:
   m_ObjectHideFlags: 0
@@ -34644,6 +35077,7 @@ GameObject:
   - component: {fileID: 877021945}
   - component: {fileID: 877021944}
   - component: {fileID: 877021943}
+  - component: {fileID: 877021946}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -34686,7 +35120,7 @@ MonoBehaviour:
   m_Content: {fileID: 515548391}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -34739,6 +35173,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877021941}
   m_CullTransparentMesh: 1
+--- !u!114 &877021946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877021941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &878486265
 GameObject:
   m_ObjectHideFlags: 0
@@ -35821,6 +36267,7 @@ GameObject:
   - component: {fileID: 910544673}
   - component: {fileID: 910544676}
   - component: {fileID: 910544677}
+  - component: {fileID: 910544678}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -36013,6 +36460,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 9
   index: 0
+--- !u!114 &910544678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910544671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &913792623
 GameObject:
   m_ObjectHideFlags: 0
@@ -36446,6 +36905,7 @@ GameObject:
   - component: {fileID: 918288510}
   - component: {fileID: 918288513}
   - component: {fileID: 918288514}
+  - component: {fileID: 918288515}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -36638,6 +37098,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 4
   index: 0
+--- !u!114 &918288515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918288508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &919659918
 GameObject:
   m_ObjectHideFlags: 0
@@ -37410,6 +37882,7 @@ GameObject:
   - component: {fileID: 945993151}
   - component: {fileID: 945993154}
   - component: {fileID: 945993155}
+  - component: {fileID: 945993156}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -37602,6 +38075,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 7
   index: 0
+--- !u!114 &945993156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945993149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &946586715
 GameObject:
   m_ObjectHideFlags: 0
@@ -37616,6 +38101,7 @@ GameObject:
   - component: {fileID: 946586717}
   - component: {fileID: 946586720}
   - component: {fileID: 946586721}
+  - component: {fileID: 946586722}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -37808,6 +38294,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 5
   index: 0
+--- !u!114 &946586722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946586715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &953287267
 GameObject:
   m_ObjectHideFlags: 0
@@ -37956,6 +38454,7 @@ GameObject:
   - component: {fileID: 962055751}
   - component: {fileID: 962055750}
   - component: {fileID: 962055749}
+  - component: {fileID: 962055752}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -37998,7 +38497,7 @@ MonoBehaviour:
   m_Content: {fileID: 1581988314}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -38051,6 +38550,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962055747}
   m_CullTransparentMesh: 1
+--- !u!114 &962055752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962055747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &962409832
 GameObject:
   m_ObjectHideFlags: 0
@@ -38993,6 +39504,7 @@ GameObject:
   - component: {fileID: 991672964}
   - component: {fileID: 991672967}
   - component: {fileID: 991672968}
+  - component: {fileID: 991672969}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -39185,6 +39697,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 8
   index: 0
+--- !u!114 &991672969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991672962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &998686184
 GameObject:
   m_ObjectHideFlags: 0
@@ -39660,6 +40184,7 @@ GameObject:
   - component: {fileID: 1017676309}
   - component: {fileID: 1017676308}
   - component: {fileID: 1017676307}
+  - component: {fileID: 1017676310}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -39702,7 +40227,7 @@ MonoBehaviour:
   m_Content: {fileID: 546621493}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -39755,6 +40280,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017676305}
   m_CullTransparentMesh: 1
+--- !u!114 &1017676310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017676305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1019922025
 GameObject:
   m_ObjectHideFlags: 0
@@ -40177,6 +40714,7 @@ GameObject:
   - component: {fileID: 1023786703}
   - component: {fileID: 1023786706}
   - component: {fileID: 1023786707}
+  - component: {fileID: 1023786708}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -40369,6 +40907,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 8
   index: 0
+--- !u!114 &1023786708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023786701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1028567818
 GameObject:
   m_ObjectHideFlags: 0
@@ -40473,6 +41023,7 @@ GameObject:
   - component: {fileID: 1031200971}
   - component: {fileID: 1031200974}
   - component: {fileID: 1031200975}
+  - component: {fileID: 1031200976}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -40665,6 +41216,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 4
   index: 0
+--- !u!114 &1031200976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031200969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1031465189
 GameObject:
   m_ObjectHideFlags: 0
@@ -40879,6 +41442,97 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043093273}
+  m_CullTransparentMesh: 1
+--- !u!1 &1046356633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1046356634}
+  - component: {fileID: 1046356637}
+  - component: {fileID: 1046356636}
+  - component: {fileID: 1046356635}
+  m_Layer: 0
+  m_Name: Viewport
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1046356634
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046356633}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 326596580}
+  m_Father: {fileID: 1059544319}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -32, y: -32}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1046356635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046356633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
+--- !u!114 &1046356636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046356633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1046356637
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046356633}
   m_CullTransparentMesh: 1
 --- !u!1 &1051097482
 GameObject:
@@ -41325,6 +41979,48 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4381309171059182151, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
   m_PrefabInstance: {fileID: 3529938275672817531}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1059544320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571203284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
+--- !u!114 &1059544321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571203284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
+  m_Content: {fileID: 326596580}
+  m_Horizontal: 0
+  m_Vertical: 1
+  m_MovementType: 2
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 120
+  m_Viewport: {fileID: 1046356634}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 0}
+  m_HorizontalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 0
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1059811334
 GameObject:
   m_ObjectHideFlags: 0
@@ -41493,6 +42189,7 @@ GameObject:
   - component: {fileID: 1060587841}
   - component: {fileID: 1060587844}
   - component: {fileID: 1060587845}
+  - component: {fileID: 1060587846}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -41685,6 +42382,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 6
   index: 0
+--- !u!114 &1060587846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060587839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1062929683
 GameObject:
   m_ObjectHideFlags: 0
@@ -41699,6 +42408,7 @@ GameObject:
   - component: {fileID: 1062929685}
   - component: {fileID: 1062929688}
   - component: {fileID: 1062929689}
+  - component: {fileID: 1062929690}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -41891,6 +42601,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 4
   index: 0
+--- !u!114 &1062929690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062929683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1065096913
 GameObject:
   m_ObjectHideFlags: 0
@@ -42413,8 +43135,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.010960668}
   m_LocalScale: {x: 0.9984625, y: 0.9984625, z: 0.9984625}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1918487828}
+  m_Children: []
   m_Father: {fileID: 1675890797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -42486,7 +43207,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4511035973507764732, guid: 14a369a9d14102743b24817e8938e8a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92eb254f419fa3a4387e5899f5533df6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -42530,6 +43251,7 @@ GameObject:
   - component: {fileID: 1079398937}
   - component: {fileID: 1079398936}
   - component: {fileID: 1079398935}
+  - component: {fileID: 1079398938}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -42572,7 +43294,7 @@ MonoBehaviour:
   m_Content: {fileID: 1738414230}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -42625,6 +43347,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079398933}
   m_CullTransparentMesh: 1
+--- !u!114 &1079398938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079398933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1081723456
 GameObject:
   m_ObjectHideFlags: 0
@@ -42987,6 +43721,7 @@ GameObject:
   - component: {fileID: 1090098015}
   - component: {fileID: 1090098018}
   - component: {fileID: 1090098019}
+  - component: {fileID: 1090098020}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -43179,6 +43914,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 7
   index: 0
+--- !u!114 &1090098020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090098013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1096413278
 GameObject:
   m_ObjectHideFlags: 0
@@ -43268,6 +44015,7 @@ GameObject:
   - component: {fileID: 1097822474}
   - component: {fileID: 1097822477}
   - component: {fileID: 1097822478}
+  - component: {fileID: 1097822479}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -43460,6 +44208,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 6
   index: 0
+--- !u!114 &1097822479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097822472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1104481328
 GameObject:
   m_ObjectHideFlags: 0
@@ -44556,6 +45316,7 @@ GameObject:
   - component: {fileID: 1154242350}
   - component: {fileID: 1154242353}
   - component: {fileID: 1154242354}
+  - component: {fileID: 1154242355}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -44748,6 +45509,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 5
   index: 0
+--- !u!114 &1154242355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154242348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1155660745
 GameObject:
   m_ObjectHideFlags: 0
@@ -45158,6 +45931,7 @@ GameObject:
   - component: {fileID: 1175298417}
   - component: {fileID: 1175298416}
   - component: {fileID: 1175298415}
+  - component: {fileID: 1175298418}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -45200,7 +45974,7 @@ MonoBehaviour:
   m_Content: {fileID: 15282565}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -45253,6 +46027,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175298413}
   m_CullTransparentMesh: 1
+--- !u!114 &1175298418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175298413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1187631111
 GameObject:
   m_ObjectHideFlags: 0
@@ -45580,6 +46366,7 @@ GameObject:
   - component: {fileID: 1195516940}
   - component: {fileID: 1195516939}
   - component: {fileID: 1195516938}
+  - component: {fileID: 1195516941}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -45622,7 +46409,7 @@ MonoBehaviour:
   m_Content: {fileID: 1630104753}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -45675,6 +46462,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195516936}
   m_CullTransparentMesh: 1
+--- !u!114 &1195516941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195516936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1198299482
 GameObject:
   m_ObjectHideFlags: 0
@@ -46210,8 +47009,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.010960668}
   m_LocalScale: {x: 0.9984625, y: 0.9984625, z: 0.9984625}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1414264315}
+  m_Children: []
   m_Father: {fileID: 1305011871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -46283,7 +47081,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4511035973507764732, guid: 14a369a9d14102743b24817e8938e8a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92eb254f419fa3a4387e5899f5533df6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -46671,6 +47469,7 @@ GameObject:
   - component: {fileID: 1232085922}
   - component: {fileID: 1232085921}
   - component: {fileID: 1232085920}
+  - component: {fileID: 1232085923}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -46713,7 +47512,7 @@ MonoBehaviour:
   m_Content: {fileID: 1396034040}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -46766,6 +47565,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232085918}
   m_CullTransparentMesh: 1
+--- !u!114 &1232085923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232085918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1233557542
 GameObject:
   m_ObjectHideFlags: 0
@@ -46780,6 +47591,7 @@ GameObject:
   - component: {fileID: 1233557544}
   - component: {fileID: 1233557547}
   - component: {fileID: 1233557548}
+  - component: {fileID: 1233557549}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -46972,6 +47784,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 5
   index: 0
+--- !u!114 &1233557549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233557542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1236396826
 GameObject:
   m_ObjectHideFlags: 0
@@ -48302,6 +49126,7 @@ GameObject:
   - component: {fileID: 1273635126}
   - component: {fileID: 1273635129}
   - component: {fileID: 1273635130}
+  - component: {fileID: 1273635131}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -48494,6 +49319,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 7
   index: 0
+--- !u!114 &1273635131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273635124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1273839169
 GameObject:
   m_ObjectHideFlags: 0
@@ -50314,15 +51151,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50334,7 +51171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 496.09726
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalRotation.w
@@ -50354,11 +51191,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150.2
+      value: 228.8
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -63.7
+      value: -75.7
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -51055,6 +51892,7 @@ GameObject:
   - component: {fileID: 1357212930}
   - component: {fileID: 1357212929}
   - component: {fileID: 1357212928}
+  - component: {fileID: 1357212931}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -51097,7 +51935,7 @@ MonoBehaviour:
   m_Content: {fileID: 943523492}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -51150,6 +51988,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357212926}
   m_CullTransparentMesh: 1
+--- !u!114 &1357212931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357212926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1357942781
 GameObject:
   m_ObjectHideFlags: 0
@@ -51949,6 +52799,7 @@ GameObject:
   - component: {fileID: 1381436234}
   - component: {fileID: 1381436233}
   - component: {fileID: 1381436232}
+  - component: {fileID: 1381436235}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -51991,7 +52842,7 @@ MonoBehaviour:
   m_Content: {fileID: 1155660746}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -52044,6 +52895,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1381436230}
   m_CullTransparentMesh: 1
+--- !u!114 &1381436235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381436230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1384439396
 GameObject:
   m_ObjectHideFlags: 0
@@ -53690,81 +54553,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414231859}
   m_CullTransparentMesh: 1
---- !u!1 &1414264314
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1414264315}
-  - component: {fileID: 1414264317}
-  - component: {fileID: 1414264316}
-  m_Layer: 5
-  m_Name: Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1414264315
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414264314}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1224243733}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1414264316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414264314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d9f79bdb5703f0498761a41a91f6057, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1414264317
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414264314}
-  m_CullTransparentMesh: 1
 --- !u!1 &1418986159
 GameObject:
   m_ObjectHideFlags: 0
@@ -54532,6 +55320,7 @@ GameObject:
   - component: {fileID: 1452665287}
   - component: {fileID: 1452665286}
   - component: {fileID: 1452665285}
+  - component: {fileID: 1452665288}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -54574,7 +55363,7 @@ MonoBehaviour:
   m_Content: {fileID: 118519537}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -54627,6 +55416,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452665283}
   m_CullTransparentMesh: 1
+--- !u!114 &1452665288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452665283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1453453400
 GameObject:
   m_ObjectHideFlags: 0
@@ -55139,6 +55940,7 @@ GameObject:
   - component: {fileID: 1471129574}
   - component: {fileID: 1471129577}
   - component: {fileID: 1471129578}
+  - component: {fileID: 1471129579}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -55331,6 +56133,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 4
   index: 0
+--- !u!114 &1471129579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471129572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1473914790
 GameObject:
   m_ObjectHideFlags: 0
@@ -55343,6 +56157,7 @@ GameObject:
   - component: {fileID: 1473914794}
   - component: {fileID: 1473914793}
   - component: {fileID: 1473914792}
+  - component: {fileID: 1473914795}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -55385,7 +56200,7 @@ MonoBehaviour:
   m_Content: {fileID: 1031465190}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -55438,6 +56253,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473914790}
   m_CullTransparentMesh: 1
+--- !u!114 &1473914795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473914790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1479970832
 GameObject:
   m_ObjectHideFlags: 0
@@ -55557,6 +56384,7 @@ GameObject:
   - component: {fileID: 1481742158}
   - component: {fileID: 1481742161}
   - component: {fileID: 1481742162}
+  - component: {fileID: 1481742163}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -55749,6 +56577,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 8
   index: 0
+--- !u!114 &1481742163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481742156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1484131624
 GameObject:
   m_ObjectHideFlags: 0
@@ -56342,6 +57182,7 @@ GameObject:
   - component: {fileID: 1490062390}
   - component: {fileID: 1490062393}
   - component: {fileID: 1490062394}
+  - component: {fileID: 1490062395}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -56534,6 +57375,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 5
   index: 0
+--- !u!114 &1490062395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490062388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1491883630
 GameObject:
   m_ObjectHideFlags: 0
@@ -57992,6 +58845,7 @@ GameObject:
   - component: {fileID: 1537915996}
   - component: {fileID: 1537915995}
   - component: {fileID: 1537915994}
+  - component: {fileID: 1537915997}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -58034,7 +58888,7 @@ MonoBehaviour:
   m_Content: {fileID: 199549684}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -58087,6 +58941,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537915992}
   m_CullTransparentMesh: 1
+--- !u!114 &1537915997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537915992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1540065146
 GameObject:
   m_ObjectHideFlags: 0
@@ -58259,6 +59125,7 @@ GameObject:
   - component: {fileID: 1545420393}
   - component: {fileID: 1545420396}
   - component: {fileID: 1545420397}
+  - component: {fileID: 1545420398}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -58451,6 +59318,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 9
   index: 0
+--- !u!114 &1545420398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545420391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1553308319
 GameObject:
   m_ObjectHideFlags: 0
@@ -58675,6 +59554,7 @@ GameObject:
   - component: {fileID: 1554252416}
   - component: {fileID: 1554252419}
   - component: {fileID: 1554252420}
+  - component: {fileID: 1554252421}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -58867,6 +59747,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 8
   index: 0
+--- !u!114 &1554252421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554252414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1556010981
 GameObject:
   m_ObjectHideFlags: 0
@@ -59073,6 +59965,7 @@ GameObject:
   - component: {fileID: 1560939348}
   - component: {fileID: 1560939347}
   - component: {fileID: 1560939346}
+  - component: {fileID: 1560939349}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -59115,7 +60008,7 @@ MonoBehaviour:
   m_Content: {fileID: 229987190}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -59168,6 +60061,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560939344}
   m_CullTransparentMesh: 1
+--- !u!114 &1560939349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560939344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1561826045
 GameObject:
   m_ObjectHideFlags: 0
@@ -59549,6 +60454,7 @@ GameObject:
   - component: {fileID: 1575581134}
   - component: {fileID: 1575581137}
   - component: {fileID: 1575581138}
+  - component: {fileID: 1575581139}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -59741,6 +60647,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 4
   index: 0
+--- !u!114 &1575581139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575581132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1580267722
 GameObject:
   m_ObjectHideFlags: 0
@@ -60431,6 +61349,7 @@ GameObject:
   - component: {fileID: 1596332000}
   - component: {fileID: 1596331999}
   - component: {fileID: 1596331998}
+  - component: {fileID: 1596332001}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -60473,7 +61392,7 @@ MonoBehaviour:
   m_Content: {fileID: 1262892132}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -60526,6 +61445,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596331996}
   m_CullTransparentMesh: 1
+--- !u!114 &1596332001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596331996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1597444089
 GameObject:
   m_ObjectHideFlags: 0
@@ -61757,6 +62688,7 @@ GameObject:
   - component: {fileID: 1625277707}
   - component: {fileID: 1625277706}
   - component: {fileID: 1625277705}
+  - component: {fileID: 1625277708}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -61799,7 +62731,7 @@ MonoBehaviour:
   m_Content: {fileID: 343992055}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -61852,6 +62784,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625277703}
   m_CullTransparentMesh: 1
+--- !u!114 &1625277708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625277703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1630104752
 GameObject:
   m_ObjectHideFlags: 0
@@ -62323,6 +63267,7 @@ GameObject:
   - component: {fileID: 1644138773}
   - component: {fileID: 1644138772}
   - component: {fileID: 1644138771}
+  - component: {fileID: 1644138774}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -62365,7 +63310,7 @@ MonoBehaviour:
   m_Content: {fileID: 894636623}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -62418,6 +63363,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644138769}
   m_CullTransparentMesh: 1
+--- !u!114 &1644138774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644138769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1644309357
 GameObject:
   m_ObjectHideFlags: 0
@@ -63709,6 +64666,7 @@ GameObject:
   - component: {fileID: 1687492818}
   - component: {fileID: 1687492817}
   - component: {fileID: 1687492816}
+  - component: {fileID: 1687492819}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -63751,7 +64709,7 @@ MonoBehaviour:
   m_Content: {fileID: 1419117480}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -63804,6 +64762,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687492814}
   m_CullTransparentMesh: 1
+--- !u!114 &1687492819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687492814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1691030385
 GameObject:
   m_ObjectHideFlags: 0
@@ -63908,6 +64878,7 @@ GameObject:
   - component: {fileID: 1694479803}
   - component: {fileID: 1694479806}
   - component: {fileID: 1694479807}
+  - component: {fileID: 1694479808}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -64100,6 +65071,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 8
   index: 0
+--- !u!114 &1694479808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694479801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1697775091
 GameObject:
   m_ObjectHideFlags: 0
@@ -64114,6 +65097,7 @@ GameObject:
   - component: {fileID: 1697775093}
   - component: {fileID: 1697775096}
   - component: {fileID: 1697775097}
+  - component: {fileID: 1697775098}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -64306,6 +65290,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 4
   index: 0
+--- !u!114 &1697775098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697775091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1698057104
 GameObject:
   m_ObjectHideFlags: 0
@@ -65331,6 +66327,7 @@ GameObject:
   - component: {fileID: 1724149895}
   - component: {fileID: 1724149894}
   - component: {fileID: 1724149893}
+  - component: {fileID: 1724149896}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -65373,7 +66370,7 @@ MonoBehaviour:
   m_Content: {fileID: 835668939}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -65426,6 +66423,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724149891}
   m_CullTransparentMesh: 1
+--- !u!114 &1724149896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724149891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1727267844
 GameObject:
   m_ObjectHideFlags: 0
@@ -66393,6 +67402,7 @@ GameObject:
   - component: {fileID: 1754507303}
   - component: {fileID: 1754507302}
   - component: {fileID: 1754507301}
+  - component: {fileID: 1754507304}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -66435,7 +67445,7 @@ MonoBehaviour:
   m_Content: {fileID: 1832283608}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -66488,6 +67498,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754507299}
   m_CullTransparentMesh: 1
+--- !u!114 &1754507304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754507299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1755173479
 GameObject:
   m_ObjectHideFlags: 0
@@ -66500,6 +67522,7 @@ GameObject:
   - component: {fileID: 1755173483}
   - component: {fileID: 1755173482}
   - component: {fileID: 1755173481}
+  - component: {fileID: 1755173484}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -66542,7 +67565,7 @@ MonoBehaviour:
   m_Content: {fileID: 336606357}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -66595,6 +67618,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755173479}
   m_CullTransparentMesh: 1
+--- !u!114 &1755173484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755173479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1760043959
 GameObject:
   m_ObjectHideFlags: 0
@@ -66778,6 +67813,7 @@ GameObject:
   - component: {fileID: 1765081693}
   - component: {fileID: 1765081692}
   - component: {fileID: 1765081691}
+  - component: {fileID: 1765081694}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -66820,7 +67856,7 @@ MonoBehaviour:
   m_Content: {fileID: 1503759445}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -66873,6 +67909,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765081689}
   m_CullTransparentMesh: 1
+--- !u!114 &1765081694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765081689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1765814775
 GameObject:
   m_ObjectHideFlags: 0
@@ -67097,6 +68145,7 @@ GameObject:
   - component: {fileID: 1775957510}
   - component: {fileID: 1775957513}
   - component: {fileID: 1775957514}
+  - component: {fileID: 1775957515}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -67289,6 +68338,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 6
   index: 0
+--- !u!114 &1775957515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775957508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1778736611
 GameObject:
   m_ObjectHideFlags: 0
@@ -68645,6 +69706,7 @@ GameObject:
   - component: {fileID: 1819349011}
   - component: {fileID: 1819349010}
   - component: {fileID: 1819349009}
+  - component: {fileID: 1819349012}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -68687,7 +69749,7 @@ MonoBehaviour:
   m_Content: {fileID: 258833172}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -68740,6 +69802,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819349007}
   m_CullTransparentMesh: 1
+--- !u!114 &1819349012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819349007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1825676940
 GameObject:
   m_ObjectHideFlags: 0
@@ -68889,6 +69963,7 @@ GameObject:
   - component: {fileID: 1827385029}
   - component: {fileID: 1827385032}
   - component: {fileID: 1827385033}
+  - component: {fileID: 1827385034}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -69081,6 +70156,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 7
   index: 0
+--- !u!114 &1827385034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827385027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1830144093
 GameObject:
   m_ObjectHideFlags: 0
@@ -69675,15 +70762,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0017986
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalPosition.x
@@ -69695,7 +70782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 496.09726
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalRotation.w
@@ -69715,11 +70802,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 33.5
+      value: 96.9
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -157.5
+      value: -190.4
       objectReference: {fileID: 0}
     - target: {fileID: 10858183103287091, guid: 7204d98d6db13d14ca54835ee78eb571, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -69858,6 +70945,7 @@ GameObject:
   - component: {fileID: 1859846993}
   - component: {fileID: 1859846996}
   - component: {fileID: 1859846997}
+  - component: {fileID: 1859846998}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -70050,6 +71138,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 8
   index: 0
+--- !u!114 &1859846998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859846991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1866043697
 GameObject:
   m_ObjectHideFlags: 0
@@ -70293,6 +71393,7 @@ GameObject:
   - component: {fileID: 1869823628}
   - component: {fileID: 1869823631}
   - component: {fileID: 1869823632}
+  - component: {fileID: 1869823633}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -70485,6 +71586,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 7
   index: 0
+--- !u!114 &1869823633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869823626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1873340747
 GameObject:
   m_ObjectHideFlags: 0
@@ -70773,6 +71886,7 @@ GameObject:
   - component: {fileID: 1883413337}
   - component: {fileID: 1883413336}
   - component: {fileID: 1883413335}
+  - component: {fileID: 1883413338}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -70815,7 +71929,7 @@ MonoBehaviour:
   m_Content: {fileID: 2069878388}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -70868,6 +71982,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883413333}
   m_CullTransparentMesh: 1
+--- !u!114 &1883413338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883413333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1885922839
 GameObject:
   m_ObjectHideFlags: 0
@@ -71844,8 +72970,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.010960668}
   m_LocalScale: {x: 0.9984625, y: 0.9984625, z: 0.9984625}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 135499948}
+  m_Children: []
   m_Father: {fileID: 1082727494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -71917,7 +73042,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4511035973507764732, guid: 14a369a9d14102743b24817e8938e8a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92eb254f419fa3a4387e5899f5533df6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -71949,81 +73074,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 13
   index: 0
---- !u!1 &1918487827
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1918487828}
-  - component: {fileID: 1918487830}
-  - component: {fileID: 1918487829}
-  m_Layer: 5
-  m_Name: Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1918487828
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918487827}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1078567825}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1918487829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918487827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d9f79bdb5703f0498761a41a91f6057, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1918487830
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918487827}
-  m_CullTransparentMesh: 1
 --- !u!1 &1922936711
 GameObject:
   m_ObjectHideFlags: 0
@@ -72292,6 +73342,7 @@ GameObject:
   - component: {fileID: 1933098145}
   - component: {fileID: 1933098144}
   - component: {fileID: 1933098143}
+  - component: {fileID: 1933098146}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -72334,7 +73385,7 @@ MonoBehaviour:
   m_Content: {fileID: 404693041}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -72387,6 +73438,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933098141}
   m_CullTransparentMesh: 1
+--- !u!114 &1933098146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933098141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1935205602
 GameObject:
   m_ObjectHideFlags: 0
@@ -73022,6 +74085,7 @@ GameObject:
   - component: {fileID: 1946833605}
   - component: {fileID: 1946833608}
   - component: {fileID: 1946833609}
+  - component: {fileID: 1946833610}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -73214,6 +74278,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 9
   index: 0
+--- !u!114 &1946833610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946833603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1951716307
 GameObject:
   m_ObjectHideFlags: 0
@@ -73662,81 +74738,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961877423}
   m_CullTransparentMesh: 1
---- !u!1 &1962215245
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1962215246}
-  - component: {fileID: 1962215248}
-  - component: {fileID: 1962215247}
-  m_Layer: 5
-  m_Name: Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1962215246
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962215245}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2041409377}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1962215247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962215245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d9f79bdb5703f0498761a41a91f6057, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1962215248
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962215245}
-  m_CullTransparentMesh: 1
 --- !u!1 &1962723035
 GameObject:
   m_ObjectHideFlags: 0
@@ -73984,6 +74985,7 @@ GameObject:
   - component: {fileID: 1964767214}
   - component: {fileID: 1964767217}
   - component: {fileID: 1964767218}
+  - component: {fileID: 1964767219}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -74176,6 +75178,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 4
   index: 0
+--- !u!114 &1964767219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964767212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &1964970418
 GameObject:
   m_ObjectHideFlags: 0
@@ -75317,6 +76331,7 @@ GameObject:
   - component: {fileID: 2003811552}
   - component: {fileID: 2003811555}
   - component: {fileID: 2003811556}
+  - component: {fileID: 2003811557}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -75509,6 +76524,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 5
   index: 0
+--- !u!114 &2003811557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003811550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &2005388671
 GameObject:
   m_ObjectHideFlags: 0
@@ -75826,6 +76853,7 @@ GameObject:
   - component: {fileID: 2017136949}
   - component: {fileID: 2017136948}
   - component: {fileID: 2017136947}
+  - component: {fileID: 2017136950}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -75868,7 +76896,7 @@ MonoBehaviour:
   m_Content: {fileID: 776109148}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -75921,81 +76949,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017136945}
   m_CullTransparentMesh: 1
---- !u!1 &2018444652
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2018444653}
-  - component: {fileID: 2018444655}
-  - component: {fileID: 2018444654}
-  m_Layer: 5
-  m_Name: Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2018444653
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018444652}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 582091291}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2018444654
+--- !u!114 &2017136950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018444652}
+  m_GameObject: {fileID: 2017136945}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d9f79bdb5703f0498761a41a91f6057, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2018444655
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018444652}
-  m_CullTransparentMesh: 1
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &2020802307
 GameObject:
   m_ObjectHideFlags: 0
@@ -76070,81 +77035,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020802307}
-  m_CullTransparentMesh: 1
---- !u!1 &2027440482
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2027440483}
-  - component: {fileID: 2027440485}
-  - component: {fileID: 2027440484}
-  m_Layer: 5
-  m_Name: Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2027440483
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027440482}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 838329227}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2027440484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027440482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d9f79bdb5703f0498761a41a91f6057, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2027440485
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027440482}
   m_CullTransparentMesh: 1
 --- !u!1 &2031353564
 GameObject:
@@ -76539,8 +77429,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.010960668}
   m_LocalScale: {x: 0.9984623, y: 0.9984623, z: 0.9984623}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1962215246}
+  m_Children: []
   m_Father: {fileID: 1441544871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -76612,7 +77501,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4511035973507764732, guid: 14a369a9d14102743b24817e8938e8a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92eb254f419fa3a4387e5899f5533df6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -76656,6 +77545,7 @@ GameObject:
   - component: {fileID: 2041708777}
   - component: {fileID: 2041708776}
   - component: {fileID: 2041708775}
+  - component: {fileID: 2041708778}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -76698,7 +77588,7 @@ MonoBehaviour:
   m_Content: {fileID: 968786690}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -76751,6 +77641,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041708773}
   m_CullTransparentMesh: 1
+--- !u!114 &2041708778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041708773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &2045513990
 GameObject:
   m_ObjectHideFlags: 0
@@ -78207,6 +79109,7 @@ GameObject:
   - component: {fileID: 2091749364}
   - component: {fileID: 2091749363}
   - component: {fileID: 2091749362}
+  - component: {fileID: 2091749365}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -78249,7 +79152,7 @@ MonoBehaviour:
   m_Content: {fileID: 1428757252}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -78302,6 +79205,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091749360}
   m_CullTransparentMesh: 1
+--- !u!114 &2091749365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091749360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &2093367627
 GameObject:
   m_ObjectHideFlags: 0
@@ -79643,6 +80558,7 @@ GameObject:
   - component: {fileID: 2137358545}
   - component: {fileID: 2137358548}
   - component: {fileID: 2137358549}
+  - component: {fileID: 2137358550}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -79835,6 +80751,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 7
   index: 0
+--- !u!114 &2137358550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137358543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &2137703891
 GameObject:
   m_ObjectHideFlags: 0
@@ -80960,6 +81888,7 @@ GameObject:
   - component: {fileID: 1116641008904874318}
   - component: {fileID: 8854983089228429637}
   - component: {fileID: 8854983089228429638}
+  - component: {fileID: 8854983089228429639}
   m_Layer: 5
   m_Name: Dropdown bags
   m_TagString: Untagged
@@ -82145,7 +83074,7 @@ MonoBehaviour:
   m_Content: {fileID: 2805100667916188719}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -83415,7 +84344,7 @@ MonoBehaviour:
   m_Content: {fileID: 3767799972498388530}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -83745,7 +84674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2434985894925077886, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -53.49994
+      value: -53.499878
       objectReference: {fileID: 0}
     - target: {fileID: 2434985894925077886, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -83944,11 +84873,17 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4381309171059182151, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 326596580}
+      addedObject: {fileID: 1046356634}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4500544054641741681, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1412391924}
+    - targetCorrespondingSourceObject: {fileID: 8691296998531095195, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1059544321}
+    - targetCorrespondingSourceObject: {fileID: 8691296998531095195, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1059544320}
     - targetCorrespondingSourceObject: {fileID: 1886280768646428267, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3529938275672817537}
@@ -84391,6 +85326,7 @@ GameObject:
   - component: {fileID: 5053198560992271683}
   - component: {fileID: 986634759871954505}
   - component: {fileID: 3209888505948428880}
+  - component: {fileID: 5053198560992271684}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -84549,7 +85485,7 @@ MonoBehaviour:
   m_Content: {fileID: 8298595400825278081}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -85033,6 +85969,7 @@ GameObject:
   - component: {fileID: 2356909165417936661}
   - component: {fileID: 1673158784757707792}
   - component: {fileID: 2218089694510515217}
+  - component: {fileID: 4733342621648399826}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -85040,6 +85977,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &4733342621648399826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4733342621648399825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!114 &4757157583912913994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85183,6 +86132,7 @@ GameObject:
   - component: {fileID: 1250449486014032363}
   - component: {fileID: 5500634141484243331}
   - component: {fileID: 5500634141484243332}
+  - component: {fileID: 5500634141484243333}
   m_Layer: 5
   m_Name: Dropdown weapon
   m_TagString: Untagged
@@ -85270,6 +86220,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3875658482468629189}
   m_CullTransparentMesh: 1
+--- !u!114 &5053198560992271684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3875658482468629189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!114 &5064008656059170753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85682,6 +86644,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 4
   index: 0
+--- !u!114 &5500634141484243333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4886544178279574154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &5554723750962409802
 GameObject:
   m_ObjectHideFlags: 0
@@ -85744,6 +86718,7 @@ GameObject:
   - component: {fileID: 7576943155146023530}
   - component: {fileID: 8530177842117430347}
   - component: {fileID: 8530177842117430348}
+  - component: {fileID: 8530177842117430349}
   m_Layer: 5
   m_Name: Dropdown cheger
   m_TagString: Untagged
@@ -85832,6 +86807,7 @@ GameObject:
   - component: {fileID: 3240749483892816946}
   - component: {fileID: 6514735578903603447}
   - component: {fileID: 6514735578903603448}
+  - component: {fileID: 6514735578903603449}
   m_Layer: 5
   m_Name: Dropdown other
   m_TagString: Untagged
@@ -89562,6 +90538,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 8
   index: 0
+--- !u!114 &6514735578903603449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5674937148954073830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!224 &6517836795293031162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -89735,6 +90723,7 @@ GameObject:
   - component: {fileID: 8295139172712698428}
   - component: {fileID: 3331134760569622182}
   - component: {fileID: 4105048245913438497}
+  - component: {fileID: 8295139172712698429}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -90018,6 +91007,7 @@ GameObject:
   - component: {fileID: 2164262992439124116}
   - component: {fileID: 2467936434058176726}
   - component: {fileID: 8773557567817688354}
+  - component: {fileID: 9057332620676002857}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -90374,6 +91364,7 @@ GameObject:
   - component: {fileID: 7140917053484117137}
   - component: {fileID: 7165470176574917012}
   - component: {fileID: 7165470176574917013}
+  - component: {fileID: 7165470176574917014}
   m_Layer: 5
   m_Name: Dropdown magic
   m_TagString: Untagged
@@ -90412,6 +91403,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 7
   index: 0
+--- !u!114 &7165470176574917014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165470176574917011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!222 &7180483830321721288
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -90451,7 +91454,7 @@ MonoBehaviour:
   m_Content: {fileID: 7892569243568883936}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -90592,6 +91595,7 @@ GameObject:
   - component: {fileID: 2516816259472391228}
   - component: {fileID: 7334135704426129275}
   - component: {fileID: 7334135704426129276}
+  - component: {fileID: 7334135704426129277}
   m_Layer: 5
   m_Name: Dropdown armor
   m_TagString: Untagged
@@ -90630,6 +91634,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 5
   index: 0
+--- !u!114 &7334135704426129277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7334135704426129274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &7335364052261831492
 GameObject:
   m_ObjectHideFlags: 0
@@ -90862,6 +91878,7 @@ GameObject:
   - component: {fileID: 887375780884967906}
   - component: {fileID: 5725284787773490231}
   - component: {fileID: 7678694226658995063}
+  - component: {fileID: 7678694226658995064}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -91127,7 +92144,7 @@ MonoBehaviour:
   m_Content: {fileID: 8355202252445232566}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -91142,6 +92159,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7678694226658995064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535730836202272501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!222 &7697183523922205880
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -91505,6 +92534,7 @@ GameObject:
   - component: {fileID: 6694494702998999544}
   - component: {fileID: 5064008656059170753}
   - component: {fileID: 7228220593438504484}
+  - component: {fileID: 8160838441157645265}
   m_Layer: 5
   m_Name: Template
   m_TagString: Untagged
@@ -91512,6 +92542,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &8160838441157645265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8160838441157645264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!224 &8196755716677935998
 RectTransform:
   m_ObjectHideFlags: 0
@@ -91668,6 +92710,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6664926263737078364}
   m_CullTransparentMesh: 1
+--- !u!114 &8295139172712698429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6664926263737078364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!224 &8298595400825278081
 RectTransform:
   m_ObjectHideFlags: 0
@@ -92031,6 +93085,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 9
   index: 0
+--- !u!114 &8530177842117430349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582076603597861727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &8544076479543877073
 GameObject:
   m_ObjectHideFlags: 0
@@ -92204,7 +93270,7 @@ MonoBehaviour:
   m_Content: {fileID: 7284432489355968483}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -92390,6 +93456,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UiControlMarker
   role: 6
   index: 0
+--- !u!114 &8854983089228429639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063287750982577863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &8862372250101299142
 GameObject:
   m_ObjectHideFlags: 0
@@ -92549,6 +93627,18 @@ RectTransform:
   m_AnchoredPosition: {x: 137.5, y: -7.800049}
   m_SizeDelta: {x: 275, y: 290}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &9057332620676002857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957857539984458993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
 --- !u!1 &9126960301283233399
 GameObject:
   m_ObjectHideFlags: 0

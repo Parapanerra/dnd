@@ -123,8 +123,12 @@ public class MainMenuTransferPanel : MonoBehaviour
                 {
                     try
                     {
-                        characterTransfer.WriteCollection(paths[0], saveManager, Application.version);
-                        dialogPresenter.Show("Експорт", "Колекцію персонажів збережено.", "Закрити", () => { });
+                        int localOnly = characterTransfer.WriteCollection(paths[0], saveManager, Application.version);
+                        string message = dialogPresenter.Text("Колекцію персонажів збережено.", "Character collection saved.");
+                        if (localOnly > 0)
+                            message += dialogPresenter.Text("\nФото лише локально, не перенесено: ",
+                                "\nPhotos kept only locally, not transferred: ") + localOnly;
+                        dialogPresenter.Show("Експорт", message, "Закрити", () => { });
                     }
                     catch (System.Exception exception)
                     {
@@ -167,7 +171,8 @@ public class MainMenuTransferPanel : MonoBehaviour
                         dialogPresenter.Text("\n\nЗамінити всю колекцію чи додати персонажів?",
                             "\n\nReplace the whole collection or add these characters?"),
                         "Замінити все", () => ApplyCollectionImport(saveManager, importedData, false),
-                        "Додати", () => ApplyCollectionImport(saveManager, importedData, true));
+                        "Додати", () => ApplyCollectionImport(saveManager, importedData, true),
+                        () => TaruckAlbumArchive.Cleanup(importedData));
                 }
                 catch (System.Exception exception)
                 {
@@ -203,8 +208,12 @@ public class MainMenuTransferPanel : MonoBehaviour
 
                 try
                 {
-                    characterTransfer.WriteCharacter(paths[0], character, Application.version);
-                    dialogPresenter.Show("Експорт", "Персонажа збережено.", "Закрити", () => { });
+                    int localOnly = characterTransfer.WriteCharacter(paths[0], character, Application.version);
+                    string message = dialogPresenter.Text("Персонажа збережено.", "Character saved.");
+                    if (localOnly > 0)
+                        message += dialogPresenter.Text("\nФото лише локально, не перенесено: ",
+                            "\nPhotos kept only locally, not transferred: ") + localOnly;
+                    dialogPresenter.Show("Експорт", message, "Закрити", () => { });
                 }
                 catch (System.Exception exception)
                 {
@@ -240,7 +249,8 @@ public class MainMenuTransferPanel : MonoBehaviour
                     dialogPresenter.Show("Перевірка персонажа",
                         dialogPresenter.Text("Імпортувати персонажа «", "Import character “") +
                             importedCharacter.characterName + dialogPresenter.Text("»?", "”?"),
-                        "Додати", () => ApplyCharacterImport(saveManager, importedCharacter));
+                        "Додати", () => ApplyCharacterImport(saveManager, importedCharacter),
+                        onDismissed: () => TaruckAlbumArchive.Cleanup(importedCharacter));
                 }
                 catch (System.Exception exception)
                 {
@@ -261,15 +271,19 @@ public class MainMenuTransferPanel : MonoBehaviour
 
     private void ApplyCollectionImport(DndSaveManager manager, AppSaveData imported, bool merge)
     {
-        if (!manager.TryImportCollection(imported, merge, out string error))
+        try
         {
-            dialogPresenter.Show("Помилка імпорту", error, "Закрити", () => { });
-            return;
+            if (!manager.TryImportCollection(imported, merge, out string error))
+            {
+                dialogPresenter.Show("Помилка імпорту", error, "Закрити", () => { });
+                return;
+            }
+            owner.RefreshCharacterList();
+            dialogPresenter.Show("Імпорт завершено",
+                dialogPresenter.Text("Персонажів у колекції: ", "Characters in collection: ") + manager.GetCharacterCount(),
+                "Закрити", () => { });
         }
-        owner.RefreshCharacterList();
-        dialogPresenter.Show("Імпорт завершено",
-            dialogPresenter.Text("Персонажів у колекції: ", "Characters in collection: ") + manager.GetCharacterCount(),
-            "Закрити", () => { });
+        finally { TaruckAlbumArchive.Cleanup(imported); }
     }
 
     private void ApplyCharacterImport(DndSaveManager manager, CharacterData imported)
@@ -284,6 +298,7 @@ public class MainMenuTransferPanel : MonoBehaviour
         {
             dialogPresenter.Show("Помилка імпорту", exception.Message, "Закрити", () => { });
         }
+        finally { TaruckAlbumArchive.Cleanup(imported); }
     }
 
     private CharacterData GetSelectedCharacterForExport()

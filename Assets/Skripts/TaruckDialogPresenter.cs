@@ -22,12 +22,20 @@ internal sealed class TaruckDialogPresenter
     }
 
     internal void Show(string title, string details, string primaryLabel, Action primary,
-        string secondaryLabel = null, Action secondary = null)
+        string secondaryLabel = null, Action secondary = null, Action onDismissed = null)
     {
         TaruckImportReviewDialog dialog = OpenDialog();
         dialog.Configure(messages.KnownText(title), messages.KnownText(details),
             messages.KnownText(primaryLabel), primary, messages.KnownText(secondaryLabel),
-            secondary, messages);
+            secondary, messages, onDismissed);
+    }
+
+    internal void ShowCompact(string title, string details, string primaryLabel, Action primary)
+    {
+        TaruckImportReviewDialog dialog = OpenDialog();
+        dialog.UseCompactLayout();
+        dialog.Configure(messages.KnownText(title), messages.KnownText(details),
+            messages.KnownText(primaryLabel), primary, null, null, messages);
     }
 
     internal void ShowImage(string title, Texture2D image)

@@ -26,6 +26,7 @@ internal sealed class CalculatorHealthController
     private bool hasTextColor;
 
     public bool IsActive => mode != Mode.None;
+    public bool IsHealing => mode == Mode.Heal;
     public string ModeLabel { get; private set; } = "";
 
     public bool TrySelectMode(string label, Func<string, string> localizedText, AppLanguage language)

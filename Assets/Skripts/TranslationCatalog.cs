@@ -129,6 +129,32 @@ public class TranslationCatalog
 
     private void BuildTranslations()
     {
+        Add("Альбом персонажа", "Character album", "Альбом персонажа");
+        Add("+ Додати зображення", "+ Add image", "+ Добавить изображение");
+        Add("Немає зображень. Додайте перше.", "No images yet. Add the first one.", "Нет изображений. Добавьте первое.");
+        Add("Виберіть зображення", "Choose image", "Выберите изображение");
+        Add("Завантажено: {0}/{1}", "Loaded: {0}/{1}", "Загружено: {0}/{1}");
+        Add("Не додано: {0}/{1}", "Not added: {0}/{1}", "Не добавлено: {0}/{1}");
+        Add("Зображень: {0}/{1} · сторінка {2} / 5", "Images: {0}/{1} · page {2} / 5", "Изображений: {0}/{1} · страница {2} / 5");
+        Add("Зображення {0}", "Image {0}", "Изображение {0}");
+        Add("Видалити зображення?", "Delete image?", "Удалить изображение?");
+        Add("Зображення буде видалено з альбому цього персонажа.", "The image will be removed from this character's album.", "Изображение будет удалено из альбома этого персонажа.");
+        Add("Видалити всі зображення?", "Delete all images?", "Удалить все изображения?");
+        Add("Усі зображення на всіх сторінках альбому цього персонажа буде видалено.", "All images on every page of this character's album will be deleted.", "Все изображения на всех страницах альбома этого персонажа будут удалены.");
+        Add("Скинути дані сцени?", "Reset scene data?", "Сбросить данные сцены?");
+        Add("Дані цієї сцени для цього персонажа буде скинуто.", "This scene's data for this character will be reset.", "Данные этой сцены для этого персонажа будут сброшены.");
+        Add("Скинути HP?", "Reset HP?", "Сбросить HP?");
+        Add("Персонаж мертвий", "Character is dead", "Персонаж мёртв");
+        Add("Спочатку зніміть шостий рівень виснаження, щоб зцілити персонажа.",
+            "Remove the sixth level of exhaustion before healing the character.",
+            "Сначала снимите шестой уровень истощения, чтобы исцелить персонажа.");
+        Add("Поточне, максимальне й тимчасове HP буде скинуто.", "Current, maximum, and temporary HP will be reset.", "Текущее, максимальное и временное HP будут сброшены.");
+        Add("Скинути", "Reset", "Сбросить");
+        Add("Видалити", "Delete", "Удалить");
+        Add("Скасувати", "Cancel", "Отмена");
+        Add("Закрити", "Close", "Закрыть");
+        Add("Не вдалося обробити зображення.", "Could not process the image.", "Не удалось обработать изображение.");
+        Add("У буфері немає зображення.", "There is no image in the clipboard.", "В буфере обмена нет изображения.");
         // Calculator Easter eggs. Sources also identify the currently displayed message
         // so changing language never advances the 67 counter or repeats Reset.
         Add("Раз, два, три, прийом! Ця штука працює?", "One, two, three, testing! Is this thing working?", "Раз, два, три, прием! Эта штука работает?");

@@ -68,7 +68,7 @@ public class HealthBar : MonoBehaviour
         if (damageButton != null) damageButton.onClick.AddListener(TakeDamage);
         if (healButton != null) healButton.onClick.AddListener(Heal);
         if (confirmMaxHealthButton != null) confirmMaxHealthButton.onClick.AddListener(ConfirmMaxHealth);
-        if (resetButton != null) resetButton.onClick.AddListener(ResetHealth);
+        if (resetButton != null) resetButton.onClick.AddListener(ConfirmResetHealth);
 
         RefreshHealthFromData();
     }
@@ -120,6 +120,15 @@ public class HealthBar : MonoBehaviour
         maxTemporaryHealth = 0;
         SaveSceneData();
         UpdateHealthUI();
+    }
+
+    private void ConfirmResetHealth()
+    {
+        RuntimeLocalization localization = new RuntimeManagerResolver().Localization();
+        new TaruckDialogPresenter(() => localization.CurrentLanguage).ShowCompact(
+            localization.Translate("Скинути HP?"),
+            localization.Translate("Поточне, максимальне й тимчасове HP буде скинуто."),
+            localization.Translate("Скинути"), ResetHealth);
     }
 
     public void SetMaxHealth(int value)

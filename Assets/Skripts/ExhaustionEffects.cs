@@ -55,7 +55,7 @@ internal sealed class ExhaustionEffects
         return Mathf.Clamp(count, 0, MaximumExhaustionLevel);
     }
 
-    public void Apply(int level)
+    public void Apply(int level, bool changedByUser = true)
     {
         if (saveManager == null) return;
         CharacterSceneData data = saveManager.GetActiveSceneData();
@@ -71,7 +71,7 @@ internal sealed class ExhaustionEffects
             input.onEndEdit.AddListener(OnSpeedEdited);
         }
 
-        if (level == MaximumExhaustionLevel)
+        if (changedByUser && level == MaximumExhaustionLevel)
         {
             foreach (HealthBar bar in UnityEngine.Object.FindObjectsByType<HealthBar>(FindObjectsInactive.Include))
                 if (bar.IsUsableForCalculator) bar.SetHealthToZero();
@@ -86,6 +86,6 @@ internal sealed class ExhaustionEffects
         if (!int.TryParse(value, out int speed) || saveManager == null) return;
         // The user edits the displayed (effective) speed.
         saveManager.GetActiveSceneData().SetInt(BaseSpeedKey, Mathf.Max(0, speed) + SpeedPenaltyPerLevel * Level);
-        Apply(Level);
+        Apply(Level, false);
     }
 }

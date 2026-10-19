@@ -1,6 +1,7 @@
-#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.InteropServices;
 
 // The same Windows common file dialog that NativeGallery uses in the Unity Editor.
@@ -13,6 +14,7 @@ internal static class WindowsNativeImagePicker
     private const int OfnPathMustExist = 0x00000800;
     private const int OfnNoChangeDir = 0x00000008;
     private const int OfnHideReadOnly = 0x00000004;
+    private const int OfnAllowMultiSelect = 0x00000200;
 
     [StructLayout(LayoutKind.Sequential)]
     private struct OpenFileName
@@ -57,6 +59,12 @@ internal static class WindowsNativeImagePicker
 
     internal static string Pick(string title)
     {
+        string[] paths = PickMany(title);
+        return paths.Length > 0 ? paths[0] : null;
+    }
+
+    internal static string[] PickMany(string title)
+    {
         IntPtr filter = IntPtr.Zero;
         IntPtr file = IntPtr.Zero;
         IntPtr initialDirectory = IntPtr.Zero;
@@ -84,15 +92,28 @@ internal static class WindowsNativeImagePicker
                 maxFile = FileBufferCharacters,
                 initialDirectory = initialDirectory,
                 title = dialogTitle,
-                flags = OfnExplorer | OfnFileMustExist | OfnPathMustExist | OfnNoChangeDir | OfnHideReadOnly
+                flags = OfnExplorer | OfnFileMustExist | OfnPathMustExist | OfnNoChangeDir |
+                    OfnHideReadOnly | OfnAllowMultiSelect
             };
             if (GetOpenFileName(ref dialog))
-                return Marshal.PtrToStringUni(file);
+            {
+                string selected = Marshal.PtrToStringUni(file, FileBufferCharacters);
+                int end = selected.IndexOf("\0\0", StringComparison.Ordinal);
+                if (end >= 0)
+                    selected = selected.Substring(0, end);
+                string[] parts = selected.Split(new[] { '\0' }, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length <= 1)
+                    return parts;
+                var paths = new string[parts.Length - 1];
+                for (int i = 1; i < parts.Length; i++)
+                    paths[i - 1] = Path.Combine(parts[0], parts[i]);
+                return paths;
+            }
 
             int error = GetDialogError();
             if (error != 0)
                 throw new Win32Exception(error, "Не вдалося відкрити вікно вибору зображення");
-            return null; // Cancelled by the user.
+            return Array.Empty<string>(); // Cancelled by the user.
         }
         finally
         {

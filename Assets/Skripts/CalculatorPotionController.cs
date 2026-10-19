@@ -119,6 +119,9 @@ public class CalculatorPotionController : MonoBehaviour
     {
         owner.CaptureHpTextColorFromButton(potionUseButton);
 
+        if (owner.ShowDeadCharacterAlertIfNeeded())
+            return;
+
         int index = GetSelectedPotionIndex();
         if (index < 0)
         {

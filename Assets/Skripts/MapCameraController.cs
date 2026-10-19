@@ -25,6 +25,8 @@ public class MapCameraController : MonoBehaviour
     private float initialCameraX;
     private bool isStaticMenuCamera;
     private bool mouseDragStartedOnTextField;
+    private bool dragStartedOnScrollView;
+    private bool dragStartedOnVerticalScrollView;
     private readonly List<RaycastResult> pointerHits = new List<RaycastResult>();
 
     internal float HorizontalPanWorldDelta => transform.position.x - initialCameraX;
@@ -56,7 +58,15 @@ public class MapCameraController : MonoBehaviour
             return;
 
         if (Input.GetMouseButtonUp(0))
+        {
             mouseDragStartedOnTextField = false;
+            dragStartedOnScrollView = false;
+            dragStartedOnVerticalScrollView = false;
+        }
+        if (Input.touchCount == 0 && !Input.GetMouseButton(0))
+            dragStartedOnScrollView = false;
+        if (Input.touchCount == 0 && !Input.GetMouseButton(0))
+            dragStartedOnVerticalScrollView = false;
 
         // Если хотя бы один скролл вью активен, не обрабатываем ввод для камеры
         if (IsAnyScrollViewOpen()) return;
@@ -68,16 +78,18 @@ public class MapCameraController : MonoBehaviour
             {
                 mouseDragStartedOnTextField = !Application.isMobilePlatform &&
                     IsPointerOnActiveTextField(Input.mousePosition);
+                SetScrollDragBlock(Input.mousePosition);
                 touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
             else if (Input.touchCount == 1)
             {
+                SetScrollDragBlock(Input.GetTouch(0).position);
                 touchStart = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             }
         }
 
         // Обработка зума при двух касаниях
-        if (Input.touchCount == 2)
+        if (Input.touchCount == 2 && !dragStartedOnScrollView)
         {
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
@@ -93,8 +105,9 @@ public class MapCameraController : MonoBehaviour
             zoom(difference * AppConfig.Input.PinchZoomSensitivity);
         }
         // Обработка перемещения камеры при перетаскивании
-        else if ((!mouseDragStartedOnTextField && Input.GetMouseButton(0)) ||
-                 (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved))
+        else if (!dragStartedOnScrollView &&
+                 ((!mouseDragStartedOnTextField && Input.GetMouseButton(0)) ||
+                  (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)))
         {
             Vector3 direction = Vector3.zero;
 
@@ -107,33 +120,58 @@ public class MapCameraController : MonoBehaviour
                 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             }
 
+            if (dragStartedOnVerticalScrollView)
+                direction.y = 0f;
+
             Vector3 newPosition = Camera.main.transform.position + direction;
             Camera.main.transform.position = ClampCamera(newPosition);
         }
 
         // Обработка зума при прокрутке мыши
-        zoom(Input.GetAxis("Mouse ScrollWheel"));
+        float wheel = Input.GetAxis("Mouse ScrollWheel");
+        if (wheel != 0f && !IsPointerOnCameraBlockingScroll(Input.mousePosition))
+            zoom(wheel);
+    }
+
+    private bool IsPointerOnCameraBlockingScroll(Vector2 screenPosition)
+    {
+        return GetScrollBlocker(screenPosition) != null;
+    }
+
+    private void SetScrollDragBlock(Vector2 screenPosition)
+    {
+        CameraPanBlockOnScrollView blocker = GetScrollBlocker(screenPosition);
+        dragStartedOnScrollView = blocker != null && !blocker.BlockVerticalOnly;
+        dragStartedOnVerticalScrollView = blocker != null && blocker.BlockVerticalOnly;
+    }
+
+    private CameraPanBlockOnScrollView GetScrollBlocker(Vector2 screenPosition)
+    {
+        GameObject hit = TopPointerHit(screenPosition);
+        if (hit == null) return null;
+        CameraPanBlockOnScrollView blocker = hit.GetComponentInParent<CameraPanBlockOnScrollView>();
+        return blocker != null && blocker.isActiveAndEnabled ? blocker : null;
     }
 
     private bool IsPointerOnActiveTextField(Vector2 screenPosition)
     {
-        EventSystem eventSystem = EventSystem.current;
-        if (eventSystem == null)
-            return false;
-
-        pointerHits.Clear();
-        var pointer = new PointerEventData(eventSystem) { position = screenPosition };
-        eventSystem.RaycastAll(pointer, pointerHits);
-        if (pointerHits.Count == 0)
-            return false;
-
-        GameObject hit = pointerHits[0].gameObject;
+        GameObject hit = TopPointerHit(screenPosition);
+        if (hit == null) return false;
         InputField legacy = hit.GetComponentInParent<InputField>();
         if (legacy != null)
             return legacy.isActiveAndEnabled && legacy.isFocused;
 
         TMP_InputField tmp = hit.GetComponentInParent<TMP_InputField>();
         return tmp != null && tmp.isActiveAndEnabled && tmp.isFocused;
+    }
+
+    private GameObject TopPointerHit(Vector2 screenPosition)
+    {
+        EventSystem eventSystem = EventSystem.current;
+        if (eventSystem == null) return null;
+        pointerHits.Clear();
+        eventSystem.RaycastAll(new PointerEventData(eventSystem) { position = screenPosition }, pointerHits);
+        return pointerHits.Count == 0 ? null : pointerHits[0].gameObject;
     }
 
     void LateUpdate()

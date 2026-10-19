@@ -38,7 +38,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
                 toggle.onValueChanged.AddListener(listener);
         }
 
-        ApplyCount(GetCheckedCount());
+        ApplyCount(GetCheckedCount(), false);
     }
 
     private void OnToggleChanged(int clickedIndex, bool isOn)
@@ -51,7 +51,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
             ? Mathf.Min(currentCount + 1, activeCount)
             : Mathf.Clamp(clickedIndex, 0, activeCount);
 
-        ApplyCount(newCount);
+        ApplyCount(newCount, true);
     }
 
     private int GetCheckedCount()
@@ -64,7 +64,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
         return count;
     }
 
-    private void ApplyCount(int count)
+    private void ApplyCount(int count, bool changedByUser)
     {
         isApplying = true;
         try
@@ -85,7 +85,7 @@ public class DeathSaveToggleSequence : MonoBehaviour
         }
 
         if (IsExhaustionGroup() && exhaustionEffects != null)
-            exhaustionEffects.Apply(count);
+            exhaustionEffects.Apply(count, changedByUser);
     }
 
     private bool IsExhaustionGroup()

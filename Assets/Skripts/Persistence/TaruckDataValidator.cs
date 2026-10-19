@@ -36,6 +36,34 @@ public static class TaruckDataValidator
             Unique(scene.floatData, e => e.key);
         }
         Unique(character.sharedStringData, e => e.key);
+        if (character.albumImages == null || character.albumImages.Count > 260)
+            throw new InvalidDataException("Invalid album image count");
+        var imageIds = new HashSet<string>(StringComparer.Ordinal);
+        foreach (AlbumImageData image in character.albumImages)
+        {
+            if (image == null || !Guid.TryParse(image.id, out _) || !imageIds.Add(image.id) ||
+                image.width < 1 || image.height < 1 || image.width > 8192 || image.height > 8192 ||
+                (long)image.width * image.height > 32000000 || image.fileSize < 1 || image.fileSize > 16 * 1024 * 1024 ||
+                image.createdAtUtcTicks < DateTime.MinValue.Ticks || image.createdAtUtcTicks > DateTime.MaxValue.Ticks ||
+                image.sortOrder < 0 || image.pageIndex < 0 || image.pageIndex > 4 ||
+                (image.title?.Length ?? 0) > 200 ||
+                (image.description?.Length ?? 0) > 2000 || !IsSafeMediaPath(image.relativeFilePath) ||
+                !IsSafeMediaPath(image.thumbnailRelativePath) ||
+                string.IsNullOrEmpty(image.contentHash) || image.contentHash.Length != 64)
+                throw new InvalidDataException("Invalid album image metadata");
+        }
+    }
+
+    private static bool IsSafeMediaPath(string path)
+    {
+        if (string.IsNullOrWhiteSpace(path) || path.Contains("..") || path.Contains(":") ||
+            path.Contains("\\") || path.StartsWith("/", StringComparison.Ordinal))
+            return false;
+        string[] parts = path.Split('/');
+        if (parts.Length != 3 || parts[0] != "Media") return false;
+        foreach (string part in parts)
+            if (string.IsNullOrWhiteSpace(part)) return false;
+        return true;
     }
 
     private static void Unique<T>(List<T> entries, Func<T, string> key) where T : class
