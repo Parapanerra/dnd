@@ -853,6 +853,7 @@ GameObject:
   - component: {fileID: 207825352}
   - component: {fileID: 207825354}
   - component: {fileID: 207825353}
+  - component: {fileID: 207825355}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -921,6 +922,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207825351}
   m_CullTransparentMesh: 1
+--- !u!114 &207825355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207825351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a179ec645311e874ba6d26be587cf8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManualLocalizedText
+  ukrainianText: "\u0421\u043A\u0438\u043D\u0443\u0442\u0438 HP"
+  englishText: Reset HP
+  russianText: "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C HP"
+  useCurrentTextAsSource: 1
 --- !u!1 &245201673
 GameObject:
   m_ObjectHideFlags: 0
@@ -4389,6 +4406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5272684c4c7dc48b858f293339252f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraPanBlockOnScrollView
+  blockVerticalOnly: 0
 --- !u!114 &893446250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24266,7 +24284,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -242755038, guid: ece6150aa9817c24c82201d754d50627, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b56a92a552abb27449ef0443e470cf2b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
