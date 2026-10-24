@@ -46,12 +46,28 @@ public class DeathSaveToggleSequence : MonoBehaviour
         if (isApplying)
             return;
 
+        int previousCount = currentCount;
         int activeCount = GetAllowedSequenceCount();
         int newCount = isOn
             ? Mathf.Min(currentCount + 1, activeCount)
             : Mathf.Clamp(clickedIndex, 0, activeCount);
 
         ApplyCount(newCount, true);
+        if (isOn && IsExhaustionGroup() && newCount > 0 && newCount <= orderedToggles.Length)
+        {
+            Toggle newlyMarked = orderedToggles[newCount - 1];
+            if (newlyMarked != null && newlyMarked.TryGetComponent(out ExhaustionToggleAnimation animation))
+                animation.Pulse();
+        }
+        else if (!isOn && IsExhaustionGroup())
+        {
+            for (int i = newCount; i < previousCount && i < orderedToggles.Length; i++)
+            {
+                Toggle removed = orderedToggles[i];
+                if (removed != null && removed.TryGetComponent(out ExhaustionToggleAnimation animation))
+                    animation.PulseRemoval();
+            }
+        }
     }
 
     private int GetCheckedCount()

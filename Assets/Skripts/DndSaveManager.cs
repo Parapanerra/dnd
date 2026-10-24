@@ -247,6 +247,10 @@ public class DndSaveManager : MonoBehaviour
             return activeCharacter;
         }
 
+        // The menu must stay empty until the user explicitly creates a character.
+        if (SceneManager.GetActiveScene().name == AppConfig.Scenes.Menu)
+            return null;
+
         return CreateNewCharacter();
     }
 

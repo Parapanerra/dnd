@@ -99,15 +99,9 @@ public class WildShapeTitleUpdater : MonoBehaviour
         string sceneDataName = saveManager != null
             ? saveManager.GetActiveSceneDataName()
             : SceneManager.GetActiveScene().name;
-
-        if (string.IsNullOrWhiteSpace(sceneDataName) || sceneDataName == AppConfig.Scenes.WildShape)
-            return 1;
-
-        string prefix = "petsesn ";
-        if (!sceneDataName.StartsWith(prefix))
-            return 1;
-
-        return int.TryParse(sceneDataName.Substring(prefix.Length), out int index) ? index + 1 : 1;
+        int slot = WildShapeFormList.SlotFromSceneName(sceneDataName);
+        CharacterData character = saveManager != null ? saveManager.GetActiveCharacter() : null;
+        return WildShapeFormList.DisplayNumber(character, slot);
     }
 
     private static bool IsWildShapeTitle(string value)

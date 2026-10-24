@@ -31,7 +31,7 @@ public sealed class PanelGroupController : MonoBehaviour
         if (mode == InteractionMode.ExclusiveButtons && panels != null && panels.Length > 0)
         {
             activePanelIndex = 0;
-            SetPanelActive(activePanelIndex, true);
+            SetPanelActive(activePanelIndex, true, false);
         }
     }
 
@@ -61,8 +61,8 @@ public sealed class PanelGroupController : MonoBehaviour
                 continue;
 
             int index = i;
-            toggles[i].onValueChanged.AddListener(value => SetPanelActive(index, value));
-            SetPanelActive(index, toggles[i].isOn);
+            toggles[i].onValueChanged.AddListener(value => SetPanelActive(index, value, true));
+            SetPanelActive(index, toggles[i].isOn, false);
         }
     }
 
@@ -76,13 +76,14 @@ public sealed class PanelGroupController : MonoBehaviour
             if (activePanelIndex == index)
                 return;
 
-            HideAllPanels();
-            SetPanelActive(index, true);
+            HideAllPanels(true);
+            SetPanelActive(index, true, true);
             activePanelIndex = index;
         }
         else
         {
-            SetPanelActive(index, !panel.activeSelf);
+            PanelVisibilityAnimation animation = panel.GetComponent<PanelVisibilityAnimation>();
+            SetPanelActive(index, !(animation != null ? animation.IsOpen : panel.activeSelf), true);
         }
     }
 
@@ -94,23 +95,31 @@ public sealed class PanelGroupController : MonoBehaviour
 
         for (int i = 0; i < toggles.Length; i++)
             if (toggles[i] != null)
-                SetPanelActive(i, toggles[i].isOn);
+                SetPanelActive(i, toggles[i].isOn, false);
     }
 
-    private void HideAllPanels()
+    private void HideAllPanels(bool animate = false)
     {
         if (panels == null)
             return;
 
         foreach (GameObject panel in panels)
             if (panel != null)
-                panel.SetActive(false);
+                SetPanelVisible(panel, false, animate);
     }
 
-    private void SetPanelActive(int index, bool active)
+    private void SetPanelActive(int index, bool active, bool animate)
     {
         if (TryGetPanel(index, out GameObject panel))
-            panel.SetActive(active);
+            SetPanelVisible(panel, active, animate);
+    }
+
+    private void SetPanelVisible(GameObject panel, bool visible, bool animate)
+    {
+        PanelVisibilityAnimation animation = panel.GetComponent<PanelVisibilityAnimation>();
+        if (animation == null)
+            animation = panel.AddComponent<PanelVisibilityAnimation>();
+        animation.SetVisible(visible, animate);
     }
 
     private bool TryGetPanel(int index, out GameObject panel)

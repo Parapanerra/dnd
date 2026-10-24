@@ -7,6 +7,7 @@ using UnityEngine.UI;
 // Finds calculator controls and connects them to the calculation and HP actions.
 internal sealed class CalculatorControlBinder
 {
+    private const float ButtonHitPadding = 5f;
     private readonly Transform host;
     private readonly Func<string, string> normalizeLabel;
     private readonly Func<string, bool> isCalculatorInput;
@@ -51,7 +52,11 @@ internal sealed class CalculatorControlBinder
         Transform root = FindCalculatorRoot();
         foreach (Button button in root.GetComponentsInChildren<Button>(true))
         {
-            if (button == null || IsSpecialCalculatorButton(button))
+            if (button == null)
+                continue;
+
+            ExpandHitArea(button);
+            if (IsSpecialCalculatorButton(button))
                 continue;
 
             string label = normalizeLabel(GetButtonLabel(button));
@@ -81,6 +86,20 @@ internal sealed class CalculatorControlBinder
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => onHpButton(buttonName, button));
         }
+    }
+
+    private void ExpandHitArea(Button button)
+    {
+        Graphic graphic = button.targetGraphic;
+        if (graphic == null)
+            return;
+
+        Vector4 padding = graphic.raycastPadding;
+        graphic.raycastPadding = new Vector4(
+            Mathf.Min(padding.x, -ButtonHitPadding),
+            Mathf.Min(padding.y, -ButtonHitPadding),
+            Mathf.Min(padding.z, -ButtonHitPadding),
+            Mathf.Min(padding.w, -ButtonHitPadding));
     }
 
     private Transform FindCalculatorRoot()

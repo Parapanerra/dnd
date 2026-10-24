@@ -145,10 +145,19 @@ public class MainMenuManager : MonoBehaviour
 
         transferPanel.BindButtons();
 
+        StartCoroutine(SyncMenuAfterStartup());
+
         string storageError = saveManager != null ? saveManager.SaveError : null;
         if (!string.IsNullOrEmpty(storageError))
             new TaruckDialogPresenter(() => localization.CurrentLanguage)
                 .Show("Стан сховища", storageError, "Закрити", () => { });
+    }
+
+    private IEnumerator SyncMenuAfterStartup()
+    {
+        yield return null;
+        RefreshCharacterList();
+        languageSelector.SyncLanguageDropdownValue();
     }
 
     private void NormalizeSceneNames()

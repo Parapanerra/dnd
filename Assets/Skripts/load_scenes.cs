@@ -78,7 +78,7 @@ public class load_scenes : MonoBehaviour
 
     public static string GetVisualSceneName(string sceneName)
     {
-        if (Regex.IsMatch(sceneName, @"^petsesn( [1-" + AppConfig.Scenes.WildShapePageCount + @"])?$"))
+        if (Regex.IsMatch(sceneName, @"^petsesn(?: [1-9]\d*)?$"))
             return AppConfig.Scenes.WildShape;
 
         return sceneName;

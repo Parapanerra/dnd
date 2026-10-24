@@ -43,6 +43,13 @@ internal sealed class HealthBarView
             healthText.text = $"{currentHealth} / {maxHealth}";
     }
 
+    internal void PulseDamage()
+    {
+        RectTransform fillRoot = GetSliderFillRoot(healthSlider);
+        if (fillRoot != null && fillRoot.TryGetComponent(out HealthLiquidWave liquid))
+            liquid.PulseDamage();
+    }
+
     private void UpdateSliderPercent(Slider slider, int current, int max)
     {
         if (slider == null)
@@ -60,7 +67,19 @@ internal sealed class HealthBarView
         slider.SetValueWithoutNotify(percent);
 
         SetSliderHandleVisible(slider, visible);
-        SetSliderFillVisible(fillRoot, visible, percent);
+        Image fillImage = fillRoot != null ? fillRoot.GetComponent<Image>() : null;
+        if (fillImage != null)
+        {
+            HealthLiquidWave liquid = fillRoot.GetComponent<HealthLiquidWave>();
+            if (liquid == null)
+                liquid = fillRoot.gameObject.AddComponent<HealthLiquidWave>();
+            liquid.Initialize(fillImage);
+            liquid.SetTarget(percent);
+        }
+        else
+        {
+            SetSliderFillVisible(fillRoot, visible, percent);
+        }
     }
 
     private void SetSliderHandleVisible(Slider slider, bool visible)

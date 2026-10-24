@@ -17,7 +17,8 @@ internal sealed class SceneLocalizationApplier
     {
         foreach (ManualLocalizedText text in UnityEngine.Object.FindObjectsByType<ManualLocalizedText>(FindObjectsInactive.Include))
         {
-            if (IsSceneObject(text != null ? text.gameObject : null))
+            if (IsSceneObject(text != null ? text.gameObject : null) &&
+                text.GetComponentInParent<LocalizedIgnore>(true) == null)
                 text.Apply(localization);
         }
 

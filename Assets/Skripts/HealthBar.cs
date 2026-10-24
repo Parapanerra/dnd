@@ -158,7 +158,10 @@ public class HealthBar : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth - remainingDamage, 0, maxHealth);
         SaveSceneData();
         UpdateHealthUI();
-        return temporaryDamage + beforeHealth - currentHealth;
+        int appliedDamage = temporaryDamage + beforeHealth - currentHealth;
+        if (appliedDamage > 0)
+            view?.PulseDamage();
+        return appliedDamage;
     }
 
     public int ApplyHeal(int value)
