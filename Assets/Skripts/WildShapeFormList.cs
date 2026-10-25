@@ -29,9 +29,10 @@ public sealed class WildShapeFormList : MonoBehaviour
     private AppLanguage lastLanguage;
     private float rowStep;
     private Vector2 addStartPosition;
-    private int selectedSlot;
+    private int selectedSlot = -1;
 
-    private void Start()
+    // Build the visible list before the sheet's Start loads its fields and rebuilds canvases.
+    private void Awake()
     {
         if (scrollView == null || content == null || formTemplate == null ||
             deleteTemplate == null || addButton == null)
@@ -61,6 +62,22 @@ public sealed class WildShapeFormList : MonoBehaviour
         rowStep = Mathf.Max(formHeight, deleteHeight) + 8f;
 
         LoadSlots();
+        DisablePersistentActions(formTemplate);
+        DisablePersistentActions(deleteTemplate);
+        DisablePersistentActions(addButton);
+        addButton.onClick.RemoveAllListeners();
+        addButton.onClick.AddListener(AddForm);
+        formTemplate.gameObject.SetActive(false);
+        deleteTemplate.gameObject.SetActive(false);
+        RefreshRows();
+    }
+
+    private void Start()
+    {
+        if (character == null || slots.Count == 0)
+            return;
+
+        // The scene data identity and input text are ready only after the sheet loads.
         selectedSlot = SlotFromSceneName(saveManager.GetActiveSceneDataName());
         RestoreCamera();
         if (!slots.Contains(selectedSlot))
@@ -80,14 +97,7 @@ public sealed class WildShapeFormList : MonoBehaviour
             nameInput.onValueChanged.AddListener(OnNameChanged);
         }
 
-        DisablePersistentActions(formTemplate);
-        DisablePersistentActions(deleteTemplate);
-        DisablePersistentActions(addButton);
-        addButton.onClick.RemoveAllListeners();
-        addButton.onClick.AddListener(AddForm);
-        formTemplate.gameObject.SetActive(false);
-        deleteTemplate.gameObject.SetActive(false);
-        RefreshRows();
+        RefreshLabels();
         FindAnyObjectByType<WildShapeTitleUpdater>()?.Apply();
     }
 

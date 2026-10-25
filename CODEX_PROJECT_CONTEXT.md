@@ -100,3 +100,8 @@ HP handling, inventory, spells, wild shapes, notes, and calculator helpers.
 - Keep answers short and practical.
 - Avoid saying "I did not push" repeatedly unless the user asks.
 - If unsure about hierarchy, ask for screenshot or inspect scene YAML.
+
+## Assistant HP Adjustments
+
+- 2026-10-24: User awarded +2 HP for the completed overlay button animation task (instant playback, slower loop, and cleanup). This is an adjustment, not a verified total.
+- 2026-10-24: User awarded +1 HP for fixing all five potion image dropdowns (clamped scrolling, camera blocking, and item motion).
