@@ -15,6 +15,14 @@ HP handling, inventory, spells, wild shapes, notes, and calculator helpers.
 
 ## Project Shape
 
+### Character creation prototype — 25 October 2026
+
+- User reopened B4 as a step-by-step character builder supporting D&D 2014 and 2024. First test scene: `Assets/Scenes/CharacterCreationPrototype.unity`; do not connect a menu button until the user accepts the prototype.
+- Before implementation, backed up all current tracked/untracked source changes as commit `58244c95e77879064c48733d602d16efec752801`, pushed to `codex/backup-before-character-wizard-2026-10-25`, with tag `checkpoint/before-character-wizard-2026-10-25`. Local source ZIP, Git bundle and full player-save copy are under `_codex_tmp/Backups/before-character-wizard-2026-10-25`.
+- User explicitly requires two responsive layouts, selected automatically by available screen width: wide three-column layout and narrow mobile single-column layout. Both were visually checked in Unity at 1920×1080 and 720×1280. Background is existing `tavern.jpg` at 2560×1440, with aspect-preserving cover sizing.
+- Prototype supports Fighter 1, Human/Dwarf, Soldier/Criminal, three ability methods, skill/tool/language choices, four fighting styles, two equipment kits, validation and candidate-based atomic character creation. Full catalog, inventory item records, full localization and menu hookup remain pending. Details: `Assets/CharacterCreation/README.md`.
+- 11/11 new rules tests passed; all 16 supported origin/equipment/edition combinations build and validate. Full EditMode run: 145/148, with failures in unchanged health-fill, wild-shape page-8 mapping and dialog reflection tests; see B4 in `REFACTORING_PLAN.md`.
+
 - Workspace: `D:\dnd2.0test\dnd`
 - Main scenes include:
   - `menu`

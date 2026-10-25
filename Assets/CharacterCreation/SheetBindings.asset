@@ -1,0 +1,766 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825b1226ad18c2847896af84b711677c, type: 3}
+  m_Name: SheetBindings
+  m_EditorClassIdentifier: Assembly-CSharp::Taruck.CharacterCreation.CreationSheetBindings
+  entries:
+  - key: input.0
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-1.352b0d10ad1f
+    collection: inputData
+    index: 0
+  - key: input.1
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw.97951d2d4763
+    collection: inputData
+    index: 1
+  - key: input.2
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-2.d83047ec15af
+    collection: inputData
+    index: 2
+  - key: input.3
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-3.236d6548e9a7
+    collection: inputData
+    index: 3
+  - key: input.4
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-4.6da086a4b06a
+    collection: inputData
+    index: 4
+  - key: input.5
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-5.691d9f153312
+    collection: inputData
+    index: 5
+  - key: input.6
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.ca0fd5463ca3
+    collection: inputData
+    index: 6
+  - key: input.7
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.1c50ccd5461a
+    collection: inputData
+    index: 7
+  - key: input.8
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.84810eb1baba
+    collection: inputData
+    index: 8
+  - key: input.9
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.1426cf44f530
+    collection: inputData
+    index: 9
+  - key: input.10
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.b7d9ed670d77
+    collection: inputData
+    index: 10
+  - key: input.11
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.50beb1d88a96
+    collection: inputData
+    index: 11
+  - key: input.12
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.3d831442b956
+    collection: inputData
+    index: 12
+  - key: input.13
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.25cf6d35876c
+    collection: inputData
+    index: 13
+  - key: input.14
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.a2deb64704e8
+    collection: inputData
+    index: 14
+  - key: input.15
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.d40eccaf79ee
+    collection: inputData
+    index: 15
+  - key: input.16
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.bf12e81f8ad2
+    collection: inputData
+    index: 16
+  - key: input.17
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.c765ea9acf99
+    collection: inputData
+    index: 17
+  - key: input.18
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.ffa5a8a6503f
+    collection: inputData
+    index: 18
+  - key: input.19
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.4ef1182f6ff8
+    collection: inputData
+    index: 19
+  - key: input.20
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.f774f179096b
+    collection: inputData
+    index: 20
+  - key: input.21
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.7f0afdc9d47a
+    collection: inputData
+    index: 21
+  - key: input.22
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.eca14cdadd90
+    collection: inputData
+    index: 22
+  - key: input.23
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.98bd44a1a15d
+    collection: inputData
+    index: 23
+  - key: input.24
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.fed9eb935e69
+    collection: inputData
+    index: 24
+  - key: input.25
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.0fff69cecbfc
+    collection: inputData
+    index: 25
+  - key: input.26
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.b1852391b4ac
+    collection: inputData
+    index: 26
+  - key: input.27
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.pawer.251b6fa98b55
+    collection: inputData
+    index: 27
+  - key: input.28
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.af8687238afe
+    collection: inputData
+    index: 28
+  - key: input.29
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.dex.a55e79432798
+    collection: inputData
+    index: 29
+  - key: input.30
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.9e7a619afffd
+    collection: inputData
+    index: 30
+  - key: input.31
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.const.ba7105c8c2a3
+    collection: inputData
+    index: 31
+  - key: input.32
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.c61582f281a3
+    collection: inputData
+    index: 32
+  - key: input.33
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.intelect.3b548b51d72c
+    collection: inputData
+    index: 33
+  - key: input.34
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.5b8de732bbe2
+    collection: inputData
+    index: 34
+  - key: input.35
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.mudrost.8c72d0320c94
+    collection: inputData
+    index: 35
+  - key: input.36
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.f92c64ef75c3
+    collection: inputData
+    index: 36
+  - key: input.37
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.harizma.a9ab3d9dcc06
+    collection: inputData
+    index: 37
+  - key: input.38
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.5c7ca1560411
+    collection: inputData
+    index: 38
+  - key: input.39
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.b4795732d7f0
+    collection: inputData
+    index: 39
+  - key: input.40
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.39da14b270fc
+    collection: inputData
+    index: 40
+  - key: input.41
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.f6c6519f4afc
+    collection: inputData
+    index: 41
+  - key: input.42
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.alldaise.9805142f0611
+    collection: inputData
+    index: 42
+  - key: input.43
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.daicevalueperson.4d50a51248e6
+    collection: inputData
+    index: 43
+  - key: input.44
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.fd92b45ed36a
+    collection: inputData
+    index: 44
+  - key: input.45
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.1e98bc89680f
+    collection: inputData
+    index: 45
+  - key: input.46
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.96b0d576a1c2
+    collection: inputData
+    index: 46
+  - key: input.47
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.37c97c5670cd
+    collection: inputData
+    index: 47
+  - key: input.48
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.45b39c3c923b
+    collection: inputData
+    index: 48
+  - key: input.49
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.mmpises.921956342ee8
+    collection: inputData
+    index: 49
+  - key: input.50
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-1.ea284044082c
+    collection: inputData
+    index: 50
+  - key: input.51
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-2.1d0ce3dac270
+    collection: inputData
+    index: 51
+  - key: input.52
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-3.ca4db46ce4bc
+    collection: inputData
+    index: 52
+  - key: input.53
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-4.6ecdd050295d
+    collection: inputData
+    index: 53
+  - key: input.54
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.mmpises-9.ed48110c25a9
+    collection: inputData
+    index: 54
+  - key: input.55
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.mmpises-10.0d07a7ebf719
+    collection: inputData
+    index: 55
+  - key: input.56
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.mmpises-11.1972d8c02670
+    collection: inputData
+    index: 56
+  - key: input.57
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.personajname.f40b1fd14d56
+    collection: inputData
+    index: 57
+  - key: input.58
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.mmpises-2.bb2375ceb568
+    collection: inputData
+    index: 58
+  - key: input.59
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.mmpises-8.712fa8fe8484
+    collection: inputData
+    index: 59
+  - key: input.60
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.mmpises-1.a8d33ccdbe7b
+    collection: inputData
+    index: 60
+  - key: input.61
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.mmpises-6.d36d7b40fb97
+    collection: inputData
+    index: 61
+  - key: input.62
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.mmpises-7.baa9f95530f7
+    collection: inputData
+    index: 62
+  - key: input.63
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.mmpises-3.3400e6a77386
+    collection: inputData
+    index: 63
+  - key: input.64
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.mmpises-4.436e72e8edc0
+    collection: inputData
+    index: 64
+  - key: input.65
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.mmpises-5.85ed94221129
+    collection: inputData
+    index: 65
+  - key: input.66
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw.0bf153b4d66b
+    collection: inputData
+    index: 66
+  - key: input.67
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-1.2839c038f5e0
+    collection: inputData
+    index: 67
+  - key: input.68
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-2.642be7027a62
+    collection: inputData
+    index: 68
+  - key: input.69
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw.1be0d02ca891
+    collection: inputData
+    index: 69
+  - key: input.70
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-1.8a2ee4328491
+    collection: inputData
+    index: 70
+  - key: input.71
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-2.24134c2bceb2
+    collection: inputData
+    index: 71
+  - key: input.72
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw.ac75bc7aa808
+    collection: inputData
+    index: 72
+  - key: input.73
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-1.5dfcb36cf271
+    collection: inputData
+    index: 73
+  - key: input.74
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-2.9ba3e259f2c5
+    collection: inputData
+    index: 74
+  - key: input.75
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-7.49da0dff285a
+    collection: inputData
+    index: 75
+  - key: input.76
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputyminaosodb.5919d93999fd
+    collection: inputData
+    index: 76
+  - key: input.77
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw.7d5f2eadd5dc
+    collection: inputData
+    index: 77
+  - key: input.78
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw.e823b29f1121
+    collection: inputData
+    index: 78
+  - key: input.79
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw.055c6e05376b
+    collection: inputData
+    index: 79
+  - key: input.80
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw.36d35ce42ac5
+    collection: inputData
+    index: 80
+  - key: input.81
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw.057b2c4b0bad
+    collection: inputData
+    index: 81
+  - key: input.82
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw.6d873e3b2327
+    collection: inputData
+    index: 82
+  - key: input.83
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.e45dbcdf32bf
+    collection: inputData
+    index: 83
+  - key: input.84
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-8.c5da7325904f
+    collection: inputData
+    index: 84
+  - key: input.85
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-1.c25bfe27537e
+    collection: inputData
+    index: 85
+  - key: input.86
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-9.ab0859ea51ae
+    collection: inputData
+    index: 86
+  - key: input.87
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-10.51234ed3fd46
+    collection: inputData
+    index: 87
+  - key: input.88
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-2.a0a36704863d
+    collection: inputData
+    index: 88
+  - key: input.89
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-11.68af8bdb7a76
+    collection: inputData
+    index: 89
+  - key: input.90
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-3.0d0662b0b83b
+    collection: inputData
+    index: 90
+  - key: input.91
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-11.e94297a76a59
+    collection: inputData
+    index: 91
+  - key: input.92
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-3.abd4817446b5
+    collection: inputData
+    index: 92
+  - key: input.93
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.124e5ed2ea21
+    collection: inputData
+    index: 93
+  - key: input.94
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.4b6f47d8d67c
+    collection: inputData
+    index: 94
+  - key: input.95
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.94182c149b4e
+    collection: inputData
+    index: 95
+  - key: input.96
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.14dbe2c7ad6a
+    collection: inputData
+    index: 96
+  - key: input.97
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-10.0c29b4d497ae
+    collection: inputData
+    index: 97
+  - key: input.98
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-11.39a08e1a8ef8
+    collection: inputData
+    index: 98
+  - key: input.99
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-13.a2e4fe3da1cf
+    collection: inputData
+    index: 99
+  - key: input.100
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-12.273e68a3a176
+    collection: inputData
+    index: 100
+  - key: input.101
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-10.03680bf3368e
+    collection: inputData
+    index: 101
+  - key: skill.0
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.ca0fd5463ca3
+    collection: inputData
+    index: 6
+  - key: skill.1
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.1c50ccd5461a
+    collection: inputData
+    index: 7
+  - key: skill.4
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.84810eb1baba
+    collection: inputData
+    index: 8
+  - key: skill.6
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.1426cf44f530
+    collection: inputData
+    index: 9
+  - key: skill.7
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.b7d9ed670d77
+    collection: inputData
+    index: 10
+  - key: skill.8
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.50beb1d88a96
+    collection: inputData
+    index: 11
+  - key: skill.12
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.3d831442b956
+    collection: inputData
+    index: 12
+  - key: skill.5
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.25cf6d35876c
+    collection: inputData
+    index: 13
+  - key: skill.13
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.a2deb64704e8
+    collection: inputData
+    index: 14
+  - key: skill.3
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.d40eccaf79ee
+    collection: inputData
+    index: 15
+  - key: skill.9
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.bf12e81f8ad2
+    collection: inputData
+    index: 16
+  - key: skill.10
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.c765ea9acf99
+    collection: inputData
+    index: 17
+  - key: skill.17
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.ffa5a8a6503f
+    collection: inputData
+    index: 18
+  - key: skill.2
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.4ef1182f6ff8
+    collection: inputData
+    index: 19
+  - key: skill.14
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.f774f179096b
+    collection: inputData
+    index: 20
+  - key: skill.16
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.7f0afdc9d47a
+    collection: inputData
+    index: 21
+  - key: skill.15
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.eca14cdadd90
+    collection: inputData
+    index: 22
+  - key: skill.11
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.98bd44a1a15d
+    collection: inputData
+    index: 23
+  - key: skill.0
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle.b611eac8a8cf
+    collection: toggleData
+    index: 6
+  - key: skill.1
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-5.d6108adabfbb
+    collection: toggleData
+    index: 7
+  - key: skill.4
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-10.43723d3b07ca
+    collection: toggleData
+    index: 8
+  - key: skill.6
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-1.6fb2630329bf
+    collection: toggleData
+    index: 9
+  - key: skill.7
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-6.5538ddfdc393
+    collection: toggleData
+    index: 10
+  - key: skill.8
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-11.dbc89e35c44e
+    collection: toggleData
+    index: 11
+  - key: skill.12
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-2.7b106b7475dc
+    collection: toggleData
+    index: 12
+  - key: skill.5
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-7.8873e4943b0b
+    collection: toggleData
+    index: 13
+  - key: skill.13
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-12.b855c04096dc
+    collection: toggleData
+    index: 14
+  - key: skill.3
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-3.e153fda291ae
+    collection: toggleData
+    index: 15
+  - key: skill.9
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-8.2046f320798e
+    collection: toggleData
+    index: 16
+  - key: skill.10
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-13.f762175add4a
+    collection: toggleData
+    index: 17
+  - key: skill.17
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-4.ab2d0472ec97
+    collection: toggleData
+    index: 18
+  - key: skill.2
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-9.d42decfd7e75
+    collection: toggleData
+    index: 19
+  - key: skill.14
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-14.67291a541980
+    collection: toggleData
+    index: 20
+  - key: skill.16
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-15.7d90ed7c9fed
+    collection: toggleData
+    index: 21
+  - key: skill.15
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-16.ce1818b55014
+    collection: toggleData
+    index: 22
+  - key: skill.11
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-17.4142b69a454e
+    collection: toggleData
+    index: 23
+  - key: save.1
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-1.352b0d10ad1f
+    collection: inputData
+    index: 0
+  - key: save.0
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw.97951d2d4763
+    collection: inputData
+    index: 1
+  - key: save.2
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-2.d83047ec15af
+    collection: inputData
+    index: 2
+  - key: save.3
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-3.236d6548e9a7
+    collection: inputData
+    index: 3
+  - key: save.4
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-4.6da086a4b06a
+    collection: inputData
+    index: 4
+  - key: save.5
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfield-legacy-5.691d9f153312
+    collection: inputData
+    index: 5
+  - key: save.0
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.togglespaspaw.8abb62ba31ee
+    collection: toggleData
+    index: 0
+  - key: save.2
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-2.25ff5ec28402
+    collection: toggleData
+    index: 1
+  - key: save.3
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-3.c7f2b0b7e142
+    collection: toggleData
+    index: 2
+  - key: save.4
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-4.0b6f6ee5e64c
+    collection: toggleData
+    index: 3
+  - key: save.1
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-1.802547dbf25c
+    collection: toggleData
+    index: 4
+  - key: save.5
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-5.3088bd7c4871
+    collection: toggleData
+    index: 5
+  healthPrefix: HealthBar_0_

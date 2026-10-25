@@ -312,6 +312,9 @@ public class TranslationCatalog
         Add("Уважність (Мдр)", "Perception (Wis)", "Внимательность (Мдр)");
         Add("Прихована атака", "Sneak Attack", "Скрытая атака");
         Add("Дихання дракона", "Dragon Breath", "Дыхание дракона");
+        Add("Чуття каменю", "Stonecunning", "Чутьё камня");
+        Add("Героїчне натхнення", "Heroic Inspiration", "Героическое вдохновение");
+        Add("Друге дихання", "Second Wind", "Второе дыхание");
         Add("Кістка Гематокрафта", "Hemocraft Die", "Кость гемокрафта");
         Add("Лють варвара", "Barbarian Rage", "Ярость варвара");
         Add("Божественний канал", "Channel Divinity", "Божественный канал");

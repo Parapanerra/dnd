@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public static class StableFieldStorage
 {
     private const string Prefix = "StableField_v1_";
+    private const string ResourceDropdownId = "dnd.cartapersonaj.dropdown.dropdown-legacy-1.2c571c21be8b";
+    private const string ResourceDropdownOrderKey = "ResourceDropdownOrder_v2";
     private static string Key(PersistentFieldId field) => Prefix + field.Id;
 
     public static string ReadText(CharacterSceneData data, Component control, string legacyDefault)
@@ -42,7 +44,7 @@ public static class StableFieldStorage
         var field = PersistentFieldId.For(control);
         if (field == null) return legacyDefault;
         string key = Key(field);
-        if (data.HasInt(key)) return data.GetInt(key);
+        if (data.HasInt(key)) return MigrateResourceDropdownOrder(data, field, data.GetInt(key));
         int index = field.LegacyIndex;
         int value;
         // A0 verified positional values even where hierarchy-derived aliases conflict.
@@ -56,7 +58,7 @@ public static class StableFieldStorage
             return 0;
         data.SetInt(key, value);
         data.stableFieldVersion = 1;
-        return value;
+        return MigrateResourceDropdownOrder(data, field, value);
     }
 
     public static void Save(CharacterSceneData data, IEnumerable<Component> controls)
@@ -92,6 +94,7 @@ public static class StableFieldStorage
             {
                 data.SetInt(key, dropdown.value);
                 WriteLegacy(data.dropdownData, index, dropdown.value);
+                if (field.Id == ResourceDropdownId) data.SetInt(ResourceDropdownOrderKey, 1);
             }
             else if (control is TMP_Dropdown tmpDropdown)
             {
@@ -99,6 +102,17 @@ public static class StableFieldStorage
                 WriteLegacy(data.dropdownData, index, tmpDropdown.value);
             }
         }
+    }
+
+    private static int MigrateResourceDropdownOrder(CharacterSceneData data, PersistentFieldId field, int value)
+    {
+        if (field.Id != ResourceDropdownId || data.HasInt(ResourceDropdownOrderKey)) return value;
+        // The custom feature moved from 9 to 11; the two newer resources moved up.
+        int migrated = value == 9 ? 11 : value == 10 ? 9 : value == 11 ? 10 : value;
+        data.SetInt(ResourceDropdownOrderKey, 1);
+        data.SetInt(Key(field), migrated);
+        WriteLegacy(data.dropdownData, field.LegacyIndex, migrated);
+        return migrated;
     }
 
     private static void SetFloat(CharacterSceneData data, PersistentFieldId field, float value)
