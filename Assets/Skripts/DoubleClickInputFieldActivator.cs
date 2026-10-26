@@ -8,6 +8,7 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
     private InputField inputField;
     private TMP_InputField tmpInputField;
     private float lastClickTime = -1f;
+    private bool requireDoubleClick = true;
 
     internal void Configure(InputField input)
     {
@@ -25,10 +26,11 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
         LockInput();
     }
 
-    internal void Configure(TMP_InputField input)
+    internal void Configure(TMP_InputField input, bool requireDoubleClick = true)
     {
         inputField = null;
         tmpInputField = input;
+        this.requireDoubleClick = requireDoubleClick;
         input.onEndEdit.RemoveListener(LockTmpInput);
         input.onEndEdit.AddListener(LockTmpInput);
         if (!Application.isMobilePlatform)
@@ -49,6 +51,12 @@ public class DoubleClickInputFieldActivator : MonoBehaviour, IPointerClickHandle
             (tmpInputField != null && tmpInputField.enabled))
         {
             lastClickTime = -1f;
+            return;
+        }
+
+        if (!requireDoubleClick)
+        {
+            ActivateInput();
             return;
         }
 

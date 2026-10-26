@@ -161,7 +161,9 @@ public class TranslationCatalog
         Add("Нааайс", "Niiice", "Нааайс");
         Add("Це як у 1984", "This is like 1984", "Ето как в 1984");
         Add("Але я не читав", "But I haven't read it", "Но я не читал");
-        Add("Ще раз напишеш 67 — видалю персонажа.", "Write 67 again — I'll delete your character.", "Еще раз напишешь 67 — удалю персонажа.");
+        Add("Ще двічі напишеш 67 — видалю персонажа.", "Enter 67 two more times and I'll delete your character.", "Еще дважды напишешь 67 — удалю персонажа.");
+        Add("Не вдалося видалити персонажа: сховище недоступне.", "Could not delete the character: storage is unavailable.", "Не удалось удалить персонажа: хранилище недоступно.");
+        Add("Не вдалося відкрити меню, персонажа не видалено.", "Could not open the menu; the character was not deleted.", "Не удалось открыть меню; персонаж не удалён.");
         Add("Я взагалі-то серйозно.", "I'm actually serious.", "Я вообще-то серьезно.");
         Add("Я попереджував.", "I warned you.", "Я предупреждал.");
         Add("Спочатку обери персонажа.", "Choose a character first.", "Сначала выбери персонажа.");

@@ -12,6 +12,7 @@ namespace Taruck.CharacterCreation
         [SerializeField] private Sprite buttonSprite;
         [SerializeField] private Sprite inputSprite, menuSprite, backSprite, nextSprite, completeSprite, createdSprite, panelSprite;
         [SerializeField] private Sprite panelFrameSprite, panelBackgroundSprite, scrollTrackSprite, scrollHandleSprite, counterSprite;
+        [SerializeField] private Sprite dropdownTemplateSprite;
         [SerializeField] private CreationSheetBindings bindings;
         [SerializeField] private RectTransform content, stepList, sidebar, summaryPanel, scrollRoot;
         [SerializeField] private TextMeshProUGUI heading, subtitle, summary, feedback, progress, nextLabel;
@@ -26,18 +27,22 @@ namespace Taruck.CharacterCreation
         private Rect lastSafeArea;
         private string createdId;
         private string initialDraft;
+        private TextMeshProUGUI nameError;
+        private RuntimeLocalization localization;
+        private AppLanguage shownLanguage;
         private static readonly string[] Steps = { "Правила і клас", "Походження", "Характеристики", "Навички й мови", "Спорядження", "Персонаж готовий" };
         public CharacterCreationDraft Draft => draft;
         public int CurrentStep => step;
 
         public void ConfigureVisuals(Sprite input, Sprite menuIcon, Sprite backIcon, Sprite nextIcon, Sprite completeIcon, Sprite createdIcon, Sprite panel,
-            Sprite panelFrame = null, Sprite panelBackground = null, Sprite scrollTrack = null, Sprite scrollHandle = null, Sprite counter = null)
+            Sprite panelFrame = null, Sprite panelBackground = null, Sprite scrollTrack = null, Sprite scrollHandle = null, Sprite counter = null, Sprite dropdownTemplate = null)
         {
             inputSprite = input; menuSprite = menuIcon;
             backSprite = backIcon; nextSprite = nextIcon; completeSprite = completeIcon; createdSprite = createdIcon; panelSprite = panel;
             panelFrameSprite = panelFrame; panelBackgroundSprite = panelBackground;
             scrollTrackSprite = scrollTrack; scrollHandleSprite = scrollHandle;
             counterSprite = counter;
+            dropdownTemplateSprite = dropdownTemplate;
             if (content != null) Rebuild();
         }
 
@@ -55,6 +60,11 @@ namespace Taruck.CharacterCreation
         private void Awake() { Rebuild(); }
         private void Update()
         {
+            if (localization != null && shownLanguage != localization.CurrentLanguage)
+            {
+                shownLanguage = localization.CurrentLanguage;
+                if (ui != null && !created) Draw(false);
+            }
             float aspect = (float)Screen.width / Math.Max(1, Screen.height);
             if (Math.Abs(aspect - lastAspect) < .005f && lastSafeArea == Screen.safeArea) return;
             lastAspect = aspect; lastSafeArea = Screen.safeArea; Layout(aspect);
@@ -81,7 +91,7 @@ namespace Taruck.CharacterCreation
             }
             sidebar.gameObject.SetActive(wide); summaryPanel.gameObject.SetActive(wide);
             content.GetComponent<UnityEngine.UI.VerticalLayoutGroup>().childForceExpandWidth = !wide;
-            CreationWizardUi.Fill(scrollRoot, wide ? 235 : 14, 155, wide ? 330 : 14, 155);
+            CreationWizardUi.Fill(scrollRoot, wide ? 235 : 14, 155, wide ? 330 : 14, 200);
             SetNavigationRect((RectTransform)back.transform, false, wide);
             SetNavigationRect((RectTransform)next.transform, true, wide);
             if (menu != null)
@@ -117,7 +127,10 @@ namespace Taruck.CharacterCreation
         public void Rebuild()
         {
             if (content == null) return;
-            ui = new CreationWizardUi(font, buttonSprite, inputSprite);
+            localization = new RuntimeManagerResolver().Localization();
+            shownLanguage = localization.CurrentLanguage;
+            if (scroll != null) scroll.scrollSensitivity = 90;
+            ui = new CreationWizardUi(font, buttonSprite, inputSprite, completeSprite, dropdownTemplateSprite, scrollTrackSprite, scrollHandleSprite, L);
             if (menu == null)
             {
                 menu = ui.Button(heading.transform.parent, "Меню", ReturnToMenu, false, 68);
@@ -139,54 +152,14 @@ namespace Taruck.CharacterCreation
             Draw();
         }
 
+        private string L(string source) => localization == null ? source : localization.Translate(source);
+        private string LF(string source, params object[] values) => string.Format(L(source), values);
+
         private void StyleVisuals()
         {
-            if (panelFrameSprite != null && panelBackgroundSprite != null)
-            {
-                var shell = sidebar.parent.GetComponent<UnityEngine.UI.Image>();
-                foreach (var panel in new[] { shell, sidebar.GetComponent<UnityEngine.UI.Image>(), summaryPanel.GetComponent<UnityEngine.UI.Image>() })
-                {
-                    panel.color = Color.clear;
-                    StylePanelLayers(panel);
-                }
-                var outline = shell.GetComponent<UnityEngine.UI.Outline>();
-                if (outline != null) outline.enabled = false;
-            }
-            else if (panelSprite != null)
-            {
-                var shell = sidebar.parent.GetComponent<UnityEngine.UI.Image>();
-                foreach (var panel in new[] { shell, sidebar.GetComponent<UnityEngine.UI.Image>(), summaryPanel.GetComponent<UnityEngine.UI.Image>() })
-                {
-                    panel.sprite = panelSprite;
-                    panel.type = UnityEngine.UI.Image.Type.Sliced;
-                    panel.pixelsPerUnitMultiplier = 4;
-                    panel.color = Color.white;
-                }
-                var outline = shell.GetComponent<UnityEngine.UI.Outline>();
-                if (outline != null) outline.enabled = false;
-            }
             StyleIcon(menu, menuSprite);
             StyleIcon(back, backSprite);
             StyleIcon(next, nextSprite);
-        }
-
-        private void StylePanelLayers(UnityEngine.UI.Image panel)
-        {
-            var background = panel.transform.Find("WizardBackground") as RectTransform;
-            if (background == null) background = ui.Rect("WizardBackground", panel.transform);
-            CreationWizardUi.Fill(background);
-            background.SetAsFirstSibling();
-            var bg = background.GetComponent<UnityEngine.UI.Image>();
-            if (bg == null) bg = background.gameObject.AddComponent<UnityEngine.UI.Image>();
-            bg.sprite = panelBackgroundSprite; bg.type = UnityEngine.UI.Image.Type.Simple; bg.color = Color.white; bg.raycastTarget = false;
-            var frame = panel.transform.Find("WizardFrame") as RectTransform;
-            if (frame == null) frame = ui.Rect("WizardFrame", panel.transform);
-            CreationWizardUi.Fill(frame);
-            frame.SetAsLastSibling();
-            var border = frame.GetComponent<UnityEngine.UI.Image>();
-            if (border == null) border = frame.gameObject.AddComponent<UnityEngine.UI.Image>();
-            border.sprite = panelFrameSprite; border.type = UnityEngine.UI.Image.Type.Sliced;
-            border.pixelsPerUnitMultiplier = 4; border.color = Color.white; border.raycastTarget = false;
         }
 
         private void EnsureScrollbar()
@@ -250,7 +223,59 @@ namespace Taruck.CharacterCreation
         public void ShowStep(int page)
         {
             if (created) return;
+            if (page > step)
+            {
+                for (int previous = 0; previous < page; previous++)
+                {
+                    string missing = StepError(previous);
+                    if (missing == null) continue;
+                    step = previous;
+                    Draw();
+                    feedback.text = L(missing);
+                    return;
+                }
+            }
             step = Mathf.Clamp(page, 0, 5); Draw();
+        }
+
+        private string StepError(int page)
+        {
+            if (page == 0) return (int)draft.edition < 0 ? "Обери редакцію D&D." : null;
+            if (page == 1)
+            {
+                if (string.IsNullOrEmpty(draft.species)) return "Обери расу або вид.";
+                return string.IsNullOrEmpty(draft.background) ? "Обери передісторію." : null;
+            }
+            if (page == 2)
+            {
+                if ((int)draft.abilityMethod < 0) return "Обери спосіб визначення характеристик.";
+                if (draft.abilities == null || draft.abilities.Length != 6 || draft.abilities.Any(x => x <= 0)) return "Розподіли всі шість значень характеристик.";
+                if (draft.abilityMethod == AbilityMethod.StandardArray && !draft.abilities.OrderBy(x => x).SequenceEqual(new[] { 8, 10, 12, 13, 14, 15 })) return "Признач кожне число стандартного набору один раз.";
+                if (draft.abilityMethod == AbilityMethod.Manual && (draft.rolledCount != 6 || draft.rolledAssignment.Any(x => x < 0))) return "Зроби шість кидків і розподіли всі результати.";
+                if (draft.edition == RulesEdition.Rules2024)
+                {
+                    if (draft.bonusMode < 0) return "Обери спосіб розподілу бонусів передісторії.";
+                    if (!draft.threeIncreases && (draft.increaseTwo < 0 || draft.increaseOne < 0)) return "Обери характеристики для бонусів +2 та +1.";
+                }
+                return null;
+            }
+            if (page == 3)
+            {
+                if (draft.classSkills.Count != 2) return "Обери дві навички воїна.";
+                if (draft.edition == RulesEdition.Rules2024 && draft.species == "human" && draft.humanSkill < 0) return "Обери додаткову навичку людини.";
+                if (string.IsNullOrEmpty(draft.language)) return "Обери мову.";
+                if (draft.edition == RulesEdition.Rules2024 && string.IsNullOrEmpty(draft.secondLanguage)) return "Обери другу мову.";
+                if ((draft.background == "soldier" || draft.edition == RulesEdition.Rules2014) && string.IsNullOrEmpty(draft.gamingSet)) return "Обери ігровий набір.";
+                if (draft.edition == RulesEdition.Rules2014 && draft.species == "dwarf" && string.IsNullOrEmpty(draft.artisanTool)) return "Обери ремесло дварфа.";
+                return null;
+            }
+            if (page == 4)
+            {
+                if ((int)draft.fightingStyle < 0) return "Обери бойовий стиль.";
+                if (draft.equipment < 0) return "Обери класовий набір спорядження.";
+                if (draft.edition == RulesEdition.Rules2024 && draft.backgroundEquipmentChoice < 0) return "Обери спорядження передісторії або 50 зм.";
+            }
+            return null;
         }
         public void SetEdition(RulesEdition edition)
         {
@@ -260,17 +285,17 @@ namespace Taruck.CharacterCreation
         {
             float previousScroll = scroll != null ? scroll.verticalNormalizedPosition : 1;
             ui.Clear(content); ui.Clear(stepList);
-            heading.text = "Створення персонажа";
-            subtitle.text = "ВОЇН • 1 РІВЕНЬ     /     ПРОБНИЙ МАЙСТЕР D&D 2014 · 2024";
-            progress.text = (step + 1).ToString("00") + " / 06   •   " + Steps[step];
-            feedback.text = ""; back.interactable = true;
-            back.GetComponentInChildren<TextMeshProUGUI>(true).text = step == 0 ? "<  Головне меню" : "<  Назад";
-            nextLabel.text = step == 5 ? "Створити персонажа" : "Далі  >";
+            heading.text = L("Створення персонажа");
+            subtitle.text = L("ВОЇН • 1 РІВЕНЬ     /     ПРОБНИЙ МАЙСТЕР D&D 2014 · 2024");
+            progress.text = (step + 1).ToString("00") + " / 06   •   " + L(Steps[step]);
+            feedback.text = ""; nameError = null; back.interactable = true;
+            back.GetComponentInChildren<TextMeshProUGUI>(true).text = step == 0 ? L("<  Головне меню") : L("<  Назад");
+            nextLabel.text = step == 5 ? L("Створити персонажа") : L("Далі  >");
             StyleIcon(next, step == 5 ? completeSprite : nextSprite);
             for (int i = 0; i < Steps.Length; i++)
             {
                 int index = i;
-                ui.Button(stepList, (i + 1).ToString("00") + "   " + Steps[i], () => ShowStep(index), i == step, 62);
+                ui.Button(stepList, (i + 1).ToString("00") + "   " + L(Steps[i]), () => ShowStep(index), i == step, 62);
             }
             ui.Text(content, Steps[step], 32, CreationWizardUi.Gold, 50);
             switch (step)
@@ -285,20 +310,20 @@ namespace Taruck.CharacterCreation
             UpdateSummary();
             Canvas.ForceUpdateCanvases(); scroll.verticalNormalizedPosition = resetScroll ? 1 : previousScroll;
         }
-        private void Choose(string a, string b, bool first, Action<bool> change, float height = 94, float multiplier = 4, Transform container = null)
+        private void Choose(string a, string b, bool? first, Action<bool> change, float height = 94, float multiplier = 4, Transform container = null)
         {
             Transform root = container == null ? content : container;
             Transform parent = compact ? root : ui.Row("Choices", root, height);
-            var left = ui.Button(parent, a, () => { change(true); CharacterCreationRules.RepairDependentChoices(draft); Draw(false); }, first, height);
-            var right = ui.Button(parent, b, () => { change(false); CharacterCreationRules.RepairDependentChoices(draft); Draw(false); }, !first, height);
+            var left = ui.Button(parent, a, () => { change(true); CharacterCreationRules.RepairDependentChoices(draft); Draw(false); }, first == true, height, true);
+            var right = ui.Button(parent, b, () => { change(false); CharacterCreationRules.RepairDependentChoices(draft); Draw(false); }, first == false, height, true);
             left.GetComponent<UnityEngine.UI.Image>().pixelsPerUnitMultiplier = multiplier;
             right.GetComponent<UnityEngine.UI.Image>().pixelsPerUnitMultiplier = multiplier;
         }
-        private void Note(string text, float height = 68) => ui.Text(content, text, 21, new Color(.7f, .71f, .73f), height);
+        private void Note(string text, float height = 68) => ui.Text(content, L(text), 21, new Color(.7f, .71f, .73f), height);
         private void RulesPage()
         {
             Note("Обери редакцію. Майстер застосує її бонуси походження, риси та класові ресурси.", 65);
-            Choose("D&D 2014\nКласична п’ята редакція", "D&D 2024\nОновлені правила", draft.edition == RulesEdition.Rules2014,
+            Choose("D&D 2014\nКласична п’ята редакція", "D&D 2024\nОновлені правила", (int)draft.edition < 0 ? null : draft.edition == RulesEdition.Rules2014,
                 first => draft.edition = first ? RulesEdition.Rules2014 : RulesEdition.Rules2024, 112, 2);
             ui.Text(content, "Клас персонажа", 27, CreationWizardUi.Gold, 45);
             ui.Button(content, "ВОЇН\nЗброя, обладунки, бойовий стиль і Друге дихання", () => {}, true, 115);
@@ -307,12 +332,13 @@ namespace Taruck.CharacterCreation
         }
         private void OriginPage()
         {
+            if ((int)draft.edition < 0) { Note("Спочатку обери редакцію правил на першій сторінці."); return; }
             ui.Text(content, "Раса / вид", 26, CreationWizardUi.Gold, 40);
             bool modern = draft.edition == RulesEdition.Rules2024;
-            Choose(modern ? "ДВАРФ\nТемнозір 120 футів • міцність • чуття каменю" : "ПАГОРБОВИЙ ДВАРФ\n+2 Статура • +1 Мудрість • +1 ОЗ", modern ? "ЛЮДИНА\nДодаткова навичка • натхнення • Міцний" : "ЛЮДИНА\n+1 до кожної характеристики", draft.species == "dwarf", value => draft.species = value ? "dwarf" : "human", 125);
+            Choose(modern ? "ДВАРФ\nТемнозір 120 футів • міцність • чуття каменю" : "ПАГОРБОВИЙ ДВАРФ\n+2 Статура • +1 Мудрість • +1 ОЗ", modern ? "ЛЮДИНА\nДодаткова навичка • натхнення • Міцний" : "ЛЮДИНА\n+1 до кожної характеристики", string.IsNullOrEmpty(draft.species) ? null : draft.species == "dwarf", value => draft.species = value ? "dwarf" : "human", 125);
             if (modern && draft.species == "human") Note("Для першого тесту людині дається рекомендована тут риса Міцний (+2 ОЗ за рівень). Інші риси походження додамо окремо.", 90);
             ui.Text(content, "Передісторія", 26, CreationWizardUi.Gold, 40);
-            Choose("СОЛДАТ\nАтлетика • Залякування" + (modern ? "\nЛютий нападник • Сил / Спр / Стат" : "\nВійськове звання"), "ЗЛОЧИНЕЦЬ\n" + (modern ? "Спритність рук • Скритність\nПильний • Спр / Стат / Інт" : "Обман • Скритність\nКримінальний зв’язок"), draft.background == "soldier", value => draft.background = value ? "soldier" : "criminal", 135);
+            Choose(modern ? "СОЛДАТ\nАтлетика • Залякування\nЛютий нападник • Сил / Спр / Стат" : "СОЛДАТ\nАтлетика • Залякування\nВійськове звання", modern ? "ЗЛОЧИНЕЦЬ\nСпритність рук • Скритність\nПильний • Спр / Стат / Інт" : "ЗЛОЧИНЕЦЬ\nОбман • Скритність\nКримінальний зв’язок", string.IsNullOrEmpty(draft.background) ? null : draft.background == "soldier", value => draft.background = value ? "soldier" : "criminal", 135);
             Note("Отримані навички не можна повторно вибрати від класу. Зміна походження прибере несумісні варіанти.", 80);
         }
         private void AbilitiesPage()
@@ -325,82 +351,153 @@ namespace Taruck.CharacterCreation
                 ui.Button(row, names[i], () => {
                     if ((int)draft.abilityMethod == index) return;
                     draft.abilityMethod = (AbilityMethod)index;
-                    draft.abilities = index == 1 ? new[] { 15, 13, 14, 8, 12, 10 } : index == 0 ? new[] { 15, 13, 14, 8, 12, 10 } : new[] { 10, 10, 10, 10, 10, 10 };
-                    if (index == 2 && (draft.rolledScores == null || draft.rolledScores.Length != 6)) RollAbilities(false);
+                    draft.abilities = index == 1 ? new[] { 8, 8, 8, 8, 8, 8 } : new int[6];
+                    if (index == 2) PrepareRolls();
                     Draw(false);
-                }, (int)draft.abilityMethod == i);
+                }, (int)draft.abilityMethod == i, showCheck: true);
             }
+            if ((int)draft.abilityMethod < 0) { Note("Обери спосіб визначення характеристик."); return; }
             if (draft.abilityMethod == AbilityMethod.StandardArray)
-                Note("Кнопки − / + міняють місцями числа стандартного набору 15, 14, 13, 12, 10, 8. Нові очки не додаються.", 70);
+            {
+                var remaining = new[] { 15, 14, 13, 12, 10, 8 }.Where(x => !draft.abilities.Contains(x)).ToArray();
+                Counter(remaining.Length == 0 ? "УСІ ЧИСЛА РОЗПОДІЛЕНО" : LF("ДОСТУПНІ: {0}", string.Join(" • ", remaining)));
+                Note("Обери число для кожної характеристики. Щоб переставити використане число, спочатку звільни його в попередньому списку.", 68);
+            }
             else if (draft.abilityMethod == AbilityMethod.PointBuy)
-                Counter("ЗАЛИШИЛОСЯ ОЧОК: " + (27 - draft.abilities.Sum(CharacterCreationRules.PointCost)) + " / 27");
+            {
+                Counter(LF("ЗАЛИШИЛОСЯ ОЧОК: {0} / 27", 27 - draft.abilities.Sum(CharacterCreationRules.PointCost)));
+                Note("Купуєш базове значення від 8 до 15. Бонус походження додається після купівлі, тому підсумок може бути 16 або 17.", 70);
+            }
             else
             {
-                ui.Button(content, "Кинути 4к6 шість разів (найменший кубик відкидається)", () => { RollAbilities(true); Draw(false); });
-                Counter("НЕРОЗПОДІЛЕНО: " + (6 - (draft.rolledAssignment == null ? 0 : draft.rolledAssignment.Count(x => x >= 0))) + " / 6");
-                Note("Випало: " + string.Join(" • ", draft.rolledScores.Select(x => x.ToString())) + ". Кнопками − / + признач кожне число одній характеристиці.", 76);
+                var free = Enumerable.Range(0, draft.rolledCount).Where(x => !draft.rolledAssignment.Contains(x))
+                    .Select(x => draft.rolledScores[x].ToString()).ToArray();
+                Counter(draft.rolledCount == 0 ? "ДОСТУПНІ: —" : free.Length == 0 ? "УСІ КИДКИ РОЗПОДІЛЕНО" : LF("ДОСТУПНІ: {0}", string.Join(" • ", free)));
+                var rollAction = ui.Row("RollAction", content, 52);
+                rollAction.GetComponent<UnityEngine.UI.HorizontalLayoutGroup>().childForceExpandWidth = false;
+                bool allRolled = draft.rolledCount >= 6;
+                var action = ui.Button(rollAction, allRolled ? "Скинути кидки" : LF("Кинути 4к6 • кинуто {0}/6", draft.rolledCount),
+                    () => { if (allRolled) PrepareRolls(); else RollNext(); Draw(false); }, height: 52);
+                action.GetComponent<UnityEngine.UI.LayoutElement>().preferredWidth = 260;
+                action.GetComponent<UnityEngine.UI.LayoutElement>().flexibleWidth = 0;
+            }
+            Transform abilityHost = content;
+            if (draft.abilityMethod == AbilityMethod.Manual)
+            {
+                if (compact) DrawRollResults(content);
+                else
+                {
+                    var group = ui.Row("AbilitiesAndRolls", content, 432);
+                    group.GetComponent<UnityEngine.UI.HorizontalLayoutGroup>().childForceExpandWidth = false;
+                    var abilities = ui.Column("AbilityRows", group);
+                    CreationWizardUi.Height(abilities, 432);
+                    abilities.GetComponent<UnityEngine.UI.LayoutElement>().flexibleWidth = 1;
+                    abilityHost = abilities;
+                    var results = ui.Column("RollResults", group, 3);
+                    CreationWizardUi.Height(results, 432);
+                    var resultLayout = results.GetComponent<UnityEngine.UI.LayoutElement>();
+                    resultLayout.preferredWidth = 250; resultLayout.flexibleWidth = 0;
+                    DrawRollResults(results);
+                }
             }
             int[] scores = CharacterCreationRules.Scores(draft);
             for (int i = 0; i < 6; i++)
             {
                 int index = i;
-                var stat = ui.Row("Ability" + i, content, 62);
-                var label = ui.Text(stat, CharacterCreationRules.AbilityNames[i], 22, null, 62);
+                var stat = ui.Row("Ability" + i, abilityHost, 62);
+                stat.GetComponent<UnityEngine.UI.HorizontalLayoutGroup>().childForceExpandWidth = false;
+                var label = ui.Text(stat, CharacterCreationRules.AbilityNames[i], 22, new Color(1f, .604f, 0f), 62);
                 label.GetComponent<UnityEngine.UI.LayoutElement>().preferredWidth = compact ? 130 : 170;
                 label.alignment = TextAlignmentOptions.MidlineLeft;
-                var minus = ui.Button(stat, "<b><color=#FF9A00>−</color></b>", () => ChangeAbility(index, -1));
-                minus.GetComponent<UnityEngine.UI.LayoutElement>().preferredWidth = 52;
-                minus.GetComponent<UnityEngine.UI.LayoutElement>().flexibleWidth = 0;
-                var value = ui.Text(stat, draft.abilityMethod == AbilityMethod.Manual && draft.rolledAssignment[i] < 0 ? "—" :
-                    draft.abilities[i] + " > <color=#FF9A00>" + scores[i] + "</color> (" + CharacterCreationRules.Signed(CharacterCreationRules.Modifier(scores[i])) + ")", 23, null, 62);
-                value.GetComponent<UnityEngine.UI.LayoutElement>().preferredWidth = 170;
+                if (draft.abilityMethod != AbilityMethod.PointBuy)
+                {
+                    bool standard = draft.abilityMethod == AbilityMethod.StandardArray;
+                    int current = standard ? draft.abilities[i] : draft.rolledAssignment[i];
+                    int[] available = standard
+                        ? new[] { 15, 14, 13, 12, 10, 8 }.Where(x => x == current || !draft.abilities.Contains(x)).ToArray()
+                        : Enumerable.Range(0, draft.rolledCount).Where(x => x == current || !draft.rolledAssignment.Contains(x)).ToArray();
+                    var labels = new[] { "—" }.Concat(available.Select(x => standard ? x.ToString() : draft.rolledScores[x].ToString())).ToArray();
+                    int[] values = available;
+                    var dropdown = ui.Dropdown(stat, CharacterCreationRules.AbilityNames[i], labels, Array.IndexOf(values, current) + 1,
+                        choice => { if (standard) draft.abilities[index] = choice == 0 ? 0 : values[choice - 1];
+                                    else { draft.rolledAssignment[index] = choice == 0 ? -1 : values[choice - 1]; draft.abilities[index] = choice == 0 ? 0 : draft.rolledScores[values[choice - 1]]; }
+                                    Draw(false); }, compact ? 90 : 105, 42);
+                }
+                else
+                {
+                    var minus = ui.Button(stat, "−", () => ChangeAbility(index, -1), height: 62);
+                    minus.GetComponent<UnityEngine.UI.LayoutElement>().preferredWidth = compact ? 65 : 95;
+                    minus.GetComponent<UnityEngine.UI.LayoutElement>().flexibleWidth = 0;
+                    StyleAdjustButton(minus);
+                }
+                var value = ui.Text(stat, AbilityDisplay(i, scores[i]), 23, null, 62);
+                value.GetComponent<UnityEngine.UI.LayoutElement>().preferredWidth = draft.abilityMethod == AbilityMethod.PointBuy ? (compact ? 155 : 200) : 170;
                 value.alignment = TextAlignmentOptions.Center;
-                var plus = ui.Button(stat, "<b><color=#FF9A00>+</color></b>", () => ChangeAbility(index, 1));
-                plus.GetComponent<UnityEngine.UI.LayoutElement>().preferredWidth = 52;
-                plus.GetComponent<UnityEngine.UI.LayoutElement>().flexibleWidth = 0;
+                if (draft.abilityMethod == AbilityMethod.PointBuy)
+                {
+                    var plus = ui.Button(stat, "+", () => ChangeAbility(index, 1), height: 62);
+                    plus.GetComponent<UnityEngine.UI.LayoutElement>().preferredWidth = compact ? 65 : 95;
+                    plus.GetComponent<UnityEngine.UI.LayoutElement>().flexibleWidth = 0;
+                    StyleAdjustButton(plus);
+                }
+            }
+            if (draft.abilityMethod == AbilityMethod.StandardArray)
+            {
+                ui.Text(content, "Розподіл чисел", 22, CreationWizardUi.Gold, 34);
+                var resetRow = ui.Row("ResetDistributionRow", content, 48);
+                resetRow.GetComponent<UnityEngine.UI.HorizontalLayoutGroup>().childForceExpandWidth = false;
+                var reset = ui.Button(resetRow, "Скинути розподіл", () => { draft.abilities = new int[6]; Draw(false); }, height: 48);
+                var resetLayout = reset.GetComponent<UnityEngine.UI.LayoutElement>();
+                resetLayout.preferredWidth = 190;
+                resetLayout.flexibleWidth = 0;
             }
             if (draft.edition == RulesEdition.Rules2024)
             {
                 ui.Text(content, "Бонуси передісторії", 25, CreationWizardUi.Gold, 44);
-                Note("Обери, які характеристики отримають бонуси. Натисни +2 або +1, щоб змінити вибір; підсумкові числа вище оновляться.", 82);
-                Choose("+2 та +1", "+1 до трьох", !draft.threeIncreases, value => draft.threeIncreases = !value, 62);
-                if (draft.threeIncreases) Note("+1 до трьох характеристик: " + string.Join(", ", CharacterCreationRules.AllowedIncreases(draft).Select(x => CharacterCreationRules.AbilityNames[x])), 65);
+                Note("Бонуси можна дати лише трьом характеристикам передісторії.", 55);
+                Choose("+2 та +1", "+1 до кожної з трьох", draft.bonusMode < 0 ? null : !draft.threeIncreases, value => { draft.bonusMode = value ? 0 : 1; draft.threeIncreases = !value; }, 62);
+                if (draft.threeIncreases) Note(LF("+1 до кожної: {0}", string.Join(", ", CharacterCreationRules.AllowedIncreases(draft).Select(x => L(CharacterCreationRules.AbilityNames[x])))), 65);
                 else
                 {
-                    Cycle("+2: " + CharacterCreationRules.AbilityNames[draft.increaseTwo], CharacterCreationRules.AllowedIncreases(draft), draft.increaseTwo, value => { draft.increaseTwo = value; CharacterCreationRules.RepairDependentChoices(draft); });
-                    Cycle("+1: " + CharacterCreationRules.AbilityNames[draft.increaseOne], CharacterCreationRules.AllowedIncreases(draft).Where(x => x != draft.increaseTwo).ToArray(), draft.increaseOne, value => draft.increaseOne = value);
+                    DropdownInt("+2 до характеристики", CharacterCreationRules.AllowedIncreases(draft), draft.increaseTwo,
+                        value => { draft.increaseTwo = value; CharacterCreationRules.RepairDependentChoices(draft); }, x => CharacterCreationRules.AbilityNames[x]);
+                    DropdownInt("+1 до характеристики", CharacterCreationRules.AllowedIncreases(draft).Where(x => x != draft.increaseTwo).ToArray(), draft.increaseOne,
+                        value => draft.increaseOne = value, x => CharacterCreationRules.AbilityNames[x]);
                 }
             }
             else Note(draft.species == "human" ? "Бонус раси: +1 до всіх шести характеристик." : "Бонус раси: +2 Статура, +1 Мудрість.", 70);
         }
+        private void DrawRollResults(Transform parent)
+        {
+            for (int i = 0; i < draft.rolledCount; i++)
+            {
+                int[] dice = draft.rolledDice.Skip(i * 4).Take(4).ToArray();
+                int dropped = Array.IndexOf(dice, dice.Min());
+                string shown = string.Join(" + ", dice.Select((die, index) =>
+                    index == dropped ? "<color=#B9A99A>(-" + die + ")</color>" : "<color=#FF9A00>" + die + "</color>"));
+                ui.Text(parent, LF("Кидок {0}: {1} = <b><color=#FF9A00>{2}</color></b>", i + 1, shown, draft.rolledScores[i]), 18, null, 31);
+            }
+        }
+        private string AbilityDisplay(int index, int finalScore)
+        {
+            int baseScore = draft.abilities[index];
+            if (baseScore <= 0) return "—";
+            string baseText = "<color=#D5D0C5>" + baseScore + "</color>";
+            string value = baseScore == finalScore ? baseText : baseText + "→<color=#FF9A00>" + finalScore + "</color>";
+            return value + " (" + CharacterCreationRules.Signed(CharacterCreationRules.Modifier(finalScore)) + ")";
+        }
+        private static void StyleAdjustButton(UnityEngine.UI.Button button)
+        {
+            var text = button.GetComponentInChildren<TextMeshProUGUI>();
+            text.text = "<b><color=#FF9A00>" + text.text + "</color></b>";
+            text.fontSize = 50;
+            text.enableAutoSizing = false;
+            text.fontStyle = FontStyles.Bold;
+            CreationWizardUi.Fill(text.rectTransform, 2, 0, 2, 0);
+        }
         private void ChangeAbility(int index, int delta)
         {
-            if (draft.abilityMethod == AbilityMethod.StandardArray)
-            {
-                int[] order = { 8, 10, 12, 13, 14, 15 };
-                int value = order[(Array.IndexOf(order, draft.abilities[index]) + delta + 6) % 6];
-                int other = Array.IndexOf(draft.abilities, value);
-                draft.abilities[other] = draft.abilities[index]; draft.abilities[index] = value;
-            }
-            else if (draft.abilityMethod == AbilityMethod.Manual)
-            {
-                int[] available = Enumerable.Range(0, 6).Where(x => !draft.rolledAssignment.Contains(x) || x == draft.rolledAssignment[index]).ToArray();
-                if (available.Length == 1 && draft.rolledAssignment.All(x => x >= 0)) available = Enumerable.Range(0, 6).ToArray();
-                if (available.Length == 0) return;
-                int oldIndex = draft.rolledAssignment[index];
-                int current = Array.IndexOf(available, oldIndex);
-                int nextIndex = delta > 0 ? (current + 1) % available.Length : (current < 0 ? available.Length - 1 : (current - 1 + available.Length) % available.Length);
-                int chosen = available[nextIndex];
-                int occupant = Array.IndexOf(draft.rolledAssignment, chosen);
-                if (occupant >= 0 && occupant != index)
-                {
-                    draft.rolledAssignment[occupant] = oldIndex;
-                    draft.abilities[occupant] = oldIndex >= 0 ? draft.rolledScores[oldIndex] : 10;
-                }
-                draft.rolledAssignment[index] = chosen;
-                draft.abilities[index] = draft.rolledScores[chosen];
-            }
-            else
+            if (draft.abilityMethod == AbilityMethod.PointBuy)
             {
                 int old = draft.abilities[index];
                 draft.abilities[index] = Mathf.Clamp(old + delta, draft.abilityMethod == AbilityMethod.PointBuy ? 8 : 3, draft.abilityMethod == AbilityMethod.PointBuy ? 15 : 18);
@@ -408,17 +505,22 @@ namespace Taruck.CharacterCreation
             }
             Draw(false);
         }
-        private void RollAbilities(bool replace)
+        private void PrepareRolls()
         {
-            if (!replace && draft.rolledScores != null && draft.rolledScores.Length == 6) return;
             draft.rolledScores = new int[6];
+            draft.rolledDice = new int[24];
+            draft.rolledCount = 0;
             draft.rolledAssignment = new[] { -1, -1, -1, -1, -1, -1 };
-            draft.abilities = new[] { 10, 10, 10, 10, 10, 10 };
-            for (int i = 0; i < 6; i++)
-            {
-                int[] dice = Enumerable.Range(0, 4).Select(_ => UnityEngine.Random.Range(1, 7)).OrderBy(x => x).ToArray();
-                draft.rolledScores[i] = dice[1] + dice[2] + dice[3];
-            }
+            draft.abilities = new int[6];
+        }
+        private void RollNext()
+        {
+            if (draft.rolledScores == null || draft.rolledScores.Length != 6 || draft.rolledDice == null || draft.rolledDice.Length != 24) PrepareRolls();
+            if (draft.rolledCount >= 6) return;
+            int[] dice = Enumerable.Range(0, 4).Select(_ => UnityEngine.Random.Range(1, 7)).ToArray();
+            Array.Copy(dice, 0, draft.rolledDice, draft.rolledCount * 4, 4);
+            draft.rolledScores[draft.rolledCount] = dice.Sum() - dice.Min();
+            draft.rolledCount++;
         }
         private void Counter(string label)
         {
@@ -435,8 +537,12 @@ namespace Taruck.CharacterCreation
         }
         private void SkillsPage()
         {
+            if ((int)draft.edition < 0 || string.IsNullOrEmpty(draft.species) || string.IsNullOrEmpty(draft.background))
+            { Note("Спочатку обери редакцію, расу й передісторію."); return; }
             int[] bg = CharacterCreationRules.BackgroundSkills(draft);
-            Note("Від передісторії: " + string.Join(", ", bg.Select(x => CharacterCreationRules.SkillNames[x])) + ". Обери ще 2 від воїна: " + draft.classSkills.Count + "/2.", 80);
+            Note(LF("Від передісторії: {0}. Обери ще 2 від воїна: <b><color=#FF9A00>{1}/2</color></b>. {2}",
+                string.Join(", ", bg.Select(x => L(CharacterCreationRules.SkillNames[x]))), draft.classSkills.Count,
+                draft.classSkills.Count == 2 ? L("Щоб замінити навичку, спочатку зніми один вибір.") : ""), 88);
             var options = CharacterCreationRules.FighterSkills.Where(x => !bg.Contains(x)).ToArray();
             for (int i = 0; i < options.Length; i += 2)
             {
@@ -444,33 +550,44 @@ namespace Taruck.CharacterCreation
                 foreach (int skill in options.Skip(i).Take(2))
                 {
                     int selected = skill;
-                    ui.Button(row, (draft.classSkills.Contains(skill) ? "• " : "") + CharacterCreationRules.SkillNames[skill], () => {
+                    var button = ui.Button(row, CharacterCreationRules.SkillNames[skill], () => {
                         if (draft.classSkills.Contains(selected)) draft.classSkills.Remove(selected);
                         else if (draft.classSkills.Count < 2) draft.classSkills.Add(selected);
                         CharacterCreationRules.RepairDependentChoices(draft); Draw(false);
-                    }, draft.classSkills.Contains(skill));
+                    }, draft.classSkills.Contains(skill), showCheck: true);
+                    if (!draft.classSkills.Contains(skill) && draft.classSkills.Count == 2) button.interactable = false;
                 }
             }
             if (draft.species == "human" && draft.edition == RulesEdition.Rules2024)
-                Cycle("Навичка людини: " + CharacterCreationRules.SkillNames[draft.humanSkill], Enumerable.Range(0, 18).Where(x => !bg.Contains(x) && !draft.classSkills.Contains(x)).ToArray(), draft.humanSkill, value => draft.humanSkill = value);
+            {
+                ui.Text(content, "Додаткова навичка людини", 25, CreationWizardUi.Gold, 44);
+                DropdownInt("Навичка людини", Enumerable.Range(0, 18).Where(x => !bg.Contains(x) && !draft.classSkills.Contains(x)).ToArray(),
+                    draft.humanSkill, value => draft.humanSkill = value, x => CharacterCreationRules.SkillNames[x], 300);
+            }
             ui.Text(content, "Мови й інструменти", 26, CreationWizardUi.Gold, 45);
             if (draft.edition == RulesEdition.Rules2014 && draft.species == "dwarf") Note("Мови: Загальна та Дварфська.", 45);
             else
             {
                 string[] languages = { "Дварфська", "Ельфійська", "Гномська", "Гоблінська", "Велетенська", "Оркська", "Галфлінгська", "Драконяча" };
-                CycleText("Мова: ", languages.Where(x => draft.edition == RulesEdition.Rules2014 || x != draft.secondLanguage).ToArray(), draft.language, value => draft.language = value);
-                if (draft.edition == RulesEdition.Rules2024) CycleText("Друга мова: ", languages.Where(x => x != draft.language).ToArray(), draft.secondLanguage, value => draft.secondLanguage = value);
+                DropdownText("Мова", languages.Where(x => draft.edition == RulesEdition.Rules2014 || x != draft.secondLanguage).ToArray(), draft.language, value => draft.language = value);
+                if (draft.edition == RulesEdition.Rules2024) DropdownText("Друга мова", languages.Where(x => x != draft.language).ToArray(), draft.secondLanguage, value => draft.secondLanguage = value);
             }
-            if (draft.background == "soldier" || draft.edition == RulesEdition.Rules2014) CycleText("Ігровий набір: ", new[] { "Гральні кості", "Карти", "Шахи" }, draft.gamingSet, value => draft.gamingSet = value);
-            if (draft.species == "dwarf" && draft.edition == RulesEdition.Rules2014) CycleText("Ремесло дварфа: ", new[] { "Інструменти коваля", "Приладдя пивовара", "Інструменти каменяра" }, draft.artisanTool, value => draft.artisanTool = value);
+            if (draft.background == "soldier" || draft.edition == RulesEdition.Rules2014) DropdownText("Ігровий набір", new[] { "Гральні кості", "Карти", "Шахи" }, draft.gamingSet, value => draft.gamingSet = value);
+            if (draft.species == "dwarf" && draft.edition == RulesEdition.Rules2014) DropdownText("Ремесло дварфа", new[] { "Інструменти коваля", "Приладдя пивовара", "Інструменти каменяра" }, draft.artisanTool, value => draft.artisanTool = value);
         }
-        private void Cycle(string label, int[] values, int value, Action<int> change)
+        private void DropdownInt(string label, int[] values, int value, Action<int> change, Func<int, string> display, float width = 160)
         {
-            ui.Button(content, HighlightChoice(label) + "   >", () => { change(values[(Array.IndexOf(values, value) + 1) % values.Length]); Draw(false); });
+            ui.Text(content, label, 22, CreationWizardUi.Gold, 36);
+            var choices = new[] { "—" }.Concat(values.Select(display)).ToArray();
+            ui.Dropdown(content, label, choices, Array.IndexOf(values, value) + 1,
+                choice => { change(choice == 0 ? -1 : values[choice - 1]); Draw(false); }, width, 42);
         }
-        private void CycleText(string prefix, string[] values, string value, Action<string> change)
+        private void DropdownText(string label, string[] values, string value, Action<string> change)
         {
-            ui.Button(content, prefix + "<size=115%><color=#FF9A00>" + value + "</color></size>   >", () => { change(values[(Array.IndexOf(values, value) + 1) % values.Length]); Draw(false); });
+            ui.Text(content, label, 22, CreationWizardUi.Gold, 36);
+            var choices = new[] { "—" }.Concat(values).ToArray();
+            ui.Dropdown(content, label, choices, Array.IndexOf(values, value) + 1,
+                choice => { change(choice == 0 ? "" : values[choice - 1]); Draw(false); });
         }
         private static string HighlightChoice(string label)
         {
@@ -479,41 +596,59 @@ namespace Taruck.CharacterCreation
         }
         private void EquipmentPage()
         {
+            if ((int)draft.edition < 0 || string.IsNullOrEmpty(draft.background))
+            { Note("Спочатку обери редакцію та передісторію."); return; }
             ui.Text(content, "Бойовий стиль", 25, CreationWizardUi.Gold, 40);
-            string[] styles = { "Захист • +1 КЗ", "Дуелі • +2 шкоди", "Стрільба • +2 до атаки", "Велика зброя" };
+            var styleFrame = FramedChoiceGroup("FightingStyleFrame", compact ? 330 : 176);
+            string[] styles = { "Захист • +1 КО", "Дуелі • +2 шкоди", "Стрільба • +2 до атаки", "Велика зброя" };
             for (int i = 0; i < 4; i += 2)
             {
-                var row = ui.Row("Styles", content, 65);
-                for (int j = i; j < i + 2; j++) { int index = j; ui.Button(row, styles[j], () => { draft.fightingStyle = (FighterStyle)index; Draw(false); }, (int)draft.fightingStyle == j); }
+                var row = ui.Row("Styles", styleFrame, 65);
+                for (int j = i; j < i + 2; j++) { int index = j; ui.Button(row, styles[j], () => { draft.fightingStyle = (FighterStyle)index; Draw(false); }, (int)draft.fightingStyle == j, showCheck: true); }
             }
-            ui.Text(content, "Набір спорядження — окремий вибір", 25, CreationWizardUi.Gold, 42);
-            var kitFrame = ui.Panel("EquipmentKitFrame", content, Color.clear);
-            CreationWizardUi.Height(kitFrame, compact ? 268 : 150);
-            var frameLayout = kitFrame.GetComponent<UnityEngine.UI.LayoutElement>();
-            frameLayout.preferredWidth = 1040; frameLayout.flexibleWidth = 1;
-            var frameImage = kitFrame.GetComponent<UnityEngine.UI.Image>();
-            if (panelFrameSprite != null) { frameImage.sprite = panelFrameSprite; frameImage.type = UnityEngine.UI.Image.Type.Sliced; frameImage.pixelsPerUnitMultiplier = 4; frameImage.color = Color.white; }
-            var vertical = kitFrame.gameObject.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();
-            vertical.padding = new RectOffset(14, 14, 12, 12); vertical.spacing = 8;
-            vertical.childControlWidth = true; vertical.childControlHeight = true;
-            Choose(draft.edition == RulesEdition.Rules2024 ? "НАБІР A\nКольчуга • дворучний меч • ціп • дротики" : "БЛИЖНІЙ БІЙ\nКольчуга • меч і щит • 2 сокири", draft.edition == RulesEdition.Rules2024 ? "НАБІР B\nШкіра з клепками • мечі • довгий лук" : "ЛУЧНИК\nШкіра • довгий лук • меч і щит", draft.equipment == 0, value => draft.equipment = value ? 0 : 1, 120, 4, kitFrame);
-            Note(CharacterCreationRules.Equipment(draft), 150);
-            Note("КЗ враховує надягнений набір: у лучника щит лежить у спорядженні. Стиль діє лише за своїх умов. Перелік речей буде записаний у картку; окремі комірки інвентарю — наступний етап.", 110);
+            ui.Text(content, "Набір спорядження", 25, CreationWizardUi.Gold, 42);
+            var kitFrame = FramedChoiceGroup("EquipmentKitFrame", compact ? 268 : 150);
+            Choose(draft.edition == RulesEdition.Rules2024 ? "НАБІР A\nКольчуга • дворучний меч • ціп • дротики" : "БЛИЖНІЙ БІЙ\nКольчуга • меч і щит • 2 сокири", draft.edition == RulesEdition.Rules2024 ? "НАБІР B\nШкіра з клепками • мечі • довгий лук" : "ЛУЧНИК\nШкіра • довгий лук • меч і щит", draft.equipment < 0 ? null : draft.equipment == 0, value => draft.equipment = value ? 0 : 1, 120, 4, kitFrame);
+            if (draft.edition == RulesEdition.Rules2024)
+            {
+                ui.Text(content, "Спорядження передісторії", 25, CreationWizardUi.Gold, 42);
+                string pack = draft.background == "soldier" ? "СПОРЯДЖЕННЯ\nСпис • короткий лук • 20 стріл • ігровий набір • 14 зм" : "СПОРЯДЖЕННЯ\n2 кинджали • злодійські інструменти • ломик • 16 зм";
+                Choose(pack, "ЗОЛОТО\n50 зм замість спорядження передісторії", draft.backgroundEquipmentChoice < 0 ? null : draft.backgroundEquipmentChoice == 0,
+                    value => draft.backgroundEquipmentChoice = value ? 0 : 1, 96);
+            }
+            Note(draft.equipment < 0 ? "Обери набір спорядження." : CharacterCreationPresentation.Equipment(draft, L), 150);
+            Note("КО враховує надягнений набір: у лучника щит лежить у спорядженні. Стиль діє лише за своїх умов. Перелік речей буде записаний у картку; окремі комірки інвентарю — наступний етап.", 110);
             if (draft.fightingStyle == FighterStyle.Archery && draft.equipment == 0 ||
                 draft.fightingStyle == FighterStyle.GreatWeapon && draft.equipment == 1 ||
                 draft.fightingStyle == FighterStyle.Dueling && draft.edition == RulesEdition.Rules2024 && draft.equipment == 0)
                 Note("Увага: у вибраному наборі немає зброї, з якою цей бойовий стиль діятиме одразу. Стиль залишиться доступним для іншої зброї.", 88);
         }
+        private RectTransform FramedChoiceGroup(string name, float height)
+        {
+            var frame = ui.Panel(name, content, Color.clear);
+            CreationWizardUi.Height(frame, height);
+            var sizing = frame.GetComponent<UnityEngine.UI.LayoutElement>();
+            sizing.preferredWidth = 1040; sizing.flexibleWidth = 1;
+            var image = frame.GetComponent<UnityEngine.UI.Image>();
+            if (panelFrameSprite != null) { image.sprite = panelFrameSprite; image.type = UnityEngine.UI.Image.Type.Sliced; image.pixelsPerUnitMultiplier = 4; image.color = Color.white; }
+            var vertical = frame.gameObject.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();
+            vertical.padding = new RectOffset(14, 14, 12, 12); vertical.spacing = 8;
+            vertical.childControlWidth = true; vertical.childControlHeight = true;
+            return frame;
+        }
         private void ReviewPage()
         {
             ui.Text(content, "Як звати твого персонажа?", 26, CreationWizardUi.Gold, 42);
-            ui.Input(content, draft.characterName, "Введи ім’я…", value => { draft.characterName = value; UpdateSummary(); });
-            CycleText("Світогляд: ", new[] { "Нейтральний", "Законно-добрий", "Нейтрально-добрий", "Хаотично-добрий", "Законно-нейтральний", "Хаотично-нейтральний", "Законно-злий", "Нейтрально-злий", "Хаотично-злий" }, draft.alignment, value => draft.alignment = value);
+            ui.Input(content, draft.characterName, "Введи ім’я…", value => { draft.characterName = value; if (nameError != null && !string.IsNullOrWhiteSpace(value)) nameError.text = ""; UpdateSummary(); });
+            nameError = ui.Text(content, "", 18, new Color(1f, .5f, .38f), 28);
+            DropdownText("Світогляд", new[] { "Нейтральний", "Законно-добрий", "Нейтрально-добрий", "Хаотично-добрий", "Законно-нейтральний", "Хаотично-нейтральний", "Законно-злий", "Нейтрально-злий", "Хаотично-злий" }, draft.alignment, value => draft.alignment = value);
+            if ((int)draft.edition < 0 || string.IsNullOrEmpty(draft.species) || string.IsNullOrEmpty(draft.background) || draft.abilities.Any(x => x <= 0) || draft.equipment < 0 || (int)draft.fightingStyle < 0)
+            { Note("Спершу заверши вибір на попередніх сторінках, щоб побачити підсумок."); return; }
             var s = CharacterCreationRules.Calculate(draft);
-            Note(s.speciesName + " • " + s.backgroundName + " • Воїн 1 • " + (draft.edition == RulesEdition.Rules2024 ? "2024" : "2014"), 50);
-            ui.Text(content, "ОЗ " + s.hitPoints + "     КЗ " + s.armorClass + "     Ініціатива " + CharacterCreationRules.Signed(s.initiative) + "     Швидкість " + s.speed, 25, CreationWizardUi.Gold, 60);
-            ui.Text(content, HighlightSummaryLabels(s.features), 21, null, 410);
-            ui.Text(content, HighlightSummaryLabels(s.proficiencies), 21, null, 190);
+            Note(L(s.speciesName) + " • " + L(s.backgroundName) + "\n" + LF("Воїн • рівень 1 • D&D {0}", draft.edition == RulesEdition.Rules2024 ? "2024" : "2014"), 66);
+            ui.Text(content, LF("ОЗ {0}     КО {1}     Ініціатива {2}     Швидкість {3}", s.hitPoints, s.armorClass, CharacterCreationRules.Signed(s.initiative), s.speed), 25, CreationWizardUi.Gold, 60);
+            ui.Text(content, HighlightSummaryLabels(CharacterCreationPresentation.FeatureLines(s.features, L)), 21, null, 345);
+            ui.Text(content, HighlightSummaryLabels(CharacterCreationPresentation.Proficiencies(draft, s, L)), 21, null, 190);
             Note("Натисни «Створити персонажа», щоб додати незалежного персонажа до твого списку. До цього моменту всі зміни існують лише в цій чернетці.", 100);
         }
         private static string HighlightSummaryLabels(string text)
@@ -525,27 +660,38 @@ namespace Taruck.CharacterCreation
         }
         private void UpdateSummary()
         {
+            if ((int)draft.edition < 0 || string.IsNullOrEmpty(draft.species) || string.IsNullOrEmpty(draft.background) || draft.abilities == null || draft.abilities.Any(x => x <= 0) || draft.equipment < 0 || (int)draft.fightingStyle < 0)
+            {
+                summary.text = "<color=#E8AF58>" + L("ТВІЙ ПЕРСОНАЖ") + "</color>\n\n" + L("Розподіли всі шість значень характеристик, щоб побачити підсумок.");
+                return;
+            }
             var s = CharacterCreationRules.Calculate(draft);
-            summary.text = "<color=#E8AF58>ТВІЙ ПЕРСОНАЖ</color>\n\n" + (string.IsNullOrWhiteSpace(draft.characterName) ? "Новий герой" : draft.characterName) + "\nВоїн • рівень 1\nD&D " + (draft.edition == RulesEdition.Rules2024 ? "2024" : "2014") + "\n\n" + s.speciesName + "\n" + s.backgroundName + "\n\n<color=#E8AF58>" + s.hitPoints + " ОЗ     " + s.armorClass + " КЗ</color>\nІніціатива " + CharacterCreationRules.Signed(s.initiative) + "\nШвидкість " + s.speed + " футів\nМайстерність +2\n\n" + string.Join("\n", Enumerable.Range(0, 6).Select(i => CharacterCreationRules.AbilityNames[i] + "  " + s.scores[i] + " (" + CharacterCreationRules.Signed(CharacterCreationRules.Modifier(s.scores[i])) + ")"));
+            summary.text = "<color=#E8AF58>" + L("ТВІЙ ПЕРСОНАЖ") + "</color>\n\n<color=#FF9A00>" + (string.IsNullOrWhiteSpace(draft.characterName) ? L("Новий герой") : draft.characterName) + "</color>\n" + L("Воїн • рівень 1") + "\nD&D " + (draft.edition == RulesEdition.Rules2024 ? "2024" : "2014") + "\n\n" + L(s.speciesName) + "\n" + L(s.backgroundName) + "\n\n<color=#E8AF58>" + s.hitPoints + " " + L("ОЗ") + "     " + s.armorClass + " " + L("КО") + "</color>\n" + L("Ініціатива") + " " + CharacterCreationRules.Signed(s.initiative) + "\n" + L("Швидкість") + " " + s.speed + " " + L("футів") + "\n" + L("Майстерність +2") + "\n\n" + string.Join("\n", Enumerable.Range(0, 6).Select(i => "<color=#FF9A00>" + L(CharacterCreationRules.AbilityNames[i]) + "</color>  " + s.scores[i] + " (<color=#FF9A00>" + CharacterCreationRules.Signed(CharacterCreationRules.Modifier(s.scores[i])) + "</color>)"));
         }
         private void Next()
         {
             if (created) { SceneManager.LoadScene(AppConfig.Scenes.CharacterSheet); return; }
             var errors = CharacterCreationRules.Validate(draft, step == 5);
-            if ((step == 2 && errors.Any(x => x.Contains("характерист") || x.Contains("очок") || x.Contains("набір") || x.Contains("Кубики"))) ||
-                (step == 3 && errors.Any(x => x.Contains("навичк") || x.Contains("мов"))) || step == 5 && errors.Count > 0)
-            { feedback.text = errors[0]; return; }
+            string pageError = StepError(step);
+            if (step == 5) pageError = errors.FirstOrDefault();
+            if (pageError != null)
+            {
+                if (step == 5 && pageError.Contains("ім’я") && nameError != null) nameError.text = L(pageError);
+                else feedback.text = L(pageError);
+                return;
+            }
             if (step < 5) { ShowStep(step + 1); return; }
             next.interactable = false;
             if (new CharacterCreationService(bindings).TryCreate(draft, out string error, out createdId))
             {
                 created = true; back.interactable = false; ui.Clear(stepList);
+                feedback.text = "";
                 ui.Clear(content); ui.Text(content, "Персонажа створено", 36, CreationWizardUi.Gold, 70);
-                Note(draft.characterName + " вже у твоєму списку. Можна відкрити його звичайну картку.", 120);
-                nextLabel.text = "Відкрити картку";
+                Note(LF("{0} вже у твоєму списку. Можна відкрити його звичайну картку.", draft.characterName), 120);
+                nextLabel.text = L("Відкрити картку");
                 StyleIcon(next, createdSprite);
             }
-            else feedback.text = "Не вдалося зберегти: " + error;
+            else feedback.text = LF("Не вдалося зберегти: {0}", L(error));
             next.interactable = true;
         }
         private void ReturnToMenu()
@@ -553,7 +699,7 @@ namespace Taruck.CharacterCreation
             if (!created && initialDraft != JsonUtility.ToJson(draft))
             {
                 new TaruckDialogPresenter(() => new RuntimeManagerResolver().Localization().CurrentLanguage)
-                    .ShowCompact("Повернутися до головного меню?", "Чернетка персонажа ще не збережена. Вийти з майстра?", "Вийти", () => SceneManager.LoadScene(AppConfig.Scenes.Menu));
+                    .ShowCompact(L("Повернутися до головного меню?"), L("Чернетка персонажа ще не збережена. Вийти з майстра?"), L("Вийти"), () => SceneManager.LoadScene(AppConfig.Scenes.Menu));
                 return;
             }
             SceneManager.LoadScene(AppConfig.Scenes.Menu);

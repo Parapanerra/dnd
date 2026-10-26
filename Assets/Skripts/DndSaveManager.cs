@@ -25,6 +25,7 @@ public class DndSaveManager : MonoBehaviour
     internal bool CanWrite => !saveBlocked;
     private int SuccessfulDiskWrites { get; set; }
     internal bool HasPendingSave => autoSave.Pending;
+    private string deleteAfterMenuLoadId;
 
     private void Awake()
     {
@@ -223,6 +224,25 @@ public class DndSaveManager : MonoBehaviour
         }
     }
 
+    internal bool ReturnToMenuThenDeleteCharacter(string id)
+    {
+        if (!CanWrite || string.IsNullOrEmpty(id) || GetCharacter(id) == null)
+            return false;
+
+        deleteAfterMenuLoadId = id;
+        try
+        {
+            SceneManager.LoadScene(AppConfig.Scenes.Menu);
+            return true;
+        }
+        catch (Exception exception)
+        {
+            deleteAfterMenuLoadId = null;
+            Debug.LogError("Could not open menu before deleting character: " + exception.Message);
+            return false;
+        }
+    }
+
     internal CharacterData GetActiveCharacter()
     {
         if (saveData == null)
@@ -281,6 +301,12 @@ public class DndSaveManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         sceneContext.OnSceneLoaded(scene);
+        if (scene.name != AppConfig.Scenes.Menu || string.IsNullOrEmpty(deleteAfterMenuLoadId))
+            return;
+
+        string id = deleteAfterMenuLoadId;
+        deleteAfterMenuLoadId = null;
+        DeleteCharacter(id);
     }
 
     internal void SetPendingSceneDataName(string sceneName)

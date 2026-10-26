@@ -16,6 +16,11 @@ internal sealed class TaruckDialogPresenter
         return messages.Text(ukrainian, english);
     }
 
+    internal string Text(string ukrainian, string english, string russian)
+    {
+        return messages.Text(ukrainian, english, russian);
+    }
+
     internal string ImportError(Exception exception, byte[] bytes, TaruckFileType expected)
     {
         return messages.ImportError(exception, bytes, expected);

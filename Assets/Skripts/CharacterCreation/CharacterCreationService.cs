@@ -18,13 +18,17 @@ namespace Taruck.CharacterCreation
             if (bindings == null || bindings.entries.Length < 30 || string.IsNullOrEmpty(bindings.healthPrefix))
                 throw new InvalidOperationException("Не налаштовано зв’язок майстра з карткою персонажа.");
             CreatedCharacterStats s = CharacterCreationRules.Calculate(draft);
+            // Sheet inputs are editable user-facing text. Generate their initial value in
+            // the selected language, while the saved draft retains language-neutral choices.
+            RuntimeLocalization localization = new RuntimeManagerResolver().Localization();
+            Func<string, string> translate = localization.Translate;
+            Dictionary<int, string> generated = CharacterCreationPresentation.GeneratedSheetFields(draft, s, translate);
             var c = new CharacterData(Guid.NewGuid().ToString()) { characterName = draft.characterName.Trim(), currentHealth = s.hitPoints, maxHealth = s.hitPoints };
             c.SetSharedString("CreationWizard_v1", JsonUtility.ToJson(draft));
             c.SetSharedString("RulesEdition", draft.edition == RulesEdition.Rules2024 ? "2024" : "2014");
             void Write(int index, string value) => bindings.Text(c, "input." + index, value);
-            Write(57, c.characterName); Write(58, "1"); Write(59, "0"); Write(60, "Воїн");
-            Write(63, s.speciesName); Write(64, s.backgroundName); Write(65, draft.alignment);
-            Write(62, draft.species == "dwarf" && draft.edition == RulesEdition.Rules2014 ? "Пагорбовий" : "");
+            Write(57, c.characterName); Write(58, "1"); Write(59, "0");
+            foreach (int index in new[] { 60, 62, 63, 64, 65 }) Write(index, generated[index]);
             for (int i = 0; i < 6; i++)
             {
                 Write(27 + 2 * i, CharacterCreationRules.Signed(CharacterCreationRules.Modifier(s.scores[i])));
@@ -40,28 +44,27 @@ namespace Taruck.CharacterCreation
             Write(24, CharacterCreationRules.Signed(s.initiative)); Write(25, s.speed.ToString()); Write(26, s.armorClass.ToString());
             Write(39, "+2"); Write(40, s.passivePerception.ToString()); Write(42, "1"); Write(43, "10");
             for (int i = 49; i <= 53; i++) Write(i, "0");
-            Write(52, (draft.edition == RulesEdition.Rules2024 ? 50 + (draft.equipment == 0 ? 4 : 11) : draft.background == "soldier" ? 10 : 15).ToString());
+            int classGold = draft.edition == RulesEdition.Rules2024 ? draft.equipment == 0 ? 4 : 11 : 0;
+            int originGold = draft.edition == RulesEdition.Rules2024
+                ? draft.backgroundEquipmentChoice == 1 ? 50 : draft.background == "soldier" ? 14 : 16
+                : draft.background == "soldier" ? 10 : 15;
+            Write(52, (classGold + originGold).ToString());
             var sheet = c.GetSceneData("cartaPersonaj");
-            string[] featureLines = s.features.Split('\n');
-            Write(76, string.Join("\n", featureLines.Take(3)));
-            Write(77, s.proficiencies); Write(82, s.equipment);
-            string[] notes = PackFeatureNotes(featureLines.Skip(3));
+            foreach (int index in new[] { 76, 77, 82 }) Write(index, generated[index]);
             for (int i = 0; i < 4; i++)
             {
-                string note = notes[i];
+                string note = generated[78 + i];
                 Write(78 + i, note);
                 if (note.Length > 0) SetToggle(sheet, 31 + i, true);
             }
             int weaponMod = CharacterCreationRules.Modifier(s.scores[draft.equipment == 1 ? 1 : 0]);
-            Write(67, draft.equipment == 1 ? "Довгий лук" : draft.edition == RulesEdition.Rules2024 ? "Дворучний меч" : "Довгий меч");
+            Write(67, generated[67]);
             Write(66, CharacterCreationRules.Signed(weaponMod + 2 + (draft.equipment == 1 && draft.fightingStyle == FighterStyle.Archery ? 2 : 0)));
             Write(68, (draft.equipment == 1 ? "1d8" : draft.edition == RulesEdition.Rules2024 ? "2d6" : "1d8") + CharacterCreationRules.Signed(weaponMod + (draft.equipment == 0 && draft.edition == RulesEdition.Rules2014 && draft.fightingStyle == FighterStyle.Dueling ? 2 : 0)));
-            Write(75, draft.fightingStyle == FighterStyle.Archery ? "Стрільба: +2 до атаки далекобійною зброєю (бонус уже враховано для лука)." :
-                draft.fightingStyle == FighterStyle.Dueling ? "Дуелі: +2 шкоди при атаці відповідною одноручною зброєю." :
-                draft.fightingStyle == FighterStyle.GreatWeapon ? "Велика зброя: особлива дія кубиків шкоди дворучної зброї за правилами вибраної редакції." : "Захист: +1 КЗ у обладунку.");
+            Write(75, generated[75]);
             // In this prototype the fighter's Second Wind uses the sheet's generic class resource panel.
-            Write(101, "Друге дихання");
-            SetDropdown(sheet, 14, 11); // "Інша навичка" remains the last option.
+            Write(101, generated[101]);
+            SetDropdown(sheet, 14, 0); // No named Fighter resource in this selector; start with "Сховати все".
             sheet.SetInt("ResourceDropdownOrder_v2", 1);
             SetDropdown(sheet, 13, s.secondWindUses);
             if (draft.edition == RulesEdition.Rules2024 && draft.species == "dwarf")
@@ -72,7 +75,9 @@ namespace Taruck.CharacterCreation
             {
                 sheet.SetInt("StableField_v1_creation.heroic.count", 1);
             }
-            if (draft.equipment == 1) Write(93, "20"); // arrows
+            int arrows = (draft.equipment == 1 ? 20 : 0) +
+                (draft.edition == RulesEdition.Rules2024 && draft.background == "soldier" && draft.backgroundEquipmentChoice == 0 ? 20 : 0);
+            if (arrows > 0) Write(93, arrows.ToString());
             if (draft.edition == RulesEdition.Rules2024 && draft.equipment == 0) Write(96, "8"); // darts
             sheet.SetInt(bindings.healthPrefix + "maxHealth", s.hitPoints);
             sheet.SetInt(bindings.healthPrefix + "currentHealth", s.hitPoints);
@@ -81,7 +86,7 @@ namespace Taruck.CharacterCreation
 
         // The sheet's first two note text areas are 198 x 348 at font size 15;
         // the last two are taller. Leave room for wrapping and the paragraph gap.
-        private static string[] PackFeatureNotes(IEnumerable<string> features)
+        internal static string[] PackFeatureNotes(IEnumerable<string> features)
         {
             var notes = new string[4];
             int[] lineBudgets = { 20, 20, 25, 25 };

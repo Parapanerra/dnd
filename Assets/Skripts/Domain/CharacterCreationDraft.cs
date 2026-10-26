@@ -10,29 +10,33 @@ namespace Taruck.CharacterCreation
     [Serializable]
     public sealed class CharacterCreationDraft
     {
-        public RulesEdition edition = RulesEdition.Rules2024;
+        public RulesEdition edition = (RulesEdition)(-1);
         public string characterName = "";
-        public string species = "dwarf";
-        public string background = "soldier";
-        public AbilityMethod abilityMethod;
+        public string species = "";
+        public string background = "";
+        public AbilityMethod abilityMethod = (AbilityMethod)(-1);
         // STR, DEX, CON, INT, WIS, CHA. Origin bonuses are calculated separately.
-        public int[] abilities = { 15, 13, 14, 8, 12, 10 };
+        public int[] abilities = new int[6];
         // Six 4d6-drop-lowest results and the result index assigned to each ability (-1 = unassigned).
         public int[] rolledScores = Array.Empty<int>();
+        public int[] rolledDice = Array.Empty<int>();
+        public int rolledCount;
         public int[] rolledAssignment = { -1, -1, -1, -1, -1, -1 };
-        public int increaseTwo = 0;
-        public int increaseOne = 2;
+        public int increaseTwo = -1;
+        public int increaseOne = -1;
+        public int bonusMode = -1;
         public bool threeIncreases;
-        public int thirdIncrease = 1;
-        public List<int> classSkills = new List<int> { 11, 17 };
-        public int humanSkill = 9;
-        public FighterStyle fightingStyle;
-        public int equipment;
-        public string language = "Ельфійська";
-        public string secondLanguage = "Дварфська";
-        public string artisanTool = "Інструменти коваля";
-        public string gamingSet = "Гральні кості";
-        public string alignment = "Нейтральний";
+        public int thirdIncrease = -1;
+        public List<int> classSkills = new List<int>();
+        public int humanSkill = -1;
+        public FighterStyle fightingStyle = (FighterStyle)(-1);
+        public int equipment = -1;
+        public int backgroundEquipmentChoice = -1;
+        public string language = "";
+        public string secondLanguage = "";
+        public string artisanTool = "";
+        public string gamingSet = "";
+        public string alignment = "";
     }
 
     public sealed class CreatedCharacterStats

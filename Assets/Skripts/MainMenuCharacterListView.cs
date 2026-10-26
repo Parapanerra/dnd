@@ -472,8 +472,22 @@ public class MainMenuCharacterListView : MonoBehaviour
         BindButton(spellsButton, () => owner.OnSpellbookSelected(characterId));
         BindButton(deleteButton, () =>
         {
-            saveManager.DeleteCharacter(characterId);
-            owner.RefreshCharacterList();
+            CharacterData selected = saveManager.GetCharacter(characterId);
+            if (selected == null)
+                return;
+
+            var dialog = new TaruckDialogPresenter(() => new RuntimeManagerResolver().Localization().CurrentLanguage);
+            string characterName = characterLabels.GetDisplayName(selected);
+            dialog.ShowCompact(
+                dialog.Text("Видалити персонажа?", "Delete character?", "Удалить персонажа?"),
+                dialog.Text("Персонажа «", "Character “", "Персонаж «") + characterName +
+                dialog.Text("» буде видалено назавжди.", "” will be permanently deleted.", "» будет удалён навсегда."),
+                dialog.Text("Видалити", "Delete", "Удалить"),
+                () =>
+                {
+                    saveManager.DeleteCharacter(characterId);
+                    owner.RefreshCharacterList();
+                });
         });
     }
 

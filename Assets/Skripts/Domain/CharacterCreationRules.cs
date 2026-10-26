@@ -17,22 +17,26 @@ namespace Taruck.CharacterCreation
         public static string Signed(int value) => value >= 0 ? "+" + value : value.ToString();
         public static int PointCost(int score) => score >= 8 && score <= 15 ? Costs[score - 8] : 1000;
         public static int[] BackgroundSkills(CharacterCreationDraft d) => d.background == "soldier"
-            ? new[] { 3, 7 } : d.edition == RulesEdition.Rules2024 ? new[] { 15, 16 } : new[] { 4, 16 };
-        public static int[] AllowedIncreases(CharacterCreationDraft d) => d.background == "soldier" ? new[] { 0, 1, 2 } : new[] { 1, 2, 3 };
+            ? new[] { 3, 7 } : d.background == "criminal" ? d.edition == RulesEdition.Rules2024 ? new[] { 15, 16 } : new[] { 4, 16 } : Array.Empty<int>();
+        public static int[] AllowedIncreases(CharacterCreationDraft d) => d.background == "soldier" ? new[] { 0, 1, 2 } : d.background == "criminal" ? new[] { 1, 2, 3 } : Array.Empty<int>();
 
         public static int[] Scores(CharacterCreationDraft d)
         {
             int[] result = (int[])d.abilities.Clone();
-            if (d.edition == RulesEdition.Rules2014)
+            if (d.edition == RulesEdition.Rules2014 && (d.species == "human" || d.species == "dwarf"))
             {
                 if (d.species == "human") for (int i = 0; i < 6; i++) result[i]++;
                 else { result[2] += 2; result[4]++; }
             }
-            else
+            else if (d.edition == RulesEdition.Rules2024 && d.bonusMode >= 0)
             {
-                result[d.increaseTwo] += d.threeIncreases ? 1 : 2;
-                result[d.increaseOne]++;
-                if (d.threeIncreases) result[d.thirdIncrease]++;
+                if (d.threeIncreases)
+                    foreach (int index in AllowedIncreases(d)) result[index]++;
+                else
+                {
+                    if (d.increaseTwo >= 0 && d.increaseTwo < 6) result[d.increaseTwo] += 2;
+                    if (d.increaseOne >= 0 && d.increaseOne < 6) result[d.increaseOne]++;
+                }
             }
             return result;
         }
@@ -40,15 +44,14 @@ namespace Taruck.CharacterCreation
         public static void RepairDependentChoices(CharacterCreationDraft d)
         {
             int[] allowed = AllowedIncreases(d);
-            if (!allowed.Contains(d.increaseTwo)) d.increaseTwo = allowed[0];
-            if (!allowed.Contains(d.increaseOne) || d.increaseOne == d.increaseTwo)
-                d.increaseOne = allowed.First(x => x != d.increaseTwo);
-            d.thirdIncrease = allowed.First(x => x != d.increaseTwo && x != d.increaseOne);
+            if (!allowed.Contains(d.increaseTwo)) d.increaseTwo = -1;
+            if (!allowed.Contains(d.increaseOne) || d.increaseOne == d.increaseTwo) d.increaseOne = -1;
+            d.thirdIncrease = -1;
             var background = BackgroundSkills(d);
             d.classSkills.RemoveAll(x => background.Contains(x) || !FighterSkills.Contains(x));
             if (d.species == "human" && d.edition == RulesEdition.Rules2024 &&
                 (background.Contains(d.humanSkill) || d.classSkills.Contains(d.humanSkill)))
-                d.humanSkill = Enumerable.Range(0, 18).First(x => !background.Contains(x) && !d.classSkills.Contains(x));
+                d.humanSkill = -1;
         }
 
         public static List<string> Validate(CharacterCreationDraft d, bool requireName = true)
@@ -60,7 +63,8 @@ namespace Taruck.CharacterCreation
             if (d.species != "human" && d.species != "dwarf") errors.Add("Обери людину або дварфа.");
             if (d.background != "soldier" && d.background != "criminal") errors.Add("Обери передісторію.");
             if (d.abilities == null || d.abilities.Length != 6) { errors.Add("Потрібно шість характеристик."); return errors; }
-            if (d.abilities.Any(x => x < 3 || x > 18)) errors.Add("Базові характеристики: від 3 до 18.");
+            if (d.abilities.Any(x => x == 0)) errors.Add("Розподіли всі шість значень характеристик.");
+            else if (d.abilities.Any(x => x < 3 || x > 18)) errors.Add("Базові характеристики: від 3 до 18.");
             if (d.abilityMethod == AbilityMethod.StandardArray && !d.abilities.OrderBy(x => x).SequenceEqual(new[] { 8, 10, 12, 13, 14, 15 })) errors.Add("Стандартний набір: 15, 14, 13, 12, 10, 8 — кожне число один раз.");
             if (d.abilityMethod == AbilityMethod.PointBuy && (d.abilities.Any(x => x < 8 || x > 15) || d.abilities.Sum(PointCost) > 27)) errors.Add("Купівля: значення 8–15 та максимум 27 очок.");
             if (d.abilityMethod == AbilityMethod.Manual &&
@@ -69,22 +73,24 @@ namespace Taruck.CharacterCreation
                  d.rolledAssignment.Any(x => x < 0 || x > 5) || d.rolledAssignment.Distinct().Count() != 6 ||
                  Enumerable.Range(0, 6).Any(i => d.abilities[i] != d.rolledScores[d.rolledAssignment[i]])))
                 errors.Add("Кубики: згенеруй шість значень і розподіли кожне рівно один раз.");
-            bool validBonus = d.increaseTwo >= 0 && d.increaseTwo < 6 && d.increaseOne >= 0 && d.increaseOne < 6 && d.thirdIncrease >= 0 && d.thirdIncrease < 6;
-            if (!validBonus) { errors.Add("Некоректні бонуси походження."); return errors; }
             if (d.edition == RulesEdition.Rules2024)
             {
                 int[] allowed = AllowedIncreases(d);
-                if (!allowed.Contains(d.increaseTwo) || !allowed.Contains(d.increaseOne) || d.increaseTwo == d.increaseOne ||
-                    (d.threeIncreases && (!allowed.Contains(d.thirdIncrease) || d.thirdIncrease == d.increaseOne || d.thirdIncrease == d.increaseTwo))) errors.Add("Бонуси мають належати різним характеристикам передісторії.");
+                if (d.bonusMode < 0 || allowed.Length != 3 || !d.threeIncreases &&
+                    (!allowed.Contains(d.increaseTwo) || !allowed.Contains(d.increaseOne) || d.increaseTwo == d.increaseOne))
+                    errors.Add("Обери бонуси характеристик передісторії.");
             }
             if (Scores(d).Any(x => x > 20)) errors.Add("Після бонусів характеристика не може перевищувати 20.");
             int[] bg = BackgroundSkills(d);
             if (d.classSkills == null || d.classSkills.Count != 2 || d.classSkills.Distinct().Count() != 2 || d.classSkills.Any(x => !FighterSkills.Contains(x) || bg.Contains(x))) errors.Add("Обери дві різні навички воїна без повторення передісторії.");
             if (d.species == "human" && d.edition == RulesEdition.Rules2024 && (d.humanSkill < 0 || d.humanSkill > 17 || bg.Contains(d.humanSkill) || (d.classSkills != null && d.classSkills.Contains(d.humanSkill)))) errors.Add("Додаткова навичка людини має бути унікальною.");
             if (d.equipment < 0 || d.equipment > 1) errors.Add("Обери набір спорядження.");
+            if (d.edition == RulesEdition.Rules2024 && d.backgroundEquipmentChoice < 0) errors.Add("Обери спорядження або 50 зм передісторії.");
+            if (d.edition == RulesEdition.Rules2024 && (int)d.fightingStyle < 0) errors.Add("Обери бойовий стиль.");
             if (string.IsNullOrWhiteSpace(d.language)) errors.Add("Обери додаткову мову.");
             if (d.edition == RulesEdition.Rules2024 && (string.IsNullOrWhiteSpace(d.secondLanguage) || d.language == d.secondLanguage)) errors.Add("Обери дві різні мови крім Загальної.");
             if (d.edition == RulesEdition.Rules2014 && d.species == "human" && d.language == "Загальна") errors.Add("Обери додаткову мову крім Загальної.");
+            if (string.IsNullOrWhiteSpace(d.alignment)) errors.Add("Обери світогляд.");
             return errors;
         }
 
@@ -109,7 +115,7 @@ namespace Taruck.CharacterCreation
             };
             if (d.equipment == 0 && s[0] < 13 && !(dwarf && !modern)) result.speed -= 10;
             result.equipment = Equipment(d);
-            string style = new[] { "Захист: +1 КЗ у обладунку", "Дуелі: +2 шкоди одноручною зброєю за умов стилю", "Стрільба: +2 до атак далекобійною зброєю", modern ? "Велика зброя: значення 1–2 на кубиках шкоди стають 3 за умов стилю" : "Велика зброя: перекидання 1–2 на кубиках шкоди за умов стилю" }[(int)d.fightingStyle];
+            string style = new[] { "Захист: +1 КО у обладунку", "Дуелі: +2 шкоди одноручною зброєю за умов стилю", "Стрільба: +2 до атак далекобійною зброєю", modern ? "Велика зброя: значення 1–2 на кубиках шкоди стають 3 за умов стилю" : "Велика зброя: перекидання 1–2 на кубиках шкоди за умов стилю" }[(int)d.fightingStyle];
             result.features = "Воїн 1 • D&D " + (modern ? "2024" : "2014") + "\n" + style +
                 "\nДруге дихання: бонусна дія, відновлює 1к10+1 ОЗ. " + (modern ? "2 використання; короткий відпочинок повертає 1, довгий — усі." : "1 використання; відновлення після короткого або довгого відпочинку.");
             if (modern) result.features += "\nМайстерність зброї: " + (d.equipment == 0 ? "дворучний меч (ковзний удар), ціп (послаблення), дротик (уповільнення)." : "кривий меч (додаткова атака), короткий меч (уразливість), довгий лук (уповільнення).") +
@@ -129,7 +135,15 @@ namespace Taruck.CharacterCreation
             bool modern = d.edition == RulesEdition.Rules2024;
             string kit = modern ? (d.equipment == 0 ? "Кольчуга; дворучний меч; ціп; 8 дротиків; набір підземельника; 4 зм." : "Проклепана шкіра; скімітар; короткий меч; довгий лук; 20 стріл; сагайдак; набір підземельника; 11 зм.") :
                 (d.equipment == 0 ? "Кольчуга; довгий меч; щит; 2 ручні сокири; набір підземельника." : "Шкіряний обладунок; довгий лук; 20 стріл; довгий меч; щит; 2 ручні сокири; набір підземельника.");
-            return kit + "\nПередісторія: " + (modern ? "50 зм. (грошова альтернатива спорядженню)." : d.background == "soldier" ? "Знак звання; трофей; " + d.gamingSet + "; звичайний одяг; гаманець із 10 зм." : "Ломик; темний одяг із каптуром; гаманець із 15 зм.");
+            string origin = modern
+                ? d.backgroundEquipmentChoice < 0 ? "Обери спорядження або 50 зм."
+                    : d.backgroundEquipmentChoice == 1 ? "50 зм замість спорядження передісторії."
+                    : d.background == "soldier"
+                        ? "Спис; короткий лук; 20 стріл; " + d.gamingSet + "; набір цілителя; сагайдак; дорожній одяг; 14 зм."
+                        : "2 кинджали; злодійські інструменти; ломик; 2 гаманці; дорожній одяг; 16 зм."
+                : d.background == "soldier" ? "Знак звання; трофей; " + d.gamingSet + "; звичайний одяг; гаманець із 10 зм."
+                    : "Ломик; темний одяг із каптуром; гаманець із 15 зм.";
+            return kit + "\nПередісторія: " + origin;
         }
     }
 }

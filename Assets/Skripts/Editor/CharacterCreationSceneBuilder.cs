@@ -62,9 +62,9 @@ public static class CharacterCreationSceneBuilder
         var previewPanel = ui.Panel("PreviewPanel", shell, new Color(.06f, .052f, .065f, .8f));
         previewPanel.anchorMin = new Vector2(1, 0); previewPanel.anchorMax = Vector2.one; previewPanel.offsetMin = new Vector2(-310, 135); previewPanel.offsetMax = new Vector2(-20, -155);
         var preview = ui.Text(previewPanel, "", 23); CreationWizardUi.Fill(preview.rectTransform, 23, 24, 18, 24);
-        var view = ui.Rect("FormScrollView", shell); CreationWizardUi.Fill(view, 235, 155, 330, 135);
+        var view = ui.Rect("FormScrollView", shell); CreationWizardUi.Fill(view, 235, 155, 330, 200);
         var scroll = view.gameObject.AddComponent<UnityEngine.UI.ScrollRect>();
-        scroll.horizontal = false; scroll.vertical = true; scroll.movementType = UnityEngine.UI.ScrollRect.MovementType.Clamped; scroll.scrollSensitivity = 32;
+        scroll.horizontal = false; scroll.vertical = true; scroll.movementType = UnityEngine.UI.ScrollRect.MovementType.Clamped; scroll.scrollSensitivity = 90;
         var viewport = ui.Rect("Viewport", view); CreationWizardUi.Fill(viewport);
         viewport.gameObject.AddComponent<UnityEngine.UI.Image>().color = new Color(1,1,1,.01f);
         viewport.gameObject.AddComponent<UnityEngine.UI.Mask>().showMaskGraphic = false;
@@ -78,7 +78,7 @@ public static class CharacterCreationSceneBuilder
         var previous = ui.Button(footer, "<  Назад", () => {}); previous.GetComponent<RectTransform>().anchorMin = new Vector2(0,0); previous.GetComponent<RectTransform>().anchorMax = new Vector2(.3f,.62f); previous.GetComponent<RectTransform>().offsetMin = new Vector2(26,14); previous.GetComponent<RectTransform>().offsetMax = new Vector2(-10,0);
         var next = ui.Button(footer, "Далі  >", () => {}, true); next.GetComponent<RectTransform>().anchorMin = new Vector2(.5f,0); next.GetComponent<RectTransform>().anchorMax = new Vector2(1,.62f); next.GetComponent<RectTransform>().offsetMin = new Vector2(10,14); next.GetComponent<RectTransform>().offsetMax = new Vector2(-26,0);
         var feedback = ui.Text(shell, "", 18, new Color(1,.5f,.38f));
-        feedback.rectTransform.anchorMin = new Vector2(.16f,0); feedback.rectTransform.anchorMax = new Vector2(.79f,0); feedback.rectTransform.pivot = new Vector2(.5f,0); feedback.rectTransform.anchoredPosition = new Vector2(0,122); feedback.rectTransform.sizeDelta = new Vector2(0,60);
+        feedback.rectTransform.anchorMin = new Vector2(.16f,0); feedback.rectTransform.anchorMax = new Vector2(.79f,0); feedback.rectTransform.pivot = new Vector2(.5f,0); feedback.rectTransform.anchoredPosition = new Vector2(0,130); feedback.rectTransform.sizeDelta = new Vector2(0,50);
         var wizard = canvas.gameObject.AddComponent<CharacterCreationWizard>();
         wizard.Configure(font, button, bindings, content, steps, sidebar, previewPanel, view, title, subtitle, preview, feedback, progress, next, previous, scroll);
         wizard.ConfigureVisuals(
@@ -93,7 +93,27 @@ public static class CharacterCreationSceneBuilder
              SpriteAt("Assets/newUI/_ea42a262-7b02-4bdb-b2bc-02527599ab122d333.png"),
              SpriteAt("Assets/newUI/_ea42a262-7b02-4bdb-b2bc-02527599ab122d11123.png"),
              SpriteAt("Assets/newUI/_ea42a262-7b02-4bdb-b2bc-02527599ab122d1112312.png"),
-             SpriteAt("Assets/newUI/_ca5ab790-13a1-483e-b789-dcb3f99c6d39111.png"));
+             SpriteAt("Assets/newUI/_ca5ab790-13a1-483e-b789-dcb3f99c6d39111.png"),
+             SpriteAt("Assets/newUI/_6a298549-76ea-44c0-87f9-905e185dde581.png"));
+        var panelBackground = SpriteAt("Assets/newUI/_ea42a262-7b02-4bdb-b2bc-02527599ab122d333.png");
+        var panelFrame = SpriteAt("Assets/newUI/_ea42a262-7b02-4bdb-b2bc-02527599ab122d11.png");
+        foreach (var panel in new[] { shell.GetComponent<UnityEngine.UI.Image>(), sidebar.GetComponent<UnityEngine.UI.Image>(), previewPanel.GetComponent<UnityEngine.UI.Image>() })
+        {
+            panel.sprite = null; panel.color = Color.clear;
+            var oldOutline = panel.GetComponent<UnityEngine.UI.Outline>();
+            if (oldOutline != null) oldOutline.enabled = false;
+            foreach (var layerName in new[] { "WizardBackground", "WizardFrame" })
+            {
+                var layer = ui.Rect(layerName, panel.transform);
+                CreationWizardUi.Fill(layer);
+                var layerImage = layer.gameObject.AddComponent<UnityEngine.UI.Image>();
+                layerImage.sprite = layerName == "WizardBackground" ? panelBackground : panelFrame;
+                layerImage.type = layerName == "WizardBackground" ? UnityEngine.UI.Image.Type.Simple : UnityEngine.UI.Image.Type.Sliced;
+                layerImage.pixelsPerUnitMultiplier = layerName == "WizardBackground" ? 1 : 4;
+                layerImage.raycastTarget = false;
+                if (layerName == "WizardBackground") layer.SetAsFirstSibling(); else layer.SetAsLastSibling();
+            }
+        }
         wizard.Rebuild();
         EditorSceneManager.SaveScene(scene, ScenePath);
         AssetDatabase.SaveAssets();

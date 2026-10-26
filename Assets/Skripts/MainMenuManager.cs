@@ -13,6 +13,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Transform characterListContent;
     [SerializeField] private GameObject characterButtonPrefab;
     [SerializeField] private Button createNewCharacterButton;
+    [SerializeField] private Button createCharacterWizardButton;
 
     [Header("Scenes")]
     [SerializeField] private string characterSheetSceneName = AppConfig.Scenes.CharacterSheet;
@@ -143,6 +144,12 @@ public class MainMenuManager : MonoBehaviour
             createNewCharacterButton.onClick.AddListener(OnCreateNewCharacterClicked);
         }
 
+        if (createCharacterWizardButton != null)
+        {
+            createCharacterWizardButton.onClick.RemoveAllListeners();
+            createCharacterWizardButton.onClick.AddListener(OpenCharacterCreationWizard);
+        }
+
         transferPanel.BindButtons();
 
         StartCoroutine(SyncMenuAfterStartup());
@@ -193,6 +200,11 @@ public class MainMenuManager : MonoBehaviour
 
         if (openCharacterAfterCreate)
             OnCharacterSelected(newChar.id);
+    }
+
+    private void OpenCharacterCreationWizard()
+    {
+        SceneManager.LoadScene(AppConfig.Scenes.CharacterCreation);
     }
 
     internal void OpenImportedCharacter(string characterId)

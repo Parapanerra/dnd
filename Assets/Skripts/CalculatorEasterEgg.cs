@@ -42,7 +42,14 @@ internal sealed class CalculatorEasterEgg
         switch (equation)
         {
             case ResetTriggerCode:
-                message = AdvanceResetMessage();
+                message = AdvanceResetMessage(out string characterToDelete);
+                if (!string.IsNullOrEmpty(characterToDelete))
+                {
+                    resetCalculator();
+                    if (saveManager.ReturnToMenuThenDeleteCharacter(characterToDelete))
+                        return true;
+                    message = "Не вдалося відкрити меню, персонажа не видалено.";
+                }
                 break;
             case RadioCode:
                 message = "Раз, два, три, прийом! Ця штука працює?";
@@ -119,8 +126,9 @@ internal sealed class CalculatorEasterEgg
         splitResetMessage = false;
     }
 
-    private string AdvanceResetMessage()
+    private string AdvanceResetMessage(out string characterToDelete)
     {
+        characterToDelete = null;
         CharacterData character = saveManager != null ? saveManager.GetActiveCharacter() : null;
         if (character == null)
             return "Спочатку обери персонажа.";
@@ -129,18 +137,17 @@ internal sealed class CalculatorEasterEgg
         count = Mathf.Clamp(count, 0, WarningsBeforeReset) + 1;
         if (count == ResetTriggerCount)
         {
-            CharacterSheetManagerScene1 sheet = UnityEngine.Object.FindAnyObjectByType<CharacterSheetManagerScene1>();
-            if (sheet != null)
-                sheet.ResetSceneData();
-            else
-                return "Не вдалося знайти Reset для цього листа.";
+            if (!saveManager.CanWrite)
+                return "Не вдалося видалити персонажа: сховище недоступне.";
+            characterToDelete = character.id;
+            return "Я попереджував.";
         }
 
-        character.SetSharedString(ResetCountKey, (count == ResetTriggerCount ? 0 : count).ToString(CultureInfo.InvariantCulture));
+        character.SetSharedString(ResetCountKey, count.ToString(CultureInfo.InvariantCulture));
         saveManager.SaveData();
         switch (count)
         {
-            case 1: return "Ще раз напишеш 67 — видалю персонажа.";
+            case 1: return "Ще двічі напишеш 67 — видалю персонажа.";
             case 2: return "Я взагалі-то серйозно.";
             default: return "Я попереджував.";
         }

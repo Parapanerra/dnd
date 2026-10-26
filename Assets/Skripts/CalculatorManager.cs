@@ -18,6 +18,7 @@ public class CalculatorManager : MonoBehaviour
     private DndSaveManager saveManager;
     private RuntimeLocalization localization;
     private ExhaustionEffects exhaustionEffects;
+    private Color normalResultColor = Color.white;
 
     private void Start()
     {
@@ -30,6 +31,8 @@ public class CalculatorManager : MonoBehaviour
         CalculatorControlBinder controls = new CalculatorControlBinder(transform, expressionInput.NormalizeLabel,
             expressionInput.IsCalculatorButtonLabel, healthController.IsButtonName);
         controls.ResolveDisplayTexts(ref equationText, ref resultText);
+        if (resultText != null)
+            normalResultColor = resultText.color;
         if (buttons == null)
             buttons = new List<Button>();
         controls.BindButtons(buttons, OnButtonClick, OnHpButtonClick);
@@ -212,8 +215,14 @@ public class CalculatorManager : MonoBehaviour
         }
 
         string formattedResult = expressionInput.FormatNumber(result);
+        string displayedExpression = expressionInput.Value;
         if (resultText != null)
+        {
+            resultText.color = normalResultColor;
             resultText.text = "=" + formattedResult + (exhaustionPenalty > 0 ? " (" + textCatalog.PenaltyLabel(exhaustionPenalty, localization.CurrentLanguage).Trim() + ")" : "");
+        }
+        CalculatorHistory.Add(displayedExpression + " " + (resultText != null ? resultText.text : "= " + formattedResult),
+            resultText != null ? resultText.color : normalResultColor);
         expressionInput.SetResult(formattedResult);
         RefreshEquationText();
     }
@@ -283,6 +292,7 @@ public class CalculatorManager : MonoBehaviour
         if (resultText != null)
             resultText.text = message;
         healthController.ApplyTextColor(equationText, resultText);
+        CalculatorHistory.Add(message, resultText != null ? resultText.color : normalResultColor);
     }
 
     private void RefreshEquationText()

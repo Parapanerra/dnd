@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Taruck.CharacterCreation;
 
 // Owns the active character scene's in-memory state, field bindings, and save lifecycle.
 internal sealed class CharacterSceneDataSession
@@ -59,6 +60,10 @@ internal sealed class CharacterSceneDataSession
         if (isMainSheetScene)
             sceneMigration.CopyLegacyFieldsIfEmpty(currentCharacter, currentSceneData);
 
+        bool relocalized = isMainSheetScene && CharacterCreationCardLocalization.Apply(
+            currentCharacter, currentSceneData, inputFields, tmpInputFields,
+            new RuntimeManagerResolver().Localization().CurrentLanguage);
+
         isLoadingSceneData = true;
         try
         {
@@ -70,6 +75,7 @@ internal sealed class CharacterSceneDataSession
         {
             isLoadingSceneData = false;
         }
+        if (relocalized) saveManager.RequestSaveData();
     }
 
     internal void Save()

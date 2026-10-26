@@ -5,6 +5,7 @@ public static class AppConfig
     internal static class Scenes
     {
         public const string Menu = "menu";
+        public const string CharacterCreation = "CharacterCreationPrototype";
         public const string CharacterSheet = "cartaPersonaj";
         public const string Inventory = "inventory";
         public const string Spellbook = "spelBook";

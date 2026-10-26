@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/personag/album.unity
     guid: cbea153efc83e484f8a8f545b5a07975
+  - enabled: 1
+    path: Assets/Scenes/CharacterCreationPrototype.unity
+    guid: dd41bb60a3215ca4c9b1207e05926e32
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 11cfdf716d4045645bb029536bdaf35e, type: 2}
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}

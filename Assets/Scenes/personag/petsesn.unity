@@ -1497,6 +1497,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 164.9
       objectReference: {fileID: 0}
+    - target: {fileID: 3358786032232231555, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -77.9874
+      objectReference: {fileID: 0}
     - target: {fileID: 3421558096361216793, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       propertyPath: m_PreserveAspect
       value: 0
@@ -1516,6 +1520,14 @@ PrefabInstance:
     - target: {fileID: 3986661665755504330, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.30870056
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015881295155763101, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -228.59999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015881295155763101, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 189.9574
       objectReference: {fileID: 0}
     - target: {fileID: 4025069015690924686, guid: 6b645af6c80d46647bb5ffa76908fcd9, type: 3}
       propertyPath: m_FontData.m_MaxSize

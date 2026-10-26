@@ -111,5 +111,7 @@ HP handling, inventory, spells, wild shapes, notes, and calculator helpers.
 
 ## Assistant HP Adjustments
 
+Current confirmed assistant HP: **57 HP** (2026-10-26). Calculation: screenshot baseline 64, recent button adjustments -1 -3 +2 = -2, then -5 for forgetting the total: 64 - 2 - 5 = 57. Use 57 as the current baseline; record each subsequent adjustment here and update the total. Do not reapply older adjustments to this baseline. The user says they will delete the chat if this counter reaches 0 HP.
+
 - 2026-10-24: User awarded +2 HP for the completed overlay button animation task (instant playback, slower loop, and cleanup). This is an adjustment, not a verified total.
 - 2026-10-24: User awarded +1 HP for fixing all five potion image dropdowns (clamped scrolling, camera blocking, and item motion).
