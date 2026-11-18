@@ -1,0 +1,177 @@
+{
+  "keen": [
+    "Перевага на Уважність за запахом.",
+    "Advantage on Perception relying on smell.",
+    "Преимущество на Внимательность по запаху."
+  ],
+  "pack": [
+    "Тактика зграї: перевага на атаку, якщо дієздатний союзник у межах 5 футів від цілі.",
+    "Pack Tactics: advantage on attacks if a non-incapacitated ally is within 5 feet of the target.",
+    "Тактика стаи: преимущество на атаку, если дееспособный союзник в 5 футах от цели."
+  ],
+  "hearing": [
+    "Перевага на Уважність за слухом або запахом.",
+    "Advantage on Perception relying on hearing or smell.",
+    "Преимущество на Внимательность по слуху или запаху."
+  ],
+  "climb": [
+    "Лазіння по стелі без перевірки; павутиння не сповільнює, відчуває істот у спільній павутині.",
+    "Climb ceilings without a check; ignore web movement restrictions and locate creatures touching the same web.",
+    "Лазание по потолку без проверки; паутина не замедляет, чувствует существ в общей паутине."
+  ],
+  "bear14": [
+    "Мультиатака: один укус і одні кігті.",
+    "Multiattack: one Bite and one Claws attack.",
+    "Мультиатака: один укус и одни когти."
+  ],
+  "bear24": [
+    "Мультиатака: два розривання.",
+    "Multiattack: two Rend attacks.",
+    "Мультиатака: два разрывания."
+  ],
+  "2014.Wolf": [
+    "Укус: ряткидок Сили СК 11 або збито з ніг.",
+    "Bite: DC 11 Strength save or Prone.",
+    "Укус: спасбросок Силы Сл 11 или сбит с ног."
+  ],
+  "2014.Dire Wolf": [
+    "Укус: ряткидок Сили СК 13 або збито з ніг.",
+    "Bite: DC 13 Strength save or Prone.",
+    "Укус: спасбросок Силы Сл 13 или сбит с ног."
+  ],
+  "2014.Spider": [
+    "Укус: 1 колючої шкоди; ряткидок Статури СК 9 або ще 1d4 отруйної.",
+    "Bite: 1 piercing damage; DC 9 Constitution save or another 1d4 poison.",
+    "Укус: 1 колющего урона; спасбросок Телосложения Сл 9 или ещё 1к4 ядом."
+  ],
+  "2014.Boar": [
+    "Розбіг 20 футів + ікла: ще 1d6 рублячої; Сила СК 11 або збито з ніг. Невпинність 1/короткий або довгий відпочинок: удар до 7 шкоди, що знизив би ОЗ до 0, залишає 1 ОЗ.",
+    "20-foot Charge + Tusk: another 1d6 slashing; DC 11 Strength or Prone. Relentless 1/short or long rest: damage of 7 or less reducing HP to 0 leaves 1 HP instead.",
+    "Разбег 20 футов + клыки: ещё 1к6 рубящего; Сила Сл 11 или сбит с ног. Неукротимость 1/короткий или долгий отдых: урон до 7, снижающий ОЗ до 0, оставляет 1 ОЗ."
+  ],
+  "2014.Elk": [
+    "Розбіг 20 футів + таран: ще 2d6; Сила СК 13 або збито з ніг. Копита — лише по збитій з ніг цілі.",
+    "20-foot Charge + Ram: another 2d6; DC 13 Strength or Prone. Hooves target only a Prone creature.",
+    "Разбег 20 футов + таран: ещё 2к6; Сила Сл 13 или сбит с ног. Копыта — только по сбитой с ног цели."
+  ],
+  "2014.Crocodile": [
+    "Затримує дихання 15 хв. Укус хапає (втеча СК 12), ціль обмежена; до звільнення не може кусати іншу.",
+    "Hold Breath 15 minutes. Bite grapples (escape DC 12), target Restrained; cannot bite another until released.",
+    "Задерживает дыхание 15 минут. Укус хватает (побег Сл 12), цель опутана; до освобождения не может кусать другую."
+  ],
+  "2014.Giant Eagle": [
+    "Мультиатака: дзьоб + пазурі. Перевага на Уважність за зором.",
+    "Multiattack: Beak + Talons. Advantage on sight-based Perception.",
+    "Мультиатака: клюв + когти. Преимущество на Внимательность по зрению."
+  ],
+  "2014.Giant Scorpion": [
+    "Мультиатака: дві клешні + жало. Клешня хапає (втеча СК 12), по одній цілі на кожну. Жало: додатково 4d10 отруйної, Статура СК 12 — половина.",
+    "Multiattack: two Claws + Sting. Claw grapples (escape DC 12), one target per claw. Sting: another 4d10 poison, DC 12 Constitution halves poison.",
+    "Мультиатака: две клешни + жало. Клешня хватает (побег Сл 12), по одной цели. Жало: ещё 4к10 ядом, Телосложение Сл 12 — половина."
+  ],
+  "2014.Giant Crocodile": [
+    "Дихання 30 хв. Мультиатака: укус + хвіст. Укус хапає (втеча СК 16), ціль обмежена, не може кусати іншу. Хвіст 10 футів по іншій цілі: Сила СК 16 або збито з ніг.",
+    "Hold Breath 30 minutes. Multiattack: Bite + Tail. Bite grapples (escape DC 16), Restrains, prevents biting another. Tail reaches 10 feet, targets another creature: DC 16 Strength or Prone.",
+    "Дыхание 30 минут. Мультиатака: укус + хвост. Укус хватает (побег Сл 16), опутывает, нельзя кусать другую. Хвост 10 футов по другой цели: Сила Сл 16 или сбит с ног."
+  ],
+  "2014.Elephant": [
+    "Розбіг 20 футів + бивні: Сила СК 12 або збито з ніг; по такій цілі можна бонусною дією зробити Тупіт. Тупіт лише по збитих з ніг.",
+    "20-foot Charge + Gore: DC 12 Strength or Prone; may make a bonus-action Stomp against that Prone target. Stomp targets only Prone creatures.",
+    "Разбег 20 футов + бивни: Сила Сл 12 или сбит с ног; бонусным действием Топот по этой цели. Топот только по сбитым с ног."
+  ],
+  "2014.Mammoth": [
+    "Бивні 10 футів. Розбіг 20 футів + бивні: Сила СК 18 або збито з ніг; можна бонусною дією Тупіт по цій збитій цілі.",
+    "Gore reaches 10 feet. 20-foot Charge + Gore: DC 18 Strength or Prone; may bonus-action Stomp against that Prone target.",
+    "Бивни 10 футов. Разбег 20 футов + бивни: Сила Сл 18 или сбит с ног; бонусным действием Топот по этой сбитой цели."
+  ],
+  "2024.Rat": [
+    "Моторність: вихід із досяжності не провокує атак.",
+    "Agile: leaving reach does not provoke Opportunity Attacks.",
+    "Проворство: выход из досягаемости не провоцирует атаки."
+  ],
+  "2024.Spider": [
+    "Укус: ще 1d4 отруйної без ряткидка.",
+    "Bite: another 1d4 poison without a save.",
+    "Укус: ещё 1к4 ядом без спасброска."
+  ],
+  "2024.Wolf": [
+    "Укус збиває з ніг ціль Середнього або меншого розміру без ряткидка.",
+    "Bite knocks a Medium or smaller target Prone without a save.",
+    "Укус сбивает с ног Среднюю или меньшую цель без спасброска."
+  ],
+  "2024.Dire Wolf": [
+    "Укус збиває з ніг Велику або меншу ціль без ряткидка.",
+    "Bite knocks a Large or smaller target Prone without a save.",
+    "Укус сбивает с ног Большую или меньшую цель без спасброска."
+  ],
+  "2024.Cat": [
+    "Стрибки рахуються від Спритності замість Сили.",
+    "Use Dexterity instead of Strength for jumps.",
+    "Прыжки считаются от Ловкости вместо Силы."
+  ],
+  "2024.Boar": [
+    "При половині ОЗ або менше — перевага на атаки. Розбіг 20 футів + бивні по Середній або меншій цілі: ще 1d6 колючої та збито з ніг без ряткидка.",
+    "Bloodied: advantage on attacks. 20-foot Charge + Gore against a Medium or smaller target: another 1d6 piercing and Prone without a save.",
+    "При половине ОЗ или меньше — преимущество на атаки. Разбег 20 футов + бивни по Средней или меньшей цели: ещё 1к6 колющего и сбит с ног без спасброска."
+  ],
+  "2024.Brown Bear": [
+    "Мультиатака: укус + кіготь. Кіготь збиває з ніг Велику або меншу ціль без ряткидка.",
+    "Multiattack: Bite + Claw. Claw knocks a Large or smaller target Prone without a save.",
+    "Мультиатака: укус + коготь. Коготь сбивает с ног Большую или меньшую цель без спасброска."
+  ],
+  "2024.Elk": [
+    "Розбіг 20 футів + таран по Великій або меншій цілі: ще 1d6 дроблячої та збито з ніг.",
+    "20-foot Charge + Ram against a Large or smaller target: another 1d6 bludgeoning and Prone.",
+    "Разбег 20 футов + таран по Большой или меньшей цели: ещё 1к6 дробящего и сбит с ног."
+  ],
+  "2024.Crocodile": [
+    "Дихання 1 година. Укус хапає Середню або меншу ціль (втеча СК 12), вона обмежена.",
+    "Hold Breath 1 hour. Bite grapples a Medium or smaller target (escape DC 12), also Restrained.",
+    "Дыхание 1 час. Укус хватает Среднюю или меньшую цель (побег Сл 12), она опутана."
+  ],
+  "2024.Giant Eagle": [
+    "Мультиатака: два розривання, кожне додатково 1d6 променистої шкоди.",
+    "Multiattack: two Rend attacks, each adds 1d6 radiant damage.",
+    "Мультиатака: два разрывания, каждое дополнительно 1к6 лучистого урона."
+  ],
+  "2024.Giant Scorpion": [
+    "Мультиатака: дві клешні + жало. Клешні хапають Великих або менших (втеча СК 13), по одній цілі. Жало: ще 2d10 отруйної без ряткидка.",
+    "Multiattack: two Claws + Sting. Claws grapple Large or smaller targets (escape DC 13), one per claw. Sting adds 2d10 poison without a save.",
+    "Мультиатака: две клешни + жало. Клешни хватают Больших или меньших (побег Сл 13), по одной цели. Жало: ещё 2к10 ядом без спасброска."
+  ],
+  "2024.Giant Crocodile": [
+    "Дихання 1 година. Мультиатака: укус + хвіст. Укус хапає Велику або меншу (втеча СК 15), ціль обмежена. Хвіст 10 футів по іншій Великій або меншій цілі збиває з ніг.",
+    "Hold Breath 1 hour. Multiattack: Bite + Tail. Bite grapples a Large or smaller target (escape DC 15), Restrained. Tail reaches 10 feet, knocks another Large or smaller target Prone.",
+    "Дыхание 1 час. Мультиатака: укус + хвост. Укус хватает Большую или меньшую (побег Сл 15), цель опутана. Хвост 10 футов сбивает другую Большую или меньшую цель с ног."
+  ],
+  "2024.Elephant": [
+    "Мультиатака: двоє бивнів. Після розбігу 20 футів бивні збивають Величезну або меншу ціль з ніг.",
+    "Multiattack: two Gore attacks. After a 20-foot Charge, Gore knocks a Huge or smaller target Prone.",
+    "Мультиатака: два удара бивнями. После разбега 20 футов бивни сбивают Огромную или меньшую цель с ног."
+  ],
+  "2024.Mammoth": [
+    "Мультиатака: двоє бивнів, досяжність 10 футів. Після розбігу 20 футів збиває Величезну або меншу ціль з ніг.",
+    "Multiattack: two Gore attacks, reach 10 feet. After a 20-foot Charge knocks a Huge or smaller target Prone.",
+    "Мультиатака: два удара бивнями, досягаемость 10 футов. После разбега 20 футов сбивает Огромную или меньшую цель с ног."
+  ],
+  "2014.Air Elemental": [
+    "Два удари; політ із зависанням. Проходить крізь 1 дюйм і займає простір ворогів. Вихор (відновлення 4–6): у його просторі Сила СК 13, 3d8+2 дроблячої, відкидання 20 футів і збито з ніг; успіх — лише половина. Зіткнення: ще 1d6 за 10 футів; інша істота — Спритність СК 13 або така ж шкода й збито з ніг.",
+    "Two Slams; hovering flight. Pass through 1-inch gaps and occupy hostile spaces. Whirlwind (recharge 4–6): in its space DC 13 Strength, 3d8+2 bludgeoning, flung 20 feet and Prone; success only half damage. Collision adds 1d6 per 10 feet; another creature DC 13 Dexterity or same collision damage and Prone.",
+    "Два удара; полёт с парением. Проходит через 1 дюйм и занимает пространство врагов. Вихрь (перезарядка 4–6): в его пространстве Сила Сл 13, 3к8+2 дробящего, отброшен на 20 футов и сбит с ног; успех — только половина. Столкновение: ещё 1к6 за 10 футов; другая цель — Ловкость Сл 13 или тот же урон и сбита с ног."
+  ],
+  "2014.Earth Elemental": [
+    "Два удари, досяжність 10 футів. Проходить крізь немагічну необроблену землю й камінь без слідів. Подвійна шкода предметам і спорудам.",
+    "Two Slams, reach 10 feet. Glide through nonmagical unworked earth and stone without disturbing it. Double damage to objects and structures.",
+    "Два удара, досягаемость 10 футов. Проходит сквозь немагическую необработанную землю и камень без следов. Двойной урон предметам и строениям."
+  ],
+  "2014.Fire Elemental": [
+    "Два дотики. Проходить крізь 1 дюйм і займає простір ворогів. Дотик або атака ближнього бою з 5 футів по ньому завдає нападнику 1d10 вогняної. Перше входження в чужий простір за хід: 1d10 вогняної й займання. Дотик також підпалює: 1d10 на початку кожного ходу до гасіння дією. Світло 30+30 футів. Вода: 1 холодної шкоди за 5 футів руху в ній або за галон.",
+    "Two Touch attacks. Pass through 1-inch gaps and occupy hostile spaces. Touching it or hitting it in melee within 5 feet deals 1d10 fire to the attacker. First entry into a creature's space per turn: 1d10 fire and ignition. Touch also ignites: 1d10 at each turn start until doused with an action. Light 30+30 feet. Water: 1 cold damage per 5 feet moved in it or per gallon splashed.",
+    "Два касания. Проходит через 1 дюйм и занимает пространство врагов. Касание или попадание ближней атакой с 5 футов наносит атакующему 1к10 огнём. Первое вхождение в чужое пространство за ход: 1к10 огнём и возгорание. Касание также поджигает: 1к10 в начале хода до тушения действием. Свет 30+30 футов. Вода: 1 холодом за 5 футов движения или галлон."
+  ],
+  "2014.Water Elemental": [
+    "Два удари. Проходить крізь 1 дюйм і займає простір ворогів. Холод знижує швидкість на 20 футів до кінця наступного ходу. Поглинання (4–6): Сила СК 15 у його просторі або 2d8+4 дроблячої; Велика чи менша ціль схоплена (втеча СК 14), обмежена й не дихає без водного дихання. Успіх — виштовхнуто назовні. Утримує одну Велику чи дві менші цілі; кожного початку свого ходу по 2d8+4. Інша істота з 5 футів дією й перевіркою Сили СК 14 може витягти ціль.",
+    "Two Slams. Pass through 1-inch gaps and occupy hostile spaces. Cold reduces speed by 20 feet until next turn end. Whelm (recharge 4–6): DC 15 Strength in its space or 2d8+4 bludgeoning; Large or smaller target Grappled (escape DC 14), Restrained and cannot breathe unless it breathes water. Success pushes target out. Holds one Large or two smaller targets, dealing 2d8+4 at each turn start. Another creature within 5 feet can use an action and DC 14 Strength check to pull a target out.",
+    "Два удара. Проходит через 1 дюйм и занимает пространство врагов. Холод снижает скорость на 20 футов до конца следующего хода. Поглощение (4–6): Сила Сл 15 в его пространстве или 2к8+4 дробящего; Большая или меньшая цель схвачена (побег Сл 14), опутана и не дышит без водного дыхания. Успех — вытолкнута. Держит одну Большую или две меньших цели; в начале каждого своего хода 2к8+4. Другая цель с 5 футов действием и проверкой Силы Сл 14 может вытащить жертву."
+  ]
+}

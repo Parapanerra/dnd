@@ -523,6 +523,26 @@ MonoBehaviour:
     stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-10.03680bf3368e
     collection: inputData
     index: 101
+  - key: input.102
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.creationnotes5.20261027
+    collection: inputData
+    index: 102
+  - key: input.103
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.creationnotes6.20261027
+    collection: inputData
+    index: 103
+  - key: input.104
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.creationnotes7.20261027
+    collection: inputData
+    index: 104
+  - key: input.105
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.creationnotes8.20261027
+    collection: inputData
+    index: 105
   - key: skill.0
     scene: cartaPersonaj
     stableId: dnd.cartapersonaj.inputfield.inputfield-legacy.ca0fd5463ca3
@@ -763,4 +783,2435 @@ MonoBehaviour:
     stableId: dnd.cartapersonaj.toggle.toggle-5.3088bd7c4871
     collection: toggleData
     index: 5
+  - key: book.prepared.0
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.71242e1d1804
+    collection: toggleData
+    index: 0
+  - key: book.dropdown.0
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.fdd6a2a684b2
+    collection: dropdownData
+    index: 0
+  - key: book.dropdown.1
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.c103a99a65a5
+    collection: dropdownData
+    index: 1
+  - key: book.dropdown.2
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.37c0e3436a7c
+    collection: dropdownData
+    index: 2
+  - key: book.input.0
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.5077a84b3155
+    collection: inputData
+    index: 0
+  - key: book.input.1
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.2b6405955460
+    collection: inputData
+    index: 1
+  - key: book.prepared.1
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.1541bd145827
+    collection: toggleData
+    index: 4
+  - key: book.dropdown.3
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.0d642f725a10
+    collection: dropdownData
+    index: 3
+  - key: book.dropdown.4
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.e3ea1a9d1e89
+    collection: dropdownData
+    index: 4
+  - key: book.dropdown.5
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.8ef4d9ade1c2
+    collection: dropdownData
+    index: 5
+  - key: book.input.2
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.da0e989d4ed1
+    collection: inputData
+    index: 2
+  - key: book.input.3
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.7c6e34fca5af
+    collection: inputData
+    index: 3
+  - key: book.prepared.2
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.a34cc4c7a2bc
+    collection: toggleData
+    index: 8
+  - key: book.dropdown.6
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.0d18de1f57f2
+    collection: dropdownData
+    index: 6
+  - key: book.dropdown.7
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.80f2c2a20a5a
+    collection: dropdownData
+    index: 7
+  - key: book.dropdown.8
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.6fdf16641a51
+    collection: dropdownData
+    index: 8
+  - key: book.input.4
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.eae70cbd7a2e
+    collection: inputData
+    index: 4
+  - key: book.input.5
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.acf589c48eb9
+    collection: inputData
+    index: 5
+  - key: book.prepared.3
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.1b691536a090
+    collection: toggleData
+    index: 12
+  - key: book.dropdown.9
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.b8c36968d783
+    collection: dropdownData
+    index: 9
+  - key: book.dropdown.10
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.1d94744cf4bc
+    collection: dropdownData
+    index: 10
+  - key: book.dropdown.11
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.7eea3ce52f06
+    collection: dropdownData
+    index: 11
+  - key: book.input.6
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.bbd16a6efa51
+    collection: inputData
+    index: 6
+  - key: book.input.7
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.e4a03a03df94
+    collection: inputData
+    index: 7
+  - key: book.prepared.4
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.5f1700058557
+    collection: toggleData
+    index: 16
+  - key: book.dropdown.12
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.0dfb59a2e289
+    collection: dropdownData
+    index: 12
+  - key: book.dropdown.13
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.40cb433c38ed
+    collection: dropdownData
+    index: 13
+  - key: book.dropdown.14
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.91621aedf033
+    collection: dropdownData
+    index: 14
+  - key: book.input.8
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.5c2a90a2b142
+    collection: inputData
+    index: 8
+  - key: book.input.9
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.dbdd6f4477c2
+    collection: inputData
+    index: 9
+  - key: book.prepared.5
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.0bba00b0c75f
+    collection: toggleData
+    index: 20
+  - key: book.dropdown.15
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.98b1d03099b0
+    collection: dropdownData
+    index: 15
+  - key: book.dropdown.16
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.4d03e378808c
+    collection: dropdownData
+    index: 16
+  - key: book.dropdown.17
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.30298bb4ff40
+    collection: dropdownData
+    index: 17
+  - key: book.input.10
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.b2994a251ca0
+    collection: inputData
+    index: 10
+  - key: book.input.11
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.370d2a6dcdbc
+    collection: inputData
+    index: 11
+  - key: book.prepared.6
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.ca4a51067fdf
+    collection: toggleData
+    index: 24
+  - key: book.dropdown.18
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.e48472c68f4c
+    collection: dropdownData
+    index: 18
+  - key: book.dropdown.19
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.22ea94bb5153
+    collection: dropdownData
+    index: 19
+  - key: book.dropdown.20
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.cec29b5054bb
+    collection: dropdownData
+    index: 20
+  - key: book.input.12
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.760405baf2d0
+    collection: inputData
+    index: 12
+  - key: book.input.13
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.3d3b945b5663
+    collection: inputData
+    index: 13
+  - key: book.prepared.7
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.67d0e8183771
+    collection: toggleData
+    index: 28
+  - key: book.dropdown.21
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.e8afda7af344
+    collection: dropdownData
+    index: 21
+  - key: book.dropdown.22
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.fa7b4ba970eb
+    collection: dropdownData
+    index: 22
+  - key: book.dropdown.23
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.e3a7c37fc825
+    collection: dropdownData
+    index: 23
+  - key: book.input.14
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.b6f48ff3267f
+    collection: inputData
+    index: 14
+  - key: book.input.15
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.60ad25317e4a
+    collection: inputData
+    index: 15
+  - key: book.prepared.8
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.b857c16782b5
+    collection: toggleData
+    index: 32
+  - key: book.dropdown.24
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.851b5b867003
+    collection: dropdownData
+    index: 24
+  - key: book.dropdown.25
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.80582b88b20e
+    collection: dropdownData
+    index: 25
+  - key: book.dropdown.26
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.a801502ba1a8
+    collection: dropdownData
+    index: 26
+  - key: book.input.16
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.8c22d84b8a1f
+    collection: inputData
+    index: 16
+  - key: book.input.17
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.180130fb1e4f
+    collection: inputData
+    index: 17
+  - key: book.prepared.9
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.6a46d01370fa
+    collection: toggleData
+    index: 36
+  - key: book.dropdown.27
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.d50f4861e813
+    collection: dropdownData
+    index: 27
+  - key: book.dropdown.28
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.e7ee80320a90
+    collection: dropdownData
+    index: 28
+  - key: book.dropdown.29
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.9a09e7657f19
+    collection: dropdownData
+    index: 29
+  - key: book.input.18
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.2913348adbb0
+    collection: inputData
+    index: 18
+  - key: book.input.19
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.814b4d6167a8
+    collection: inputData
+    index: 19
+  - key: book.prepared.10
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.d98920e2a999
+    collection: toggleData
+    index: 40
+  - key: book.dropdown.30
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.f066d6d641d1
+    collection: dropdownData
+    index: 30
+  - key: book.dropdown.31
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.b4d97f79712e
+    collection: dropdownData
+    index: 31
+  - key: book.dropdown.32
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.5e12efb09079
+    collection: dropdownData
+    index: 32
+  - key: book.input.20
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.53e56d4adabd
+    collection: inputData
+    index: 20
+  - key: book.input.21
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.5b4007fc7573
+    collection: inputData
+    index: 21
+  - key: book.prepared.11
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.fd565dc1017d
+    collection: toggleData
+    index: 44
+  - key: book.dropdown.33
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.9ad3ddef4eb2
+    collection: dropdownData
+    index: 33
+  - key: book.dropdown.34
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.9507463236e0
+    collection: dropdownData
+    index: 34
+  - key: book.dropdown.35
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.501d91b54b0d
+    collection: dropdownData
+    index: 35
+  - key: book.input.22
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.60e12d742516
+    collection: inputData
+    index: 22
+  - key: book.input.23
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.8b615357ec59
+    collection: inputData
+    index: 23
+  - key: book.prepared.12
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.6abc167715ae
+    collection: toggleData
+    index: 48
+  - key: book.dropdown.36
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.d1125f391998
+    collection: dropdownData
+    index: 36
+  - key: book.dropdown.37
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.55fbe900aa92
+    collection: dropdownData
+    index: 37
+  - key: book.dropdown.38
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.5bfce6331ca0
+    collection: dropdownData
+    index: 38
+  - key: book.input.24
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.02ac6858f8a3
+    collection: inputData
+    index: 24
+  - key: book.input.25
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.d7e6af22c7a6
+    collection: inputData
+    index: 25
+  - key: book.prepared.13
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.8b89fc0bb607
+    collection: toggleData
+    index: 52
+  - key: book.dropdown.39
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.dcb8baa85cf8
+    collection: dropdownData
+    index: 39
+  - key: book.dropdown.40
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.481289ea7db7
+    collection: dropdownData
+    index: 40
+  - key: book.dropdown.41
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.4dc07608b631
+    collection: dropdownData
+    index: 41
+  - key: book.input.26
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.2510dc5b74ad
+    collection: inputData
+    index: 26
+  - key: book.input.27
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.3ab11d0a7679
+    collection: inputData
+    index: 27
+  - key: book.prepared.14
+    scene: spelBook
+    stableId: dnd.spelbook.toggle.toggle.43bb3c86565d
+    collection: toggleData
+    index: 56
+  - key: book.dropdown.42
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowndia.3918b37ebe61
+    collection: dropdownData
+    index: 42
+  - key: book.dropdown.43
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdowntime.37798f7cf31b
+    collection: dropdownData
+    index: 43
+  - key: book.dropdown.44
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.dropdownlvl.a50ba936c1ca
+    collection: dropdownData
+    index: 44
+  - key: book.input.28
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-5.4a74c784e854
+    collection: inputData
+    index: 28
+  - key: book.input.29
+    scene: spelBook
+    stableId: dnd.spelbook.inputfield.inputfield-legacy-10.2813ef69b74e
+    collection: inputData
+    index: 29
+  - key: book.dropdown.45
+    scene: spelBook
+    stableId: dnd.spelbook.dropdown.potiondropdown.81d9f5117597
+    collection: dropdownData
+    index: 45
+  - key: rest.main.rage
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle.c75d926d4c83
+    collection: toggleData
+    index: 47
+  - key: rest.main.rage
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-1.0d9e28becfc8
+    collection: toggleData
+    index: 48
+  - key: rest.main.rage
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-2.cc4532bdbc62
+    collection: toggleData
+    index: 49
+  - key: rest.main.rage
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-3.d0f669a1f499
+    collection: toggleData
+    index: 50
+  - key: rest.main.rage
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-4.916daa695692
+    collection: toggleData
+    index: 51
+  - key: rest.main.rage
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-5.75d521a9fefd
+    collection: toggleData
+    index: 52
+  - key: main.rage.count
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.dropdown.dropdown-legacy-2.0a3575706a02
+    collection: dropdownData
+    index: 6
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle.504b7cd1bdd4
+    collection: toggleData
+    index: 67
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-1.fd4c87705794
+    collection: toggleData
+    index: 68
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-2.f6b50e4dfc0a
+    collection: toggleData
+    index: 69
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-3.d50fb60bae2f
+    collection: toggleData
+    index: 70
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-4.38df05526524
+    collection: toggleData
+    index: 71
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-5.af89264a5ebc
+    collection: toggleData
+    index: 72
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-6.52ffa1b896a2
+    collection: toggleData
+    index: 73
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-7.51abcac14f33
+    collection: toggleData
+    index: 74
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-8.39f59931f26f
+    collection: toggleData
+    index: 75
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-9.f82d113e4747
+    collection: toggleData
+    index: 76
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-10.0ca8eca286e7
+    collection: toggleData
+    index: 77
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-11.1b75c6071f51
+    collection: toggleData
+    index: 78
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-12.f35ff6dfca7a
+    collection: toggleData
+    index: 79
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-13.74423dc07b05
+    collection: toggleData
+    index: 80
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-14.54c34d3b009f
+    collection: toggleData
+    index: 81
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-15.7a739b396681
+    collection: toggleData
+    index: 82
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-16.3d851f816acb
+    collection: toggleData
+    index: 83
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-17.77035f1c4f5f
+    collection: toggleData
+    index: 84
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-18.b053548164e7
+    collection: toggleData
+    index: 85
+  - key: rest.main.ki
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-19.f6064748d4e1
+    collection: toggleData
+    index: 86
+  - key: main.ki.count
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.dropdown.dropdown-legacy-2.41f3258c3293
+    collection: dropdownData
+    index: 9
+  - key: rest.main.blood
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle.8d56dc0966b6
+    collection: toggleData
+    index: 109
+  - key: rest.main.blood
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-7.5de30f85267c
+    collection: toggleData
+    index: 110
+  - key: rest.main.blood
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-1.3774f9bbb072
+    collection: toggleData
+    index: 111
+  - key: rest.main.blood
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-2.25069fc630f8
+    collection: toggleData
+    index: 112
+  - key: rest.main.blood
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-3.5576e36ce365
+    collection: toggleData
+    index: 113
+  - key: rest.main.blood
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-4.dbcd73da19fe
+    collection: toggleData
+    index: 114
+  - key: rest.main.blood
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-5.fdfd6106bd1a
+    collection: toggleData
+    index: 115
+  - key: rest.main.dragon
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle.e8a857a6c6d0
+    collection: toggleData
+    index: 122
+  - key: main.dragon.count
+    scene: cartaPersonaj
+    stableId: creation.dragonbreath.count
+    collection: dropdownData
+    index: -1
+  - key: rest.main.dragon
+    scene: cartaPersonaj
+    stableId: creation.dragonbreath.use.1
+    collection: toggleData
+    index: -1
+  - key: rest.main.dragon
+    scene: cartaPersonaj
+    stableId: creation.dragonbreath.use.2
+    collection: toggleData
+    index: -1
+  - key: rest.main.dragon
+    scene: cartaPersonaj
+    stableId: creation.dragonbreath.use.3
+    collection: toggleData
+    index: -1
+  - key: rest.main.dragon
+    scene: cartaPersonaj
+    stableId: creation.dragonbreath.use.4
+    collection: toggleData
+    index: -1
+  - key: rest.main.dragon
+    scene: cartaPersonaj
+    stableId: creation.dragonbreath.use.5
+    collection: toggleData
+    index: -1
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle.1a8ebc7b2bc7
+    collection: toggleData
+    index: 124
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-1.545665d74e8f
+    collection: toggleData
+    index: 125
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-2.d52417e49c5c
+    collection: toggleData
+    index: 126
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-3.5d64a6aa8290
+    collection: toggleData
+    index: 127
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-4.601147c86eb6
+    collection: toggleData
+    index: 128
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-5.9c1ea58a5994
+    collection: toggleData
+    index: 129
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-6.38a13efaa3dd
+    collection: toggleData
+    index: 130
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-7.8796c0f5a556
+    collection: toggleData
+    index: 131
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-8.7545918b5722
+    collection: toggleData
+    index: 132
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-9.9623d08b9cbb
+    collection: toggleData
+    index: 133
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-10.5e3e19f3d959
+    collection: toggleData
+    index: 134
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-11.a73325a645ff
+    collection: toggleData
+    index: 135
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-12.9d000ee5f019
+    collection: toggleData
+    index: 136
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-13.c21a9e17bd2b
+    collection: toggleData
+    index: 137
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-14.24e194e3eaba
+    collection: toggleData
+    index: 138
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-15.905b450447dc
+    collection: toggleData
+    index: 139
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-16.b3fce8c8e093
+    collection: toggleData
+    index: 140
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-17.119b5dc30add
+    collection: toggleData
+    index: 141
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-18.d466aa0be12c
+    collection: toggleData
+    index: 142
+  - key: rest.main.other
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-19.5cdd8f83c50b
+    collection: toggleData
+    index: 143
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.1
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.2
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.3
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.4
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.5
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.6
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.7
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.8
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.9
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.10
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.11
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.12
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.13
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.14
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.15
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.16
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.17
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.18
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.19
+    collection: toggleData
+    index: -1
+  - key: rest.main.stone
+    scene: cartaPersonaj
+    stableId: creation.stonecunning.toggle.20
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.1
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.2
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.3
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.4
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.5
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.6
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.7
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.8
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.9
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.10
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.11
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.12
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.13
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.14
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.15
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.16
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.17
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.18
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.19
+    collection: toggleData
+    index: -1
+  - key: rest.main.heroic
+    scene: cartaPersonaj
+    stableId: creation.heroic.toggle.20
+    collection: toggleData
+    index: -1
+  - key: form.input.0
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.83a2d2f71994
+    collection: inputData
+    index: 0
+  - key: form.input.1
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.mmpises2.3c2a0df6356a
+    collection: inputData
+    index: 1
+  - key: form.input.2
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw.c3aa01750b04
+    collection: inputData
+    index: 2
+  - key: form.input.3
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.0033c71d647a
+    collection: inputData
+    index: 3
+  - key: form.input.4
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.f9ef2b616380
+    collection: inputData
+    index: 4
+  - key: form.input.5
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.62582f349b36
+    collection: inputData
+    index: 5
+  - key: form.input.6
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.55dc2a68c6b3
+    collection: inputData
+    index: 6
+  - key: form.input.7
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.91c732b37196
+    collection: inputData
+    index: 7
+  - key: form.input.8
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.ea17045b7a57
+    collection: inputData
+    index: 8
+  - key: form.input.9
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.848e9f1bd12c
+    collection: inputData
+    index: 9
+  - key: form.input.10
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.4912025c1bd1
+    collection: inputData
+    index: 10
+  - key: form.input.11
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.e46b93d1e396
+    collection: inputData
+    index: 11
+  - key: form.input.12
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.aa0f819e8c50
+    collection: inputData
+    index: 12
+  - key: form.input.13
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.55f2ffee95fc
+    collection: inputData
+    index: 13
+  - key: form.input.14
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.2079d38001cf
+    collection: inputData
+    index: 14
+  - key: form.input.15
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.a46d98b222a7
+    collection: inputData
+    index: 15
+  - key: form.input.16
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.91b4e56fcd00
+    collection: inputData
+    index: 16
+  - key: form.input.17
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.63fa585161b9
+    collection: inputData
+    index: 17
+  - key: form.input.18
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.e6b3eb1a04a0
+    collection: inputData
+    index: 18
+  - key: form.input.19
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.0a7e3a846756
+    collection: inputData
+    index: 19
+  - key: form.input.20
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.2bc884a81fe3
+    collection: inputData
+    index: 20
+  - key: form.input.21
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw.582e53a436b7
+    collection: inputData
+    index: 21
+  - key: form.input.22
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-1.522bd86450cf
+    collection: inputData
+    index: 22
+  - key: form.input.23
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-2.70a911721b1a
+    collection: inputData
+    index: 23
+  - key: form.input.24
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw.e9a8d94af903
+    collection: inputData
+    index: 24
+  - key: form.input.25
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-1.1ccca26cd8d3
+    collection: inputData
+    index: 25
+  - key: form.input.26
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-2.ec4a9ff4cf24
+    collection: inputData
+    index: 26
+  - key: form.input.27
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw.1b8a4d738b5c
+    collection: inputData
+    index: 27
+  - key: form.input.28
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-1.26bf84207d2a
+    collection: inputData
+    index: 28
+  - key: form.input.29
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-2.c95b1e094877
+    collection: inputData
+    index: 29
+  - key: form.input.30
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-7.d435ab89c66d
+    collection: inputData
+    index: 30
+  - key: form.input.31
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw.4fad0e13955c
+    collection: inputData
+    index: 31
+  - key: form.input.32
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-1.0d4c2eaeeeea
+    collection: inputData
+    index: 32
+  - key: form.input.33
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-2.6039f7296d65
+    collection: inputData
+    index: 33
+  - key: form.input.34
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw.5d5ecdce783a
+    collection: inputData
+    index: 34
+  - key: form.input.35
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-1.142dfd57b823
+    collection: inputData
+    index: 35
+  - key: form.input.36
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-2.05f0bd8a618a
+    collection: inputData
+    index: 36
+  - key: form.input.37
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw.85ecc0c636d7
+    collection: inputData
+    index: 37
+  - key: form.input.38
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-1.aede1b18923b
+    collection: inputData
+    index: 38
+  - key: form.input.39
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-2.3e0ea3934461
+    collection: inputData
+    index: 39
+  - key: form.input.40
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw-7.991af0791172
+    collection: inputData
+    index: 40
+  - key: form.input.41
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw.ebee778eb900
+    collection: inputData
+    index: 41
+  - key: form.input.42
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw.bef0c8de7e9c
+    collection: inputData
+    index: 42
+  - key: form.input.43
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfieldspaspaw.abd327192411
+    collection: inputData
+    index: 43
+  - key: form.input.44
+    scene: petsesn
+    stableId: dnd.petsesn.inputfield.inputfield-legacy.f895d6043266
+    collection: inputData
+    index: 44
+  - key: main.lay.points
+    scene: cartaPersonaj
+    stableId: creation.paladin.lay.points
+    collection: inputData
+    index: -1
+  - key: main.channel.count
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.dropdown.dropdown-legacy-2.85f01610cb3d
+    collection: dropdownData
+    index: 8
+  - key: rest.main.channel
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle.21d09a383b44
+    collection: toggleData
+    index: 63
+  - key: rest.main.channel
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-1.6f03ee321bd9
+    collection: toggleData
+    index: 64
+  - key: rest.main.channel
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-2.14ff62ead117
+    collection: toggleData
+    index: 65
+  - key: main.sorcery.count
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.dropdown.dropdown-legacy-2.e00b7a9e689b
+    collection: dropdownData
+    index: 10
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle.1d1a3ede63be
+    collection: toggleData
+    index: 88
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-1.859bf7d8448a
+    collection: toggleData
+    index: 89
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-2.4fc925a21b2b
+    collection: toggleData
+    index: 90
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-3.3c7122bd6be3
+    collection: toggleData
+    index: 91
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-4.34e8e331d551
+    collection: toggleData
+    index: 92
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-5.227840e1e770
+    collection: toggleData
+    index: 93
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-6.b87227e0d4fb
+    collection: toggleData
+    index: 94
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-7.01d88c0416c5
+    collection: toggleData
+    index: 95
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-8.941e50fdffc6
+    collection: toggleData
+    index: 96
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-9.2e667439bf00
+    collection: toggleData
+    index: 97
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-10.a9a6dc75000c
+    collection: toggleData
+    index: 98
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-11.977e5301de4b
+    collection: toggleData
+    index: 99
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-12.a512e5a1e22f
+    collection: toggleData
+    index: 100
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-13.a3c0829d0077
+    collection: toggleData
+    index: 101
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-14.24ebe43957aa
+    collection: toggleData
+    index: 102
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-15.290e3fb7db21
+    collection: toggleData
+    index: 103
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-16.378102516452
+    collection: toggleData
+    index: 104
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-17.0da5fc4390ee
+    collection: toggleData
+    index: 105
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-18.0da3e2e9e287
+    collection: toggleData
+    index: 106
+  - key: rest.main.sorcery
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-19.49eb73aef23f
+    collection: toggleData
+    index: 107
+  - key: magic.infusion.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy.90ae059685df
+    collection: dropdownData
+    index: 17
+  - key: magic.infusion.0.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw.643e9d34d96e
+    collection: inputData
+    index: 34
+  - key: magic.infusion.0.prepared
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.2c9aab98212d
+    collection: toggleData
+    index: 156
+  - key: magic.infusion.1.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-1.54c0c446f8a2
+    collection: inputData
+    index: 35
+  - key: magic.infusion.1.prepared
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.30f7f13255ae
+    collection: toggleData
+    index: 157
+  - key: magic.infusion.2.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-2.f090032f969d
+    collection: inputData
+    index: 36
+  - key: magic.infusion.2.prepared
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.af66b7aeac7d
+    collection: toggleData
+    index: 158
+  - key: magic.infusion.3.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-3.0b1585ab902b
+    collection: inputData
+    index: 37
+  - key: magic.infusion.3.prepared
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.44e7a0d85530
+    collection: toggleData
+    index: 159
+  - key: magic.infusion.4.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-4.be5f9a26fbe7
+    collection: inputData
+    index: 38
+  - key: magic.infusion.4.prepared
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.ede84cb47ce5
+    collection: toggleData
+    index: 160
+  - key: magic.infusion.5.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-5.79c69a9a80bc
+    collection: inputData
+    index: 39
+  - key: magic.infusion.5.prepared
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.233f14c8a7e3
+    collection: toggleData
+    index: 161
+  - key: magic.infusion.6.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-6.466b4d88c8f1
+    collection: inputData
+    index: 40
+  - key: magic.infusion.6.prepared
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.7947e1866f9a
+    collection: toggleData
+    index: 162
+  - key: magic.infusion.7.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-7.af088e6cb459
+    collection: inputData
+    index: 41
+  - key: magic.infusion.7.prepared
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.6bdac79547ff
+    collection: toggleData
+    index: 163
+  - key: magic.infusion.8.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-8.9f2e6859992d
+    collection: inputData
+    index: 42
+  - key: magic.infusion.8.prepared
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.33d2a3d6dfb3
+    collection: toggleData
+    index: 164
+  - key: magic.infusion.9.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-9.583834862a92
+    collection: inputData
+    index: 43
+  - key: magic.infusion.9.prepared
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.f949beecf81c
+    collection: toggleData
+    index: 165
+  - key: magic.infusion.10.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-10.ff0607544d44
+    collection: inputData
+    index: 44
+  - key: magic.infusion.10.prepared
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.ae58bd9ee1ce
+    collection: toggleData
+    index: 166
+  - key: magic.infusion.11.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-11.87dc9bec0741
+    collection: inputData
+    index: 45
+  - key: magic.infusion.11.prepared
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.f32347fe8d43
+    collection: toggleData
+    index: 167
+  - key: main.blood.rite.0.name
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-11.39a08e1a8ef8
+    collection: inputData
+    index: 98
+  - key: main.blood.rite.0.active
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-10.e43a1247a2ae
+    collection: toggleData
+    index: -1
+  - key: main.blood.rite.1.name
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-12.273e68a3a176
+    collection: inputData
+    index: 100
+  - key: main.blood.rite.1.active
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-8.c13951340df5
+    collection: toggleData
+    index: -1
+  - key: main.blood.rite.2.name
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-13.a2e4fe3da1cf
+    collection: inputData
+    index: 99
+  - key: main.blood.rite.2.active
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-11.2c4dcd51d2b7
+    collection: toggleData
+    index: -1
+  - key: main.blood.rite.3.name
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.inputfield.inputfieldspaspaw-10.0c29b4d497ae
+    collection: inputData
+    index: 97
+  - key: main.blood.rite.3.active
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-9.ed3c1cde8c99
+    collection: toggleData
+    index: -1
+  - key: rest.main.channel
+    scene: cartaPersonaj
+    stableId: creation.cleric.channel.4
+    collection: toggleData
+    index: -1
+  - key: main.wild.count
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.dropdown.dropdown-legacy-2.7f26f3431c74
+    collection: dropdownData
+    index: 7
+  - key: rest.main.wild
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle.1bf95357db13
+    collection: toggleData
+    index: 54
+  - key: rest.main.wild
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-7.53b23b8ff890
+    collection: toggleData
+    index: 55
+  - key: rest.main.wild
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-8.e3f2cbe20361
+    collection: toggleData
+    index: 56
+  - key: rest.main.wild
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-1.29cbf2fb146b
+    collection: toggleData
+    index: 57
+  - key: rest.main.wild
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-2.1c5f65f02ca8
+    collection: toggleData
+    index: 58
+  - key: rest.main.wild
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-3.2d86ed3162e4
+    collection: toggleData
+    index: 59
+  - key: rest.main.wild
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-4.d55fff71b4f8
+    collection: toggleData
+    index: 60
+  - key: rest.main.wild
+    scene: cartaPersonaj
+    stableId: dnd.cartapersonaj.toggle.toggle-5.04136e4d468f
+    collection: toggleData
+    index: 61
+  - key: magic.note.0
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw.76a790875e04
+    collection: inputData
+    index: 0
+  - key: magic.note.0.open
+    scene: Spels
+    stableId: dnd.spels.toggle.toggle.3e03a5778645
+    collection: toggleData
+    index: 0
+  - key: magic.note.1
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw.c3390b5b3ebd
+    collection: inputData
+    index: 1
+  - key: magic.note.1.open
+    scene: Spels
+    stableId: dnd.spels.toggle.toggle.8e46548765b3
+    collection: toggleData
+    index: 1
+  - key: magic.note.2
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw.c9c2cf50cd93
+    collection: inputData
+    index: 2
+  - key: magic.note.2.open
+    scene: Spels
+    stableId: dnd.spels.toggle.toggle.a86c82ab887b
+    collection: toggleData
+    index: 2
+  - key: magic.note.3
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw.7a1c4d5b3b35
+    collection: inputData
+    index: 3
+  - key: magic.note.3.open
+    scene: Spels
+    stableId: dnd.spels.toggle.toggle.5cdca1b8f910
+    collection: toggleData
+    index: 3
+  - key: magic.slot.0
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy.fb9eff3ae728
+    collection: dropdownData
+    index: 0
+  - key: magic.slot.1
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-1.7aee5a919599
+    collection: dropdownData
+    index: 1
+  - key: magic.slot.2
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-2.c03dc825e574
+    collection: dropdownData
+    index: 2
+  - key: magic.slot.3
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-3.012d9f5cd71d
+    collection: dropdownData
+    index: 3
+  - key: magic.slot.4
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-4.a5a647d67064
+    collection: dropdownData
+    index: 4
+  - key: magic.slot.5
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-5.e73e236ff5c5
+    collection: dropdownData
+    index: 5
+  - key: magic.slot.6
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-6.88885138aabb
+    collection: dropdownData
+    index: 6
+  - key: magic.slot.7
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-7.5b47734d728f
+    collection: dropdownData
+    index: 7
+  - key: magic.slot.8
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-8.7df7a3375520
+    collection: dropdownData
+    index: 8
+  - key: magic.resource.0.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw.a61036edc67c
+    collection: inputData
+    index: 26
+  - key: magic.resource.0.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy.5889551777be
+    collection: dropdownData
+    index: 9
+  - key: rest.magic.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.210a5d6da89e
+    collection: toggleData
+    index: 115
+  - key: rest.magic.first
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.210a5d6da89e
+    collection: toggleData
+    index: 115
+  - key: rest.magic.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.6c32ed22949c
+    collection: toggleData
+    index: 116
+  - key: rest.magic.first
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.6c32ed22949c
+    collection: toggleData
+    index: 116
+  - key: rest.magic.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.8a0d3bbd7122
+    collection: toggleData
+    index: 117
+  - key: rest.magic.first
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.8a0d3bbd7122
+    collection: toggleData
+    index: 117
+  - key: rest.magic.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.459fbff3b008
+    collection: toggleData
+    index: 118
+  - key: rest.magic.first
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.459fbff3b008
+    collection: toggleData
+    index: 118
+  - key: rest.magic.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.bda670d50f24
+    collection: toggleData
+    index: 119
+  - key: rest.magic.first
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.bda670d50f24
+    collection: toggleData
+    index: 119
+  - key: magic.resource.1.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-1.c2afd1aeb590
+    collection: inputData
+    index: 27
+  - key: magic.resource.1.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-1.a56094277c59
+    collection: dropdownData
+    index: 10
+  - key: rest.magic.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.55e47fc1037b
+    collection: toggleData
+    index: 120
+  - key: rest.magic.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.fbef56b1c0ef
+    collection: toggleData
+    index: 121
+  - key: rest.magic.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.dac976e98277
+    collection: toggleData
+    index: 122
+  - key: rest.magic.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.774035b14e33
+    collection: toggleData
+    index: 123
+  - key: rest.magic.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.e48a417b2731
+    collection: toggleData
+    index: 124
+  - key: magic.resource.2.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-2.98f93b2d4696
+    collection: inputData
+    index: 28
+  - key: magic.resource.2.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-2.6df37ac34039
+    collection: dropdownData
+    index: 11
+  - key: rest.magic.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.0aee7fb4b3cf
+    collection: toggleData
+    index: 125
+  - key: rest.magic.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.6e06b7e7490d
+    collection: toggleData
+    index: 126
+  - key: rest.magic.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.78ea915126c1
+    collection: toggleData
+    index: 127
+  - key: rest.magic.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.c647bc1c583d
+    collection: toggleData
+    index: 128
+  - key: rest.magic.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.33fd49804107
+    collection: toggleData
+    index: 129
+  - key: magic.resource.3.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-3.9d745c07a24f
+    collection: inputData
+    index: 29
+  - key: magic.resource.3.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-3.1b8416efd508
+    collection: dropdownData
+    index: 12
+  - key: rest.magic.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.f19805e57658
+    collection: toggleData
+    index: 130
+  - key: rest.magic.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.8b8b2f9d92ce
+    collection: toggleData
+    index: 131
+  - key: rest.magic.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.4aac4d7aac30
+    collection: toggleData
+    index: 132
+  - key: rest.magic.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.a19b4605380d
+    collection: toggleData
+    index: 133
+  - key: rest.magic.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.ee6be0d89cf9
+    collection: toggleData
+    index: 134
+  - key: magic.resource.4.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-4.9b4288ca146b
+    collection: inputData
+    index: 30
+  - key: magic.resource.4.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-4.6c305e258d0a
+    collection: dropdownData
+    index: 13
+  - key: rest.magic.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.5ebb846c5243
+    collection: toggleData
+    index: 135
+  - key: rest.magic.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.4eaeb27d27c4
+    collection: toggleData
+    index: 136
+  - key: rest.magic.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.34e5646b6d19
+    collection: toggleData
+    index: 137
+  - key: rest.magic.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.f2fdcb395b22
+    collection: toggleData
+    index: 138
+  - key: rest.magic.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.c2cf82eefc87
+    collection: toggleData
+    index: 139
+  - key: magic.resource.5.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-5.a92a11ab62d1
+    collection: inputData
+    index: 31
+  - key: magic.resource.5.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-5.f9fc8b481a7e
+    collection: dropdownData
+    index: 14
+  - key: rest.magic.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.8475900395c0
+    collection: toggleData
+    index: 140
+  - key: rest.magic.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.9d98759503b4
+    collection: toggleData
+    index: 141
+  - key: rest.magic.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.87b48c82b0b4
+    collection: toggleData
+    index: 142
+  - key: rest.magic.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.a45fc8593caa
+    collection: toggleData
+    index: 143
+  - key: rest.magic.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.51ab53e22a1a
+    collection: toggleData
+    index: 144
+  - key: magic.resource.6.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-6.12b5f8700950
+    collection: inputData
+    index: 32
+  - key: magic.resource.6.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-6.42e4a74495f6
+    collection: dropdownData
+    index: 15
+  - key: rest.magic.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.bac4c099d97e
+    collection: toggleData
+    index: 145
+  - key: rest.magic.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.a4f1a3dd7e5f
+    collection: toggleData
+    index: 146
+  - key: rest.magic.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.384abed8a509
+    collection: toggleData
+    index: 147
+  - key: rest.magic.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.e93887f586c0
+    collection: toggleData
+    index: 148
+  - key: rest.magic.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.de9288891c7f
+    collection: toggleData
+    index: 149
+  - key: magic.resource.7.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-7.d48414cd90f7
+    collection: inputData
+    index: 33
+  - key: magic.resource.7.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-7.df02b3d74c1e
+    collection: dropdownData
+    index: 16
+  - key: rest.magic.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.a50a53f0026f
+    collection: toggleData
+    index: 150
+  - key: rest.magic.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.1e5a0d7523f5
+    collection: toggleData
+    index: 151
+  - key: rest.magic.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.c0af2d29ca96
+    collection: toggleData
+    index: 152
+  - key: rest.magic.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.725c2369a56a
+    collection: toggleData
+    index: 153
+  - key: rest.magic.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.47fbdc38bb7d
+    collection: toggleData
+    index: 154
+  - key: magic.large.resource.0.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw.5b8f7ae6bf3d
+    collection: inputData
+    index: 84
+  - key: magic.large.resource.0.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy.1b555fb8649e
+    collection: dropdownData
+    index: 19
+  - key: rest.magic.large.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.9530cd7ab8df
+    collection: toggleData
+    index: 215
+  - key: rest.magic.large.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.36d20ae9aec5
+    collection: toggleData
+    index: 216
+  - key: rest.magic.large.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.5ab471bc1d9f
+    collection: toggleData
+    index: 217
+  - key: rest.magic.large.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.73614cd23db1
+    collection: toggleData
+    index: 218
+  - key: rest.magic.large.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.204ca6c519c2
+    collection: toggleData
+    index: 219
+  - key: rest.magic.large.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-5.2610b12fc552
+    collection: toggleData
+    index: 220
+  - key: rest.magic.large.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-6.304b2073d6cb
+    collection: toggleData
+    index: 221
+  - key: rest.magic.large.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-7.221553b1016e
+    collection: toggleData
+    index: 222
+  - key: magic.large.resource.1.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-1.7a187b6b276f
+    collection: inputData
+    index: 85
+  - key: magic.large.resource.1.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-1.fe01b18bc81a
+    collection: dropdownData
+    index: 20
+  - key: rest.magic.large.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.b7b51dba9556
+    collection: toggleData
+    index: 223
+  - key: rest.magic.large.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.e19e23f65366
+    collection: toggleData
+    index: 224
+  - key: rest.magic.large.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.ba072b96d313
+    collection: toggleData
+    index: 225
+  - key: rest.magic.large.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.5c2f3d193284
+    collection: toggleData
+    index: 226
+  - key: rest.magic.large.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.f5a0c5d90d15
+    collection: toggleData
+    index: 227
+  - key: rest.magic.large.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-5.d20e3429899b
+    collection: toggleData
+    index: 228
+  - key: rest.magic.large.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-6.9b1422fa6ea2
+    collection: toggleData
+    index: 229
+  - key: rest.magic.large.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-7.ef40f3fc58bb
+    collection: toggleData
+    index: 230
+  - key: magic.large.resource.2.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-2.2209856093bf
+    collection: inputData
+    index: 86
+  - key: magic.large.resource.2.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-2.178b0c3d4e3b
+    collection: dropdownData
+    index: 21
+  - key: rest.magic.large.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.5fea00149d39
+    collection: toggleData
+    index: 231
+  - key: rest.magic.large.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.2363b4a75075
+    collection: toggleData
+    index: 232
+  - key: rest.magic.large.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.061f28559350
+    collection: toggleData
+    index: 233
+  - key: rest.magic.large.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.d787831f9fd0
+    collection: toggleData
+    index: 234
+  - key: rest.magic.large.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.5af9f75a2cbd
+    collection: toggleData
+    index: 235
+  - key: rest.magic.large.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-5.6f75c0715dd7
+    collection: toggleData
+    index: 236
+  - key: rest.magic.large.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-6.b23dae51b9a6
+    collection: toggleData
+    index: 237
+  - key: rest.magic.large.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-7.52bc51e286e3
+    collection: toggleData
+    index: 238
+  - key: magic.large.resource.3.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-3.13de9b7be0fb
+    collection: inputData
+    index: 87
+  - key: magic.large.resource.3.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-3.352b4777ac33
+    collection: dropdownData
+    index: 22
+  - key: rest.magic.large.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.cee7b6589a7f
+    collection: toggleData
+    index: 239
+  - key: rest.magic.large.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.d5dc97237603
+    collection: toggleData
+    index: 240
+  - key: rest.magic.large.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.3d5f91f96b9b
+    collection: toggleData
+    index: 241
+  - key: rest.magic.large.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.6882cc28afd4
+    collection: toggleData
+    index: 242
+  - key: rest.magic.large.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.29ea082d7e7d
+    collection: toggleData
+    index: 243
+  - key: rest.magic.large.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-5.a2ffb15bee14
+    collection: toggleData
+    index: 244
+  - key: rest.magic.large.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-6.5eb47d17f8f6
+    collection: toggleData
+    index: 245
+  - key: rest.magic.large.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-7.8f5a7ab5f561
+    collection: toggleData
+    index: 246
+  - key: magic.large.resource.4.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-4.03aa4690f434
+    collection: inputData
+    index: 88
+  - key: magic.large.resource.4.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-4.d894e6cea3d7
+    collection: dropdownData
+    index: 23
+  - key: rest.magic.large.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.3efdf68694d8
+    collection: toggleData
+    index: 247
+  - key: rest.magic.large.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.a890470128d6
+    collection: toggleData
+    index: 248
+  - key: rest.magic.large.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.ef6ee2750017
+    collection: toggleData
+    index: 249
+  - key: rest.magic.large.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.6db0e0731f1d
+    collection: toggleData
+    index: 250
+  - key: rest.magic.large.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.5495bfeac523
+    collection: toggleData
+    index: 251
+  - key: rest.magic.large.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-5.1b2540f98096
+    collection: toggleData
+    index: 252
+  - key: rest.magic.large.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-6.90279ff85b6a
+    collection: toggleData
+    index: 253
+  - key: rest.magic.large.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-7.2d1cfe352895
+    collection: toggleData
+    index: 254
+  - key: magic.large.resource.5.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-5.8c4f5773368a
+    collection: inputData
+    index: 89
+  - key: magic.large.resource.5.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-5.a0425e2d2851
+    collection: dropdownData
+    index: 24
+  - key: rest.magic.large.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.e6ac20ad181e
+    collection: toggleData
+    index: 255
+  - key: rest.magic.large.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.a13191bf37f3
+    collection: toggleData
+    index: 256
+  - key: rest.magic.large.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.9dec55973c1a
+    collection: toggleData
+    index: 257
+  - key: rest.magic.large.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.1552904cfd43
+    collection: toggleData
+    index: 258
+  - key: rest.magic.large.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.61fe07743973
+    collection: toggleData
+    index: 259
+  - key: rest.magic.large.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-5.84e239487a9b
+    collection: toggleData
+    index: 260
+  - key: rest.magic.large.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-6.095a438955fb
+    collection: toggleData
+    index: 261
+  - key: rest.magic.large.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-7.ba126273ff67
+    collection: toggleData
+    index: 262
+  - key: magic.large.resource.6.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-6.2d3cd92e835a
+    collection: inputData
+    index: 90
+  - key: magic.large.resource.6.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-6.5d47b0764887
+    collection: dropdownData
+    index: 25
+  - key: rest.magic.large.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.b64b551d358d
+    collection: toggleData
+    index: 263
+  - key: rest.magic.large.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.e8b2a1f9991a
+    collection: toggleData
+    index: 264
+  - key: rest.magic.large.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.e03532c5b6f3
+    collection: toggleData
+    index: 265
+  - key: rest.magic.large.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.d6e11217fafd
+    collection: toggleData
+    index: 266
+  - key: rest.magic.large.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.3e02b63ef595
+    collection: toggleData
+    index: 267
+  - key: rest.magic.large.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-5.dfbbdb4f0f87
+    collection: toggleData
+    index: 268
+  - key: rest.magic.large.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-6.8d857396469f
+    collection: toggleData
+    index: 269
+  - key: rest.magic.large.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-7.35e5223843d0
+    collection: toggleData
+    index: 270
+  - key: magic.large.resource.7.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-7.169e8a5a3936
+    collection: inputData
+    index: 91
+  - key: magic.large.resource.7.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy-7.58c5c7147b2e
+    collection: dropdownData
+    index: 26
+  - key: rest.magic.large.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.417cf8dd2bd9
+    collection: toggleData
+    index: 271
+  - key: rest.magic.large.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-1.fa9ca0789dc6
+    collection: toggleData
+    index: 272
+  - key: rest.magic.large.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-2.81a67b618f52
+    collection: toggleData
+    index: 273
+  - key: rest.magic.large.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-3.61a6b3500442
+    collection: toggleData
+    index: 274
+  - key: rest.magic.large.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-4.92f329eab14c
+    collection: toggleData
+    index: 275
+  - key: rest.magic.large.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-5.e72501b305cf
+    collection: toggleData
+    index: 276
+  - key: rest.magic.large.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-6.acdee531f63a
+    collection: toggleData
+    index: 277
+  - key: rest.magic.large.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw-7.440cde573a33
+    collection: toggleData
+    index: 278
+  - key: magic.invocation.0.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw.65785ab086c8
+    collection: inputData
+    index: 46
+  - key: rest.magic.invocation.0
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.32b3a52e0164
+    collection: toggleData
+    index: 169
+  - key: magic.invocation.1.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-1.3f00363803ec
+    collection: inputData
+    index: 47
+  - key: rest.magic.invocation.1
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.01fca147c2bd
+    collection: toggleData
+    index: 170
+  - key: magic.invocation.2.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-2.ca39f047c0d6
+    collection: inputData
+    index: 48
+  - key: rest.magic.invocation.2
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.0f28ff88766f
+    collection: toggleData
+    index: 171
+  - key: magic.invocation.3.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-3.58c9e82e59eb
+    collection: inputData
+    index: 49
+  - key: rest.magic.invocation.3
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.6b78d29bb624
+    collection: toggleData
+    index: 172
+  - key: magic.invocation.4.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-4.db6481f1a9f4
+    collection: inputData
+    index: 50
+  - key: rest.magic.invocation.4
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.f0e79c4cb66b
+    collection: toggleData
+    index: 173
+  - key: magic.invocation.5.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-5.614c5af766eb
+    collection: inputData
+    index: 51
+  - key: rest.magic.invocation.5
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.9a089c9397b8
+    collection: toggleData
+    index: 174
+  - key: magic.invocation.6.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-6.056b256e6431
+    collection: inputData
+    index: 52
+  - key: rest.magic.invocation.6
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.025de8595998
+    collection: toggleData
+    index: 175
+  - key: magic.invocation.7.name
+    scene: Spels
+    stableId: dnd.spels.inputfield.inputfieldspaspaw-7.16a1b906270e
+    collection: inputData
+    index: 53
+  - key: rest.magic.invocation.7
+    scene: Spels
+    stableId: dnd.spels.toggle.togglespaspaw.f8293d88930d
+    collection: toggleData
+    index: 176
+  - key: magic.invocation.count
+    scene: Spels
+    stableId: dnd.spels.dropdown.dropdown-legacy.3a43ed1346da
+    collection: dropdownData
+    index: 18
+  - key: rest.magic.invocation.8
+    scene: Spels
+    stableId: dnd.spels.warlock.invocation.8.used
+    collection: toggleData
+    index: -1
+  - key: magic.invocation.8.name
+    scene: Spels
+    stableId: dnd.spels.warlock.invocation.8.name
+    collection: inputData
+    index: -1
+  - key: rest.magic.invocation.9
+    scene: Spels
+    stableId: dnd.spels.warlock.invocation.9.used
+    collection: toggleData
+    index: -1
+  - key: magic.invocation.9.name
+    scene: Spels
+    stableId: dnd.spels.warlock.invocation.9.name
+    collection: inputData
+    index: -1
   healthPrefix: HealthBar_0_
+  formHealthPrefix: HealthBar_1_

@@ -125,6 +125,7 @@ internal sealed class SceneLocalizationApplier
     private bool ShouldSkip(Text text)
     {
         if (text == null || text.GetComponentInParent<LocalizedIgnore>(true) != null ||
+            text.GetComponent<ManualLocalizedText>() != null ||
             text.GetComponentInParent<SimpleFileBrowser.FileBrowser>(true) != null ||
             text.GetComponentInParent<Dropdown>(true) != null)
             return true;

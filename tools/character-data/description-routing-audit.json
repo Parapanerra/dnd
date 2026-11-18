@@ -1,0 +1,23 @@
+{
+    "scenarios": 5136,
+    "paragraphs": 61898,
+    "planDescriptions": 357,
+    "classes": [
+        "artificer: 540",
+        "barbarian: 360",
+        "bloodhunter: 240",
+        "bard: 360",
+        "cleric: 660",
+        "druid: 360",
+        "fighter: 420",
+        "monk: 420",
+        "paladin: 420",
+        "ranger: 360",
+        "rogue: 420",
+        "sorcerer: 360",
+        "warlock: 12",
+        "wizard: 6"
+    ],
+    "errors": [],
+    "untranslated": []
+}

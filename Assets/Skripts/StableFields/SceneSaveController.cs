@@ -37,6 +37,11 @@ public sealed class SceneSaveController
         tmpDropdowns = new List<TMP_Dropdown>(UnityEngine.Object.FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include));
         resetButtons = new List<Button>(UnityEngine.Object.FindObjectsByType<Button>(FindObjectsInactive.Include));
 
+        // The ready-form dropdown is an action menu, not part of a form's saved values.
+        dropdowns.RemoveAll(dropdown => dropdown.GetComponentInParent<TransientUiAction>(true) != null);
+        tmpDropdowns.RemoveAll(dropdown => dropdown.GetComponentInParent<TransientUiAction>(true) != null);
+        toggles.RemoveAll(toggle => toggle.GetComponentInParent<TransientUiAction>(true) != null);
+
         inputFields.RemoveAll(inputField => isManagedByHealthBar(inputField != null ? inputField.transform : null));
         tmpInputFields.RemoveAll(inputField => isManagedByHealthBar(inputField != null ? inputField.transform : null));
         if (excludeDropdownTemplates)
@@ -99,6 +104,7 @@ public sealed class SceneSaveController
 
     public void Load(CharacterSceneData sceneData)
     {
+        SpellbookCastingTimeMigration.Apply(sceneData, dropdowns);
         bool previous = isApplying;
         isApplying = true;
         try

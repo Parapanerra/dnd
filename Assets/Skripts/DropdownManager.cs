@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +10,7 @@ public class DropdownManager : MonoBehaviour
     {
         [SerializeField] private Dropdown dropdown;
         [SerializeField] private List<GameObject> tangles;
+        [SerializeField] private int unlimitedValue = -1;
 
         public void Bind()
         {
@@ -32,7 +33,7 @@ public class DropdownManager : MonoBehaviour
             if (dropdown == null || tangles == null)
                 return;
 
-            int selectedNumber = dropdown.value;
+            int selectedNumber = dropdown.value == unlimitedValue ? 0 : dropdown.value;
             for (int i = 0; i < tangles.Count; i++)
             {
                 GameObject group = tangles[i];

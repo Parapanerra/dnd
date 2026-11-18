@@ -22,7 +22,7 @@ public class TranslationCatalog
             source = canonicalSource;
 
         if (language == AppLanguage.Ukrainian)
-            return source;
+            return UkrainianTerms(source);
 
         string dynamicTranslation = TranslateDynamicText(source, language);
         if (!string.IsNullOrEmpty(dynamicTranslation))
@@ -125,7 +125,15 @@ public class TranslationCatalog
         sourceByTranslatedText[Normalize(english)] = ukrainian;
         sourceByTranslatedText[Normalize(russian)] = ukrainian;
         sourceByTranslatedText[sourceKey] = ukrainian;
+        sourceByTranslatedText[Normalize(UkrainianTerms(ukrainian))] = ukrainian;
     }
+
+    // Keep canonical translation/save keys compatible, changing the Ukrainian label only.
+    private static string UkrainianTerms(string value) =>
+        System.Text.RegularExpressions.Regex.Replace(value, @"\b([Пп])лут(ами|ові|ом|ам|ах|ів|а|у|и|і)?\b", match => {
+            string replacement = (char.IsUpper(match.Value[0]) ? "Пройдисвіт" : "пройдисвіт") + match.Groups[2].Value;
+            return match.Value == match.Value.ToUpperInvariant() ? replacement.ToUpperInvariant() : replacement;
+        }, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
 
     private void BuildTranslations()
     {
@@ -384,6 +392,12 @@ public class TranslationCatalog
         Add("\u0422\u0430\u0454\u043c\u043d\u0438\u0447\u0456 \u0437\u0430\u043a\u043b\u0438\u043a\u0438", "Eldritch Invocations", "\u041c\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0432\u043e\u0437\u0437\u0432\u0430\u043d\u0438\u044f");
         Add("\u041c\u0456\u0441\u0442\u0438\u0447\u043d\u0438\u0439 \u0430\u0440\u043a\u0430\u043d\u0443\u043c", "Mystic Arcanum", "\u041c\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0430\u0440\u043a\u0430\u043d\u0443\u043c");
         LoadTranslationsFromResource();
+        sourceByTranslatedText[Normalize("Віддати ОЗ")] = "Витратити ОЗ";
+        sourceByTranslatedText[Normalize("Віддати")] = "Витратити";
+        sourceByTranslatedText[Normalize("Скинути HP")] = "Скинути ОЗ";
+        sourceByTranslatedText[Normalize("Доп спели для підготовкі")] = "Додаткові заклинання";
+        sourceByTranslatedText[Normalize("Підготовка Магії")] = "Підготовка заклинань";
+        sourceByTranslatedText[Normalize("Карта персожана")] = "Карта персонажа";
     }
 
 

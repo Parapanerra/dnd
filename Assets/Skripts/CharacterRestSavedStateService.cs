@@ -20,24 +20,30 @@ internal sealed class CharacterRestSavedStateService
             return;
 
         CharacterSceneData activeScene = null;
-        if (isLongRest && character.sceneStates.Exists(state => state != null))
+        if ((isLongRest || character.GetSharedString("CreationTireless", "") == "1") && character.sceneStates.Exists(state => state != null))
             activeScene = saveManager.GetActiveSceneData();
 
-        ApplyToCharacter(character, isLongRest, activeScene);
+        ApplyToCharacter(character, isLongRest, activeScene, true);
         saveManager.SaveData();
     }
 
-    internal void ApplyToCharacter(CharacterData character, bool isLongRest, CharacterSceneData activeScene)
+    internal void ApplyToCharacter(CharacterData character, bool isLongRest, CharacterSceneData activeScene, bool skipLoadedResources = false)
     {
         if (character == null || character.sceneStates == null)
             return;
 
+        Taruck.CharacterCreation.CreationResourceRecovery.Apply(character, isLongRest,
+            field => !skipLoadedResources || !UnityEngine.SceneManagement.SceneManager.GetSceneByName(field.scene).isLoaded);
         foreach (CharacterSceneData sceneData in character.sceneStates)
         {
             if (sceneData == null)
                 continue;
 
-            ClearSavedPanelsByMarkers(sceneData, "WildShape", "ChannelDivinity", "KiPoints", "DragonBreath");
+            ClearSavedPanelsByMarkers(sceneData, "KiPoints");
+            if (!Taruck.CharacterCreation.CreationResourceRecovery.HasGroup(character, "rest.main.wild")) ClearSavedPanelsByMarkers(sceneData, "WildShape");
+            if (!Taruck.CharacterCreation.CreationResourceRecovery.HasGroup(character, "rest.main.channel")) ClearSavedPanelsByMarkers(sceneData, "ChannelDivinity");
+            if (!Taruck.CharacterCreation.CreationResourceRecovery.HasGroup(character, "rest.main.dragon"))
+                ClearSavedPanelsByMarkers(sceneData, "DragonBreath");
 
             string bloodPanelPath = GetRestPanelPath(sceneData, "BloodCurse");
             ClearSavedPanelToggles(
@@ -55,7 +61,12 @@ internal sealed class CharacterRestSavedStateService
                     RestToggleGroups.BloodCurseLongRestExtra.Last);
 
             if (!isLongRest)
+            {
+                if (character.GetSharedString("CreationTireless", "") == "1" && sceneData != activeScene) ReduceSavedExhaustionByOne(sceneData, GetRestPanelPath(sceneData, "Exhaustion"));
+                if (character.GetSharedString("CreationSpellRecovery", "") == "short")
+                    ClearSavedPanelToggles(sceneData, GetRestPanelPath(sceneData, "SpellSlots"), "SpellSlots");
                 continue;
+            }
 
             RestoreSavedHealthBars(sceneData);
             ClearSavedPanelsByMarkers(sceneData, "Rage", "SorceryPoints", "Flight");

@@ -25,6 +25,11 @@ internal sealed class RestSavedToggleUpdater
         foreach (RoleToggle toggle in GetRoleToggles(data, role, minToggleNumber, maxToggleNumber))
             stableIds.Add(toggle.id);
 
+        // A generated magic page may never have been opened, so it has no RestRole/path metadata yet.
+        // Use the frozen scene bindings as a fallback; never include preparation or resource toggles.
+        if (role == "SpellSlots")
+            foreach (var field in RestSpellSlotFields.ForScene(data.sceneName))
+                field.SetSpent(data, false);
         foreach (string id in stableIds)
             data.SetInt(StablePrefix + id, 0);
     }

@@ -18,7 +18,9 @@ public class CalculatorManager : MonoBehaviour
     private DndSaveManager saveManager;
     private RuntimeLocalization localization;
     private ExhaustionEffects exhaustionEffects;
+    private Color normalEquationColor = Color.white;
     private Color normalResultColor = Color.white;
+    private Color? hpActionColor;
 
     private void Start()
     {
@@ -31,6 +33,8 @@ public class CalculatorManager : MonoBehaviour
         CalculatorControlBinder controls = new CalculatorControlBinder(transform, expressionInput.NormalizeLabel,
             expressionInput.IsCalculatorButtonLabel, healthController.IsButtonName);
         controls.ResolveDisplayTexts(ref equationText, ref resultText);
+        if (equationText != null)
+            normalEquationColor = equationText.color;
         if (resultText != null)
             normalResultColor = resultText.color;
         if (buttons == null)
@@ -82,8 +86,8 @@ public class CalculatorManager : MonoBehaviour
 
     internal void CaptureHpTextColorFromButton(Button button)
     {
-        healthController.CaptureTextColor(button);
-        healthController.ApplyTextColor(equationText, resultText);
+        Text buttonText = button != null ? button.GetComponentInChildren<Text>(true) : null;
+        hpActionColor = buttonText != null ? buttonText.color : (Color?)null;
     }
 
     private void OnButtonClick(string rawLabel)
@@ -136,33 +140,35 @@ public class CalculatorManager : MonoBehaviour
         string normalized = label.ToLowerInvariant();
         if ((normalized == "heal" || normalized == "shortrest" || normalized == "longrest") &&
             ShowDeadCharacterAlertIfNeeded())
+        {
+            ResetCalculator();
             return true;
+        }
         if (normalized == "shortrest")
         {
             ShowHpResult(healthController.ApplyShortRest(FindActiveHealthBar(), GetCalculatorText));
-            ResetHpInputState();
             return true;
         }
 
         if (normalized == "longrest")
         {
             ShowHpResult(healthController.ApplyLongRest(FindActiveHealthBar(), GetCalculatorText));
-            ResetHpInputState();
             return true;
         }
 
         if (!healthController.IsButtonName(normalized))
             return false;
         if (easterEgg.IsShowing)
-            ResetCalculator();
+            easterEgg.ResetDisplay();
         healthController.TrySelectMode(normalized, GetCalculatorText,
             localization.CurrentLanguage);
         expressionInput.Reset();
-        if (equationText != null)
-            equationText.text = healthController.ModeLabel;
         if (resultText != null)
+        {
             resultText.text = "";
-        healthController.ApplyTextColor(equationText, resultText);
+            resultText.color = hpActionColor ?? normalResultColor;
+        }
+        RefreshEquationText();
         return true;
     }
 
@@ -231,11 +237,10 @@ public class CalculatorManager : MonoBehaviour
     {
         if (healthController.IsHealing && ShowDeadCharacterAlertIfNeeded())
         {
-            ResetHpInputState();
+            ResetCalculator();
             return;
         }
         ShowHpResult(healthController.Apply(value, FindActiveHealthBar(), GetCalculatorText));
-        expressionInput.Reset();
     }
 
     internal bool ShowDeadCharacterAlertIfNeeded()
@@ -250,12 +255,6 @@ public class CalculatorManager : MonoBehaviour
         return true;
     }
 
-    internal void ResetHpInputState()
-    {
-        healthController.Reset();
-        expressionInput.Reset();
-    }
-
     private bool HasDisplayedResult()
     {
         return resultText != null && resultText != equationText && !string.IsNullOrEmpty(resultText.text);
@@ -265,17 +264,28 @@ public class CalculatorManager : MonoBehaviour
     {
         easterEgg.ResetDisplay();
         expressionInput.Reset();
+        ClearModeAndDisplay();
+    }
+
+    private void ClearModeAndDisplay()
+    {
         healthController.Reset();
+        hpActionColor = null;
         if (equationText != null)
+        {
             equationText.text = "";
+            equationText.color = normalEquationColor;
+        }
         if (resultText != null)
+        {
             resultText.text = "";
+            resultText.color = normalResultColor;
+        }
     }
 
     private void ClearEntry()
     {
-        if (expressionInput.IsEmpty)
-            return;
+        ClearModeAndDisplay();
         expressionInput.ClearEntry();
         RefreshEquationText();
     }
@@ -287,12 +297,11 @@ public class CalculatorManager : MonoBehaviour
 
     internal void ShowHpResult(string message)
     {
-        if (equationText != null)
-            equationText.text = "";
+        Color historyColor = hpActionColor ?? normalResultColor;
+        ResetCalculator();
         if (resultText != null)
             resultText.text = message;
-        healthController.ApplyTextColor(equationText, resultText);
-        CalculatorHistory.Add(message, resultText != null ? resultText.color : normalResultColor);
+        CalculatorHistory.Add(message, historyColor);
     }
 
     private void RefreshEquationText()
@@ -301,6 +310,7 @@ public class CalculatorManager : MonoBehaviour
             localization == null || easterEgg.IsShowing)
             return;
 
+        equationText.color = healthController.IsActive ? hpActionColor ?? normalEquationColor : normalEquationColor;
         equationText.text = healthController.IsActive ? healthController.ModeLabel + expressionInput.Value : expressionInput.Value;
         if (!healthController.IsActive && resultEvaluator.IsD20Roll(expressionInput.Value) && exhaustionEffects.Level > 0)
             equationText.text += textCatalog.PenaltyLabel(

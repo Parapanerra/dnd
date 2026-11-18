@@ -147,7 +147,7 @@ public static class CharacterCreationSceneBuilder
             {
                 var label = labels.OrderBy(x=>Math.Abs(x.transform.position.y-f.transform.position.y)).First();
                 string name = label.text.Substring(0, label.text.IndexOf('(')).Trim();
-                int index = Array.IndexOf(CharacterCreationRules.SkillNames, name);
+                int index = Array.IndexOf(CharacterCreationRules.SkillNames.ToArray(), name);
                 if (index < 0) throw new InvalidOperationException("Unknown skill: " + name);
                 Add(entries, f, "skill." + index);
             }
@@ -158,9 +158,12 @@ public static class CharacterCreationSceneBuilder
                 Add(entries, f, "save." + Array.IndexOf(controls, f));
             }
             var health = scene.GetRootGameObjects().SelectMany(x=>x.GetComponentsInChildren<HealthBar>(true)).First();
-            result.healthPrefix = "HealthBar_" + new SerializedObject(health).FindProperty("customIndex").intValue + "_";
-            result.entries = entries.ToArray();
+            result.SetHealthPrefix("HealthBar_" + new SerializedObject(health).FindProperty("customIndex").intValue + "_");
+            result.ReplaceEntries(entries.ToArray());
             if (entries.Count(x=>x.key.StartsWith("skill."))!=36 || entries.Count(x=>x.key.StartsWith("save."))!=12) throw new InvalidOperationException("Incomplete skill/save bindings.");
+            CaptureSpellbookBindings(result);
+            CaptureMagicResourceBindings(result);
+            CaptureMainResourceBindings(result);
             return result;
         }
         finally { if (openedHere) EditorSceneManager.CloseScene(scene, true); }
@@ -168,5 +171,264 @@ public static class CharacterCreationSceneBuilder
     private static void Add(List<CreationSheetBindings.Entry> entries, PersistentFieldId f, string key)
     {
         entries.Add(new CreationSheetBindings.Entry { key=key, scene="cartaPersonaj", stableId=f.Id, index=f.LegacyIndex, collection=f.LegacyCollection });
+    }
+
+    public static void RefreshSpellbookBindings()
+    {
+        var bindings = AssetDatabase.LoadAssetAtPath<CreationSheetBindings>(DataFolder + "/SheetBindings.asset");
+        if (bindings == null) throw new InvalidOperationException("Sheet bindings are missing.");
+        CaptureSpellbookBindings(bindings);
+        CaptureMagicResourceBindings(bindings);
+        CaptureMainResourceBindings(bindings);
+        CaptureFormBindings(bindings);
+        UpdateSpellbookDurationOptions();
+        EditorUtility.SetDirty(bindings);
+        AssetDatabase.SaveAssets();
+    }
+
+    private static void UpdateSpellbookDurationOptions()
+    {
+        // Five saved pages reuse the same scene controls.
+        foreach (string sceneName in new[] { "spelBook" })
+        {
+            string path = "Assets/Scenes/personag/" + sceneName + ".unity";
+            var scene = UnityEngine.SceneManagement.SceneManager.GetSceneByPath(path);
+            bool opened = !scene.isLoaded;
+            if (opened) scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Additive);
+            try
+            {
+                if (scene.isDirty) throw new InvalidOperationException("Save the spellbook scene before updating its duration options.");
+                bool changed = false;
+                foreach (var field in scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<PersistentFieldId>(true)))
+                {
+                    var dropdown = field.GetComponent<UnityEngine.UI.Dropdown>();
+                    if (dropdown == null || field.LegacyCollection != "dropdownData" || field.LegacyIndex < 0 || field.LegacyIndex % 3 != 1) continue;
+                    if (dropdown.options.Count == 15)
+                    {
+                        Undo.RecordObject(dropdown, "Add special spell duration");
+                        dropdown.options.Add(new UnityEngine.UI.Dropdown.OptionData("Особлива"));
+                        EditorUtility.SetDirty(dropdown); changed = true;
+                    }
+                }
+                if (changed) { EditorSceneManager.MarkSceneDirty(scene); EditorSceneManager.SaveScene(scene); }
+            }
+            finally { if (opened) EditorSceneManager.CloseScene(scene, true); }
+        }
+    }
+
+    public static void PrepareDragonBreathCounter()
+    {
+        const string path = "Assets/Scenes/personag/cartaPersonaj.unity";
+        var scene = UnityEngine.SceneManagement.SceneManager.GetSceneByPath(path);
+        bool opened = !scene.isLoaded;
+        if (opened) scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Additive);
+        try
+        {
+            if (scene.isDirty) throw new InvalidOperationException("Save the character sheet scene before updating its breath counter.");
+            var ids = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<PersistentFieldId>(true)).ToArray();
+            var original = ids.Single(field => field.Id == "dnd.cartapersonaj.toggle.toggle.e8a857a6c6d0").GetComponent<UnityEngine.UI.Toggle>();
+            Transform panel = original.transform.parent;
+            if (panel.Find("DragonBreathCount") != null) return;
+            var donor = ids.Single(field => field.Id == "dnd.cartapersonaj.dropdown.dropdown-legacy-2.41f3258c3293").GetComponent<UnityEngine.UI.Dropdown>();
+            var count = UnityEngine.Object.Instantiate(donor, panel);
+            count.name = "DragonBreathCount";
+            count.onValueChanged = new UnityEngine.UI.Dropdown.DropdownEvent();
+            count.options = Enumerable.Range(0, 7).Select(i => new UnityEngine.UI.Dropdown.OptionData(i.ToString())).ToList();
+            var countRect = (RectTransform)count.transform;
+            countRect.anchorMin = countRect.anchorMax = ((RectTransform)original.transform).anchorMin;
+            countRect.anchoredPosition = ((RectTransform)original.transform).anchoredPosition + new Vector2(-45, 110);
+            count.SetValueWithoutNotify(1);
+            PersistentFieldId.For(count).Configure("creation.dragonbreath.count", count, "dropdownData", -1, "");
+            foreach (var nestedId in count.GetComponentsInChildren<PersistentFieldId>(true).Where(field => field != PersistentFieldId.For(count))) UnityEngine.Object.DestroyImmediate(nestedId);
+            var toggles = new List<UnityEngine.UI.Toggle> { original };
+            Vector2 start = ((RectTransform)original.transform).anchoredPosition;
+            for (int i = 1; i < 6; i++)
+            {
+                var toggle = UnityEngine.Object.Instantiate(original, panel);
+                toggle.name = "DragonBreathUse" + i;
+                toggle.SetIsOnWithoutNotify(false);
+                ((RectTransform)toggle.transform).anchoredPosition = start + new Vector2(i * 100, 0);
+                PersistentFieldId.For(toggle).Configure("creation.dragonbreath.use." + i, toggle, "toggleData", -1, "");
+                toggle.gameObject.SetActive(false);
+                toggles.Add(toggle);
+            }
+            var manager = count.gameObject.AddComponent<DropdownManager>();
+            var serialized = new SerializedObject(manager);
+            var configs = serialized.FindProperty("dropdownConfigs"); configs.arraySize = 1;
+            var config = configs.GetArrayElementAtIndex(0);
+            config.FindPropertyRelative("dropdown").objectReferenceValue = count;
+            var objects = config.FindPropertyRelative("tangles"); objects.arraySize = toggles.Count;
+            for (int i = 0; i < toggles.Count; i++) objects.GetArrayElementAtIndex(i).objectReferenceValue = toggles[i].gameObject;
+            serialized.ApplyModifiedPropertiesWithoutUndo();
+            EditorSceneManager.MarkSceneDirty(scene);
+            EditorSceneManager.SaveScene(scene);
+        }
+        finally { if (opened) EditorSceneManager.CloseScene(scene, true); }
+    }
+
+    public static void PrepareRageCounter()
+    {
+        const string path = "Assets/Scenes/personag/cartaPersonaj.unity";
+        var scene = UnityEngine.SceneManagement.SceneManager.GetSceneByPath(path);
+        bool opened = !scene.isLoaded;
+        if (opened) scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Additive);
+        try
+        {
+            if (scene.isDirty) throw new InvalidOperationException("Save the character sheet scene before updating its Rage counter.");
+            var field = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<PersistentFieldId>(true))
+                .Single(id => id.Id == "dnd.cartapersonaj.dropdown.dropdown-legacy-2.0a3575706a02");
+            var count = field.GetComponent<UnityEngine.UI.Dropdown>();
+            count.options = Enumerable.Range(0, 7).Select(n => new UnityEngine.UI.Dropdown.OptionData(n.ToString())).Concat(new[] { new UnityEngine.UI.Dropdown.OptionData("∞") }).ToList();
+            Transform duplicate = count.transform.parent.Find("RageCount");
+            if (duplicate != null) UnityEngine.Object.DestroyImmediate(duplicate.gameObject);
+            foreach (var manager in scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<DropdownManager>(true)))
+            {
+                var serialized = new SerializedObject(manager);
+                var configs = serialized.FindProperty("dropdownConfigs");
+                for (int i=0;i<configs.arraySize;i++)
+                {
+                    var config = configs.GetArrayElementAtIndex(i);
+                    if (config.FindPropertyRelative("dropdown").objectReferenceValue == count)
+                        config.FindPropertyRelative("unlimitedValue").intValue = 7;
+                }
+                serialized.ApplyModifiedProperties();
+            }
+            EditorUtility.SetDirty(count);
+            EditorSceneManager.MarkSceneDirty(scene); EditorSceneManager.SaveScene(scene);
+        }
+        finally { if (opened) EditorSceneManager.CloseScene(scene, true); }
+    }
+
+    private static void CaptureMainResourceBindings(CreationSheetBindings bindings)
+    {
+        const string path = "Assets/Scenes/personag/cartaPersonaj.unity";
+        var scene = UnityEngine.SceneManagement.SceneManager.GetSceneByPath(path);
+        bool opened = !scene.isLoaded;
+        if (opened) scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Additive);
+        try
+        {
+            var entries = bindings.Entries.Where(entry => !entry.key.StartsWith("rest.main.", StringComparison.Ordinal) && entry.key != "main.dragon.count" && entry.key != "main.ki.count" && entry.key != "main.rage.count" && entry.key != "main.wild.count").ToList();
+            foreach (var field in scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<PersistentFieldId>(true)))
+            {
+                if (field.Id == "dnd.cartapersonaj.dropdown.dropdown-legacy-2.41f3258c3293") entries.Add(new CreationSheetBindings.Entry { key = "main.ki.count", scene = "cartaPersonaj", stableId = field.Id, index = field.LegacyIndex, collection = field.LegacyCollection });
+                if (field.Id == "dnd.cartapersonaj.dropdown.dropdown-legacy-2.7f26f3431c74") entries.Add(new CreationSheetBindings.Entry { key = "main.wild.count", scene = "cartaPersonaj", stableId = field.Id, index = field.LegacyIndex, collection = field.LegacyCollection });
+                if (field.Id == "dnd.cartapersonaj.dropdown.dropdown-legacy-2.0a3575706a02") entries.Add(new CreationSheetBindings.Entry { key = "main.rage.count", scene = "cartaPersonaj", stableId = field.Id, index = field.LegacyIndex, collection = field.LegacyCollection });
+                if (field.Id == "creation.dragonbreath.count") entries.Add(new CreationSheetBindings.Entry { key = "main.dragon.count", scene = "cartaPersonaj", stableId = field.Id, index = field.LegacyIndex, collection = field.LegacyCollection });
+                if (field.LegacyCollection != "toggleData" || field.GetComponent<UnityEngine.UI.Toggle>() == null || field.transform.parent == null ||
+                    !StableFieldPath.For(field.transform).Contains("resursClas")) continue;
+                string key = field.transform.parent.name == "Panel (1)" ? "wild" : field.transform.parent.name == "Panel (2)" ? "channel" : field.transform.parent.name == "Panel (8)" ? "other" : field.transform.parent.name == "Panel (9)" ? "stone" :
+                    field.transform.parent.name == "Panel (10)" ? "heroic" : field.transform.parent.name == "Panel (7)" ? "dragon" : field.transform.parent.name == "Panel" ? "rage" : field.transform.parent.name == "Panel (3)" ? "ki" :
+                    field.transform.parent.name == "Panel (5)" && (field.name == "Toggle" || Enumerable.Range(1, 7).Any(number => field.name == "Toggle (" + number + ")")) ? "blood" : null;
+                if (key == null) continue;
+                entries.Add(new CreationSheetBindings.Entry { key = "rest.main." + key, scene = "cartaPersonaj", stableId = field.Id,
+                    index = field.LegacyIndex, collection = field.LegacyCollection });
+            }
+            bindings.ReplaceEntries(entries.ToArray());
+        }
+        finally { if (opened) EditorSceneManager.CloseScene(scene, true); }
+    }
+
+    private static void CaptureMagicResourceBindings(CreationSheetBindings bindings)
+    {
+        const string path = "Assets/Scenes/personag/Spels.unity";
+        var scene = UnityEngine.SceneManagement.SceneManager.GetSceneByPath(path);
+        bool opened = !scene.isLoaded;
+        if (opened) scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Additive);
+        try
+        {
+            var entries = bindings.Entries.Where(entry => !entry.key.StartsWith("rest.magic.", StringComparison.Ordinal) && !entry.key.StartsWith("magic.resource.", StringComparison.Ordinal) && !entry.key.StartsWith("magic.large.resource.", StringComparison.Ordinal) && !entry.key.StartsWith("magic.slot.", StringComparison.Ordinal) && !entry.key.StartsWith("magic.note.", StringComparison.Ordinal)).ToList();
+            var fields = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<PersistentFieldId>(true))
+                .Where(field => StableFieldPath.For(field.transform).Contains("artefactsNavuk") && !StableFieldPath.For(field.transform).Contains("Template")).ToArray();
+            var names = fields.Where(field => field.LegacyCollection == "inputData").OrderBy(field => field.LegacyIndex).ToArray();
+            var counts = fields.Where(field => field.LegacyCollection == "dropdownData").OrderBy(field => field.LegacyIndex).ToArray();
+            var toggles = fields.Where(field => field.LegacyCollection == "toggleData" && field.GetComponent<UnityEngine.UI.Toggle>() != null).OrderBy(field => field.LegacyIndex).ToArray();
+            if (names.Length != 8 || counts.Length != 8 || toggles.Length != 40) throw new InvalidOperationException("Incomplete magic resource rows.");
+            void AddField(PersistentFieldId field, string key) => entries.Add(new CreationSheetBindings.Entry { key = key, scene = "Spels", stableId = field.Id, index = field.LegacyIndex, collection = field.LegacyCollection });
+            foreach (var field in scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<PersistentFieldId>(true))
+                .Where(field => StableFieldPath.For(field.transform).Contains("zamitki") && field.LegacyIndex >= 0 && field.LegacyIndex < 4))
+            {
+                if (field.LegacyCollection == "inputData") AddField(field, "magic.note." + field.LegacyIndex);
+                if (field.LegacyCollection == "toggleData") AddField(field, "magic.note." + field.LegacyIndex + ".open");
+            }
+            foreach (var field in scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<PersistentFieldId>(true))
+                .Where(field => field.LegacyCollection == "dropdownData" && field.LegacyIndex >= 0 && field.LegacyIndex < 9 && field.GetComponent<UnityEngine.UI.Dropdown>() != null))
+                AddField(field, "magic.slot." + field.LegacyIndex);
+            for (int row = 0; row < 8; row++)
+            {
+                AddField(names[row], "magic.resource." + row + ".name");
+                AddField(counts[row], "magic.resource." + row + ".count");
+                foreach (var toggle in toggles.Skip(row * 5).Take(5))
+                {
+                    AddField(toggle, "rest.magic." + row);
+                    if (row == 0) AddField(toggle, "rest.magic.first");
+                }
+            }
+            var large = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<PersistentFieldId>(true))
+                .Where(field => StableFieldPath.For(field.transform).Contains("artefactInfuz") && !StableFieldPath.For(field.transform).Contains("Template")).ToArray();
+            var largeNames = large.Where(field => field.LegacyCollection == "inputData").OrderBy(field => field.LegacyIndex).ToArray();
+            var largeCounts = large.Where(field => field.LegacyCollection == "dropdownData").OrderBy(field => field.LegacyIndex).ToArray();
+            var largeToggles = large.Where(field => field.LegacyCollection == "toggleData" && field.GetComponent<UnityEngine.UI.Toggle>() != null).OrderBy(field => field.LegacyIndex).ToArray();
+            if (largeNames.Length != 8 || largeCounts.Length != 8 || largeToggles.Length != 64) throw new InvalidOperationException("Incomplete eight-use magic resource rows.");
+            for (int row = 0; row < 8; row++)
+            {
+                AddField(largeNames[row], "magic.large.resource." + row + ".name");
+                AddField(largeCounts[row], "magic.large.resource." + row + ".count");
+                foreach (var toggle in largeToggles.Skip(row * 8).Take(8)) AddField(toggle, "rest.magic.large." + row);
+            }
+            bindings.ReplaceEntries(entries.ToArray());
+            var magicRoot=scene.GetRootGameObjects().Single(root=>root.name=="spels");
+            var noteUpdater=magicRoot.GetComponent<ArtificerInfusionNotes>() ?? magicRoot.AddComponent<ArtificerInfusionNotes>();
+            var noteSettings=new SerializedObject(noteUpdater);
+            noteSettings.FindProperty("bindings").objectReferenceValue=bindings;
+            noteSettings.ApplyModifiedPropertiesWithoutUndo();
+            EditorSceneManager.MarkSceneDirty(scene);
+            if(opened)EditorSceneManager.SaveScene(scene);
+        }
+        finally { if (opened) EditorSceneManager.CloseScene(scene, true); }
+    }
+
+    private static void CaptureFormBindings(CreationSheetBindings bindings)
+    {
+        const string path = "Assets/Scenes/personag/petsesn.unity";
+        var scene = UnityEngine.SceneManagement.SceneManager.GetSceneByPath(path);
+        bool opened = !scene.isLoaded;
+        if (opened) scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Additive);
+        try
+        {
+            var entries = bindings.Entries.Where(entry => !entry.key.StartsWith("form.", StringComparison.Ordinal)).ToList();
+            foreach (var field in scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<PersistentFieldId>(true)))
+            {
+                if (field.LegacyCollection != "inputData") continue;
+                entries.Add(new CreationSheetBindings.Entry { key = "form.input." + field.LegacyIndex, scene = "petsesn", stableId = field.Id, collection = field.LegacyCollection, index = field.LegacyIndex });
+            }
+            var health = scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<HealthBar>(true)).Single();
+            bindings.SetFormHealthPrefix("HealthBar_" + new SerializedObject(health).FindProperty("customIndex").intValue + "_");
+            bindings.ReplaceEntries(entries.ToArray());
+        }
+        finally { if (opened) EditorSceneManager.CloseScene(scene, true); }
+    }
+
+    private static void CaptureSpellbookBindings(CreationSheetBindings bindings)
+    {
+        const string path = "Assets/Scenes/personag/spelBook.unity";
+        var scene = UnityEngine.SceneManagement.SceneManager.GetSceneByPath(path);
+        bool opened = !scene.isLoaded;
+        if (opened) scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Additive);
+        try
+        {
+            var entries = bindings.Entries.Where(entry => entry.scene != "spelBook").ToList();
+            foreach (var field in scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<PersistentFieldId>(true)))
+            {
+                string key = field.LegacyCollection == "inputData" ? "book.input." + field.LegacyIndex :
+                    field.LegacyCollection == "dropdownData" ? "book.dropdown." + field.LegacyIndex :
+                    field.LegacyCollection == "toggleData" && field.GetComponent<UnityEngine.UI.Toggle>() != null &&
+                    !StableFieldPath.For(field.transform).Contains("Template") ? "book.prepared." + field.LegacyIndex / 4 : null;
+                if (key == null || field.LegacyIndex < 0) continue;
+                entries.Add(new CreationSheetBindings.Entry { key = key, scene = "spelBook", stableId = field.Id,
+                    collection = field.LegacyCollection, index = field.LegacyIndex });
+            }
+            bindings.ReplaceEntries(entries.ToArray());
+        }
+        finally { if (opened) EditorSceneManager.CloseScene(scene, true); }
     }
 }

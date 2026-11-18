@@ -64,6 +64,7 @@ internal sealed class CharacterCollectionImportService
                 candidate.lastActiveCharacterId = candidate.characters[0].id;
         }
 
+        new SaveDataNormalizer().Normalize(candidate);
         TaruckDataValidator.Validate(candidate);
         return candidate;
     }

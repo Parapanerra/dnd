@@ -67,6 +67,7 @@ internal sealed class CharacterSceneDataSession
         isLoadingSceneData = true;
         try
         {
+            if (isMainSheetScene) sceneMigration.SeparateLayOnHandsResource(currentCharacter, currentSceneData);
             sceneFields.Load(currentSceneData);
             characterNameField.Load(currentCharacter);
             sharedInputs.Load(currentCharacter, inputFields, tmpInputFields);

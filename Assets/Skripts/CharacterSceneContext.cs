@@ -6,6 +6,19 @@ internal sealed class CharacterSceneContext
 {
     private string pendingSceneDataName;
     private string currentSceneDataName;
+    private string pendingLevelUpCharacterId;
+
+    internal void SetPendingLevelUpCharacter(string characterId)
+    {
+        pendingLevelUpCharacterId = characterId;
+    }
+
+    internal string ConsumePendingLevelUpCharacter()
+    {
+        string characterId = pendingLevelUpCharacterId;
+        pendingLevelUpCharacterId = null;
+        return characterId;
+    }
 
     internal void OnSceneLoaded(Scene scene)
     {

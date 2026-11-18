@@ -28,27 +28,41 @@ public class MainMenuLanguageSelector : MonoBehaviour
     {
         internal readonly AppLanguage Language;
         internal readonly string Label;
+        internal readonly string FlagResource;
 
-        internal LanguageOption(AppLanguage language, string label)
+        internal LanguageOption(AppLanguage language, string label, string flagResource)
         {
             Language = language;
             Label = label;
+            FlagResource = flagResource;
         }
     }
 
     // RU is temporarily hidden. Add it here to re-enable it.
     private readonly LanguageOption[] languageOptions =
     {
-        new LanguageOption(AppLanguage.Ukrainian, "UA"),
-        new LanguageOption(AppLanguage.English, "EN")
+        new LanguageOption(AppLanguage.Ukrainian, "UA", "UI/LanguageFlagUA"),
+        new LanguageOption(AppLanguage.English, "EN", "UI/LanguageFlagUS")
     };
 
-    private List<string> CreateLanguageLabels()
+    private Image ConfigureFlagImage(Graphic label, Image image)
     {
-        List<string> labels = new List<string>(languageOptions.Length);
-        foreach (LanguageOption option in languageOptions)
-            labels.Add(option.Label);
-        return labels;
+        if (image == null && label != null)
+        {
+            GameObject flag = new GameObject("Language Flag", typeof(RectTransform), typeof(Image));
+            image = flag.GetComponent<Image>();
+            image.rectTransform.SetParent(label.transform, false);
+            image.rectTransform.anchorMin = Vector2.zero;
+            image.rectTransform.anchorMax = Vector2.one;
+            image.rectTransform.offsetMin = Vector2.zero;
+            image.rectTransform.offsetMax = Vector2.zero;
+            image.preserveAspect = true;
+        }
+
+        if (image != null)
+            image.raycastTarget = false;
+
+        return image;
     }
 
     internal void EnsureLanguageDropdown()
@@ -69,21 +83,30 @@ public class MainMenuLanguageSelector : MonoBehaviour
             return;
         }
 
+        Sprite[] flags = new Sprite[languageOptions.Length];
+        for (int i = 0; i < flags.Length; i++)
+            flags[i] = Resources.Load<Sprite>(languageOptions[i].FlagResource);
+
         if (dropdown != null)
-            ConfigureLanguageDropdown(dropdown);
+            ConfigureLanguageDropdown(dropdown, flags);
 
         if (tmpDropdown != null)
-            ConfigureLanguageDropdown(tmpDropdown);
+            ConfigureLanguageDropdown(tmpDropdown, flags);
     }
 
-    private void ConfigureLanguageDropdown(Dropdown dropdown)
+    private void ConfigureLanguageDropdown(Dropdown dropdown, Sprite[] flags)
     {
         languageDropdown = dropdown;
         AddLocalizedIgnore(dropdown.gameObject);
         RepairDropdownTemplate(dropdown);
         dropdown.onValueChanged.RemoveAllListeners();
         dropdown.ClearOptions();
-        dropdown.AddOptions(CreateLanguageLabels());
+        dropdown.captionImage = ConfigureFlagImage(dropdown.captionText, dropdown.captionImage);
+        dropdown.itemImage = ConfigureFlagImage(dropdown.itemText, dropdown.itemImage);
+        List<Dropdown.OptionData> options = new List<Dropdown.OptionData>(languageOptions.Length);
+        for (int i = 0; i < languageOptions.Length; i++)
+            options.Add(new Dropdown.OptionData(flags[i] == null ? languageOptions[i].Label : "", flags[i]));
+        dropdown.AddOptions(options);
         dropdown.SetValueWithoutNotify(GetCurrentLanguageIndex());
         dropdown.RefreshShownValue();
         dropdown.onValueChanged.AddListener(OnLanguageDropdownChanged);
@@ -121,9 +144,11 @@ public class MainMenuLanguageSelector : MonoBehaviour
         else if (itemToggle.transform.parent != content)
             itemToggle.transform.SetParent(content, false);
 
-        Text itemText = itemToggle.GetComponentInChildren<Text>(true);
-        if (itemText == null)
-            itemText = CreateDropdownItemText(itemToggle.transform);
+        if (dropdown.itemImage == null)
+        {
+            Text itemText = itemToggle.GetComponentInChildren<Text>(true);
+            dropdown.itemText = itemText != null ? itemText : CreateDropdownItemText(itemToggle.transform);
+        }
 
         if (itemToggle.targetGraphic == null)
         {
@@ -134,7 +159,6 @@ public class MainMenuLanguageSelector : MonoBehaviour
             itemToggle.targetGraphic = targetImage;
         }
 
-        dropdown.itemText = itemText;
         if (scrollRect != null)
         {
             scrollRect.content = content;
@@ -222,13 +246,18 @@ public class MainMenuLanguageSelector : MonoBehaviour
         return text;
     }
 
-    private void ConfigureLanguageDropdown(TMP_Dropdown dropdown)
+    private void ConfigureLanguageDropdown(TMP_Dropdown dropdown, Sprite[] flags)
     {
         languageTmpDropdown = dropdown;
         AddLocalizedIgnore(dropdown.gameObject);
         dropdown.onValueChanged.RemoveAllListeners();
         dropdown.ClearOptions();
-        dropdown.AddOptions(CreateLanguageLabels());
+        dropdown.captionImage = ConfigureFlagImage(dropdown.captionText, dropdown.captionImage);
+        dropdown.itemImage = ConfigureFlagImage(dropdown.itemText, dropdown.itemImage);
+        List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>(languageOptions.Length);
+        for (int i = 0; i < languageOptions.Length; i++)
+            options.Add(new TMP_Dropdown.OptionData(flags[i] == null ? languageOptions[i].Label : "", flags[i], Color.white));
+        dropdown.AddOptions(options);
         dropdown.SetValueWithoutNotify(GetCurrentLanguageIndex());
         dropdown.RefreshShownValue();
         dropdown.onValueChanged.AddListener(OnLanguageDropdownChanged);

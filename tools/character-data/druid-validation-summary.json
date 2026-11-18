@@ -1,0 +1,26 @@
+{
+  "passed": 320,
+  "forms": 3512,
+  "descriptions": 25898,
+  "failures": [],
+  "class": "druid",
+  "editions": [
+    2014,
+    2024
+  ],
+  "levels": [
+    1,
+    20
+  ],
+  "curatedCreatureRecords": 40,
+  "edgeChecks": [
+    "shared owner HP for XPHB forms",
+    "independent HP for ordinary forms",
+    "Moon temporary HP",
+    "rename prevents duplicate template",
+    "level-down repair",
+    "English feature translation"
+  ],
+  "visualPlayVerified": false,
+  "sourceRevision": "8790755429c346d20020eed7826d312d484c393f"
+}

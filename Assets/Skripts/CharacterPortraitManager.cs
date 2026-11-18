@@ -7,9 +7,11 @@ public class CharacterPortraitManager : MonoBehaviour
     private const string PortraitDataKey = "CharacterPortraitJpgBase64";
     private const string PortraitImageName = "photopersonaja";
     private const string SelectButtonName = "Buttonphotopersoj";
+    private const string PlaceholderLabelName = "PortraitPlaceholderLabel";
     private readonly GalleryImagePicker galleryPicker = new GalleryImagePicker();
     private readonly RuntimeImageView imageView = new RuntimeImageView();
     private DndSaveManager saveManager;
+    private GameObject placeholderLabel;
     [SerializeField] private Button selectPortraitButton;
     [SerializeField] private Image portraitImage;
 
@@ -34,6 +36,7 @@ public class CharacterPortraitManager : MonoBehaviour
 
         if (portraitImage != null)
         {
+            placeholderLabel = portraitImage.transform.Find(PlaceholderLabelName)?.gameObject;
             imageView.Bind(portraitImage);
             ConfigureImageForFullFill();
         }
@@ -62,7 +65,7 @@ public class CharacterPortraitManager : MonoBehaviour
         try
         {
             SavePortrait(texture);
-            imageView.Show(texture);
+            ShowPortraitImage(texture);
         }
         catch (Exception exception)
         {
@@ -90,9 +93,12 @@ public class CharacterPortraitManager : MonoBehaviour
                 TextureFormat.RGBA32,
                 false);
             if (texture.LoadImage(bytes))
-                imageView.Show(texture);
+                ShowPortraitImage(texture);
             else
+            {
                 Destroy(texture);
+                ClearPortraitImage();
+            }
         }
         catch
         {
@@ -138,6 +144,15 @@ public class CharacterPortraitManager : MonoBehaviour
             return;
 
         imageView.Restore();
+        if (placeholderLabel != null)
+            placeholderLabel.SetActive(true);
+    }
+
+    private void ShowPortraitImage(Texture2D texture)
+    {
+        imageView.Show(texture);
+        if (placeholderLabel != null && imageView.Texture != null)
+            placeholderLabel.SetActive(false);
     }
 
     private void OnDestroy()

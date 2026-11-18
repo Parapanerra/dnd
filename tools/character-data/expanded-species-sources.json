@@ -1,0 +1,372 @@
+{
+  "pinnedCommit": "8790755429c346d20020eed7826d312d484c393f",
+  "selected": [
+    {
+      "name": "Aarakocra",
+      "source": "MPMM",
+      "page": 5,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Aasimar",
+      "source": "MPMM",
+      "page": 7,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Astral Elf",
+      "source": "AAG",
+      "page": 10,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Autognome",
+      "source": "AAG",
+      "page": 11,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Bugbear",
+      "source": "MPMM",
+      "page": 8,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Centaur",
+      "source": "MPMM",
+      "page": 9,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Changeling",
+      "source": "EFA",
+      "page": 34,
+      "edition": "one"
+    },
+    {
+      "name": "Changeling",
+      "source": "MPMM",
+      "page": 10,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Deep Gnome",
+      "source": "MPMM",
+      "page": 11,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Dhampir",
+      "source": "VRGR",
+      "page": 16,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Dragonborn (Chromatic)",
+      "source": "FTD",
+      "page": 10,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Dragonborn (Gem)",
+      "source": "FTD",
+      "page": 11,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Dragonborn (Metallic)",
+      "source": "FTD",
+      "page": 12,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Duergar",
+      "source": "MPMM",
+      "page": 12,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Eladrin",
+      "source": "MPMM",
+      "page": 13,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Fairy",
+      "source": "MPMM",
+      "page": 14,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Firbolg",
+      "source": "MPMM",
+      "page": 15,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Genasi",
+      "source": "MPMM",
+      "page": 16,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Giff",
+      "source": "AAG",
+      "page": 12,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Githyanki",
+      "source": "MPMM",
+      "page": 18,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Githzerai",
+      "source": "MPMM",
+      "page": 19,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Goblin",
+      "source": "MPMM",
+      "page": 20,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Goliath",
+      "source": "MPMM",
+      "page": 21,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Hadozee",
+      "source": "AAG",
+      "page": 13,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Harengon",
+      "source": "MPMM",
+      "page": 22,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Hexblood",
+      "source": "VRGR",
+      "page": 18,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Hobgoblin",
+      "source": "MPMM",
+      "page": 23,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Kalashtar",
+      "source": "EFA",
+      "page": 35,
+      "edition": "one"
+    },
+    {
+      "name": "Kalashtar",
+      "source": "ERLW",
+      "page": 29
+    },
+    {
+      "name": "Kender",
+      "source": "DSotDQ",
+      "page": 27,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Kenku",
+      "source": "MPMM",
+      "page": 24,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Khoravar",
+      "source": "EFA",
+      "page": 36,
+      "edition": "one"
+    },
+    {
+      "name": "Kobold",
+      "source": "MPMM",
+      "page": 25,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Leonin",
+      "source": "MOT",
+      "page": 20
+    },
+    {
+      "name": "Lizardfolk",
+      "source": "MPMM",
+      "page": 26,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Locathah",
+      "source": "LR",
+      "page": 24
+    },
+    {
+      "name": "Lorwyn Changeling",
+      "source": "LFL"
+    },
+    {
+      "name": "Loxodon",
+      "source": "GGR",
+      "page": 17
+    },
+    {
+      "name": "Lupin",
+      "source": "RHW",
+      "page": 30,
+      "edition": "one"
+    },
+    {
+      "name": "Minotaur",
+      "source": "MPMM",
+      "page": 27,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Orc",
+      "source": "MPMM",
+      "page": 28,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Owlin",
+      "source": "SCC",
+      "page": 29,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Plasmoid",
+      "source": "AAG",
+      "page": 14,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Reborn",
+      "source": "VRGR",
+      "page": 20,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Rimekin",
+      "source": "LFL"
+    },
+    {
+      "name": "Satyr",
+      "source": "MPMM",
+      "page": 29,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Sea Elf",
+      "source": "MPMM",
+      "page": 30,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Shadar-Kai",
+      "source": "MPMM",
+      "page": 31,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Shifter",
+      "source": "EFA",
+      "page": 37,
+      "edition": "one"
+    },
+    {
+      "name": "Shifter",
+      "source": "MPMM",
+      "page": 32,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Simic Hybrid",
+      "source": "GGR",
+      "page": 20
+    },
+    {
+      "name": "Tabaxi",
+      "source": "MPMM",
+      "page": 33,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Thri-kreen",
+      "source": "AAG",
+      "page": 15,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Tortle",
+      "source": "MPMM",
+      "page": 34,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Triton",
+      "source": "MPMM",
+      "page": 35,
+      "lineage": "VRGR"
+    },
+    {
+      "name": "Vedalken",
+      "source": "GGR",
+      "page": 21
+    },
+    {
+      "name": "Verdan",
+      "source": "AI",
+      "page": 72
+    },
+    {
+      "name": "Yuan-Ti",
+      "source": "MPMM",
+      "page": 36,
+      "lineage": "VRGR"
+    }
+  ],
+  "subraces": [
+    {
+      "name": "Air",
+      "source": "MPMM",
+      "raceName": "Genasi",
+      "raceSource": "MPMM",
+      "page": 16
+    },
+    {
+      "name": "Earth",
+      "source": "MPMM",
+      "raceName": "Genasi",
+      "raceSource": "MPMM",
+      "page": 17
+    },
+    {
+      "name": "Fire",
+      "source": "MPMM",
+      "raceName": "Genasi",
+      "raceSource": "MPMM",
+      "page": 17
+    },
+    {
+      "name": "Water",
+      "source": "MPMM",
+      "raceName": "Genasi",
+      "raceSource": "MPMM",
+      "page": 17
+    }
+  ]
+}

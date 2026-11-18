@@ -127,6 +127,22 @@ public class DndSaveManager : MonoBehaviour
         }
     }
 
+    internal bool TryUpdateCollection(Action<AppSaveData> update, out string error)
+    {
+        try
+        {
+            FlushPendingSave();
+            var candidate = TaruckBinaryCodec.DecodeFullSave(TaruckBinaryCodec.EncodeFullSave(saveData, Application.version));
+            update(candidate);
+            return TryImportCollection(candidate, false, out error);
+        }
+        catch (Exception exception)
+        {
+            error = exception.Message;
+            return false;
+        }
+    }
+
     internal bool TryImportCollection(AppSaveData imported, bool merge, out string error)
     {
         error = null;
@@ -313,6 +329,10 @@ public class DndSaveManager : MonoBehaviour
     {
         sceneContext.SetPendingSceneDataName(sceneName);
     }
+
+    internal void SetPendingLevelUpCharacter(string characterId) => sceneContext.SetPendingLevelUpCharacter(characterId);
+
+    internal string ConsumePendingLevelUpCharacter() => sceneContext.ConsumePendingLevelUpCharacter();
 
     internal void SetActiveSceneDataName(string sceneName)
     {

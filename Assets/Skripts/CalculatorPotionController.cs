@@ -117,11 +117,10 @@ public class CalculatorPotionController : MonoBehaviour
 
     private void UseSelectedPotion()
     {
-        owner.CaptureHpTextColorFromButton(potionUseButton);
-
         if (owner.ShowDeadCharacterAlertIfNeeded())
             return;
 
+        owner.CaptureHpTextColorFromButton(potionUseButton);
         int index = GetSelectedPotionIndex();
         if (index < 0)
         {
@@ -155,7 +154,6 @@ public class CalculatorPotionController : MonoBehaviour
         SavePotionCounts();
         RefreshPotionDropdownOptions();
         owner.ShowHpResult(owner.GetHealedText(healed) + " (" + catalog.GetFormula(index) + "=" + roll + ")");
-        owner.ResetHpInputState();
     }
 
     private int GetSelectedPotionIndex()

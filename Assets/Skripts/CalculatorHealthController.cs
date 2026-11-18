@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 // Owns HP calculator modes, their effects, and rest results.
 internal sealed class CalculatorHealthController
@@ -22,8 +21,6 @@ internal sealed class CalculatorHealthController
     }
 
     private Mode mode;
-    private Color textColor = Color.white;
-    private bool hasTextColor;
 
     public bool IsActive => mode != Mode.None;
     public bool IsHealing => mode == Mode.Heal;
@@ -115,26 +112,6 @@ internal sealed class CalculatorHealthController
     {
         mode = Mode.None;
         ModeLabel = "";
-    }
-
-    public void CaptureTextColor(Button button)
-    {
-        Text buttonText = button != null ? button.GetComponentInChildren<Text>(true) : null;
-        if (buttonText == null)
-            return;
-
-        textColor = buttonText.color;
-        hasTextColor = true;
-    }
-
-    public void ApplyTextColor(Text equationText, Text resultText)
-    {
-        if (!hasTextColor)
-            return;
-        if (equationText != null)
-            equationText.color = textColor;
-        if (resultText != null)
-            resultText.color = textColor;
     }
 
     internal string FormatHealed(int value, Func<string, string> localizedText)

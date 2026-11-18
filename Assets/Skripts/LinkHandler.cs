@@ -27,7 +27,7 @@ public class LinkHandler : MonoBehaviour
         }
     }
 
-    private void OpenLink(string url)
+    public void OpenLink(string url)
     {
         if (!string.IsNullOrWhiteSpace(url))
             Application.OpenURL(url);

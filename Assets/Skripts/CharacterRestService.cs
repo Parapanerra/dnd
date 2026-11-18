@@ -30,11 +30,13 @@ internal sealed class CharacterRestService
     private const float HitDiceDivisorForShortRest = 2f;
 
     private readonly CharacterRestSavedStateService savedState;
+    private readonly DndSaveManager saveManager;
     private readonly SceneRoleLookup roleLookup = new SceneRoleLookup();
     private readonly RestSceneToggleFinder toggleFinder = new RestSceneToggleFinder();
 
     internal CharacterRestService(DndSaveManager saveManager)
     {
+        this.saveManager = saveManager;
         savedState = new CharacterRestSavedStateService(saveManager);
     }
 
@@ -135,9 +137,11 @@ internal sealed class CharacterRestService
     internal void Apply(bool isLongRest)
     {
         ApplyRestResources(isLongRest);
+        new Taruck.CharacterCreation.LiveCreationResourceRecovery().Apply(saveManager?.EnsureActiveCharacter(), isLongRest);
+        if (isLongRest || saveManager?.EnsureActiveCharacter()?.GetSharedString("CreationSpellRecovery", "") == "short") ClearSpellSlots();
+        if (!isLongRest && saveManager?.EnsureActiveCharacter()?.GetSharedString("CreationTireless", "") == "1") ReduceExhaustionByOne();
         if (isLongRest)
         {
-            ClearSpellSlots();
             ReduceExhaustionByOne();
             ClearDeathSaves();
         }
@@ -151,8 +155,9 @@ internal sealed class CharacterRestService
         if (resourceRoot == null)
             return;
 
-        ClearPanelsByMarkers(resourceRoot, SceneRole.WildShape, SceneRole.ChannelDivinity,
-            SceneRole.KiPoints, SceneRole.DragonBreath);
+        ClearPanelsByMarkers(resourceRoot, SceneRole.WildShape, SceneRole.ChannelDivinity, SceneRole.KiPoints);
+        if (!Taruck.CharacterCreation.CreationResourceRecovery.HasGroup(saveManager?.EnsureActiveCharacter(), "rest.main.dragon"))
+            ClearPanelsByMarkers(resourceRoot, SceneRole.DragonBreath);
 
         Transform bloodPanel = FindPanelByMarker(resourceRoot, SceneRole.BloodCurse);
         if (bloodPanel == null)
@@ -178,6 +183,8 @@ internal sealed class CharacterRestService
         HashSet<Transform> clearedPanels = new HashSet<Transform>();
         foreach (SceneRole role in roles)
         {
+            string managedKey = role == SceneRole.WildShape ? "rest.main.wild" : role == SceneRole.ChannelDivinity ? "rest.main.channel" : "";
+            if (managedKey.Length > 0 && Taruck.CharacterCreation.CreationResourceRecovery.HasGroup(saveManager?.EnsureActiveCharacter(), managedKey)) continue;
             Transform panel = FindPanelByMarker(resourceRoot, role);
             if (panel != null && clearedPanels.Add(panel))
                 ClearPanelToggles(panel);

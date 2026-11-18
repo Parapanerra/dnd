@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public sealed class WildShapeFormList : MonoBehaviour
 {
     internal const string SlotsKey = "WildShapeFormSlots";
-    private const int DefaultFormCount = 3;
+    private const int DefaultFormCount = 1;
     private const string NameKeyPrefix = "WildShapeFormName_";
     private const string PendingDeleteKey = "WildShapePendingDeleteSlot";
     private static string pendingCameraTarget;
@@ -30,6 +30,9 @@ public sealed class WildShapeFormList : MonoBehaviour
     private float rowStep;
     private Vector2 addStartPosition;
     private int selectedSlot = -1;
+
+    internal CharacterData Character => character;
+    internal event Action FormsChanged;
 
     // Build the visible list before the sheet's Start loads its fields and rebuilds canvases.
     private void Awake()
@@ -132,7 +135,7 @@ public sealed class WildShapeFormList : MonoBehaviour
         for (int i = 0; i < DefaultFormCount; i++)
             slots.Add(i);
 
-        // Existing characters may already have data in more than three old pages.
+        // Older saves may already have forms even without an explicit slot list.
         if (character.sceneStates != null)
         {
             foreach (CharacterSceneData state in character.sceneStates)
@@ -198,6 +201,7 @@ public sealed class WildShapeFormList : MonoBehaviour
         content.sizeDelta = new Vector2(content.sizeDelta.x,
             Mathf.Max(scrollView.viewport.rect.height, requiredHeight));
         scrollView.verticalNormalizedPosition = 1f;
+        FormsChanged?.Invoke();
     }
 
     private void SelectSlot(int slot)
@@ -233,15 +237,29 @@ public sealed class WildShapeFormList : MonoBehaviour
 
     private void AddForm()
     {
-        int slot = 0;
-        foreach (int existing in slots)
-            slot = Mathf.Max(slot, existing + 1);
-        while (character.GetSceneData(SceneNameForSlot(slot), false) != null)
-            slot++;
-
+        int slot = NextSlot();
         slots.Add(slot);
         PersistSlots();
         SelectSlot(slot);
+    }
+
+    private int NextSlot()
+    {
+        int slot = 0;
+        foreach (int existing in slots) slot = Mathf.Max(slot, existing + 1);
+        while (character.GetSceneData(SceneNameForSlot(slot), false) != null) slot++;
+        return slot;
+    }
+
+    internal bool AddReadyForm(Taruck.CharacterCreation.ReadyFormTemplate template, Taruck.CharacterCreation.CreationSheetBindings bindings)
+    {
+        int slot = NextSlot();
+        if (!Taruck.CharacterCreation.ReadyFormCatalog.Add(character, bindings, template, slot, localization.Translate)) return false;
+        slots.Add(slot);
+        PersistSlots();
+        saveManager.SaveData();
+        SelectSlot(slot);
+        return true;
     }
 
     private void DeleteForm(int slot)
@@ -276,6 +294,7 @@ public sealed class WildShapeFormList : MonoBehaviour
             : selectedSlot;
         slots.Remove(slot);
         character.DeleteSharedString(NameKey(slot));
+        Taruck.CharacterCreation.ReadyFormCatalog.Forget(character, slot);
         PersistSlots();
 
         if (selectedSlot == slot)

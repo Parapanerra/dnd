@@ -1,0 +1,1586 @@
+{
+  "entries": [
+    {
+      "id": "druid.2014.air-elemental",
+      "name": "Повітряний елементаль",
+      "sourceName": "Air Elemental",
+      "edition": 2014,
+      "cr": 5,
+      "elemental": true,
+      "ac": 15,
+      "hp": 90,
+      "speed": 0,
+      "fly": 90,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        14,
+        20,
+        14,
+        6,
+        10,
+        6
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Удар",
+          "bonus": 8,
+          "damage": "2d8+5"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "Два удари; політ із зависанням. Проходить крізь 1 дюйм і займає простір ворогів. Вихор (відновлення 4–6): у його просторі Сила СК 13, 3d8+2 дроблячої, відкидання 20 футів і збито з ніг; успіх — лише половина. Зіткнення: ще 1d6 за 10 футів; інша істота — Спритність СК 13 або така ж шкода й збито з ніг.\nТемнозір 60 футів.\nОпір: блискавична.\nОпір: громова.\nОпір: дробляча, колюча, рубляча від немагічних атак.\nІмунітет до шкоди: отруйна.\nІмунітет до станів: втома.\nІмунітет до станів: схоплений.\nІмунітет до станів: паралізований.\nІмунітет до станів: скам’янілий.\nІмунітет до станів: отруєний.\nІмунітет до станів: збитий з ніг.\nІмунітет до станів: обмежений.\nІмунітет до станів: непритомний."
+    },
+    {
+      "id": "druid.2014.badger",
+      "name": "Борсук",
+      "sourceName": "Badger",
+      "edition": 2014,
+      "cr": 0,
+      "elemental": false,
+      "ac": 10,
+      "hp": 3,
+      "speed": 20,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 5,
+      "scores": [
+        4,
+        11,
+        12,
+        2,
+        12,
+        5
+      ],
+      "passive": 11,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 2,
+          "damage": "1"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "Перевага на Уважність за запахом.\nТемнозір 30 футів."
+    },
+    {
+      "id": "druid.2014.black-bear",
+      "name": "Чорний ведмідь",
+      "sourceName": "Black Bear",
+      "edition": 2014,
+      "cr": 0.5,
+      "elemental": false,
+      "ac": 11,
+      "hp": 19,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 30,
+      "burrow": 0,
+      "scores": [
+        15,
+        10,
+        14,
+        2,
+        12,
+        7
+      ],
+      "passive": 13,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 4,
+          "damage": "1d6+2"
+        },
+        {
+          "name": "Кігті",
+          "bonus": 4,
+          "damage": "2d4+2"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 3
+        }
+      ],
+      "saves": [],
+      "notes": "Перевага на Уважність за запахом.\nМультиатака: один укус і одні кігті."
+    },
+    {
+      "id": "druid.2014.boar",
+      "name": "Кабан",
+      "sourceName": "Boar",
+      "edition": 2014,
+      "cr": 0.25,
+      "elemental": false,
+      "ac": 11,
+      "hp": 11,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        13,
+        11,
+        12,
+        2,
+        9,
+        5
+      ],
+      "passive": 9,
+      "attacks": [
+        {
+          "name": "Ікла",
+          "bonus": 3,
+          "damage": "1d6+1"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "Розбіг 20 футів + ікла: ще 1d6 рублячої; Сила СК 11 або збито з ніг. Невпинність 1/короткий або довгий відпочинок: удар до 7 шкоди, що знизив би ОЗ до 0, залишає 1 ОЗ."
+    },
+    {
+      "id": "druid.2014.brown-bear",
+      "name": "Бурий ведмідь",
+      "sourceName": "Brown Bear",
+      "edition": 2014,
+      "cr": 1,
+      "elemental": false,
+      "ac": 11,
+      "hp": 34,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 30,
+      "burrow": 0,
+      "scores": [
+        19,
+        10,
+        16,
+        2,
+        13,
+        7
+      ],
+      "passive": 13,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 6,
+          "damage": "1d8+4"
+        },
+        {
+          "name": "Кігті",
+          "bonus": 6,
+          "damage": "2d6+4"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 3
+        }
+      ],
+      "saves": [],
+      "notes": "Перевага на Уважність за запахом.\nМультиатака: один укус і одні кігті."
+    },
+    {
+      "id": "druid.2014.cat",
+      "name": "Кіт",
+      "sourceName": "Cat",
+      "edition": 2014,
+      "cr": 0,
+      "elemental": false,
+      "ac": 12,
+      "hp": 2,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 30,
+      "burrow": 0,
+      "scores": [
+        3,
+        15,
+        10,
+        3,
+        12,
+        7
+      ],
+      "passive": 13,
+      "attacks": [
+        {
+          "name": "Кігті",
+          "bonus": 0,
+          "damage": "1"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 3
+        },
+        {
+          "index": 16,
+          "bonus": 4
+        }
+      ],
+      "saves": [],
+      "notes": "Перевага на Уважність за запахом."
+    },
+    {
+      "id": "druid.2014.crocodile",
+      "name": "Крокодил",
+      "sourceName": "Crocodile",
+      "edition": 2014,
+      "cr": 0.5,
+      "elemental": false,
+      "ac": 12,
+      "hp": 19,
+      "speed": 20,
+      "fly": 0,
+      "swim": 30,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        15,
+        10,
+        13,
+        2,
+        10,
+        5
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 4,
+          "damage": "1d10+2"
+        }
+      ],
+      "skills": [
+        {
+          "index": 16,
+          "bonus": 2
+        }
+      ],
+      "saves": [],
+      "notes": "Затримує дихання 15 хв. Укус хапає (втеча СК 12), ціль обмежена; до звільнення не може кусати іншу."
+    },
+    {
+      "id": "druid.2014.dire-wolf",
+      "name": "Лютий вовк",
+      "sourceName": "Dire Wolf",
+      "edition": 2014,
+      "cr": 1,
+      "elemental": false,
+      "ac": 14,
+      "hp": 37,
+      "speed": 50,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        17,
+        15,
+        15,
+        3,
+        12,
+        7
+      ],
+      "passive": 13,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 5,
+          "damage": "2d6+3"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 3
+        },
+        {
+          "index": 16,
+          "bonus": 4
+        }
+      ],
+      "saves": [],
+      "notes": "Перевага на Уважність за слухом або запахом.\nТактика зграї: перевага на атаку, якщо дієздатний союзник у межах 5 футів від цілі.\nУкус: ряткидок Сили СК 13 або збито з ніг."
+    },
+    {
+      "id": "druid.2014.earth-elemental",
+      "name": "Земляний елементаль",
+      "sourceName": "Earth Elemental",
+      "edition": 2014,
+      "cr": 5,
+      "elemental": true,
+      "ac": 17,
+      "hp": 126,
+      "speed": 30,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 30,
+      "scores": [
+        20,
+        8,
+        20,
+        5,
+        10,
+        5
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Удар",
+          "bonus": 8,
+          "damage": "2d8+5"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "Два удари, досяжність 10 футів. Проходить крізь немагічну необроблену землю й камінь без слідів. Подвійна шкода предметам і спорудам.\nТемнозір 60 футів.\nТреморчуття 60 футів.\nОпір: дробляча, колюча, рубляча від немагічних атак.\nІмунітет до шкоди: отруйна.\nІмунітет до станів: втома.\nІмунітет до станів: паралізований.\nІмунітет до станів: скам’янілий.\nІмунітет до станів: отруєний.\nІмунітет до станів: непритомний.\nВразливість: громова."
+    },
+    {
+      "id": "druid.2014.elephant",
+      "name": "Слон",
+      "sourceName": "Elephant",
+      "edition": 2014,
+      "cr": 4,
+      "elemental": false,
+      "ac": 12,
+      "hp": 76,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        22,
+        9,
+        17,
+        3,
+        11,
+        6
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Бивні",
+          "bonus": 8,
+          "damage": "3d8+6"
+        },
+        {
+          "name": "Тупіт",
+          "bonus": 8,
+          "damage": "3d10+6"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "Розбіг 20 футів + бивні: Сила СК 12 або збито з ніг; по такій цілі можна бонусною дією зробити Тупіт. Тупіт лише по збитих з ніг."
+    },
+    {
+      "id": "druid.2014.elk",
+      "name": "Лось",
+      "sourceName": "Elk",
+      "edition": 2014,
+      "cr": 0.25,
+      "elemental": false,
+      "ac": 10,
+      "hp": 13,
+      "speed": 50,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        16,
+        10,
+        12,
+        2,
+        10,
+        6
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Таран",
+          "bonus": 5,
+          "damage": "1d6+3"
+        },
+        {
+          "name": "Копита",
+          "bonus": 5,
+          "damage": "2d4+3"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "Розбіг 20 футів + таран: ще 2d6; Сила СК 13 або збито з ніг. Копита — лише по збитій з ніг цілі."
+    },
+    {
+      "id": "druid.2014.fire-elemental",
+      "name": "Вогняний елементаль",
+      "sourceName": "Fire Elemental",
+      "edition": 2014,
+      "cr": 5,
+      "elemental": true,
+      "ac": 13,
+      "hp": 102,
+      "speed": 50,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        10,
+        17,
+        16,
+        6,
+        10,
+        7
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Дотик",
+          "bonus": 6,
+          "damage": "2d6+3"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "Два дотики. Проходить крізь 1 дюйм і займає простір ворогів. Дотик або атака ближнього бою з 5 футів по ньому завдає нападнику 1d10 вогняної. Перше входження в чужий простір за хід: 1d10 вогняної й займання. Дотик також підпалює: 1d10 на початку кожного ходу до гасіння дією. Світло 30+30 футів. Вода: 1 холодної шкоди за 5 футів руху в ній або за галон.\nТемнозір 60 футів.\nОпір: дробляча, колюча, рубляча від немагічних атак.\nІмунітет до шкоди: вогняна.\nІмунітет до шкоди: отруйна.\nІмунітет до станів: втома.\nІмунітет до станів: схоплений.\nІмунітет до станів: паралізований.\nІмунітет до станів: скам’янілий.\nІмунітет до станів: отруєний.\nІмунітет до станів: збитий з ніг.\nІмунітет до станів: обмежений.\nІмунітет до станів: непритомний."
+    },
+    {
+      "id": "druid.2014.giant-crocodile",
+      "name": "Гігантський крокодил",
+      "sourceName": "Giant Crocodile",
+      "edition": 2014,
+      "cr": 5,
+      "elemental": false,
+      "ac": 14,
+      "hp": 85,
+      "speed": 30,
+      "fly": 0,
+      "swim": 50,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        21,
+        9,
+        17,
+        2,
+        10,
+        7
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 8,
+          "damage": "3d10+5"
+        },
+        {
+          "name": "Хвіст",
+          "bonus": 8,
+          "damage": "2d8+5"
+        }
+      ],
+      "skills": [
+        {
+          "index": 16,
+          "bonus": 5
+        }
+      ],
+      "saves": [],
+      "notes": "Дихання 30 хв. Мультиатака: укус + хвіст. Укус хапає (втеча СК 16), ціль обмежена, не може кусати іншу. Хвіст 10 футів по іншій цілі: Сила СК 16 або збито з ніг."
+    },
+    {
+      "id": "druid.2014.giant-eagle",
+      "name": "Гігантський орел",
+      "sourceName": "Giant Eagle",
+      "edition": 2014,
+      "cr": 1,
+      "elemental": false,
+      "ac": 13,
+      "hp": 26,
+      "speed": 10,
+      "fly": 80,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        16,
+        17,
+        13,
+        8,
+        14,
+        10
+      ],
+      "passive": 14,
+      "attacks": [
+        {
+          "name": "Дзьоб",
+          "bonus": 5,
+          "damage": "1d6+3"
+        },
+        {
+          "name": "Пазурі",
+          "bonus": 5,
+          "damage": "2d6+3"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 4
+        }
+      ],
+      "saves": [],
+      "notes": "Мультиатака: дзьоб + пазурі. Перевага на Уважність за зором."
+    },
+    {
+      "id": "druid.2014.giant-scorpion",
+      "name": "Гігантський скорпіон",
+      "sourceName": "Giant Scorpion",
+      "edition": 2014,
+      "cr": 3,
+      "elemental": false,
+      "ac": 15,
+      "hp": 52,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        15,
+        13,
+        15,
+        1,
+        9,
+        3
+      ],
+      "passive": 9,
+      "attacks": [
+        {
+          "name": "Кіготь",
+          "bonus": 4,
+          "damage": "1d8+2"
+        },
+        {
+          "name": "Жало",
+          "bonus": 4,
+          "damage": "1d10+2"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "Мультиатака: дві клешні + жало. Клешня хапає (втеча СК 12), по одній цілі на кожну. Жало: додатково 4d10 отруйної, Статура СК 12 — половина.\nСліпозір 60 футів."
+    },
+    {
+      "id": "druid.2014.mammoth",
+      "name": "Мамонт",
+      "sourceName": "Mammoth",
+      "edition": 2014,
+      "cr": 6,
+      "elemental": false,
+      "ac": 13,
+      "hp": 126,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        24,
+        9,
+        21,
+        3,
+        11,
+        6
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Бивні",
+          "bonus": 10,
+          "damage": "4d8+7"
+        },
+        {
+          "name": "Тупіт",
+          "bonus": 10,
+          "damage": "4d10+7"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "Бивні 10 футів. Розбіг 20 футів + бивні: Сила СК 18 або збито з ніг; можна бонусною дією Тупіт по цій збитій цілі."
+    },
+    {
+      "id": "druid.2014.polar-bear",
+      "name": "Білий ведмідь",
+      "sourceName": "Polar Bear",
+      "edition": 2014,
+      "cr": 2,
+      "elemental": false,
+      "ac": 12,
+      "hp": 42,
+      "speed": 40,
+      "fly": 0,
+      "swim": 30,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        20,
+        10,
+        16,
+        2,
+        13,
+        7
+      ],
+      "passive": 13,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 7,
+          "damage": "1d8+5"
+        },
+        {
+          "name": "Кігті",
+          "bonus": 7,
+          "damage": "2d6+5"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 3
+        }
+      ],
+      "saves": [],
+      "notes": "Перевага на Уважність за запахом.\nМультиатака: один укус і одні кігті."
+    },
+    {
+      "id": "druid.2014.rat",
+      "name": "Щур",
+      "sourceName": "Rat",
+      "edition": 2014,
+      "cr": 0,
+      "elemental": false,
+      "ac": 10,
+      "hp": 1,
+      "speed": 20,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        2,
+        11,
+        9,
+        2,
+        10,
+        4
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 0,
+          "damage": "1"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "Перевага на Уважність за запахом.\nТемнозір 30 футів."
+    },
+    {
+      "id": "druid.2014.riding-horse",
+      "name": "Верховий кінь",
+      "sourceName": "Riding Horse",
+      "edition": 2014,
+      "cr": 0.25,
+      "elemental": false,
+      "ac": 10,
+      "hp": 13,
+      "speed": 60,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        16,
+        10,
+        12,
+        2,
+        11,
+        7
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Копита",
+          "bonus": 5,
+          "damage": "2d4+3"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": ""
+    },
+    {
+      "id": "druid.2014.spider",
+      "name": "Павук",
+      "sourceName": "Spider",
+      "edition": 2014,
+      "cr": 0,
+      "elemental": false,
+      "ac": 12,
+      "hp": 1,
+      "speed": 20,
+      "fly": 0,
+      "swim": 0,
+      "climb": 20,
+      "burrow": 0,
+      "scores": [
+        2,
+        14,
+        8,
+        1,
+        10,
+        2
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 4,
+          "damage": "1"
+        }
+      ],
+      "skills": [
+        {
+          "index": 16,
+          "bonus": 4
+        }
+      ],
+      "saves": [],
+      "notes": "Лазіння по стелі без перевірки; павутиння не сповільнює, відчуває істот у спільній павутині.\nУкус: 1 колючої шкоди; ряткидок Статури СК 9 або ще 1d4 отруйної.\nТемнозір 30 футів."
+    },
+    {
+      "id": "druid.2014.water-elemental",
+      "name": "Водяний елементаль",
+      "sourceName": "Water Elemental",
+      "edition": 2014,
+      "cr": 5,
+      "elemental": true,
+      "ac": 14,
+      "hp": 114,
+      "speed": 30,
+      "fly": 0,
+      "swim": 90,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        18,
+        14,
+        18,
+        5,
+        10,
+        8
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Удар",
+          "bonus": 7,
+          "damage": "2d8+4"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "Два удари. Проходить крізь 1 дюйм і займає простір ворогів. Холод знижує швидкість на 20 футів до кінця наступного ходу. Поглинання (4–6): Сила СК 15 у його просторі або 2d8+4 дроблячої; Велика чи менша ціль схоплена (втеча СК 14), обмежена й не дихає без водного дихання. Успіх — виштовхнуто назовні. Утримує одну Велику чи дві менші цілі; кожного початку свого ходу по 2d8+4. Інша істота з 5 футів дією й перевіркою Сили СК 14 може витягти ціль.\nТемнозір 60 футів.\nОпір: кислотна.\nОпір: дробляча, колюча, рубляча від немагічних атак.\nІмунітет до шкоди: отруйна.\nІмунітет до станів: втома.\nІмунітет до станів: схоплений.\nІмунітет до станів: паралізований.\nІмунітет до станів: скам’янілий.\nІмунітет до станів: отруєний.\nІмунітет до станів: збитий з ніг.\nІмунітет до станів: обмежений.\nІмунітет до станів: непритомний."
+    },
+    {
+      "id": "druid.2014.wolf",
+      "name": "Вовк",
+      "sourceName": "Wolf",
+      "edition": 2014,
+      "cr": 0.25,
+      "elemental": false,
+      "ac": 13,
+      "hp": 11,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        12,
+        15,
+        12,
+        3,
+        12,
+        6
+      ],
+      "passive": 13,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 4,
+          "damage": "2d4+2"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 3
+        },
+        {
+          "index": 16,
+          "bonus": 4
+        }
+      ],
+      "saves": [],
+      "notes": "Перевага на Уважність за слухом або запахом.\nТактика зграї: перевага на атаку, якщо дієздатний союзник у межах 5 футів від цілі.\nУкус: ряткидок Сили СК 11 або збито з ніг."
+    },
+    {
+      "id": "druid.2024.badger",
+      "name": "Борсук",
+      "sourceName": "Badger",
+      "edition": 2024,
+      "cr": 0,
+      "elemental": false,
+      "ac": 11,
+      "hp": 5,
+      "speed": 20,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 5,
+      "scores": [
+        10,
+        11,
+        16,
+        2,
+        12,
+        5
+      ],
+      "passive": 13,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 2,
+          "damage": "1"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 3
+        }
+      ],
+      "saves": [],
+      "notes": "Опір: отруйна."
+    },
+    {
+      "id": "druid.2024.black-bear",
+      "name": "Чорний ведмідь",
+      "sourceName": "Black Bear",
+      "edition": 2024,
+      "cr": 0.5,
+      "elemental": false,
+      "ac": 11,
+      "hp": 19,
+      "speed": 30,
+      "fly": 0,
+      "swim": 30,
+      "climb": 30,
+      "burrow": 0,
+      "scores": [
+        15,
+        12,
+        14,
+        2,
+        12,
+        7
+      ],
+      "passive": 15,
+      "attacks": [
+        {
+          "name": "Розривання",
+          "bonus": 4,
+          "damage": "1d6+2"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 5
+        }
+      ],
+      "saves": [],
+      "notes": "Мультиатака: два розривання."
+    },
+    {
+      "id": "druid.2024.boar",
+      "name": "Кабан",
+      "sourceName": "Boar",
+      "edition": 2024,
+      "cr": 0.25,
+      "elemental": false,
+      "ac": 11,
+      "hp": 13,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        13,
+        11,
+        14,
+        2,
+        9,
+        5
+      ],
+      "passive": 9,
+      "attacks": [
+        {
+          "name": "Бивні",
+          "bonus": 3,
+          "damage": "1d6+1"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "При половині ОЗ або менше — перевага на атаки. Розбіг 20 футів + бивні по Середній або меншій цілі: ще 1d6 колючої та збито з ніг без ряткидка."
+    },
+    {
+      "id": "druid.2024.brown-bear",
+      "name": "Бурий ведмідь",
+      "sourceName": "Brown Bear",
+      "edition": 2024,
+      "cr": 1,
+      "elemental": false,
+      "ac": 11,
+      "hp": 22,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 30,
+      "burrow": 0,
+      "scores": [
+        17,
+        12,
+        15,
+        2,
+        13,
+        7
+      ],
+      "passive": 13,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 5,
+          "damage": "1d8+3"
+        },
+        {
+          "name": "Кіготь",
+          "bonus": 5,
+          "damage": "1d4+3"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 3
+        }
+      ],
+      "saves": [],
+      "notes": "Мультиатака: укус + кіготь. Кіготь збиває з ніг Велику або меншу ціль без ряткидка."
+    },
+    {
+      "id": "druid.2024.cat",
+      "name": "Кіт",
+      "sourceName": "Cat",
+      "edition": 2024,
+      "cr": 0,
+      "elemental": false,
+      "ac": 12,
+      "hp": 2,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 40,
+      "burrow": 0,
+      "scores": [
+        3,
+        15,
+        10,
+        3,
+        12,
+        7
+      ],
+      "passive": 13,
+      "attacks": [
+        {
+          "name": "Подряпина",
+          "bonus": 4,
+          "damage": "1"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 3
+        },
+        {
+          "index": 16,
+          "bonus": 4
+        }
+      ],
+      "saves": [
+        {
+          "index": 1,
+          "bonus": 4
+        }
+      ],
+      "notes": "Стрибки рахуються від Спритності замість Сили."
+    },
+    {
+      "id": "druid.2024.crocodile",
+      "name": "Крокодил",
+      "sourceName": "Crocodile",
+      "edition": 2024,
+      "cr": 0.5,
+      "elemental": false,
+      "ac": 12,
+      "hp": 13,
+      "speed": 20,
+      "fly": 0,
+      "swim": 30,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        15,
+        10,
+        13,
+        2,
+        10,
+        5
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 4,
+          "damage": "1d8+2"
+        }
+      ],
+      "skills": [
+        {
+          "index": 16,
+          "bonus": 2
+        }
+      ],
+      "saves": [
+        {
+          "index": 2,
+          "bonus": 3
+        }
+      ],
+      "notes": "Дихання 1 година. Укус хапає Середню або меншу ціль (втеча СК 12), вона обмежена."
+    },
+    {
+      "id": "druid.2024.dire-wolf",
+      "name": "Лютий вовк",
+      "sourceName": "Dire Wolf",
+      "edition": 2024,
+      "cr": 1,
+      "elemental": false,
+      "ac": 14,
+      "hp": 22,
+      "speed": 50,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        17,
+        15,
+        15,
+        3,
+        12,
+        7
+      ],
+      "passive": 15,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 5,
+          "damage": "1d10+3"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 5
+        },
+        {
+          "index": 16,
+          "bonus": 4
+        }
+      ],
+      "saves": [],
+      "notes": "Тактика зграї: перевага на атаку, якщо дієздатний союзник у межах 5 футів від цілі.\nУкус збиває з ніг Велику або меншу ціль без ряткидка."
+    },
+    {
+      "id": "druid.2024.elephant",
+      "name": "Слон",
+      "sourceName": "Elephant",
+      "edition": 2024,
+      "cr": 4,
+      "elemental": false,
+      "ac": 12,
+      "hp": 76,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        22,
+        9,
+        17,
+        3,
+        11,
+        6
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Бивні",
+          "bonus": 8,
+          "damage": "2d8+6"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "Мультиатака: двоє бивнів. Після розбігу 20 футів бивні збивають Величезну або меншу ціль з ніг."
+    },
+    {
+      "id": "druid.2024.elk",
+      "name": "Лось",
+      "sourceName": "Elk",
+      "edition": 2024,
+      "cr": 0.25,
+      "elemental": false,
+      "ac": 10,
+      "hp": 11,
+      "speed": 50,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        16,
+        10,
+        11,
+        2,
+        10,
+        6
+      ],
+      "passive": 12,
+      "attacks": [
+        {
+          "name": "Таран",
+          "bonus": 5,
+          "damage": "1d6+3"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 2
+        }
+      ],
+      "saves": [],
+      "notes": "Розбіг 20 футів + таран по Великій або меншій цілі: ще 1d6 дроблячої та збито з ніг."
+    },
+    {
+      "id": "druid.2024.giant-crocodile",
+      "name": "Гігантський крокодил",
+      "sourceName": "Giant Crocodile",
+      "edition": 2024,
+      "cr": 5,
+      "elemental": false,
+      "ac": 14,
+      "hp": 85,
+      "speed": 30,
+      "fly": 0,
+      "swim": 50,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        21,
+        9,
+        17,
+        2,
+        10,
+        7
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 8,
+          "damage": "3d10+5"
+        },
+        {
+          "name": "Хвіст",
+          "bonus": 8,
+          "damage": "3d8+5"
+        }
+      ],
+      "skills": [
+        {
+          "index": 16,
+          "bonus": 5
+        }
+      ],
+      "saves": [],
+      "notes": "Дихання 1 година. Мультиатака: укус + хвіст. Укус хапає Велику або меншу (втеча СК 15), ціль обмежена. Хвіст 10 футів по іншій Великій або меншій цілі збиває з ніг."
+    },
+    {
+      "id": "druid.2024.giant-eagle",
+      "name": "Гігантський орел",
+      "sourceName": "Giant Eagle",
+      "edition": 2024,
+      "cr": 1,
+      "elemental": false,
+      "ac": 13,
+      "hp": 26,
+      "speed": 10,
+      "fly": 80,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        16,
+        17,
+        13,
+        8,
+        14,
+        10
+      ],
+      "passive": 16,
+      "attacks": [
+        {
+          "name": "Розривання",
+          "bonus": 5,
+          "damage": "1d4+3"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 6
+        }
+      ],
+      "saves": [],
+      "notes": "Мультиатака: два розривання, кожне додатково 1d6 променистої шкоди.\nОпір: некротична.\nОпір: промениста."
+    },
+    {
+      "id": "druid.2024.giant-scorpion",
+      "name": "Гігантський скорпіон",
+      "sourceName": "Giant Scorpion",
+      "edition": 2024,
+      "cr": 3,
+      "elemental": false,
+      "ac": 15,
+      "hp": 52,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        16,
+        13,
+        15,
+        1,
+        9,
+        3
+      ],
+      "passive": 9,
+      "attacks": [
+        {
+          "name": "Кіготь",
+          "bonus": 5,
+          "damage": "1d6+3"
+        },
+        {
+          "name": "Жало",
+          "bonus": 5,
+          "damage": "1d8+3"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": "Мультиатака: дві клешні + жало. Клешні хапають Великих або менших (втеча СК 13), по одній цілі. Жало: ще 2d10 отруйної без ряткидка."
+    },
+    {
+      "id": "druid.2024.mammoth",
+      "name": "Мамонт",
+      "sourceName": "Mammoth",
+      "edition": 2024,
+      "cr": 6,
+      "elemental": false,
+      "ac": 13,
+      "hp": 126,
+      "speed": 50,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        24,
+        9,
+        21,
+        3,
+        11,
+        6
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Бивні",
+          "bonus": 10,
+          "damage": "2d10+7"
+        }
+      ],
+      "skills": [],
+      "saves": [
+        {
+          "index": 0,
+          "bonus": 10
+        },
+        {
+          "index": 2,
+          "bonus": 8
+        }
+      ],
+      "notes": "Мультиатака: двоє бивнів, досяжність 10 футів. Після розбігу 20 футів збиває Величезну або меншу ціль з ніг."
+    },
+    {
+      "id": "druid.2024.polar-bear",
+      "name": "Білий ведмідь",
+      "sourceName": "Polar Bear",
+      "edition": 2024,
+      "cr": 2,
+      "elemental": false,
+      "ac": 12,
+      "hp": 42,
+      "speed": 40,
+      "fly": 0,
+      "swim": 40,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        20,
+        14,
+        16,
+        2,
+        13,
+        7
+      ],
+      "passive": 15,
+      "attacks": [
+        {
+          "name": "Розривання",
+          "bonus": 7,
+          "damage": "1d8+5"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 5
+        },
+        {
+          "index": 16,
+          "bonus": 4
+        }
+      ],
+      "saves": [],
+      "notes": "Мультиатака: два розривання.\nОпір: холодна."
+    },
+    {
+      "id": "druid.2024.rat",
+      "name": "Щур",
+      "sourceName": "Rat",
+      "edition": 2024,
+      "cr": 0,
+      "elemental": false,
+      "ac": 10,
+      "hp": 1,
+      "speed": 20,
+      "fly": 0,
+      "swim": 0,
+      "climb": 20,
+      "burrow": 0,
+      "scores": [
+        2,
+        11,
+        9,
+        2,
+        10,
+        4
+      ],
+      "passive": 12,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 2,
+          "damage": "1"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 2
+        }
+      ],
+      "saves": [],
+      "notes": "Моторність: вихід із досяжності не провокує атак."
+    },
+    {
+      "id": "druid.2024.riding-horse",
+      "name": "Верховий кінь",
+      "sourceName": "Riding Horse",
+      "edition": 2024,
+      "cr": 0.25,
+      "elemental": false,
+      "ac": 11,
+      "hp": 13,
+      "speed": 60,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        16,
+        13,
+        12,
+        2,
+        11,
+        7
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Копита",
+          "bonus": 5,
+          "damage": "1d8+3"
+        }
+      ],
+      "skills": [],
+      "saves": [],
+      "notes": ""
+    },
+    {
+      "id": "druid.2024.spider",
+      "name": "Павук",
+      "sourceName": "Spider",
+      "edition": 2024,
+      "cr": 0,
+      "elemental": false,
+      "ac": 12,
+      "hp": 1,
+      "speed": 20,
+      "fly": 0,
+      "swim": 0,
+      "climb": 20,
+      "burrow": 0,
+      "scores": [
+        2,
+        14,
+        8,
+        1,
+        10,
+        2
+      ],
+      "passive": 10,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 4,
+          "damage": "1"
+        }
+      ],
+      "skills": [
+        {
+          "index": 16,
+          "bonus": 4
+        }
+      ],
+      "saves": [],
+      "notes": "Лазіння по стелі без перевірки; павутиння не сповільнює, відчуває істот у спільній павутині.\nУкус: ще 1d4 отруйної без ряткидка."
+    },
+    {
+      "id": "druid.2024.wolf",
+      "name": "Вовк",
+      "sourceName": "Wolf",
+      "edition": 2024,
+      "cr": 0.25,
+      "elemental": false,
+      "ac": 12,
+      "hp": 11,
+      "speed": 40,
+      "fly": 0,
+      "swim": 0,
+      "climb": 0,
+      "burrow": 0,
+      "scores": [
+        14,
+        15,
+        12,
+        3,
+        12,
+        6
+      ],
+      "passive": 15,
+      "attacks": [
+        {
+          "name": "Укус",
+          "bonus": 4,
+          "damage": "1d6+2"
+        }
+      ],
+      "skills": [
+        {
+          "index": 11,
+          "bonus": 5
+        },
+        {
+          "index": 16,
+          "bonus": 4
+        }
+      ],
+      "saves": [],
+      "notes": "Тактика зграї: перевага на атаку, якщо дієздатний союзник у межах 5 футів від цілі.\nУкус збиває з ніг ціль Середнього або меншого розміру без ряткидка."
+    }
+  ]
+}

@@ -42,14 +42,15 @@ internal sealed class HealthBarPersistence
         if (data == null)
             return false;
 
-        string maxKey = GetSaveKey("maxHealth");
-        string currentKey = GetSaveKey("currentHealth");
+        CharacterSceneData healthData = HealthScene(data, out string healthPrefix);
+        string maxKey = healthPrefix + "maxHealth";
+        string currentKey = healthPrefix + "currentHealth";
         int maxHealth = 0;
         int currentHealth = 0;
-        if (data.HasInt(maxKey) || data.HasInt(currentKey))
+        if (healthData.HasInt(maxKey) || healthData.HasInt(currentKey))
         {
-            maxHealth = data.GetInt(maxKey, 0);
-            currentHealth = data.GetInt(currentKey, maxHealth);
+            maxHealth = healthData.GetInt(maxKey, 0);
+            currentHealth = healthData.GetInt(currentKey, maxHealth);
         }
 
         int maxTemporaryHealth = data.GetInt(GetSaveKey("maxTemporaryHealth"), 0);
@@ -67,11 +68,25 @@ internal sealed class HealthBarPersistence
         if (data == null)
             return;
 
-        data.SetInt(GetSaveKey("maxHealth"), values.MaxHealth);
-        data.SetInt(GetSaveKey("currentHealth"), values.CurrentHealth);
+        CharacterSceneData healthData = HealthScene(data, out string healthPrefix);
+        healthData.SetInt(healthPrefix + "maxHealth", values.MaxHealth);
+        healthData.SetInt(healthPrefix + "currentHealth", values.CurrentHealth);
         data.SetInt(GetSaveKey("maxTemporaryHealth"), values.MaxTemporaryHealth);
         data.SetInt(GetSaveKey("currentTemporaryHealth"), values.CurrentTemporaryHealth);
         saveManager?.RequestSaveData();
+    }
+
+    // XPHB Wild Shape retains the character's HP; only its temporary HP belong to the form.
+    // Other forms and ordinary characters keep their existing independent health storage.
+    private CharacterSceneData HealthScene(CharacterSceneData form, out string prefix)
+    {
+        prefix = "HealthBar_" + customIndex + "_";
+        if (form.GetInt("DruidSharedHealth_v1", 0) != 1 || saveManager == null) return form;
+        CharacterData owner = saveManager.GetActiveCharacter();
+        string sharedPrefix = form.GetString("DruidSharedHealthPrefix_v1", "");
+        if (owner == null || string.IsNullOrEmpty(sharedPrefix)) return form;
+        prefix = sharedPrefix;
+        return owner.GetSceneData("cartaPersonaj");
     }
 
     private CharacterSceneData ResolveScene()

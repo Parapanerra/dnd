@@ -1,0 +1,13 @@
+{
+  "uniqueScenarios": 220,
+  "initiallyPassed": 132,
+  "recheckedAfterFix": 88,
+  "passed": 220,
+  "spellChecks": 4166,
+  "formChecks": 795,
+  "additionalSpellDescriptionChecks": 160,
+  "resourceMigrationChecks": 4,
+  "missingEnglish": [],
+  "missingNames": [],
+  "scope": "In-memory candidates only; no player-save writes; no manual Play/mobile visual pass."
+}

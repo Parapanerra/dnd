@@ -1,0 +1,56 @@
+name.hunter	Мисливець	Hunter	Охотник
+name.beastmaster	Повелитель звірів	Beast Master	Повелитель зверей
+name.feywanderer	Мандрівник фей	Fey Wanderer	Странник фей
+name.gloomstalker	Морокоблукач	Gloom Stalker	Сумрачный охотник
+style	Друїдичний воїн	Druidic Warrior	Друидический воин
+expertise	Експертиза слідопита	Ranger Expertise	Экспертиза следопыта
+prey.label	Здобич мисливця	Hunter's Prey	Добыча охотника
+defense.label	Захисна тактика	Defensive Tactics	Защитная тактика
+multi.label	Мультиатака	Multiattack	Мультиатака
+superior.label	Вищий захист	Superior Defense	Высшая защита
+fey.skill	Навичка Мандрівника фей	Fey Wanderer skill	Навык Странника фей
+language	Мова дослідника {0}	Deft Explorer language {0}	Язык исследователя {0}
+enemy.language	Мова ворога {0} (якщо є)	Enemy language {0} (if any)	Язык врага {0} (если есть)
+enemy.label	Обраний ворог {0}	Favored Enemy {0}	Избранный враг {0}
+terrain.label	Обрана місцевість {0}	Favored Terrain {0}	Избранная местность {0}
+resource.strike	Моторошний удар	Dreadful Strike	Жуткий удар
+resource.fey	Виклик феї — без комірки	Summon Fey — free casting	Призыв феи — без ячейки
+resource.misty	Туманний крок — без комірки	Misty Step — free casting	Туманный шаг — без ячейки
+wisdom.form	Атака = БМ + мод. Мудрості.\nСК = 8 + БМ + мод. Мудрості.	Attack = PB + Wisdom modifier.\nDC = 8 + PB + Wisdom modifier.	Атака = БМ + мод. Мудрости.\nСЛ = 8 + БМ + мод. Мудрости.
+wisdom.attack	Шкода: {0}. Дальність / досяжність: {1} футів. Атака й СК використовують твою магію Мудрості.	Damage: {0}. Range / reach: {1} feet. Attack and DC use your Wisdom spellcasting.	Урон: {0}. Дальность / досягаемость: {1} футов. Атака и СЛ используют твою магию Мудрости.
+beast.summary	Комірка {0}: атак за дію — {1}. Діє одразу після тебе; усні накази без дії. Зникає при 0 ОЗ або завершенні спела. Розуміє твої мови.	Slot {0}: {1} attacks per action. Acts immediately after you; verbal commands require no action. Disappears at 0 HP or when the spell ends. Understands your languages.	Ячейка {0}: атак за действие — {1}. Действует сразу после тебя; устные приказы без действия. Исчезает при 0 ОЗ или завершении заклинания. Понимает твои языки.
+beast.table	Рівень: ОЗ · КО · атака · шкода	Level: HP · AC · attack · damage	Уровень: ОЗ · КО · атака · урон
+beast.manual24	Показники таблиці враховують поточний модифікатор Мудрості. Змінився рівень або Мудрість — онови поля вручну. Комірка, витрачена на оживлення, не змінює показники звіра.	The table uses your current Wisdom modifier. After changing level or Wisdom, update the fields manually. A slot spent to revive the beast does not change its statistics.	Таблица учитывает текущий модификатор Мудрости. После смены уровня или Мудрости обнови поля вручную. Ячейка, потраченная на оживление, не меняет показатели зверя.
+beast.manual14	Таблиця враховує зростання БМ і ОЗ слідопита. Інші характеристики звіра не зростають. Додай БМ до опанованих навичок і ряткидків; після зміни рівня онови поля вручну.	The table includes ranger PB and HP growth. Other beast ability scores do not increase. Add PB to proficient skills and saves; update fields manually after changing level.	Таблица учитывает рост БМ и ОЗ следопыта. Другие характеристики зверя не растут. Добавь БМ к освоенным навыкам и спасброскам; после смены уровня обнови поля вручную.
+beast.strike	Удар звіра	Beast's Strike	Удар зверя
+beast.rend	Роздирання	Rend	Раздирание
+beast.land	Звір землі	Beast of the Land	Зверь земли
+beast.sea	Звір моря	Beast of the Sea	Зверь моря
+beast.sky	Звір неба	Beast of the Sky	Зверь неба
+beast.wolf	Вовк	Wolf	Волк
+beast.panther	Пантера	Panther	Пантера
+beast.snake	Велетенська отруйна змія	Giant Poisonous Snake	Гигантская ядовитая змея
+beast.eagle	Орел	Eagle	Орёл
+beast.owl	Сова	Owl	Сова
+beast.boar	Кабан	Boar	Кабан
+spirit.air	Дух звіра — повітря	Bestial Spirit — Air	Дух зверя — воздух
+spirit.land	Дух звіра — земля	Bestial Spirit — Land	Дух зверя — земля
+spirit.water	Дух звіра — вода	Bestial Spirit — Water	Дух зверя — вода
+spirit.air.trait	Політ 60 футів. Проліт не провокує атак. Колюча шкода.	Fly 60 feet. Flyby does not provoke Opportunity Attacks. Piercing damage.	Полёт 60 футов. Пролёт не провоцирует атак. Колющий урон.
+spirit.land.trait	Лазіння 30 футів. Тактика зграї: перевага на атаку, якщо союзник без Недієздатності в 5 футах від цілі. Колюча шкода.	Climb 30 feet. Pack Tactics: Advantage on attacks if an ally that is not Incapacitated is within 5 feet of the target. Piercing damage.	Лазание 30 футов. Тактика стаи: преимущество на атаку, если союзник без Недееспособности в 5 футах от цели. Колющий урон.
+spirit.water.trait	Плавання 30 футів; дихає тільки під водою. Тактика зграї: перевага на атаку, якщо союзник без Недієздатності в 5 футах від цілі. Колюча шкода.	Swim 30 feet; breathes only underwater. Pack Tactics: Advantage on attacks if an ally that is not Incapacitated is within 5 feet of the target. Piercing damage.	Плавание 30 футов; дышит только под водой. Тактика стаи: преимущество на атаку, если союзник без Недееспособности в 5 футах от цели. Колющий урон.
+beast.traits.0	Розбіг 20 футів + ікла: ще 1к6 рубальної шкоди; Сила СК 11 або ціль Горілиць. Невпинність: шкода до 7, що знизила б ОЗ до 0, лишає 1 ОЗ; короткий/довгий відпочинок. Ікла: рубальна шкода.	Charge 20 feet + tusks: extra 1d6 Slashing; Strength DC 11 or Prone. Relentless: damage of 7 or less that would drop it to 0 HP leaves 1 HP instead, once per Short/Long Rest. Tusks deal Slashing.	Разбег 20 футов + клыки: ещё 1к6 рубящего урона; Сила СЛ 11 или цель Ничком. Неукротимость: урон до 7, который снизил бы ОЗ до 0, оставляет 1 ОЗ; короткий/долгий отдых. Клыки наносят рубящий урон.
+beast.traits.1	Політ 60 футів; гострий зір; Уважність +4 до додавання БМ. Кігті: досяжність 5 футів, рубальна шкода.	Fly 60 feet; Keen Sight; Perception +4 before PB. Talons: reach 5 feet, Slashing damage.	Полёт 60 футов; острое зрение; Внимательность +4 до БМ. Когти: досягаемость 5 футов, рубящий урон.
+beast.traits.2	Плавання 30 футів; сліпозір 10 футів; Уважність +2 до додавання БМ. Укус: досяжність 10 футів, колюча шкода та 3к6 отрути, Статура СК 11 зменшує отруту вдвічі.	Swim 30 feet; Blindsight 10 feet; Perception +2 before PB. Bite: reach 10 feet, Piercing damage plus 3d6 Poison; Constitution DC 11 halves Poison.	Плавание 30 футов; слепое зрение 10 футов; Внимательность +2 до БМ. Укус: досягаемость 10 футов, колющий урон и 3к6 яда; Телосложение СЛ 11 уменьшает яд вдвое.
+beast.traits.3	Політ 60 футів; темнозір 120 футів; гострий слух і зір. Уважність +3, Скритність +3 до додавання БМ. Проліт не провокує атак. Кігті: рубальна шкода.	Fly 60 feet; Darkvision 120 feet; Keen Hearing and Sight. Perception +3, Stealth +3 before PB. Flyby does not provoke attacks. Talons deal Slashing.	Полёт 60 футов; тёмное зрение 120 футов; острые слух и зрение. Внимательность +3, Скрытность +3 до БМ. Пролёт не провоцирует атак. Когти наносят рубящий урон.
+beast.traits.4	Швидкість лазіння 40 футів; гострий нюх. Уважність +4, Скритність +6 (до додавання БМ). Розбіг 20 футів + кігті: Сила СК 12 або ціль Горілиць; тоді укус бонусною дією. Укус колючий, кігті рубальні.	Climb 40 feet; Keen Smell. Perception +4, Stealth +6 before PB. Pounce: move 20 feet then hit with claws; Strength DC 12 or Prone, then Bonus Action bite. Bite is Piercing, claws Slashing.	Лазание 40 футов; острое обоняние. Внимательность +4, Скрытность +6 до БМ. Разбег 20 футов и когти: Сила СЛ 12 или цель Ничком, затем укус бонусным действием. Укус колющий, когти рубящие.
+beast.traits.5	Гострий слух і нюх; Уважність +3, Скритність +4 (до додавання БМ). Тактика зграї: перевага на атаку, коли союзник без Недієздатності в 5 футах від цілі. Укус: колюча шкода; Сила СК 11 або ціль Горілиць.	Keen Hearing and Smell; Perception +3, Stealth +4 before PB. Pack Tactics: Advantage on attacks when an ally that is not Incapacitated is within 5 feet of the target. Bite deals Piercing; Strength DC 11 or Prone.	Острые слух и обоняние; Внимательность +3, Скрытность +4 до БМ. Тактика стаи: преимущество, если союзник без Недееспособности в 5 футах от цели. Укус колющий; Сила СЛ 11 или цель Ничком.
+beast.traits.6	Лазіння 40 футів; темнозір 60 футів. БМ до всіх перевірок характеристик і ряткидків. Удар: досяжність 5 футів; дробильна, колюча або рубальна шкода на вибір при поклику. Розбіг 20 футів: +1к6 шкоди та Велика або менша ціль Горілиць.	Climb 40 feet; Darkvision 60 feet. Add PB to all ability checks and saves. Strike: reach 5 feet; choose Bludgeoning, Piercing or Slashing on summoning. Charge 20 feet: +1d6 damage and a Large or smaller target is Prone.	Лазание 40 футов; тёмное зрение 60 футов. БМ ко всем проверкам характеристик и спасброскам. Удар: 5 футов, дробящий, колющий или рубящий на выбор при призыве. Разбег 20 футов: +1к6 урона и Большая или меньшая цель Ничком.
+beast.traits.7	Плавання 60 футів; амфібія; темнозір 90 футів. БМ до всіх перевірок характеристик і ряткидків. Удар: досяжність 5 футів; дробильна або колюча шкода; ціль Схоплена, втеча проти СК твоєї магії.	Swim 60 feet; Amphibious; Darkvision 90 feet. Add PB to all ability checks and saves. Strike: reach 5 feet; Bludgeoning or Piercing; target is Grappled, escape DC equals your spell DC.	Плавание 60 футов; амфибия; тёмное зрение 90 футов. БМ ко всем проверкам характеристик и спасброскам. Удар: 5 футов, дробящий или колющий; цель Схвачена, побег против СЛ твоей магии.
+beast.traits.8	Політ 60 футів; темнозір 60 футів; проліт не провокує атак. БМ до всіх перевірок характеристик і ряткидків. Удар: досяжність 5 футів, рубальна шкода.	Fly 60 feet; Darkvision 60 feet; Flyby does not provoke attacks. Add PB to all ability checks and saves. Strike: reach 5 feet, Slashing damage.	Полёт 60 футов; тёмное зрение 60 футов; пролёт не провоцирует атак. БМ ко всем проверкам характеристик и спасброскам. Удар: 5 футов, рубящий урон.
+enemy.list	Обрані вороги:	Favored enemies:	Избранные враги:
+terrain.list	Обрані місцевості:	Favored terrains:	Избранные местности:
+progress	Слідопит 1–20: обери рівень, підклас і рівневі здібності. Заклинання, експертизи та ресурси відповідають обраній редакції.	Ranger 1–20: choose your level, subclass and level features. Spells, Expertise and resources follow the selected edition.	Следопыт 1–20: выбери уровень, подкласс и уровневые способности. Заклинания, экспертизы и ресурсы соответствуют выбранной редакции.
+damage.piercing	Колюча	Piercing	Колющий
+spell.dominate	Підкорення звіра	Dominate Beast	Подчинение зверя
+language.deep	Глибинна мова	Deep Speech	Глубинная речь

@@ -10,6 +10,12 @@ public static class StableFieldStorage
     private const string ResourceDropdownOrderKey = "ResourceDropdownOrder_v2";
     private static string Key(PersistentFieldId field) => Prefix + field.Id;
 
+    internal static void WriteDropdown(CharacterSceneData data, PersistentFieldId field, int value)
+    {
+        data.SetInt(Key(field), value);
+        WriteLegacy(data.dropdownData, field.LegacyIndex, value);
+    }
+
     public static string ReadText(CharacterSceneData data, Component control, string legacyDefault)
     {
         var field = PersistentFieldId.For(control);
@@ -94,7 +100,7 @@ public static class StableFieldStorage
             {
                 data.SetInt(key, dropdown.value);
                 WriteLegacy(data.dropdownData, index, dropdown.value);
-                if (field.Id == ResourceDropdownId) data.SetInt(ResourceDropdownOrderKey, 1);
+                if (field.Id == ResourceDropdownId) { data.SetInt(ResourceDropdownOrderKey, 1); data.SetInt("ResourceDropdownOrder_v3", 1); }
             }
             else if (control is TMP_Dropdown tmpDropdown)
             {
@@ -106,13 +112,25 @@ public static class StableFieldStorage
 
     private static int MigrateResourceDropdownOrder(CharacterSceneData data, PersistentFieldId field, int value)
     {
-        if (field.Id != ResourceDropdownId || data.HasInt(ResourceDropdownOrderKey)) return value;
-        // The custom feature moved from 9 to 11; the two newer resources moved up.
-        int migrated = value == 9 ? 11 : value == 10 ? 9 : value == 11 ? 10 : value;
-        data.SetInt(ResourceDropdownOrderKey, 1);
-        data.SetInt(Key(field), migrated);
-        WriteLegacy(data.dropdownData, field.LegacyIndex, migrated);
-        return migrated;
+        if (field.Id != ResourceDropdownId) return value;
+        if (!data.HasInt(ResourceDropdownOrderKey))
+        {
+            value = value == 9 ? 11 : value == 10 ? 9 : value == 11 ? 10 : value;
+            data.SetInt(ResourceDropdownOrderKey, 1);
+        }
+        // Insert the independent Lay on Hands panel before the last, custom entry.
+        if (!data.HasInt("ResourceDropdownOrder_v3"))
+        {
+            if (value == 11)
+            {
+                bool generatedPaladin = data.GetInt("ResourceLayPool_v1") != 0;
+                value = generatedPaladin ? 11 : 12;
+            }
+            data.SetInt("ResourceDropdownOrder_v3", 1);
+        }
+        data.SetInt(Key(field), value);
+        WriteLegacy(data.dropdownData, field.LegacyIndex, value);
+        return value;
     }
 
     private static void SetFloat(CharacterSceneData data, PersistentFieldId field, float value)

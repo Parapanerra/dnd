@@ -10,6 +10,7 @@ namespace Taruck.CharacterCreation
     // Small view factory used only by the experimental wizard scene.
     public sealed class CreationWizardUi
     {
+        internal Func<Action, Action> BindChoice { get; set; }
         public static readonly Color Gold = new Color(.91f, .67f, .32f);
         public static readonly Color Ink = new Color(.045f, .045f, .075f, .98f);
         private readonly TMP_FontAsset font;
@@ -34,7 +35,7 @@ namespace Taruck.CharacterCreation
             r.anchorMin = Vector2.zero; r.anchorMax = Vector2.one;
             r.offsetMin = new Vector2(left, bottom); r.offsetMax = new Vector2(-right, -top);
         }
-        public static void Height(RectTransform r, float h)
+        internal static void Height(RectTransform r, float h)
         {
             var e = r.gameObject.AddComponent<UnityEngine.UI.LayoutElement>(); e.minHeight = h; e.preferredHeight = h;
         }
@@ -50,7 +51,8 @@ namespace Taruck.CharacterCreation
             t.font = font; t.text = translate(value); t.fontSize = size; t.color = color ?? new Color(.89f, .86f, .81f);
             t.raycastTarget = false; t.textWrappingMode = TextWrappingModes.Normal;
             t.overflowMode = TextOverflowModes.Overflow;
-            Height(r, height); return t;
+            if (height > 0) Height(r, height);
+            return t;
         }
         public RectTransform Column(string name, Transform parent, float spacing = 12)
         {
@@ -59,7 +61,7 @@ namespace Taruck.CharacterCreation
             layout.childForceExpandWidth = true; layout.childForceExpandHeight = false;
             return r;
         }
-        public RectTransform Row(string name, Transform parent, float h = 72)
+        internal RectTransform Row(string name, Transform parent, float h = 72)
         {
             var r = Rect(name, parent); Height(r, h);
             r.GetComponent<UnityEngine.UI.LayoutElement>().flexibleWidth = 1;
@@ -84,7 +86,8 @@ namespace Taruck.CharacterCreation
             colors.selectedColor = colors.normalColor;
             colors.fadeDuration = 0;
             b.colors = colors;
-            b.onClick.AddListener(action);
+            Action click = BindChoice?.Invoke(() => action()) ?? (() => action());
+            b.onClick.AddListener(() => click());
             var text = Text(r, label, 21, selected ? Gold : new Color(.87f, .83f, .76f));
             Fill(text.rectTransform, 18, 9, showCheck && selected ? 37 : 18, 9); text.alignment = TextAlignmentOptions.Center;
             text.enableAutoSizing = true; text.fontSizeMin = 15; text.fontSizeMax = 21;
@@ -103,12 +106,13 @@ namespace Taruck.CharacterCreation
             }
             return b;
         }
-        public TMP_Dropdown Dropdown(Transform parent, string name, IList<string> choices, int selected, Action<int> changed, float width = 300, float height = 48)
+        internal TMP_Dropdown Dropdown(Transform parent, string name, IList<string> choices, int selected, Action<int> changed, float width = 300, float height = 48)
         {
             Transform host = parent;
             if (parent.GetComponent<UnityEngine.UI.VerticalLayoutGroup>() != null)
             {
                 var row = Row("DropdownRow", parent, height);
+                row.GetComponent<UnityEngine.UI.LayoutElement>().flexibleHeight = 0;
                 var horizontal = row.GetComponent<UnityEngine.UI.HorizontalLayoutGroup>();
                 horizontal.childForceExpandWidth = false;
                 host = row;
@@ -212,16 +216,18 @@ namespace Taruck.CharacterCreation
             dropdown.AddOptions(options);
             dropdown.SetValueWithoutNotify(Mathf.Clamp(selected, 0, choices.Count - 1));
             dropdown.RefreshShownValue();
-            dropdown.onValueChanged.AddListener(value => changed(value));
+            var binding = BindChoice;
+            dropdown.onValueChanged.AddListener(value => (binding?.Invoke(() => changed(value)) ?? (() => changed(value)))());
             template.gameObject.SetActive(false);
             return dropdown;
         }
-        public TMP_InputField Input(Transform parent, string initial, string placeholder, Action<string> changed)
+        internal TMP_InputField Input(Transform parent, string initial, string placeholder, Action<string> changed)
         {
             Transform host = parent;
             if (parent.GetComponent<UnityEngine.UI.VerticalLayoutGroup>() != null)
             {
                 var row = Row("NameInputRow", parent, 72);
+                row.GetComponent<UnityEngine.UI.LayoutElement>().flexibleHeight = 0;
                 row.GetComponent<UnityEngine.UI.HorizontalLayoutGroup>().childForceExpandWidth = false;
                 var spacer = Rect("Spacer", row);
                 var spacerSize = spacer.gameObject.AddComponent<UnityEngine.UI.LayoutElement>();
@@ -256,9 +262,11 @@ namespace Taruck.CharacterCreation
             }
             field.onSelect.AddListener(_ => hint.gameObject.SetActive(false));
             field.onDeselect.AddListener(_ => hint.gameObject.SetActive(string.IsNullOrEmpty(field.text)));
-            field.onValueChanged.AddListener(value => changed(value)); return field;
+            var binding = BindChoice;
+            field.onValueChanged.AddListener(value => (binding?.Invoke(() => changed(value)) ?? (() => changed(value)))());
+            return field;
         }
-        public void Clear(Transform parent)
+        internal void Clear(Transform parent)
         {
             for (int i = parent.childCount - 1; i >= 0; i--)
             {

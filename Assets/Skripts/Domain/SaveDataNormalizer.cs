@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -58,6 +58,8 @@ public sealed class SaveDataNormalizer
                 if (sceneData.floatData == null)
                     sceneData.floatData = new List<FloatSaveEntry>();
             }
+            Taruck.CharacterCreation.CreationFieldMigration.MigrateBloodDieBinding(character);
+            Taruck.CharacterCreation.CreationFieldMigration.MigrateRageCountBinding(character);
         }
 
         return saveData;
